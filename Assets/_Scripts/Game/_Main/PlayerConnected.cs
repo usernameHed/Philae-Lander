@@ -49,7 +49,7 @@ public class PlayerConnected : SingletonMono<PlayerConnected>
     public bool simulatePlayerOneifNoGamePad = false;   //Si aucune manette n'est connecté, active le player 1 avec le clavier !
     
 
-    private short playerNumber = 4;                     //size fixe de joueurs (0 = clavier, 1-4 = manette)
+    private short playerNumber = 1;                     //size fixe de joueurs (0 = clavier, 1-4 = manette)
     private Player[] playersRewired;                 //tableau des class player (rewired)
     private float timeToGo;
     private FrequencyCoolDown desactiveVibrationAtStart = new FrequencyCoolDown();

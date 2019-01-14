@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Floor
   - Enemy
-  - AudioManager
   layers:
   - Default
   - TransparentFX
@@ -22,11 +21,11 @@ TagManager:
   - Enemy
   - Player
   - 
-  - Floor/Mucus
-  - Floor/Stone
-  - Floor/Water
-  - Floor/WetStone
-  - Floor/Scout
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
