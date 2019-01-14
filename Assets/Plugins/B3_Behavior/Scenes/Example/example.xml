@@ -1,0 +1,13 @@
+<root>
+  <selector>
+    <sequence>
+      <actionProperty componentName="example" action="isCanJump" />
+      <actionProperty componentName="example" action="isJump" />
+      <actionVoid componentName="example" action="Jump" />
+    </sequence>
+    <sequence>
+      <actionProperty componentName="example" action="isRotate" />
+      <actionVoid componentName="example" action="Rotate" />
+    </sequence>
+  </selector>
+</root>
