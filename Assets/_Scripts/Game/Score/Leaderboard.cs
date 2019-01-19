@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Sirenix.OdinInspector;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Leaderboard Description
@@ -51,7 +52,7 @@ public class Leaderboard : SingletonMono<Leaderboard>
 
     IEnumerator UploadNewHighscore(string username, int score)
     {
-        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        UnityWebRequest www = new UnityWebRequest(webURL + privateCode + "/add/" + UnityWebRequest.EscapeURL(username) + "/" + score);
         yield return www;
 
         if (string.IsNullOrEmpty(www.error))
@@ -74,12 +75,14 @@ public class Leaderboard : SingletonMono<Leaderboard>
     IEnumerator DownloadHighscoresFromDatabase()
     {
         //WWW www = new WWW(webURL + publicCode + "/pipe/");
-        WWW www = new WWW(webURL + publicCode + "/pipe/0/12");
+        UnityWebRequest www = new UnityWebRequest(webURL + publicCode + "/pipe/0/12");
         yield return www;
 
         if (string.IsNullOrEmpty(www.error))
         {
-            FormatHighscores(www.text);
+            //result as test, sent to formatter
+            FormatHighscores(www.downloadHandler.text);
+
             uploadedScore = true;
         }
         else
