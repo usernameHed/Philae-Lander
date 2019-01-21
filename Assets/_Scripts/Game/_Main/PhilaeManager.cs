@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class PhilaeManager : SingletonMono<PhilaeManager>
 {
     [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
+    public CameraController cameraController;
+    [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
     public bool releaseScene = false;
 
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]

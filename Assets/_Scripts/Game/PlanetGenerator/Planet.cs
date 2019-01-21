@@ -54,7 +54,7 @@ public class Planet : MonoBehaviour
         terrainFace = new TerrainFace[sizeMesh];
         Vector3[] direction = { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back};
 
-        transform.ClearChild();
+        //transform.ClearChild();
 
         for (int i = 0; i < sizeMesh; i++)
         {

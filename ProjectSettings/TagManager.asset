@@ -20,7 +20,7 @@ TagManager:
   - Object
   - Enemy
   - Player
-  - 
+  - Walkable/Floor
   - 
   - 
   - 
