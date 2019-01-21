@@ -8,4 +8,5 @@ using Sirenix.OdinInspector;
 public class ColorSettings : ScriptableObject
 {
     public Color planetColor = Color.blue;
+    public Material planetMaterial;
 }
