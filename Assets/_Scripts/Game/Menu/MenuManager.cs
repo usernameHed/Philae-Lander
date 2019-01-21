@@ -9,15 +9,12 @@ using UnityEngine.UI;
 public class MenuManager : SingletonMono<MenuManager>
 {
     [SerializeField]
-    private TextMeshProUGUI text;
-    [SerializeField]
     private List<Button> listButton;
 
 
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.SceneLoaded, Init);
-        EventManager.StartListening(GameData.Event.SwitchKeyBoardOrGamePad, SwitchKeyBoardOrGamePad);
     }
 
     /// <summary>
@@ -25,15 +22,7 @@ public class MenuManager : SingletonMono<MenuManager>
     /// </summary>
     private void Init()
     {
-        SwitchKeyBoardOrGamePad();
-    }
 
-    /// <summary>
-    /// swithc text input
-    /// </summary>
-    private void SwitchKeyBoardOrGamePad()
-    {
-        text.text = (PlayerConnected.Instance.keyboardActive) ? "keyboard" : "joystick";
     }
 
     private void Start()
@@ -59,6 +48,5 @@ public class MenuManager : SingletonMono<MenuManager>
     private void OnDisable()
     {
         EventManager.StopListening(GameData.Event.SceneLoaded, Init);
-        EventManager.StopListening(GameData.Event.SwitchKeyBoardOrGamePad, SwitchKeyBoardOrGamePad);
     }
 }

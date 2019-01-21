@@ -17,7 +17,6 @@ public class Cinematic : SingletonMono<Cinematic>
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.SceneLoaded, Init);
-        EventManager.StartListening(GameData.Event.SwitchKeyBoardOrGamePad, SwitchKeyBoardOrGamePad);
         video.loopPointReached += EndReached;
     }
 
@@ -26,15 +25,7 @@ public class Cinematic : SingletonMono<Cinematic>
     /// </summary>
     private void Init()
     {
-        SwitchKeyBoardOrGamePad();
-    }
 
-    /// <summary>
-    /// swithc text input
-    /// </summary>
-    private void SwitchKeyBoardOrGamePad()
-    {
-        text.text = (PlayerConnected.Instance.keyboardActive) ? "keyboard" : "joystick";
     }
 
     private void InputGame()
@@ -61,6 +52,5 @@ public class Cinematic : SingletonMono<Cinematic>
     {
         video.loopPointReached -= EndReached;
         EventManager.StopListening(GameData.Event.SceneLoaded, Init);
-        EventManager.StopListening(GameData.Event.SwitchKeyBoardOrGamePad, SwitchKeyBoardOrGamePad);
     }
 }

@@ -10,11 +10,13 @@ public class PlayerController : SingletonMono<PlayerController>
     public Rigidbody rb;
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public PlayerInput playerInput;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private Transform rotateObject;
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
 
-    //private Vector3 direction;              //save of direction player
+    private Vector2 direction;              //save of direction player
     //private Vector3 dirOrientedAllControl;  //save of GetDirOrientedInputForMultipleControl
 
     private bool enabledScript = true;      //tell if this script should be active or not
@@ -51,7 +53,7 @@ public class PlayerController : SingletonMono<PlayerController>
     /// </summary>
     private void InputPlayer()
     {
-        //direction = new Vector3(playerInput.GetMoveInput().x * 1, 0, playerInput.GetMoveInput().y * 1);
+        //direction = new Vector2(playerInput.GetMoveInput().x * 1, playerInput.GetMoveInput().y * 1);
         //dirOrientedAllControl = playerInput.GetDirOrientedInputForMultipleControl();
     }
 

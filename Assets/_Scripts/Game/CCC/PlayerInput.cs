@@ -31,7 +31,7 @@ public class PlayerInput : MonoBehaviour
     /// get la direction de l'input
     /// </summary>
     /// <returns></returns>
-    public Vector3 GetDirInput(bool digital = false)
+    public Vector2 GetDirInput(bool digital = false)
     {
         float x = GetMoveInput().x;
         float y = GetMoveInput().y;
@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
             y = (y < 0f) ? -1 : y;
         }
 
-        Vector3 dirInputPlayer = new Vector3(x, 0, y);
+        Vector2 dirInputPlayer = new Vector2(x, y);
         return (dirInputPlayer);
     }
 
@@ -54,8 +54,8 @@ public class PlayerInput : MonoBehaviour
     /// <returns></returns>
     private Vector3 GetDirInputRelativeToPlayer()
     {
-        Vector3 dirInput = GetDirInput();
-        Vector3 relativeDirection = playerController.rb.transform.right * dirInput.x + playerController.rb.transform.forward * dirInput.z;
+        Vector2 dirInput = GetDirInput();
+        Vector3 relativeDirection = playerController.rb.transform.right * dirInput.x + playerController.rb.transform.forward * dirInput.y;
         Debug.DrawRay(transform.position, relativeDirection, Color.cyan, 3f);
         return (relativeDirection);
     }
@@ -111,14 +111,7 @@ public class PlayerInput : MonoBehaviour
     /// <returns></returns>
     public Vector2 GetCameraInput()
     {
-        if (PlayerConnected.Instance.keyboardActive)
-        {
-            return (mouseInput);
-        }
-        else
-        {
-            return (cameraInput);
-        }
+        return (cameraInput);
     }
 
     /// <summary>
@@ -127,14 +120,7 @@ public class PlayerInput : MonoBehaviour
     /// <returns></returns>
     public Vector2 GetMoveInput()
     {
-        if (PlayerConnected.Instance.keyboardActive)
-        {
-            return (moveInput);
-        }
-        else
-        {
-            return (moveInput);
-        }
+        return (moveInput);
     }
 
     private void Update()

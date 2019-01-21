@@ -152,7 +152,6 @@ public static class GameData
     {
         GameOver,                   //event game over
         GamePadConnectionChange,    //event when gamePad connection change
-        SwitchKeyBoardOrGamePad,    //event when we change the game input, keyboard or gamepad
         SceneLoaded,                //called when a scene is loaded
         AdditiveJustFinishLoad,     //called when a scene is finish loading additivly
     };

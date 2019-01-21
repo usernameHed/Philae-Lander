@@ -16,13 +16,9 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]
     public GameObject pausePanel;
 
-    [FoldoutGroup("Debug"), Tooltip("text debug to display")]
-    public TextMeshProUGUI text;
-
     private void OnEnable()
     {
-        EventManager.StartListening(GameData.Event.SceneLoaded, Init);
-        EventManager.StartListening(GameData.Event.SwitchKeyBoardOrGamePad, SwitchKeyBoardOrGamePad);        
+        EventManager.StartListening(GameData.Event.SceneLoaded, Init);     
     }
 
     /// <summary>
@@ -31,21 +27,12 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     private void Init()
     {
         PauseGame(false);
-        SwitchKeyBoardOrGamePad();
     }
 
     public void PauseGame(bool pause)
     {
         Time.timeScale = (pause) ? 0f : 1f;
         pausePanel.SetActive(pause);
-    }
-
-    /// <summary>
-    /// swithc text input
-    /// </summary>
-    private void SwitchKeyBoardOrGamePad()
-    {
-        text.text = (PlayerConnected.Instance.keyboardActive) ? "keyboard" : "joystick";
     }
 
     private void InputGame()
@@ -88,6 +75,5 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     private void OnDisable()
     {
         EventManager.StopListening(GameData.Event.SceneLoaded, Init);
-        EventManager.StopListening(GameData.Event.SwitchKeyBoardOrGamePad, SwitchKeyBoardOrGamePad);
     }
 }

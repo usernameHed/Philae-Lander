@@ -208,14 +208,15 @@ public static class ExtQuaternion
         return (rotation);
     }
 
+
     /// <summary>
     /// rotate smoothly selon 2 axe
     /// </summary>
-	public static Quaternion DirObject(this Quaternion rotation, float horizMove, float vertiMove, float turnRate, TurnType typeRotation = TurnType.Z)
+	public static Quaternion DirObject(this Quaternion rotation, float horizMove, float vertiMove, float turnRate, out Quaternion _targetRotation, TurnType typeRotation = TurnType.Z)
     {
         float heading = Mathf.Atan2(horizMove * turnRate * Time.deltaTime, -vertiMove * turnRate * Time.deltaTime);
 
-        Quaternion _targetRotation = Quaternion.identity;
+        //Quaternion _targetRotation = Quaternion.identity;
 
         float x = (typeRotation == TurnType.X) ? heading * 1 * Mathf.Rad2Deg : 0;
         float y = (typeRotation == TurnType.Y) ? heading * -1 * Mathf.Rad2Deg : 0;

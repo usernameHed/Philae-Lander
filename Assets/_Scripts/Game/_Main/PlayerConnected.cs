@@ -35,14 +35,8 @@ public class PlayerConnected : SingletonMono<PlayerConnected>
     protected PlayerConnected() { } // guarantee this will be always a singleton only - can't use the constructor!
 
     #region variable
-
-    [FoldoutGroup("GamePlay"), Tooltip("all Control For Reactivating GamePad")]
-    public List<string> allControlGamePad = new List<string>();
-
     [FoldoutGroup("Debug"), Tooltip("Active les vibrations"), ReadOnly]
     public bool enabledVibration = true;
-    [FoldoutGroup("Debug"), Tooltip("is keaybord defined as active ?"), ReadOnly]
-    public bool keyboardActive = true;
     [FoldoutGroup("Debug"), Tooltip("show gamePad active"), ReadOnly]
     public bool[] playerArrayConnected;                      //tableau d'état des controller connecté
     [FoldoutGroup("Debug"), Tooltip("Active les vibrations")]
@@ -86,41 +80,6 @@ public class PlayerConnected : SingletonMono<PlayerConnected>
     {
         enabledVibration = GameManager.Instance.enableVibration;
         desactiveVibrationAtStart.StartCoolDown(timeDesactiveAtStart);
-        TestIfActiveKeyBoard();
-    }
-
-    private void TestIfActiveKeyBoard()
-    {
-        //if no gamepad, active keyboard
-        if (NoPlayer())
-        {
-            SetActiveKeyBoard(true);    //here keybard/mouse is active
-        }
-        else
-        {
-            SetActiveKeyBoard(false);   //here gamePad are active
-        }
-    }
-
-    /// <summary>
-    /// active or not Mouse !
-    /// </summary>
-    private void SetActiveKeyBoard(bool active)
-    {
-        if (active == keyboardActive)
-            return;
-
-        keyboardActive = active;
-        if (keyboardActive)
-        {
-            Debug.Log("keyboard actived");
-            ActiveKeyboardForPlayer(true);
-        }
-        else
-        {
-            Debug.Log("gamePad actived");
-            ActiveKeyboardForPlayer(false);
-        }
     }
 
     /// <summary>
@@ -181,7 +140,6 @@ public class PlayerConnected : SingletonMono<PlayerConnected>
     private void UpdatePlayerController(int id, bool isConnected)
     {
         playerArrayConnected[id] = isConnected;
-        TestIfActiveKeyBoard();
     }
 
     /// <summary>
@@ -306,69 +264,6 @@ public class PlayerConnected : SingletonMono<PlayerConnected>
         SetKeyboardForPlayerOne();
 
         EventManager.TriggerEvent(GameData.Event.GamePadConnectionChange, false, args.controllerId);
-    }
-
-    /// <summary>
-    /// return true if any button is down from gamePAd or keyboard
-    /// </summary>
-    /// <returns></returns>
-    private bool IsAnyButtonGamePadPressed()
-    {
-        for (int i = 0; i < playerNumber; i++)
-        {
-            for (int j = 0; j < allControlGamePad.Count; j++)
-            {
-                if (playersRewired[i].GetButtonUp(allControlGamePad[j]))
-                    return (true);
-            }
-        }
-        return (false);
-    }
-    private bool IsAnyButtonKeyBoardPressed()
-    {
-        for (int i = 0; i < GameData.keys.Length; i++)
-        {
-            KeyCode keycode = new KeyCode();
-            keycode = ExtEnum.GetEnumValueFromString(GameData.keys[i], keycode);
-            if (Input.GetKeyUp(keycode))
-                return (true);
-        }
-        return (false);
-    }
-
-    /// <summary>
-    /// switch keyboard
-    /// </summary>
-    /// <param name="active"></param>
-    private void ActiveKeyboardForPlayer(bool active)
-    {
-        for (int i = 0; i < playerNumber; i++)
-        {
-            playersRewired[i].controllers.Keyboard.enabled = active;
-        }
-        EventManager.TriggerEvent(GameData.Event.SwitchKeyBoardOrGamePad);
-    }
-
-    /// <summary>
-    /// active mouse
-    /// </summary>
-    private void MouseAndKeayboardInput()
-    {
-        //si on clique sur n'importe quel touche, ou le clic gauche de la souris, activer la souris
-        //dans les menus...
-        if (Input.GetMouseButtonUp(0) || IsAnyButtonKeyBoardPressed())
-        {
-            SetActiveKeyBoard(true);
-        }
-        else if (IsAnyButtonGamePadPressed())
-        {
-            SetActiveKeyBoard(false);
-        }
-    }
-
-    private void Update()
-    {
-        MouseAndKeayboardInput();
     }
 
     private void OnDisable()

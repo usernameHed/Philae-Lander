@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     public enum MoveState
     {
         Idle,
+        InAir,
         Move,
     }
 
@@ -18,8 +19,11 @@ public class PlayerMove : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private Transform objectRotateLocal;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private PlayerInput playerInput;
-    
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private GroundCheck groundCheck;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     public MoveState moveState = MoveState.Idle;
@@ -58,7 +62,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
-        MovePhysics(playerInput.GetDirOrientedInputForMultipleControl());
+        MovePhysics(objectRotateLocal.forward);
     }
 
     /// <summary>
@@ -69,14 +73,18 @@ public class PlayerMove : MonoBehaviour
         if (!enabledScript)
             return;
 
-        /*if (!groundCheck.IsSafeGrounded())
+        if (!groundCheck.IsSafeGrounded())
         {
             moveState = MoveState.InAir;
             return;
-        }*/
+        }
+
         //apply force if input
         if (!playerInput.NotMoving())
+        {
+            moveState = MoveState.Move;
             MovePlayer();
+        }            
         else
         {
             moveState = MoveState.Idle;
