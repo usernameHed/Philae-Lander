@@ -60,6 +60,7 @@ public class PlayerInput : MonoBehaviour
         return (relativeDirection);
     }
 
+    /*
     /// <summary>
     /// get direction input, taking care of AutoCam
     /// </summary>
@@ -71,6 +72,7 @@ public class PlayerInput : MonoBehaviour
 
         return (relativeDirection);
     }
+    */
 
     /// <summary>
     /// retourne si le joueur se déplace ou pas
@@ -79,6 +81,17 @@ public class PlayerInput : MonoBehaviour
     public bool NotMoving(float margin = 0)
     {
         if (GetMoveInput().magnitude <= margin)
+            return (true);
+        return (false);
+    }
+
+    /// <summary>
+    /// retourne si le joueur se déplace ou pas
+    /// </summary>
+    /// <returns></returns>
+    public bool NotMovingCamera(float margin = 0)
+    {
+        if (GetCameraInput().magnitude <= margin)
             return (true);
         return (false);
     }

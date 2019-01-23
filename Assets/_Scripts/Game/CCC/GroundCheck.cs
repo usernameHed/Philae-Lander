@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("check if player in the ground")]
+[TypeInfoBox("check if player in the ground, and change Drag !")]
 public class GroundCheck : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
@@ -67,23 +67,6 @@ public class GroundCheck : MonoBehaviour
     {
         return (dirNormal);
     }
-
-    /*
-    /// <summary>
-    /// test if there is something on top of the player head !
-    /// return false if there is nothing
-    /// </summary>
-    public bool IsGroundCheckUp(float distUp)
-    {
-        RaycastHit hitInfo;
-        if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - shellOffset), Vector3.up, out hitInfo,
-                               ((m_Capsule.height / 2f) - m_Capsule.radius) + distUp, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-        {
-            return (true);
-        }
-        return (false);
-    }
-    */
 
     /// <summary>
     /// Set isGrounded
@@ -160,42 +143,18 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    /*
-    /// <summary>
-    /// get the radius of capsule with ratio
-    /// </summary>
-    private float GetRadiusCapsule()
-    {
-        return (m_Capsule.radius * (1.0f - shellOffset));
-    }
-    */
-
     /// <summary>
     /// set if we are flying or not !
     /// </summary>
     private void SetFlying()
     {
-        //here no tlfying
         if (isGrounded || isAlmostGrounded)
         {
-            //timeBeforeFlying.Reset();
             isFlying = false;
             return;
         }
         isFlying = true;
         rb.drag = 0;
-
-        /*//here, first time we are flying
-        if (!timeBeforeFlying.IsStarted())
-        {
-            timeBeforeFlying.StartCoolDown();
-        }
-        //here we can fly !!
-        else if (timeBeforeFlying.IsStartedAndOver())
-        {
-            isFlying = true;
-            rb.drag = 0;
-        }*/
     }
 
     private void FixedUpdate()

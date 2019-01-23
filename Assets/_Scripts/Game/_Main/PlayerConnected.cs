@@ -11,18 +11,18 @@ using System.Collections.Generic;
 [Serializable]
 public struct Vibration
 {
-    [FoldoutGroup("Vibration"), Tooltip("vibre le rotor droit"), SerializeField]
+    [Tooltip("vibre le rotor droit"), SerializeField]
     public bool vibrateLeft;
-    [FoldoutGroup("Vibration"), EnableIf("vibrateLeft"), Range(0, 1), Tooltip("force du rotor"), SerializeField]
+    [EnableIf("vibrateLeft"), Range(0, 1), Tooltip("force du rotor"), SerializeField]
     public float strenthLeft;
-    [FoldoutGroup("Vibration"), EnableIf("vibrateLeft"), Range(0, 10), Tooltip("temps de vibration"), SerializeField]
+    [EnableIf("vibrateLeft"), Range(0, 10), Tooltip("temps de vibration"), SerializeField]
     public float durationLeft;
 
-    [FoldoutGroup("Vibration"), Tooltip("cooldown du jump"), SerializeField]
+    [Tooltip("cooldown du jump"), SerializeField]
     public bool vibrateRight;
-    [FoldoutGroup("Vibration"), EnableIf("vibrateRight"), Range(0, 1), Tooltip("cooldown du jump"), SerializeField]
+    [EnableIf("vibrateRight"), Range(0, 1), Tooltip("cooldown du jump"), SerializeField]
     public float strenthRight;
-    [FoldoutGroup("Vibration"), EnableIf("vibrateRight"), Range(0, 10), Tooltip("cooldown du jump"), SerializeField]
+    [EnableIf("vibrateRight"), Range(0, 10), Tooltip("cooldown du jump"), SerializeField]
     public float durationRight;
 }
 

@@ -9,27 +9,27 @@ public class RotateToGround : MonoBehaviour
     private float speedRotate = 5f;
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private GravityApplyer gravityApplyer;
+    private SmoothNormals smoothNormals;
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private GameObject rbObject;
 
-    public Vector3 GetRotationOrientationDown()
+    private void Start()
     {
-        if (groundCheck.IsFlying())
-        {
-            return (gravityApplyer.GetDirGravity());
-        }
-        return (groundCheck.GetDirLastNormal());
+        InstantRotate();
+    }
+
+    private void InstantRotate()
+    {
+        Vector3 dirOrientation = smoothNormals.GetSmoothedNormal();
+
+        rbObject.transform.rotation = Quaternion.FromToRotation(rbObject.transform.up, dirOrientation) * rbObject.transform.rotation;
     }
 
     private void RotateObject()
     {
-        
-        Vector3 dirOrientation = GetRotationOrientationDown();
+        Vector3 dirOrientation = smoothNormals.GetSmoothedNormal();
 
-        Debug.DrawRay(rbObject.transform.position, dirOrientation * 5, Color.green, 0.3f);
+        //Debug.DrawRay(rbObject.transform.position, dirOrientation * 5, Color.green, 0.3f);
 
         //UnityRotateExtensions.Rotate_DegreesPerSecond(rbObject, dirOrientation, speedRotate);
         Quaternion targetRotation = Quaternion.FromToRotation(rbObject.transform.up, dirOrientation) * rbObject.transform.rotation;

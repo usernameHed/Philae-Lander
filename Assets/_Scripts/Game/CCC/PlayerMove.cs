@@ -6,13 +6,6 @@ using UnityEngine;
 [TypeInfoBox("Player Move and rotation")]
 public class PlayerMove : MonoBehaviour
 {
-    public enum MoveState
-    {
-        Idle,
-        InAir,
-        Move,
-    }
-
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float speedMove = 5f;
     
@@ -21,23 +14,15 @@ public class PlayerMove : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Transform objectRotateLocal;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerInput playerInput;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private GroundCheck groundCheck;
+    private PlayerController playerController;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
-    public MoveState moveState = MoveState.Idle;
+    
 
     private bool enabledScript = true;      //tell if this script should be active or not
     
     private void Start()
     {
         Init();
-    }
-
-    public MoveState GetMoveState()
-    {
-        return moveState;
     }
 
     /// <summary>
@@ -72,22 +57,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (!enabledScript)
             return;
-
-        if (!groundCheck.IsSafeGrounded())
+        if (playerController.GetMoveState() == PlayerController.MoveState.Move)
         {
-            moveState = MoveState.InAir;
-            return;
-        }
-
-        //apply force if input
-        if (!playerInput.NotMoving())
-        {
-            moveState = MoveState.Move;
             MovePlayer();
-        }            
-        else
-        {
-            moveState = MoveState.Idle;
         }
     }
 
