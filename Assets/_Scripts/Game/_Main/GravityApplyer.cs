@@ -15,6 +15,8 @@ public class GravityApplyer : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip("ratio gravity"), SerializeField]
     private float ratioGravity = 1;
+    [FoldoutGroup("Debug"), Tooltip("ratio gravity"), SerializeField]
+    private bool useGravity = true;
 
 
     private Vector3 dirGravity = Vector3.zero;
@@ -22,6 +24,15 @@ public class GravityApplyer : MonoBehaviour
     public Vector3 GetDirGravity()
     {
         return (dirGravity);
+    }
+
+    /// <summary>
+    /// activate or not gravity
+    /// </summary>
+    /// <param name="activate"></param>
+    public void SetUseGravity(bool useIt)
+    {
+        useGravity = useIt;
     }
 
     public void SetPlanetList(Rigidbody planet)
@@ -81,6 +92,7 @@ public class GravityApplyer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DoAllAttractor();
+        if (useGravity)
+            DoAllAttractor();
     }
 }

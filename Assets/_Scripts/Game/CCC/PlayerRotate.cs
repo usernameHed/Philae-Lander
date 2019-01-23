@@ -24,7 +24,7 @@ public class PlayerRotate : MonoBehaviour
         // Form the direction we want to look towards
         Vector2 dirInput = playerInput.GetDirInput();
         Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
-        Debug.DrawRay(objectToRotate.position, relativeDirection, Color.cyan, 4f);
+        //Debug.DrawRay(objectToRotate.position, relativeDirection, Color.white, 3f);
 
         // Preserve our current up direction
         // (or you could calculate this as the direction away from the planet's center)

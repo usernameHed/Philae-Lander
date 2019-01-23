@@ -50,7 +50,7 @@ using UnityEngine;
  * from an enum. This is useful since the enum can be exposed in the editor and then the function queried during Start().
  * 
  * EasingFunction.Ease ease = EasingFunction.Ease.EaseInOutQuad;
- * EasingFunction.EasingFunc func = GetEasingFunction(ease;
+ * EasingFunction.EasingFunc func = GetEasingFunction(ease);
  * 
  * float value = func(0, 10, 0.67f);
  * 

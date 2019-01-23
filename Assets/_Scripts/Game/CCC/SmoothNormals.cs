@@ -39,12 +39,12 @@ public class SmoothNormals : MonoBehaviour
     private void CalculateSmoothNormal()
     {
         Vector3 actualNormal = GetRotationOrientationDown();
-        Debug.DrawRay(rbObject.transform.position, actualNormal * 2, Color.magenta, 5f);
+        //Debug.DrawRay(rbObject.transform.position, actualNormal * 2, Color.magenta, 5f);
 
         smoothedNormal = Vector3.Lerp(smoothedNormal, actualNormal, Time.deltaTime * smoothSpeed);
 
 
-        Debug.DrawRay(rbObject.transform.position, smoothedNormal, Color.yellow, 5f);
+        //Debug.DrawRay(rbObject.transform.position, smoothedNormal, Color.yellow, 5f);
     }
 
     private void FixedUpdate()

@@ -9,7 +9,7 @@ public class ExternalForces : MonoBehaviour
     /// </summary>
     public void JustJumped()
     {
-
+        Debug.Log("just jumped ?");
     }
 
     private void ApplyGravity()
@@ -31,5 +31,10 @@ public class ExternalForces : MonoBehaviour
             rb.velocity += Vector3.up * Physics.gravity.y * (lowMultiplier - 1) * Time.fixedDeltaTime;
         }
         */
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 }

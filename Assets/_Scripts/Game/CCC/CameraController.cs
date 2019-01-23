@@ -129,7 +129,7 @@ public class CameraController : MonoBehaviour
     {
         //Vector3 dirOrientation = camPointWhoRotate.localEulerAngles;// Quaternion.ToEulerAngles(camPointWhoRotate.rotation);
         Vector3 dirOrientation = targetToLook.position - movingCamera.position;
-        Debug.DrawRay(rotateCameraY.position, dirOrientation, Color.red, 0.3f);
+        //Debug.DrawRay(rotateCameraY.position, dirOrientation, Color.red, 0.3f);
 
         // Preserve our current up direction
         Vector3 up = rotateCameraY.up;

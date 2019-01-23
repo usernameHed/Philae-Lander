@@ -116,6 +116,8 @@ public class PlayerController : SingletonMono<PlayerController>
 
     private void ChangeState()
     {
+        //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.cyan, 0.05f, 3f);
+
         if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
         {
             playerJump.OnGrounded();

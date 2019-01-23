@@ -13,6 +13,12 @@ public class PlayerJump : MonoBehaviour
     private bool stayHold = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     private bool canJumpInAir = true;
+    [FoldoutGroup("Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
+    private float rbUpAddGravity = 2.5f;
+    [FoldoutGroup("Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
+    private float rbDownAddGravity = 2.5f;
+    [FoldoutGroup("Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
+    private float defaultGravityInAir = 1f;
 
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
     private Vibration onJump;
@@ -59,8 +65,14 @@ public class PlayerJump : MonoBehaviour
 
         PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);
 
+        Vector3 currentVeocity = rb.velocity;
+        //rb.velocity = new Vector3(currentVeocity.x * jumpForce.x,
+        //    currentVeocity.y * jumpForce.y,
+        //    currentVeocity.z * jumpForce.z);
+        rb.velocity += jumpForce;
+
         //rb.AddForce(jumpForce);
-        rb.velocity = jumpForce;
+        //rb.velocity = jumpForce;
     }
 
     private Vector3 CalculateDirectionJump()
@@ -96,6 +108,7 @@ public class PlayerJump : MonoBehaviour
         {
             Vector3 jumpDirection = CalculateDirectionJump();
             Jump(jumpDirection);
+            gravityApplyer.SetUseGravity(false);
 
             if (!stayHold)
                 jumpStop = true;
@@ -106,12 +119,53 @@ public class PlayerJump : MonoBehaviour
     }
 
     /// <summary>
+    /// when we jump, and just release...  take us down !
+    /// </summary>
+    private void ApplyDownForceWhenReleasing()
+    {
+        if (playerController.GetMoveState() != PlayerController.MoveState.InAir)
+            return;
+
+        Vector3 gravityOrientation = gravityApplyer.GetDirGravity();
+        float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rb.velocity);
+        //here we fall down toward a planet, apply gravity down
+        if (dotGravityRigidbody < 0)
+        {
+            Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
+            Debug.DrawRay(rb.transform.position, orientationDown, Color.blue, 5f);
+            rb.velocity += orientationDown;
+            Debug.Log("going down");
+            //Debug.Break();
+        }
+        //here we are going up, and we release the jump button, apply gravity down until the highest point
+        else if (dotGravityRigidbody > 0 && !playerInput.Jump)
+        {
+            Vector3 orientationUp = -gravityOrientation * gravity * (rbUpAddGravity - 1) * Time.fixedDeltaTime;
+            Debug.DrawRay(rb.transform.position, orientationUp, Color.yellow, 5f);
+            rb.velocity += orientationUp;
+            Debug.Log("going up");
+        }
+        //here, apply base gravity when we are InAir
+        Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * Time.fixedDeltaTime;
+        Debug.DrawRay(rb.transform.position, forceBaseGravityInAir, Color.green, 5f);
+        rb.velocity += forceBaseGravityInAir;
+
+        /*//here we are going upward in the sky, but we need to slow down because we release the jump button
+        if (rb.velocity.y > 0 && !playerInput.Jump)
+        {
+            Debug.Log("going up");
+            rb.velocity += -CalculateDirectionJump() * gravity * (rbUpAddGravity - 1) * Time.fixedDeltaTime;
+        }*/
+    }
+
+    /// <summary>
     /// called when grounded (after a jump, or a fall !)
     /// </summary>
     public void OnGrounded()
     {
         PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
         Debug.Log("Grounded !");
+        gravityApplyer.SetUseGravity(true);
         //here, we just were falling, without jumping
         if (!hasJumped)
         {
@@ -134,5 +188,6 @@ public class PlayerJump : MonoBehaviour
     private void FixedUpdate()
     {
         JumpManager();
+        ApplyDownForceWhenReleasing();
     }
 }

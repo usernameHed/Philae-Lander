@@ -7,6 +7,17 @@ public class PlayerRotateCamPoint : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float turnRate = 5f;
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
+    private float marginTurnHoriz = 0.25f;
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
+    private float marginTurnVerti = 0.25f;
+
+    [FoldoutGroup("GamePlay"), MinMaxSlider(0.2f, 15f), SerializeField]
+    private Vector2 minMaxLength;
+    [FoldoutGroup("GamePlay"), Tooltip("ease dezoom"), SerializeField]
+    private EasingFunction.Ease easeDezoom;
+    [FoldoutGroup("GamePlay"), Tooltip("ease dezoom speed"), SerializeField]
+    private float speedEase = 5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;
@@ -16,47 +27,49 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private Rigidbody rb;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
     private Transform objectToRotate;
+    [FoldoutGroup("Object"), Tooltip("point child who rotate"), SerializeField]
+    private Transform tpsSpacePoint;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private GroundCheck groundCheck;
-    
 
-    private Quaternion targetRotation = Quaternion.identity;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
+    private float defaultLenghtCamPointDist;
 
-    /*
-    public Quaternion DirObject(Quaternion rotation, Vector3 dir, float turnRate)
+    private void Start()
     {
-        float heading = Mathf.Atan2(-dir.x * turnRate * Time.deltaTime, dir.z * turnRate * Time.deltaTime);
-        //float heading = Mathf.Atan2(dir.z * turnRate * Time.deltaTime, -dir.x * turnRate * Time.deltaTime);
-
-        Quaternion _targetRotation = Quaternion.identity;
-
-        float x = 0;
-        float y = heading * -1 * Mathf.Rad2Deg;
-        float z = 0;
-
-        _targetRotation = Quaternion.Euler(x, y, z);
-        rotation = Quaternion.RotateTowards(rotation, _targetRotation, turnRate * Time.deltaTime);
-        return (rotation);
+        defaultLenghtCamPointDist = (objectToRotate.position - tpsSpacePoint.position).magnitude;
     }
-    */
 
     private void RotateCamPoint()
     {
         Vector2 dirInput = playerInput.GetCameraInput();
-        //objectToRotate.localRotation *= Quaternion.AngleAxis(Time.deltaTime * turnRate * dirInput.x, objectToRotate.up);
-        objectToRotate.Rotate(0, Time.deltaTime * turnRate * dirInput.x, 0);
-        //objectToRotate.Rotate(0, 1 * Time.deltaTime, 0);
 
-        /*
-        Vector2 dirInput = playerInput.GetCameraInput();
-        Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
+        //if margin turn is ok for HORIZ move
+        if (Mathf.Abs(dirInput.x) >= marginTurnHoriz)
+        {
+            objectToRotate.Rotate(0, Time.deltaTime * turnRate * dirInput.x, 0);
+        }
+        if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
+        {
+            EasingFunction.Function funcEasing = EasingFunction.GetEasingFunction(easeDezoom);
 
-        Debug.DrawRay(objectToRotate.position, relativeDirection, Color.cyan, 0.4f);
-        objectToRotate.localRotation = DirObject(objectToRotate.localRotation, relativeDirection, turnRate);
+            if (dirInput.y < 0)
+            {
+                //float realStickValue = (Mathf.Abs(dirInput.y - marginTurnVerti) * 1 / (1 - marginTurnVerti)) * Mathf.Sign(dirInput.y);
+                defaultLenghtCamPointDist = funcEasing(defaultLenghtCamPointDist, minMaxLength.y, dirInput.y);
+            }
+            else if (dirInput.y > 0)
+            {
+                
+                
+                defaultLenghtCamPointDist = funcEasing(defaultLenghtCamPointDist, minMaxLength.x, dirInput.y);
+            }
+            
 
-        //Quaternion toRotation = Quaternion.Euler(relativeDirection);
-        //objectToRotate.rotation = Quaternion.Slerp(objectToRotate.rotation, toRotation, Time.deltaTime * turnRate);
-        */
+            Vector3 newDistPoint = ((tpsSpacePoint.position - objectToRotate.position).normalized) * defaultLenghtCamPointDist;
+            //Debug.DrawRay(objectToRotate.position, newDistPoint, Color.red, 3f);
+            tpsSpacePoint.position = objectToRotate.position + newDistPoint;
+        }
     }
 
     private void Update()

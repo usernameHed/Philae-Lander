@@ -89,7 +89,7 @@ public class GroundCheck : MonoBehaviour
         {
             isGrounded = true;
             dirNormal = hitInfo.normal;
-            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, sizeRadiusRayCast);
+            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, sizeRadiusRayCast, 3f);
             //m_GroundContactNormal = hitInfo.normal;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
         }
@@ -118,6 +118,7 @@ public class GroundCheck : MonoBehaviour
         {
             isAlmostGrounded = true;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
+            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.magenta, sizeRadiusRayCast, 5f);
             dirNormal = hitInfo.normal;
         }
         else
