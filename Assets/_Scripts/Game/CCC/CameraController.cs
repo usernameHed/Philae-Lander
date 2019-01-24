@@ -78,9 +78,6 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Remove target from target list
-    /// </summary>
 	public void RemoveTarget(CameraTarget other)
     {
         for (int i = 0; i < targetList.Count; i++)
@@ -105,9 +102,6 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Clear targets
-    /// </summary>
     public void ClearTarget()
     {
         targetList.Clear();
@@ -127,7 +121,6 @@ public class CameraController : MonoBehaviour
 
     private void RotateCamera()
     {
-        //Vector3 dirOrientation = camPointWhoRotate.localEulerAngles;// Quaternion.ToEulerAngles(camPointWhoRotate.rotation);
         Vector3 dirOrientation = targetToLook.position - movingCamera.position;
         //Debug.DrawRay(rotateCameraY.position, dirOrientation, Color.red, 0.3f);
 
@@ -143,14 +136,6 @@ public class CameraController : MonoBehaviour
                                 rotateCameraY.rotation,
                                 desiredOrientation,
                                 dampingRotateY * Time.deltaTime);
-
-
-        //UnityRotateExtensions.Rotate_DegreesPerSecond(rbObject, dirOrientation, speedRotate);
-        //Quaternion targetRotation = Quaternion.FromToRotation(rotateCameraY.forward, dirOrientation) * rotateCameraY.rotation;
-        //Quaternion targetRotationY = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
-        //rotateCameraY.rotation = Quaternion.RotateTowards(rotateCameraY.rotation, targetRotation, dampingRotateY);
-        //rotateCameraY.localRotation = Quaternion.Slerp(rotateCameraY.localRotation, camPointWhoRotate.localRotation, dampingRotateY);
-
     }
 
     private void FixedUpdate()

@@ -154,6 +154,7 @@ public static class GameData
         GamePadConnectionChange,    //event when gamePad connection change
         SceneLoaded,                //called when a scene is loaded
         AdditiveJustFinishLoad,     //called when a scene is finish loading additivly
+        OnGrounded,
     };
 
     public enum Tags

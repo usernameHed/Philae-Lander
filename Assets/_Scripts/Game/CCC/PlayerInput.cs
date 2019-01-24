@@ -60,20 +60,6 @@ public class PlayerInput : MonoBehaviour
         return (relativeDirection);
     }
 
-    /*
-    /// <summary>
-    /// get direction input, taking care of AutoCam
-    /// </summary>
-    /// <returns></returns>
-    public Vector3 GetDirOrientedInputForMultipleControl(bool digital = false)
-    {
-        Vector3 dirInput = GetDirInput(digital);
-        Vector3 relativeDirection = playerController.rb.transform.right * dirInput.x + playerController.rb.transform.forward * dirInput.z;
-
-        return (relativeDirection);
-    }
-    */
-
     /// <summary>
     /// retourne si le joueur se déplace ou pas
     /// </summary>

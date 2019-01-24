@@ -3,21 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[TypeInfoBox("Rotate Cam point")]
 public class PlayerRotateCamPoint : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("turn rate")]
     private float turnRate = 5f;
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving X")]
     private float marginTurnHoriz = 0.25f;
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float marginTurnVerti = 0.25f;
 
-    [FoldoutGroup("GamePlay"), MinMaxSlider(0.2f, 15f), SerializeField]
-    private Vector2 minMaxLength;
-    [FoldoutGroup("GamePlay"), Tooltip("ease dezoom"), SerializeField]
-    private EasingFunction.Ease easeDezoom;
-    [FoldoutGroup("GamePlay"), Tooltip("ease dezoom speed"), SerializeField]
-    private float speedEase = 5f;
+    [FoldoutGroup("Zoom"), MinMaxSlider(2.5f, 15f), SerializeField]
+    private Vector2 minMaxZoom;
+    [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    private float speedZoom = 5f;
+    [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    private float stepZoom = 1f;
+    [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    EasingFunction.Ease easeZoom = EasingFunction.Ease.EaseInOutQuad;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;
@@ -31,6 +34,8 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private Transform tpsSpacePoint;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private GroundCheck groundCheck;
+
+    public float valueEase = 0;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
     private float defaultLenghtCamPointDist;
@@ -51,20 +56,23 @@ public class PlayerRotateCamPoint : MonoBehaviour
         }
         if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
         {
-            EasingFunction.Function funcEasing = EasingFunction.GetEasingFunction(easeDezoom);
+            float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(dirInput.y), marginTurnVerti, 1f, 0f, 1f);
 
             if (dirInput.y < 0)
             {
+                float lerpValue = Mathf.Lerp(defaultLenghtCamPointDist, defaultLenghtCamPointDist + stepZoom, Time.deltaTime * speedZoom * remapedInput);
+                float clampValue = Mathf.Clamp(lerpValue, minMaxZoom.x, minMaxZoom.y);
+
                 //float realStickValue = (Mathf.Abs(dirInput.y - marginTurnVerti) * 1 / (1 - marginTurnVerti)) * Mathf.Sign(dirInput.y);
-                defaultLenghtCamPointDist = funcEasing(defaultLenghtCamPointDist, minMaxLength.y, dirInput.y);
+                
+                defaultLenghtCamPointDist = clampValue;
             }
             else if (dirInput.y > 0)
             {
-                
-                
-                defaultLenghtCamPointDist = funcEasing(defaultLenghtCamPointDist, minMaxLength.x, dirInput.y);
+                float lerpValue = Mathf.Lerp(defaultLenghtCamPointDist, defaultLenghtCamPointDist - stepZoom, Time.deltaTime * speedZoom * remapedInput);
+                float clampValue = Mathf.Clamp(lerpValue, minMaxZoom.x, minMaxZoom.y);
+                defaultLenghtCamPointDist = clampValue;
             }
-            
 
             Vector3 newDistPoint = ((tpsSpacePoint.position - objectToRotate.position).normalized) * defaultLenghtCamPointDist;
             //Debug.DrawRay(objectToRotate.position, newDistPoint, Color.red, 3f);

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Player Move and rotation")]
+[TypeInfoBox("Player Move forward locally")]
 public class PlayerMove : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]

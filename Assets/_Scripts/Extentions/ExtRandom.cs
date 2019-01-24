@@ -28,13 +28,7 @@ public static class ExtRandom
         return (random);
     }
 
-    /// <summary>
-    /// number convert range (55 from 0 to 100, to a base 0 - 1 for exemple)
-    /// </summary>
-    public static double Remap(this double value, double from1, double to1, double from2, double to2)
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-    }
+    
 
     /// <summary>
     /// here we have a min & max, we remap the random 0,1 value finded to this min&max
@@ -43,14 +37,14 @@ public static class ExtRandom
     public static int RemapFromSeed(double min, double max, System.Random randomSeed)
     {
         double zeroToOneValue = randomSeed.NextDouble();
-        int minToMaxValue = (int)Remap(zeroToOneValue, 0, 1, min, max);
+        int minToMaxValue = (int)ExtUtilityFunction.Remap(zeroToOneValue, 0, 1, min, max);
         return (minToMaxValue);
     }
 
     public static double RemapFromSeedDecimal(double min, double max, System.Random randomSeed)
     {
         double zeroToOneValue = randomSeed.NextDouble();
-        double minToMaxValue = Remap(zeroToOneValue, 0, 1, min, max);
+        double minToMaxValue = ExtUtilityFunction.Remap(zeroToOneValue, 0, 1, min, max);
         return (minToMaxValue);
     }
 

@@ -50,7 +50,7 @@ using UnityEngine;
  * from an enum. This is useful since the enum can be exposed in the editor and then the function queried during Start().
  * 
  * EasingFunction.Ease ease = EasingFunction.Ease.EaseInOutQuad;
- * EasingFunction.EasingFunc func = GetEasingFunction(ease);
+ * EasingFunction.EasingFunc func = EasingFunction.GetEasingFunction(ease);
  * 
  * float value = func(0, 10, 0.67f);
  * 
@@ -64,7 +64,7 @@ using UnityEngine;
 EasingFunction.Ease ease = EasingFunction.Ease.EaseInOutQuad;
 [FoldoutGroup("GamePlay"), Tooltip("ease ending crouch"), SerializeField]
 private float easeValue = 0.67f;
-EasingFunction.Function funcEasing;// = EasingFunction.GetEasingFunction(ease);
+EasingFunction.Function funcEasing = EasingFunction.GetEasingFunction(ease);
 
 funcEasing = EasingFunction.GetEasingFunction(ease);
 float valueY = funcEasing(parentToCrouch.localScale.y, refScale.y, easeValue);

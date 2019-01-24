@@ -5,12 +5,10 @@ using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 
 [TypeInfoBox("Used to change scene with fading and loading async")]
-[TypeInfoBox("Always have a Global Manager, and the a LocalSceneManager to define witch scene we want to swap when play/exit the game")]
+[TypeInfoBox("Always have a Scene Global Manager, and the a LocalSceneManager to define witch scene we want to swap when play/exit the game")]
 public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
 {
     protected SceneManagerGlobal() { } // guarantee this will be always a singleton only - can't use the constructor!
-
-    #region Attributes
 
     private struct SceneCharging
     {
@@ -26,14 +24,6 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     private bool closing = false;
     private bool newScene = false;
 
-    #endregion
-
-    #region Initialization
-
-    #endregion
-
-    #region Core
-
     public void ResetRetry()
     {
         StopCoroutine(Retry());
@@ -41,18 +31,18 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
 
     ///////////////////////////////////////////////////////////////////////////// gestion asyncrone
     /// <summary>
-    /// Ici ajoute une scene à charger
+    /// Add scene to charge in background
     /// </summary>
-    /// <param name="scene">nom de la scène</param>
-    /// <param name="swapWhenLoaded">est-ce qu'on change de scène dès qu'elle fini de charger ?</param>
-    /// <param name="additive">est-ce qu'on ajoute la scène en additif ou pas ??</param>
+    /// <param name="scene">scene name</param>
+    /// <param name="swapWhenLoaded">Do we launch the scene when it's loaded ?</param>
+    /// <param name="additive">Addidive or not ?</param>
     public void StartLoading(string scene, bool swapWhenLoaded = true, bool additive = false, bool fade = false, float speedFade = 1.0f, string sceneToChargeAfterAdditive = "")
     {
         ResetRetry();
 
         if ((additive && fade) || scene == "")
         {
-            Debug.LogError("pas possible");
+            Debug.LogError("not possible");
             return;
         }
 
@@ -66,7 +56,7 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
         sceneToCharge.async.allowSceneActivation = sceneToCharge.swapWhenFinishUpload;
         sceneToCharge.sceneToChargeAfterAdditive = sceneToChargeAfterAdditive;
 
-        //ajoute la scène à charger...
+        //add scene to load
         sceneCharging.Add(sceneToCharge);
 
         if (fade && sceneToCharge.swapWhenFinishUpload)
@@ -80,8 +70,7 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     }
 
     /// <summary>
-    /// ici on veut lancer une scène qui est / à été chargé ! on a son nom, on veut
-    /// la chercher dans la liste et l'activer !
+    /// here active an readyToGo scene (scene loaded in memory)
     /// </summary>
     public void ActivateScene(string scene, bool fade = false, float speedFade = 1f)
     {
@@ -89,18 +78,16 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
         {
             if (sceneCharging[i].scene == scene)
             {
-                //Debug.Log("Ou la ?");
                 StartCoroutine(ActiveSceneWithFadeWait(i, speedFade));
                 return;
             }
         }
-        //Debug.Log("scene not found ! Load the scene en normal...:" + scene);
         JumpToScene(scene, fade, speedFade);
     }
 
 
     /// <summary>
-    /// Ici active la scène demandé, si elle à été chargé !
+    /// Here active the right scene, when it's loaded
     /// </summary>
     /// <param name="index">index de la scène de la list</param>
     /// <param name="justActive">ici on est sur que la scène est chargé !</param>
@@ -112,21 +99,15 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
             return;
         }
 
-        //Debug.Log("ici active normalement...");
         newScene = true;
-
         sceneCharging[index].async.allowSceneActivation = true;
-
         string sceneToChageIfBug = sceneCharging[index].scene;
-
         string isNewScene = (sceneCharging[index].isAdditive) ? sceneCharging[index].sceneToChargeAfterAdditive : "";
-
         sceneCharging.RemoveAt(index);
 
         if (isNewScene != "")
             FindWitchOneToLoadAfterAdditive(isNewScene);
 
-        
 
         StartCoroutine(Retry(sceneToChageIfBug));
     }
@@ -135,12 +116,12 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
         yield return new WaitForSeconds(0.2f);
         if (newScene)
         {
-            Debug.Log("retry ici !!! on a pas réussi à charger la scene !");
+            Debug.Log("retry here !!! we can't manage to relauch the scene !");
             JumpToScene(sceneToChageIfBug);
         }
     }
 
-    //relance l'essai d'activation
+    //relauch activation
     private IEnumerator WaitForActivateScene(int index, float time) { yield return new WaitForSeconds(time); ActivateScene(index, true, time);  }
 
 
@@ -154,7 +135,7 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     }
 
     /// <summary>
-    /// Ici Lance la scène [index] Dès qu'elle est chargé ! Qu'elle soit asyncro ou pas !
+    /// here lauch [index] scene when the scene is loaded
     /// </summary>
     private IEnumerator SwapAfterLoad(int index)
     {
@@ -165,23 +146,18 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     }
 
     /// <summary>
-    /// ici s'occupe de faire un fade, puis d'activer la scène ensuite
+    /// here fade, then active the scene we want
     /// </summary>
     private void ActivateSceneWithFade(int index, float speedFade)
     {
-        Debug.Log("ici ??");
         StartCoroutine(ActiveSceneWithFadeWait(index, speedFade));
     }
     private IEnumerator ActiveSceneWithFadeWait(int index, float speedFade)
     {
         float fadeTime = gameObject.GetComponent<Fading>().BeginFade(1, speedFade);
         yield return new WaitForSeconds(fadeTime / 2);
-        //Debug.Log("passe ici ??");
-        ActivateScene(index, true); //essay d'activer, si on n'y arrive pas on réésai !!!
+        ActivateScene(index, true); //re-try to active if failure
     }
-
-
-
 
     /// <summary>
     /// Unload une scene précédement loadé !
@@ -203,9 +179,7 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
                 sceneCharging.RemoveAt(i);
             }
         }
-        //SceneManager.UnloadSceneAsync(scene);
     }
-
     
     /// <summary>
     /// jump à une scène
@@ -223,7 +197,6 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     }
     private IEnumerator JumpToSceneWithFadeWait(string scene, float speed)
     {
-
         gameObject.GetComponent<Fading>().BeginFade(1, speed);
         yield return new WaitForSeconds(speed / 2);
         JumpToScene(scene);
@@ -238,11 +211,8 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
         SceneManager.LoadScene(scene, LoadSceneMode.Additive);
     }
 
-
-
-
     /// <summary>
-    /// quit avec un fade !
+    /// Exit with fade !
     /// </summary>
     public void QuitGame(bool fade = false, float speed = 1.5f)
     {
@@ -255,13 +225,13 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     }
     private IEnumerator QuitWithFade(float speed)
     {
-        /*float fadeTime = */gameObject.GetComponent<Fading>().BeginFade(1, speed);
+        gameObject.GetComponent<Fading>().BeginFade(1, speed);
         yield return new WaitForSeconds(speed / 2);
         Quit();
     }
 
     /// <summary>
-    /// appelé naturellement quand on ferme le jeu
+    /// Called if we manualy close
     /// </summary>
     private void OnApplicationQuit()
     {
@@ -271,7 +241,7 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
     }
 
     /// <summary>
-    /// quite le jeu (si on est dans l'éditeur, quite le mode play)
+    /// Exit game (in play mode or in runtime)
     /// </summary>
     [ContextMenu("Quit")]
     private void Quit()
@@ -283,5 +253,4 @@ public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
         Application.Quit();
 #endif
     }
-    #endregion
 }

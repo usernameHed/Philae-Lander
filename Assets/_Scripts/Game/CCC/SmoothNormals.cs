@@ -9,13 +9,15 @@ public class SmoothNormals : MonoBehaviour
     private float smoothSpeed = 5f;
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private GravityApplyer gravityApplyer;
+    private PlayerGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("player object"), SerializeField]
     private GameObject rbObject;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
     private Vector3 smoothedNormal;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private PlayerController playerController;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private GroundCheck groundCheck;
 
     private void Start()
     {
@@ -29,9 +31,9 @@ public class SmoothNormals : MonoBehaviour
 
     private Vector3 GetRotationOrientationDown()
     {
-        if (groundCheck.IsFlying())
+        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
         {
-            return (gravityApplyer.GetDirGravity());
+            return (playerGravity.GetMainAndOnlyGravity());
         }
         return (groundCheck.GetDirLastNormal());
     }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[TypeInfoBox("Rotate localy the player")]
 public class PlayerRotate : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 
 /// <summary>
-/// effectue une vibration
+/// Do a vibration
 /// </summary>
 [Serializable]
 public struct Vibration
@@ -27,7 +27,7 @@ public struct Vibration
 }
 
 /// <summary>
-/// Gère la connexion / déconnexion des manettes
+/// Manage plug/unplug gamepads
 /// <summary>
 [TypeInfoBox("Manage global input gamePad/keyboard and switch")]
 public class PlayerConnected : SingletonMono<PlayerConnected>

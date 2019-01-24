@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[TypeInfoBox("Main player controller")]
 public class PlayerController : SingletonMono<PlayerController>
 {
+    protected PlayerController() { } // guarantee this will be always a singleton only - can't use the constructor!
+
     public enum MoveState
     {
         Idle,
@@ -20,7 +23,7 @@ public class PlayerController : SingletonMono<PlayerController>
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public PlayerInput playerInput;
     [FoldoutGroup("Object"), Tooltip("ref script")]
-    public GravityApplyer gravityApplyer;
+    public PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
@@ -36,8 +39,6 @@ public class PlayerController : SingletonMono<PlayerController>
     }
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
-    [FoldoutGroup("Debug"), Tooltip("ref rigidbody"), SerializeField, ReadOnly]
-    private Rigidbody currentPlanet;
 
     private Vector2 direction;              //save of direction player
     //private Vector3 dirOrientedAllControl;  //save of GetDirOrientedInputForMultipleControl
@@ -62,9 +63,6 @@ public class PlayerController : SingletonMono<PlayerController>
     public void Init()
     {
         enabledScript = true;               //active this script at start
-        currentPlanet = PlanetSwitcher.Instance.GetClosestRigidBody(rb.gameObject);
-
-        gravityApplyer.SetPlanetList(currentPlanet);
     }
 
     /// <summary>
@@ -76,15 +74,7 @@ public class PlayerController : SingletonMono<PlayerController>
         PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
     }
 
-    /// <summary>
-    /// input called every update
-    /// </summary>
-    private void InputPlayer()
-    {
-        //direction = new Vector2(playerInput.GetMoveInput().x * 1, playerInput.GetMoveInput().y * 1);
-        //dirOrientedAllControl = playerInput.GetDirOrientedInputForMultipleControl();
-    }
-
+    /*
     private void TryToChangePlanet()
     {
         if (groundCheck.IsFlying() && !planetSwitcher)
@@ -104,23 +94,22 @@ public class PlayerController : SingletonMono<PlayerController>
             planetSwitcher = false;
         }
     }
+    */
 
     private void Update()
     {
         if (!enabledScript)
             return;
-
-        InputPlayer();      //input player
-        //TryToChangePlanet();
     }
 
+    /// <summary>
+    /// set state of player
+    /// </summary>
     private void ChangeState()
     {
-        //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.cyan, 0.05f, 3f);
-
         if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
         {
-            playerJump.OnGrounded();
+            EventManager.TriggerEvent(GameData.Event.OnGrounded);
         }
 
         if (groundCheck.IsFlying())

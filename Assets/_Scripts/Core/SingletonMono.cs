@@ -6,6 +6,9 @@
 /// To prevent that, add `protected T () {}` to your singleton class.
 /// 
 /// As a note, this is made as MonoBehaviour because we need Coroutines.
+/// 
+/// //protected PlayerController() { } // guarantee this will be always a singleton only - can't use the constructor!
+/// 
 /// </summary>
 public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
 {
