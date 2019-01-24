@@ -15,8 +15,11 @@ public class PlayerMove : MonoBehaviour
     private Transform objectRotateLocal;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private PlayerController playerController;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private PlayerInput playerInput;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private PlayerJump playerJump;
 
-    
 
     private bool enabledScript = true;      //tell if this script should be active or not
     
@@ -39,7 +42,7 @@ public class PlayerMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedMove);
+        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedMove * playerInput.GetMagnitudeInput());
     }
 
     /// <summary>
@@ -57,7 +60,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (!enabledScript)
             return;
-        if (playerController.GetMoveState() == PlayerController.MoveState.Move)
+        if (playerController.GetMoveState() == PlayerController.MoveState.Move
+            && playerJump.IsJumpCoolDebugDownReady())
         {
             MovePlayer();
         }

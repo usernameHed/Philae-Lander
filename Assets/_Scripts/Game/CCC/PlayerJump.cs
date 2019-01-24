@@ -6,17 +6,25 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
-    private float jumpHeight = 5f;
+    private float jumpHeight = 1f;
+
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     private bool stayHold = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     private bool canJumpInAir = true;
+
+    [FoldoutGroup("Slow"), SerializeField, Tooltip("ref script")]
+    private float jumpHeightWhenSlow = 2f;
+    [FoldoutGroup("Slow"), SerializeField, Tooltip("ref script")]
+    private float speedSlow = 0.4f;
 
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
     private Vibration onJump;
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on se pose"), SerializeField]
     private Vibration onGrounded;
 
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private Transform playerLocalyRotate;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private Rigidbody rb;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -61,16 +69,34 @@ public class PlayerJump : MonoBehaviour
     {
         // From the jump height and gravity we deduce the upwards speed 
         // for the character to reach at the apex.
-        return Mathf.Sqrt(2 * jumpHeight * playerGravity.Gravity);
+
+        //reduce height when max speed
+        float jumpBoostHeight = jumpHeight;// / (1 + (1 * playerInput.GetMagnitudeInput()));
+
+        if (playerInput.GetMagnitudeInput() <= speedSlow)
+        {
+            jumpBoostHeight = jumpHeightWhenSlow;
+        }
+
+        Debug.Log("boost height: " + jumpBoostHeight);
+        return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
     }
 
-    private void Jump(Vector3 dir, float boost = 1)
+    /// <summary>
+    /// do a jump
+    /// </summary>
+    private void DoJump(Vector3 normalizedDirJump, float boost = 1)
     {
-        Vector3 jumpForce = dir * CalculateJumpVerticalSpeed() * boost;
+        Debug.Log("jump !");
+        rb.drag = 0;
 
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);
-
-        rb.velocity += jumpForce;
+        float jumpSpeedCalculate = CalculateJumpVerticalSpeed() * boost;
+        Vector3 jumpForce = normalizedDirJump * jumpSpeedCalculate;
+        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);        
+        Debug.DrawRay(rb.position, jumpForce, Color.red, 5f);
+        rb.ClearVelocity();
+        Debug.Log("velocity: " + jumpForce.magnitude + "(dirNorma:" + normalizedDirJump + ", speedCalculated: " + jumpSpeedCalculate + ")");
+        rb.velocity = jumpForce;
     }
 
     private Vector3 CalculateDirectionJump()
@@ -104,18 +130,29 @@ public class PlayerJump : MonoBehaviour
             return;
         }
 
-        if (/*playerController.GetMoveState() == PlayerController.MoveState.InAir
-            || */hasJumped)
+        if (hasJumped)
         {
             return;
         }
 
         if (playerInput.Jump && CanJump())
         {
-            Vector3 jumpDirection = CalculateDirectionJump();
+            Vector3 jumpNormalizedDirection = CalculateDirectionJump();
             coolDownWhenJumped.StartCoolDown(justJumpedTimer);
 
-            Jump(jumpDirection);
+            /*if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+            {
+                AirJump(jumpNormalizedDirection);
+            }
+            else
+            {
+                DoJump(jumpNormalizedDirection);
+            }*/
+
+            Debug.DrawRay(rb.position, jumpNormalizedDirection, Color.yellow, 5f);
+            Debug.DrawRay(rb.position, playerLocalyRotate.forward * playerInput.GetMagnitudeInput(), Color.green, 5f);
+            DoJump(jumpNormalizedDirection + playerLocalyRotate.forward * 1);// * playerInput.GetMagnitudeInput());
+
 
             if (!stayHold)
                 jumpStop = true;
@@ -140,6 +177,7 @@ public class PlayerJump : MonoBehaviour
         //here, we just on grounded after a jump
         else
         {
+            rb.ClearVelocity();
             hasJumped = false;
         }
     }

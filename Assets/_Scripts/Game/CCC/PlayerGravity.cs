@@ -70,12 +70,15 @@ public class PlayerGravity : MonoBehaviour
     {
         if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
             return;
+        if (!playerJump.IsJumpCoolDebugDownReady())
+            return;
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
 
         //here, apply base gravity when we are InAir
         Vector3 forceBaseGravity = -gravityOrientation * gravity * (groundAddGravity - 1) * Time.fixedDeltaTime;
         //Debug.DrawRay(rb.transform.position, forceBaseGravity, Color.green, 5f);
+        //Debug.Log("apply ground gravity");
         rb.velocity += forceBaseGravity;
     }
 
@@ -95,7 +98,7 @@ public class PlayerGravity : MonoBehaviour
             return;
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
-        Debug.LogWarning("Apply gravity down down down !");
+        //Debug.LogWarning("Apply gravity down down down !");
 
         Vector3 orientationDown = -gravityOrientation * gravity * (stickToFloorGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(rb.transform.position, orientationDown, Color.red, 5f);
@@ -118,6 +121,7 @@ public class PlayerGravity : MonoBehaviour
             Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
             Debug.DrawRay(rb.transform.position, orientationDown, Color.blue, 5f);
             rb.velocity += orientationDown;
+
             //Debug.Log("going down");
             //Debug.Break();
         }
@@ -129,6 +133,7 @@ public class PlayerGravity : MonoBehaviour
             rb.velocity += orientationUp;
             //Debug.Log("going up");
         }
+        //Debug.Log("air gravity");
         //here, apply base gravity when we are InAir
         Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(rb.transform.position, forceBaseGravityInAir, Color.green, 5f);

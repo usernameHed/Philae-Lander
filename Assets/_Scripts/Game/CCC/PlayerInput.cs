@@ -48,6 +48,11 @@ public class PlayerInput : MonoBehaviour
         return (dirInputPlayer);
     }
 
+    public float GetMagnitudeInput()
+    {
+        return (Mathf.Clamp01(GetDirInput().magnitude));
+    }
+
     /// <summary>
     /// get simple input direction (no dependency on AutoCam)
     /// </summary>
