@@ -38,8 +38,11 @@ public class PlayerJump : MonoBehaviour
     private bool hasJumped = false;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     private float justJumpedTimer = 0.1f;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    private float justGroundTimer = 0.1f;
 
     private FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
+    private FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
 
 
     private bool jumpStop = false;
@@ -73,10 +76,10 @@ public class PlayerJump : MonoBehaviour
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight;// / (1 + (1 * playerInput.GetMagnitudeInput()));
 
-        if (playerInput.GetMagnitudeInput() <= speedSlow)
+        /*if (playerInput.GetMagnitudeInput() <= speedSlow)
         {
             jumpBoostHeight = jumpHeightWhenSlow;
-        }
+        }*/
 
         Debug.Log("boost height: " + jumpBoostHeight);
         return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
@@ -96,6 +99,10 @@ public class PlayerJump : MonoBehaviour
         Debug.DrawRay(rb.position, jumpForce, Color.red, 5f);
         rb.ClearVelocity();
         Debug.Log("velocity: " + jumpForce.magnitude + "(dirNorma:" + normalizedDirJump + ", speedCalculated: " + jumpSpeedCalculate + ")");
+        //rb.WakeUp();
+
+        jumpForce = jumpForce.normalized * jumpSpeedCalculate;
+        Debug.DrawRay(rb.position, jumpForce, Color.yellow, 5f);
         rb.velocity = jumpForce;
     }
 
@@ -106,7 +113,7 @@ public class PlayerJump : MonoBehaviour
 
     private bool CanJump()
     {
-        //can't jump in air)
+        //can't jump in air
         if (!canJumpInAir && playerController.GetMoveState() == PlayerController.MoveState.InAir)
             return (false);
 
@@ -115,6 +122,10 @@ public class PlayerJump : MonoBehaviour
 
         //faux si on hold pas et quand a pas laché
         if (jumpStop)
+            return (false);
+
+        //don't jump if we just grounded
+        if (!coolDownOnGround.IsReady())
             return (false);
 
         return (true);
@@ -127,6 +138,7 @@ public class PlayerJump : MonoBehaviour
         {
             hasJumped = false;
             Debug.LogError("Unjump... error ??");
+            coolDownOnGround.Reset();
             return;
         }
 
@@ -161,6 +173,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// called when grounded (after a jump, or a fall !)
     /// </summary>
@@ -172,12 +185,13 @@ public class PlayerJump : MonoBehaviour
         //here, we just were falling, without jumping
         if (!hasJumped)
         {
-
+            coolDownOnGround.StartCoolDown(justGroundTimer);
         }
         //here, we just on grounded after a jump
         else
         {
-            rb.ClearVelocity();
+            //rb.ClearVelocity();
+            coolDownOnGround.StartCoolDown(justGroundTimer);
             hasJumped = false;
         }
     }
