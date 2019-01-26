@@ -10,10 +10,7 @@ namespace Quantized.Game.Behavior
 	/// </summary>
 	public class BehaviorAI : MonoBehaviour 
 	{
-        #region values
-        [Tooltip("Active or not beHaviorTree")]
-        public bool isActiveBehavior = true;
-
+		#region values
         [Tooltip("Xml file with behaviour tree")]
 		public TextAsset xmlAI;
         [Tooltip("If TRUE then one update try used all possible transitions of components are performed. " +
@@ -41,28 +38,13 @@ namespace Quantized.Game.Behavior
             MakeBehaviour();
 		}
 		
-		public void Update ()
+		public void Update () 
 		{
-			if (_behavior && isActiveBehavior)
+			if (_behavior)
             {
 				_behavior.Update();
 			}
 		}
-
-        /// <summary>
-        /// called manyally by script
-        /// </summary>
-        public void ManualUpdate()
-        {
-            if (_behavior && !isActiveBehavior)
-            {
-                _behavior.Update();
-            }
-            else if(_behavior && isActiveBehavior)
-            {
-                Debug.LogError("When called manually, need to be inactive");
-            }
-        }
 
         public void MakeBehaviour()
         {
