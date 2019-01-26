@@ -158,6 +158,15 @@ public class PlayerGravity : MonoBehaviour
         }
     }
 
+    public void ChangeMainAttractObject(Transform rbTransform)
+    {
+        if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID())
+        {
+            mainAttractObject = rbTransform;
+            currentOrientation = OrientationPhysics.OBJECT;
+        }
+    }
+
     private void CalculateGravity()
     {
         switch (currentOrientation)

@@ -66,6 +66,11 @@ public class PlayerController : SingletonMono<PlayerController>
         enabledScript = true;               //active this script at start
     }
 
+    public void ChangeMainPlanet(Rigidbody rb)
+    {
+        playerGravity.ChangeMainAttractObject(rb.transform);
+    }
+
     /// <summary>
     /// called when the game is over: desactive player
     /// </summary>

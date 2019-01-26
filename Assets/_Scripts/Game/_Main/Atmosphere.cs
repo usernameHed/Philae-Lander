@@ -20,6 +20,7 @@ public class Atmosphere : MonoBehaviour
         if (other.CompareTag(GameData.Layers.Player.ToString()))
         {
             playerIsInside = true;
+            PlayerController.Instance.ChangeMainPlanet(rb);
         }
     }
 
