@@ -8,13 +8,13 @@ public class InitialVelocity : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
     private float initialSpeed = 3000f;
     [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
-    private Vector3 initialDirection;
+    private Transform dirObject;
 
     [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
     private Rigidbody rb;
 
     private void Awake ()
     {
-        rb.velocity = initialDirection * initialSpeed;
+        rb.velocity = (dirObject.position - rb.position) * initialSpeed;
     }
 }
