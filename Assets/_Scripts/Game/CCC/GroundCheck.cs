@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("check if player in the ground, and change Drag !")]
+[TypeInfoBox("check if player in the ground")]
 public class GroundCheck : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
@@ -35,13 +35,11 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float shellOffset = 0.1f;
 
-    private float oldDrag;
     private float radius;
     private Vector3 dirNormal = Vector3.zero;
 
     private void Awake()
     {
-        oldDrag = rb.drag;
         isGrounded = isAlmostGrounded = false;
         isFlying = true;
         radius = sphereCollider.radius;
@@ -131,7 +129,6 @@ public class GroundCheck : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.drag = oldDrag;
             isAlmostGrounded = false;
         }
         else
