@@ -16,8 +16,8 @@ ModelImporter:
     100020: polySurface2
     100022: polySurface3
     100024: polySurface4
-    100026: R
-    100028: robot
+    100026: polySurface4 1
+    100028: R
     100030: //RootNode
     100032: transform1
     100034: transform2
@@ -40,9 +40,9 @@ ModelImporter:
     400020: polySurface2
     400022: polySurface3
     400024: polySurface4
-    400026: R
-    400028: //RootNode
-    400030: robot
+    400026: polySurface4 1
+    400028: R
+    400030: //RootNode
     400032: transform1
     400034: transform2
     400036: transform3
@@ -52,13 +52,13 @@ ModelImporter:
     400044: transform7
     400046: Wheel
     2100000: lambert1
-    2300000: robot
-    3300000: robot
-    4300000: robot
+    2300000: polySurface4
+    3300000: polySurface4
+    4300000: polySurface4
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
