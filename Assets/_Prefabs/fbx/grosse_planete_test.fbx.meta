@@ -4,11 +4,22 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pPlatonic1
+    100004: pPlatonic2
     400000: //RootNode
+    400002: pPlatonic1
+    400004: pPlatonic2
     2100000: lambert1
+    2100002: lambert2
     2300000: //RootNode
+    2300002: pPlatonic1
+    2300004: pPlatonic2
     3300000: //RootNode
+    3300002: pPlatonic1
+    3300004: pPlatonic2
     4300000: pPlatonic1
+    4300002: pSphere1
+    4300004: pPlatonic2
   externalObjects: {}
   materials:
     importMaterials: 1
