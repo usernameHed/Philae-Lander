@@ -206,6 +206,7 @@ public class PlayerJump : MonoBehaviour
     private void FixedUpdate()
     {
         JumpManager();
+        Debug.Log(rb.drag);
     }
 
     private void OnDisable()
