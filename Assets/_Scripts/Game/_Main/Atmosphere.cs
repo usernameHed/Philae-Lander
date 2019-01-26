@@ -21,7 +21,6 @@ public class Atmosphere : MonoBehaviour
         {
             playerIsInside = true;
             PlayerController.Instance.ChangeMainPlanet(rb);
-            
         }
     }
 

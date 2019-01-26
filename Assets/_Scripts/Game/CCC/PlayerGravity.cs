@@ -15,7 +15,7 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     private float gravity = 9.81f;
     public float Gravity { get { return (gravity); } }
-
+    
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.5f;
 
@@ -36,18 +36,25 @@ public class PlayerGravity : MonoBehaviour
 
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float gravityAttractor = 2f;
-    //[FoldoutGroup("Air Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
-    //private float rbDownAddGravity = 5f;
+    [FoldoutGroup("Air Attractor"), Tooltip("gravité du saut"), SerializeField]
+    private float distAirAttractor = 1f;
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float speedLerpAttractor = 5f;
 
+    [FoldoutGroup("Air Attractor"), Tooltip("position de l'attractpoint"), SerializeField]
+    public float lengthPositionAttractPoint = 1f;    //position de l'attract point par rapport à la dernier position / normal
+    [FoldoutGroup("Air Attractor"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
+    private float sizeDistanceForSavePlayerPos = 0.5f;   //a-t-on un attract point de placé ?
+
     [FoldoutGroup("Debug"), Tooltip("default air gravity"), SerializeField]
     private OrientationPhysics currentOrientation = OrientationPhysics.OBJECT;
+    [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
+    private float differenceAngleNormalForUpdatePosition = 5f;   //a-t-on un attract point de placé ?
 
     private Vector3 mainAndOnlyGravity = Vector3.zero;
     private FrequencyCoolDown timerBeforeCreateAttractor = new FrequencyCoolDown();
 
-    private Vector3 transformPoint = Vector3.zero;
+    private Vector3 transformPointAttractor = Vector3.zero;
 
     public Vector3 GetMainAndOnlyGravity()
     {
@@ -64,11 +71,18 @@ public class PlayerGravity : MonoBehaviour
     private PlayerInput playerInput;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerJump playerJump;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private Transform rbRotate;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     private Transform mainAttractObject;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
+    private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
+
 
     private float gravityAttractorLerp = 1f;
+    private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle
+    private Vector3 worldLastNormal;        //derniere normal enregistré, peut import le changement position/angle
 
     private void OnEnable()
     {
@@ -99,14 +113,93 @@ public class PlayerGravity : MonoBehaviour
         }
     }
 
+    private void WorldLastPositionSet(Vector3 newValue)
+    {
+        Vector3 next = Vector3.zero;
+        for (int i = 0; i < worldLastPosition.Length - 1; i++)
+        {
+            if (i == 0)
+            {
+                next = worldLastPosition[0];
+                worldLastPosition[0] = newValue;
+            }
+            else
+            {
+                Vector3 tmpValue = worldLastPosition[i];
+                worldLastPosition[i] = next;
+                next = tmpValue;
+            }
+        }
+    }
+    private Vector3 WorldLastPositionGetIndex(int index)
+    {
+        index = (index < 0) ? 0 : index;
+        index = (index >= worldLastPosition.Length) ? worldLastPosition.Length - 1 : index;
+        return (worldLastPosition[index]);
+    }
+
+    public void SaveLastPositionOnground()
+    {
+        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+            return;
+
+        worldLastNormal = GetMainAndOnlyGravity();   //avoir toujours une normal à jour
+        float distForSave = (WorldLastPositionGetIndex(0) - rb.transform.position).sqrMagnitude;
+
+        Debug.Log("dist save: " + distForSave);
+        //si la distance entre les 2 point est trop grande, dans tout les cas, save la nouvelle position !
+        if (distForSave > sizeDistanceForSavePlayerPos)
+        {
+            WorldLastPositionSet(rb.transform.position); //save la position onGround
+            ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(0), Color.red, 0.5f, 1f);
+        }
+        //si la normal à changé, update la position + normal !
+        else if (worldPreviousNormal != worldLastNormal)
+        {
+            //ici changement de position SEULEMENT si l'angle de la normal diffère de X
+            float anglePreviousNormal = ExtQuaternion.GetAngleFromVector3(worldPreviousNormal, rbRotate.up);
+            float angleNormalPlayer = ExtQuaternion.GetAngleFromVector3(worldLastNormal, rbRotate.up);
+            //ici gérer les normal à zero ??
+            float diff;
+            if (ExtQuaternion.IsAngleCloseToOtherByAmount(anglePreviousNormal, angleNormalPlayer, differenceAngleNormalForUpdatePosition, out diff))
+            {
+                //Debug.Log("ici l'angle est trop proche, ducoup ne pas changer de position");
+
+                //ni de normal ??
+            }
+            else
+            {
+
+                //ici change la normal, ET la position
+                WorldLastPositionSet(rb.transform.position); //save la position onGround
+                worldPreviousNormal = worldLastNormal;
+
+                ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(0), Color.yellow, 0.5f, 1f);
+                Debug.DrawRay(rb.transform.position, worldPreviousNormal, Color.yellow, 1f);
+            }
+
+            //coolDownUpdatePos.StartCoolDown();
+        }
+    }
+
     /// <summary>
     /// called when jump
     /// </summary>
     public void CreateAttractor()
     {
         Debug.Log("create attractor !");
-        transformPoint = rb.transform.position;
         timerBeforeCreateAttractor.StartCoolDown(timeBeforeActiveAttractorInAir);
+
+        //transformPointAttractor = rb.transform.position + (rbRotate.up * -1) * distAirAttractor;
+        transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
+
+        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
+
+        ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
+        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
+        Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
+
+        //Debug.Break();
     }
 
     private void ActiveAttractor()
@@ -118,7 +211,7 @@ public class PlayerGravity : MonoBehaviour
 
     private Vector3 GetDirAttractor()
     {
-        Vector3 dirAttractor =  rb.transform.position - transformPoint;
+        Vector3 dirAttractor =  rb.transform.position - transformPointAttractor;
         return (dirAttractor);
     }
 
@@ -298,6 +391,8 @@ public class PlayerGravity : MonoBehaviour
         ApplyGroundGravity();
         ApplySuplementGravity();
         ApplyAirGravity();
+
+        SaveLastPositionOnground();
     }
 
     private void OnDisable()
