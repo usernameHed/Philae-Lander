@@ -18,9 +18,17 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]
     public GameObject pausePanel;
 
+    [HideInInspector]
+    public PlayerController playerControllerRef;
+
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.SceneLoaded, Init);     
+    }
+
+    public void InitPlayer(PlayerController pc)
+    {
+        playerControllerRef = pc;
     }
 
     /// <summary>

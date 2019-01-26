@@ -24,7 +24,7 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private PlayerGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private PlayerJump playerJump;
+    private EntityJump entityJump;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -81,7 +81,7 @@ public class GroundCheck : MonoBehaviour
         //layerMask =~ LayerMask.GetMask(dontWalkOnThisObject);   //"Player"
         layerMask = LayerMask.GetMask(walkOnThisObject);
 
-        Vector3 dirRaycast = playerGravity.GetMainAndOnlyGravity() * (radius + groundCheckDistance);
+        //Vector3 dirRaycast = playerGravity.GetMainAndOnlyGravity() * (radius + groundCheckDistance);
         //Debug.DrawRay(rb.transform.position, dirRaycast * -1, Color.blue, 0.1f);
         if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -0.01f, out hitInfo,
                                groundCheckDistance, layerMask, QueryTriggerInteraction.Ignore))
@@ -159,7 +159,7 @@ public class GroundCheck : MonoBehaviour
     /// </summary>
     private void SetFlying()
     {
-        if (playerJump.IsJumpedAndNotReady())
+        if (entityJump.IsJumpedAndNotReady())
         {
             isGrounded = false;
             isAlmostGrounded = false;

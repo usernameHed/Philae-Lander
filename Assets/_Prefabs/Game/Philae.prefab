@@ -382,10 +382,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3347777260606228084}
-  - component: {fileID: 3347777260606228083}
+  - component: {fileID: 6166077617058031262}
   - component: {fileID: 2648358779095376182}
   - component: {fileID: 3347777260606228085}
-  - component: {fileID: 4342663178068225340}
+  - component: {fileID: 6166077617058031261}
   - component: {fileID: 4342663178068225343}
   - component: {fileID: 4342663178068225342}
   - component: {fileID: 3347777260606228082}
@@ -415,7 +415,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3347777260606228083
+--- !u!114 &6166077617058031262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,14 +424,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3347777260606228087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d573e9e307446e46ba03a112fb9376e, type: 3}
+  m_Script: {fileID: 11500000, guid: 169865a36a57c3a45a5dbce182605124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveInput: {x: 0, y: 0}
-  cameraInput: {x: 0, y: 0}
-  mouseInput: {x: 0, y: 0}
   Jump: 0
   JumpUp: 0
+  cameraInput: {x: 0, y: 0}
+  mouseInput: {x: 0, y: 0}
   playerController: {fileID: 3347777260606228085}
 --- !u!114 &2648358779095376182
 MonoBehaviour:
@@ -454,7 +454,7 @@ MonoBehaviour:
   sphereCollider: {fileID: 3959034400415941277}
   rb: {fileID: 3959034400415941276}
   playerGravity: {fileID: 4342663178068225343}
-  playerJump: {fileID: 4342663178068225340}
+  entityJump: {fileID: 6166077617058031261}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -472,6 +472,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d129c8f320f3b4a96b015cb9601086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 3959034400415941276}
+  playerGravity: {fileID: 4342663178068225343}
+  groundCheck: {fileID: 2648358779095376182}
+  rotateObject: {fileID: 2648358779582519253}
+  moveState: 0
   deathVibration:
     vibrateLeft: 1
     strenthLeft: 0.4
@@ -479,14 +484,9 @@ MonoBehaviour:
     vibrateRight: 1
     strenthRight: 0.4
     durationRight: 0.4
-  rb: {fileID: 3959034400415941276}
-  playerInput: {fileID: 3347777260606228083}
-  playerGravity: {fileID: 4342663178068225343}
-  groundCheck: {fileID: 2648358779095376182}
-  rotateObject: {fileID: 2648358779582519253}
-  moveState: 0
+  playerInput: {fileID: 6166077617058031262}
   idPlayer: 0
---- !u!114 &4342663178068225340
+--- !u!114 &6166077617058031261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,12 +495,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3347777260606228087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451161a9c059e33479e11b70853f198a, type: 3}
+  m_Script: {fileID: 11500000, guid: f3d5b7b5a8f61eb4fa89221a922a4204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 2
   stayHold: 0
   canJumpInAir: 1
+  playerLocalyRotate: {fileID: 2648358779582519253}
+  rb: {fileID: 3959034400415941276}
+  entityAction: {fileID: 6166077617058031262}
+  playerGravity: {fileID: 4342663178068225343}
+  hasJumped: 0
+  justJumpedTimer: 0.2
+  justGroundTimer: 0.1
   onJump:
     vibrateLeft: 1
     strenthLeft: 0.1
@@ -510,19 +517,12 @@ MonoBehaviour:
     durationRight: 0.1
   onGrounded:
     vibrateLeft: 1
-    strenthLeft: 0.1
+    strenthLeft: 0.3
     durationLeft: 0.1
     vibrateRight: 1
-    strenthRight: 0.1
+    strenthRight: 0.3
     durationRight: 0.1
-  playerLocalyRotate: {fileID: 2648358779582519253}
-  rb: {fileID: 3959034400415941276}
-  playerInput: {fileID: 3347777260606228083}
   playerController: {fileID: 3347777260606228085}
-  playerGravity: {fileID: 4342663178068225343}
-  hasJumped: 0
-  justJumpedTimer: 0.2
-  justGroundTimer: 0.1
 --- !u!114 &4342663178068225343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,13 +546,21 @@ MonoBehaviour:
   defaultGravityInAir: 2
   gravityAttractor: 2
   speedLerpAttractor: 5
+  lengthPositionAttractPoint: 1
+  sizeDistanceForSavePlayerPos: 0.5
   currentOrientation: 0
-  playerController: {fileID: 3347777260606228085}
+  differenceAngleNormalForUpdatePosition: 5
+  entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
   rb: {fileID: 3959034400415941276}
-  playerInput: {fileID: 3347777260606228083}
-  playerJump: {fileID: 4342663178068225340}
+  entityAction: {fileID: 6166077617058031262}
+  entityJump: {fileID: 6166077617058031261}
+  rbRotate: {fileID: 2648358779582519253}
   mainAttractObject: {fileID: 0}
+  worldLastPosition:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!114 &4342663178068225342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,7 +577,7 @@ MonoBehaviour:
   playerGravity: {fileID: 4342663178068225343}
   rbObject: {fileID: 3959034400415941278}
   smoothedNormal: {x: 0, y: 0, z: 0}
-  playerController: {fileID: 3347777260606228085}
+  entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
 --- !u!114 &3347777260606228082
 MonoBehaviour:
@@ -586,9 +594,9 @@ MonoBehaviour:
   speedMove: 100
   rb: {fileID: 3959034400415941276}
   objectRotateLocal: {fileID: 2648358779582519253}
-  playerController: {fileID: 3347777260606228085}
-  playerInput: {fileID: 3347777260606228083}
-  playerJump: {fileID: 4342663178068225340}
+  entityController: {fileID: 3347777260606228085}
+  entityAction: {fileID: 6166077617058031262}
+  entityJump: {fileID: 6166077617058031261}
 --- !u!114 &2648358779095376201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,10 +611,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnRate: 700
   mainReferenceObjectDirection: {fileID: 0}
-  playerInput: {fileID: 3347777260606228083}
+  entityAction: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
   objectToRotate: {fileID: 2648358779582519253}
-  playerController: {fileID: 3347777260606228085}
+  entityController: {fileID: 3347777260606228085}
 --- !u!114 &4342663178068225473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,9 +633,8 @@ MonoBehaviour:
   minMaxZoom: {x: 2.95751, y: 15}
   speedZoom: 15
   stepZoom: 1
-  easeZoom: 2
   mainReferenceObjectDirection: {fileID: 0}
-  playerInput: {fileID: 3347777260606228083}
+  playerInput: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
   objectToRotate: {fileID: 3959034399683835973}
   tpsSpacePoint: {fileID: 3959034401119974717}
@@ -722,7 +729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.65, y: 9.83, z: 0}
+  m_LocalPosition: {x: 20.77, y: 8.7, z: 49.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}

@@ -3,26 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : EntityJump
+public class IAJump : EntityJump
 {
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
-    private Vibration onJump;
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on se pose"), SerializeField]
-    private Vibration onGrounded;
-
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerController playerController;
+    private IAController iaController;
 
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.OnGrounded, OnGrounded);
     }
 
-
     private bool CanJump()
     {
         //can't jump in air
-        if (!canJumpInAir && playerController.GetMoveState() == EntityController.MoveState.InAir)
+        if (!canJumpInAir && iaController.GetMoveState() == EntityController.MoveState.InAir)
             return (false);
 
         if (hasJumped)
@@ -44,7 +38,6 @@ public class PlayerJump : EntityJump
     /// </summary>
     public void OnGrounded()
     {
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
         Debug.Log("Grounded !");
         coolDownWhenJumped.Reset();
         //here, we just were falling, without jumping
@@ -64,7 +57,7 @@ public class PlayerJump : EntityJump
     private void JumpManager()
     {
         if (IsJumpCoolDebugDownReady() && hasJumped &&
-            playerController.GetMoveState() != EntityController.MoveState.InAir)
+            iaController.GetMoveState() != EntityController.MoveState.InAir)
         {
             hasJumped = false;
             Debug.LogError("Unjump... error ??");
@@ -80,7 +73,7 @@ public class PlayerJump : EntityJump
         if (entityAction.Jump && CanJump())
         {
             coolDownWhenJumped.StartCoolDown(justJumpedTimer);
-            playerController.ChangeState(EntityController.MoveState.InAir);
+            iaController.ChangeState(EntityController.MoveState.InAir);
 
             Debug.Log("jump !");
             
@@ -88,7 +81,6 @@ public class PlayerJump : EntityJump
             playerGravity.CreateAttractor();
 
             base.DoJump();
-            Vibrate();
 
             if (!stayHold)
                 jumpStop = true;
@@ -96,14 +88,6 @@ public class PlayerJump : EntityJump
             hasJumped = true;
             //Debug.Break();
         }
-    }
-
-    /// <summary>
-    /// do a jump
-    /// </summary>
-    private void Vibrate()
-    {
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);
     }
 
     private void Update()

@@ -36,8 +36,6 @@ public class PlayerGravity : MonoBehaviour
 
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float gravityAttractor = 2f;
-    [FoldoutGroup("Air Attractor"), Tooltip("gravité du saut"), SerializeField]
-    private float distAirAttractor = 1f;
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float speedLerpAttractor = 5f;
 
@@ -62,19 +60,19 @@ public class PlayerGravity : MonoBehaviour
     }
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerController playerController;
+    private EntityController entityController;
     [FoldoutGroup("Object"), Tooltip("ref"), SerializeField]
     private GroundCheck groundCheck;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private Rigidbody rb;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerInput playerInput;
+    private EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerJump playerJump;
+    private EntityJump entityJump;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private Transform rbRotate;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
@@ -140,13 +138,13 @@ public class PlayerGravity : MonoBehaviour
 
     public void SaveLastPositionOnground()
     {
-        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
             return;
 
         worldLastNormal = GetMainAndOnlyGravity();   //avoir toujours une normal à jour
         float distForSave = (WorldLastPositionGetIndex(0) - rb.transform.position).sqrMagnitude;
 
-        Debug.Log("dist save: " + distForSave);
+        //Debug.Log("dist save: " + distForSave);
         //si la distance entre les 2 point est trop grande, dans tout les cas, save la nouvelle position !
         if (distForSave > sizeDistanceForSavePlayerPos)
         {
@@ -190,7 +188,6 @@ public class PlayerGravity : MonoBehaviour
         Debug.Log("create attractor !");
         timerBeforeCreateAttractor.StartCoolDown(timeBeforeActiveAttractorInAir);
 
-        //transformPointAttractor = rb.transform.position + (rbRotate.up * -1) * distAirAttractor;
         transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
 
         ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
@@ -218,7 +215,7 @@ public class PlayerGravity : MonoBehaviour
     private void ChangeStateGravity()
     {
         //here player is on fly
-        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             //Debug.Log("try to change gravity state");
             //here player is on fly, and we can create an attractor
@@ -288,9 +285,9 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private void ApplyGroundGravity()
     {
-        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
             return;
-        if (!playerJump.IsJumpCoolDebugDownReady())
+        if (!entityJump.IsJumpCoolDebugDownReady())
             return;
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
@@ -314,7 +311,7 @@ public class PlayerGravity : MonoBehaviour
         if (!groundCheck.IsAlmostGrounded())
             return;
         //here we just jumped ! don't add supplement force
-        if (!playerJump.IsJumpCoolDebugDownReady())
+        if (!entityJump.IsJumpCoolDebugDownReady())
             return;
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
@@ -330,7 +327,7 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private void ApplyAirGravity()
     {
-        if (playerController.GetMoveState() != PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() != PlayerController.MoveState.InAir)
             return;
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
@@ -355,7 +352,7 @@ public class PlayerGravity : MonoBehaviour
 
 
         //here we are going up, and we release the jump button, apply gravity down until the highest point
-        else if (dotGravityRigidbody > 0 && !playerInput.Jump)
+        else if (dotGravityRigidbody > 0 && !entityAction.Jump)
         {
             Vector3 orientationUp = -gravityOrientation * gravity * (rbUpAddGravity - 1) * Time.fixedDeltaTime;
             Debug.DrawRay(rb.transform.position, orientationUp, Color.yellow, 5f);
