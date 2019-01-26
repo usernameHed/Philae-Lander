@@ -6,10 +6,10 @@ using UnityEngine;
 [TypeInfoBox("check if player in the ground")]
 public class GroundCheck : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private float groundCheckDistance = 0.1f;
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
-    private float stickToFloorDist = 0.6f;
+    [FoldoutGroup("GamePlay"), Range(0f, 2f), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    private float groundCheckDistance = 0.8f;
+    [FoldoutGroup("GamePlay"), Range(0f, 2f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
+    private float stickToFloorDist = 1.4f;
     [FoldoutGroup("GamePlay"), Range(1f, 1.5f), Tooltip("When almostGrounded, add more gravity to quicly fall down (if there is something close)"), SerializeField]
     public float stickGravityForce = 1.1f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
@@ -23,6 +23,8 @@ public class GroundCheck : MonoBehaviour
     private Rigidbody rb;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private PlayerGravity playerGravity;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private PlayerJump playerJump;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -70,6 +72,9 @@ public class GroundCheck : MonoBehaviour
     /// </summary>
     private void GroundChecking()
     {
+        //isGrounded = false;
+        //return;
+
         RaycastHit hitInfo;
 
         int layerMask = Physics.AllLayers;
@@ -78,19 +83,25 @@ public class GroundCheck : MonoBehaviour
 
         Vector3 dirRaycast = playerGravity.GetMainAndOnlyGravity() * (radius + groundCheckDistance);
         //Debug.DrawRay(rb.transform.position, dirRaycast * -1, Color.blue, 0.1f);
-        if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -1, out hitInfo,
-                               radius + groundCheckDistance, layerMask, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -0.01f, out hitInfo,
+                               groundCheckDistance, layerMask, QueryTriggerInteraction.Ignore))
         {
             isGrounded = true;
             dirNormal = hitInfo.normal;
-            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, sizeRadiusRayCast, 3f);
+
+            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, sizeRadiusRayCast, 3f);
+            Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, 5f);
+            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+
             //m_GroundContactNormal = hitInfo.normal;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
+            Debug.Log("normal");
+            //Debug.Break();
         }
         else
         {
             isGrounded = false;
-            dirNormal = playerGravity.GetMainAndOnlyGravity() * -1;
+            dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
             //m_GroundContactNormal = Vector3.up;
         }
         
@@ -107,18 +118,24 @@ public class GroundCheck : MonoBehaviour
         //layerMask = ~LayerMask.GetMask(dontWalkOnThisObject);   //"Player"
         layerMask = LayerMask.GetMask(walkOnThisObject);
 
-        if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -1, out hitInfo,
-                               radius + stickToFloorDist, layerMask, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -0.01f, out hitInfo,
+                               stickToFloorDist, layerMask, QueryTriggerInteraction.Ignore))
         {
             isAlmostGrounded = true;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.magenta, sizeRadiusRayCast, 5f);
+
+            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.yellow, sizeRadiusRayCast, 3f);
+            Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * ( stickToFloorDist), Color.yellow, 5f);
+            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+            
+            Debug.Log("stick");
+            //Debug.Break();
             dirNormal = hitInfo.normal;
         }
         else
         {
             isAlmostGrounded = false;
-            dirNormal = playerGravity.GetMainAndOnlyGravity() * -1;
+            dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
         }
     }
 
@@ -142,13 +159,20 @@ public class GroundCheck : MonoBehaviour
     /// </summary>
     private void SetFlying()
     {
+        if (playerJump.IsJumpedAndNotReady())
+        {
+            isGrounded = false;
+            isAlmostGrounded = false;
+        }
+
         if (isGrounded || isAlmostGrounded)
         {
             isFlying = false;
             return;
         }
         isFlying = true;
-        rb.drag = 0;
+        
+
     }
 
     private void FixedUpdate()

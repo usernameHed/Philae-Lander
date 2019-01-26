@@ -26,8 +26,8 @@ public class PlayerController : SingletonMono<PlayerController>
     public PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private PlayerJump playerJump;
+    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    //private PlayerJump playerJump;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Transform rotateObject;
 
@@ -109,6 +109,12 @@ public class PlayerController : SingletonMono<PlayerController>
             rb.drag = dragg;
     }
 
+    public void ChangeState(MoveState stateToChange)
+    {
+        moveState = MoveState.InAir;
+        rb.drag = 0;
+    }
+
     /// <summary>
     /// set state of player
     /// </summary>
@@ -119,15 +125,18 @@ public class PlayerController : SingletonMono<PlayerController>
             EventManager.TriggerEvent(GameData.Event.OnGrounded);
         }
 
-        if (groundCheck.IsFlying())
+        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
         {
+            //IN AIR
             moveState = MoveState.InAir;
             SetDragRb(0);
             return;
         }
 
-        if (rb.drag != oldDrag && playerJump.IsJumpCoolDebugDownReady())
+        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
             SetDragRb(oldDrag);
+
+
 
         if (!playerInput.NotMoving())
         {

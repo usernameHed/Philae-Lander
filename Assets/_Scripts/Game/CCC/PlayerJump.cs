@@ -69,6 +69,11 @@ public class PlayerJump : MonoBehaviour
         return (coolDownWhenJumped.IsReady());
     }
 
+    public bool IsJumpedAndNotReady()
+    {
+        return (hasJumped && !IsJumpCoolDebugDownReady());
+    }
+
     private float CalculateJumpVerticalSpeed()
     {
         // From the jump height and gravity we deduce the upwards speed 
@@ -154,18 +159,20 @@ public class PlayerJump : MonoBehaviour
         if (playerInput.Jump && CanJump())
         {
             coolDownWhenJumped.StartCoolDown(justJumpedTimer);
+            playerController.ChangeState(PlayerController.MoveState.InAir);
 
             Debug.Log("jump !");
-            rb.drag = 0;
+            
             rb.ClearVelocity();
             PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);
-
+            playerGravity.CreateAttractor();
             DoJump();
 
             if (!stayHold)
                 jumpStop = true;
             
             hasJumped = true;
+            //Debug.Break();
         }
     }
 
