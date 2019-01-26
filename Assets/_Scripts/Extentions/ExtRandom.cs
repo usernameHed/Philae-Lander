@@ -65,6 +65,12 @@ public static class ExtRandom
         return (number);
     }
 
+    public static bool GetRandomBool()
+    {
+        float number = UnityEngine.Random.Range(0f, 1f);
+        return (number > 0.5f);
+    }
+
     /// <summary>
     /// get a pure random color
     /// </summary>

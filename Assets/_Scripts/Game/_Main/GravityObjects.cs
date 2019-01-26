@@ -70,7 +70,7 @@ public class GravityObjects : MonoBehaviour
 
         dirGravity = direction.normalized;
         float force = forceMagnitude * ratioGravity;
-        Debug.Log(force);
+        //Debug.Log(force);
         rb.AddForce(-dirGravity * force);
         //Debug.DrawRay(rb.transform.position, dirGravity, Color.red, 0.5f);
     }

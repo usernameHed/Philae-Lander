@@ -15,7 +15,7 @@ public class SmoothNormals : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
     private Vector3 smoothedNormal;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerController playerController;
+    private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private GroundCheck groundCheck;
 
@@ -31,7 +31,7 @@ public class SmoothNormals : MonoBehaviour
 
     private Vector3 GetRotationOrientationDown()
     {
-        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             return (playerGravity.GetMainAndOnlyGravity());
         }

@@ -19,8 +19,6 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private float speedZoom = 5f;
     [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float stepZoom = 1f;
-    [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
-    EasingFunction.Ease easeZoom = EasingFunction.Ease.EaseInOutQuad;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;

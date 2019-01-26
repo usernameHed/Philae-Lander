@@ -12,18 +12,18 @@ public class PlayerRotate : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerInput playerInput;
+    private EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
     private Transform objectToRotate;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerController playerController;
+    private EntityController entityController;
 
     private void RotatePlayer()
     {
         // Form the direction we want to look towards
-        Vector2 dirInput = playerInput.GetDirInput();
+        Vector2 dirInput = entityAction.GetDirInput();
         Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
         //Debug.DrawRay(objectToRotate.position, relativeDirection, Color.white, 3f);
 
@@ -45,12 +45,12 @@ public class PlayerRotate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             return;
         }
 
-        if (!playerInput.NotMoving())
+        if (!entityAction.NotMoving())
         {
             RotatePlayer();
         }

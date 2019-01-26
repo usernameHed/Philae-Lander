@@ -14,11 +14,11 @@ public class PlayerMove : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Transform objectRotateLocal;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerController playerController;
+    private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerInput playerInput;
+    private EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerJump playerJump;
+    private EntityJump entityJump;
 
 
     private bool enabledScript = true;      //tell if this script should be active or not
@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedMove * playerInput.GetMagnitudeInput());
+        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedMove * entityAction.GetMagnitudeInput());
     }
 
     /// <summary>
@@ -60,8 +60,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (!enabledScript)
             return;
-        if (playerController.GetMoveState() == PlayerController.MoveState.Move
-            && playerJump.IsJumpCoolDebugDownReady())
+        if (entityController.GetMoveState() == PlayerController.MoveState.Move
+            && entityJump.IsJumpCoolDebugDownReady())
         {
             MovePlayer();
         }
