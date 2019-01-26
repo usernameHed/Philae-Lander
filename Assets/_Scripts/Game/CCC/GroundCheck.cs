@@ -95,7 +95,7 @@ public class GroundCheck : MonoBehaviour
 
             //m_GroundContactNormal = hitInfo.normal;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
-            Debug.Log("normal");
+            //Debug.Log("normal");
             //Debug.Break();
         }
         else
@@ -128,7 +128,7 @@ public class GroundCheck : MonoBehaviour
             Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * ( stickToFloorDist), Color.yellow, 5f);
             ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
             
-            Debug.Log("stick");
+            //Debug.Log("stick");
             //Debug.Break();
             dirNormal = hitInfo.normal;
         }

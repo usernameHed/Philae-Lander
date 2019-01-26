@@ -152,7 +152,7 @@ public class PlayerGravity : MonoBehaviour
         //here on ground
         else
         {
-            Debug.Log("reset timer ??? we aree on ground wtf ??");
+            //Debug.Log("reset timer ??? we aree on ground wtf ??");
             timerBeforeCreateAttractor.Reset();
             currentOrientation = OrientationPhysics.NORMALS;
         }
@@ -164,6 +164,7 @@ public class PlayerGravity : MonoBehaviour
         {
             mainAttractObject = rbTransform;
             currentOrientation = OrientationPhysics.OBJECT;
+            PhilaeManager.Instance.PlanetChange();
         }
     }
 

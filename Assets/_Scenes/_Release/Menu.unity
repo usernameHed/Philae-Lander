@@ -435,6 +435,8 @@ GameObject:
   m_Component:
   - component: {fileID: 447415583}
   - component: {fileID: 447415582}
+  - component: {fileID: 447415584}
+  - component: {fileID: 447415581}
   m_Layer: 0
   m_Name: Main Camera Menu
   m_TagString: MainCamera
@@ -442,6 +444,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &447415581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447415580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!20 &447415582
 Camera:
   m_ObjectHideFlags: 0
@@ -498,6 +513,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &447415584
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447415580}
+  m_Enabled: 1
 --- !u!1 &637031252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1646,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 533026121, guid: 826318be7ec2f5541b7b2e0c647be4b1, type: 3}
+      propertyPath: Event
+      value: event:/Music/Music_Intro
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 826318be7ec2f5541b7b2e0c647be4b1, type: 3}
 --- !u!1 &1876640689
@@ -1829,7 +1856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad:
   - active: 1
-    scene: Cinematic
+    scene: Level
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
