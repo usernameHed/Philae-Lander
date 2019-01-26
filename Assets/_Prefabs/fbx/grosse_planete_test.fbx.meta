@@ -11,6 +11,7 @@ ModelImporter:
     400004: pPlatonic2
     2100000: lambert1
     2100002: lambert2
+    2100004: lambert3
     2300000: //RootNode
     2300002: pPlatonic1
     2300004: pPlatonic2
@@ -20,6 +21,7 @@ ModelImporter:
     4300000: pPlatonic1
     4300002: pSphere1
     4300004: pPlatonic2
+    4300006: grosse
   externalObjects: {}
   materials:
     importMaterials: 1
