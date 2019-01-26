@@ -48,3 +48,4 @@ sysinfo.txt
 fmod.log
 fmod_editor.log
 **/StreamingAssets/Audio.meta
+**/.cache
