@@ -13,10 +13,11 @@ public class PlayerJump : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     private bool canJumpInAir = true;
 
-    [FoldoutGroup("Slow"), SerializeField, Tooltip("ref script")]
+    /*[FoldoutGroup("Slow"), SerializeField, Tooltip("ref script")]
     private float jumpHeightWhenSlow = 2f;
     [FoldoutGroup("Slow"), SerializeField, Tooltip("ref script")]
     private float speedSlow = 0.4f;
+    */
 
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
     private Vibration onJump;
@@ -68,47 +69,55 @@ public class PlayerJump : MonoBehaviour
         return (coolDownWhenJumped.IsReady());
     }
 
+    public bool IsJumpedAndNotReady()
+    {
+        return (hasJumped && !IsJumpCoolDebugDownReady());
+    }
+
     private float CalculateJumpVerticalSpeed()
     {
         // From the jump height and gravity we deduce the upwards speed 
         // for the character to reach at the apex.
 
         //reduce height when max speed
-        float jumpBoostHeight = jumpHeight;// / (1 + (1 * playerInput.GetMagnitudeInput()));
-
-        /*if (playerInput.GetMagnitudeInput() <= speedSlow)
-        {
-            jumpBoostHeight = jumpHeightWhenSlow;
-        }*/
-
+        float jumpBoostHeight = jumpHeight / (1 + (1 * playerInput.GetMagnitudeInput()));
         Debug.Log("boost height: " + jumpBoostHeight);
         return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
+    }
+
+    private Vector3 AddJumpHeight(Vector3 normalizedDirJump, float boost = 1f)
+    {
+        float jumpSpeedCalculate = CalculateJumpVerticalSpeed() * boost;
+        Vector3 jumpForce = normalizedDirJump * jumpSpeedCalculate;
+
+        Debug.DrawRay(rb.position, jumpForce, Color.red, 5f);
+        return (jumpForce);
+    }
+
+    /// <summary>
+    /// return the normalized jump dir()
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 GetNormalizedJumpDir()
+    {
+        Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
+        Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * playerInput.GetMagnitudeInput();
+
+        Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
+        Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);
+
+        return (normalizedNormalGravity + normalizedForwardPlayer);
     }
 
     /// <summary>
     /// do a jump
     /// </summary>
-    private void DoJump(Vector3 normalizedDirJump, float boost = 1)
+    private void DoJump()
     {
-        Debug.Log("jump !");
-        rb.drag = 0;
+        Vector3 dirJump = GetNormalizedJumpDir();
+        Vector3 orientedStrenghtJump = AddJumpHeight(dirJump);
 
-        float jumpSpeedCalculate = CalculateJumpVerticalSpeed() * boost;
-        Vector3 jumpForce = normalizedDirJump * jumpSpeedCalculate;
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);        
-        Debug.DrawRay(rb.position, jumpForce, Color.red, 5f);
-        rb.ClearVelocity();
-        Debug.Log("velocity: " + jumpForce.magnitude + "(dirNorma:" + normalizedDirJump + ", speedCalculated: " + jumpSpeedCalculate + ")");
-        //rb.WakeUp();
-
-        jumpForce = jumpForce.normalized * jumpSpeedCalculate;
-        Debug.DrawRay(rb.position, jumpForce, Color.yellow, 5f);
-        rb.velocity = jumpForce;
-    }
-
-    private Vector3 CalculateDirectionJump()
-    {
-        return (playerGravity.GetMainAndOnlyGravity());
+        rb.velocity = orientedStrenghtJump;
     }
 
     private bool CanJump()
@@ -149,27 +158,21 @@ public class PlayerJump : MonoBehaviour
 
         if (playerInput.Jump && CanJump())
         {
-            Vector3 jumpNormalizedDirection = CalculateDirectionJump();
             coolDownWhenJumped.StartCoolDown(justJumpedTimer);
+            playerController.ChangeState(PlayerController.MoveState.InAir);
 
-            /*if (playerController.GetMoveState() == PlayerController.MoveState.InAir)
-            {
-                AirJump(jumpNormalizedDirection);
-            }
-            else
-            {
-                DoJump(jumpNormalizedDirection);
-            }*/
-
-            Debug.DrawRay(rb.position, jumpNormalizedDirection, Color.yellow, 5f);
-            Debug.DrawRay(rb.position, playerLocalyRotate.forward * playerInput.GetMagnitudeInput(), Color.green, 5f);
-            DoJump(jumpNormalizedDirection + playerLocalyRotate.forward * 1);// * playerInput.GetMagnitudeInput());
-
+            Debug.Log("jump !");
+            
+            rb.ClearVelocity();
+            PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);
+            playerGravity.CreateAttractor();
+            DoJump();
 
             if (!stayHold)
                 jumpStop = true;
             
             hasJumped = true;
+            //Debug.Break();
         }
     }
 

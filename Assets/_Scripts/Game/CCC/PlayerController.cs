@@ -26,8 +26,8 @@ public class PlayerController : SingletonMono<PlayerController>
     public PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private PlayerJump playerJump;
+    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    //private PlayerJump playerJump;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Transform rotateObject;
 
@@ -44,7 +44,7 @@ public class PlayerController : SingletonMono<PlayerController>
     //private Vector3 dirOrientedAllControl;  //save of GetDirOrientedInputForMultipleControl
 
     private bool enabledScript = true;      //tell if this script should be active or not
-
+    private float oldDrag;
     private bool planetSwitcher = false;
 
     private void OnEnable()
@@ -62,6 +62,7 @@ public class PlayerController : SingletonMono<PlayerController>
     /// </summary>
     public void Init()
     {
+        oldDrag = rb.drag;
         enabledScript = true;               //active this script at start
     }
 
@@ -102,6 +103,18 @@ public class PlayerController : SingletonMono<PlayerController>
             return;
     }
 
+    public void SetDragRb(float dragg)
+    {
+        if (rb.drag != dragg)
+            rb.drag = dragg;
+    }
+
+    public void ChangeState(MoveState stateToChange)
+    {
+        moveState = MoveState.InAir;
+        rb.drag = 0;
+    }
+
     /// <summary>
     /// set state of player
     /// </summary>
@@ -112,11 +125,18 @@ public class PlayerController : SingletonMono<PlayerController>
             EventManager.TriggerEvent(GameData.Event.OnGrounded);
         }
 
-        if (groundCheck.IsFlying())
+        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
         {
+            //IN AIR
             moveState = MoveState.InAir;
+            SetDragRb(0);
             return;
         }
+
+        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
+            SetDragRb(oldDrag);
+
+
 
         if (!playerInput.NotMoving())
         {
