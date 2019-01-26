@@ -20,7 +20,6 @@ namespace Quantized.Game.Behavior
                                                      "</root>";
 
         #region values
-        private SerializedProperty isActiveBehavior;
         private SerializedProperty xmlAI;
         private SerializedProperty mono;
 		private SerializedProperty updateAllTree;
@@ -32,7 +31,6 @@ namespace Quantized.Game.Behavior
         #region msg
         public void OnEnable()
         {
-            isActiveBehavior = serializedObject.FindProperty("isActiveBehavior");
             xmlAI = serializedObject.FindProperty("xmlAI");
 			updateAllTree = serializedObject.FindProperty("updateAllTree");
             waitTime = serializedObject.FindProperty("waitTime");
@@ -60,8 +58,7 @@ namespace Quantized.Game.Behavior
 				EditorGUI.DrawRect(new Rect(r.position.x, r.position.y + r.height + 5f, r.width, 1f), Color.black);
 
 				UnityEngine.GUILayout.Space(10);
-                EditorGUILayout.PropertyField(isActiveBehavior);
-                EditorGUILayout.PropertyField(xmlAI);
+	            EditorGUILayout.PropertyField(xmlAI);
 				EditorGUILayout.PropertyField(updateAllTree);
                 EditorGUILayout.PropertyField(waitTime);
 	            UnityEngine.GUILayout.Space(10);

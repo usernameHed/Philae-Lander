@@ -12,6 +12,8 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     public CameraController cameraController;
     [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
     public bool releaseScene = false;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
+    private int switchPlanet = 0;
 
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]
     public GameObject pausePanel;
@@ -27,6 +29,16 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     private void Init()
     {
         PauseGame(false);
+    }
+
+    public void PlanetChange()
+    {
+        switchPlanet++;
+        if (switchPlanet == 1)
+        {
+            Debug.Log("change to Music theme");
+            SoundManager.GetSingleton.playSound("event:/Music/" + GameData.Sounds.Music_Theme.ToString());
+        }
     }
 
     public void PauseGame(bool pause)

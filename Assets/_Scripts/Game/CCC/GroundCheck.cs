@@ -89,13 +89,13 @@ public class GroundCheck : MonoBehaviour
             isGrounded = true;
             dirNormal = hitInfo.normal;
 
-            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, sizeRadiusRayCast, 3f);
-            Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, 5f);
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+            //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, sizeRadiusRayCast, 3f);
+            //Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, 5f);
+            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
 
             //m_GroundContactNormal = hitInfo.normal;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
-            Debug.Log("normal");
+            //Debug.Log("normal");
             //Debug.Break();
         }
         else
@@ -124,11 +124,11 @@ public class GroundCheck : MonoBehaviour
             isAlmostGrounded = true;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
 
-            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.yellow, sizeRadiusRayCast, 3f);
-            Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * ( stickToFloorDist), Color.yellow, 5f);
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+            //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.yellow, sizeRadiusRayCast, 3f);
+            //Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * ( stickToFloorDist), Color.yellow, 5f);
+            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
             
-            Debug.Log("stick");
+            //Debug.Log("stick");
             //Debug.Break();
             dirNormal = hitInfo.normal;
         }

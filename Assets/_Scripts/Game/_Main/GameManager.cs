@@ -9,6 +9,7 @@ public class GameManager : SingletonMono<GameManager>
 {
     [FoldoutGroup("GamePlay"), Tooltip("vibration of joystick active ?")]
     public bool enableVibration = true;
+    
 
     [FoldoutGroup("Debug"), Tooltip("Enable lateral movement ?")]
     public Camera cameraMain;
