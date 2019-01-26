@@ -65,7 +65,6 @@ public class PlayerGravity : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, raycastLayerMask))
         {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             mainAttractObject = hit.transform;
             Debug.Log("Did Hit");
         }
