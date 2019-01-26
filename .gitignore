@@ -44,7 +44,7 @@ sysinfo.txt
 
 #fmod
 **/FMODStudioCache.asset
-#**/StreamingAssets/*.bank
+**/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
 **/StreamingAssets/Audio.meta
