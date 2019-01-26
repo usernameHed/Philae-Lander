@@ -3159,6 +3159,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ALIEN (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1946426094882001107, guid: cbbbff27deffdde46ad71eda24a38d12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5660237606669580178, guid: cbbbff27deffdde46ad71eda24a38d12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4779,6 +4784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ALIEN (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946426094882001107, guid: cbbbff27deffdde46ad71eda24a38d12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5660237606669580178, guid: cbbbff27deffdde46ad71eda24a38d12,
         type: 3}
@@ -7438,6 +7448,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e426d7872088f940af41433bfd0b13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1946426094882001107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1946426094882001107, guid: cbbbff27deffdde46ad71eda24a38d12,
+    type: 3}
+  m_PrefabInstance: {fileID: 8744806460677436137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946426094882001108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946426094882001107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cde7ff117ff48549f86c9b6569126f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlAI: {fileID: 0}
+  updateAllTree: 0
+  waitTime: 0
 --- !u!1001 &5554820212973769299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7688,6 +7719,11 @@ PrefabInstance:
         type: 3}
       propertyPath: turnRate
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 877396873506430848, guid: cbbbff27deffdde46ad71eda24a38d12,
+        type: 3}
+      propertyPath: justGroundTimer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbbbff27deffdde46ad71eda24a38d12, type: 3}
