@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{db9818b4-2f18-4b65-a7fa-9dc88e835d7a}">
+        <property name="assetPath">
+            <value>Grenade_Lance.mp3</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>22.0499992</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.60081632653061223</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{471cbe65-6aed-4780-93c1-fd819d94d313}</destination>
+        </relationship>
+    </object>
+</objects>
