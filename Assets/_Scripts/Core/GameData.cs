@@ -180,7 +180,9 @@ public static class GameData
 
     public enum Sounds
     {
-        Bump,
+        Music_Intro,
+        Music_Theme,
+        Music_Enemy
     }
     #endregion
 }
