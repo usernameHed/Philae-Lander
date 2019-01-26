@@ -9,8 +9,8 @@ public class PlayerGravity : MonoBehaviour
     private float gravity = 9.81f;
     public float Gravity { get { return (gravity); } }
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("first ground to be attracted from")]
-    private Transform firstInitialGround;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
+    private string[] layersRaycast;
 
     [FoldoutGroup("Ground Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
     private float groundAddGravity = 45f;
@@ -42,6 +42,9 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerJump playerJump;
 
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    private Transform mainAttractObject;
+
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.OnGrounded, OnGrounded);
@@ -49,12 +52,32 @@ public class PlayerGravity : MonoBehaviour
 
     private void Awake()
     {
+        ResearchInitialGround();
         CalculateGravity();
+    }
+
+    private void ResearchInitialGround()
+    {
+        RaycastHit hit;
+        int raycastLayerMask = LayerMask.GetMask(layersRaycast);
+        Vector3 dirDown = rb.transform.up * -1;
+        Debug.DrawRay(rb.transform.position, dirDown, Color.magenta, 5f);
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, raycastLayerMask))
+        {
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            mainAttractObject = hit.transform;
+            Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.Log("No hit");
+        }
     }
 
     private void CalculateGravity()
     {
-        Vector3 direction = rb.position - firstInitialGround.position;
+        Vector3 direction = rb.position - mainAttractObject.position;
         mainAndOnlyGravity = direction.normalized;
     }
 
