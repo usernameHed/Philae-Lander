@@ -93,7 +93,7 @@
             <value>true</value>
         </property>
         <property name="length">
-            <value>1.8924263038548752</value>
+            <value>1.3200000000000001</value>
         </property>
         <relationship name="fadeOutCurve">
             <destination>{87b3bf0a-aa6b-4937-987c-fcb962edbf35}</destination>
@@ -165,18 +165,18 @@
     <object class="SpatialiserEffect" id="{9b836b6f-6711-459e-80b0-2c8a75862743}"/>
     <object class="AutomationPoint" id="{91cd9684-e732-4fe2-b42e-9bbcd5e11f83}">
         <property name="position">
-            <value>0.59999999999999998</value>
+            <value>0.027573696145124837</value>
         </property>
         <property name="value">
             <value>1</value>
         </property>
         <property name="curveShape">
-            <value>-1.00000048</value>
+            <value>-0.019765364</value>
         </property>
     </object>
     <object class="AutomationPoint" id="{8453bfaf-3240-403c-aa46-80e7c7051ce5}">
         <property name="position">
-            <value>1.8924263038548752</value>
+            <value>1.3200000000000001</value>
         </property>
         <property name="value">
             <value>0</value>
