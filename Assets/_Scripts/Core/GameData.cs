@@ -164,6 +164,13 @@ public static class GameData
         Enemy,
     };
 
+    public enum PoolTag
+    {
+        None,
+        Jump,
+        Hit,
+    };
+
     public enum Layers
     {
         Player,

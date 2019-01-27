@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [TypeInfoBox("Main player controller")]
-public class PlayerController : EntityController
+public class PlayerController : EntityController, IKillable
 {
     public enum PhysicType
     {
@@ -19,9 +19,15 @@ public class PlayerController : EntityController
     public PlayerInput playerInput;
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public PlayerJump playerJump;
+    [FoldoutGroup("Object"), Tooltip("ref script")]
+    public Transform renderPlayer;
+
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
+
+    private bool isKilled = false;
+
 
     private void OnEnable()
     {
@@ -31,6 +37,7 @@ public class PlayerController : EntityController
     private void Awake()
     {
         base.Init();
+        isKilled = false;
         PhilaeManager.Instance.InitPlayer(this);
     }
 
@@ -92,5 +99,21 @@ public class PlayerController : EntityController
     private void OnDisable()
     {
         EventManager.StopListening(GameData.Event.GameOver, GameOver);
+    }
+
+    public void Kill()
+    {
+        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Hit, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
+        //throw new System.NotImplementedException();
+        PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
+        EventManager.TriggerEvent(GameData.Event.GameOver);
+        renderPlayer.gameObject.SetActive(false);
+
+        isKilled = true;
+    }
+
+    public void GetHit(int amount, Vector3 posAttacker)
+    {
+        //throw new System.NotImplementedException();
     }
 }

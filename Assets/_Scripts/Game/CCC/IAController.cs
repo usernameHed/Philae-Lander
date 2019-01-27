@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [TypeInfoBox("Main player controller")]
-public class IAController : EntityController
+public class IAController : EntityController, IPooledObject, IKillable
 {
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public IAInput iaInput;
@@ -195,5 +195,26 @@ public class IAController : EntityController
     private void FixedUpdate()
     {
         ChangeState();
+    }
+
+    public void OnObjectSpawn()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void OnDesactivePool()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+        //throw new System.NotImplementedException();
+    }
+
+    public void GetHit(int amount, Vector3 posAttacker)
+    {
+        //throw new System.NotImplementedException();
     }
 }

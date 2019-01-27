@@ -17,6 +17,13 @@ public class PlayerInput : EntityAction
     protected PlayerController playerController;
     public PlayerController PlayerController { get { return (playerController); } }
 
+    private bool enableScript = true;
+
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
+    }
+
     /// <summary>
     /// retourne si le joueur se déplace ou pas
     /// </summary>
@@ -33,21 +40,24 @@ public class PlayerInput : EntityAction
     /// </summary>
     private void GetInput()
     {
-        //all axis
-        moveInput = new Vector2(PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal"),
-            PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical"));
+        if (enableScript)
+        {
+            //all axis
+            moveInput = new Vector2(PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal"),
+                PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical"));
 
-        mouseInput = new Vector2(
+            //all button
+            Jump = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Jump");
+            JumpUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Jump");
+
+            mouseInput = new Vector2(
             Input.GetAxisRaw("Mouse X"),
             Input.GetAxisRaw("Mouse Y"));
+        }
 
         cameraInput = new Vector2(
             PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal Right"),
             PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical Right"));
-
-        //all button
-        Jump = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Jump");
-        JumpUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Jump");
     }
 
     /// <summary>
@@ -62,5 +72,16 @@ public class PlayerInput : EntityAction
     private void Update()
     {
         GetInput();
+    }
+
+    private void GameOver()
+    {
+        enableScript = false;
+        this.enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
     }
 }

@@ -54,7 +54,7 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   targetToLook: {fileID: 0}
   rotateToGround: {fileID: 7122285419363627205}
-  timeBeforeResetBaseCamera: 0.8
+  timeBeforeResetBaseCamera: 0.3
 --- !u!114 &7122285419363627205
 MonoBehaviour:
   m_ObjectHideFlags: 0

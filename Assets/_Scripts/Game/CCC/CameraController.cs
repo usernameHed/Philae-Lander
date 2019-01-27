@@ -37,6 +37,8 @@ public class CameraController : MonoBehaviour
     private float timeBeforeResetBaseCamera = 0.4f;
     public float GetTimeKinematic() { return (timeBeforeResetBaseCamera); }
 
+    private bool freez = false;
+
     private Vector3 currentVelocity;
 
 
@@ -52,6 +54,7 @@ public class CameraController : MonoBehaviour
 
     private void Init()
     {
+        freez = false;
         InitializeCamera();
         SetBaseCamera();
     }
@@ -97,7 +100,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void GameOver()
     {
-
+        freez = true;
     }
 
     /// <summary>
@@ -174,6 +177,9 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (freez)
+            return;
+
         MoveCamera();
         RotateCamera();
     }

@@ -14,6 +14,9 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     public bool releaseScene = false;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
     private int switchPlanet = 0;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
+    private float waitUntilRestart = 1f;
+
 
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]
     public GameObject pausePanel;
@@ -23,7 +26,8 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
 
     private void OnEnable()
     {
-        EventManager.StartListening(GameData.Event.SceneLoaded, Init);     
+        EventManager.StartListening(GameData.Event.SceneLoaded, Init);
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
     }
 
     public void InitPlayer(PlayerController pc)
@@ -72,12 +76,13 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
         }
         else
         {
-            if (PlayerConnected.Instance.GetPlayer(0).GetButtonUp("Escape"))
+            if (PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Escape")
+                || PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Start"))
             {
                 Debug.Log("quit ?");
                 SceneTransition.Instance.Previous();
             }
-            if (PlayerConnected.Instance.GetPlayer(0).GetButtonUp("Restart"))
+            if (PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Restart"))
             {
                 Debug.Log("Restart ?");
                 //ScoreManager.Instance.Save();
@@ -85,6 +90,18 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
             }
         }
 
+    }
+
+    private void GameOver()
+    {
+        Invoke("EndGame", waitUntilRestart);
+    }
+
+    private void EndGame()
+    {
+        Debug.Log("Restart ?");
+        //ScoreManager.Instance.Save();
+        SceneTransition.Instance.PlayNext();
     }
 
     private void Update()
@@ -95,5 +112,6 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     private void OnDisable()
     {
         EventManager.StopListening(GameData.Event.SceneLoaded, Init);
+        EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 }
