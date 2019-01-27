@@ -169,6 +169,8 @@ public static class GameData
         None,
         Jump,
         Hit,
+        IA,
+        Spawner,
     };
 
     public enum Layers

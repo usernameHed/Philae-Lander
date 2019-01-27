@@ -199,6 +199,7 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     public void OnObjectSpawn()
     {
+        //rb.transform.position = transform.position;
         //throw new System.NotImplementedException();
     }
 
