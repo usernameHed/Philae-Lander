@@ -485,6 +485,7 @@ MonoBehaviour:
     strenthRight: 0.4
     durationRight: 0.4
   playerInput: {fileID: 6166077617058031262}
+  playerJump: {fileID: 6166077617058031261}
   idPlayer: 0
 --- !u!114 &6166077617058031261
 MonoBehaviour:

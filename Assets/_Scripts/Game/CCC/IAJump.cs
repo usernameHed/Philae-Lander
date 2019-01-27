@@ -5,30 +5,35 @@ using UnityEngine;
 
 public class IAJump : EntityJump
 {
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    private float addRandomJump = 4f;
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private IAController iaController;
-
-    private void OnEnable()
-    {
-        EventManager.StartListening(GameData.Event.OnGrounded, OnGrounded);
-    }
 
     private bool CanJump()
     {
         //can't jump in air
         if (!canJumpInAir && iaController.GetMoveState() == EntityController.MoveState.InAir)
+        {
+            //Debug.Log("ici");
             return (false);
+        }
+            
 
         if (hasJumped)
+        {
+            //Debug.Log("ou la");
             return (false);
-
-        //faux si on hold pas et quand a pas laché
-        if (jumpStop)
-            return (false);
+        }
 
         //don't jump if we just grounded
         if (!coolDownOnGround.IsReady())
+        {
+            //Debug.Log("ou encore la");
             return (false);
+        }
+            
 
         return (true);
     }
@@ -40,16 +45,16 @@ public class IAJump : EntityJump
     {
         Debug.Log("Grounded !");
         coolDownWhenJumped.Reset();
+
+        coolDownOnGround.StartCoolDown(justGroundTimer + ExtRandom.GetRandomNumber(0f, addRandomJump));
         //here, we just were falling, without jumping
         if (!hasJumped)
         {
-            coolDownOnGround.StartCoolDown(justGroundTimer);
+            
         }
         //here, we just on grounded after a jump
         else
         {
-            //rb.ClearVelocity();
-            coolDownOnGround.StartCoolDown(justGroundTimer);
             hasJumped = false;
         }
     }
@@ -81,9 +86,6 @@ public class IAJump : EntityJump
             playerGravity.CreateAttractor();
 
             base.DoJump();
-
-            if (!stayHold)
-                jumpStop = true;
             
             hasJumped = true;
             //Debug.Break();
@@ -100,10 +102,5 @@ public class IAJump : EntityJump
     private void FixedUpdate()
     {
         JumpManager();
-    }
-
-    private void OnDisable()
-    {
-        EventManager.StopListening(GameData.Event.OnGrounded, OnGrounded);
     }
 }
