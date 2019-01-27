@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad:
   - active: 1
-    scene: Level
+    scene: LD_Origin
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
