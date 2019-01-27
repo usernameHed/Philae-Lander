@@ -19,6 +19,12 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private float speedZoom = 5f;
     [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float stepZoom = 1f;
+    [FoldoutGroup("Sight"), Tooltip(""), SerializeField]
+    private string[] objOnSight;
+    [FoldoutGroup("Sight"), Tooltip(""), SerializeField]
+    private float radiusRaycast = 0.7f;
+    [FoldoutGroup("Sight"), Tooltip("dist min when we need to zoom the camera"), SerializeField]
+    private float minDistToZoom = 0.1f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;
@@ -33,6 +39,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private GroundCheck groundCheck;
 
+
     public float valueEase = 0;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
@@ -43,7 +50,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
         defaultLenghtCamPointDist = (objectToRotate.position - tpsSpacePoint.position).magnitude;
     }
 
-    private void RotateCamPoint()
+    private void InputRotate()
     {
         Vector2 dirInput = playerInput.GetCameraInput();
 
@@ -52,6 +59,11 @@ public class PlayerRotateCamPoint : MonoBehaviour
         {
             objectToRotate.Rotate(0, Time.deltaTime * turnRate * dirInput.x, 0);
         }
+    }
+    private void InputZoom()
+    {
+        Vector2 dirInput = playerInput.GetCameraInput();
+
         if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
         {
             float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(dirInput.y), marginTurnVerti, 1f, 0f, 1f);
@@ -62,19 +74,62 @@ public class PlayerRotateCamPoint : MonoBehaviour
                 float clampValue = Mathf.Clamp(lerpValue, minMaxZoom.x, minMaxZoom.y);
 
                 //float realStickValue = (Mathf.Abs(dirInput.y - marginTurnVerti) * 1 / (1 - marginTurnVerti)) * Mathf.Sign(dirInput.y);
-                
+
                 defaultLenghtCamPointDist = clampValue;
             }
             else if (dirInput.y > 0)
             {
-                float lerpValue = Mathf.Lerp(defaultLenghtCamPointDist, defaultLenghtCamPointDist - stepZoom, Time.deltaTime * speedZoom * remapedInput);
-                float clampValue = Mathf.Clamp(lerpValue, minMaxZoom.x, minMaxZoom.y);
-                defaultLenghtCamPointDist = clampValue;
+                Zoom(remapedInput);
             }
+            ChangePositionPoint();
+        }
+    }
 
-            Vector3 newDistPoint = ((tpsSpacePoint.position - objectToRotate.position).normalized) * defaultLenghtCamPointDist;
-            //Debug.DrawRay(objectToRotate.position, newDistPoint, Color.red, 3f);
-            tpsSpacePoint.position = objectToRotate.position + newDistPoint;
+    private void ChangePositionPoint()
+    {
+        Vector3 newDistPoint = ((tpsSpacePoint.position - objectToRotate.position).normalized) * defaultLenghtCamPointDist;
+        //Debug.DrawRay(objectToRotate.position, newDistPoint, Color.red, 3f);
+        tpsSpacePoint.position = objectToRotate.position + newDistPoint;
+    }
+
+    private void Zoom(float remapedInput)
+    {
+        float lerpValue = Mathf.Lerp(defaultLenghtCamPointDist, defaultLenghtCamPointDist - stepZoom, Time.deltaTime * speedZoom * remapedInput);
+        float clampValue = Mathf.Clamp(lerpValue, minMaxZoom.x, minMaxZoom.y);
+        defaultLenghtCamPointDist = clampValue;
+    }
+
+    private void ZoomIfSometingOnSight()
+    {
+        Vector2 dirInput = playerInput.GetCameraInput();
+
+        if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
+            return;
+
+        RaycastHit hitInfo;
+
+        int layerMask = Physics.AllLayers;
+        layerMask = LayerMask.GetMask(objOnSight);
+
+
+        Vector3 dirPoint = (tpsSpacePoint.position - objectToRotate.position).normalized;
+        float dist = Vector3.Distance(objectToRotate.position, mainReferenceObjectDirection.position);
+
+        if (Physics.SphereCast(rb.transform.position, radiusRaycast, dirPoint, out hitInfo,
+                               dist, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+            Debug.DrawRay(rb.transform.position, dirPoint.normalized * dist);
+
+            float distPlayerToPoint = Vector3.Distance(hitInfo.point, objectToRotate.position);
+            float diffDist = dist - distPlayerToPoint;
+            
+            if (diffDist > minDistToZoom)
+            {
+                diffDist = Mathf.Clamp(diffDist, 0, 10) / 10;
+                Zoom(diffDist);
+                ChangePositionPoint();
+            }
         }
     }
 
@@ -82,7 +137,9 @@ public class PlayerRotateCamPoint : MonoBehaviour
     {
         if (!playerInput.NotMovingCamera())
         {
-            RotateCamPoint();
+            InputRotate();
+            InputZoom();
         }
+        ZoomIfSometingOnSight();
     }
 }

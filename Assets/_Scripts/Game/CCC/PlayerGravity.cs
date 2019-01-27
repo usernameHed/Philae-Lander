@@ -186,11 +186,11 @@ public class PlayerGravity : MonoBehaviour
 
         transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
 
-        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
+        //ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
 
-        ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
-        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
-        Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
+        //ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
+        //ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
+        //Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
 
         //Debug.Break();
     }
@@ -238,6 +238,10 @@ public class PlayerGravity : MonoBehaviour
         //here on ground
         else
         {
+            /*if (currentOrientation == OrientationPhysics.OBJECT)
+            {
+                PhilaeManager.Instance.cameraController.SetBaseCamera();
+            }*/
             //Debug.Log("reset timer ??? we aree on ground wtf ??");
             timerBeforeCreateAttractor.Reset();
             currentOrientation = OrientationPhysics.NORMALS;
@@ -246,12 +250,23 @@ public class PlayerGravity : MonoBehaviour
 
     public void ChangeMainAttractObject(Transform rbTransform)
     {
-        if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID())
+        if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
+            && (entityController.GetMoveState() == EntityController.MoveState.InAir))
         {
+            PhilaeManager.Instance.cameraController.SetChangePlanetCam();
+
             mainAttractObject = rbTransform;
             currentOrientation = OrientationPhysics.OBJECT;
             PhilaeManager.Instance.PlanetChange();
+
+            entityController.SetKinematic(true);
+            Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
         }
+    }
+
+    private void UnsetKinematic()
+    {
+        entityController.SetKinematic(false);
     }
 
     private void CalculateGravity()
@@ -276,7 +291,7 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private void ApplyGroundGravity()
     {
-        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
             return;
         if (!entityJump.IsJumpCoolDebugDownReady())
             return;
@@ -309,7 +324,7 @@ public class PlayerGravity : MonoBehaviour
         //Debug.LogWarning("Apply gravity down down down !");
 
         Vector3 orientationDown = -gravityOrientation * gravity * (stickToFloorGravity - 1) * Time.fixedDeltaTime;
-        Debug.DrawRay(rb.transform.position, orientationDown, Color.red, 5f);
+        //Debug.DrawRay(rb.transform.position, orientationDown, Color.red, 5f);
         rb.velocity += orientationDown;
     }
 
@@ -327,7 +342,7 @@ public class PlayerGravity : MonoBehaviour
         if (dotGravityRigidbody < 0 && currentOrientation != OrientationPhysics.ATTRACTOR)
         {
             Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
-            Debug.DrawRay(rb.transform.position, orientationDown, Color.blue, 5f);
+            //Debug.DrawRay(rb.transform.position, orientationDown, Color.blue, 5f);
             rb.velocity += orientationDown;
 
             //Debug.Log("going down");
@@ -346,7 +361,7 @@ public class PlayerGravity : MonoBehaviour
         else if (dotGravityRigidbody > 0 && !entityAction.Jump)
         {
             Vector3 orientationUp = -gravityOrientation * gravity * (rbUpAddGravity - 1) * Time.fixedDeltaTime;
-            Debug.DrawRay(rb.transform.position, orientationUp, Color.yellow, 5f);
+            //Debug.DrawRay(rb.transform.position, orientationUp, Color.yellow, 5f);
             rb.velocity += orientationUp;
             //Debug.Log("going up");
         }
@@ -356,17 +371,17 @@ public class PlayerGravity : MonoBehaviour
         if (currentOrientation != OrientationPhysics.ATTRACTOR)
         {
             Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * Time.fixedDeltaTime;
-            Debug.DrawRay(rb.transform.position, forceBaseGravityInAir, Color.green, 5f);
+            //Debug.DrawRay(rb.transform.position, forceBaseGravityInAir, Color.green, 5f);
             rb.velocity += forceBaseGravityInAir;
         }
         else
         {
-            Debug.Log("attractor !!!");
+            //Debug.Log("attractor !!!");
             gravityAttractorLerp = Mathf.Lerp(gravityAttractorLerp, gravityAttractor, Time.fixedDeltaTime * speedLerpAttractor);
 
             Vector3 forceAttractor = -gravityOrientation * gravity * (gravityAttractorLerp - 1) * Time.fixedDeltaTime;
-            Debug.DrawRay(rb.transform.position, forceAttractor, Color.white, 5f);
-            ExtDrawGuizmos.DebugWireSphere(forceAttractor, Color.white, 1f, 5f);
+            //Debug.DrawRay(rb.transform.position, forceAttractor, Color.white, 5f);
+            //ExtDrawGuizmos.DebugWireSphere(forceAttractor, Color.white, 1f, 5f);
             rb.velocity += forceAttractor;
         }
     }

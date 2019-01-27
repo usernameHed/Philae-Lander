@@ -6,7 +6,7 @@ using UnityEngine;
 public class RotateToGround : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private float speedRotate = 5f;
+    public float speedRotate = 5f;
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private SmoothNormals smoothNormals;

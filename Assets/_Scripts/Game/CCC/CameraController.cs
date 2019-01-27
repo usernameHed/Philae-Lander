@@ -10,12 +10,11 @@ using Sirenix.OdinInspector;
 
 public class CameraController : MonoBehaviour
 {
+    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField, InlineEditor]
+    private CameraTypes cameraTypes;
+
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float closeMargin = 0.1f;
-    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
-    private float dampingMove = 1f;
-    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
-    private float dampingRotateY = 1f;
 
     [FoldoutGroup("Object"), Tooltip("ref de la camera"), SerializeField]
     private Camera cameraRef;
@@ -31,6 +30,12 @@ public class CameraController : MonoBehaviour
     private Transform targetPosition;
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
     private Transform targetToLook;
+
+    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
+    private RotateToGround rotateToGround;
+    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
+    private float timeBeforeResetBaseCamera = 0.4f;
+    public float GetTimeKinematic() { return (timeBeforeResetBaseCamera); }
 
     private Vector3 currentVelocity;
 
@@ -48,6 +53,35 @@ public class CameraController : MonoBehaviour
     private void Init()
     {
         InitializeCamera();
+        SetBaseCamera();
+    }
+
+    public void SetBaseCamera()
+    {
+        CancelInvoke("SetBaseCamera");
+        cameraTypes.camType = CameraTypes.CameraType.BASE;
+        rotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
+        Debug.Log("set base camera !");
+    }
+
+    public void SetAttractorCamera()
+    {
+        CancelInvoke("SetBaseCamera");
+
+        cameraTypes.camType = CameraTypes.CameraType.ATTRACTOR;
+        rotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
+        Debug.Log("set base camera !");
+    }
+
+    public void SetChangePlanetCam()
+    {
+        CancelInvoke("SetBaseCamera");
+
+        Debug.Log("set change palnet camera");
+        cameraTypes.camType = CameraTypes.CameraType.PLANET_CHANGE;
+        rotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
+
+        Invoke("SetBaseCamera", timeBeforeResetBaseCamera);
     }
 
     /// <summary>
@@ -116,7 +150,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        movingCamera.position = Vector3.SmoothDamp(movingCamera.position, targetPosition.position, ref currentVelocity, dampingMove);
+        movingCamera.position = Vector3.SmoothDamp(movingCamera.position, targetPosition.position, ref currentVelocity, cameraTypes.GetDampingMove());
     }
 
     private void RotateCamera()
@@ -135,7 +169,7 @@ public class CameraController : MonoBehaviour
         rotateCameraY.rotation = Quaternion.RotateTowards(  
                                 rotateCameraY.rotation,
                                 desiredOrientation,
-                                dampingRotateY * Time.deltaTime);
+                                cameraTypes.GetDampingRotateY() * Time.deltaTime);
     }
 
     private void FixedUpdate()

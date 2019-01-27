@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3211926161950554438}
   - component: {fileID: 3211926161950554437}
+  - component: {fileID: 7122285419363627205}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3211926162045997772}
+  - {fileID: 7122285418949979841}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,12 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c871937aa95a324192e1485dbaa22d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTypes: {fileID: 11400000, guid: 5ba86071495c26449a86288e052b5d66, type: 2}
   closeMargin: 0.1
-  smoothTime: 0.2
   cameraRef: {fileID: 3211926162045997771}
-  cameraTransform: {fileID: 3211926162045997772}
+  movingCamera: {fileID: 7122285418949979841}
+  rotateCameraY: {fileID: 7122285418617296738}
   targetList: []
-  targetPosition: {x: 0, y: 0, z: 0}
+  targetPosition: {fileID: 0}
+  targetToLook: {fileID: 0}
+  rotateToGround: {fileID: 7122285419363627205}
+  timeBeforeResetBaseCamera: 0.8
+--- !u!114 &7122285419363627205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211926161950554436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898450995ee5ab74aadb53dede327f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedRotate: 2
+  smoothNormals: {fileID: 0}
+  rbObject: {fileID: 7122285417589540831}
 --- !u!1 &3211926162045997769
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +81,7 @@ GameObject:
   - component: {fileID: 3211926162045997772}
   - component: {fileID: 3211926162045997771}
   - component: {fileID: 3211926162045997770}
+  - component: {fileID: 7122285419199028047}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -76,10 +97,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3211926162045997769}
   m_LocalRotation: {x: 0.32036498, y: -0, z: -0, w: 0.94729424}
-  m_LocalPosition: {x: -7.27, y: 10.450001, z: -2.81}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3211926161950554438}
+  m_Father: {fileID: 7122285418617296738}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 37.37, y: 0, z: 0}
 --- !u!20 &3211926162045997771
@@ -92,7 +113,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -132,3 +153,109 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3211926162045997769}
   m_Enabled: 1
+--- !u!114 &7122285419199028047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211926162045997769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
+--- !u!1 &7122285417589540831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7122285417589540828}
+  m_Layer: 0
+  m_Name: Rotate Camera (Planet oriented)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7122285417589540828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122285417589540831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7122285418617296738}
+  m_Father: {fileID: 7122285418949979841}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7122285418617296749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7122285418617296738}
+  m_Layer: 0
+  m_Name: RotateCamera (PlayerOriented)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7122285418617296738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122285418617296749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3211926162045997772}
+  m_Father: {fileID: 7122285417589540828}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7122285418949979840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7122285418949979841}
+  m_Layer: 0
+  m_Name: Moving Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7122285418949979841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122285418949979840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.27, y: 10.450001, z: -2.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7122285417589540828}
+  m_Father: {fileID: 3211926161950554438}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

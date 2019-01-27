@@ -47,6 +47,11 @@ public class EntityController : MonoBehaviour
         enabledScript = true;               //active this script at start
     }
 
+    public void SetKinematic(bool isKinematc)
+    {
+        rb.isKinematic = isKinematc;
+    }
+
     public void ChangeMainPlanet(Rigidbody rb)
     {
         Debug.Log("playerGravity: " + playerGravity);

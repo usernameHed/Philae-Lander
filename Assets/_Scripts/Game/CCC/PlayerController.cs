@@ -5,6 +5,13 @@ using UnityEngine;
 [TypeInfoBox("Main player controller")]
 public class PlayerController : EntityController
 {
+    public enum PhysicType
+    {
+        BASE,
+        PLANET_CENTER,
+        DIRECTION_CENTER,
+    }
+
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private Vibration deathVibration;
 
@@ -26,6 +33,8 @@ public class PlayerController : EntityController
         base.Init();
         PhilaeManager.Instance.InitPlayer(this);
     }
+
+    
 
     /// <summary>
     /// called when the game is over: desactive player
