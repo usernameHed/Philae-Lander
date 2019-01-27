@@ -10263,6 +10263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionnalName: 
   addIdOfObject: {fileID: 0}
+  emitter: {fileID: 0}
 --- !u!114 &533026121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17620,17 +17621,17 @@ PrefabInstance:
     - target: {fileID: 7184075254070767854, guid: 77c0fbd2d59dca74590e365e109fb559,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.899
+      value: 63.88
       objectReference: {fileID: 0}
     - target: {fileID: 7184075254070767854, guid: 77c0fbd2d59dca74590e365e109fb559,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.714
+      value: 18.03
       objectReference: {fileID: 0}
     - target: {fileID: 7184075254070767854, guid: 77c0fbd2d59dca74590e365e109fb559,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 62.084
+      value: 63.77
       objectReference: {fileID: 0}
     - target: {fileID: 7184075254070767854, guid: 77c0fbd2d59dca74590e365e109fb559,
         type: 3}
@@ -17655,7 +17656,7 @@ PrefabInstance:
     - target: {fileID: 7184075254070767854, guid: 77c0fbd2d59dca74590e365e109fb559,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7184075254070767854, guid: 77c0fbd2d59dca74590e365e109fb559,
         type: 3}
@@ -35101,6 +35102,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1655671593}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1917471012
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917471010}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &1917471014
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37187,8 +37204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5c46e917319cc4980539dd761e2e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  realCollider: {fileID: 0}
+  rb: {fileID: 1917471012}
+  realCollider: {fileID: 1917471014}
   AtmosphereCollider: {fileID: 2024840026}
   playerIsInside: 0
   enemyAreInside: 0
