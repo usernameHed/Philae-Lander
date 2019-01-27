@@ -70,6 +70,12 @@ public class PlayerController : EntityController, IKillable
         if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
         {
             playerJump.OnGrounded();
+
+            if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
+            {
+                PhilaeManager.Instance.cameraController.SetBaseCamera();
+            }
+
             SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
         }
 

@@ -71,6 +71,11 @@ public class CameraController : MonoBehaviour
         Debug.Log("set base camera !");
     }
 
+    public bool IsOnAttractorMode()
+    {
+        return (cameraTypes.camType == CameraTypes.CameraType.ATTRACTOR);
+    }
+
     public void SetAttractorCamera()
     {
         CancelInvoke("SetBaseCamera");

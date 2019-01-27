@@ -34,7 +34,7 @@ public class MobSpawner : MonoBehaviour
 
     public bool IsCloseToPlayer()
     {
-        float dist = Vector3.SqrMagnitude(transform.position - playerController.transform.position);
+        float dist = Vector3.SqrMagnitude(transform.position - playerController.rb.transform.position);
         if (dist < minDist)
         {
             return (true);
@@ -44,7 +44,7 @@ public class MobSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (timeSpawn.IsStartedAndOver() && !isOnCamera.isOnScreen && !IsCloseToPlayer())
+        if (timeSpawn.IsReady() && !isOnCamera.isOnScreen && !IsCloseToPlayer())
             Spawn();
     }
 }

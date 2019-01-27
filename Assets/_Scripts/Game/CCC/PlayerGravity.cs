@@ -39,6 +39,10 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float speedLerpAttractor = 5f;
 
+    [FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
+    private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
+
+
     [FoldoutGroup("Air Attractor"), Tooltip("position de l'attractpoint"), SerializeField]
     public float lengthPositionAttractPoint = 1f;    //position de l'attract point par rapport à la dernier position / normal
     [FoldoutGroup("Air Attractor"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
@@ -91,8 +95,17 @@ public class PlayerGravity : MonoBehaviour
 
     private void Start()
     {
+        FillAllPos();
         ResearchInitialGround();
         CalculateGravity();
+    }
+
+    private void FillAllPos()
+    {
+        for (int i = 0; i < worldLastPosition.Length; i++)
+        {
+            worldLastPosition[i] = rb.transform.position;
+        }
     }
 
     private void ResearchInitialGround()
@@ -205,6 +218,7 @@ public class PlayerGravity : MonoBehaviour
     {
         Debug.Log("attractor activated !");
         currentOrientation = OrientationPhysics.ATTRACTOR;
+        PhilaeManager.Instance.cameraController.SetAttractorCamera();
         gravityAttractorLerp = 1;
     }
 
@@ -254,11 +268,23 @@ public class PlayerGravity : MonoBehaviour
         }
     }
 
+    public bool IsTooCloseToOtherPlanet(Transform rbTransform)
+    {
+        float dist = Vector3.SqrMagnitude(rb.position - rbTransform.position);
+        Debug.Log("dist from attractive planet: " + dist);
+        if (dist < distMinForChange)
+        {
+            return (true);
+        }
+        return (false);
+    }
+
     public void ChangeMainAttractObject(Transform rbTransform)
     {
         if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
             && (entityController.GetMoveState() == EntityController.MoveState.InAir)
-            && !isOnTransition)
+            && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
+            && !IsTooCloseToOtherPlanet(rbTransform))
         {
             PhilaeManager.Instance.cameraController.SetChangePlanetCam();
 

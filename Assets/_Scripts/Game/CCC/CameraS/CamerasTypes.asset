@@ -63,13 +63,13 @@ MonoBehaviour:
       Data: 3|CameraTypes+CAM_ATTRACTOR, Assembly-CSharp
     - Name: DampingMove
       Entry: 4
-      Data: 0.2
+      Data: 0.05
     - Name: dampingRotateY
       Entry: 4
-      Data: 500
+      Data: 1500
     - Name: rotateToGroundSpeed
       Entry: 4
-      Data: 2
+      Data: 14
     - Name: 
       Entry: 8
       Data: 

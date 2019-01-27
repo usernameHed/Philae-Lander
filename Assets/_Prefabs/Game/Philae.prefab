@@ -199,6 +199,7 @@ MonoBehaviour:
   playerInput: {fileID: 6166077617058031262}
   playerJump: {fileID: 6166077617058031261}
   renderPlayer: {fileID: 2648358779774481647}
+  animator: {fileID: 47880833494453058}
   idPlayer: 0
 --- !u!114 &6166077617058031261
 MonoBehaviour:
@@ -351,7 +352,7 @@ MonoBehaviour:
   - Walkable/Floor
   radiusRaycast: 0.7
   minDistToZoom: 0.1
-  speedBoostZoom: 1
+  speedBoostZoom: 3
   mainReferenceObjectDirection: {fileID: 0}
   playerInput: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
@@ -451,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
   m_LocalRotation: {x: -0, y: -0.85759, z: -0, w: 0.51433396}
-  m_LocalPosition: {x: 73.86, y: 27.17, z: 49.64}
+  m_LocalPosition: {x: 73.69, y: 28.45, z: 49.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}
@@ -626,10 +627,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IDLE
       objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 7224b86e92577b5409516370be38939c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 7224b86e92577b5409516370be38939c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -691,6 +688,12 @@ PrefabInstance:
 --- !u!4 &47880833484874920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: 7224b86e92577b5409516370be38939c,
+    type: 3}
+  m_PrefabInstance: {fileID: 47880833485012514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &47880833494453058 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 7224b86e92577b5409516370be38939c,
     type: 3}
   m_PrefabInstance: {fileID: 47880833485012514}
   m_PrefabAsset: {fileID: 0}

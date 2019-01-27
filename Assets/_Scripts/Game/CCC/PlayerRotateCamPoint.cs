@@ -142,11 +142,11 @@ public class PlayerRotateCamPoint : MonoBehaviour
             
             if (diffDist > minDistToZoom)
             {
-                if (!hasZoomed)
+                /*if (!hasZoomed)
                 {
                     oldDefaultLenghtCamPointDist = defaultLenghtCamPointDist;
                     hasZoomed = true;
-                }
+                }*/
 
 
 
@@ -155,14 +155,14 @@ public class PlayerRotateCamPoint : MonoBehaviour
                 Zoom(diffDist * speedBoostZoom);
                 ChangePositionPoint();
             }
-            else
+            /*else
             {
                 if (hasZoomed && !isRaulbacking)
                 {
                     defaultLenghtCamPointDist = oldDefaultLenghtCamPointDist;
                     isRaulbacking = true;
                 }
-            }
+            }*/
         }
     }
 
@@ -170,7 +170,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
     {
         if (isRaulbacking)
         {
-            Zoom(1f);
+            Zoom(0.2f);
             ChangePositionPoint();
         }
     }
