@@ -13,10 +13,10 @@ public class EntityController : MonoBehaviour
     }
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    protected Rigidbody rb;
+    public Rigidbody rb;
 
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    protected PlayerGravity playerGravity;
+    public PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
     //[FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
@@ -64,37 +64,5 @@ public class EntityController : MonoBehaviour
     {
         moveState = MoveState.InAir;
         rb.drag = 0;
-    }
-
-    /// <summary>
-    /// set state of player
-    /// </summary>
-    protected void ChangeState(EntityAction entityAction)
-    {
-        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
-        {
-            EventManager.TriggerEvent(GameData.Event.OnGrounded);
-        }
-
-        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
-        {
-            //IN AIR
-            moveState = MoveState.InAir;
-            SetDragRb(0);
-            return;
-        }
-
-        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
-            SetDragRb(oldDrag);
-
-
-        if (!entityAction.NotMoving())
-        {
-            moveState = MoveState.Move;
-        }
-        else
-        {
-            moveState = MoveState.Idle;
-        }
     }
 }

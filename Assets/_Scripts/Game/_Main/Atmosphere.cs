@@ -14,6 +14,8 @@ public class Atmosphere : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip("planette qui attire"), SerializeField]
     private bool playerIsInside = false;
+    [FoldoutGroup("Debug"), Tooltip("planette qui attire"), SerializeField]
+    private bool enemyAreInside = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +23,20 @@ public class Atmosphere : MonoBehaviour
         {
             playerIsInside = true;
             PhilaeManager.Instance.playerControllerRef.ChangeMainPlanet(rb);
+        }
+        if (other.CompareTag(GameData.Layers.Enemy.ToString()))
+        {
+            enemyAreInside = true;
+            IAController iaController = other.gameObject.GetComponentInParent<IAController>();
+            if (iaController)
+            {
+                iaController.ChangeMainPlanet(rb);
+            }
+            else
+            {
+                Debug.LogError("no ia controller ?");
+            }
+
         }
     }
 

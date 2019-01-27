@@ -10,6 +10,8 @@ public class PlayerController : EntityController
 
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public PlayerInput playerInput;
+    [FoldoutGroup("Object"), Tooltip("ref script")]
+    public PlayerJump playerJump;
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
@@ -41,9 +43,41 @@ public class PlayerController : EntityController
             return;
     }
 
+    /// <summary>
+    /// set state of player
+    /// </summary>
+    private void ChangeState()
+    {
+        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
+        {
+            playerJump.OnGrounded();
+        }
+
+        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
+        {
+            //IN AIR
+            moveState = MoveState.InAir;
+            SetDragRb(0);
+            return;
+        }
+
+        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
+            SetDragRb(oldDrag);
+
+
+        if (!playerInput.NotMoving())
+        {
+            moveState = MoveState.Move;
+        }
+        else
+        {
+            moveState = MoveState.Idle;
+        }
+    }
+
     private void FixedUpdate()
     {
-        base.ChangeState(playerInput);
+        ChangeState();
     }
 
     private void OnDisable()

@@ -11,33 +11,26 @@ public class IAJump : EntityJump
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private IAController iaController;
 
-
-
-    private void OnEnable()
-    {
-        EventManager.StartListening(GameData.Event.OnGrounded, OnGrounded);
-    }
-
     private bool CanJump()
     {
         //can't jump in air
         if (!canJumpInAir && iaController.GetMoveState() == EntityController.MoveState.InAir)
         {
-            Debug.Log("ici");
+            //Debug.Log("ici");
             return (false);
         }
             
 
         if (hasJumped)
         {
-            Debug.Log("ou la");
+            //Debug.Log("ou la");
             return (false);
         }
 
         //don't jump if we just grounded
         if (!coolDownOnGround.IsReady())
         {
-            Debug.Log("ou encore la");
+            //Debug.Log("ou encore la");
             return (false);
         }
             
@@ -109,10 +102,5 @@ public class IAJump : EntityJump
     private void FixedUpdate()
     {
         JumpManager();
-    }
-
-    private void OnDisable()
-    {
-        EventManager.StopListening(GameData.Event.OnGrounded, OnGrounded);
     }
 }
