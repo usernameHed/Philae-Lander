@@ -430,6 +430,8 @@ GameObject:
   - component: {fileID: 3959034400415941274}
   - component: {fileID: 3959034400415941277}
   - component: {fileID: 3959034400415941276}
+  - component: {fileID: 806543038}
+  - component: {fileID: 806543037}
   m_Layer: 12
   m_Name: RIGIDBODY Moving Object (Planet oriented)
   m_TagString: Player
@@ -444,8 +446,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.77, y: 8.7, z: 52.03}
+  m_LocalRotation: {x: -0, y: -0.85759, z: -0, w: 0.51433396}
+  m_LocalPosition: {x: 73.86, y: 27.17, z: 49.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}
@@ -453,7 +455,7 @@ Transform:
   - {fileID: 3959034399683835973}
   m_Father: {fileID: 3347777260606228084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -118.09401, z: 0}
 --- !u!114 &4976704726927159999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,6 +543,44 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &806543038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959034400415941278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Ennemy_Jump_End
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &806543037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959034400415941278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b177f399a068447b815903afcad950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionnalName: 
+  addIdOfObject: {fileID: 3959034400415941279}
+  emitter: {fileID: 806543038}
 --- !u!1 &3959034401119974716
 GameObject:
   m_ObjectHideFlags: 0

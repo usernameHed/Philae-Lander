@@ -5,12 +5,15 @@ public class FmodEventEmitter : MonoBehaviour
 {
     public string additionnalName = "";
     public Transform addIdOfObject;
+
+    [SerializeField]
     private FMODUnity.StudioEventEmitter emitter;   //l'emitter attaché à l'objet
 
 
     void Start()
     {
-        emitter = gameObject.GetComponent<FMODUnity.StudioEventEmitter>();  //init l'emitter
+        if (!emitter)
+            emitter = gameObject.GetComponent<FMODUnity.StudioEventEmitter>();  //init l'emitter
         string addParent = (addIdOfObject) ? addIdOfObject.GetInstanceID().ToString() : "";
         if (emitter && emitter.Event != "")
             SoundManager.GetSingleton.AddKey(emitter.Event + additionnalName + addParent, this);

@@ -59,6 +59,8 @@ public class PlayerJump : EntityJump
             rb.ClearVelocity();
             playerGravity.CreateAttractor();
 
+            SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Thruster.ToString());
+            SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
             base.DoJump();
             Vibrate();
 
