@@ -1,60 +1,65 @@
 fileFormatVersion: 2
-guid: ae6cf5b84148cd34b9b4d50c3ac64bfe
+guid: c1b65d2a905f91d46972c4b282387393
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: all
-    100002: Echarp
-    100004: handL
-    100006: handR
-    100008: Head
-    100010: L
-    100012: pCube10
-    100014: pCube7
-    100016: pCylinder1
-    100018: polySurface1
-    100020: polySurface2
-    100022: polySurface3
-    100024: polySurface4
-    100026: polySurface4 1
-    100028: R
-    100030: //RootNode
-    100032: transform1
-    100034: transform2
-    100036: transform3
-    100038: transform4
-    100040: transform5
-    100042: transform6
-    100044: transform7
-    100046: Wheel
-    400000: all
-    400002: Echarp
-    400004: handL
-    400006: handR
-    400008: Head
-    400010: L
-    400012: pCube10
-    400014: pCube7
-    400016: pCylinder1
-    400018: polySurface1
-    400020: polySurface2
-    400022: polySurface3
-    400024: polySurface4
-    400026: polySurface4 1
-    400028: R
-    400030: //RootNode
-    400032: transform1
-    400034: transform2
-    400036: transform3
-    400038: transform4
-    400040: transform5
-    400042: transform6
-    400044: transform7
-    400046: Wheel
+    100000: //RootNode
+    100002: all
+    100004: Echarp
+    100006: handL
+    100008: handR
+    100010: Head
+    100012: L
+    100014: pCube10
+    100016: pCube5
+    100018: pCube7
+    100020: pCylinder1
+    100022: polySurface1
+    100024: polySurface2
+    100026: polySurface3
+    100028: polySurface4
+    100030: R
+    100032: Wheel
+    400000: //RootNode
+    400002: all
+    400004: Echarp
+    400006: handL
+    400008: handR
+    400010: Head
+    400012: L
+    400014: pCube10
+    400016: pCube5
+    400018: pCube7
+    400020: pCylinder1
+    400022: polySurface1
+    400024: polySurface2
+    400026: polySurface3
+    400028: polySurface4
+    400030: R
+    400032: Wheel
     2100000: lambert1
-    2300000: polySurface4
-    3300000: polySurface4
-    4300000: polySurface4
+    2300000: pCube10
+    2300002: pCube7
+    2300004: pCylinder1
+    2300006: polySurface1
+    2300008: polySurface2
+    2300010: polySurface3
+    2300012: polySurface4
+    3300000: pCube10
+    3300002: pCube7
+    3300004: pCylinder1
+    3300006: polySurface1
+    3300008: polySurface2
+    3300010: polySurface3
+    3300012: polySurface4
+    4300000: pCylinder1
+    4300002: pCube10
+    4300004: pCube7
+    4300006: polySurface4
+    4300008: polySurface2
+    4300010: polySurface3
+    4300012: polySurface1
+    7400000: Take 001
     9500000: //RootNode
   externalObjects:
   - first:
@@ -113,7 +118,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
+    previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
