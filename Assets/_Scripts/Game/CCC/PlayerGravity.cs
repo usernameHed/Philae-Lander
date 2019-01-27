@@ -38,6 +38,9 @@ public class PlayerGravity : MonoBehaviour
     private float gravityAttractor = 2f;
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float speedLerpAttractor = 5f;
+    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("ref script")]
+    private float distAllowedForNormalGravity = 10f;
+
 
     [FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
     private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
@@ -228,6 +231,35 @@ public class PlayerGravity : MonoBehaviour
         return (dirAttractor);
     }
 
+    public Vector3 PlotTrajectoryAtTime(Vector3 start, Vector3 startVelocity, float time)
+    {
+        return start + startVelocity * time + GetMainAndOnlyGravity() * time * time * 0.5f;
+    }
+
+    public void PlotTrajectory(Vector3 start, Vector3 startVelocity, float timestep, float maxTime)
+    {
+        Vector3 prev = start;
+        for (int i = 1; ; i++)
+        {
+            float t = timestep * i;
+            if (t > maxTime) break;
+            Vector3 pos = PlotTrajectoryAtTime(start, startVelocity, t);
+            if (Physics.Linecast(prev, pos)) break;
+            Debug.DrawLine(prev, pos, Color.yellow);
+            prev = pos;
+        }
+    }
+
+    private bool RaycastIfWeCanDoNormalGravity()
+    {
+        //distAllowedForNormalGravity;
+        //PlotTrajectory(rb.transform.position, rb.velocity, Time.deltaTime, Time.deltaTime + 5f);
+
+            //return true; if normal gravity !
+        //Debug.Break();
+        return (false);
+    }
+
     private void ChangeStateGravity()
     {
         //here player is on fly
@@ -237,7 +269,8 @@ public class PlayerGravity : MonoBehaviour
             //here player is on fly, and we can create an attractor
             if (timerBeforeCreateAttractor.IsStartedAndOver() && currentOrientation == OrientationPhysics.NORMALS)
             {
-                ActiveAttractor();
+                if (!RaycastIfWeCanDoNormalGravity())
+                    ActiveAttractor();
             }
             //here currently attractor attractive
             else if (currentOrientation == OrientationPhysics.ATTRACTOR)

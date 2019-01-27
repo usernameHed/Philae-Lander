@@ -12,9 +12,6 @@ public class EntityJump : MonoBehaviour
     protected bool stayHold = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected bool canJumpInAir = true;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
-    protected float distAllowedForNormalGravity = 10f;
-
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected Transform playerLocalyRotate;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
