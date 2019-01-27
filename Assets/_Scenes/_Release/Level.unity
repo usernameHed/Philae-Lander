@@ -8414,30 +8414,9 @@ PrefabInstance:
       objectReference: {fileID: 747360856}
     - target: {fileID: 4342663178068225473, guid: 0bf1d571462d8e84fa4718cd103f8f07,
         type: 3}
-      propertyPath: objOnSight.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225473, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
       propertyPath: mainReferenceObjectDirection
       value: 
       objectReference: {fileID: 1903526630}
-    - target: {fileID: 4342663178068225473, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: objOnSight.Array.data[0]
-      value: Walkable/Floor
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225473, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: radiusRaycast
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3959034401119974716, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000,
-        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf1d571462d8e84fa4718cd103f8f07, type: 3}
 --- !u!4 &5660237606669580178 stripped
