@@ -13,6 +13,11 @@ public class PlayerInput : EntityAction
     [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
     public Vector2 mouseInput;
 
+    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    public bool focus;
+    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    public bool focusUp;
+
     [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
     protected PlayerController playerController;
     public PlayerController PlayerController { get { return (playerController); } }
@@ -49,6 +54,8 @@ public class PlayerInput : EntityAction
             //all button
             Jump = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Jump");
             JumpUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Jump");
+            focus = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Focus");
+            focusUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Focus");
 
             mouseInput = new Vector2(
             Input.GetAxisRaw("Mouse X"),

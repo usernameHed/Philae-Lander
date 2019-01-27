@@ -47,6 +47,10 @@ public class PlayerRotateCamPoint : MonoBehaviour
     [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
     private float defaultLenghtCamPointDist;
 
+    private float oldDefaultLenghtCamPointDist;
+    private bool hasZoomed = false;
+    private bool isRaulbacking = false;
+
     private void Start()
     {
         defaultLenghtCamPointDist = (objectToRotate.position - tpsSpacePoint.position).magnitude;
@@ -69,6 +73,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
         if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
         {
             float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(dirInput.y), marginTurnVerti, 1f, 0f, 1f);
+            hasZoomed = isRaulbacking = false;  //cancel raulback
 
             if (dirInput.y < 0)
             {
@@ -137,22 +142,50 @@ public class PlayerRotateCamPoint : MonoBehaviour
             
             if (diffDist > minDistToZoom)
             {
+                if (!hasZoomed)
+                {
+                    oldDefaultLenghtCamPointDist = defaultLenghtCamPointDist;
+                    hasZoomed = true;
+                }
+
+
+
                 diffDist = Mathf.Clamp(diffDist, 0, 10) / 10;
                 isInsideSomzthing = true;
                 Zoom(diffDist * speedBoostZoom);
                 ChangePositionPoint();
             }
+            else
+            {
+                if (hasZoomed && !isRaulbacking)
+                {
+                    defaultLenghtCamPointDist = oldDefaultLenghtCamPointDist;
+                    isRaulbacking = true;
+                }
+            }
+        }
+    }
+
+    private void Raulbacking()
+    {
+        if (isRaulbacking)
+        {
+            Zoom(1f);
+            ChangePositionPoint();
         }
     }
 
     private void Update()
     {
         isInsideSomzthing = false;
+        
+
         if (!playerInput.NotMovingCamera())
         {
             InputRotate();
             InputZoom();
         }
         ZoomIfSometingOnSight();
+        //Raulbacking();
     }
 }
