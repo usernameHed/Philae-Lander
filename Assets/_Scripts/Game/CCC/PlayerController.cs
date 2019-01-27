@@ -21,6 +21,8 @@ public class PlayerController : EntityController, IKillable
     public PlayerJump playerJump;
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public Transform renderPlayer;
+    [FoldoutGroup("Object"), Tooltip("ref script")]
+    public Animator animator;
 
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
@@ -86,9 +88,14 @@ public class PlayerController : EntityController, IKillable
 
         if (!playerInput.NotMoving())
         {
+            
             moveState = MoveState.Move;
             if (!isMoving)
+            {
                 SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString());
+                animator.SetBool("isMarche", true);
+            }
+
             isMoving = true;
         }
         else
@@ -98,6 +105,7 @@ public class PlayerController : EntityController, IKillable
             {
                 SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
                 SoundManager.GetSingleton.playSound(GameData.Sounds.Player_End_Movement.ToString());
+                animator.SetBool("isMarche", false);
             }
 
             isMoving = false;

@@ -192,11 +192,11 @@ public class PlayerGravity : MonoBehaviour
 
         transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
 
-        //ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
+        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
 
-        //ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
-        //ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
-        //Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
+        ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
+        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
+        Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
 
         //Debug.Break();
     }
@@ -267,7 +267,7 @@ public class PlayerGravity : MonoBehaviour
             PhilaeManager.Instance.PlanetChange();
 
             entityController.SetKinematic(true);
-
+            Debug.Log("change planete");
             isOnTransition = true;
             Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
         }

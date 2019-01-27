@@ -54,7 +54,7 @@ public class EntityController : MonoBehaviour
 
     public void ChangeMainPlanet(Rigidbody rb)
     {
-        Debug.Log("playerGravity: " + playerGravity);
+        
         playerGravity.ChangeMainAttractObject(rb.transform);
     }
 

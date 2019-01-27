@@ -61,6 +61,8 @@ public class PlayerJump : EntityJump
 
             SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Thruster.ToString());
             SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
+            playerController.animator.SetBool("isJUMP", true);
+
             base.DoJump();
             Vibrate();
 
@@ -77,6 +79,7 @@ public class PlayerJump : EntityJump
         //if (isPlayer)
         PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
         Debug.Log("Grounded !");
+        playerController.animator.SetBool("isJUMP", false);
         coolDownWhenJumped.Reset();
         //here, we just were falling, without jumping
         if (!hasJumped)
