@@ -123,6 +123,11 @@ MonoBehaviour:
       type: 3}
     size: 300
     shouldExpand: 1
+  - tag: 3
+    prefab: {fileID: 1946426094882001107, guid: cbbbff27deffdde46ad71eda24a38d12,
+      type: 3}
+    size: 200
+    shouldExpand: 1
 --- !u!1 &1664252573
 GameObject:
   m_ObjectHideFlags: 0

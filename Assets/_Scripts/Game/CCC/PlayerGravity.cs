@@ -85,6 +85,11 @@ public class PlayerGravity : MonoBehaviour
 
     private void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
         ResearchInitialGround();
         CalculateGravity();
     }

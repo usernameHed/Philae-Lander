@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: c1b65d2a905f91d46972c4b282387393
+guid: 3d4b8f2a91e020a4c91457847139608b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: all
-    100004: Echarp
-    100006: handL
-    100008: handR
-    100010: Head
+    100000: all
+    100002: Echarp
+    100004: handL
+    100006: handR
+    100008: Head
+    100010: //RootNode
     100012: L
     100014: pCube10
     100016: pCube5
@@ -20,12 +20,12 @@ ModelImporter:
     100028: polySurface4
     100030: R
     100032: Wheel
-    400000: //RootNode
-    400002: all
-    400004: Echarp
-    400006: handL
-    400008: handR
-    400010: Head
+    400000: all
+    400002: Echarp
+    400004: handL
+    400006: handR
+    400008: Head
+    400010: //RootNode
     400012: L
     400014: pCube10
     400016: pCube5
@@ -61,13 +61,7 @@ ModelImporter:
     4300012: polySurface1
     7400000: Take 001
     9500000: //RootNode
-    2186277476908879412: ImportLogs
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: c5ce7a3785a0f194c9fe488e936d7a70, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -119,7 +113,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
