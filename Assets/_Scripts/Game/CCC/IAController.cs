@@ -52,6 +52,8 @@ public class IAController : EntityController, IPooledObject, IKillable
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private State interactionState = State.WANDER;
 
+    private FrequencyCoolDown timerScream = new FrequencyCoolDown();
+
 
     [SerializeField, ReadOnly]
     public PlayerController playerController;
@@ -63,6 +65,7 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     private void Start()
     {
+        StartTimerScream();
         playerController = PhilaeManager.Instance.playerControllerRef;
     }
 
@@ -183,13 +186,22 @@ public class IAController : EntityController, IPooledObject, IKillable
         }
     }
 
+    private void StartTimerScream()
+    {
+        timerScream.StartCoolDown(ExtRandom.GetRandomNumber(5f, 30));
+    }
+
 
     private void Update()
     {
         if (!enabledScript)
             return;
 
-        
+        if (timerScream.IsStartedAndOver())
+        {
+            StartTimerScream();
+            SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Scream.ToString() + rb.transform.GetInstanceID());
+        }
     }
 
     private void FixedUpdate()

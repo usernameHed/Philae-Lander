@@ -81,7 +81,9 @@ public class IAJump : EntityJump
             iaController.ChangeState(EntityController.MoveState.InAir);
 
             Debug.Log("jump !");
-            
+            SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_start.ToString() + rb.transform.GetInstanceID());
+
+
             rb.ClearVelocity();
             playerGravity.CreateAttractor();
 

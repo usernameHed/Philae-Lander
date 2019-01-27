@@ -27,6 +27,7 @@ public class PlayerController : EntityController, IKillable
     public int idPlayer = 0;
 
     private bool isKilled = false;
+    private bool isMoving = false;
 
 
     private void OnEnable()
@@ -67,6 +68,7 @@ public class PlayerController : EntityController, IKillable
         if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
         {
             playerJump.OnGrounded();
+            SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
         }
 
         if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
@@ -74,6 +76,7 @@ public class PlayerController : EntityController, IKillable
             //IN AIR
             moveState = MoveState.InAir;
             SetDragRb(0);
+            isMoving = false;
             return;
         }
 
@@ -84,10 +87,20 @@ public class PlayerController : EntityController, IKillable
         if (!playerInput.NotMoving())
         {
             moveState = MoveState.Move;
+            if (!isMoving)
+                SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString());
+            isMoving = true;
         }
         else
         {
             moveState = MoveState.Idle;
+            if (isMoving)
+            {
+                SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
+                SoundManager.GetSingleton.playSound(GameData.Sounds.Player_End_Movement.ToString());
+            }
+
+            isMoving = false;
         }
     }
 
@@ -108,6 +121,7 @@ public class PlayerController : EntityController, IKillable
         PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
         EventManager.TriggerEvent(GameData.Event.GameOver);
         renderPlayer.gameObject.SetActive(false);
+        SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Death.ToString());
 
         isKilled = true;
     }

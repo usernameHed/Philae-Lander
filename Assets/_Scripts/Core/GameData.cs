@@ -191,7 +191,27 @@ public static class GameData
     {
         Music_Intro,
         Music_Theme,
-        Music_Enemy
+        Music_Enemy,
+
+        Bushes,
+        Ennemy_FTPS,
+        Ennemy_Jump_End,
+        Ennemy_Jump_start,
+        Ennemy_Scream,
+        Fuel_Location,
+        Meteor_Loop,
+        Meteor_Explosion,
+        Player_BigThruster,
+        Player_Death,
+        Player_Mine,
+        Player_Movement,
+        Player_End_Movement,
+        Player_ReadyToLaunch,
+        Player_Thruster,
+        UI_Back,
+        UI_Enter,
+        UI_Start,
+        
     }
     #endregion
 }
