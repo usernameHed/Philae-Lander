@@ -74,6 +74,7 @@ public class PlayerGravity : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
+    public Transform GetMainAttractObject() { return (mainAttractObject); }
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
 
@@ -81,11 +82,6 @@ public class PlayerGravity : MonoBehaviour
     private float gravityAttractorLerp = 1f;
     private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle
     private Vector3 worldLastNormal;        //derniere normal enregistré, peut import le changement position/angle
-
-    private void OnEnable()
-    {
-        EventManager.StartListening(GameData.Event.OnGrounded, OnGrounded);
-    }
 
     private void Awake()
     {
@@ -275,11 +271,6 @@ public class PlayerGravity : MonoBehaviour
         }
     }
 
-    public void OnGrounded()
-    {
-        //Debug.Log("reset, we are onground !");
-    }
-
     /// <summary>
     /// apply gravity on ground
     /// </summary>
@@ -339,7 +330,7 @@ public class PlayerGravity : MonoBehaviour
             Debug.DrawRay(rb.transform.position, orientationDown, Color.blue, 5f);
             rb.velocity += orientationDown;
 
-            Debug.Log("going down");
+            //Debug.Log("going down");
             //Debug.Break();
         }
         /*else if (dotGravityRigidbody < 0 && currentOrientation == OrientationPhysics.ATTRACTOR)
@@ -390,10 +381,5 @@ public class PlayerGravity : MonoBehaviour
         ApplyAirGravity();
 
         SaveLastPositionOnground();
-    }
-
-    private void OnDisable()
-    {
-        EventManager.StopListening(GameData.Event.OnGrounded, OnGrounded);
     }
 }

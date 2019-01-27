@@ -13,12 +13,6 @@ public class PlayerJump : EntityJump
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerController playerController;
 
-    private void OnEnable()
-    {
-        EventManager.StartListening(GameData.Event.OnGrounded, OnGrounded);
-    }
-
-
     private bool CanJump()
     {
         //can't jump in air
@@ -37,28 +31,6 @@ public class PlayerJump : EntityJump
             return (false);
 
         return (true);
-    }
-
-    /// <summary>
-    /// called when grounded (after a jump, or a fall !)
-    /// </summary>
-    public void OnGrounded()
-    {
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
-        Debug.Log("Grounded !");
-        coolDownWhenJumped.Reset();
-        //here, we just were falling, without jumping
-        if (!hasJumped)
-        {
-            coolDownOnGround.StartCoolDown(justGroundTimer);
-        }
-        //here, we just on grounded after a jump
-        else
-        {
-            //rb.ClearVelocity();
-            coolDownOnGround.StartCoolDown(justGroundTimer);
-            hasJumped = false;
-        }
     }
 
     private void JumpManager()
@@ -98,6 +70,26 @@ public class PlayerJump : EntityJump
         }
     }
 
+    public void OnGrounded()
+    {
+        //if (isPlayer)
+        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
+        Debug.Log("Grounded !");
+        coolDownWhenJumped.Reset();
+        //here, we just were falling, without jumping
+        if (!hasJumped)
+        {
+            coolDownOnGround.StartCoolDown(justGroundTimer);
+        }
+        //here, we just on grounded after a jump
+        else
+        {
+            //rb.ClearVelocity();
+            coolDownOnGround.StartCoolDown(justGroundTimer);
+            hasJumped = false;
+        }
+    }
+
     /// <summary>
     /// do a jump
     /// </summary>
@@ -116,10 +108,5 @@ public class PlayerJump : EntityJump
     private void FixedUpdate()
     {
         JumpManager();
-    }
-
-    private void OnDisable()
-    {
-        EventManager.StopListening(GameData.Event.OnGrounded, OnGrounded);
     }
 }

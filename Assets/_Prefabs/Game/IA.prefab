@@ -558,6 +558,7 @@ GameObject:
   - component: {fileID: 6378499145988959517}
   - component: {fileID: 572475307673479076}
   - component: {fileID: 3746570082600007948}
+  - component: {fileID: 1946426094882001108}
   m_Layer: 11
   m_Name: IA
   m_TagString: Untagged
@@ -641,6 +642,14 @@ MonoBehaviour:
   rotateObject: {fileID: 1564282204669084742}
   moveState: 0
   iaInput: {fileID: 2872185176216241161}
+  distForChase: 100
+  distForTriggerChangePlanet: 20
+  rigidBodyRef: {fileID: 8558135673731581516}
+  objRotateRef: {fileID: 1564282204669084742}
+  iAJump: {fileID: 877396873506430848}
+  iAInput: {fileID: 2872185176216241161}
+  interactionState: 0
+  playerController: {fileID: 0}
 --- !u!114 &877396873506430848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52239a19d2586c4e96345561b6ed728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 3
+  jumpHeight: 4
   stayHold: 0
   canJumpInAir: 1
   playerLocalyRotate: {fileID: 1564282204669084742}
@@ -662,7 +671,8 @@ MonoBehaviour:
   playerGravity: {fileID: 7664884488448998126}
   hasJumped: 0
   justJumpedTimer: 0.2
-  justGroundTimer: 0.1
+  justGroundTimer: 1
+  addRandomJump: 4
   iaController: {fileID: 4030741380261741711}
 --- !u!114 &7664884488448998126
 MonoBehaviour:
@@ -750,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b670f0b7eba32740a272e0a969094f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnRate: 600
+  turnRate: 300
   mainReferenceObjectDirection: {fileID: 1564282204669084742}
   entityAction: {fileID: 2872185176216241161}
   rb: {fileID: 8558135673731581516}
@@ -785,6 +795,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   rb: {fileID: 8558135673731581516}
+--- !u!114 &1946426094882001108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946426094882001107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cde7ff117ff48549f86c9b6569126f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlAI: {fileID: 4900000, guid: 0a9e253b32bf163409ea314ad08e1754, type: 3}
+  updateAllTree: 0
+  waitTime: 0
 --- !u!1 &2209271497841348339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1856,7 @@ GameObject:
   - component: {fileID: 8558135673731581516}
   m_Layer: 11
   m_Name: RIGIDBODY Moving Object (Planet oriented)
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
