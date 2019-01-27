@@ -102,7 +102,7 @@ public class SoundManager : SerializedMonoBehaviour                             
                 return;
             }
         }
-        Debug.Log("key sound not found");
+        //Debug.Log("key sound not found");
     }
 
     private FmodEventEmitter GetEmitter(string soundTag)

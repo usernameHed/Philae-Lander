@@ -35,7 +35,8 @@ public class IAController : EntityController, IPooledObject, IKillable
             return (interactionState == State.GO_TO_WAYPOINT);
         }
     }*/
-
+    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
+    private bool canLosePlayer = false;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
     private float distForChase = 100f;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
@@ -73,7 +74,7 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     public void DoWandering()
     {
-        Debug.Log("Wander");
+        //Debug.Log("Wander");
         iaInput.SetRandomInput();
         iaInput.SetRandomJump();
     }
@@ -109,29 +110,18 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     public void SetChase()
     {
-        Debug.Log("close !!!");
+        //Debug.Log("close !!!");
         interactionState = State.CHASE_PLAYER;
     }
 
     public void DoChase()
     {
-        Debug.Log("Do chase");
+        //Debug.Log("Do chase");
         iaInput.SetDirectionPlayer();
         iaInput.SetRandomJump();
     }
 
-    /*public void SetGoToPoint()
-    {
-        interactionState = State.GO_TO_WAYPOINT;
-        goToPointTarget = null;
-        Debug.Log("find the target on the planet...");
-    }
-
-    public void DoGoToPoint()
-    {
-        Debug.Log("AAHHHHAHHAH let's go to the trigger of other planet");
-        iaInput.SetDirectionPoint(goToPointTarget);
-    }
+    /*
 
     public bool IsCloseToTriggerOtherPlanet()
     {
@@ -145,8 +135,11 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     public void LosePlayer()
     {
-        //Debug.Log("LOSE PLAYER");
-        //interactionState = State.WANDER;
+        if (canLosePlayer)
+        {
+            Debug.Log("LOSE PLAYER");
+            interactionState = State.WANDER;
+        }
     }
 
     /*
