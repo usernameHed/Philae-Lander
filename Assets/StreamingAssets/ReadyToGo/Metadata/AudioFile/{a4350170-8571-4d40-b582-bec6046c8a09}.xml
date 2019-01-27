@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{a4350170-8571-4d40-b582-bec6046c8a09}">
+        <property name="assetPath">
+            <value>Thruster_med_01.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.417142857142857</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{471cbe65-6aed-4780-93c1-fd819d94d313}</destination>
+        </relationship>
+    </object>
+</objects>

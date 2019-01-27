@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{73a3490a-4b19-4f83-b107-9a9dcc09fc50}">
+        <property name="assetPath">
+            <value>Scream_Ennemy_3.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>1.1029478458049886</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{471cbe65-6aed-4780-93c1-fd819d94d313}</destination>
+        </relationship>
+    </object>
+</objects>

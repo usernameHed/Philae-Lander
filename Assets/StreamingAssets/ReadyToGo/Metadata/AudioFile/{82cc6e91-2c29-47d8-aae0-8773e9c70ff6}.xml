@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{82cc6e91-2c29-47d8-aae0-8773e9c70ff6}">
+        <property name="assetPath">
+            <value>FTPS_Ennemy_3.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.46256235827664399</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{471cbe65-6aed-4780-93c1-fd819d94d313}</destination>
+        </relationship>
+    </object>
+</objects>
