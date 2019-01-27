@@ -707,6 +707,7 @@ MonoBehaviour:
   objRotateRef: {fileID: 1564282204669084742}
   iAJump: {fileID: 877396873506430848}
   iAInput: {fileID: 2872185176216241161}
+  iaScream: {x: 3.5798604, y: 13.611332}
   interactionState: 0
   playerController: {fileID: 0}
 --- !u!114 &877396873506430848

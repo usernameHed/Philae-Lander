@@ -48,6 +48,8 @@ public class IAController : EntityController, IPooledObject, IKillable
     private IAJump iAJump;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
     private IAInput iAInput;
+    [FoldoutGroup("GamePlay"), MinMaxSlider(0, 50), Tooltip("movement speed when we are wandering"), SerializeField]
+    private Vector2 iaScream;
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private State interactionState = State.WANDER;
@@ -188,7 +190,7 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     private void StartTimerScream()
     {
-        timerScream.StartCoolDown(ExtRandom.GetRandomNumber(5f, 30));
+        timerScream.StartCoolDown(ExtRandom.GetRandomNumber(iaScream.x, iaScream.y));
     }
 
 
@@ -211,7 +213,7 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     public void OnObjectSpawn()
     {
-        //rb.transform.position = transform.position;
+        rb.transform.position = transform.position;
         //throw new System.NotImplementedException();
     }
 

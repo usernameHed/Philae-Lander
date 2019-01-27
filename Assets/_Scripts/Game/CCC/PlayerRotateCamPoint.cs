@@ -25,6 +25,8 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private float radiusRaycast = 0.7f;
     [FoldoutGroup("Sight"), Tooltip("dist min when we need to zoom the camera"), SerializeField]
     private float minDistToZoom = 0.1f;
+    [FoldoutGroup("Sight"), Tooltip("dist min when we need to zoom the camera"), SerializeField]
+    private float speedBoostZoom = 1f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;
@@ -39,8 +41,8 @@ public class PlayerRotateCamPoint : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private GroundCheck groundCheck;
 
-
-    public float valueEase = 0;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody")]
+    private bool isInsideSomzthing = false;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
     private float defaultLenghtCamPointDist;
@@ -99,6 +101,15 @@ public class PlayerRotateCamPoint : MonoBehaviour
         defaultLenghtCamPointDist = clampValue;
     }
 
+    /// <summary>
+    /// tel if we are inside something
+    /// </summary>
+    /// <returns></returns>
+    public bool IsInsideSomething()
+    {
+        return (isInsideSomzthing);
+    }
+
     private void ZoomIfSometingOnSight()
     {
         Vector2 dirInput = playerInput.GetCameraInput();
@@ -127,7 +138,8 @@ public class PlayerRotateCamPoint : MonoBehaviour
             if (diffDist > minDistToZoom)
             {
                 diffDist = Mathf.Clamp(diffDist, 0, 10) / 10;
-                Zoom(diffDist);
+                isInsideSomzthing = true;
+                Zoom(diffDist * speedBoostZoom);
                 ChangePositionPoint();
             }
         }
@@ -135,6 +147,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
 
     private void Update()
     {
+        isInsideSomzthing = false;
         if (!playerInput.NotMovingCamera())
         {
             InputRotate();

@@ -15,7 +15,8 @@ public class Anim_herbe : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(GameData.Tags.Player.ToString()))
+        if (other.gameObject.CompareTag(GameData.Tags.Player.ToString())
+            || other.gameObject.CompareTag(GameData.Tags.Enemy.ToString()))
         {
             anim.SetBool ("isBouge", true);
             SoundManager.GetSingleton.playSound(GameData.Sounds.Bushes.ToString() + transform.GetInstanceID());

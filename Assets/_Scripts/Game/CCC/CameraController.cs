@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
 
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float closeMargin = 0.1f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private float autoZoomRatio = 1.05f;
 
     [FoldoutGroup("Object"), Tooltip("ref de la camera"), SerializeField]
     private Camera cameraRef;
@@ -33,6 +35,8 @@ public class CameraController : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
     private RotateToGround rotateToGround;
+    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
+    private PlayerRotateCamPoint playerRotateCamPoint;
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float timeBeforeResetBaseCamera = 0.4f;
     public float GetTimeKinematic() { return (timeBeforeResetBaseCamera); }
@@ -145,6 +149,17 @@ public class CameraController : MonoBehaviour
     }
 
     /// <summary>
+    /// move faster when zclip
+    /// </summary>
+    /// <returns></returns>
+    public float GetAutoZoomRatio()
+    {
+        if (playerRotateCamPoint.IsInsideSomething())
+            return (autoZoomRatio);
+        return (1);
+    }
+
+    /// <summary>
     /// Smoothly move camera toward targetPosition
     /// </summary>
     private void MoveCamera()
@@ -153,7 +168,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        movingCamera.position = Vector3.SmoothDamp(movingCamera.position, targetPosition.position, ref currentVelocity, cameraTypes.GetDampingMove());
+        movingCamera.position = Vector3.SmoothDamp(movingCamera.position, targetPosition.position, ref currentVelocity, cameraTypes.GetDampingMove() * GetAutoZoomRatio());
     }
 
     private void RotateCamera()

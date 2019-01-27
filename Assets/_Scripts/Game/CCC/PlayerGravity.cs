@@ -78,6 +78,7 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
 
+    private bool isOnTransition = false;
 
     private float gravityAttractorLerp = 1f;
     private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle
@@ -256,7 +257,8 @@ public class PlayerGravity : MonoBehaviour
     public void ChangeMainAttractObject(Transform rbTransform)
     {
         if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
-            && (entityController.GetMoveState() == EntityController.MoveState.InAir))
+            && (entityController.GetMoveState() == EntityController.MoveState.InAir)
+            && !isOnTransition)
         {
             PhilaeManager.Instance.cameraController.SetChangePlanetCam();
 
@@ -265,6 +267,8 @@ public class PlayerGravity : MonoBehaviour
             PhilaeManager.Instance.PlanetChange();
 
             entityController.SetKinematic(true);
+
+            isOnTransition = true;
             Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
         }
     }
@@ -300,6 +304,12 @@ public class PlayerGravity : MonoBehaviour
             return;
         if (!entityJump.IsJumpCoolDebugDownReady())
             return;
+
+        if (isOnTransition)
+        {
+            Debug.Log("stop transition !");
+            isOnTransition = false;
+        }
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
 
@@ -338,7 +348,7 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private void ApplyAirGravity()
     {
-        if (entityController.GetMoveState() != PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return;
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();

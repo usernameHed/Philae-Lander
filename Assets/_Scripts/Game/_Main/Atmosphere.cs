@@ -17,7 +17,7 @@ public class Atmosphere : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip("planette qui attire"), SerializeField]
     private bool enemyAreInside = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(GameData.Layers.Player.ToString()))
         {
