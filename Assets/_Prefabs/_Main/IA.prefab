@@ -701,6 +701,7 @@ MonoBehaviour:
   rotateObject: {fileID: 1564282204669084742}
   moveState: 0
   iaInput: {fileID: 2872185176216241161}
+  canLosePlayer: 0
   distForChase: 100
   distForTriggerChangePlanet: 20
   rigidBodyRef: {fileID: 8558135673731581516}
@@ -757,6 +758,8 @@ MonoBehaviour:
   defaultGravityInAir: 2
   gravityAttractor: 2
   speedLerpAttractor: 5
+  distAllowedForNormalGravity: 10
+  distMinForChange: 2
   lengthPositionAttractPoint: 1
   sizeDistanceForSavePlayerPos: 0.5
   currentOrientation: 0
@@ -1933,7 +1936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500998731254317378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.98, y: 16.56, z: 76.16}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 467071262012082493}

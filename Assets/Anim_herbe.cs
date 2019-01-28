@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Anim_herbe : MonoBehaviour
 {
-   Animator anim;
+    [SerializeField]
+    private Animator anim;
+
     bool isBouge;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
         isBouge = false;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(GameData.Tags.Player.ToString())
