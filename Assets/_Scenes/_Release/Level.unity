@@ -11086,9 +11086,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5c46e917319cc4980539dd761e2e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabMetric: {fileID: 0}
-  rbPlanetParent: {fileID: 0}
-  atmosphere: {fileID: 0}
+  prefabMetric: {fileID: 3796316705873826775, guid: 94d9c40231912864da7b16f519a5b290,
+    type: 3}
+  rbPlanetParent: {fileID: 758402163}
+  atmosphere: {fileID: 678824576}
   playerIsInside: 0
   enemyAreInside: 0
 --- !u!1 &681721760
@@ -27693,9 +27694,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5c46e917319cc4980539dd761e2e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabMetric: {fileID: 0}
-  rbPlanetParent: {fileID: 0}
-  atmosphere: {fileID: 0}
+  prefabMetric: {fileID: 3796316705873826775, guid: 94d9c40231912864da7b16f519a5b290,
+    type: 3}
+  rbPlanetParent: {fileID: 30480526}
+  atmosphere: {fileID: 30480520}
   playerIsInside: 0
   enemyAreInside: 0
 --- !u!1 &1781972204
