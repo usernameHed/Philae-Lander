@@ -217,14 +217,10 @@ public class PlayerGravity : MonoBehaviour
         //Debug.Break();
     }
 
-    private void ActiveAttractor()
-    {
-        Debug.Log("attractor activated !");
-        currentOrientation = OrientationPhysics.ATTRACTOR;
-        PhilaeManager.Instance.cameraController.SetAttractorCamera();
-        gravityAttractorLerp = 1;
-    }
-
+    /// <summary>
+    /// get vector director of attractor for the new physics direction
+    /// </summary>
+    /// <returns></returns>
     private Vector3 GetDirAttractor()
     {
         Vector3 dirAttractor =  rb.transform.position - transformPointAttractor;
@@ -250,6 +246,11 @@ public class PlayerGravity : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// test if we create an attractor point, or if we can simply keep the actual gravity !
+    /// or change it to the normal of the collision ??
+    /// </summary>
+    /// <returns></returns>
     private bool RaycastIfWeCanDoNormalGravity()
     {
         //distAllowedForNormalGravity;
@@ -258,6 +259,24 @@ public class PlayerGravity : MonoBehaviour
             //return true; if normal gravity !
         //Debug.Break();
         return (false);
+    }
+
+    /// <summary>
+    /// create an attractor point for entity gravity !
+    /// </summary>
+    private void ActiveAttractor()
+    {
+        Debug.Log("attractor activated !");
+        currentOrientation = OrientationPhysics.ATTRACTOR;
+
+        //camera change only of this is have player
+        if (entityController.isPlayer)
+        {
+            PhilaeManager.Instance.cameraController.SetAttractorCamera();
+        }
+
+
+        gravityAttractorLerp = 1;
     }
 
     private void ChangeStateGravity()
@@ -291,10 +310,6 @@ public class PlayerGravity : MonoBehaviour
         //here on ground
         else
         {
-            /*if (currentOrientation == OrientationPhysics.OBJECT)
-            {
-                PhilaeManager.Instance.cameraController.SetBaseCamera();
-            }*/
             //Debug.Log("reset timer ??? we aree on ground wtf ??");
             timerBeforeCreateAttractor.Reset();
             currentOrientation = OrientationPhysics.NORMALS;
@@ -319,7 +334,10 @@ public class PlayerGravity : MonoBehaviour
             && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
             && !IsTooCloseToOtherPlanet(rbTransform))
         {
-            PhilaeManager.Instance.cameraController.SetChangePlanetCam();
+            if (entityController.isPlayer)
+            {
+                PhilaeManager.Instance.cameraController.SetChangePlanetCam();
+            }                
 
             mainAttractObject = rbTransform;
             currentOrientation = OrientationPhysics.OBJECT;

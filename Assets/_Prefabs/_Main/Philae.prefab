@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 3347777260606228082}
   - component: {fileID: 2648358779095376201}
   - component: {fileID: 4342663178068225473}
-  - component: {fileID: 2648358779095376200}
+  - component: {fileID: 424197143998509921}
   - component: {fileID: 4342663178068225341}
   m_Layer: 12
   m_Name: Philae
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d129c8f320f3b4a96b015cb9601086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   rb: {fileID: 3959034400415941276}
   playerGravity: {fileID: 4342663178068225343}
   groundCheck: {fileID: 2648358779095376182}
@@ -261,6 +262,8 @@ MonoBehaviour:
   defaultGravityInAir: 2
   gravityAttractor: 2
   speedLerpAttractor: 5
+  distAllowedForNormalGravity: 10
+  distMinForChange: 2
   lengthPositionAttractPoint: 1
   sizeDistanceForSavePlayerPos: 0.5
   currentOrientation: 0
@@ -361,7 +364,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2648358779095376182}
   isInsideSomzthing: 0
   defaultLenghtCamPointDist: 2.5
---- !u!114 &2648358779095376200
+--- !u!114 &424197143998509921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,12 +373,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3347777260606228087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 898450995ee5ab74aadb53dede327f9a, type: 3}
+  m_Script: {fileID: 11500000, guid: be9e47cc97ef0be4b9f72cd7ef4a03de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRotate: 50
   smoothNormals: {fileID: 4342663178068225342}
   rbObject: {fileID: 3959034400415941278}
+  speedRotate: 700
 --- !u!114 &4342663178068225341
 MonoBehaviour:
   m_ObjectHideFlags: 0

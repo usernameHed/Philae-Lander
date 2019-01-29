@@ -62,24 +62,25 @@ public class PlayerController : EntityController, IKillable
             return;
     }
 
+    private void OnGrounded()
+    {
+        playerJump.OnGrounded();
+
+        if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
+        {
+            PhilaeManager.Instance.cameraController.SetBaseCamera();
+        }
+
+        SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
+    }
+
     /// <summary>
     /// set state of player
     /// </summary>
     private void ChangeState()
     {
-        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
-        {
-            playerJump.OnGrounded();
-
-            if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
-            {
-                PhilaeManager.Instance.cameraController.SetBaseCamera();
-            }
-
-            SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
-        }
-
-        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
+        //Check if is flying
+        if (groundCheck.IsFlying())
         {
             //IN AIR
             moveState = MoveState.InAir;
@@ -88,7 +89,12 @@ public class PlayerController : EntityController, IKillable
             return;
         }
 
-        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
+        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
+        {
+            OnGrounded();
+        }
+
+        if (rb.drag != oldDrag)
             SetDragRb(oldDrag);
 
 

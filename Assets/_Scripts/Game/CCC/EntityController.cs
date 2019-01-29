@@ -12,6 +12,9 @@ public class EntityController : MonoBehaviour
         Move,
     }
 
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    public bool isPlayer = false;
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     public Rigidbody rb;
 

@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 1373550130193594520}
   - component: {fileID: 8373218802359468609}
   - component: {fileID: 6378499145988959517}
-  - component: {fileID: 572475307673479076}
+  - component: {fileID: 6744551704169965037}
   - component: {fileID: 3746570082600007948}
   - component: {fileID: 1946426094882001108}
   m_Layer: 11
@@ -695,6 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851f19cca37cde8449f97369d8256c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   rb: {fileID: 8558135673731581516}
   playerGravity: {fileID: 7664884488448998126}
   groundCheck: {fileID: 2010288843780516740}
@@ -829,7 +830,7 @@ MonoBehaviour:
   rb: {fileID: 8558135673731581516}
   objectToRotate: {fileID: 1564282204669084742}
   entityController: {fileID: 4030741380261741711}
---- !u!114 &572475307673479076
+--- !u!114 &6744551704169965037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -838,12 +839,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1946426094882001107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 898450995ee5ab74aadb53dede327f9a, type: 3}
+  m_Script: {fileID: 11500000, guid: be9e47cc97ef0be4b9f72cd7ef4a03de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRotate: 50
   smoothNormals: {fileID: 1373550130193594520}
   rbObject: {fileID: 6500998731254317378}
+  speedRotate: 300
 --- !u!114 &3746570082600007948
 MonoBehaviour:
   m_ObjectHideFlags: 0

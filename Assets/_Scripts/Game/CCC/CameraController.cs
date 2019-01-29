@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using System;
 
 /// <summary>
 /// Manage camera
@@ -12,6 +13,9 @@ public class CameraController : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField, InlineEditor]
     private CameraTypes cameraTypes;
+    public CameraTypes GetCameraType() { return (cameraTypes); }
+    [FoldoutGroup("GamePlay"), Tooltip("Base cam value"), SerializeField]
+    private CameraTypes.CAM_CURRENT camCurrent = new CameraTypes.CAM_CURRENT();
 
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float closeMargin = 0.1f;
@@ -33,8 +37,6 @@ public class CameraController : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
     private Transform targetToLook;
 
-    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
-    private RotateToGround rotateToGround;
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
     private PlayerRotateCamPoint playerRotateCamPoint;
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
@@ -58,16 +60,29 @@ public class CameraController : MonoBehaviour
 
     private void Init()
     {
+        cameraTypes.Init();
         freez = false;
         InitializeCamera();
         SetBaseCamera();
+        InitBaseCameraValue();
+    }
+
+    public float GetRotateSpeedRotate()
+    {
+        float value = cameraTypes.GetRotateSpeedRotate(ref camCurrent);
+        return (value);
+    }
+
+    private void InitBaseCameraValue()
+    {
+        //cameraRotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
+        //currentDampingMove = cameraTypes.GetDampingMove();
     }
 
     public void SetBaseCamera()
     {
         CancelInvoke("SetBaseCamera");
         cameraTypes.camType = CameraTypes.CameraType.BASE;
-        rotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
         Debug.Log("set base camera !");
     }
 
@@ -79,20 +94,15 @@ public class CameraController : MonoBehaviour
     public void SetAttractorCamera()
     {
         CancelInvoke("SetBaseCamera");
-
         cameraTypes.camType = CameraTypes.CameraType.ATTRACTOR;
-        rotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
         Debug.Log("set base camera !");
     }
 
     public void SetChangePlanetCam()
     {
         CancelInvoke("SetBaseCamera");
-
         Debug.Log("set change palnet camera");
         cameraTypes.camType = CameraTypes.CameraType.PLANET_CHANGE;
-        rotateToGround.speedRotate = cameraTypes.GetRotateSpeedRotate();
-
         Invoke("SetBaseCamera", timeBeforeResetBaseCamera);
     }
 
@@ -173,7 +183,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        movingCamera.position = Vector3.SmoothDamp(movingCamera.position, targetPosition.position, ref currentVelocity, cameraTypes.GetDampingMove() * GetAutoZoomRatio());
+        movingCamera.position = Vector3.SmoothDamp(movingCamera.position, targetPosition.position, ref currentVelocity, cameraTypes.GetDampingMove(ref camCurrent) * GetAutoZoomRatio());
     }
 
     private void RotateCamera()
@@ -192,7 +202,7 @@ public class CameraController : MonoBehaviour
         rotateCameraY.rotation = Quaternion.RotateTowards(  
                                 rotateCameraY.rotation,
                                 desiredOrientation,
-                                cameraTypes.GetDampingRotateY() * Time.deltaTime);
+                                cameraTypes.GetDampingRotateY(ref camCurrent) * Time.deltaTime);
     }
 
     private void FixedUpdate()

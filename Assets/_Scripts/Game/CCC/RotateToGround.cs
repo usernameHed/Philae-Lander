@@ -5,27 +5,19 @@ using UnityEngine;
 
 public class RotateToGround : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    public float speedRotate = 5f;
-
-    [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     private SmoothNormals smoothNormals;
-    [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    [FoldoutGroup("Object"), Tooltip("ref object to rotate"), SerializeField]
     private GameObject rbObject;
 
-    private void Start()
-    {
-        InstantRotate();
-    }
-
-    private void InstantRotate()
+    protected void InstantRotate()
     {
         Vector3 dirOrientation = smoothNormals.GetSmoothedNormal();
 
         rbObject.transform.rotation = Quaternion.FromToRotation(rbObject.transform.up, dirOrientation) * rbObject.transform.rotation;
     }
 
-    private void RotateObject()
+    protected void RotateObject(float speedRotate)
     {
         Vector3 dirOrientation = smoothNormals.GetSmoothedNormal();
 
@@ -34,10 +26,5 @@ public class RotateToGround : MonoBehaviour
         //UnityRotateExtensions.Rotate_DegreesPerSecond(rbObject, dirOrientation, speedRotate);
         Quaternion targetRotation = Quaternion.FromToRotation(rbObject.transform.up, dirOrientation) * rbObject.transform.rotation;
         rbObject.transform.rotation = Quaternion.RotateTowards(rbObject.transform.rotation, targetRotation, speedRotate);
-    }
-
-    private void FixedUpdate()
-    {
-        RotateObject();
     }
 }

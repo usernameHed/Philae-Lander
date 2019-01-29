@@ -31,6 +31,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|CameraTypes+CAM_BASE, Assembly-CSharp
+    - Name: speedLerpToUs
+      Entry: 4
+      Data: 10
     - Name: DampingMove
       Entry: 4
       Data: 0.2
@@ -46,6 +49,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 2|CameraTypes+CAM_PLANET_CHANGE, Assembly-CSharp
+    - Name: speedLerpToUs
+      Entry: 4
+      Data: 100
     - Name: DampingMove
       Entry: 4
       Data: 0.05
@@ -61,6 +67,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 3|CameraTypes+CAM_ATTRACTOR, Assembly-CSharp
+    - Name: speedLerpToUs
+      Entry: 4
+      Data: 100
     - Name: DampingMove
       Entry: 4
       Data: 0.1
@@ -79,4 +88,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  camType: 2
+  cameraController: {fileID: 0}
+  camType: 0

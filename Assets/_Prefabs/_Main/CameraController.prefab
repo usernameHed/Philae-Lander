@@ -46,7 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTypes: {fileID: 11400000, guid: 5ba86071495c26449a86288e052b5d66, type: 2}
-  closeMargin: 0.1
+  camCurrent:
+    DampingMove: 0
+    dampingRotateY: 0
+    rotateToGroundSpeed: 0
+  closeMargin: 0.005
   autoZoomRatio: 0.5
   cameraRef: {fileID: 3211926162045997771}
   movingCamera: {fileID: 7122285418949979841}
@@ -54,7 +58,6 @@ MonoBehaviour:
   targetList: []
   targetPosition: {fileID: 0}
   targetToLook: {fileID: 0}
-  rotateToGround: {fileID: 7122285419363627205}
   playerRotateCamPoint: {fileID: 0}
   timeBeforeResetBaseCamera: 0.3
 --- !u!114 &7122285419363627205
@@ -69,7 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898450995ee5ab74aadb53dede327f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRotate: 2
   smoothNormals: {fileID: 0}
   rbObject: {fileID: 7122285417589540831}
 --- !u!1 &3211926162045997769

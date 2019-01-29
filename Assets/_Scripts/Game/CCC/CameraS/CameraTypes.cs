@@ -9,19 +9,34 @@ public class CameraTypes : SerializedScriptableObject
 {
     public enum CameraType
     {
-        BASE,
-        PLANET_CHANGE,
-        ATTRACTOR,
+        BASE = 0,
+        PLANET_CHANGE = 1,
+        ATTRACTOR = 2,
     }
 
+    #region CAM Type
     public interface ICAM_Type
     {
 
     }
 
     [Serializable]
+    public struct CAM_CURRENT : ICAM_Type
+    {
+        //[ReadOnly]
+        //public float speedLerpToUs;
+        [ReadOnly]
+        public float DampingMove;
+        [ReadOnly]
+        public float dampingRotateY;
+        [ReadOnly]
+        public float rotateToGroundSpeed;
+    }
+
+    [Serializable]
     public struct CAM_BASE : ICAM_Type
     {
+        public float speedLerpToUs;
         public float DampingMove;
         public float dampingRotateY;
         public float rotateToGroundSpeed;
@@ -29,6 +44,7 @@ public class CameraTypes : SerializedScriptableObject
     [Serializable]
     public struct CAM_PLANET_CHANGE : ICAM_Type
     {
+        public float speedLerpToUs;
         public float DampingMove;
         public float dampingRotateY;
         public float rotateToGroundSpeed;
@@ -36,10 +52,26 @@ public class CameraTypes : SerializedScriptableObject
     [Serializable]
     public struct CAM_ATTRACTOR : ICAM_Type
     {
+        public float speedLerpToUs;
         public float DampingMove;
         public float dampingRotateY;
         public float rotateToGroundSpeed;
     }
+
+    private CAM_BASE camBase;
+    private CAM_PLANET_CHANGE camPlanetChange;
+    private CAM_ATTRACTOR camAttractor;
+    #endregion
+
+    public void Init()
+    {
+        camBase = (CAM_BASE)camTypes[0];
+        camPlanetChange = (CAM_PLANET_CHANGE)camTypes[1];
+        camAttractor = (CAM_ATTRACTOR)camTypes[2];
+    }
+
+    [Tooltip(""), SerializeField]
+    public CameraController cameraController;
 
     [Tooltip(""), SerializeField]
     public CameraType camType = CameraType.BASE;
@@ -47,61 +79,61 @@ public class CameraTypes : SerializedScriptableObject
     [Tooltip(""), SerializeField]
     private List<ICAM_Type> camTypes;
 
-    public float GetDampingMove()
+    public float GetDampingMove(ref CAM_CURRENT camCurrent)
     {
         switch (camType)
         {  
             case CameraType.PLANET_CHANGE:
-                CAM_PLANET_CHANGE cam2 = (CAM_PLANET_CHANGE)camTypes[1];
-                return (cam2.DampingMove);
+                camCurrent.DampingMove = Mathf.Lerp(camCurrent.DampingMove, camPlanetChange.DampingMove, camPlanetChange.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.DampingMove);
 
             case CameraType.ATTRACTOR:
-                CAM_ATTRACTOR cam3 = (CAM_ATTRACTOR)camTypes[2];
-                return (cam3.DampingMove);
+                camCurrent.DampingMove = Mathf.Lerp(camCurrent.DampingMove, camAttractor.DampingMove, camAttractor.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.DampingMove);
 
             case CameraType.BASE:
             default:
-                CAM_BASE cam = (CAM_BASE)camTypes[0];
-                return (cam.DampingMove);
+                camCurrent.DampingMove = Mathf.Lerp(camCurrent.DampingMove, camBase.DampingMove, camBase.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.DampingMove);
         }
     }
 
 
-    public float GetDampingRotateY()
+    public float GetDampingRotateY(ref CAM_CURRENT camCurrent)
     {
         switch (camType)
         {
             case CameraType.PLANET_CHANGE:
-                CAM_PLANET_CHANGE cam2 = (CAM_PLANET_CHANGE)camTypes[1];
-                return (cam2.dampingRotateY);
+                camCurrent.dampingRotateY = Mathf.Lerp(camCurrent.dampingRotateY, camPlanetChange.dampingRotateY, camPlanetChange.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.dampingRotateY);
 
             case CameraType.ATTRACTOR:
-                CAM_ATTRACTOR cam3 = (CAM_ATTRACTOR)camTypes[2];
-                return (cam3.dampingRotateY);
+                camCurrent.dampingRotateY = Mathf.Lerp(camCurrent.dampingRotateY, camAttractor.dampingRotateY, camAttractor.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.dampingRotateY);
 
             case CameraType.BASE:
             default:
-                CAM_BASE cam = (CAM_BASE)camTypes[0];
-                return (cam.dampingRotateY);
+                camCurrent.dampingRotateY = Mathf.Lerp(camCurrent.dampingRotateY, camBase.dampingRotateY, camBase.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.dampingRotateY);
         }
     }
 
-    public float GetRotateSpeedRotate()
+    public float GetRotateSpeedRotate(ref CAM_CURRENT camCurrent)
     {
         switch (camType)
         {
             case CameraType.PLANET_CHANGE:
-                CAM_PLANET_CHANGE cam2 = (CAM_PLANET_CHANGE)camTypes[1];
-                return (cam2.rotateToGroundSpeed);
+                camCurrent.rotateToGroundSpeed = Mathf.Lerp(camCurrent.rotateToGroundSpeed, camPlanetChange.rotateToGroundSpeed, camPlanetChange.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.rotateToGroundSpeed);
 
             case CameraType.ATTRACTOR:
-                CAM_ATTRACTOR cam3 = (CAM_ATTRACTOR)camTypes[2];
-                return (cam3.rotateToGroundSpeed);
+                camCurrent.rotateToGroundSpeed = Mathf.Lerp(camCurrent.rotateToGroundSpeed, camAttractor.rotateToGroundSpeed, camAttractor.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.rotateToGroundSpeed);
 
             case CameraType.BASE:
             default:
-                CAM_BASE cam = (CAM_BASE)camTypes[0];
-                return (cam.rotateToGroundSpeed);
+                camCurrent.rotateToGroundSpeed = Mathf.Lerp(camCurrent.rotateToGroundSpeed, camBase.rotateToGroundSpeed, camBase.speedLerpToUs * Time.deltaTime);
+                return (camCurrent.rotateToGroundSpeed);
         }
     }
 }
