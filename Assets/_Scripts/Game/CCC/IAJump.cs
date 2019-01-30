@@ -43,7 +43,7 @@ public class IAJump : EntityJump
     /// </summary>
     public void OnGrounded()
     {
-        Debug.Log("Grounded !");
+        ExtLog.DebugLogIa("Grounded !", ExtLog.Log.IA);
         coolDownWhenJumped.Reset();
 
         coolDownOnGround.StartCoolDown(justGroundTimer + ExtRandom.GetRandomNumber(0f, addRandomJump));
@@ -80,7 +80,7 @@ public class IAJump : EntityJump
             coolDownWhenJumped.StartCoolDown(justJumpedTimer);
             iaController.ChangeState(EntityController.MoveState.InAir);
 
-            Debug.Log("jump !");
+            ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
             SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_start.ToString() + rb.transform.GetInstanceID());
 
 

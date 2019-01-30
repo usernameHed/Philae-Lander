@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 [TypeInfoBox("Global GameManager of the game")]
 public class GameManager : SingletonMono<GameManager>
 {
+    public ExtLog.Log logType = ExtLog.Log.BASE;
     [FoldoutGroup("GamePlay"), Tooltip("vibration of joystick active ?")]
     public bool enableVibration = true;
     

@@ -263,7 +263,7 @@ MonoBehaviour:
   gravityAttractor: 2
   speedLerpAttractor: 5
   distAllowedForNormalGravity: 10
-  distMinForChange: 2
+  distMinForChange: 7
   lengthPositionAttractPoint: 1
   sizeDistanceForSavePlayerPos: 0.5
   currentOrientation: 0

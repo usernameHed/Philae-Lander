@@ -43,6 +43,8 @@ public class PlayerRotateCamPoint : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody")]
     private bool isInsideSomzthing = false;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody")]
+    private bool isFocusing = false;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
     private float defaultLenghtCamPointDist;
@@ -175,6 +177,15 @@ public class PlayerRotateCamPoint : MonoBehaviour
         }
     }
 
+    private void InputFocus()
+    {
+        if (playerInput.focus && !isFocusing)
+        {
+            isFocusing = true;
+
+        }
+    }
+
     private void Update()
     {
         isInsideSomzthing = false;
@@ -184,6 +195,10 @@ public class PlayerRotateCamPoint : MonoBehaviour
         {
             InputRotate();
             InputZoom();
+        }
+        else
+        {
+            InputFocus();
         }
         ZoomIfSometingOnSight();
         //Raulbacking();

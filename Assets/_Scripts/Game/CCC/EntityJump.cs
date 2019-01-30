@@ -62,7 +62,8 @@ public class EntityJump : MonoBehaviour
 
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight / (1 + (1 * entityAction.GetMagnitudeInput()));
-        Debug.Log("boost height: " + jumpBoostHeight);
+        
+        //Debug.Log("boost height: " + jumpBoostHeight);
         return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
     }
 

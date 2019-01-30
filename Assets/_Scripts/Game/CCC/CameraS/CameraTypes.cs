@@ -98,7 +98,6 @@ public class CameraTypes : SerializedScriptableObject
         }
     }
 
-
     public float GetDampingRotateY(ref CAM_CURRENT camCurrent)
     {
         switch (camType)
