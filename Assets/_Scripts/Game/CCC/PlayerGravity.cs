@@ -323,12 +323,12 @@ public class PlayerGravity : MonoBehaviour
                 }
                 else
                 {
-                    Vector3 dirNewRaycast = GetMainAndOnlyGravity();
+                    Vector3 dirNewRaycast = GetMainAndOnlyGravity() * -1;
+                    float distRaycast = 5f;
+                    Debug.DrawRay(lastPos, dirNewRaycast * distRaycast, Color.cyan, 5f);
 
-                    Debug.DrawRay(lastPos, dirNewRaycast, Color.red, 5f);
-
-                    if (Physics.SphereCast(lastPos, 0.3f, GetMainAndOnlyGravity(), out hitInfo,
-                                           10f, layerMask, QueryTriggerInteraction.Ignore))
+                    if (Physics.SphereCast(lastPos, 0.3f, dirNewRaycast, out hitInfo,
+                                           distRaycast, layerMask, QueryTriggerInteraction.Ignore))
                     {
                         Debug.Log("find something in stage 2 ! normal gravity !!");
                     }
