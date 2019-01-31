@@ -100,6 +100,7 @@ public class EntityJump : MonoBehaviour
         Vector3 orientedStrenghtJump = AddJumpHeight(dirJump);
 
         rb.velocity = orientedStrenghtJump;
+        playerGravity.JustJump();
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
     }

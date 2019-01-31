@@ -12,6 +12,35 @@ public class PlayerGravity : MonoBehaviour
         ATTRACTOR,
     }
 
+    public struct InfoJump
+    {
+        public bool didWeHit;
+        public Vector3 pointHit;
+        public Vector3 normalHit;
+        public Transform objHit;
+        public Vector3 dirUltimatePlotPoint;
+        public Vector3 ultimatePlotPoint;
+
+        public void SetDirLast(Vector3[] plots)
+        {
+            Vector3 penultimate = plots[plots.Length - 2];
+            Vector3 ultimate = plots[plots.Length - 1];
+            
+            ultimatePlotPoint = ultimate;
+            dirUltimatePlotPoint = ultimate - penultimate;
+        }
+
+        public void Clear()
+        {
+            didWeHit = false;
+            pointHit = Vector3.zero;
+            normalHit = Vector3.zero;
+            objHit = null;
+            dirUltimatePlotPoint = Vector3.zero;
+            ultimatePlotPoint = Vector3.zero;
+        }
+    }
+
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     private float gravity = 9.81f;
     public float Gravity { get { return (gravity); } }
@@ -21,13 +50,19 @@ public class PlayerGravity : MonoBehaviour
     //private float magicTrajectoryCorrectionRatio = 1f;
 
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
-    private string[] layersRaycast;
+    
 
     [FoldoutGroup("Ground Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
     private float groundAddGravity = 45f;
     [FoldoutGroup("Ground Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
     private float stickToFloorGravity = 6f;
+
+    [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("raycast to ground layer")]
+    private string[] layersRaycast;
+    [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("raycast to ground layer")]
+    private float distRaycastForNormalSwitch = 5f;
+    [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
+    private float timeBeforeTestingNewNormalGravity = 0.4f;
 
     [FoldoutGroup("Air Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
     private float rbUpAddGravity = 2.5f;
@@ -65,7 +100,8 @@ public class PlayerGravity : MonoBehaviour
 
     private Vector3 mainAndOnlyGravity = Vector3.zero;
     private FrequencyCoolDown timerBeforeCreateAttractor = new FrequencyCoolDown();
-
+    private FrequencyCoolDown timerBeforeTestingNewNormalGravity = new FrequencyCoolDown();
+    private InfoJump infoJump = new InfoJump();
     private Vector3 transformPointAttractor = Vector3.zero;
 
     public Vector3 GetMainAndOnlyGravity()
@@ -88,12 +124,15 @@ public class PlayerGravity : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
+    private Vector3 mainAttractPoint;
     public Transform GetMainAttractObject() { return (mainAttractObject); }
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
 
     private bool isOnTransition = false;
-
+    private bool normalGravityTested = false;   //know if we are in the 0.5-0.8 sec between norma and attractor
+    private bool dontApplyForceDownForThisRound = false;
+    private bool applyStrongAttractor = true;
     private float gravityAttractorLerp = 1f;
     private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle
     private Vector3 worldLastNormal;        //derniere normal enregistré, peut import le changement position/angle
@@ -128,6 +167,7 @@ public class PlayerGravity : MonoBehaviour
         if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, raycastLayerMask))
         {
             mainAttractObject = hit.transform;
+            mainAttractPoint = mainAttractObject.position;
             ExtLog.DebugLogIa("Did Hit", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
         }
         else
@@ -211,7 +251,6 @@ public class PlayerGravity : MonoBehaviour
     public void CreateAttractor()
     {
         ExtLog.DebugLogIa("create attractor !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-
         timerBeforeCreateAttractor.StartCoolDown(timeBeforeActiveAttractorInAir);
 
         transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
@@ -226,6 +265,16 @@ public class PlayerGravity : MonoBehaviour
         //Debug.Break();
     }
 
+
+    public void OnGrounded()
+    {
+        dontApplyForceDownForThisRound = false;
+        normalGravityTested = false;
+        timerBeforeCreateAttractor.Reset();
+        timerBeforeTestingNewNormalGravity.Reset();
+
+        CreateAttractor();
+    }
     /// <summary>
     /// get vector director of attractor for the new physics direction
     /// </summary>
@@ -236,7 +285,10 @@ public class PlayerGravity : MonoBehaviour
         return (dirAttractor);
     }
 
-    public Vector3[] Plot(Rigidbody rigidbody, Vector3 pos, Vector3 velocity, int steps)
+    /// <summary>
+    /// calculate trajectory of entity
+    /// </summary>
+    public Vector3[] Plot(Rigidbody rigidbody, Vector3 pos, Vector3 velocity, int steps, bool noForceWhenUp, bool noForceWhenDown)
     {
         Vector3[] results = new Vector3[steps];
 
@@ -245,41 +297,202 @@ public class PlayerGravity : MonoBehaviour
         
         float drag = 1f - timestep * rigidbody.drag;
         Vector3 moveStep = velocity * timestep;
-        /*Vector3 gravityAccel2 = FindAirGravity(pos, moveStep, GetMainAndOnlyGravity()) * timestep;// * timestep * timestep;
-        moveStep += gravityAccel2;
-        pos += moveStep;
-        */
-        for (int i = 0; i < steps; ++i)
+
+        int i = -1;
+        while (++i < steps)
         {
             CalculateGravity(pos);
-            Vector3 gravityAccel = FindAirGravity(pos, moveStep, GetMainAndOnlyGravity()) * timestep;// * timestep * timestep;
-            //Vector3 gravityAccel = AirAttractor(GetMainAndOnlyGravity(), pos) * timestep * timestep;
-            //Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * Time.fixedDeltaTime;
-
-            //gravityAccel += AirBaseGravity(GetMainAndOnlyGravity(), pos);
-
+            Vector3 gravityAccel = FindAirGravity(pos, moveStep, GetMainAndOnlyGravity(), noForceWhenUp, noForceWhenDown, true) * timestep;
             moveStep += gravityAccel;
-            //moveStep *= drag;
+            moveStep *= drag;
             pos += moveStep;
-            //pos += GetMainAndOnlyGravity() * magicTrajectoryCorrectionRatio;
             results[i] = pos;
-            ExtDrawGuizmos.DebugWireSphere(results[i], Color.white, 0.1f, 5f);
+            ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 0.1f);
         }
-        //Trajectory.DebugTrajectory(rigidbody, velocity, ForceMode.VelocityChange, Color.green, 3.0f, 3.0f);
-
-        return results;
+        return (results);
     }
 
     /// <summary>
-    /// test if we create an attractor point, or if we can simply keep the actual gravity !
-    /// or change it to the normal of the collision ??
+    /// do raycast along the Plots, and reutrn true if we hit
     /// </summary>
+    /// <param name="infoPlot"></param>
     /// <returns></returns>
-    private bool RaycastIfWeCanDoNormalGravity()
+    public bool DoRaycast(Vector3[] infoPlot, int depth = 2)
     {
-        //Debug.Break();
+        Vector3 prevPos = rb.transform.position;
+
+        RaycastHit hitInfo;
+        int layerMask = Physics.AllLayers;
+        layerMask = LayerMask.GetMask(objOnSight);
+
+        for (int i = 0; i <= depth; i++)
+        {
+            Vector3 dirRaycast;
+            Vector3 lastPoint;
+
+            if (i == depth)
+            {
+                dirRaycast = infoJump.dirUltimatePlotPoint.normalized * distRaycastForNormalSwitch;
+                lastPoint = infoJump.ultimatePlotPoint;
+                //lastPoint pas utile de le mettre ?
+            }
+            else
+            {
+                int indexPoint = ((infoPlot.Length / depth) * (i + 1)) - 1;
+                Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
+                lastPoint = infoPlot[indexPoint];
+
+                dirRaycast = lastPoint - prevPos;
+            }
+
+            Debug.DrawRay(prevPos, dirRaycast, Color.red, 5f);
+            if (Physics.SphereCast(prevPos, 0.3f, dirRaycast, out hitInfo,
+                                   dirRaycast.magnitude, layerMask, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log("find something ! keep going with normal gravity");
+                infoJump.didWeHit = true;
+                infoJump.normalHit = hitInfo.normal;
+                infoJump.objHit = hitInfo.transform;
+                infoJump.pointHit = hitInfo.point;
+                Debug.DrawRay(hitInfo.point, infoJump.normalHit, Color.magenta, 5f);
+                return (true);
+            }
+            prevPos = lastPoint;
+        }
         return (false);
     }
+
+    /*
+    /// <summary>
+    /// do a raycast at the end of the jump
+    /// </summary>
+    public bool ForwardRaycastJump(Vector3[] plots)
+    {
+        //infoJump.Clear();
+        RaycastHit hitInfo;
+        int layerMask = Physics.AllLayers;
+        layerMask = LayerMask.GetMask(objOnSight);
+
+        
+        Vector3 dirUltimate = infoJump.dirUltimatePlotPoint;
+
+        Debug.DrawRay(infoJump.ultimatePlotPoint, dirUltimate.normalized * distRaycastForNormalSwitch, Color.red, 5f);
+        if (Physics.SphereCast(infoJump.ultimatePlotPoint, 0.3f, dirUltimate, out hitInfo,
+                               distRaycastForNormalSwitch, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log("find something on forward raycast jump !");
+            infoJump.didWeHit = true;
+            infoJump.normalHit = hitInfo.normal;
+            infoJump.objHit = hitInfo.transform;
+            infoJump.pointHit = hitInfo.point;
+            Debug.DrawRay(hitInfo.point, infoJump.normalHit, Color.magenta, 5f);
+            return (true);
+        }
+
+        return (false);
+    }
+    */
+
+    /// <summary>
+    /// we just jump
+    /// if we hit something in the plot and raycast: pass to OBJECT ORIENTED (a kind of swithc planet)
+    /// </summary>
+    public void JustJump()
+    {
+        //reset jump first test timer
+        timerBeforeTestingNewNormalGravity.StartCoolDown(timeBeforeTestingNewNormalGravity);
+        normalGravityTested = false;
+        dontApplyForceDownForThisRound = false;
+
+        //first create 30 plot of the normal jump
+        Vector3[] plots = Plot(rb, rb.transform.position, rb.velocity, 30, false, true);
+        infoJump.Clear();
+        infoJump.SetDirLast(plots);
+
+        bool hit = DoRaycast(plots);    //return true if we hit a wall in the first jump plot
+        //if (!hit)
+        //    hit = ForwardRaycastJump(plots);    //return true if we hit a wall in the long raycast after the 30 plots
+
+        //here, we hit something at some point !
+        if (hit)
+        {
+            Vector3 normalJump = GetMainAndOnlyGravity();
+            Vector3 normalHit = infoJump.normalHit;
+
+            float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
+            if (dotImpact > 0)
+            {
+                Debug.Log("we hit way !");
+                currentOrientation = OrientationPhysics.OBJECT;
+                mainAttractObject = infoJump.objHit;
+                mainAttractPoint = infoJump.pointHit;
+            }
+            else
+            {
+                Debug.Log("No way we climb That !, Obstacle to inclined");
+            }
+
+        }
+        else
+        {
+            Debug.Log("no hit... fack");
+        }
+        //Debug.Break();
+    }
+
+    /// <summary>
+    /// do an ultime test of PLOT / raycast, if we find something: switch to Object oriented
+    /// else, we will pass soon on Attractor...
+    /// </summary>
+    private void UltimaTestBeforeAttractor()
+    {
+        if (normalGravityTested)
+            return;
+        normalGravityTested = true;
+
+        Vector3 ultimate = infoJump.ultimatePlotPoint;
+        Vector3 dirUltimate = infoJump.dirUltimatePlotPoint;
+
+        //chose if we add force or not
+        Debug.Log("ultimate raycast");
+
+        infoJump.Clear();
+        //create plot WITH force down
+        Vector3[] plots = Plot(rb, rb.transform.position, dirUltimate.normalized * rb.velocity.magnitude, 16, false, true);
+
+        infoJump.SetDirLast(plots);
+
+        bool hit = DoRaycast(plots, 1);    //return true if we hit a wall in the first jump plot
+
+        if (!hit)
+        {
+            infoJump.Clear();
+            //create plot WITOUT force down
+            plots = Plot(rb, rb.transform.position, dirUltimate.normalized * rb.velocity.magnitude, 30, false, false);
+            infoJump.SetDirLast(plots);
+
+            hit = DoRaycast(plots, 1);
+            if (hit)
+            {
+                Debug.Log("hit the long run ! desactive force down for this one !");
+                dontApplyForceDownForThisRound = true;
+            }
+        }
+
+        if (hit)
+        {
+            currentOrientation = OrientationPhysics.OBJECT;
+            mainAttractObject = infoJump.objHit;
+            mainAttractPoint = infoJump.pointHit;
+        }
+
+
+        //raycast
+
+        //currentOrientation = OrientationPhysics.OBJECT;
+        //Debug.Break();
+    }
+
 
     /// <summary>
     /// create an attractor point for entity gravity !
@@ -299,53 +512,64 @@ public class PlayerGravity : MonoBehaviour
         gravityAttractorLerp = 1;
     }
 
+    private void SetupAttractor()
+    {
+        dontApplyForceDownForThisRound = false;
+        applyStrongAttractor = true;
+
+        Vector3 lastPos = Plot(rb, rb.transform.position, rb.velocity, 15, true, true)[14];
+
+        RaycastHit hitInfo;
+        int layerMask = Physics.AllLayers;
+        layerMask = LayerMask.GetMask(objOnSight);
+
+        Vector3 dirRaycast = lastPos - rb.transform.position;
+        Debug.DrawRay(rb.transform.position, dirRaycast, Color.red, 5f);
+        if (Physics.SphereCast(rb.transform.position, 0.3f, dirRaycast, out hitInfo,
+                                dirRaycast.magnitude, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log("ATTRACTOR find something ! keep going with normal gravity");
+            applyStrongAttractor = false;
+        }
+        else
+        {
+            Vector3 dirNewRaycast = GetMainAndOnlyGravity() * -1;
+            float distRaycast = 5f;
+            Debug.DrawRay(lastPos, dirNewRaycast * distRaycast, Color.cyan, 5f);
+
+            if (Physics.SphereCast(lastPos, 0.3f, dirNewRaycast, out hitInfo,
+                                    distRaycast, layerMask, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log("ATTRACTOR find something in stage 2 ! normal gravity !!");
+                applyStrongAttractor = false;
+            }
+            else
+            {
+                //try a third one !
+
+                Debug.Log("ATTRACTOR: nothing !!! do the big attractor ??");
+            }
+        }
+                
+        ActiveAttractor();
+        Debug.Break();
+    }
+
     private void ChangeStateGravity()
     {
         //here player is on fly
-        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
         {
             //Debug.Log("try to change gravity state");
             //here player is on fly, and we can create an attractor
-            if (timerBeforeCreateAttractor.IsStartedAndOver() && currentOrientation == OrientationPhysics.NORMALS)
+
+            if (timerBeforeTestingNewNormalGravity.IsStartedAndOver() && currentOrientation == OrientationPhysics.NORMALS)
             {
-                Vector3 lastPos = Plot(rb, rb.transform.position, rb.velocity, 15)[14];
-
-                RaycastHit hitInfo;
-                int layerMask = Physics.AllLayers;
-                layerMask = LayerMask.GetMask(objOnSight);
-
-                Vector3 dirRaycast = lastPos - rb.transform.position;
-                Debug.DrawRay(rb.transform.position, dirRaycast, Color.red, 5f);
-                if (Physics.SphereCast(rb.transform.position, 0.3f, dirRaycast, out hitInfo,
-                                       dirRaycast.magnitude, layerMask, QueryTriggerInteraction.Ignore))
-                {
-                    Debug.Log("find something ! keep going with normal gravity");
-                }
-                else
-                {
-                    Vector3 dirNewRaycast = GetMainAndOnlyGravity() * -1;
-                    float distRaycast = 5f;
-                    Debug.DrawRay(lastPos, dirNewRaycast * distRaycast, Color.cyan, 5f);
-
-                    if (Physics.SphereCast(lastPos, 0.3f, dirNewRaycast, out hitInfo,
-                                           distRaycast, layerMask, QueryTriggerInteraction.Ignore))
-                    {
-                        Debug.Log("find something in stage 2 ! normal gravity !!");
-                    }
-                }
-
-
-                ActiveAttractor();
-                //Plot(rb, rb.transform.position, rb.velocity, 30);
-                gravityAttractorLerp = 1;
-                Debug.Break();
-
-                /*if (!RaycastIfWeCanDoNormalGravity())
-                {
-                    ActiveAttractor();
-                }
-                */
-                    
+                UltimaTestBeforeAttractor();
+            }
+            else if (timerBeforeCreateAttractor.IsStartedAndOver() && currentOrientation == OrientationPhysics.NORMALS)
+            {
+                SetupAttractor();
             }
             //here currently attractor attractive
             else if (currentOrientation == OrientationPhysics.ATTRACTOR)
@@ -396,6 +620,7 @@ public class PlayerGravity : MonoBehaviour
             }                
 
             mainAttractObject = rbTransform;
+            mainAttractPoint = rbTransform.position;
             currentOrientation = OrientationPhysics.OBJECT;
             PhilaeManager.Instance.PlanetChange();
 
@@ -416,7 +641,7 @@ public class PlayerGravity : MonoBehaviour
         switch (currentOrientation)
         {
             case OrientationPhysics.OBJECT:
-                Vector3 direction = positionEntity - mainAttractObject.position;
+                Vector3 direction = positionEntity - mainAttractPoint;
                 mainAndOnlyGravity = direction.normalized;
                 break;
             case OrientationPhysics.NORMALS:
@@ -481,7 +706,7 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private Vector3 AirAddGoingDown(Vector3 gravityOrientation, Vector3 positionEntity)
     {
-        Debug.Log("ici down ?");
+        //Debug.Log("ici down ?");
         Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(positionEntity, orientationDown, Color.blue, 5f);
         return (orientationDown);
@@ -491,10 +716,13 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private Vector3 AirAddGoingUp(Vector3 gravityOrientation, Vector3 positionEntity)
     {
-        Debug.Log("ici up");
+        //Debug.LogWarning("TEMPORATY DESACTIVE UP JUMP");
+        
         Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(positionEntity, orientationDown, Color.blue, 5f);
         return (orientationDown);
+        
+        //return (Vector3.zero);
     }
     /// <summary>
     /// apply base air gravity
@@ -508,18 +736,18 @@ public class PlayerGravity : MonoBehaviour
     /// <summary>
     /// apply attractor gravity
     /// </summary>
-    private Vector3 AirAttractor(Vector3 gravityOrientation, Vector3 positionEntity)
+    private Vector3 AirAttractor(Vector3 gravityOrientation, Vector3 positionEntity, bool applyStrongAttractor)
     {
-        gravityAttractorLerp = Mathf.Lerp(gravityAttractorLerp, gravityAttractorMinMax.x, Time.fixedDeltaTime * speedLerpAttractorMinMax.x);
-        /*
-        if (useMin)
+        //gravityAttractorLerp = Mathf.Lerp(gravityAttractorLerp, gravityAttractorMinMax.x, Time.fixedDeltaTime * speedLerpAttractorMinMax.x);
+        
+        if (applyStrongAttractor)
         {
             gravityAttractorLerp = Mathf.Lerp(gravityAttractorLerp, gravityAttractorMinMax.x, Time.fixedDeltaTime * speedLerpAttractorMinMax.x);
         }
         else
         {
             gravityAttractorLerp = Mathf.Lerp(gravityAttractorLerp, gravityAttractorMinMax.y, Time.fixedDeltaTime * speedLerpAttractorMinMax.y);
-        }*/
+        }
 
         //gravityAttractorLerp = defaultGravityInAir;
 
@@ -533,13 +761,13 @@ public class PlayerGravity : MonoBehaviour
     /// return the right gravity
     /// </summary>
     /// <returns></returns>
-    private Vector3 FindAirGravity(Vector3 positionObject, Vector3 rbVelocity, Vector3 gravityOrientation)
+    private Vector3 FindAirGravity(Vector3 positionObject, Vector3 rbVelocity, Vector3 gravityOrientation, bool noForceWhenUp, bool noForceWhenDown, bool applyStrongAttractor)
     {
         Vector3 finalGravity = rbVelocity;
 
         if (currentOrientation == OrientationPhysics.ATTRACTOR)
         {
-            finalGravity += AirAttractor(gravityOrientation, positionObject);
+            finalGravity += AirAttractor(gravityOrientation, positionObject, applyStrongAttractor);
         }
         else
         {
@@ -547,47 +775,21 @@ public class PlayerGravity : MonoBehaviour
             //here we fall down toward a planet, apply gravity down
             if (dotGravityRigidbody < 0 && currentOrientation != OrientationPhysics.ATTRACTOR)
             {
-                finalGravity += AirAddGoingDown(gravityOrientation, positionObject);
+                if (noForceWhenDown)
+                    finalGravity += AirAddGoingDown(gravityOrientation, positionObject);
             }
             //here we are going up, and we release the jump button, apply gravity down until the highest point
             else if (dotGravityRigidbody > 0 && !entityAction.Jump && currentOrientation != OrientationPhysics.ATTRACTOR)
             {
-                finalGravity += AirAddGoingUp(gravityOrientation, positionObject);
+                if (!noForceWhenUp)
+                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject);
             }
             //Debug.Log("air gravity");
             //here, apply base gravity when we are InAir
 
-            if (currentOrientation != OrientationPhysics.ATTRACTOR)
-            {
-                finalGravity += AirBaseGravity(gravityOrientation, positionObject);
-            }
-        }
-        /*
-
-        float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rbVelocity);
-        //here we fall down toward a planet, apply gravity down
-        if (dotGravityRigidbody < 0 && currentOrientation != OrientationPhysics.ATTRACTOR)
-        {
-            finalGravity += AirAddGoingDown(gravityOrientation, positionObject);
-        }
-        //here we are going up, and we release the jump button, apply gravity down until the highest point
-        else if (dotGravityRigidbody > 0 && !entityAction.Jump && currentOrientation != OrientationPhysics.ATTRACTOR)
-        {
-            finalGravity += AirAddGoingUp(gravityOrientation, positionObject);
-        }
-        //Debug.Log("air gravity");
-        //here, apply base gravity when we are InAir
-
-        if (currentOrientation != OrientationPhysics.ATTRACTOR)
-        {
             finalGravity += AirBaseGravity(gravityOrientation, positionObject);
+
         }
-        //here apply attractor gravity
-        else
-        {
-            finalGravity += AirAttractor(gravityOrientation, positionObject);
-        }
-        */
         return (finalGravity);
     }
 
@@ -600,7 +802,7 @@ public class PlayerGravity : MonoBehaviour
             return;
 
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
-            rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, GetMainAndOnlyGravity());
+        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, GetMainAndOnlyGravity(), true, !dontApplyForceDownForThisRound, applyStrongAttractor);
     }
 
     private void FixedUpdate()
@@ -614,6 +816,6 @@ public class PlayerGravity : MonoBehaviour
 
         SaveLastPositionOnground();
 
-        ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 5f);
+        //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 5f);
     }
 }
