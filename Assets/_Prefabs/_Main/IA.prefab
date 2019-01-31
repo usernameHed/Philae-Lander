@@ -624,7 +624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5660237606669580178
 Transform:
   m_ObjectHideFlags: 0
@@ -749,22 +749,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9.81
-  timeBeforeActiveAttractorInAir: 0.8
-  layersRaycast:
-  - Walkable/Floor
+  magicTrajectoryCorrection: 1
   groundAddGravity: 5.5
   stickToFloorGravity: 6
+  layersRaycast:
+  - Walkable/Floor
+  distRaycastForNormalSwitch: 5
+  timeBeforeTestingNewNormalGravity: 0.4
   rbUpAddGravity: 2.5
   rbDownAddGravity: 5
   defaultGravityInAir: 2
-  gravityAttractor: 2
-  speedLerpAttractor: 5
+  timeBeforeActiveAttractorInAir: 0.8
+  gravityAttractorMinMax: {x: 2, y: 100}
+  speedLerpAttractorMinMax: {x: 5, y: 0.001}
+  objOnSight:
+  - Walkable/Floor
   distAllowedForNormalGravity: 10
+  distSpherecastForLightAttractor: 5
+  radiusSphereCastForLightAttractor: 0.3
   distMinForChange: 2
   lengthPositionAttractPoint: 1
   sizeDistanceForSavePlayerPos: 0.5
   currentOrientation: 0
   differenceAngleNormalForUpdatePosition: 5
+  timeDebugFlyAway: 0.3
   entityController: {fileID: 4030741380261741711}
   groundCheck: {fileID: 2010288843780516740}
   rb: {fileID: 8558135673731581516}
