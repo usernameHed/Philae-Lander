@@ -50,7 +50,7 @@ public class FrequencyCoolDown
 
     public bool IsReady()
     {
-        if (!IsWaiting() || IsStartedAndOver())
+        if (!IsRunning() || IsStartedAndOver())
             return (true);
         return (false);
     }
@@ -58,7 +58,7 @@ public class FrequencyCoolDown
     /// <summary>
     /// le cooldown est commencé mais pas fini
     /// </summary>
-    public bool IsWaiting()
+    public bool IsRunning()
     {
         if (IsStarted() && !IsReady(false))
         {

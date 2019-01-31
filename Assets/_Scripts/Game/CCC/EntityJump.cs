@@ -24,6 +24,7 @@ public class EntityJump : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
+    public bool HasJumped { get { return (hasJumped); } }
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected float justJumpedTimer = 0.1f;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]

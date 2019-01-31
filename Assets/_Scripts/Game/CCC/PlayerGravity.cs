@@ -82,7 +82,10 @@ public class PlayerGravity : MonoBehaviour
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("ref script")]
     private float distAllowedForNormalGravity = 10f;
-
+    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("raycast to ground layer")]
+    private float distSpherecastForLightAttractor = 5f;
+    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("raycast to ground layer")]
+    private float radiusSphereCastForLightAttractor = 0.3f;
 
     [FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
     private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
@@ -97,10 +100,13 @@ public class PlayerGravity : MonoBehaviour
     private OrientationPhysics currentOrientation = OrientationPhysics.OBJECT;
     [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float differenceAngleNormalForUpdatePosition = 5f;   //a-t-on un attract point de placé ?
+    [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
+    private float timeDebugFlyAway = 0.3f;   //a-t-on un attract point de placé ?
 
     private Vector3 mainAndOnlyGravity = Vector3.zero;
     private FrequencyCoolDown timerBeforeCreateAttractor = new FrequencyCoolDown();
     private FrequencyCoolDown timerBeforeTestingNewNormalGravity = new FrequencyCoolDown();
+    private FrequencyCoolDown timerDebugFlyAway = new FrequencyCoolDown();
     private InfoJump infoJump = new InfoJump();
     private Vector3 transformPointAttractor = Vector3.zero;
 
@@ -136,10 +142,12 @@ public class PlayerGravity : MonoBehaviour
     private float gravityAttractorLerp = 1f;
     private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle
     private Vector3 worldLastNormal;        //derniere normal enregistré, peut import le changement position/angle
+    private RaycastHit hitInfo;
+    private int layerMask = Physics.AllLayers;
 
     private void Awake()
     {
-        
+        layerMask = LayerMask.GetMask(objOnSight);
     }
 
     private void Start()
@@ -259,6 +267,10 @@ public class PlayerGravity : MonoBehaviour
 
         ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
         Debug.Log("ici create ?");
+
+        Debug.DrawRay(rb.transform.position, groundCheck.GetDirLastNormal(), Color.black, 0.5f);
+        
+
         ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
         Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
 
@@ -268,6 +280,7 @@ public class PlayerGravity : MonoBehaviour
 
     public void OnGrounded()
     {
+        timerDebugFlyAway.Reset();
         dontApplyForceDownForThisRound = false;
         normalGravityTested = false;
         timerBeforeCreateAttractor.Reset();
@@ -321,10 +334,6 @@ public class PlayerGravity : MonoBehaviour
     {
         Vector3 prevPos = rb.transform.position;
 
-        RaycastHit hitInfo;
-        int layerMask = Physics.AllLayers;
-        layerMask = LayerMask.GetMask(objOnSight);
-
         for (int i = 0; i <= depth; i++)
         {
             Vector3 dirRaycast;
@@ -361,37 +370,6 @@ public class PlayerGravity : MonoBehaviour
         }
         return (false);
     }
-
-    /*
-    /// <summary>
-    /// do a raycast at the end of the jump
-    /// </summary>
-    public bool ForwardRaycastJump(Vector3[] plots)
-    {
-        //infoJump.Clear();
-        RaycastHit hitInfo;
-        int layerMask = Physics.AllLayers;
-        layerMask = LayerMask.GetMask(objOnSight);
-
-        
-        Vector3 dirUltimate = infoJump.dirUltimatePlotPoint;
-
-        Debug.DrawRay(infoJump.ultimatePlotPoint, dirUltimate.normalized * distRaycastForNormalSwitch, Color.red, 5f);
-        if (Physics.SphereCast(infoJump.ultimatePlotPoint, 0.3f, dirUltimate, out hitInfo,
-                               distRaycastForNormalSwitch, layerMask, QueryTriggerInteraction.Ignore))
-        {
-            Debug.Log("find something on forward raycast jump !");
-            infoJump.didWeHit = true;
-            infoJump.normalHit = hitInfo.normal;
-            infoJump.objHit = hitInfo.transform;
-            infoJump.pointHit = hitInfo.point;
-            Debug.DrawRay(hitInfo.point, infoJump.normalHit, Color.magenta, 5f);
-            return (true);
-        }
-
-        return (false);
-    }
-    */
 
     /// <summary>
     /// we just jump
@@ -512,16 +490,25 @@ public class PlayerGravity : MonoBehaviour
         gravityAttractorLerp = 1;
     }
 
+    private bool RaycastForward(Vector3 pos, Vector3 dir, float length, float radius)
+    {
+        Debug.DrawRay(pos, dir * length, Color.cyan, 5f);
+
+        if (Physics.SphereCast(pos, radius, dir, out hitInfo,
+                                length, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log("ATTRACTOR find something in stage 2 ! normal gravity !!");
+            return (true);
+        }
+        return (false);
+    }
+
     private void SetupAttractor()
     {
         dontApplyForceDownForThisRound = false;
-        applyStrongAttractor = true;
-
         Vector3 lastPos = Plot(rb, rb.transform.position, rb.velocity, 15, true, true)[14];
 
-        RaycastHit hitInfo;
-        int layerMask = Physics.AllLayers;
-        layerMask = LayerMask.GetMask(objOnSight);
+        
 
         Vector3 dirRaycast = lastPos - rb.transform.position;
         Debug.DrawRay(rb.transform.position, dirRaycast, Color.red, 5f);
@@ -534,25 +521,23 @@ public class PlayerGravity : MonoBehaviour
         else
         {
             Vector3 dirNewRaycast = GetMainAndOnlyGravity() * -1;
-            float distRaycast = 5f;
-            Debug.DrawRay(lastPos, dirNewRaycast * distRaycast, Color.cyan, 5f);
-
-            if (Physics.SphereCast(lastPos, 0.3f, dirNewRaycast, out hitInfo,
-                                    distRaycast, layerMask, QueryTriggerInteraction.Ignore))
+            bool hit = RaycastForward(lastPos, dirNewRaycast, distSpherecastForLightAttractor, radiusSphereCastForLightAttractor);
+            if (!hit)
             {
-                Debug.Log("ATTRACTOR find something in stage 2 ! normal gravity !!");
-                applyStrongAttractor = false;
+                Vector3 rightGravity = ExtQuaternion.CrossProduct(dirNewRaycast, -rbRotate.transform.right);
+                Vector3 middleRaycastAndGravity = ExtQuaternion.GetMiddleOf2Vector(dirNewRaycast, rightGravity);
+                
+                hit = RaycastForward(lastPos, middleRaycastAndGravity, distSpherecastForLightAttractor, radiusSphereCastForLightAttractor);
+                if (hit)
+                {
+                    //Debug.LogError("we made it !");
+                }
             }
-            else
-            {
-                //try a third one !
-
-                Debug.Log("ATTRACTOR: nothing !!! do the big attractor ??");
-            }
+            applyStrongAttractor = !hit;
         }
                 
         ActiveAttractor();
-        Debug.Break();
+        //Debug.Break();
     }
 
     private void ChangeStateGravity()
@@ -593,6 +578,10 @@ public class PlayerGravity : MonoBehaviour
             //Debug.Log("reset timer ??? we aree on ground wtf ??");
             timerBeforeCreateAttractor.Reset();
             currentOrientation = OrientationPhysics.NORMALS;
+        }
+        if (currentOrientation != OrientationPhysics.NORMALS)
+        {
+            timerDebugFlyAway.Reset();
         }
     }
 
@@ -793,6 +782,23 @@ public class PlayerGravity : MonoBehaviour
         return (finalGravity);
     }
 
+    private void DebugFlyAway()
+    {
+        if (timerDebugFlyAway.IsStartedAndOver())
+        {
+            Debug.LogError("ok on est dans le mal !");
+            timerDebugFlyAway.Reset();
+            ActiveAttractor();
+            return;
+        }
+        if (!entityJump.HasJumped && entityController.GetMoveState() == EntityController.MoveState.InAir
+            && currentOrientation == OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
+        {
+            Debug.Log("mettre le timer du mal");
+            timerDebugFlyAway.StartCoolDown(timeDebugFlyAway);
+        }
+    }
+
     /// <summary>
     /// apply every gravity force in Air
     /// </summary>
@@ -815,6 +821,8 @@ public class PlayerGravity : MonoBehaviour
         ApplyAirGravity();
 
         SaveLastPositionOnground();
+
+        DebugFlyAway();
 
         //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 5f);
     }
