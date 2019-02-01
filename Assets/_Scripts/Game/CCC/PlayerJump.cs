@@ -57,13 +57,14 @@ public class PlayerJump : EntityJump
             Debug.Log("jump !");
             
             rb.ClearVelocity();
-            playerGravity.CreateAttractor();
+            entityAttractor.CreateAttractor();
 
             SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Thruster.ToString());
             SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
             playerController.animator.SetBool("isJUMP", true);
 
             base.DoJump();
+            JumpCalculation();
             Vibrate();
 
             if (!stayHold)
@@ -74,25 +75,14 @@ public class PlayerJump : EntityJump
         }
     }
 
-    public void OnGrounded()
+
+    public override void OnGrounded()
     {
+        base.OnGrounded();
+
         //if (isPlayer)
         PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
-        Debug.Log("Grounded !");
         playerController.animator.SetBool("isJUMP", false);
-        coolDownWhenJumped.Reset();
-        //here, we just were falling, without jumping
-        if (!hasJumped)
-        {
-            coolDownOnGround.StartCoolDown(justGroundTimer);
-        }
-        //here, we just on grounded after a jump
-        else
-        {
-            //rb.ClearVelocity();
-            coolDownOnGround.StartCoolDown(justGroundTimer);
-            hasJumped = false;
-        }
     }
 
     /// <summary>

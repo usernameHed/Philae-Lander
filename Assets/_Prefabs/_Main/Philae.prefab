@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3347777260606228085}
   - component: {fileID: 6166077617058031261}
   - component: {fileID: 4342663178068225343}
+  - component: {fileID: 3819143144908272473}
   - component: {fileID: 4342663178068225342}
   - component: {fileID: 3347777260606228082}
   - component: {fileID: 2648358779095376201}
@@ -185,11 +186,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
+  walkablePlatform:
+  - Walkable/Floor
   rb: {fileID: 3959034400415941276}
+  rbRotateObject: {fileID: 2648358779582519253}
   playerGravity: {fileID: 4342663178068225343}
   groundCheck: {fileID: 2648358779095376182}
-  rotateObject: {fileID: 2648358779582519253}
   moveState: 0
+  layerMask: -1
   deathVibration:
     vibrateLeft: 1
     strenthLeft: 1
@@ -199,6 +203,7 @@ MonoBehaviour:
     durationRight: 1
   playerInput: {fileID: 6166077617058031262}
   playerJump: {fileID: 6166077617058031261}
+  entityAttractor: {fileID: 3819143144908272473}
   renderPlayer: {fileID: 2648358779774481647}
   animator: {fileID: 47880833494453058}
   idPlayer: 0
@@ -221,6 +226,7 @@ MonoBehaviour:
   rb: {fileID: 3959034400415941276}
   entityAction: {fileID: 6166077617058031262}
   playerGravity: {fileID: 4342663178068225343}
+  entityAttractor: {fileID: 0}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -252,33 +258,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9.81
-  timeBeforeActiveAttractorInAir: 0.8
-  layersRaycast:
-  - Walkable/Floor
+  magicTrajectoryCorrection: 1
   groundAddGravity: 5.5
   stickToFloorGravity: 6
+  layersRaycast:
+  - Walkable/Floor
+  distRaycastForNormalSwitch: 5
+  timeBeforeTestingNewNormalGravity: 0.4
   rbUpAddGravity: 2.5
   rbDownAddGravity: 5
   defaultGravityInAir: 2
-  gravityAttractor: 2
-  speedLerpAttractor: 5
-  distAllowedForNormalGravity: 10
   distMinForChange: 7
-  lengthPositionAttractPoint: 1
-  sizeDistanceForSavePlayerPos: 0.5
   currentOrientation: 0
-  differenceAngleNormalForUpdatePosition: 5
   entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
   rb: {fileID: 3959034400415941276}
   entityAction: {fileID: 6166077617058031262}
   entityJump: {fileID: 6166077617058031261}
-  rbRotate: {fileID: 2648358779582519253}
+  entityAttractor: {fileID: 3819143144908272473}
   mainAttractObject: {fileID: 0}
+--- !u!114 &3819143144908272473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5233516daa014942b7ff4f3c2632b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGravity: {fileID: 4342663178068225343}
+  entityController: {fileID: 3347777260606228085}
+  groundCheck: {fileID: 2648358779095376182}
+  entityJump: {fileID: 6166077617058031261}
+  timeBeforeActiveAttractorInAir: 0.8
+  gravityAttractor: 2
+  speedLerpAttractor: 5
+  distAllowedForNormalGravity: 10
+  distSpherecastForLightAttractor: 5
+  radiusSphereCastForLightAttractor: 0.3
+  lengthPositionAttractPoint: 1
+  sizeDistanceForSavePlayerPos: 0.5
   worldLastPosition:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  differenceAngleNormalForUpdatePosition: 5
+  timeDebugFlyAway: 0.3
 --- !u!114 &4342663178068225342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +391,7 @@ MonoBehaviour:
   tpsSpacePoint: {fileID: 3959034401119974717}
   groundCheck: {fileID: 2648358779095376182}
   isInsideSomzthing: 0
+  isFocusing: 0
   defaultLenghtCamPointDist: 2.5
 --- !u!114 &424197143998509921
 MonoBehaviour:

@@ -14,18 +14,18 @@ public class EntityController : MonoBehaviour
 
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public bool isPlayer = false;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] walkablePlatform = new string[] { "Walkable/Floor" };
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     public Rigidbody rb;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    public Transform rbRotateObject;
 
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     public PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
-    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    //private PlayerJump playerJump;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    protected Transform rotateObject;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
@@ -34,6 +34,8 @@ public class EntityController : MonoBehaviour
         return moveState;
     }
 
+    [HideInInspector]
+    public int layerMask = Physics.AllLayers;
     protected Vector2 direction;              //save of direction player
     //private Vector3 dirOrientedAllControl;  //save of GetDirOrientedInputForMultipleControl
 
@@ -46,6 +48,7 @@ public class EntityController : MonoBehaviour
     /// </summary>
     public void Init()
     {
+        layerMask = LayerMask.GetMask(walkablePlatform);
         oldDrag = rb.drag;
         enabledScript = true;               //active this script at start
     }

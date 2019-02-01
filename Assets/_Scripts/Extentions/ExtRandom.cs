@@ -64,6 +64,11 @@ public static class ExtRandom
         float number = UnityEngine.Random.Range(minimum, maximum);
         return (number);
     }
+    public static bool GetRandomNumberProbability(int chance, int max)
+    {
+        float number = GetRandomNumber(0f, 1f);
+        return (number > chance / max);
+    }
 
     public static bool GetRandomBool()
     {

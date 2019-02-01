@@ -41,22 +41,13 @@ public class IAJump : EntityJump
     /// <summary>
     /// called when grounded (after a jump, or a fall !)
     /// </summary>
-    public void OnGrounded()
+    public override void OnGrounded()
     {
+        base.OnGrounded();
+
         ExtLog.DebugLogIa("Grounded !", ExtLog.Log.IA);
-        coolDownWhenJumped.Reset();
 
         coolDownOnGround.StartCoolDown(justGroundTimer + ExtRandom.GetRandomNumber(0f, addRandomJump));
-        //here, we just were falling, without jumping
-        if (!hasJumped)
-        {
-            
-        }
-        //here, we just on grounded after a jump
-        else
-        {
-            hasJumped = false;
-        }
     }
 
     private void JumpManager()
@@ -85,10 +76,11 @@ public class IAJump : EntityJump
 
 
             rb.ClearVelocity();
-            playerGravity.CreateAttractor();
+            entityAttractor.CreateAttractor();
 
             base.DoJump();
-            
+            JumpCalculation();
+
             hasJumped = true;
             //Debug.Break();
         }
