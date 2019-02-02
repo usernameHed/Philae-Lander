@@ -17075,18 +17075,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1093967080}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1097221752 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3819143144908272473, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-    type: 3}
-  m_PrefabInstance: {fileID: 5554820212973769299}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5233516daa014942b7ff4f3c2632b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1097426453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 239657713, guid: 486f4b71ec6c2024e8732d9a08faef95,
@@ -34489,41 +34477,6 @@ PrefabInstance:
       propertyPath: mainReferenceObjectDirection
       value: 
       objectReference: {fileID: 747360856}
-    - target: {fileID: 4342663178068225343, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: magicTrajectoryCorrectionRatio
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225343, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: gravityAttractor
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225343, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: speedLerpAttractor
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225343, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: magicTrajectoryCorrection
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225343, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: timeBeforeTestingNewNormalGravity
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342663178068225343, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: timeDebugFlyAway
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6166077617058031261, guid: 0bf1d571462d8e84fa4718cd103f8f07,
-        type: 3}
-      propertyPath: entityAttractor
-      value: 
-      objectReference: {fileID: 1097221752}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf1d571462d8e84fa4718cd103f8f07, type: 3}
 --- !u!1 &5899139294826474720

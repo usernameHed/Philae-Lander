@@ -220,16 +220,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 2
+  timeFeforeCalculateAgainJump: 0.5
+  distRaycastForNormalSwitch: 5
   stayHold: 0
   canJumpInAir: 1
+  entityController: {fileID: 3347777260606228085}
   playerLocalyRotate: {fileID: 2648358779582519253}
   rb: {fileID: 3959034400415941276}
   entityAction: {fileID: 6166077617058031262}
   playerGravity: {fileID: 4342663178068225343}
-  entityAttractor: {fileID: 0}
+  entityAttractor: {fileID: 3819143144908272473}
+  groundCheck: {fileID: 2648358779095376182}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
+  magicTrajectoryCorrection: 1.4
   onJump:
     vibrateLeft: 1
     strenthLeft: 0.1
@@ -258,13 +263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9.81
-  magicTrajectoryCorrection: 1
+  magicTrajectoryCorrection: 1.4
   groundAddGravity: 5.5
   stickToFloorGravity: 6
-  layersRaycast:
-  - Walkable/Floor
-  distRaycastForNormalSwitch: 5
-  timeBeforeTestingNewNormalGravity: 0.4
   rbUpAddGravity: 2.5
   rbDownAddGravity: 5
   defaultGravityInAir: 2

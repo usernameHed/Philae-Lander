@@ -3,17 +3,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct InfoJump
+{
+    public bool didWeHit;
+    public Vector3 pointHit;
+    public Vector3 normalHit;
+    public Transform objHit;
+    public Vector3 dirUltimatePlotPoint;
+    public Vector3 ultimatePlotPoint;
+
+    public void SetDirLast(Vector3[] plots)
+    {
+        Vector3 penultimate = plots[plots.Length - 2];
+        Vector3 ultimate = plots[plots.Length - 1];
+
+        ultimatePlotPoint = ultimate;
+        dirUltimatePlotPoint = ultimate - penultimate;
+    }
+
+    public void Clear()
+    {
+        didWeHit = false;
+        pointHit = Vector3.zero;
+        normalHit = Vector3.zero;
+        objHit = null;
+        dirUltimatePlotPoint = Vector3.zero;
+        ultimatePlotPoint = Vector3.zero;
+    }
+}
+
 public class EntityJump : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected float jumpHeight = 1f;
     [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
     private float timeFeforeCalculateAgainJump = 0.5f;
+    [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("raycast to ground layer")]
+    private float distRaycastForNormalSwitch = 5f;
+
 
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected bool stayHold = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected bool canJumpInAir = true;
+
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    protected EntityController entityController;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected Transform playerLocalyRotate;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
@@ -25,6 +60,8 @@ public class EntityJump : MonoBehaviour
     protected PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityAttractor entityAttractor;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    protected GroundCheck groundCheck;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -33,13 +70,18 @@ public class EntityJump : MonoBehaviour
     protected float justJumpedTimer = 0.1f;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected float justGroundTimer = 0.1f;
+    [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
+    private float magicTrajectoryCorrection = 1.4f;
 
     protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDowwnBeforeCalculateAgain = new FrequencyCoolDown();
     public bool IsReadyToTestCalculation() { return (coolDowwnBeforeCalculateAgain.IsStartedAndOver()); }
+    private bool normalGravityTested = false;   //know if we are in the 0.5-0.8 sec between norma and attractor
 
+    private InfoJump infoJump = new InfoJump();
     protected bool jumpStop = false;
+    private RaycastHit hitInfo;
 
     private void Awake()
     {
@@ -62,37 +104,103 @@ public class EntityJump : MonoBehaviour
         return (hasJumped && !IsJumpCoolDebugDownReady());
     }
 
-    private float CalculateJumpVerticalSpeed()
-    {
-        // From the jump height and gravity we deduce the upwards speed 
-        // for the character to reach at the apex.
+    
 
-        //reduce height when max speed
-        float jumpBoostHeight = jumpHeight / (1 + (1 * entityAction.GetMagnitudeInput()));
-        
-        //Debug.Log("boost height: " + jumpBoostHeight);
-        return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
+    /// <summary>
+    /// calculate trajectory of entity
+    /// </summary>
+    public Vector3[] Plots(Rigidbody rigidbody, Vector3 pos, Vector3 velocity, int steps, bool applyForceUp, bool applyForceDown)
+    {
+        Vector3[] results = new Vector3[steps];
+
+        float timestep = Time.fixedDeltaTime / magicTrajectoryCorrection;
+        //gravityAttractorLerp = 1f;
+
+        float drag = 1f - timestep * rigidbody.drag;
+        Vector3 moveStep = velocity * timestep;
+
+        int i = -1;
+        while (++i < steps)
+        {
+            Vector3 gravityOrientation = playerGravity.CalculateGravity(pos);
+            Vector3 gravityAccel = playerGravity.FindAirGravity(pos, moveStep, gravityOrientation, applyForceUp, applyForceDown) * timestep;
+            moveStep += gravityAccel;
+            moveStep *= drag;
+            pos += moveStep;
+            results[i] = pos;
+            ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 0.1f);
+        }
+        return (results);
     }
 
-    private Vector3 AddJumpHeight(Vector3 normalizedDirJump, float boost = 1f)
+    /// <summary>
+    /// do raycast along the Plots, and reutrn true if we hit
+    /// </summary>
+    /// <param name="infoPlot"></param>
+    /// <returns></returns>
+    public bool DoRaycast(Vector3[] infoPlot, int depth = 2)
     {
-        float jumpSpeedCalculate = CalculateJumpVerticalSpeed() * boost;
-        Vector3 jumpForce = normalizedDirJump * jumpSpeedCalculate;
+        Vector3 prevPos = rb.transform.position;
 
-        Debug.DrawRay(rb.position, jumpForce, Color.red, 5f);
-        return (jumpForce);
+        for (int i = 0; i <= depth; i++)
+        {
+            Vector3 dirRaycast;
+            Vector3 lastPoint;
+
+            if (i == depth)
+            {
+                dirRaycast = infoJump.dirUltimatePlotPoint.normalized * distRaycastForNormalSwitch;
+                lastPoint = infoJump.ultimatePlotPoint;
+                //lastPoint pas utile de le mettre ?
+            }
+            else
+            {
+                int indexPoint = ((infoPlot.Length / depth) * (i + 1)) - 1;
+                Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
+                lastPoint = infoPlot[indexPoint];
+
+                dirRaycast = lastPoint - prevPos;
+            }
+
+            Debug.DrawRay(prevPos, dirRaycast, Color.red, 5f);
+            if (Physics.SphereCast(prevPos, 0.3f, dirRaycast, out hitInfo,
+                                   dirRaycast.magnitude, entityController.layerMask, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log("find something ! keep going with normal gravity");
+                infoJump.didWeHit = true;
+                infoJump.normalHit = hitInfo.normal;
+                infoJump.objHit = hitInfo.transform;
+                infoJump.pointHit = hitInfo.point;
+                Debug.DrawRay(hitInfo.point, infoJump.normalHit, Color.magenta, 5f);
+                return (true);
+            }
+            prevPos = lastPoint;
+        }
+        return (false);
     }
 
+    private bool RaycastForward(Vector3 pos, Vector3 dir, float length, float radius)
+    {
+        Debug.DrawRay(pos, dir * length, Color.cyan, 5f);
+
+        if (Physics.SphereCast(pos, radius, dir, out hitInfo,
+                                length, entityController.layerMask, QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log("ATTRACTOR find something in stage 2 ! normal gravity !!");
+            return (true);
+        }
+        return (false);
+    }
 
     public void JumpCalculation()
     {
         //reset jump first test timer
         coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
         normalGravityTested = false;
-        dontApplyForceDownForThisRound = false;
+//dontApplyForceDownForThisRound = false;
 
         //first create 30 plot of the normal jump
-        Vector3[] plots = Plot(rb, rb.transform.position, rb.velocity, 30, false, true);
+        Vector3[] plots = Plots(rb, rb.transform.position, rb.velocity, 30, false, true);
         infoJump.Clear();
         infoJump.SetDirLast(plots);
 
@@ -103,16 +211,14 @@ public class EntityJump : MonoBehaviour
         //here, we hit something at some point !
         if (hit)
         {
-            Vector3 normalJump = GetMainAndOnlyGravity();
+            Vector3 normalJump = playerGravity.GetMainAndOnlyGravity();
             Vector3 normalHit = infoJump.normalHit;
 
             float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
             if (dotImpact > 0)
             {
                 Debug.Log("we hit way !");
-                currentOrientation = OrientationPhysics.OBJECT;
-                mainAttractObject = infoJump.objHit;
-                mainAttractPoint = infoJump.pointHit;
+                playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit);
             }
             else
             {
@@ -124,7 +230,7 @@ public class EntityJump : MonoBehaviour
         {
             Debug.Log("no hit... fack");
         }
-        Debug.Break();
+        //Debug.Break();
     }
 
     /// <summary>
@@ -145,7 +251,7 @@ public class EntityJump : MonoBehaviour
 
         infoJump.Clear();
         //create plot WITH force down
-        Vector3[] plots = Plot(rb, rb.transform.position, dirUltimate.normalized * rb.velocity.magnitude, 16, false, true);
+        Vector3[] plots = Plots(rb, rb.transform.position, dirUltimate.normalized * rb.velocity.magnitude, 16, false, true);
 
         infoJump.SetDirLast(plots);
 
@@ -155,33 +261,28 @@ public class EntityJump : MonoBehaviour
         {
             infoJump.Clear();
             //create plot WITOUT force down
-            plots = Plot(rb, rb.transform.position, dirUltimate.normalized * rb.velocity.magnitude, 30, false, false);
+            plots = Plots(rb, rb.transform.position, dirUltimate.normalized * rb.velocity.magnitude, 30, false, false);
             infoJump.SetDirLast(plots);
 
             hit = DoRaycast(plots, 1);
             if (hit)
             {
                 Debug.Log("hit the long run ! desactive force down for this one !");
-                dontApplyForceDownForThisRound = true;
+//dontApplyForceDownForThisRound = true;
             }
         }
 
         if (hit)
         {
-            currentOrientation = OrientationPhysics.OBJECT;
-            mainAttractObject = infoJump.objHit;
-            mainAttractPoint = infoJump.pointHit;
+            playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit);
         }
-
-
-        //raycast
-
-        //currentOrientation = OrientationPhysics.OBJECT;
-        Debug.Break();
+        
+        //Debug.Break();
     }
 
     public virtual void OnGrounded()
     {
+        normalGravityTested = false;
         coolDowwnBeforeCalculateAgain.Reset();
         Debug.Log("Grounded !");
         
@@ -198,6 +299,27 @@ public class EntityJump : MonoBehaviour
             coolDownOnGround.StartCoolDown(justGroundTimer);
             hasJumped = false;
         }
+    }
+
+    private float CalculateJumpVerticalSpeed()
+    {
+        // From the jump height and gravity we deduce the upwards speed 
+        // for the character to reach at the apex.
+
+        //reduce height when max speed
+        float jumpBoostHeight = jumpHeight / (1 + (1 * entityAction.GetMagnitudeInput()));
+
+        //Debug.Log("boost height: " + jumpBoostHeight);
+        return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
+    }
+
+    private Vector3 AddJumpHeight(Vector3 normalizedDirJump, float boost = 1f)
+    {
+        float jumpSpeedCalculate = CalculateJumpVerticalSpeed() * boost;
+        Vector3 jumpForce = normalizedDirJump * jumpSpeedCalculate;
+
+        Debug.DrawRay(rb.position, jumpForce, Color.red, 5f);
+        return (jumpForce);
     }
 
     /// <summary>
@@ -229,52 +351,4 @@ public class EntityJump : MonoBehaviour
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
     }
-    /*
-    /// <summary>
-    /// we just jump
-    /// if we hit something in the plot and raycast: pass to OBJECT ORIENTED (a kind of swithc planet)
-    /// </summary>
-    private void JustJump()
-    {
-        //reset jump first test timer
-        timerBeforeTestingNewNormalGravity.StartCoolDown(timeBeforeTestingNewNormalGravity);
-        normalGravityTested = false;
-        dontApplyForceDownForThisRound = false;
-
-        //first create 30 plot of the normal jump
-        Vector3[] plots = Plot(rb, rb.transform.position, rb.velocity, 30, false, true);
-        infoJump.Clear();
-        infoJump.SetDirLast(plots);
-
-        bool hit = DoRaycast(plots);    //return true if we hit a wall in the first jump plot
-        //if (!hit)
-        //    hit = ForwardRaycastJump(plots);    //return true if we hit a wall in the long raycast after the 30 plots
-
-        //here, we hit something at some point !
-        if (hit)
-        {
-            Vector3 normalJump = GetMainAndOnlyGravity();
-            Vector3 normalHit = infoJump.normalHit;
-
-            float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
-            if (dotImpact > 0)
-            {
-                Debug.Log("we hit way !");
-                currentOrientation = OrientationPhysics.OBJECT;
-                mainAttractObject = infoJump.objHit;
-                mainAttractPoint = infoJump.pointHit;
-            }
-            else
-            {
-                Debug.Log("No way we climb That !, Obstacle to inclined");
-            }
-
-        }
-        else
-        {
-            Debug.Log("no hit... fack");
-        }
-        Debug.Break();
-    }
-    */
 }
