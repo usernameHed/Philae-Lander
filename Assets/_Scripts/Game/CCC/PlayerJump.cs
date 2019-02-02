@@ -64,7 +64,6 @@ public class PlayerJump : EntityJump
             playerController.animator.SetBool("isJUMP", true);
 
             base.DoJump();
-            JumpCalculation();
             Vibrate();
 
             if (!stayHold)

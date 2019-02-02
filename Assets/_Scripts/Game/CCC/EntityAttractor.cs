@@ -174,16 +174,16 @@ public class EntityAttractor : MonoBehaviour
 
         transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
 
-        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
+        //ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.white, 1f, 1f);
 
-        ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
+        //ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(1), Color.red, 1f, 2f);          //ancienne pos
         Debug.Log("ici create ?");
 
-        Debug.DrawRay(entityController.rb.transform.position, groundCheck.GetDirLastNormal(), Color.black, 0.5f);
+        //Debug.DrawRay(entityController.rb.transform.position, groundCheck.GetDirLastNormal(), Color.black, 0.5f);
 
 
-        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 1f, 2f);      //nouvel pos
-        Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
+        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 0.5f, 2f);      //nouvel pos
+        //Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
 
         //Debug.Break();
     }

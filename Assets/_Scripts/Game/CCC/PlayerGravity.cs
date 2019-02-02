@@ -99,7 +99,7 @@ public class PlayerGravity : MonoBehaviour
         if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, entityController.layerMask))
         {
             mainAttractObject = hit.transform;
-            mainAttractPoint = mainAttractObject.position;
+            mainAttractPoint = hit.point;
             ExtLog.DebugLogIa("Did Hit", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
         }
         else
@@ -156,7 +156,7 @@ public class PlayerGravity : MonoBehaviour
 
             if (entityJump.IsReadyToTestCalculation() && currentOrientation == OrientationPhysics.NORMALS)
             {
-                entityJump.UltimaTestBeforeAttractor();
+                entityJump.entityJumpCalculation.UltimaTestBeforeAttractor();
             }
             else if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
             {
@@ -307,8 +307,9 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private Vector3 AirAddGoingUp(Vector3 gravityOrientation, Vector3 positionEntity)
     {
-        //Debug.LogWarning("TEMPORATY DESACTIVE UP JUMP");
-        
+        Debug.LogWarning("TEMPORATY DESACTIVE UP JUMP");
+        return (Vector3.zero);
+
         Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(positionEntity, orientationDown, Color.blue, 5f);
         return (orientationDown);
@@ -381,5 +382,6 @@ public class PlayerGravity : MonoBehaviour
         ApplyGroundGravity();
         ApplySuplementGravity();
         ApplyAirGravity();
+        ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 0.1f);
     }
 }

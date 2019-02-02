@@ -53,6 +53,15 @@ public class EntityController : MonoBehaviour
         enabledScript = true;               //active this script at start
     }
 
+    /// <summary>
+    /// return the forward
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetForwardDirPlayer()
+    {
+        return (rbRotateObject.transform.forward);
+    }
+
     public void SetKinematic(bool isKinematc)
     {
         rb.isKinematic = isKinematc;

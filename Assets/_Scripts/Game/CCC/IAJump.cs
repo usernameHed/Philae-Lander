@@ -79,7 +79,6 @@ public class IAJump : EntityJump
             entityAttractor.CreateAttractor();
 
             base.DoJump();
-            JumpCalculation();
 
             hasJumped = true;
             //Debug.Break();

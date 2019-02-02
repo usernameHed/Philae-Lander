@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2648358779095376182}
   - component: {fileID: 3347777260606228085}
   - component: {fileID: 6166077617058031261}
+  - component: {fileID: 4078160021669779806}
   - component: {fileID: 4342663178068225343}
   - component: {fileID: 3819143144908272473}
   - component: {fileID: 4342663178068225342}
@@ -220,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 2
+  ratioIncreaseHeightMove: 0.5
   timeFeforeCalculateAgainJump: 0.5
   distRaycastForNormalSwitch: 5
   stayHold: 0
@@ -231,6 +233,7 @@ MonoBehaviour:
   playerGravity: {fileID: 4342663178068225343}
   entityAttractor: {fileID: 3819143144908272473}
   groundCheck: {fileID: 2648358779095376182}
+  entityJumpCalculation: {fileID: 4078160021669779806}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -250,6 +253,28 @@ MonoBehaviour:
     strenthRight: 0.3
     durationRight: 0.1
   playerController: {fileID: 3347777260606228085}
+--- !u!114 &4078160021669779806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b47bd2f74899a4fa9ef2af3f3dc2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeFeforeCalculateAgainJump: 0.5
+  distRaycastForNormalSwitch: 5
+  entityController: {fileID: 3347777260606228085}
+  playerLocalyRotate: {fileID: 2648358779582519253}
+  rb: {fileID: 3959034400415941276}
+  entityAction: {fileID: 6166077617058031262}
+  playerGravity: {fileID: 4342663178068225343}
+  entityAttractor: {fileID: 3819143144908272473}
+  groundCheck: {fileID: 2648358779095376182}
+  magicTrajectoryCorrection: 1.4
 --- !u!114 &4342663178068225343
 MonoBehaviour:
   m_ObjectHideFlags: 0
