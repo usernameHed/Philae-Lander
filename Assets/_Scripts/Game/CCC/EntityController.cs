@@ -69,8 +69,8 @@ public class EntityController : MonoBehaviour
 
     public void ChangeMainPlanet(Rigidbody rb)
     {
-        
-        playerGravity.ChangeMainAttractObject(rb.transform);
+        Debug.LogWarning("no managed !");
+        //playerGravity.ChangeMainAttractObject(rb.transform);
     }
 
     

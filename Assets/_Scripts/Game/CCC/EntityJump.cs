@@ -7,7 +7,7 @@ public class EntityJump : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected float jumpHeight = 3f;
-    [FoldoutGroup("GamePlay"), Range(0f, 0.5f), SerializeField, Tooltip("increase the height jump when we move faster")]
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("increase the height jump when we move faster")]
     protected float ratioIncreaseHeightMove = 0.5f;
     [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
     private float timeFeforeCalculateAgainJump = 0.5f;
@@ -52,11 +52,8 @@ public class EntityJump : MonoBehaviour
     protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDowwnBeforeCalculateAgain = new FrequencyCoolDown();
     public bool IsReadyToTestCalculation() { return (coolDowwnBeforeCalculateAgain.IsStartedAndOver()); }
-    private bool normalGravityTested = false;   //know if we are in the 0.5-0.8 sec between norma and attractor
 
-    private InfoJump infoJump = new InfoJump();
     protected bool jumpStop = false;
-    private RaycastHit hitInfo;
 
     private void Awake()
     {
@@ -81,7 +78,7 @@ public class EntityJump : MonoBehaviour
 
     public virtual void OnGrounded()
     {
-        normalGravityTested = false;
+        entityJumpCalculation.ResetCalculation();
         coolDowwnBeforeCalculateAgain.Reset();
         Debug.Log("Grounded !");
         
@@ -150,6 +147,7 @@ public class EntityJump : MonoBehaviour
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
 
+        coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
         entityJumpCalculation.JumpCalculation();
     }
 }

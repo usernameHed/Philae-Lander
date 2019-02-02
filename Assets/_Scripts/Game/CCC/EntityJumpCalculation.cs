@@ -79,18 +79,16 @@ public class EntityJumpCalculation : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
-
-    protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
-    protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
-    protected FrequencyCoolDown coolDowwnBeforeCalculateAgain = new FrequencyCoolDown();
-    public bool IsReadyToTestCalculation() { return (coolDowwnBeforeCalculateAgain.IsStartedAndOver()); }
     private bool normalGravityTested = false;   //know if we are in the 0.5-0.8 sec between norma and attractor
 
     [SerializeField]
     private InfoJump infoJump = new InfoJump();
     private RaycastHit hitInfo;
 
-
+    public void ResetCalculation()
+    {
+        normalGravityTested = false;
+    }
 
     /// <summary>
     /// calculate trajectory of entity
@@ -206,7 +204,13 @@ public class EntityJumpCalculation : MonoBehaviour
         return (false);
     }
 
+    public bool CanApplyForceDown()
+    {
+        if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)
+            return (false);
 
+        return (true);
+    }
 
     public void DetermineJumpType()
     {
@@ -214,7 +218,7 @@ public class EntityJumpCalculation : MonoBehaviour
         Vector3 normalHit = infoJump.normalHit;
 
         float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
-        if (dotImpact > 0 - marginSideSlope)
+        if (dotImpact > 0 - marginSideSlope && !entityAction.NotMoving(0.2f))
         {
             Debug.Log("we hit way !");
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
@@ -222,7 +226,7 @@ public class EntityJumpCalculation : MonoBehaviour
         }
         else
         {
-            Debug.Log("No way we climb That !, Obstacle to inclined");
+            Debug.Log("No way we climb That !, Obstacle to inclined (or no input forward)");
             infoJump.jumpType = InfoJump.JumpType.BASE;
         }
     }
@@ -230,7 +234,6 @@ public class EntityJumpCalculation : MonoBehaviour
     public void JumpCalculation()
     {
         //reset jump first test timer
-        coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
         normalGravityTested = false;
 //dontApplyForceDownForThisRound = false;
 
@@ -271,6 +274,13 @@ public class EntityJumpCalculation : MonoBehaviour
         Vector3 ultimate = infoJump.ultimatePlotPoint;
         Vector3 dirUltimate = infoJump.dirUltimatePlotPoint;
 
+        if (infoJump.jumpType == InfoJump.JumpType.TO_UP)
+        {
+            //refaire des test ici pour le jump...
+            playerGravity.ChangeMainAttractObject(infoJump.objHit, infoJump.pointHit);
+            return;
+        }
+
         //chose if we add force or not
         Debug.Log("ultimate raycast");
 
@@ -302,6 +312,6 @@ public class EntityJumpCalculation : MonoBehaviour
             playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit);
         }
         
-        //Debug.Break();
+        Debug.Break();
     }
 }

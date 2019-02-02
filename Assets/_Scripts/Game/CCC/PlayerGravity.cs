@@ -62,7 +62,8 @@ public class PlayerGravity : MonoBehaviour
     private EntityJump entityJump;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAttractor entityAttractor;
-
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityJumpCalculation entityJumpCalculation;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
@@ -190,7 +191,7 @@ public class PlayerGravity : MonoBehaviour
         }
     }
 
-    public bool IsTooCloseToOtherPlanet(Transform rbTransform)
+    /*public bool IsTooCloseToOtherPlanet(Transform rbTransform)
     {
         float dist = Vector3.SqrMagnitude(rb.position - rbTransform.position);
         ExtLog.DebugLogIa("dist from attractive planet: " + dist, (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
@@ -199,23 +200,23 @@ public class PlayerGravity : MonoBehaviour
             return (true);
         }
         return (false);
-    }
+    }*/
 
-    public void ChangeMainAttractObject(Transform rbTransform)
+    public void ChangeMainAttractObject(Transform obj, Vector3 pointHit)
     {
-        if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
-            && (entityController.GetMoveState() == EntityController.MoveState.InAir)
-            && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
-            && !IsTooCloseToOtherPlanet(rbTransform))
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
         {
             if (entityController.isPlayer)
             {
                 PhilaeManager.Instance.cameraController.SetChangePlanetCam();
-            }                
+            }
 
-            mainAttractObject = rbTransform;
-            mainAttractPoint = rbTransform.position;
+            mainAttractObject = obj;
+            mainAttractPoint = pointHit;
             currentOrientation = OrientationPhysics.OBJECT;
+
+            //CalculateGravity(rb.transform.position);
+
             PhilaeManager.Instance.PlanetChange();
 
             entityController.SetKinematic(true);
@@ -224,6 +225,31 @@ public class PlayerGravity : MonoBehaviour
             Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
         }
     }
+    /*
+public void ChangeMainAttractObject(Transform rbTransform)
+{
+    if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
+        && (entityController.GetMoveState() == EntityController.MoveState.InAir)
+        && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
+        && !IsTooCloseToOtherPlanet(rbTransform))
+    {
+        if (entityController.isPlayer)
+        {
+            PhilaeManager.Instance.cameraController.SetChangePlanetCam();
+        }                
+
+        mainAttractObject = rbTransform;
+        mainAttractPoint = rbTransform.position;
+        currentOrientation = OrientationPhysics.OBJECT;
+        PhilaeManager.Instance.PlanetChange();
+
+        entityController.SetKinematic(true);
+        ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
+        isOnTransition = true;
+        Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
+    }
+}
+*/
 
     private void UnsetKinematic()
     {
@@ -362,6 +388,8 @@ public class PlayerGravity : MonoBehaviour
         return (finalGravity);
     }
 
+    
+
     /// <summary>
     /// apply every gravity force in Air
     /// </summary>
@@ -371,7 +399,7 @@ public class PlayerGravity : MonoBehaviour
             return;
 
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
-        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, GetMainAndOnlyGravity(), true, true);
+        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, GetMainAndOnlyGravity(), true, entityJumpCalculation.CanApplyForceDown());
     }
 
     private void FixedUpdate()
