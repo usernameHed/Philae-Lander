@@ -54,12 +54,26 @@ public class EntityController : MonoBehaviour
     }
 
     /// <summary>
-    /// return the forward
+    /// return the forward dir we want for the player
     /// </summary>
     /// <returns></returns>
-    public Vector3 GetForwardDirPlayer()
+    public Vector3 GetFocusedForwardDirPlayer()
     {
-        return (rbRotateObject.transform.forward);
+        Vector3 realNormal = playerGravity.GetMainAndOnlyGravity();
+        Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
+        return (forwardNormal);
+        //return (rbRotateObject.transform.forward);
+    }
+    /// <summary>
+    /// return the forward dir we want for the player
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetFocusedRightDirPlayer()
+    {
+        Vector3 realNormal = playerGravity.GetMainAndOnlyGravity();
+        Vector3 rightNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.forward);
+        return (rightNormal);
+        //return (rbRotateObject.transform.forward);
     }
 
     public void SetKinematic(bool isKinematc)
@@ -69,7 +83,7 @@ public class EntityController : MonoBehaviour
 
     public void ChangeMainPlanet(Rigidbody rb)
     {
-        Debug.LogWarning("no managed !");
+        Debug.LogWarning("no managed anymore!");
         //playerGravity.ChangeMainAttractObject(rb.transform);
     }
 

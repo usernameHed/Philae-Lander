@@ -182,7 +182,7 @@ public class EntityAttractor : MonoBehaviour
         //Debug.DrawRay(entityController.rb.transform.position, groundCheck.GetDirLastNormal(), Color.black, 0.5f);
 
 
-        ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 0.5f, 2f);      //nouvel pos
+        //ExtDrawGuizmos.DebugWireSphere(transformPointAttractor, Color.blue, 0.5f, 2f);      //nouvel pos
         //Debug.DrawRay(WorldLastPositionGetIndex(0), worldLastNormal * 4, Color.red, 2f);      //last normal
 
         //Debug.Break();

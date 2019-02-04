@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     private Transform movingCamera;
     [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
     private Transform rotateCameraY;
+    [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
+    private PlayerGravity playerGravity;
 
     //Target list
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField, ReadOnly]
@@ -39,9 +41,7 @@ public class CameraController : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
     private PlayerRotateCamPoint playerRotateCamPoint;
-    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
-    private float timeBeforeResetBaseCamera = 0.4f;
-    public float GetTimeKinematic() { return (timeBeforeResetBaseCamera); }
+    
 
     private bool freez = false;
 
@@ -81,7 +81,6 @@ public class CameraController : MonoBehaviour
 
     public void SetBaseCamera()
     {
-        CancelInvoke("SetBaseCamera");
         cameraTypes.camType = CameraTypes.CameraType.BASE;
         Debug.Log("set base camera !");
     }
@@ -93,17 +92,14 @@ public class CameraController : MonoBehaviour
 
     public void SetAttractorCamera()
     {
-        CancelInvoke("SetBaseCamera");
         cameraTypes.camType = CameraTypes.CameraType.ATTRACTOR;
         Debug.Log("set base camera !");
     }
 
     public void SetChangePlanetCam()
     {
-        CancelInvoke("SetBaseCamera");
         Debug.Log("set change palnet camera");
         cameraTypes.camType = CameraTypes.CameraType.PLANET_CHANGE;
-        Invoke("SetBaseCamera", timeBeforeResetBaseCamera);
     }
 
     /// <summary>

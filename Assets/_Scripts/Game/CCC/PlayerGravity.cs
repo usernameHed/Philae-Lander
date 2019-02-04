@@ -34,9 +34,14 @@ public class PlayerGravity : MonoBehaviour
     private float rbDownAddGravity = 5f;
     [FoldoutGroup("Air Gravity"), Tooltip("default air gravity"), SerializeField]
     private float defaultGravityInAir = 2f;
-    
-    [FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
-    private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
+
+    [FoldoutGroup("Switch"), Tooltip("default air gravity"), SerializeField]
+    private float speedRotateWhenSwitching = 30f;
+    [FoldoutGroup("Switch"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
+    private float timeBeforeResetBaseCamera = 0.4f;
+
+    //[FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
+    //private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
 
     [FoldoutGroup("Debug"), Tooltip("default air gravity"), SerializeField]
     private OrientationPhysics currentOrientation = OrientationPhysics.OBJECT;
@@ -64,10 +69,13 @@ public class PlayerGravity : MonoBehaviour
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJumpCalculation entityJumpCalculation;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityRotateToGround rotateToGround;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
     private Vector3 mainAttractPoint;
+    private Vector3 mainAttractNormal;
     public Transform GetMainAttractObject() { return (mainAttractObject); }
     
     private bool isOnTransition = false;
@@ -81,13 +89,14 @@ public class PlayerGravity : MonoBehaviour
 
     public void SetObjectAttraction(Transform target)
     {
-        SetObjectAttraction(target, target.position);
+        SetObjectAttraction(target, target.position, Vector3.zero);
     }
-    public void SetObjectAttraction(Transform target, Vector3 point)
+    public void SetObjectAttraction(Transform target, Vector3 point, Vector3 normalHit)
     {
         currentOrientation = OrientationPhysics.OBJECT;
         mainAttractObject = target;
         mainAttractPoint = point;
+        mainAttractNormal = normalHit;
     }
 
     private void ResearchInitialGround()
@@ -101,6 +110,7 @@ public class PlayerGravity : MonoBehaviour
         {
             mainAttractObject = hit.transform;
             mainAttractPoint = hit.point;
+            mainAttractNormal = hit.normal;
             ExtLog.DebugLogIa("Did Hit", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
         }
         else
@@ -190,8 +200,8 @@ public class PlayerGravity : MonoBehaviour
             entityAttractor.ResetFlyAway();
         }
     }
-
-    /*public bool IsTooCloseToOtherPlanet(Transform rbTransform)
+    /*
+    public bool IsTooCloseToOtherPlanet(Transform rbTransform)
     {
         float dist = Vector3.SqrMagnitude(rb.position - rbTransform.position);
         ExtLog.DebugLogIa("dist from attractive planet: " + dist, (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
@@ -200,20 +210,22 @@ public class PlayerGravity : MonoBehaviour
             return (true);
         }
         return (false);
-    }*/
+    }
+    */
 
-    public void ChangeMainAttractObject(Transform obj, Vector3 pointHit)
+    public void ChangeMainAttractObject(Transform obj, Vector3 pointHit, Vector3 normalHit)
     {
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir
+            && !isOnTransition)
         {
             if (entityController.isPlayer)
             {
                 PhilaeManager.Instance.cameraController.SetChangePlanetCam();
             }
 
-            mainAttractObject = obj;
-            mainAttractPoint = pointHit;
-            currentOrientation = OrientationPhysics.OBJECT;
+            SetObjectAttraction(obj, pointHit, normalHit);
+
+            rotateToGround.SetNewTempSpeed(speedRotateWhenSwitching);
 
             //CalculateGravity(rb.transform.position);
 
@@ -222,38 +234,38 @@ public class PlayerGravity : MonoBehaviour
             entityController.SetKinematic(true);
             ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
             isOnTransition = true;
-            Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
+            Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
         }
     }
     /*
-public void ChangeMainAttractObject(Transform rbTransform)
-{
-    if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
-        && (entityController.GetMoveState() == EntityController.MoveState.InAir)
-        && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
-        && !IsTooCloseToOtherPlanet(rbTransform))
+    public void ChangeMainAttractObject(Transform rbTransform)
     {
-        if (entityController.isPlayer)
+        if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
+            && (entityController.GetMoveState() == EntityController.MoveState.InAir)
+            && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
+            && !IsTooCloseToOtherPlanet(rbTransform))
         {
-            PhilaeManager.Instance.cameraController.SetChangePlanetCam();
-        }                
+            if (entityController.isPlayer)
+            {
+                PhilaeManager.Instance.cameraController.SetChangePlanetCam();
+            }
 
-        mainAttractObject = rbTransform;
-        mainAttractPoint = rbTransform.position;
-        currentOrientation = OrientationPhysics.OBJECT;
-        PhilaeManager.Instance.PlanetChange();
+            mainAttractObject = rbTransform;
+            mainAttractPoint = rbTransform.position;
+            currentOrientation = OrientationPhysics.OBJECT;
+            PhilaeManager.Instance.PlanetChange();
 
-        entityController.SetKinematic(true);
-        ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-        isOnTransition = true;
-        Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
-    }
-}
-*/
+            entityController.SetKinematic(true);
+            ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
+            isOnTransition = true;
+            Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
+        }
+    }*/
 
     private void UnsetKinematic()
     {
         entityController.SetKinematic(false);
+        PhilaeManager.Instance.cameraController.SetBaseCamera();
     }
 
     public Vector3 CalculateGravity(Vector3 positionEntity)
@@ -261,8 +273,16 @@ public void ChangeMainAttractObject(Transform rbTransform)
         switch (currentOrientation)
         {
             case OrientationPhysics.OBJECT:
-                Vector3 direction = positionEntity - mainAttractPoint;
-                mainAndOnlyGravity = direction.normalized;
+                if (entityJumpCalculation.CanApplyNormalizedObjectGravity())
+                {
+                    mainAndOnlyGravity = mainAttractNormal;
+                    Debug.Log("go To Object (attract Normal)");
+                }
+                else
+                {
+                    Vector3 direction = positionEntity - mainAttractPoint;
+                    mainAndOnlyGravity = direction.normalized;
+                }
                 break;
             case OrientationPhysics.NORMALS:
                 mainAndOnlyGravity = groundCheck.GetDirLastNormal();
@@ -410,6 +430,7 @@ public void ChangeMainAttractObject(Transform rbTransform)
         ApplyGroundGravity();
         ApplySuplementGravity();
         ApplyAirGravity();
-        ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 0.1f);
+        //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 0.1f);
+        //Debug.DrawRay(rb.transform.position, GetMainAndOnlyGravity(), Color.red, 5f);
     }
 }

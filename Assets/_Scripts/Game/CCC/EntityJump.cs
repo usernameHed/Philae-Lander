@@ -125,7 +125,8 @@ public class EntityJump : MonoBehaviour
     private Vector3 GetNormalizedJumpDir()
     {
         Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
-        Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
+        //Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
+        Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * entityAction.GetMagnitudeInput();
 
         //Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
         //Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);

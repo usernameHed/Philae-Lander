@@ -42,7 +42,7 @@ MonoBehaviour:
       Data: 500
     - Name: rotateToGroundSpeed
       Entry: 4
-      Data: 2
+      Data: 200
     - Name: 
       Entry: 8
       Data: 
@@ -60,7 +60,7 @@ MonoBehaviour:
       Data: 1500
     - Name: rotateToGroundSpeed
       Entry: 4
-      Data: 14
+      Data: 1400
     - Name: 
       Entry: 8
       Data: 
@@ -78,7 +78,7 @@ MonoBehaviour:
       Data: 1000
     - Name: rotateToGroundSpeed
       Entry: 4
-      Data: 5
+      Data: 500
     - Name: 
       Entry: 8
       Data: 

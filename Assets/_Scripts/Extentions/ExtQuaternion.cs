@@ -51,7 +51,38 @@ public static class ExtQuaternion
         return (true);
     }
 
-    
+    /// <summary>
+    /// return if we are right or left of a vector
+    /// </summary>
+    /// <param name="forwardDir"></param>
+    /// <param name="upDir">up reference of the forward dir</param>
+    /// <param name="toGoDir">target direction to test</param>
+    /// <returns>1: right, -1: left, 0: forward ?</returns>
+    public static int IsRightOrLeft(Vector3 forwardDir, Vector3 upDir, Vector3 toGoDir, Vector3 debugPos)
+    {
+        Vector3 left = CrossProduct(forwardDir, upDir);
+        Vector3 right = -left;
+
+        Debug.DrawRay(debugPos, left, Color.magenta, 5f);
+        Debug.DrawRay(debugPos, right, Color.magenta, 5f);
+
+
+        float dotRight = DotProduct(right, toGoDir);
+        float dotLeft = DotProduct(left, toGoDir);
+        Debug.Log("left: " + dotLeft + ", right: " + dotRight);
+        if (dotRight > 0)
+        {
+            Debug.Log("go right");
+            return (1);
+        }
+        else if (dotLeft > 0)
+        {
+            Debug.Log("go left");
+            return (-1);
+        }
+        Debug.Log("go pls");
+        return (0);
+    }
 
     /// <summary>
     /// clamp a quaternion around one axis
