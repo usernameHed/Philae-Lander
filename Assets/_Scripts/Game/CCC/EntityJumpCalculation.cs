@@ -229,15 +229,7 @@ public class EntityJumpCalculation : MonoBehaviour
 
             if (i == depth)
             {
-                /*
-
-                //TODO: ICI faire un raycast parallele au sol !!!
-                //dirRaycast = infoJump.dirUltimatePlotPoint.normalized * distRaycastForNormalSwitch;
-                dirRaycast = -playerGravity.GetMainAndOnlyGravity();
-                lastPoint = infoJump.ultimatePlotPoint;
-                //lastPoint pas utile de le mettre ?
-                hit = DoSphereCast(lastPoint, dirRaycast, distRaycastDOWN, entityController.layerMask);
-                */
+                hit = DoSphereCast(prevPos, infoJump.dirUltimatePlotPoint, distRaycastDOWN, entityController.layerMask);
             }
             else
             {
@@ -399,7 +391,10 @@ public class EntityJumpCalculation : MonoBehaviour
             {
                 Debug.Log("normal jump !");
                 infoJump.jumpType = InfoJump.JumpType.TO_DOWN_NORMAL;
-                playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
+                Vector3 normalGravity = playerGravity.CalculateGravity(rb.transform.position);
+                //playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
+                playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, normalGravity);
+                Debug.Break();
             }
         }
 

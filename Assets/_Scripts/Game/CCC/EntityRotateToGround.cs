@@ -9,13 +9,15 @@ public class EntityRotateToGround : RotateToGround
     public float speedRotate = 5f;
     [FoldoutGroup("GamePlay"), Tooltip("speed of rotation to ground"), SerializeField, OnValueChanged("UpdateSpeed")]
     public float speedLerpRaulBack = 5f;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    private SmoothNormals smoothNormals;
 
     private float tmpSpeed;
 
     private void Start()
     {
         UpdateSpeed();
-        InstantRotate();
+        InstantRotate(smoothNormals.GetSmoothedNormalPlayer());
     }
     private void UpdateSpeed()
     {
@@ -29,7 +31,7 @@ public class EntityRotateToGround : RotateToGround
 
     private void FixedUpdate()
     {
-        RotateObject(speedRotate);
+        RotateObject(speedRotate, smoothNormals.GetSmoothedNormalPlayer());
         speedRotate = Mathf.Lerp(speedRotate, tmpSpeed, Time.deltaTime * speedLerpRaulBack);
     }
 }

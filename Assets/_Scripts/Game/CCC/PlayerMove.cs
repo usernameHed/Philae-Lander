@@ -50,7 +50,8 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
-        MovePhysics(objectRotateLocal.forward);
+        //MovePhysics(objectRotateLocal.forward);
+        MovePhysics(entityController.GetFocusedForwardDirPlayer());
     }
 
     /// <summary>

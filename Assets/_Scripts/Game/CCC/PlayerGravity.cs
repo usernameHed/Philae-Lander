@@ -77,7 +77,8 @@ public class PlayerGravity : MonoBehaviour
     private Vector3 mainAttractPoint;
     private Vector3 mainAttractNormal;
     public Transform GetMainAttractObject() { return (mainAttractObject); }
-    
+
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
     private bool isOnTransition = false;
 
 
@@ -123,7 +124,8 @@ public class PlayerGravity : MonoBehaviour
     {
         if (isOnTransition)
         {
-            ExtLog.DebugLogIa("stop transition !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
+            //ExtLog.DebugLogIa("stop transition !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
+            Debug.Log("stop transition");
             isOnTransition = false;
         }
     }
@@ -237,9 +239,7 @@ public class PlayerGravity : MonoBehaviour
                 PhilaeManager.Instance.cameraController.SetChangePlanetCam();
             }
 
-            mainAttractObject = rbTransform;
-            mainAttractPoint = rbTransform.position;
-            currentOrientation = OrientationPhysics.OBJECT;
+            SetObjectAttraction(rbTransform, rbTransform.position, rb.position - rbTransform.position);
             PhilaeManager.Instance.PlanetChange();
 
             entityController.SetKinematic(true);

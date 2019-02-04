@@ -7,14 +7,16 @@ public class CameraRotateToGround : RotateToGround
 {
     [FoldoutGroup("Object"), Tooltip("speed of rotation to ground"), SerializeField]
     public CameraController cameraController;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    private SmoothNormals smoothNormals;
 
     private void Start()
     {
-        InstantRotate();
+        InstantRotate(smoothNormals.GetSmoothedNormalCamera());
     }
 
     private void FixedUpdate()
     {
-        RotateObject(cameraController.GetRotateSpeedRotate());
+        RotateObject(cameraController.GetRotateSpeedRotate(), smoothNormals.GetSmoothedNormalCamera());
     }
 }

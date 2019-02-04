@@ -17,6 +17,13 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
 
+    [FoldoutGroup("Forward Cast"), Tooltip(""), SerializeField]
+    public string[] walkForwardUp;
+    [FoldoutGroup("Forward Cast"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
+    private float distForward = 0.6f;
+    [FoldoutGroup("Forward Cast"), Tooltip(""), SerializeField]
+    public float sizeRadiusForward = 0.3f;
+
     [FoldoutGroup("Object"), SerializeField]
     private SphereCollider sphereCollider;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
@@ -25,6 +32,8 @@ public class GroundCheck : MonoBehaviour
     private PlayerGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityJump entityJump;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntityController entityController;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -32,6 +41,8 @@ public class GroundCheck : MonoBehaviour
     private bool isAlmostGrounded = false;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isFlying = true;
+    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    private bool isForwardWall = false;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private string currentFloorLayer;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
@@ -106,6 +117,7 @@ public class GroundCheck : MonoBehaviour
         }
         
     }
+    
 
     /// <summary>
     /// try to stick to floor if the floor is flat, and we juste 
@@ -136,6 +148,37 @@ public class GroundCheck : MonoBehaviour
         {
             isAlmostGrounded = false;
             dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
+        }
+    }
+
+    private void ForwardWallCheck()
+    {
+        RaycastHit hitInfo;
+
+        int layerMask = Physics.AllLayers;
+        //layerMask = ~LayerMask.GetMask(dontWalkOnThisObject);   //"Player"
+        layerMask = LayerMask.GetMask(walkForwardUp);
+
+        if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
+                               distForward, layerMask, QueryTriggerInteraction.Ignore))
+        {
+
+            //currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
+
+            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 3f);
+            Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
+            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+
+            Debug.Log("forward");
+            isForwardWall = true;
+            dirNormal = hitInfo.normal;
+            //Debug.Break();
+            //dirNormal = hitInfo.normal;
+        }
+        else
+        {
+            isForwardWall = false;
+            //dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
         }
     }
 
@@ -180,5 +223,7 @@ public class GroundCheck : MonoBehaviour
         GroundChecking();           //set whenever or not we are grounded
         SetDragAndStick();          //set, depending on the grounded, the drag, and stick or not to the floor
         SetFlying();                //set if we fly or not !
+
+        ForwardWallCheck();         //set if the is a wall in front of us
     }
 }

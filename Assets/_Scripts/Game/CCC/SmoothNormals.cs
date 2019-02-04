@@ -6,14 +6,19 @@ using UnityEngine;
 public class SmoothNormals : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private float smoothSpeed = 5f;
+    private float smoothSpeedCamera = 2f;
+    [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    private float smoothSpeedPlayer = 2f;
+
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private PlayerGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("player object"), SerializeField]
     private GameObject rbObject;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
-    private Vector3 smoothedNormal;
+    private Vector3 smoothedNormalCamera;
+    [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
+    private Vector3 smoothedNormalPlayer;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -21,17 +26,23 @@ public class SmoothNormals : MonoBehaviour
 
     private void Start()
     {
-        smoothedNormal = GetRotationOrientationDown();
+        smoothedNormalCamera = GetRotationOrientationDown();
+        smoothedNormalPlayer = GetRotationOrientationDown();
     }
 
-    public Vector3 GetSmoothedNormal()
+    public Vector3 GetSmoothedNormalCamera()
     {
-        return (smoothedNormal);
+        return (smoothedNormalCamera);
     }
+    public Vector3 GetSmoothedNormalPlayer()
+    {
+        return (smoothedNormalPlayer);
+    }
+
 
     private Vector3 GetRotationOrientationDown()
     {
-        if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
         {
             return (playerGravity.GetMainAndOnlyGravity());
         }
@@ -41,12 +52,8 @@ public class SmoothNormals : MonoBehaviour
     private void CalculateSmoothNormal()
     {
         Vector3 actualNormal = GetRotationOrientationDown();
-        //Debug.DrawRay(rbObject.transform.position, actualNormal * 2, Color.magenta, 5f);
-
-        smoothedNormal = Vector3.Lerp(smoothedNormal, actualNormal, Time.deltaTime * smoothSpeed);
-
-
-        //Debug.DrawRay(rbObject.transform.position, smoothedNormal, Color.yellow, 5f);
+        smoothedNormalPlayer = Vector3.Lerp(smoothedNormalPlayer, actualNormal, Time.deltaTime * smoothSpeedPlayer);
+        smoothedNormalCamera = Vector3.Lerp(smoothedNormalCamera, actualNormal, Time.deltaTime * smoothSpeedCamera);
     }
 
     private void FixedUpdate()
