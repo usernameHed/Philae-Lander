@@ -200,19 +200,7 @@ public class PlayerGravity : MonoBehaviour
             entityAttractor.ResetFlyAway();
         }
     }
-    /*
-    public bool IsTooCloseToOtherPlanet(Transform rbTransform)
-    {
-        float dist = Vector3.SqrMagnitude(rb.position - rbTransform.position);
-        ExtLog.DebugLogIa("dist from attractive planet: " + dist, (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-        if (dist < distMinForChange)
-        {
-            return (true);
-        }
-        return (false);
-    }
-    */
-
+    
     public void ChangeMainAttractObject(Transform obj, Vector3 pointHit, Vector3 normalHit)
     {
         if (entityController.GetMoveState() == EntityController.MoveState.InAir
@@ -237,13 +225,12 @@ public class PlayerGravity : MonoBehaviour
             Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
         }
     }
-    /*
+    
     public void ChangeMainAttractObject(Transform rbTransform)
     {
         if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
             && (entityController.GetMoveState() == EntityController.MoveState.InAir)
-            && !isOnTransition && entityJump.IsJumpCoolDebugDownReady()
-            && !IsTooCloseToOtherPlanet(rbTransform))
+            && !isOnTransition && entityJump.IsJumpCoolDebugDownReady())
         {
             if (entityController.isPlayer)
             {
@@ -258,9 +245,9 @@ public class PlayerGravity : MonoBehaviour
             entityController.SetKinematic(true);
             ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
             isOnTransition = true;
-            Invoke("UnsetKinematic", PhilaeManager.Instance.cameraController.GetTimeKinematic());
+            Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
         }
-    }*/
+    }
 
     private void UnsetKinematic()
     {

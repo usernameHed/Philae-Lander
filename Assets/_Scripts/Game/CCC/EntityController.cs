@@ -81,10 +81,10 @@ public class EntityController : MonoBehaviour
         rb.isKinematic = isKinematc;
     }
 
-    public void ChangeMainPlanet(Rigidbody rb)
+    public void ChangeMainPlanet(Rigidbody rbOther)
     {
         Debug.LogWarning("no managed anymore!");
-        //playerGravity.ChangeMainAttractObject(rb.transform);
+        playerGravity.ChangeMainAttractObject(rbOther.transform);//, rbOther.transform.position, (rb.transform.position - rbOther.transform.position).normalized);
     }
 
     
