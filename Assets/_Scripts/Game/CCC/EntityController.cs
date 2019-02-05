@@ -26,6 +26,10 @@ public class EntityController : MonoBehaviour
     public PlayerGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    protected EntityAttractor entityAttractor;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    protected EntitySwitch entitySwitch;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;

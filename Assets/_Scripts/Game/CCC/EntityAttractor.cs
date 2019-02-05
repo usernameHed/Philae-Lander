@@ -13,6 +13,8 @@ public class EntityAttractor : MonoBehaviour
     private GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityJump entityJump;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntitySwitch entitySwitch;
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.8f;
@@ -191,8 +193,10 @@ public class EntityAttractor : MonoBehaviour
     /// <summary>
     /// create an attractor point for entity gravity !
     /// </summary>
-    private void ActiveAttractor()
+    public void ActiveAttractor()
     {
+        playerGravity.SetOrientation(PlayerGravity.OrientationPhysics.ATTRACTOR);
+
         ExtLog.DebugLogIa("attractor activated !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
 
         //camera change only of this is have player
@@ -201,13 +205,15 @@ public class EntityAttractor : MonoBehaviour
             PhilaeManager.Instance.cameraController.SetAttractorCamera();
         }
 
+        entitySwitch.ResetSwitch();
+
         //RESET LERP !!! important !
         gravityAttractorLerp = 1;
     }
-
+    /*
     public void SetupAttractor()
     {
-        /*
+        
         dontApplyForceDownForThisRound = false;
         Vector3 lastPos = Plot(rb, rb.transform.position, rb.velocity, 15, true, true)[14];
 
@@ -238,11 +244,12 @@ public class EntityAttractor : MonoBehaviour
             }
             applyStrongAttractor = !hit;
         }
-        */
+        
 
         ActiveAttractor();
         //Debug.Break();
     }
+    */
 
     /// <summary>
     /// apply attractor gravity

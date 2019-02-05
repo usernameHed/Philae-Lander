@@ -63,7 +63,7 @@ public class EntityJumpCalculation : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastDOWN = 3f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
-    private string[] layerSwitch = new string[] { "Walkable/Floor" };
+    private string[] layerNoSideJump = new string[] { "Walkable/NoSide" };
     //[FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     //private float minDistAcceptedForGoingUp = 5f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
@@ -106,27 +106,32 @@ public class EntityJumpCalculation : MonoBehaviour
 
     /// <summary>
     /// calculate trajectory of entity
+    ///rigidbody: rb of the object
+    ///pos: position from where to start the plot Trajectory
+    ///velocity: current velocity of the rigidbody
+    ///steps: numbers of steps
+    ///applyForceUp: do we apply additionnal gravity when going upward ?
+    ///applyForceDown: do we apply additionnal gravity when going down ?
     /// </summary>
     public Vector3[] Plots(Rigidbody rigidbody, Vector3 pos, Vector3 velocity, int steps, bool applyForceUp, bool applyForceDown)
     {
         Vector3[] results = new Vector3[steps];
 
-        float timestep = Time.fixedDeltaTime / magicTrajectoryCorrection;
-        //gravityAttractorLerp = 1f;
+        float timestep = Time.fixedDeltaTime / magicTrajectoryCorrection;   //magicCorection = 1
 
-        float drag = 1f - timestep * rigidbody.drag;
+        float drag = 1f - timestep * rigidbody.drag;    //take into account the rb drag
         Vector3 moveStep = velocity * timestep;
 
         int i = -1;
         while (++i < steps)
         {
-            Vector3 gravityOrientation = playerGravity.CalculateGravity(pos);
+            //get the gravity direction, depending on the position
+            Vector3 gravityOrientation = playerGravity.CalculateGravity(pos);   
+            //Get the vector acceleration (dir + magnitude)
             Vector3 gravityAccel = playerGravity.FindAirGravity(pos, moveStep, gravityOrientation, applyForceUp, applyForceDown) * timestep;
             moveStep += gravityAccel;
             moveStep *= drag;
             pos += moveStep;
-
-            //infoJump.lastVelocity = moveStep;
 
             results[i] = pos;
             ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 5f);
@@ -277,6 +282,33 @@ public class EntityJumpCalculation : MonoBehaviour
 
         return (true);
     }
+    public bool CanApplyForceUp()
+    {
+        if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)
+            return (false);
+
+        //TO_DOWN_NORMAL true
+        //BASE true
+        //TO UP pas utile mais vrai
+
+        return (true);
+    }
+
+    /// <summary>
+    /// return the main gravity in all case
+    /// Except JUMP_SIDE: here we have a FAKE gravity toward the side, (for rotation
+    /// But the actual gravity is down !
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetSpecialAirGravity()
+    {
+        //here, we apply gravity DOWN (even if the actual gravity is to the side)
+        if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)
+            return (entityController.GetFocusedForwardDirPlayer());
+
+
+        return (playerGravity.GetMainAndOnlyGravity());
+    }
 
     public void DetermineJumpType()
     {
@@ -284,27 +316,37 @@ public class EntityJumpCalculation : MonoBehaviour
         Vector3 normalHit = infoJump.normalHit;
 
         float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
-        if (dotImpact > 0 - marginSideSlope && !entityAction.NotMoving(marginNotMovingTestJump))
+        int isInForbiddenLayer = ExtList.ContainSubStringInArray(layerNoSideJump, LayerMask.LayerToName(infoJump.objHit.gameObject.layer));
+        if (dotImpact > 0 - marginSideSlope && !entityAction.NotMoving(marginNotMovingTestJump)
+            && isInForbiddenLayer == -1)
         {
             Debug.Log("we hit way !");
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
-            playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
+
+            Vector3 normalGravity = -entityController.GetFocusedForwardDirPlayer();
+            playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, normalGravity);
+            Debug.DrawRay(infoJump.pointHit, normalGravity, Color.black, 5f);
+            //playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
         }
         else
         {
-            Debug.Log("No way we climb That !, Obstacle to inclined (or no input forward)");
+            Debug.Log("No way we climb That !, Obstacle to inclined (or no input forward) (or NoSide !)");
             infoJump.jumpType = InfoJump.JumpType.BASE;
         }
     }
 
-    public void JumpCalculation()
+    /// <summary>
+    /// do calculation based on velocity we want to jump
+    /// </summary>
+    /// <param name="orientedSetVelocity"></param>
+    public void JumpCalculation(Vector3 orientedSetVelocity)
     {
         //reset jump first test timer
         normalGravityTested = false;
 //dontApplyForceDownForThisRound = false;
 
         //first create 30 plot of the normal jump
-        Vector3[] plots = Plots(rb, rb.transform.position, rb.velocity, 30, false, true);
+        Vector3[] plots = Plots(rb, rb.transform.position, orientedSetVelocity, 30, false, true);
         infoJump.Clear();
         infoJump.SetDirLast(plots, rb.transform.position);
 
@@ -346,6 +388,12 @@ public class EntityJumpCalculation : MonoBehaviour
             Debug.Log("dotImpact close: " + dotImpact);
             return (true);
         }
+        if (dotImpact < 0)
+        {
+            Debug.Log("omg dotImpact negatif ! do nothing !");
+            Debug.Break();
+            return (false);
+        }
             
 
         Debug.DrawRay(infoJump.pointHit, normalJump, Color.blue, 5f);
@@ -385,15 +433,18 @@ public class EntityJumpCalculation : MonoBehaviour
             if (!IsNormalGravityJump())
             {
                 RaycastGapTest(lastPlots, plots);
+                Debug.Log("gap test ??");
                 Debug.Break();
             }
             else
             {
                 Debug.Log("normal jump !");
                 infoJump.jumpType = InfoJump.JumpType.TO_DOWN_NORMAL;
-                Vector3 normalGravity = playerGravity.CalculateGravity(rb.transform.position);
+                Vector3 normalGravity = playerGravity.GetMainAndOnlyGravity();
                 //playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
                 playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, normalGravity);
+
+                Debug.DrawRay(infoJump.pointHit, normalGravity, Color.black, 5f);
                 Debug.Break();
             }
         }

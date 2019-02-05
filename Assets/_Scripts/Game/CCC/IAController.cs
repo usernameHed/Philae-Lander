@@ -149,6 +149,16 @@ public class IAController : EntityController, IPooledObject, IKillable
         iAInput.SetJump();
     }*/
 
+    private void OnGrounded()
+    {
+        iAJump.OnGrounded();
+        playerGravity.OnGrounded();
+        entityAttractor.OnGrounded();
+        entitySwitch.ResetSwitch();
+
+        SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
+    }
+
     /// <summary>
     /// set state of player
     /// </summary>
@@ -156,7 +166,7 @@ public class IAController : EntityController, IPooledObject, IKillable
     {
         if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
         {
-            iAJump.OnGrounded();
+            OnGrounded();
         }
 
         if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)

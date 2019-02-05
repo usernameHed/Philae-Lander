@@ -9,8 +9,7 @@ public class EntityJump : MonoBehaviour
     protected float jumpHeight = 3f;
     [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("increase the height jump when we move faster")]
     protected float ratioIncreaseHeightMove = 0.5f;
-    [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
-    private float timeFeforeCalculateAgainJump = 0.5f;
+    
     [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastForNormalSwitch = 5f;
 
@@ -37,6 +36,8 @@ public class EntityJump : MonoBehaviour
     protected GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityJumpCalculation entityJumpCalculation;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public EntitySwitch entitySwitch;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -50,8 +51,6 @@ public class EntityJump : MonoBehaviour
 
     protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
-    protected FrequencyCoolDown coolDowwnBeforeCalculateAgain = new FrequencyCoolDown();
-    public bool IsReadyToTestCalculation() { return (coolDowwnBeforeCalculateAgain.IsStartedAndOver()); }
 
     protected bool jumpStop = false;
 
@@ -79,7 +78,7 @@ public class EntityJump : MonoBehaviour
     public virtual void OnGrounded()
     {
         entityJumpCalculation.ResetCalculation();
-        coolDowwnBeforeCalculateAgain.Reset();
+        
         Debug.Log("Grounded !");
         
         coolDownWhenJumped.Reset();
@@ -105,6 +104,9 @@ public class EntityJump : MonoBehaviour
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityAction.GetMagnitudeInput()));
 
+        if (groundCheck.IsForwardForbiddenWall())
+            jumpBoostHeight = jumpHeight;
+
         //Debug.Log("boost height: " + jumpBoostHeight);
         return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
     }
@@ -128,6 +130,8 @@ public class EntityJump : MonoBehaviour
         //Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
         Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * entityAction.GetMagnitudeInput();
 
+        if (groundCheck.IsForwardForbiddenWall())
+            normalizedForwardPlayer = Vector3.zero;
         //Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
         //Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);
 
@@ -143,12 +147,12 @@ public class EntityJump : MonoBehaviour
         Vector3 orientedStrenghtJump = AddJumpHeight(dirJump);
 
         rb.velocity = orientedStrenghtJump;
-        //playerGravity.JustJump();
+
+        playerGravity.JustJumped();
+        entitySwitch.JustJumped(playerGravity.GetMainAndOnlyGravity());
         //JustJump();
-
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
-
-        coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
-        entityJumpCalculation.JumpCalculation();
+        
+        entityJumpCalculation.JumpCalculation(orientedStrenghtJump);
     }
 }

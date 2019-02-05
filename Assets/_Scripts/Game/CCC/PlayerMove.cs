@@ -20,22 +20,6 @@ public class PlayerMove : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityJump entityJump;
 
-
-    private bool enabledScript = true;      //tell if this script should be active or not
-    
-    private void Start()
-    {
-        Init();
-    }
-
-    /// <summary>
-    /// init player
-    /// </summary>
-    public void Init()
-    {
-        enabledScript = true;               //active this script at start
-    }
-
     /// <summary>
     /// move with input
     /// </summary>
@@ -59,9 +43,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (!enabledScript)
-            return;
-        if (entityController.GetMoveState() == PlayerController.MoveState.Move
+        if (entityController.GetMoveState() == EntityController.MoveState.Move
             && entityJump.IsJumpCoolDebugDownReady())
         {
             MovePlayer();

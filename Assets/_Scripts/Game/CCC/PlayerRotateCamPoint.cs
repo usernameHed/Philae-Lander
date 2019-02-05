@@ -20,7 +20,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
     [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float stepZoom = 1f;
     [FoldoutGroup("Sight"), Tooltip(""), SerializeField]
-    private string[] objOnSight;
+    private string[] objOnSight = new string[] { "Walkable/Floor", "Walkable/NoSide", "Walkable/Up" };
     [FoldoutGroup("Sight"), Tooltip(""), SerializeField]
     private float radiusRaycast = 0.7f;
     [FoldoutGroup("Sight"), Tooltip("dist min when we need to zoom the camera"), SerializeField]
@@ -126,8 +126,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        int layerMask = Physics.AllLayers;
-        layerMask = LayerMask.GetMask(objOnSight);
+        int layerMask = LayerMask.GetMask(objOnSight);
 
 
         Vector3 dirPoint = (tpsSpacePoint.position - objectToRotate.position).normalized;

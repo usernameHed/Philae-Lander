@@ -39,6 +39,8 @@ public class PlayerGravity : MonoBehaviour
     private float speedRotateWhenSwitching = 30f;
     [FoldoutGroup("Switch"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float timeBeforeResetBaseCamera = 0.4f;
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
+    private float timeFeforeCalculateAgainJump = 0.5f;
 
     //[FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
     //private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
@@ -46,9 +48,14 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip("default air gravity"), SerializeField]
     private OrientationPhysics currentOrientation = OrientationPhysics.OBJECT;
     public OrientationPhysics GetOrientationPhysics() { return (currentOrientation); }
+    public void SetOrientation(OrientationPhysics orientation)
+    {
+        currentOrientation = orientation;
+    }
 
     private Vector3 mainAndOnlyGravity = Vector3.zero;
-    
+    private FrequencyCoolDown coolDowwnBeforeCalculateAgain = new FrequencyCoolDown();
+    public bool IsReadyToTestCalculation() { return (coolDowwnBeforeCalculateAgain.IsStartedAndOver()); }
 
     public Vector3 GetMainAndOnlyGravity()
     {
@@ -94,7 +101,7 @@ public class PlayerGravity : MonoBehaviour
     }
     public void SetObjectAttraction(Transform target, Vector3 point, Vector3 normalHit)
     {
-        currentOrientation = OrientationPhysics.OBJECT;
+        SetOrientation(OrientationPhysics.OBJECT);
         mainAttractObject = target;
         mainAttractPoint = point;
         mainAttractNormal = normalHit;
@@ -122,6 +129,7 @@ public class PlayerGravity : MonoBehaviour
 
     public void OnGrounded()
     {
+        coolDowwnBeforeCalculateAgain.Reset();
         if (isOnTransition)
         {
             //ExtLog.DebugLogIa("stop transition !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
@@ -159,6 +167,12 @@ public class PlayerGravity : MonoBehaviour
     }
     */
 
+    public void JustJumped()
+    {
+        coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
+
+    }
+
     private void ChangeStateGravity()
     {
         //here player is on fly
@@ -167,14 +181,13 @@ public class PlayerGravity : MonoBehaviour
             //Debug.Log("try to change gravity state");
             //here player is on fly, and we can create an attractor
 
-            if (entityJump.IsReadyToTestCalculation() && currentOrientation == OrientationPhysics.NORMALS)
+            if (IsReadyToTestCalculation() && currentOrientation == OrientationPhysics.NORMALS)
             {
                 entityJump.entityJumpCalculation.UltimaTestBeforeAttractor();
             }
             else if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
             {
-                currentOrientation = OrientationPhysics.ATTRACTOR;
-                entityAttractor.SetupAttractor();
+                entityAttractor.ActiveAttractor();
             }
             //here currently attractor attractive
             else if (currentOrientation == OrientationPhysics.ATTRACTOR)
@@ -184,12 +197,12 @@ public class PlayerGravity : MonoBehaviour
             //here on fly but still attracted by the last normal
             else if (currentOrientation != OrientationPhysics.OBJECT)
             {
-                currentOrientation = OrientationPhysics.NORMALS;
+                SetOrientation(OrientationPhysics.NORMALS);
             }
             //here attracted by an object
             else
             {
-                currentOrientation = OrientationPhysics.OBJECT;
+                SetOrientation(OrientationPhysics.OBJECT);
             }
         }
         //here on ground
@@ -263,7 +276,7 @@ public class PlayerGravity : MonoBehaviour
                 if (entityJumpCalculation.CanApplyNormalizedObjectGravity())
                 {
                     mainAndOnlyGravity = mainAttractNormal;
-                    Debug.Log("go To Object (attract Normal)");
+                    //Debug.Log("go To Object (attract Normal)");
                 }
                 else
                 {
@@ -406,7 +419,7 @@ public class PlayerGravity : MonoBehaviour
             return;
 
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
-        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, GetMainAndOnlyGravity(), true, entityJumpCalculation.CanApplyForceDown());
+        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, entityJumpCalculation.GetSpecialAirGravity(), entityJumpCalculation.CanApplyForceUp(), entityJumpCalculation.CanApplyForceDown());
     }
 
     private void FixedUpdate()

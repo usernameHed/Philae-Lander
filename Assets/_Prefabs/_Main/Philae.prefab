@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 4078160021669779806}
   - component: {fileID: 4342663178068225343}
   - component: {fileID: 3819143144908272473}
+  - component: {fileID: 1908652825489971977}
   - component: {fileID: 4342663178068225342}
   - component: {fileID: 3347777260606228082}
   - component: {fileID: 2648358779095376201}
@@ -162,16 +163,22 @@ MonoBehaviour:
   groundCheckDistance: 0.2
   stickToFloorDist: 0.6
   stickGravityForce: 1.1
-  walkOnThisObject:
-  - Walkable/Floor
   sizeRadiusRayCast: 0.4
+  walkForbiddenForwardUp:
+  - Walkable/NoSide
+  - Walkable/Up
+  distForward: 0.6
+  sizeRadiusForward: 0.3
   sphereCollider: {fileID: 3959034400415941277}
   rb: {fileID: 3959034400415941276}
   playerGravity: {fileID: 4342663178068225343}
   entityJump: {fileID: 6166077617058031261}
+  entityController: {fileID: 3347777260606228085}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
+  isForwardWall: 0
+  isForbiddenForward: 0
   currentFloorLayer: 
   shellOffset: 0.1
 --- !u!114 &3347777260606228085
@@ -189,10 +196,14 @@ MonoBehaviour:
   isPlayer: 1
   walkablePlatform:
   - Walkable/Floor
+  - Walkable/NoSide
+  - Walkable/Up
   rb: {fileID: 3959034400415941276}
   rbRotateObject: {fileID: 2648358779582519253}
   playerGravity: {fileID: 4342663178068225343}
   groundCheck: {fileID: 2648358779095376182}
+  entityAttractor: {fileID: 3819143144908272473}
+  entitySwitch: {fileID: 1908652825489971977}
   moveState: 0
   layerMask: -1
   deathVibration:
@@ -204,7 +215,6 @@ MonoBehaviour:
     durationRight: 1
   playerInput: {fileID: 6166077617058031262}
   playerJump: {fileID: 6166077617058031261}
-  entityAttractor: {fileID: 3819143144908272473}
   renderPlayer: {fileID: 2648358779774481647}
   animator: {fileID: 47880833494453058}
   idPlayer: 0
@@ -222,7 +232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 2
   ratioIncreaseHeightMove: 0.5
-  timeFeforeCalculateAgainJump: 0.5
   distRaycastForNormalSwitch: 5
   stayHold: 0
   canJumpInAir: 1
@@ -234,6 +243,7 @@ MonoBehaviour:
   entityAttractor: {fileID: 3819143144908272473}
   groundCheck: {fileID: 2648358779095376182}
   entityJumpCalculation: {fileID: 4078160021669779806}
+  entitySwitch: {fileID: 1908652825489971977}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -265,8 +275,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b47bd2f74899a4fa9ef2af3f3dc2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radiusSphereCast: 0.4
+  distRaycastSIDE: 2
+  distRaycastUP: 3
+  distRaycastDOWN: 3
+  layerNoSideJump:
+  - Walkable/NoSide
   timeFeforeCalculateAgainJump: 0.5
-  distRaycastForNormalSwitch: 5
+  marginSideSlope: 0.5
+  marginNotMovingTestJump: 0.5
+  marginJumpEndDot: 0.86
   entityController: {fileID: 3347777260606228085}
   playerLocalyRotate: {fileID: 2648358779582519253}
   rb: {fileID: 3959034400415941276}
@@ -275,6 +293,16 @@ MonoBehaviour:
   entityAttractor: {fileID: 3819143144908272473}
   groundCheck: {fileID: 2648358779095376182}
   magicTrajectoryCorrection: 1.4
+  infoJump:
+    didWeHit: 0
+    pointHit: {x: 0, y: 0, z: 0}
+    normalHit: {x: 0, y: 0, z: 0}
+    objHit: {fileID: 0}
+    dirUltimatePlotPoint: {x: 0, y: 0, z: 0}
+    initialPosBeforePlots: {x: 0, y: 0, z: 0}
+    ultimatePlotPoint: {x: 0, y: 0, z: 0}
+    lastVelocity: {x: 0, y: 0, z: 0}
+    jumpType: 0
 --- !u!114 &4342663178068225343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,11 +318,13 @@ MonoBehaviour:
   gravity: 9.81
   magicTrajectoryCorrection: 1.4
   groundAddGravity: 5.5
-  stickToFloorGravity: 6
+  stickToFloorGravity: 7
   rbUpAddGravity: 2.5
   rbDownAddGravity: 5
   defaultGravityInAir: 2
-  distMinForChange: 7
+  speedRotateWhenSwitching: 30
+  timeBeforeResetBaseCamera: 1
+  timeFeforeCalculateAgainJump: 0.5
   currentOrientation: 0
   entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
@@ -302,7 +332,10 @@ MonoBehaviour:
   entityAction: {fileID: 6166077617058031262}
   entityJump: {fileID: 6166077617058031261}
   entityAttractor: {fileID: 3819143144908272473}
+  entityJumpCalculation: {fileID: 4078160021669779806}
+  rotateToGround: {fileID: 424197143998509921}
   mainAttractObject: {fileID: 0}
+  isOnTransition: 0
 --- !u!114 &3819143144908272473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +366,20 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   differenceAngleNormalForUpdatePosition: 5
   timeDebugFlyAway: 0.3
+--- !u!114 &1908652825489971977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3158d64db264bf4ba101587e5407b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityController: {fileID: 3347777260606228085}
+  playerGravity: {fileID: 4342663178068225343}
 --- !u!114 &4342663178068225342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,10 +392,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e426d7872088f940af41433bfd0b13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeed: 2
+  smoothSpeedCamera: 2
+  smoothSpeedPlayer: 2
   playerGravity: {fileID: 4342663178068225343}
   rbObject: {fileID: 3959034400415941278}
-  smoothedNormal: {x: 0, y: 0, z: 0}
+  smoothedNormalCamera: {x: 0, y: 0, z: 0}
+  smoothedNormalPlayer: {x: 0, y: 0, z: 0}
   entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
 --- !u!114 &3347777260606228082
@@ -431,9 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9e47cc97ef0be4b9f72cd7ef4a03de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothNormals: {fileID: 4342663178068225342}
   rbObject: {fileID: 3959034400415941278}
   speedRotate: 700
+  speedLerpRaulBack: 5
+  smoothNormals: {fileID: 4342663178068225342}
 --- !u!114 &4342663178068225341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,8 +559,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
-  m_LocalRotation: {x: -0, y: -0.85759, z: -0, w: 0.51433396}
-  m_LocalPosition: {x: 73.69, y: 28.45, z: 49.96}
+  m_LocalRotation: {x: -0.031672977, y: -0.2636605, z: 0.11498803, w: 0.95721346}
+  m_LocalPosition: {x: 87.2, y: 29.81, z: 40.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}
@@ -518,7 +568,7 @@ Transform:
   - {fileID: 3959034399683835973}
   m_Father: {fileID: 3347777260606228084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -118.09401, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.8, z: 13.7}
 --- !u!114 &4976704726927159999
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,12 +13,10 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("GamePlay"), Range(1f, 1.5f), Tooltip("When almostGrounded, add more gravity to quicly fall down (if there is something close)"), SerializeField]
     public float stickGravityForce = 1.1f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] walkOnThisObject;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
 
     [FoldoutGroup("Forward Cast"), Tooltip(""), SerializeField]
-    public string[] walkForwardUp;
+    public string[] walkForbiddenForwardUp = new string[] { "Walkable/NoSide", "Walkable/Up" };
     [FoldoutGroup("Forward Cast"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
     private float distForward = 0.6f;
     [FoldoutGroup("Forward Cast"), Tooltip(""), SerializeField]
@@ -43,6 +41,8 @@ public class GroundCheck : MonoBehaviour
     private bool isFlying = true;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForwardWall = false;
+    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    private bool isForbiddenForward = false;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private string currentFloorLayer;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
@@ -70,6 +70,10 @@ public class GroundCheck : MonoBehaviour
     {
         return (isAlmostGrounded && !isGrounded && !isFlying);
     }
+    public bool IsForwardForbiddenWall()
+    {
+        return (isForwardWall && isForbiddenForward);
+    }
 
     public Vector3 GetDirLastNormal()
     {
@@ -88,14 +92,10 @@ public class GroundCheck : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        int layerMask = Physics.AllLayers;
-        //layerMask =~ LayerMask.GetMask(dontWalkOnThisObject);   //"Player"
-        layerMask = LayerMask.GetMask(walkOnThisObject);
-
         //Vector3 dirRaycast = playerGravity.GetMainAndOnlyGravity() * (radius + groundCheckDistance);
         //Debug.DrawRay(rb.transform.position, dirRaycast * -1, Color.blue, 0.1f);
         if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -0.01f, out hitInfo,
-                               groundCheckDistance, layerMask, QueryTriggerInteraction.Ignore))
+                               groundCheckDistance, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             isGrounded = true;
             dirNormal = hitInfo.normal;
@@ -126,12 +126,8 @@ public class GroundCheck : MonoBehaviour
     {
         RaycastHit hitInfo;
 
-        int layerMask = Physics.AllLayers;
-        //layerMask = ~LayerMask.GetMask(dontWalkOnThisObject);   //"Player"
-        layerMask = LayerMask.GetMask(walkOnThisObject);
-
         if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -0.01f, out hitInfo,
-                               stickToFloorDist, layerMask, QueryTriggerInteraction.Ignore))
+                               stickToFloorDist, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             isAlmostGrounded = true;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
@@ -155,29 +151,33 @@ public class GroundCheck : MonoBehaviour
     {
         RaycastHit hitInfo;
 
-        int layerMask = Physics.AllLayers;
-        //layerMask = ~LayerMask.GetMask(dontWalkOnThisObject);   //"Player"
-        layerMask = LayerMask.GetMask(walkForwardUp);
-
         if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
-                               distForward, layerMask, QueryTriggerInteraction.Ignore))
+                               distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-
-            //currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
-
             ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 3f);
             Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
             ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
 
             Debug.Log("forward");
             isForwardWall = true;
-            dirNormal = hitInfo.normal;
+
+            int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+            if (isForbidden != -1)
+            {
+                isForbiddenForward = true;
+            }
+            else
+            {
+                dirNormal = hitInfo.normal;
+                isForbiddenForward = false;
+            }
             //Debug.Break();
             //dirNormal = hitInfo.normal;
         }
         else
         {
             isForwardWall = false;
+            isForbiddenForward = false;
             //dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
         }
     }

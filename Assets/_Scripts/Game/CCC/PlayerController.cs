@@ -19,8 +19,7 @@ public class PlayerController : EntityController, IKillable
     public PlayerInput playerInput;
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public PlayerJump playerJump;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
-    public EntityAttractor entityAttractor;
+    
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public Transform renderPlayer;
     [FoldoutGroup("Object"), Tooltip("ref script")]
@@ -69,6 +68,7 @@ public class PlayerController : EntityController, IKillable
         playerJump.OnGrounded();
         playerGravity.OnGrounded();
         entityAttractor.OnGrounded();
+        entitySwitch.ResetSwitch();
 
         if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
         {
