@@ -7,19 +7,34 @@ public class EntitySwitch : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float radiusOverlap = 2f;
+    [FoldoutGroup("Switch"), Tooltip("default air gravity"), SerializeField]
+    private float speedRotateWhenSwitching = 30f;
+    [FoldoutGroup("Switch"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
+    private float timeBeforeResetBaseCamera = 0.4f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float timeBeforeStartOverlapping = 0.3f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private string[] layerSwitch = new string[] { "Walkable/Up"};
-
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
+    private float dotRangeCeilling = 0.5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityController entityController;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private PlayerGravity playerGravity;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityRotateToGround rotateToGround;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private GroundCheck groundCheck;
+
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
+    private bool isOnTransition = false;
+
 
     private Collider[] results = new Collider[5];
     private FrequencyCoolDown coolDownOverlap = new FrequencyCoolDown();
     private int layermask;
-    private Vector3 dirGravityJump;
+    private static float radiusSphereCast = 0.3f;
 
     private void Awake()
     {
@@ -33,33 +48,86 @@ public class EntitySwitch : MonoBehaviour
         ExtDrawGuizmos.DebugWireSphere(entityController.rb.position, Color.blue, radiusOverlap, 0.1f);
         for (int i = 0; i < number; i++)
         {
+            //if (groundCheck.GetLastPlatform() && results[i].transform.GetInstanceID() == groundCheck.GetLastPlatform().GetInstanceID())
+            //    continue;
+
             Vector3 dirPlayerObject = results[i].transform.position - entityController.rb.position;
-            float dotPlayer = ExtQuaternion.DotProduct(dirPlayerObject, dirGravityJump);
-            if (dotPlayer > 0)
+            Vector3 gravityOrientation = playerGravity.GetMainAndOnlyGravity();
+
+            float dotPlayer = ExtQuaternion.DotProduct(dirPlayerObject, gravityOrientation);
+            if (dotPlayer > dotRangeCeilling)
             {
                 Debug.Log("cet objet est dans la direction oposé de l'autre !");
                 //Vector3 closestPos = results[i].transform.G
-                Debug.DrawLine(entityController.rb.position, results[i].transform.position, Color.cyan, 5f);
-            }
-            //test l'objet le plus proche (le point du mesh le plus proche surtout !)
-            //il faut pas que ce soit dans la direction de la où on vient... (dirGravityJump)
+
+                Debug.DrawRay(entityController.rb.position, gravityOrientation * radiusOverlap, Color.cyan, 5f);
+
+                RaycastHit hitInfo;
+                Vector3 posGravity = results[i].transform.position;
+                Vector3 normalHit = -gravityOrientation;
+                if (Physics.SphereCast(entityController.rb.position, 0.3f, gravityOrientation, out hitInfo,
+                               radiusOverlap + 0.1f, layermask, QueryTriggerInteraction.Ignore))
+                {
+                    posGravity = hitInfo.point;
+                    normalHit = hitInfo.normal;
+                }
+                ChangeMainAttractObject(results[i].transform, posGravity, normalHit);
+             }
         }
     }
 
-    public void JustJumped(Vector3 dirGravity)
+    private void ChangeMainAttractObject(Transform obj, Vector3 pointHit, Vector3 normalHit)
+    {
+        if (entityController.isPlayer)
+        {
+            PhilaeManager.Instance.cameraController.SetChangePlanetCam();
+            PhilaeManager.Instance.PlanetChange();
+        }
+
+        playerGravity.SetObjectAttraction(obj, pointHit, normalHit);
+
+        rotateToGround.SetNewTempSpeed(speedRotateWhenSwitching);
+
+        //CalculateGravity(rb.transform.position);
+
+        
+
+        entityController.SetKinematic(true);
+        ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
+        isOnTransition = true;
+        Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
+        Debug.Break();
+    }
+
+    private void UnsetKinematic()
+    {
+        entityController.SetKinematic(false);
+        PhilaeManager.Instance.cameraController.SetBaseCamera();
+    }
+
+    public void JustJumped()
     {
         coolDownOverlap.StartCoolDown(timeBeforeStartOverlapping);
-        dirGravityJump = dirGravity;
     }
-    public void ResetSwitch()
+
+    /// <summary>
+    /// called onGround, or when we active attractor ?
+    /// </summary>
+    public void OnGrounded()
     {
         coolDownOverlap.Reset();
+        if (isOnTransition)
+        {
+            //ExtLog.DebugLogIa("stop transition !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
+            Debug.Log("stop transition");
+            isOnTransition = false;
+        }
     }
 
     private void FixedUpdate()
     {
         if (entityController.GetMoveState() == EntityController.MoveState.InAir
-             && coolDownOverlap.IsReady())
+             && coolDownOverlap.IsReady() && !isOnTransition)
         {
             OverlapTest();
         }            

@@ -205,7 +205,7 @@ public class EntityAttractor : MonoBehaviour
             PhilaeManager.Instance.cameraController.SetAttractorCamera();
         }
 
-        entitySwitch.ResetSwitch();
+//entitySwitch.OnGrounded();
 
         //RESET LERP !!! important !
         gravityAttractorLerp = 1;

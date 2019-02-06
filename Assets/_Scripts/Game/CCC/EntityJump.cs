@@ -149,7 +149,7 @@ public class EntityJump : MonoBehaviour
         rb.velocity = orientedStrenghtJump;
 
         playerGravity.JustJumped();
-        entitySwitch.JustJumped(playerGravity.GetMainAndOnlyGravity());
+        entitySwitch.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         

@@ -29,7 +29,7 @@ public class Atmosphere : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(GameData.Layers.Player.ToString()))
+        /*if (other.CompareTag(GameData.Layers.Player.ToString()))
         {
             playerIsInside = true;
             PhilaeManager.Instance.playerControllerRef.ChangeMainPlanet(rbPlanetParent);
@@ -47,7 +47,7 @@ public class Atmosphere : MonoBehaviour
                 Debug.LogError("no ia controller ?");
             }
 
-        }
+        }*/
     }
 
     private void OnTriggerExit(Collider other)

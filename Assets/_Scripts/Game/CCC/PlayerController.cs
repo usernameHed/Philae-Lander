@@ -68,7 +68,7 @@ public class PlayerController : EntityController, IKillable
         playerJump.OnGrounded();
         playerGravity.OnGrounded();
         entityAttractor.OnGrounded();
-        entitySwitch.ResetSwitch();
+        entitySwitch.OnGrounded();
 
         if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
         {

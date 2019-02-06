@@ -35,10 +35,7 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Air Gravity"), Tooltip("default air gravity"), SerializeField]
     private float defaultGravityInAir = 2f;
 
-    [FoldoutGroup("Switch"), Tooltip("default air gravity"), SerializeField]
-    private float speedRotateWhenSwitching = 30f;
-    [FoldoutGroup("Switch"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
-    private float timeBeforeResetBaseCamera = 0.4f;
+    
     [FoldoutGroup("Switch"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
     private float timeFeforeCalculateAgainJump = 0.5f;
 
@@ -75,19 +72,13 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJumpCalculation entityJumpCalculation;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityRotateToGround rotateToGround;
+    private EntityJumpCalculation entityJumpCalculation;  
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
     private Vector3 mainAttractPoint;
     private Vector3 mainAttractNormal;
     public Transform GetMainAttractObject() { return (mainAttractObject); }
-
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
-    private bool isOnTransition = false;
-
 
     private void Start()
     {
@@ -130,47 +121,12 @@ public class PlayerGravity : MonoBehaviour
     public void OnGrounded()
     {
         coolDowwnBeforeCalculateAgain.Reset();
-        if (isOnTransition)
-        {
-            //ExtLog.DebugLogIa("stop transition !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-            Debug.Log("stop transition");
-            isOnTransition = false;
-        }
-    }
-
-    /*
-    /// <summary>
-    /// calculate trajectory of entity
-    /// </summary>
-    public Vector3[] Plot(Rigidbody rigidbody, Vector3 pos, Vector3 velocity, int steps, bool noForceWhenUp, bool noForceWhenDown)
-    {
-        Vector3[] results = new Vector3[steps];
-
-        float timestep = Time.fixedDeltaTime / magicTrajectoryCorrection;
-        //gravityAttractorLerp = 1f;
         
-        float drag = 1f - timestep * rigidbody.drag;
-        Vector3 moveStep = velocity * timestep;
-
-        int i = -1;
-        while (++i < steps)
-        {
-            CalculateGravity(pos);
-            Vector3 gravityAccel = FindAirGravity(pos, moveStep, GetMainAndOnlyGravity(), noForceWhenUp, noForceWhenDown) * timestep;
-            moveStep += gravityAccel;
-            moveStep *= drag;
-            pos += moveStep;
-            results[i] = pos;
-            ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 0.1f);
-        }
-        return (results);
     }
-    */
 
     public void JustJumped()
     {
         coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
-
     }
 
     private void ChangeStateGravity()
@@ -216,31 +172,8 @@ public class PlayerGravity : MonoBehaviour
         }
     }
     
-    public void ChangeMainAttractObject(Transform obj, Vector3 pointHit, Vector3 normalHit)
-    {
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir
-            && !isOnTransition)
-        {
-            if (entityController.isPlayer)
-            {
-                PhilaeManager.Instance.cameraController.SetChangePlanetCam();
-            }
 
-            SetObjectAttraction(obj, pointHit, normalHit);
-
-            rotateToGround.SetNewTempSpeed(speedRotateWhenSwitching);
-
-            //CalculateGravity(rb.transform.position);
-
-            PhilaeManager.Instance.PlanetChange();
-
-            entityController.SetKinematic(true);
-            ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-            isOnTransition = true;
-            Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
-        }
-    }
-    
+    /*
     public void ChangeMainAttractObject(Transform rbTransform)
     {
         if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
@@ -261,12 +194,7 @@ public class PlayerGravity : MonoBehaviour
             Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
         }
     }
-
-    private void UnsetKinematic()
-    {
-        entityController.SetKinematic(false);
-        PhilaeManager.Instance.cameraController.SetBaseCamera();
-    }
+    */
 
     public Vector3 CalculateGravity(Vector3 positionEntity)
     {

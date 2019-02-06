@@ -10,7 +10,6 @@ public struct InfoJump
     public enum JumpType
     {
         BASE,
-        TO_UP,
         TO_SIDE,
         TO_DOWN_NORMAL,
     }
@@ -465,13 +464,6 @@ public class EntityJumpCalculation : MonoBehaviour
 
         Vector3 ultimate = infoJump.ultimatePlotPoint;
         Vector3 dirUltimate = infoJump.dirUltimatePlotPoint;
-
-        if (infoJump.jumpType == InfoJump.JumpType.TO_UP)
-        {
-            //refaire des test ici pour le jump...
-            playerGravity.ChangeMainAttractObject(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
-            return;
-        }
 
         //chose if we add force or not
         Debug.Log("ultimate raycast");

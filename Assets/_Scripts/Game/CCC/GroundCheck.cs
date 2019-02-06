@@ -50,6 +50,8 @@ public class GroundCheck : MonoBehaviour
 
     private float radius;
     private Vector3 dirNormal = Vector3.zero;
+    private Transform lastPlatform = null;
+    public Transform GetLastPlatform() { return (lastPlatform); }
 
     private void Awake()
     {
@@ -105,6 +107,7 @@ public class GroundCheck : MonoBehaviour
             //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
 
             //m_GroundContactNormal = hitInfo.normal;
+            lastPlatform = hitInfo.collider.transform;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
             //Debug.Log("normal");
             //Debug.Break();
@@ -139,6 +142,7 @@ public class GroundCheck : MonoBehaviour
             //Debug.Log("stick");
             //Debug.Break();
             dirNormal = hitInfo.normal;
+            lastPlatform = hitInfo.collider.transform;
         }
         else
         {
