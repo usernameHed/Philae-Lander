@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3347777260606228084}
   - component: {fileID: 6166077617058031262}
   - component: {fileID: 2648358779095376182}
+  - component: {fileID: 6963434210853128062}
   - component: {fileID: 3347777260606228085}
   - component: {fileID: 6166077617058031261}
   - component: {fileID: 4078160021669779806}
@@ -164,11 +165,6 @@ MonoBehaviour:
   stickToFloorDist: 0.6
   stickGravityForce: 1.1
   sizeRadiusRayCast: 0.4
-  walkForbiddenForwardUp:
-  - Walkable/NoSide
-  - Walkable/Up
-  distForward: 0.6
-  sizeRadiusForward: 0.3
   sphereCollider: {fileID: 3959034400415941277}
   rb: {fileID: 3959034400415941276}
   playerGravity: {fileID: 4342663178068225343}
@@ -177,10 +173,31 @@ MonoBehaviour:
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
-  isForwardWall: 0
-  isForbiddenForward: 0
   currentFloorLayer: 
   shellOffset: 0.1
+--- !u!114 &6963434210853128062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3982bef8fd26640865935e153bc170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAirForwardWall: 0
+  walkForbiddenForwardUp:
+  - Walkable/NoSide
+  - Walkable/Up
+  distForward: 0.6
+  sizeRadiusForward: 0.3
+  groundCheck: {fileID: 2648358779095376182}
+  rb: {fileID: 3959034400415941276}
+  entityController: {fileID: 3347777260606228085}
+  isForwardWall: 0
+  isForbiddenForward: 0
 --- !u!114 &3347777260606228085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +258,7 @@ MonoBehaviour:
   entityAction: {fileID: 6166077617058031262}
   playerGravity: {fileID: 4342663178068225343}
   entityAttractor: {fileID: 3819143144908272473}
-  groundCheck: {fileID: 2648358779095376182}
+  entityContactSwitch: {fileID: 6963434210853128062}
   entityJumpCalculation: {fileID: 4078160021669779806}
   entitySwitch: {fileID: 1908652825489971977}
   hasJumped: 0
@@ -282,9 +299,10 @@ MonoBehaviour:
   layerNoSideJump:
   - Walkable/NoSide
   timeFeforeCalculateAgainJump: 0.5
-  marginSideSlope: 0.5
+  marginSideSlope: 0.35
   marginNotMovingTestJump: 0.5
   marginJumpEndDot: 0.86
+  marginJumpEndDotRight: 0.5
   entityController: {fileID: 3347777260606228085}
   playerLocalyRotate: {fileID: 2648358779582519253}
   rb: {fileID: 3959034400415941276}
@@ -322,8 +340,6 @@ MonoBehaviour:
   rbUpAddGravity: 2.5
   rbDownAddGravity: 5
   defaultGravityInAir: 2
-  speedRotateWhenSwitching: 30
-  timeBeforeResetBaseCamera: 1
   timeFeforeCalculateAgainJump: 0.5
   currentOrientation: 0
   entityController: {fileID: 3347777260606228085}
@@ -333,9 +349,7 @@ MonoBehaviour:
   entityJump: {fileID: 6166077617058031261}
   entityAttractor: {fileID: 3819143144908272473}
   entityJumpCalculation: {fileID: 4078160021669779806}
-  rotateToGround: {fileID: 424197143998509921}
   mainAttractObject: {fileID: 0}
-  isOnTransition: 0
 --- !u!114 &3819143144908272473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +366,7 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
   entityJump: {fileID: 6166077617058031261}
+  entitySwitch: {fileID: 1908652825489971977}
   timeBeforeActiveAttractorInAir: 0.8
   gravityAttractor: 2
   speedLerpAttractor: 5
@@ -378,8 +393,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3158d64db264bf4ba101587e5407b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radiusOverlap: 2
+  speedRotateWhenSwitching: 30
+  timeBeforeResetBaseCamera: 0.4
+  timeBeforeStartOverlapping: 0.3
+  layerSwitch:
+  - Walkable/Up
+  dotRangeCeilling: 0.5
   entityController: {fileID: 3347777260606228085}
   playerGravity: {fileID: 4342663178068225343}
+  rotateToGround: {fileID: 424197143998509921}
+  groundCheck: {fileID: 2648358779095376182}
+  isOnTransition: 0
 --- !u!114 &4342663178068225342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +481,8 @@ MonoBehaviour:
   stepZoom: 1
   objOnSight:
   - Walkable/Floor
+  - Walkable/NoSide
+  - Walkable/Up
   radiusRaycast: 0.7
   minDistToZoom: 0.1
   speedBoostZoom: 3
@@ -559,8 +586,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
-  m_LocalRotation: {x: -0.031672977, y: -0.2636605, z: 0.11498803, w: 0.95721346}
-  m_LocalPosition: {x: 87.2, y: 29.81, z: 40.09}
+  m_LocalRotation: {x: 0, y: 0.8836838, z: -0, w: -0.4680843}
+  m_LocalPosition: {x: 87.20096, y: 29.81, z: 40.087364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}
@@ -568,7 +595,7 @@ Transform:
   - {fileID: 3959034399683835973}
   m_Father: {fileID: 3347777260606228084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -30.8, z: 13.7}
+  m_LocalEulerAnglesHint: {x: 0, y: -484.18, z: 0}
 --- !u!114 &4976704726927159999
 MonoBehaviour:
   m_ObjectHideFlags: 0

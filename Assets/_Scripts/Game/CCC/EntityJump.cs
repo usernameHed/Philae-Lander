@@ -33,7 +33,7 @@ public class EntityJump : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    protected GroundCheck groundCheck;
+    protected EntityContactSwitch entityContactSwitch;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityJumpCalculation entityJumpCalculation;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -104,7 +104,7 @@ public class EntityJump : MonoBehaviour
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityAction.GetMagnitudeInput()));
 
-        if (groundCheck.IsForwardForbiddenWall())
+        if (entityContactSwitch.IsForwardForbiddenWall())
             jumpBoostHeight = jumpHeight;
 
         //Debug.Log("boost height: " + jumpBoostHeight);
@@ -130,7 +130,7 @@ public class EntityJump : MonoBehaviour
         //Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
         Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * entityAction.GetMagnitudeInput();
 
-        if (groundCheck.IsForwardForbiddenWall())
+        if (entityContactSwitch.IsForwardForbiddenWall())
             normalizedForwardPlayer = Vector3.zero;
         //Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
         //Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);

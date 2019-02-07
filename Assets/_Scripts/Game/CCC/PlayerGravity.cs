@@ -358,7 +358,7 @@ public class PlayerGravity : MonoBehaviour
         ApplyGroundGravity();
         ApplySuplementGravity();
         ApplyAirGravity();
-        //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 0.1f);
+        ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 1f);
         //Debug.DrawRay(rb.transform.position, GetMainAndOnlyGravity(), Color.red, 5f);
     }
 }

@@ -58,7 +58,7 @@ public static class ExtQuaternion
     /// <param name="upDir">up reference of the forward dir</param>
     /// <param name="toGoDir">target direction to test</param>
     /// <returns>1: right, -1: left, 0: forward ?</returns>
-    public static int IsRightOrLeft(Vector3 forwardDir, Vector3 upDir, Vector3 toGoDir, Vector3 debugPos)
+    public static int IsRightOrLeft(Vector3 forwardDir, Vector3 upDir, Vector3 toGoDir, Vector3 debugPos, ref float dotLeft, ref float dotRight)
     {
         Vector3 left = CrossProduct(forwardDir, upDir);
         Vector3 right = -left;
@@ -67,8 +67,8 @@ public static class ExtQuaternion
         Debug.DrawRay(debugPos, right, Color.magenta, 5f);
 
 
-        float dotRight = DotProduct(right, toGoDir);
-        float dotLeft = DotProduct(left, toGoDir);
+        dotRight = DotProduct(right, toGoDir);
+        dotLeft = DotProduct(left, toGoDir);
         Debug.Log("left: " + dotLeft + ", right: " + dotRight);
         if (dotRight > 0)
         {
