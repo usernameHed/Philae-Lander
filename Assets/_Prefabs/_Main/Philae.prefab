@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6166077617058031262}
   - component: {fileID: 2648358779095376182}
   - component: {fileID: 6963434210853128062}
+  - component: {fileID: 3259061920373295737}
   - component: {fileID: 3347777260606228085}
   - component: {fileID: 6166077617058031261}
   - component: {fileID: 4078160021669779806}
@@ -141,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169865a36a57c3a45a5dbce182605124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainReferenceObjectDirection: {fileID: 0}
   moveInput: {x: 0, y: 0}
   Jump: 0
   JumpUp: 0
@@ -187,17 +189,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3982bef8fd26640865935e153bc170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inAirForwardWall: 0
+  inAirForwardWall: 1
   walkForbiddenForwardUp:
   - Walkable/NoSide
   - Walkable/Up
   distForward: 0.6
   sizeRadiusForward: 0.3
+  dotMarginImpact: 0.3
+  timeBetween2TestForward: 0.2
   groundCheck: {fileID: 2648358779095376182}
   rb: {fileID: 3959034400415941276}
   entityController: {fileID: 3347777260606228085}
+  playerGravity: {fileID: 4342663178068225343}
+  entityAction: {fileID: 6166077617058031262}
   isForwardWall: 0
   isForbiddenForward: 0
+--- !u!114 &3259061920373295737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54dc0b7c6147634998c6c59bf5d5a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marginForSlideFloor: 50
+  speedRatioWhenClimbing: 1
+  tagDontSlide: 
+  rb: {fileID: 0}
+  angleFloor: 0
+  angleCeilling: 180
+  marginForSlideCeilling: 20
+  marginForClimbCeilling: 90
+  timeStayOnWall:
+    timeCoolDown: 1
+  isColliding: 0
+  canSlide: 0
+  canClimb: 0
+  angleNormals: -1
 --- !u!114 &3347777260606228085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +253,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2648358779095376182}
   entityAttractor: {fileID: 3819143144908272473}
   entitySwitch: {fileID: 1908652825489971977}
+  entityAction: {fileID: 6166077617058031262}
   moveState: 0
   layerMask: -1
   deathVibration:
@@ -302,7 +335,7 @@ MonoBehaviour:
   marginSideSlope: 0.35
   marginNotMovingTestJump: 0.5
   marginJumpEndDot: 0.86
-  marginJumpEndDotRight: 0.5
+  marginJumpEndDotRight: 0.8
   entityController: {fileID: 3347777260606228085}
   playerLocalyRotate: {fileID: 2648358779582519253}
   rb: {fileID: 3959034400415941276}
@@ -336,9 +369,9 @@ MonoBehaviour:
   gravity: 9.81
   magicTrajectoryCorrection: 1.4
   groundAddGravity: 5.5
-  stickToFloorGravity: 7
+  stickToFloorGravity: 6
   rbUpAddGravity: 2.5
-  rbDownAddGravity: 5
+  rbDownAddGravity: 3.5
   defaultGravityInAir: 2
   timeFeforeCalculateAgainJump: 0.5
   currentOrientation: 0
@@ -368,6 +401,7 @@ MonoBehaviour:
   entityJump: {fileID: 6166077617058031261}
   entitySwitch: {fileID: 1908652825489971977}
   timeBeforeActiveAttractorInAir: 0.8
+  timeBeforeActiveLateAttractor: 1.25
   gravityAttractor: 2
   speedLerpAttractor: 5
   distAllowedForNormalGravity: 10
@@ -438,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMove: 100
+  minInput: 0.35
   rb: {fileID: 3959034400415941276}
   objectRotateLocal: {fileID: 2648358779582519253}
   entityController: {fileID: 3347777260606228085}
@@ -456,7 +491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnRate: 700
-  mainReferenceObjectDirection: {fileID: 0}
   entityAction: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
   objectToRotate: {fileID: 2648358779582519253}
@@ -586,8 +620,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
-  m_LocalRotation: {x: 0, y: 0.8836838, z: -0, w: -0.4680843}
-  m_LocalPosition: {x: 87.20096, y: 29.81, z: 40.087364}
+  m_LocalRotation: {x: 0, y: -0.868934, z: 0, w: 0.4949279}
+  m_LocalPosition: {x: 102.52, y: 30.17, z: 50.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}
@@ -595,7 +629,7 @@ Transform:
   - {fileID: 3959034399683835973}
   m_Father: {fileID: 3347777260606228084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -484.18, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -120.67, z: 0}
 --- !u!114 &4976704726927159999
 MonoBehaviour:
   m_ObjectHideFlags: 0

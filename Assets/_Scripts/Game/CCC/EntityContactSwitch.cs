@@ -29,6 +29,8 @@ public class EntityContactSwitch : MonoBehaviour
     private PlayerGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityAction entityAction;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntitySlide entitySlide;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForwardWall = false;
@@ -52,6 +54,8 @@ public class EntityContactSwitch : MonoBehaviour
     {
         RaycastHit hitInfo;
 
+        ResetContact();
+
         //do nothing if not moving
         if (entityAction.NotMoving())
             return;
@@ -62,20 +66,20 @@ public class EntityContactSwitch : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
                                distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 3f);
+            ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
             Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);
 
             isForwardWall = true;
 
             Vector3 normalHit = hitInfo.normal;
             Vector3 upPlayer = playerGravity.GetMainAndOnlyGravity();
-            float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
+            entitySlide.CalculateStraffDirection(normalHit);    //calculate SLIDE
 
+            float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
             if (dotWrongSide < -dotMarginImpact)
             {
-                Debug.Log("forward too inclined");
-                Debug.Log("dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
+                Debug.Log("forward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
                 isForbiddenForward = true;
                 return;
             }
@@ -83,6 +87,7 @@ public class EntityContactSwitch : MonoBehaviour
             int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
             if (isForbidden != -1)
             {
+                //here we are in front of a forbidden wall !!
                 isForbiddenForward = true;
             }
             else
@@ -93,6 +98,7 @@ public class EntityContactSwitch : MonoBehaviour
                 }
                 else
                 {
+                    //HERE FORWARD, DO SWITCH !!
                     coolDownForward.StartCoolDown(timeBetween2TestForward);
                     //Debug.Log("forward");
                     groundCheck.SetForwardWall(hitInfo.normal);
@@ -103,9 +109,14 @@ public class EntityContactSwitch : MonoBehaviour
         }
         else
         {
-            isForwardWall = false;
-            isForbiddenForward = false;
+            ResetContact();
         }
+    }
+
+    private void ResetContact()
+    {
+        isForwardWall = false;
+        isForbiddenForward = false;
     }
 
     private void FixedUpdate()

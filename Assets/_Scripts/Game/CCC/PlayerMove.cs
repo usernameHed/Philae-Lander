@@ -22,7 +22,10 @@ public class PlayerMove : MonoBehaviour
     private EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityJump entityJump;
-
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntityContactSwitch entityContactSwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntitySlide entitySlide;
     /// <summary>
     /// move with input
     /// </summary>
@@ -37,8 +40,13 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
-        //MovePhysics(objectRotateLocal.forward);
-        MovePhysics(entityController.GetFocusedForwardDirPlayer());
+        //if we are in front of a NoSide Object, Slide, else, go forward
+        Vector3 dirMove = (entityContactSwitch.IsForwardForbiddenWall())
+            ? entitySlide.GetStraffDirection()
+            : entityController.GetFocusedForwardDirPlayer();
+
+
+        MovePhysics(dirMove);
     }
 
     /// <summary>
