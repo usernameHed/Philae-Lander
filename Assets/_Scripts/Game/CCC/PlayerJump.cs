@@ -30,6 +30,9 @@ public class PlayerJump : EntityJump
         if (!coolDownOnGround.IsReady())
             return (false);
 
+        if (!entityContactSwitch.IsCoolDownSwitchReady())
+            return (false);
+
         return (true);
     }
 

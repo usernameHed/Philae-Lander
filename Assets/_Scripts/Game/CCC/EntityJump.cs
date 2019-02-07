@@ -77,8 +77,6 @@ public class EntityJump : MonoBehaviour
 
     public virtual void OnGrounded()
     {
-        entityJumpCalculation.ResetCalculation();
-        
         Debug.Log("Grounded !");
         
         coolDownWhenJumped.Reset();

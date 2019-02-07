@@ -16,6 +16,8 @@ public class EntityContactSwitch : MonoBehaviour
     public float sizeRadiusForward = 0.3f;
     [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip(""), SerializeField]
     public float dotMarginImpact = 0.86f;
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip(""), SerializeField]
+    public float timeBetween2TestForward = 0.8f;
 
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private GroundCheck groundCheck;
@@ -29,9 +31,22 @@ public class EntityContactSwitch : MonoBehaviour
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForbiddenForward = false;
 
+
+    private FrequencyCoolDown coolDownForward = new FrequencyCoolDown();
+
     public bool IsForwardForbiddenWall()
     {
         return (isForwardWall && isForbiddenForward);
+    }
+
+    public bool IsCoolDownSwitchReady()
+    {
+        return (coolDownForward.IsReady());
+    }
+
+    private void Start()
+    {
+        coolDownForward.StartCoolDown(timeBetween2TestForward);
     }
 
     private void ForwardWallCheck()
@@ -75,7 +90,13 @@ public class EntityContactSwitch : MonoBehaviour
                 }
                 else
                 {
-                    groundCheck.SetForwardWall(hitInfo.normal);
+                    Debug.Log("OK switch !: " + hitInfo.transform.gameObject.layer, hitInfo.transform.gameObject);
+                    if (coolDownForward.IsStartedAndOver())
+                    {
+                        coolDownForward.StartCoolDown(timeBetween2TestForward);
+                        groundCheck.SetForwardWall(hitInfo.normal);
+                    }
+                    
                     isForbiddenForward = false;
                 }
             }

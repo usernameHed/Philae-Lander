@@ -95,16 +95,10 @@ public class EntityJumpCalculation : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
-    private bool normalGravityTested = false;   //know if we are in the 0.5-0.8 sec between norma and attractor
 
     [SerializeField]
     private InfoJump infoJump = new InfoJump();
     private RaycastHit hitInfo;
-
-    public void ResetCalculation()
-    {
-        normalGravityTested = false;
-    }
 
     /// <summary>
     /// calculate trajectory of entity
@@ -348,9 +342,6 @@ public class EntityJumpCalculation : MonoBehaviour
     {
         infoJump.jumpType = InfoJump.JumpType.BASE; //set basic jump
 
-        //reset jump first test timer
-        normalGravityTested = false;
-
         //first create 30 plot of the normal jump
         Vector3[] plots = Plots(rb, rb.transform.position, orientedSetVelocity, 30, false, true);
         infoJump.Clear();
@@ -509,43 +500,5 @@ public class EntityJumpCalculation : MonoBehaviour
                 break;
         }
         Debug.Break();
-    }
-
-    /// <summary>
-    /// do an ultime test of PLOT / raycast, if we find something: switch to Object oriented
-    /// else, we will pass soon on Attractor...
-    /// </summary>
-    public void UltimaTestBeforeAttractor()
-    {
-        if (normalGravityTested)
-            return;
-        normalGravityTested = true;
-
-        return;
-        /*
-        Vector3 ultimate = infoJump.ultimatePlotPoint;
-        Vector3 dirUltimate = infoJump.dirUltimatePlotPoint;
-
-        //chose if we add force or not
-        Debug.Log("ultimate raycast");
-
-        infoJump.Clear();
-
-        //create plot WITHOUT force down
-        Vector3[] plots = Plots(rb, rb.transform.position, rb.velocity, 30, false, false);
-
-        infoJump.SetDirLast(plots, rb.transform.position);
-
-        bool hit = DoLoopRaycastStartJump(plots, 1);    //return true if we hit a wall in the first jump plot
-
-
-
-        if (hit)
-        {
-            playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, infoJump.normalHit);
-        }
-        
-        //Debug.Break();
-        */
     }
 }

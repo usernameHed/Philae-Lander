@@ -18,6 +18,9 @@ public class EntityAttractor : MonoBehaviour
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.8f;
+    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
+    private float timeBeforeActiveLateAttractor = 1.4f;
+
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float gravityAttractor = 2f;
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
@@ -44,6 +47,7 @@ public class EntityAttractor : MonoBehaviour
 
 
     private FrequencyCoolDown timerBeforeCreateAttractor = new FrequencyCoolDown();
+    private FrequencyCoolDown timerBeforeCreateLateAttractor = new FrequencyCoolDown();
     private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle
     private Vector3 worldLastNormal;        //derniere normal enregistré, peut import le changement position/angle
     private Vector3 transformPointAttractor = Vector3.zero;
@@ -147,6 +151,7 @@ public class EntityAttractor : MonoBehaviour
     public void OnGrounded()
     {
         timerBeforeCreateAttractor.Reset();
+        timerBeforeCreateLateAttractor.Reset();
         ResetFlyAway();
         CreateAttractor();
     }
@@ -154,6 +159,10 @@ public class EntityAttractor : MonoBehaviour
     public bool CanCreateAttractor()
     {
         return (timerBeforeCreateAttractor.IsStartedAndOver());
+    }
+    public bool CanCreateLateAttractor()
+    {
+        return (timerBeforeCreateLateAttractor.IsStartedAndOver());
     }
 
     /// <summary>
@@ -173,6 +182,7 @@ public class EntityAttractor : MonoBehaviour
     {
         ExtLog.DebugLogIa("create attractor !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
         timerBeforeCreateAttractor.StartCoolDown(timeBeforeActiveAttractorInAir);
+        timerBeforeCreateLateAttractor.StartCoolDown(timeBeforeActiveLateAttractor);
 
         transformPointAttractor = WorldLastPositionGetIndex(1) - worldLastNormal * lengthPositionAttractPoint;
 
@@ -205,51 +215,9 @@ public class EntityAttractor : MonoBehaviour
             PhilaeManager.Instance.cameraController.SetAttractorCamera();
         }
 
-//entitySwitch.OnGrounded();
-
         //RESET LERP !!! important !
         gravityAttractorLerp = 1;
     }
-    /*
-    public void SetupAttractor()
-    {
-        
-        dontApplyForceDownForThisRound = false;
-        Vector3 lastPos = Plot(rb, rb.transform.position, rb.velocity, 15, true, true)[14];
-
-
-
-        Vector3 dirRaycast = lastPos - rb.transform.position;
-        Debug.DrawRay(rb.transform.position, dirRaycast, Color.red, 5f);
-        if (Physics.SphereCast(rb.transform.position, 0.3f, dirRaycast, out hitInfo,
-                                dirRaycast.magnitude, entityController.layerMask, QueryTriggerInteraction.Ignore))
-        {
-            Debug.Log("ATTRACTOR find something ! keep going with normal gravity");
-            applyStrongAttractor = false;
-        }
-        else
-        {
-            Vector3 dirNewRaycast = GetMainAndOnlyGravity() * -1;
-            bool hit = RaycastForward(lastPos, dirNewRaycast, distSpherecastForLightAttractor, radiusSphereCastForLightAttractor);
-            if (!hit)
-            {
-                Vector3 rightGravity = ExtQuaternion.CrossProduct(dirNewRaycast, -rbRotate.transform.right);
-                Vector3 middleRaycastAndGravity = ExtQuaternion.GetMiddleOf2Vector(dirNewRaycast, rightGravity);
-
-                hit = RaycastForward(lastPos, middleRaycastAndGravity, distSpherecastForLightAttractor, radiusSphereCastForLightAttractor);
-                if (hit)
-                {
-                    //Debug.LogError("we made it !");
-                }
-            }
-            applyStrongAttractor = !hit;
-        }
-        
-
-        ActiveAttractor();
-        //Debug.Break();
-    }
-    */
 
     /// <summary>
     /// apply attractor gravity

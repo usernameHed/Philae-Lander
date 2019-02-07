@@ -44,7 +44,6 @@ public class EntitySwitch : MonoBehaviour
     private void OverlapTest()
     {
         int number = Physics.OverlapSphereNonAlloc(entityController.rb.position, radiusOverlap, results, layermask, QueryTriggerInteraction.Ignore);
-        Debug.Log("Test Overlap ??");
         ExtDrawGuizmos.DebugWireSphere(entityController.rb.position, Color.blue, radiusOverlap, 0.1f);
         for (int i = 0; i < number; i++)
         {

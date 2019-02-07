@@ -51,8 +51,6 @@ public class PlayerGravity : MonoBehaviour
     }
 
     private Vector3 mainAndOnlyGravity = Vector3.zero;
-    private FrequencyCoolDown coolDowwnBeforeCalculateAgain = new FrequencyCoolDown();
-    public bool IsReadyToTestCalculation() { return (coolDowwnBeforeCalculateAgain.IsStartedAndOver()); }
 
     public Vector3 GetMainAndOnlyGravity()
     {
@@ -120,13 +118,12 @@ public class PlayerGravity : MonoBehaviour
 
     public void OnGrounded()
     {
-        coolDowwnBeforeCalculateAgain.Reset();
-        
+
     }
 
     public void JustJumped()
     {
-        coolDowwnBeforeCalculateAgain.StartCoolDown(timeFeforeCalculateAgainJump);
+
     }
 
     private void ChangeStateGravity()
@@ -137,11 +134,7 @@ public class PlayerGravity : MonoBehaviour
             //Debug.Log("try to change gravity state");
             //here player is on fly, and we can create an attractor
 
-            if (IsReadyToTestCalculation() && currentOrientation == OrientationPhysics.NORMALS)
-            {
-                entityJump.entityJumpCalculation.UltimaTestBeforeAttractor();
-            }
-            else if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
+            if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
             {
                 entityAttractor.ActiveAttractor();
             }
@@ -156,9 +149,9 @@ public class PlayerGravity : MonoBehaviour
                 SetOrientation(OrientationPhysics.NORMALS);
             }
             //here attracted by an object
-            else
+            else if (entityAttractor.CanCreateLateAttractor() && currentOrientation == OrientationPhysics.OBJECT)
             {
-                SetOrientation(OrientationPhysics.OBJECT);
+                entityAttractor.ActiveAttractor();
             }
         }
         //here on ground

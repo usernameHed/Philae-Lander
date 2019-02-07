@@ -15,25 +15,17 @@ public class IAJump : EntityJump
     {
         //can't jump in air
         if (!canJumpInAir && iaController.GetMoveState() == EntityController.MoveState.InAir)
-        {
-            //Debug.Log("ici");
             return (false);
-        }
-            
 
         if (hasJumped)
-        {
-            //Debug.Log("ou la");
             return (false);
-        }
 
         //don't jump if we just grounded
         if (!coolDownOnGround.IsReady())
-        {
-            //Debug.Log("ou encore la");
             return (false);
-        }
-            
+
+        if (!entityContactSwitch.IsCoolDownSwitchReady())
+            return (false);
 
         return (true);
     }
