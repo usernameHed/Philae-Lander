@@ -422,7 +422,7 @@ public class EntityJumpCalculation : MonoBehaviour
         if (rightToImpact == 1)
         {
             Debug.Log("RIGHT SIDE");
-            if (dotRight < marginJumpEndDotRight)
+            if (dotRight > marginJumpEndDotRight)
             {
                 Debug.Log("mmm, too 90°... we could do SIDE_JUMP, but it's too far away, I prefer do BASE jump");
                 infoJump.jumpType = InfoJump.JumpType.BASE;
