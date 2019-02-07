@@ -30,6 +30,8 @@ public class EntityController : MonoBehaviour
     protected EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntitySwitch entitySwitch;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    protected EntityAction entityAction;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
@@ -68,6 +70,20 @@ public class EntityController : MonoBehaviour
         return (forwardNormal);
         //return (rbRotateObject.transform.forward);
     }
+
+    public bool IsLookingTowardTheInput(float marginDot = 0.3f)
+    {
+        Vector3 relativeInput = entityAction.GetRelativeDirection().normalized;
+        Vector3 forwardFocusPlayer = GetFocusedForwardDirPlayer();
+        //Debug.DrawRay(rb.position, relativeInput, Color.yellow);
+        //Debug.DrawRay(rb.position, forwardFocusPlayer, Color.blue);
+
+        float dotDiffPlayerInput = ExtQuaternion.DotProduct(relativeInput, forwardFocusPlayer);
+        if (1 - dotDiffPlayerInput < marginDot)
+            return (true);
+        return (false);
+    }
+
     /// <summary>
     /// return the forward dir we want for the player
     /// </summary>

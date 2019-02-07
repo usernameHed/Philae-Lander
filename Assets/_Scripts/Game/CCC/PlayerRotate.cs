@@ -10,8 +10,6 @@ public class PlayerRotate : MonoBehaviour
     private float turnRate = 5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private Transform mainReferenceObjectDirection;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
@@ -23,8 +21,7 @@ public class PlayerRotate : MonoBehaviour
     private void RotatePlayer()
     {
         // Form the direction we want to look towards
-        Vector2 dirInput = entityAction.GetDirInput();
-        Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
+        Vector3 relativeDirection = entityAction.GetRelativeDirection();
         //Debug.DrawRay(objectToRotate.position, relativeDirection, Color.white, 3f);
 
         // Preserve our current up direction

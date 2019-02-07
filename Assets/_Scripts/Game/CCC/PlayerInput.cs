@@ -21,6 +21,7 @@ public class PlayerInput : EntityAction
     [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
     protected PlayerController playerController;
     public PlayerController PlayerController { get { return (playerController); } }
+    
 
     private bool enableScript = true;
 

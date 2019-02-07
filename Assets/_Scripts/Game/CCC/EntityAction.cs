@@ -7,8 +7,12 @@ using Sirenix.OdinInspector;
 [TypeInfoBox("Player input")]
 public class EntityAction : MonoBehaviour
 {
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private Transform mainReferenceObjectDirection;
+
     [FoldoutGroup("Debug"), Tooltip("input for moving player horizontally"), ReadOnly]
     public Vector2 moveInput;
+
 
     [FoldoutGroup("Debug"), Tooltip(""), ReadOnly]
     public bool Jump;
@@ -36,9 +40,25 @@ public class EntityAction : MonoBehaviour
         return (dirInputPlayer);
     }
 
+    /// <summary>
+    /// get the relative direction 
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetRelativeDirection()
+    {
+        Vector3 dirInput = GetDirInput();
+        Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
+        return (relativeDirection);
+    }
+
     public float GetMagnitudeInput()
     {
         return (Mathf.Clamp01(GetDirInput().magnitude));
+    }
+
+    public float GetMagnitudeInput(float clampMin = 0.2f, float clampMax = 1f)
+    {
+        return (Mathf.Clamp(GetDirInput().magnitude, clampMin, clampMax));
     }
 
     /// <summary>

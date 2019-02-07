@@ -8,7 +8,10 @@ public class PlayerMove : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float speedMove = 5f;
-    
+
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("when we have a little input, set it to this value"), SerializeField]
+    private float minInput = 0.15f;
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
@@ -26,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedMove * entityAction.GetMagnitudeInput());
+        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedMove * entityAction.GetMagnitudeInput(minInput, 1f));
     }
 
     /// <summary>
