@@ -68,7 +68,6 @@ public class EntityController : MonoBehaviour
         Vector3 realNormal = playerGravity.GetMainAndOnlyGravity();
         Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
         return (forwardNormal);
-        //return (rbRotateObject.transform.forward);
     }
 
     public bool IsLookingTowardTheInput(float marginDot = 0.3f)

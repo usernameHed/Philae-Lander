@@ -52,19 +52,18 @@ public static class ExtQuaternion
     }
 
     /// <summary>
-    /// return if we are right or left of a vector
+    /// return if we are right or left from a vector. 1: right, -1: left, 0: forward
     /// </summary>
     /// <param name="forwardDir"></param>
     /// <param name="upDir">up reference of the forward dir</param>
     /// <param name="toGoDir">target direction to test</param>
-    /// <returns>1: right, -1: left, 0: forward ?</returns>
     public static int IsRightOrLeft(Vector3 forwardDir, Vector3 upDir, Vector3 toGoDir, Vector3 debugPos, ref float dotLeft, ref float dotRight)
     {
         Vector3 left = CrossProduct(forwardDir, upDir);
         Vector3 right = -left;
 
-        Debug.DrawRay(debugPos, left, Color.magenta, 5f);
-        Debug.DrawRay(debugPos, right, Color.magenta, 5f);
+        //Debug.DrawRay(debugPos, left, Color.magenta, 5f);
+        //Debug.DrawRay(debugPos, right, Color.magenta, 5f);
 
 
         dotRight = DotProduct(right, toGoDir);
@@ -578,6 +577,19 @@ public static class ExtQuaternion
         angleDegre *= Mathf.Deg2Rad;                            //convert to rad
         float magnitudeX = Mathf.Cos(angleDegre) * A.magnitude; //get magnitude
         Vector3 realDir = B.normalized * magnitudeX;            //set magnitude of new Vector
+        return (realDir);   //vector A with magnitude based on B
+    }
+
+    /// <summary>
+    /// Return the projection of A on B (with the good magnitude), based on ref (ex: Vector3.up)
+    /// </summary>
+    public static Vector3 GetProjectionOfAOnB(Vector3 A, Vector3 B, Vector3 refVector, float minMagnitude, float maxMagnitude)
+    {
+        float angleDegre = SignedAngleBetween(A, B, refVector); //get angle A-B
+        angleDegre *= Mathf.Deg2Rad;                            //convert to rad
+        float magnitudeX = Mathf.Cos(angleDegre) * A.magnitude; //get magnitude
+        //set magnitude of new Vector
+        Vector3 realDir = B.normalized * Mathf.Clamp(Mathf.Abs(magnitudeX), minMagnitude, maxMagnitude) * Mathf.Sign(magnitudeX);
         return (realDir);   //vector A with magnitude based on B
     }
 }

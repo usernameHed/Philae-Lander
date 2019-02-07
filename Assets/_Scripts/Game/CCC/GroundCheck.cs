@@ -14,6 +14,9 @@ public class GroundCheck : MonoBehaviour
     public float stickGravityForce = 1.1f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] noPhysicsLayer = new string[] { "Walkable/Dont" };
+
 
     [FoldoutGroup("Object"), SerializeField]
     private SphereCollider sphereCollider;
@@ -93,7 +96,16 @@ public class GroundCheck : MonoBehaviour
                                groundCheckDistance, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             isGrounded = true;
-            dirNormal = hitInfo.normal;
+
+            int isForbidden = ExtList.ContainSubStringInArray(noPhysicsLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+            if (isForbidden != -1)
+            {
+                //here we are on a ground with no real gravity
+            }
+            else
+            {
+                dirNormal = hitInfo.normal;
+            }
 
             //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, sizeRadiusRayCast, 3f);
             //Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, 5f);
@@ -128,13 +140,15 @@ public class GroundCheck : MonoBehaviour
             isAlmostGrounded = true;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
 
-            //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.yellow, sizeRadiusRayCast, 3f);
-            //Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * ( stickToFloorDist), Color.yellow, 5f);
-            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
-            
-            //Debug.Log("stick");
-            //Debug.Break();
-            dirNormal = hitInfo.normal;
+            int isForbidden = ExtList.ContainSubStringInArray(noPhysicsLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+            if (isForbidden != -1)
+            {
+                //here we are almost grounded on ground with no real gravity, don't change gravity !
+            }
+            else
+            {
+                dirNormal = hitInfo.normal;
+            }
             lastPlatform = hitInfo.collider.transform;
         }
         else

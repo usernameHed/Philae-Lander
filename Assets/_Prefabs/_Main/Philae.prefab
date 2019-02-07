@@ -167,6 +167,8 @@ MonoBehaviour:
   stickToFloorDist: 0.6
   stickGravityForce: 1.1
   sizeRadiusRayCast: 0.4
+  noPhysicsLayer:
+  - Walkable/Dont
   sphereCollider: {fileID: 3959034400415941277}
   rb: {fileID: 3959034400415941276}
   playerGravity: {fileID: 4342663178068225343}
@@ -193,6 +195,7 @@ MonoBehaviour:
   walkForbiddenForwardUp:
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/Dont
   distForward: 0.6
   sizeRadiusForward: 0.3
   dotMarginImpact: 0.3
@@ -202,6 +205,7 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   playerGravity: {fileID: 4342663178068225343}
   entityAction: {fileID: 6166077617058031262}
+  entitySlide: {fileID: 3259061920373295737}
   isForwardWall: 0
   isForbiddenForward: 0
 --- !u!114 &3259061920373295737
@@ -216,20 +220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54dc0b7c6147634998c6c59bf5d5a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marginForSlideFloor: 50
-  speedRatioWhenClimbing: 1
-  tagDontSlide: 
-  rb: {fileID: 0}
-  angleFloor: 0
-  angleCeilling: 180
-  marginForSlideCeilling: 20
-  marginForClimbCeilling: 90
-  timeStayOnWall:
-    timeCoolDown: 1
-  isColliding: 0
-  canSlide: 0
-  canClimb: 0
-  angleNormals: -1
+  dotMarginNiceSlope: 0.2
+  maxMagnitude: 0.7
+  playerGravity: {fileID: 4342663178068225343}
+  entityController: {fileID: 3347777260606228085}
+  entityAction: {fileID: 6166077617058031262}
+  rb: {fileID: 3959034400415941276}
 --- !u!114 &3347777260606228085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +243,7 @@ MonoBehaviour:
   - Walkable/Floor
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/Dont
   rb: {fileID: 3959034400415941276}
   rbRotateObject: {fileID: 2648358779582519253}
   playerGravity: {fileID: 4342663178068225343}
@@ -331,6 +328,7 @@ MonoBehaviour:
   distRaycastDOWN: 3
   layerNoSideJump:
   - Walkable/NoSide
+  - Walkable/Dont
   timeFeforeCalculateAgainJump: 0.5
   marginSideSlope: 0.35
   marginNotMovingTestJump: 0.5
@@ -478,6 +476,8 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   entityAction: {fileID: 6166077617058031262}
   entityJump: {fileID: 6166077617058031261}
+  entityContactSwitch: {fileID: 6963434210853128062}
+  entitySlide: {fileID: 3259061920373295737}
 --- !u!114 &2648358779095376201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +517,7 @@ MonoBehaviour:
   - Walkable/Floor
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/Dont
   radiusRaycast: 0.7
   minDistToZoom: 0.1
   speedBoostZoom: 3

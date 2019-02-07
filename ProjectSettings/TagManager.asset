@@ -23,7 +23,7 @@ TagManager:
   - Walkable/Floor
   - Walkable/NoSide
   - Walkable/Up
-  - Atmosphere
+  - Walkable/Dont
   - 
   - 
   - 
