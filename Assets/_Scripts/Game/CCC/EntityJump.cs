@@ -9,7 +9,10 @@ public class EntityJump : MonoBehaviour
     protected float jumpHeight = 3f;
     [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("increase the height jump when we move faster")]
     protected float ratioIncreaseHeightMove = 0.5f;
-    
+
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] noJumpLayer = new string[] { "Walkable/FastForward", "Walkable/Dont" };
+
     [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastForNormalSwitch = 5f;
 
@@ -38,6 +41,8 @@ public class EntityJump : MonoBehaviour
     public EntityJumpCalculation entityJumpCalculation;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntitySwitch entitySwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public GroundCheck groundCheck;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -63,6 +68,33 @@ public class EntityJump : MonoBehaviour
     {
         jumpStop = false;
         hasJumped = false;
+    }
+
+    protected bool CanJump()
+    {
+        //can't jump in air
+        if (!canJumpInAir && entityController.GetMoveState() == EntityController.MoveState.InAir)
+            return (false);
+
+        if (hasJumped)
+            return (false);
+
+        //faux si on hold pas et quand a pas laché
+        if (jumpStop)
+            return (false);
+
+        //don't jump if we just grounded
+        if (!coolDownOnGround.IsReady())
+            return (false);
+
+        if (!entityContactSwitch.IsCoolDownSwitchReady())
+            return (false);
+
+        int isForbidden = ExtList.ContainSubStringInArray(noJumpLayer, groundCheck.GetLastLayer());
+        if (isForbidden != -1)
+            return (false);
+
+        return (true);
     }
 
     public bool IsJumpCoolDebugDownReady()

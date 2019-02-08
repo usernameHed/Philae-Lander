@@ -14,6 +14,8 @@ public class EntityController : MonoBehaviour
 
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public bool isPlayer = false;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("time before die")]
+    private float timeBeforeDie = 3f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] walkablePlatform = new string[] { "Walkable/Floor" };
 
@@ -44,10 +46,9 @@ public class EntityController : MonoBehaviour
     public int layerMask = Physics.AllLayers;
     protected Vector2 direction;              //save of direction player
     //private Vector3 dirOrientedAllControl;  //save of GetDirOrientedInputForMultipleControl
-
-    protected bool enabledScript = true;      //tell if this script should be active or not
     protected float oldDrag;
     protected bool planetSwitcher = false;
+    protected FrequencyCoolDown coolDownBeforeDie = new FrequencyCoolDown();
 
     /// <summary>
     /// init player
@@ -56,7 +57,31 @@ public class EntityController : MonoBehaviour
     {
         layerMask = LayerMask.GetMask(walkablePlatform);
         oldDrag = rb.drag;
-        enabledScript = true;               //active this script at start
+    }
+
+    public bool IsCurrentlyWaitingForDeath()
+    {
+        return (coolDownBeforeDie.IsRunning());
+    }
+
+    /// <summary>
+    /// we are falling down... no ending in perspective !
+    /// </summary>
+    public void WeSupposeWeAreDeadSoon()
+    {
+        coolDownBeforeDie.StartCoolDown(timeBeforeDie);
+    }
+    /// <summary>
+    /// miracle, we survive !
+    /// </summary>
+    public void WeAreSavedYeah()
+    {
+        coolDownBeforeDie.Reset();
+    }
+
+    protected bool IsKilled()
+    {
+        return (coolDownBeforeDie.IsStartedAndOver());
     }
 
     /// <summary>

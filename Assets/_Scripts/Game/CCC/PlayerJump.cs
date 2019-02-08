@@ -13,29 +13,6 @@ public class PlayerJump : EntityJump
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerController playerController;
 
-    private bool CanJump()
-    {
-        //can't jump in air
-        if (!canJumpInAir && playerController.GetMoveState() == EntityController.MoveState.InAir)
-            return (false);
-
-        if (hasJumped)
-            return (false);
-
-        //faux si on hold pas et quand a pas laché
-        if (jumpStop)
-            return (false);
-
-        //don't jump if we just grounded
-        if (!coolDownOnGround.IsReady())
-            return (false);
-
-        if (!entityContactSwitch.IsCoolDownSwitchReady())
-            return (false);
-
-        return (true);
-    }
-
     private void JumpManager()
     {
         if (IsJumpCoolDebugDownReady() && hasJumped &&

@@ -15,7 +15,9 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] noPhysicsLayer = new string[] { "Walkable/Dont" };
+    public string[] fastForwardLayer = new string[] { "Walkable/FastForward" };
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] dontLayer = new string[] { "Walkable/Dont" };
 
 
     [FoldoutGroup("Object"), SerializeField]
@@ -28,6 +30,8 @@ public class GroundCheck : MonoBehaviour
     private EntityJump entityJump;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityController entityController;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntityAttractor entityAttractor;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -51,6 +55,11 @@ public class GroundCheck : MonoBehaviour
         isGrounded = isAlmostGrounded = false;
         isFlying = true;
         radius = sphereCollider.radius;
+    }
+
+    public string GetLastLayer()
+    {
+        return (currentFloorLayer);
     }
 
     public bool IsSafeGrounded()
@@ -97,14 +106,16 @@ public class GroundCheck : MonoBehaviour
         {
             isGrounded = true;
 
-            int isForbidden = ExtList.ContainSubStringInArray(noPhysicsLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+            int isForbidden = ExtList.ContainSubStringInArray(fastForwardLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
             if (isForbidden != -1)
             {
                 //here we are on a ground with no real gravity
+                entityAttractor.SetCameFromDont(true);
             }
             else
             {
                 dirNormal = hitInfo.normal;
+                entityAttractor.SetCameFromDont(false);
             }
 
             //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, sizeRadiusRayCast, 3f);
@@ -140,14 +151,16 @@ public class GroundCheck : MonoBehaviour
             isAlmostGrounded = true;
             currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
 
-            int isForbidden = ExtList.ContainSubStringInArray(noPhysicsLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+            int isForbidden = ExtList.ContainSubStringInArray(fastForwardLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
             if (isForbidden != -1)
             {
                 //here we are almost grounded on ground with no real gravity, don't change gravity !
+                entityAttractor.SetCameFromDont(true);
             }
             else
             {
                 dirNormal = hitInfo.normal;
+                entityAttractor.SetCameFromDont(false);
             }
             lastPlatform = hitInfo.collider.transform;
         }

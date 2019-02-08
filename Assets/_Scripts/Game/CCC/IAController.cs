@@ -199,8 +199,8 @@ public class IAController : EntityController, IPooledObject, IKillable
 
     private void Update()
     {
-        if (!enabledScript)
-            return;
+        if (base.IsKilled())
+            Kill();
 
         if (timerScream.IsStartedAndOver())
         {

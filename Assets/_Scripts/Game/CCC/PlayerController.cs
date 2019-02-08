@@ -12,7 +12,7 @@ public class PlayerController : EntityController, IKillable
         DIRECTION_CENTER,
     }
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("death vibration")]
     private Vibration deathVibration;
 
     [FoldoutGroup("Object"), Tooltip("ref script")]
@@ -52,15 +52,7 @@ public class PlayerController : EntityController, IKillable
     /// </summary>
     public void GameOver()
     {
-        enabledScript = false;
         PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
-    }
-
-
-    private void Update()
-    {
-        if (!enabledScript)
-            return;
     }
 
     private void OnGrounded()
@@ -126,6 +118,12 @@ public class PlayerController : EntityController, IKillable
 
             isMoving = false;
         }
+    }
+
+    private void Update()
+    {
+        if (base.IsKilled())
+            Kill();
     }
 
     private void FixedUpdate()

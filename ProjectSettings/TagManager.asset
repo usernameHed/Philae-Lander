@@ -23,8 +23,8 @@ TagManager:
   - Walkable/Floor
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/FastForward
   - Walkable/Dont
-  - 
   - 
   - 
   - 

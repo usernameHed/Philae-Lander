@@ -45,6 +45,11 @@ public class EntityAttractor : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float timeDebugFlyAway = 0.3f;   //a-t-on un attract point de placé ?
 
+    private bool isCameFromDontLayer = false;
+    public void SetCameFromDont(bool isOnDont)
+    {
+        isCameFromDontLayer = isOnDont;
+    }
 
     private FrequencyCoolDown timerBeforeCreateAttractor = new FrequencyCoolDown();
     private FrequencyCoolDown timerBeforeCreateLateAttractor = new FrequencyCoolDown();
@@ -53,6 +58,8 @@ public class EntityAttractor : MonoBehaviour
     private Vector3 transformPointAttractor = Vector3.zero;
     private float gravityAttractorLerp = 1f;
     private FrequencyCoolDown timerDebugFlyAway = new FrequencyCoolDown();
+
+
 
     private void Start()
     {
@@ -158,11 +165,11 @@ public class EntityAttractor : MonoBehaviour
 
     public bool CanCreateAttractor()
     {
-        return (timerBeforeCreateAttractor.IsStartedAndOver());
+        return (timerBeforeCreateAttractor.IsStartedAndOver() && !isCameFromDontLayer);
     }
     public bool CanCreateLateAttractor()
     {
-        return (timerBeforeCreateLateAttractor.IsStartedAndOver());
+        return (timerBeforeCreateLateAttractor.IsStartedAndOver() && !isCameFromDontLayer);
     }
 
     /// <summary>
@@ -237,8 +244,21 @@ public class EntityAttractor : MonoBehaviour
     /// </summary>
     private void DebugFlyAway()
     {
+        if (entityController.IsCurrentlyWaitingForDeath())
+        {
+            return;
+        }
+
         if (timerDebugFlyAway.IsStartedAndOver())
         {
+            if (isCameFromDontLayer)
+            {
+                Debug.Log("ok, we could be dead soon");
+                entityController.WeSupposeWeAreDeadSoon();
+                timerDebugFlyAway.Reset();
+                return;
+            }
+
             Debug.LogError("ok on est dans le mal !");
             timerDebugFlyAway.Reset();
             ActiveAttractor();
@@ -258,6 +278,7 @@ public class EntityAttractor : MonoBehaviour
     public void ResetFlyAway()
     {
         timerDebugFlyAway.Reset();
+        entityController.WeAreSavedYeah();
     }
 
     private void FixedUpdate()
