@@ -167,13 +167,16 @@ MonoBehaviour:
   stickToFloorDist: 0.6
   stickGravityForce: 1.1
   sizeRadiusRayCast: 0.4
-  noPhysicsLayer:
+  fastForwardLayer:
+  - Walkable/FastForward
+  dontLayer:
   - Walkable/Dont
   sphereCollider: {fileID: 3959034400415941277}
   rb: {fileID: 3959034400415941276}
   playerGravity: {fileID: 4342663178068225343}
   entityJump: {fileID: 6166077617058031261}
   entityController: {fileID: 3347777260606228085}
+  entityAttractor: {fileID: 3819143144908272473}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -195,6 +198,7 @@ MonoBehaviour:
   walkForbiddenForwardUp:
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/FastForward
   - Walkable/Dont
   distForward: 0.6
   sizeRadiusForward: 0.3
@@ -221,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotMarginNiceSlope: 0.2
-  maxMagnitude: 0.7
+  minMaxMagnitude: {x: 0, y: 0.7}
   playerGravity: {fileID: 4342663178068225343}
   entityController: {fileID: 3347777260606228085}
   entityAction: {fileID: 6166077617058031262}
@@ -239,10 +243,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
+  timeBeforeDie: 5
   walkablePlatform:
   - Walkable/Floor
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/FastForward
   - Walkable/Dont
   rb: {fileID: 3959034400415941276}
   rbRotateObject: {fileID: 2648358779582519253}
@@ -279,6 +285,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 2
   ratioIncreaseHeightMove: 0.5
+  noJumpLayer:
+  - Walkable/FastForward
+  - Walkable/Dont
   distRaycastForNormalSwitch: 5
   stayHold: 0
   canJumpInAir: 1
@@ -291,6 +300,7 @@ MonoBehaviour:
   entityContactSwitch: {fileID: 6963434210853128062}
   entityJumpCalculation: {fileID: 4078160021669779806}
   entitySwitch: {fileID: 1908652825489971977}
+  groundCheck: {fileID: 0}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -328,6 +338,7 @@ MonoBehaviour:
   distRaycastDOWN: 3
   layerNoSideJump:
   - Walkable/NoSide
+  - Walkable/FastForward
   - Walkable/Dont
   timeFeforeCalculateAgainJump: 0.5
   marginSideSlope: 0.35
@@ -517,6 +528,7 @@ MonoBehaviour:
   - Walkable/Floor
   - Walkable/NoSide
   - Walkable/Up
+  - Walkable/FastForward
   - Walkable/Dont
   radiusRaycast: 0.7
   minDistToZoom: 0.1
@@ -621,8 +633,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
-  m_LocalRotation: {x: 0, y: -0.868934, z: 0, w: 0.4949279}
-  m_LocalPosition: {x: 102.52, y: 30.17, z: 50.17}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 97.46, y: 32.37, z: 73.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}
@@ -630,7 +642,7 @@ Transform:
   - {fileID: 3959034399683835973}
   m_Father: {fileID: 3347777260606228084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -120.67, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4976704726927159999
 MonoBehaviour:
   m_ObjectHideFlags: 0

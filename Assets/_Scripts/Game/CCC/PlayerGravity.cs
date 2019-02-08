@@ -164,30 +164,6 @@ public class PlayerGravity : MonoBehaviour
             entityAttractor.ResetFlyAway();
         }
     }
-    
-
-    /*
-    public void ChangeMainAttractObject(Transform rbTransform)
-    {
-        if (rbTransform.GetInstanceID() != mainAttractObject.GetInstanceID()
-            && (entityController.GetMoveState() == EntityController.MoveState.InAir)
-            && !isOnTransition && entityJump.IsJumpCoolDebugDownReady())
-        {
-            if (entityController.isPlayer)
-            {
-                PhilaeManager.Instance.cameraController.SetChangePlanetCam();
-            }
-
-            SetObjectAttraction(rbTransform, rbTransform.position, rb.position - rbTransform.position);
-            PhilaeManager.Instance.PlanetChange();
-
-            entityController.SetKinematic(true);
-            ExtLog.DebugLogIa("change planete", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-            isOnTransition = true;
-            Invoke("UnsetKinematic", timeBeforeResetBaseCamera);
-        }
-    }
-    */
 
     public Vector3 CalculateGravity(Vector3 positionEntity)
     {
