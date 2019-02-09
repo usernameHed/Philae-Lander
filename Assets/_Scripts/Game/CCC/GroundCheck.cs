@@ -41,8 +41,6 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private string currentFloorLayer;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
-    public float shellOffset = 0.1f;
-    [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float collRayCastMargin = 0.1f;
 
     private float radius;
@@ -80,6 +78,10 @@ public class GroundCheck : MonoBehaviour
     {
         return (dirNormal);
     }
+    public Vector3 GetDirLastSurfaceNormal()
+    {
+        return (dirSurfaceNormal);
+    }
 
     public void SetForwardWall(RaycastHit hitInfo)
     {
@@ -110,30 +112,34 @@ public class GroundCheck : MonoBehaviour
     }
 
    
-    private Vector3 CalculateRealNormal(Collider collToTest, Vector3 origin, Vector3 direction, float magnitude)
+    private Vector3 CalculateRealNormal(Vector3 origin, Vector3 direction, float magnitude)
     {
-        Ray ray = new Ray(origin, direction);
+        //Ray ray = new Ray(origin, direction);
         RaycastHit hit;
-
-        Debug.DrawRay(origin, direction, Color.yellow, 5f);
-
+        if (Physics.Raycast(origin, direction, out hit, magnitude, entityController.layerMask))
+        {
+            Debug.Log("Did Hit");
+            return (hit.normal);
+        }
+        /*
         if (collToTest.Raycast(ray, out hit, magnitude + collRayCastMargin))
         {
             //transform.position = ray.GetPoint(100.0f);
             Debug.Log("Did Hit");
             return (hit.normal);
         }
+        */
 
         Debug.LogError("we are not suppose to miss that one...");
         return (Vector3.zero);
     }
 
-    private void SetSurfaceNormal(Collider collToTest, Vector3 castOrigin, Vector3 direction, float magnitude, float radius, Vector3 hitPoint)
+    private void SetSurfaceNormal(Vector3 castOrigin, Vector3 direction, float magnitude, float radius, Vector3 hitPoint)
     {
         Vector3 centerCollision = ExtUtilityFunction.GetCollisionCenterSphereCast(castOrigin, direction, magnitude);
         Vector3 dirCenterToHit = hitPoint - castOrigin;
         float sizeRay = dirCenterToHit.magnitude;
-        dirSurfaceNormal = CalculateRealNormal(collToTest, centerCollision, dirCenterToHit, sizeRay);
+        dirSurfaceNormal = CalculateRealNormal(centerCollision, dirCenterToHit, sizeRay);
 
         Debug.DrawRay(centerCollision, dirSurfaceNormal, Color.black, 5f);
     }
@@ -161,8 +167,7 @@ public class GroundCheck : MonoBehaviour
             lastPlatform = hitInfo.collider.transform;
             SetCurrentLayer(hitInfo.collider.gameObject.layer);
 
-            SetSurfaceNormal(hitInfo.collider,
-                rb.transform.position,
+            SetSurfaceNormal(rb.transform.position,
                 playerGravity.GetMainAndOnlyGravity() * -0.01f,
                 groundCheckDistance,
                 sizeRadiusRayCast,
@@ -196,8 +201,7 @@ public class GroundCheck : MonoBehaviour
             lastPlatform = hitInfo.collider.transform;
             SetCurrentLayer(hitInfo.collider.gameObject.layer);
 
-            SetSurfaceNormal(hitInfo.collider,
-                rb.transform.position,
+            SetSurfaceNormal(rb.transform.position,
                 playerGravity.GetMainAndOnlyGravity() * -0.01f,
                 stickToFloorDist,
                 sizeRadiusRayCast,

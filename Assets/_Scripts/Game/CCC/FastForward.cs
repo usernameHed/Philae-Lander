@@ -166,12 +166,12 @@ public class FastForward : MonoBehaviour
             if (fastForward)
             {
 
-                /*
+                
                 //here we can update our normal, difference is negligable
-                if (IsDiffNormalGood(newNormal))
+                if (IsDiffNormalGood(surfaceNormal))
                 {
                     //here we leave forward layer, update and say yes to GROUNDCHECK
-                    previousNormal = newNormal;
+                    previousNormal = surfaceNormal;
                     fastForward = false;
 
                     Debug.Log("Update normal, difference is negligle");
@@ -185,13 +185,13 @@ public class FastForward : MonoBehaviour
                     Debug.Log("Dont update !");
                     return (false);
                 }
-                */
+                /*
                 //DONT update previous normal
                 //DONT update normal in GROUNDCHECK
                 Debug.Log("Dont update !");
                 //Debug.DrawRay(rb.position, previousNormal, Color.black, 5f);
                 return (false);
-
+                */
             }
             //here we were not in fastForward before.
             else
