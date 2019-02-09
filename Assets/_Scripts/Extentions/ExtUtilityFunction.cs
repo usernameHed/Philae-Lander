@@ -32,6 +32,19 @@ public static class ExtUtilityFunction
         clearMethod.Invoke(null, null);
     }
 
+    public static Vector3 GetTheRightNormalSphereCast(RaycastHit hitInfo, Vector3 castOrigin, Vector3 normalizedDirection, float sphereRadius)
+    {
+        Vector3 collisionCenter = castOrigin + (normalizedDirection * hitInfo.distance);
+        Vector3 normals = (collisionCenter - hitInfo.point) / sphereRadius;
+        return (normals);
+    }
+
+    public static Vector3 GetCollisionCenterSphereCast(Vector3 castOrigin, Vector3 direction, float magnitude)
+    {
+        Vector3 collisionCenter = castOrigin + (direction * magnitude);
+        return (collisionCenter);
+    }
+
     /// <summary>
     /// is target on screen ??
     /// </summary>

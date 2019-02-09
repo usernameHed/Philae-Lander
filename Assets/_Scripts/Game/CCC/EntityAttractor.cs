@@ -117,7 +117,7 @@ public class EntityAttractor : MonoBehaviour
         if (distForSave > sizeDistanceForSavePlayerPos)
         {
             WorldLastPositionSet(entityController.rb.transform.position); //save la position onGround
-            ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(0), Color.red, 0.5f, 1f);
+            //ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(0), Color.red, 0.5f, 1f);
         }
         //si la normal à changé, update la position + normal !
         else if (worldPreviousNormal != worldLastNormal)
@@ -139,8 +139,8 @@ public class EntityAttractor : MonoBehaviour
                 WorldLastPositionSet(entityController.rb.transform.position); //save la position onGround
                 worldPreviousNormal = worldLastNormal;
 
-                ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(0), Color.yellow, 0.5f, 1f);
-                Debug.DrawRay(entityController.rb.transform.position, worldPreviousNormal, Color.yellow, 1f);
+                //ExtDrawGuizmos.DebugWireSphere(WorldLastPositionGetIndex(0), Color.yellow, 0.5f, 1f);
+                //Debug.DrawRay(entityController.rb.transform.position, worldPreviousNormal, Color.yellow, 1f);
             }
         }
     }

@@ -100,11 +100,14 @@ public class FastForward : MonoBehaviour
         return (true);
     }
 
-    public bool CanChangeNormal(RaycastHit hitInfo)
+    
+
+    public bool CanChangeNormal(RaycastHit hitInfo, Vector3 surfaceNormal)
     {
         int lastLayer = hitInfo.transform.gameObject.layer;
-        Vector3 newNormal = hitInfo.normal;
-        Debug.DrawRay(rb.position, newNormal * 3, Color.black, 5f);
+        //Vector3 newNormal = hitInfo.normal;
+        //Debug.DrawRay(rb.position, newNormal * 3, Color.black, 1f);
+        //Debug.DrawRay(rb.position, realNormalSurface * 3, Color.red, 5f);
 
         //here we are in forward layer
         if (IsForwardLayer(lastLayer))
@@ -112,7 +115,7 @@ public class FastForward : MonoBehaviour
             //here we just OnGrounded... we were flying ! so accepte the new normal then ?
             if (entityController.GetMoveState() == EntityController.MoveState.InAir)
             {
-                previousNormal = newNormal;
+                previousNormal = surfaceNormal;// newNormal;
                 fastForward = true; //say yes to fastForward
                 lastHitPlatform = hitInfo.transform;
                 Debug.Log("On Ground reset !");
@@ -126,7 +129,7 @@ public class FastForward : MonoBehaviour
                 {
                     Debug.Log("update normal, we change forward");
                     //always update when we STAY in a fastForward
-                    previousNormal = newNormal;
+                    previousNormal = surfaceNormal;// newNormal;
                     lastHitPlatform = hitInfo.transform;
                     return (true);
                 }
@@ -142,7 +145,7 @@ public class FastForward : MonoBehaviour
                 Debug.Log("here the previous was NOT a fastForward, we can update everything");
                 fastForward = true;
                 lastHitPlatform = hitInfo.transform;
-                previousNormal = newNormal;
+                previousNormal = surfaceNormal;// newNormal;
                 return (true);
             }
         }
@@ -152,7 +155,7 @@ public class FastForward : MonoBehaviour
             //here we just OnGrounded... we were flying ! so accepte the new normal then ?
             if (entityController.GetMoveState() == EntityController.MoveState.InAir)
             {
-                previousNormal = newNormal;
+                previousNormal = surfaceNormal;// newNormal;
                 fastForward = false; //update fastForward
                 lastHitPlatform = hitInfo.transform;
                 Debug.Log("On Ground reset !");

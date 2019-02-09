@@ -42,9 +42,12 @@ public class GroundCheck : MonoBehaviour
     private string currentFloorLayer;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float shellOffset = 0.1f;
+    [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
+    public float collRayCastMargin = 0.1f;
 
     private float radius;
     private Vector3 dirNormal = Vector3.zero;
+    private Vector3 dirSurfaceNormal = Vector3.zero;
     private Transform lastPlatform = null;
     public Transform GetLastPlatform() { return (lastPlatform); }
 
@@ -86,9 +89,11 @@ public class GroundCheck : MonoBehaviour
         isFlying = false;
     }
 
+    
+
     private bool CanChangeNormal(RaycastHit hitInfo)
     {
-        if (!fastForward.CanChangeNormal(hitInfo))
+        if (!fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal))
             return (false);
 
         int isForbidden = ExtList.ContainSubStringInArray(dontLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
@@ -96,7 +101,6 @@ public class GroundCheck : MonoBehaviour
             return (false);
 
         
-
         return (true);
     }
 
@@ -105,9 +109,39 @@ public class GroundCheck : MonoBehaviour
         currentFloorLayer = LayerMask.LayerToName(layer);
     }
 
+   
+    private Vector3 CalculateRealNormal(Collider collToTest, Vector3 origin, Vector3 direction, float magnitude)
+    {
+        Ray ray = new Ray(origin, direction);
+        RaycastHit hit;
+
+        Debug.DrawRay(origin, direction, Color.yellow, 5f);
+
+        if (collToTest.Raycast(ray, out hit, magnitude + collRayCastMargin))
+        {
+            //transform.position = ray.GetPoint(100.0f);
+            Debug.Log("Did Hit");
+            return (hit.normal);
+        }
+
+        Debug.LogError("we are not suppose to miss that one...");
+        return (Vector3.zero);
+    }
+
+    private void SetSurfaceNormal(Collider collToTest, Vector3 castOrigin, Vector3 direction, float magnitude, float radius, Vector3 hitPoint)
+    {
+        Vector3 centerCollision = ExtUtilityFunction.GetCollisionCenterSphereCast(castOrigin, direction, magnitude);
+        Vector3 dirCenterToHit = hitPoint - castOrigin;
+        float sizeRay = dirCenterToHit.magnitude;
+        dirSurfaceNormal = CalculateRealNormal(collToTest, centerCollision, dirCenterToHit, sizeRay);
+
+        Debug.DrawRay(centerCollision, dirSurfaceNormal, Color.black, 5f);
+    }
+
+
     /// <summary>
     /// Set isGrounded
-    /// sphere cast down just beyond the bottom of the capsule to see
+    /// sphere cast down just beyond the bottom of the capsule to see/
     /// if the capsule is colliding round the bottom
     /// </summary>
     private void GroundChecking()
@@ -127,6 +161,13 @@ public class GroundCheck : MonoBehaviour
             lastPlatform = hitInfo.collider.transform;
             SetCurrentLayer(hitInfo.collider.gameObject.layer);
 
+            SetSurfaceNormal(hitInfo.collider,
+                rb.transform.position,
+                playerGravity.GetMainAndOnlyGravity() * -0.01f,
+                groundCheckDistance,
+                sizeRadiusRayCast,
+                hitInfo.point);
+
             if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
@@ -136,7 +177,6 @@ public class GroundCheck : MonoBehaviour
         {
             isGrounded = false;
             dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
-            //m_GroundContactNormal = Vector3.up;
         }
         
     }
@@ -156,6 +196,12 @@ public class GroundCheck : MonoBehaviour
             lastPlatform = hitInfo.collider.transform;
             SetCurrentLayer(hitInfo.collider.gameObject.layer);
 
+            SetSurfaceNormal(hitInfo.collider,
+                rb.transform.position,
+                playerGravity.GetMainAndOnlyGravity() * -0.01f,
+                stickToFloorDist,
+                sizeRadiusRayCast,
+                hitInfo.point);
 
             if (CanChangeNormal(hitInfo))
             {
