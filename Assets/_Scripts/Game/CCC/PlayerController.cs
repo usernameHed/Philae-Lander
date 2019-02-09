@@ -61,6 +61,7 @@ public class PlayerController : EntityController, IKillable
         playerGravity.OnGrounded();
         entityAttractor.OnGrounded();
         entitySwitch.OnGrounded();
+        fastForward.OnGrounded();
 
         if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
         {
@@ -118,12 +119,6 @@ public class PlayerController : EntityController, IKillable
 
             isMoving = false;
         }
-    }
-
-    private void Update()
-    {
-        if (base.IsKilled())
-            Kill();
     }
 
     private void FixedUpdate()

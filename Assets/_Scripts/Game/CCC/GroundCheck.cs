@@ -15,8 +15,6 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] fastForwardLayer = new string[] { "Walkable/FastForward" };
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] dontLayer = new string[] { "Walkable/Dont" };
 
 
@@ -31,7 +29,7 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityController entityController;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityAttractor entityAttractor;
+    private FastForward fastForward;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -80,11 +78,31 @@ public class GroundCheck : MonoBehaviour
         return (dirNormal);
     }
 
-    public void SetForwardWall(Vector3 hitNormal)
+    public void SetForwardWall(RaycastHit hitInfo)
     {
-        dirNormal = hitNormal;
+        dirNormal = hitInfo.normal;
+        SetCurrentLayer(hitInfo.transform.gameObject.layer);
         isGrounded = true;
         isFlying = false;
+    }
+
+    private bool CanChangeNormal(RaycastHit hitInfo)
+    {
+        if (!fastForward.CanChangeNormal(hitInfo))
+            return (false);
+
+        int isForbidden = ExtList.ContainSubStringInArray(dontLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+        if (isForbidden != -1)
+            return (false);
+
+        
+
+        return (true);
+    }
+
+    private void SetCurrentLayer(int layer)
+    {
+        currentFloorLayer = LayerMask.LayerToName(layer);
     }
 
     /// <summary>
@@ -105,28 +123,14 @@ public class GroundCheck : MonoBehaviour
                                groundCheckDistance, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             isGrounded = true;
+            
+            lastPlatform = hitInfo.collider.transform;
+            SetCurrentLayer(hitInfo.collider.gameObject.layer);
 
-            int isForbidden = ExtList.ContainSubStringInArray(fastForwardLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-            if (isForbidden != -1)
-            {
-                //here we are on a ground with no real gravity
-                entityAttractor.SetCameFromDont(true);
-            }
-            else
+            if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
-                entityAttractor.SetCameFromDont(false);
             }
-
-            //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, sizeRadiusRayCast, 3f);
-            //Debug.DrawRay(rb.transform.position, (playerGravity.GetMainAndOnlyGravity() * -0.01f) * (stickToFloorDist), Color.red, 5f);
-            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
-
-            //m_GroundContactNormal = hitInfo.normal;
-            lastPlatform = hitInfo.collider.transform;
-            currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
-            //Debug.Log("normal");
-            //Debug.Break();
         }
         else
         {
@@ -149,20 +153,14 @@ public class GroundCheck : MonoBehaviour
                                stickToFloorDist, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             isAlmostGrounded = true;
-            currentFloorLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
+            lastPlatform = hitInfo.collider.transform;
+            SetCurrentLayer(hitInfo.collider.gameObject.layer);
 
-            int isForbidden = ExtList.ContainSubStringInArray(fastForwardLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-            if (isForbidden != -1)
-            {
-                //here we are almost grounded on ground with no real gravity, don't change gravity !
-                entityAttractor.SetCameFromDont(true);
-            }
-            else
+
+            if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
-                entityAttractor.SetCameFromDont(false);
             }
-            lastPlatform = hitInfo.collider.transform;
         }
         else
         {

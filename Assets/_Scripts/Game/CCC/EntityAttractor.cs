@@ -11,10 +11,11 @@ public class EntityAttractor : MonoBehaviour
     private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityJump entityJump;
+    
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntitySwitch entitySwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private FastForward fastForward;
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.8f;
@@ -42,14 +43,6 @@ public class EntityAttractor : MonoBehaviour
     private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
     [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float differenceAngleNormalForUpdatePosition = 5f;   //a-t-on un attract point de placé ?
-    [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
-    private float timeDebugFlyAway = 0.3f;   //a-t-on un attract point de placé ?
-
-    private bool isCameFromDontLayer = false;
-    public void SetCameFromDont(bool isOnDont)
-    {
-        isCameFromDontLayer = isOnDont;
-    }
 
     private FrequencyCoolDown timerBeforeCreateAttractor = new FrequencyCoolDown();
     private FrequencyCoolDown timerBeforeCreateLateAttractor = new FrequencyCoolDown();
@@ -57,9 +50,6 @@ public class EntityAttractor : MonoBehaviour
     private Vector3 worldLastNormal;        //derniere normal enregistré, peut import le changement position/angle
     private Vector3 transformPointAttractor = Vector3.zero;
     private float gravityAttractorLerp = 1f;
-    private FrequencyCoolDown timerDebugFlyAway = new FrequencyCoolDown();
-
-
 
     private void Start()
     {
@@ -159,17 +149,16 @@ public class EntityAttractor : MonoBehaviour
     {
         timerBeforeCreateAttractor.Reset();
         timerBeforeCreateLateAttractor.Reset();
-        ResetFlyAway();
         CreateAttractor();
     }
 
     public bool CanCreateAttractor()
     {
-        return (timerBeforeCreateAttractor.IsStartedAndOver() && !isCameFromDontLayer);
+        return (timerBeforeCreateAttractor.IsStartedAndOver() && !fastForward.WhereWeInFastForward());
     }
     public bool CanCreateLateAttractor()
     {
-        return (timerBeforeCreateLateAttractor.IsStartedAndOver() && !isCameFromDontLayer);
+        return (timerBeforeCreateLateAttractor.IsStartedAndOver() && !fastForward.WhereWeInFastForward());
     }
 
     /// <summary>
@@ -239,51 +228,12 @@ public class EntityAttractor : MonoBehaviour
         return (forceAttractor);
     }
 
-    /// <summary>
-    /// active attractor if we are far away !
-    /// </summary>
-    private void DebugFlyAway()
-    {
-        if (entityController.IsCurrentlyWaitingForDeath())
-        {
-            return;
-        }
 
-        if (timerDebugFlyAway.IsStartedAndOver())
-        {
-            if (isCameFromDontLayer)
-            {
-                Debug.Log("ok, we could be dead soon");
-                entityController.WeSupposeWeAreDeadSoon();
-                timerDebugFlyAway.Reset();
-                return;
-            }
 
-            Debug.LogError("ok on est dans le mal !");
-            timerDebugFlyAway.Reset();
-            ActiveAttractor();
-            return;
-        }
-        if (!entityJump.HasJumped && entityController.GetMoveState() == EntityController.MoveState.InAir
-            && playerGravity.GetOrientationPhysics() == PlayerGravity.OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
-        {
-            Debug.Log("mettre le timer du mal");
-            timerDebugFlyAway.StartCoolDown(timeDebugFlyAway);
-        }
-    }
-
-    /// <summary>
-    /// reset far away when we are on ground
-    /// </summary>
-    public void ResetFlyAway()
-    {
-        timerDebugFlyAway.Reset();
-        entityController.WeAreSavedYeah();
-    }
+   
 
     private void FixedUpdate()
     {
         SaveLastPositionOnground();
-        DebugFlyAway();
     }
 }

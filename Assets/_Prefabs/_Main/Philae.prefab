@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6166077617058031262}
   - component: {fileID: 2648358779095376182}
   - component: {fileID: 6963434210853128062}
+  - component: {fileID: 6729321841502290180}
   - component: {fileID: 3259061920373295737}
   - component: {fileID: 3347777260606228085}
   - component: {fileID: 6166077617058031261}
@@ -167,8 +168,6 @@ MonoBehaviour:
   stickToFloorDist: 0.6
   stickGravityForce: 1.1
   sizeRadiusRayCast: 0.4
-  fastForwardLayer:
-  - Walkable/FastForward
   dontLayer:
   - Walkable/Dont
   sphereCollider: {fileID: 3959034400415941277}
@@ -176,7 +175,7 @@ MonoBehaviour:
   playerGravity: {fileID: 4342663178068225343}
   entityJump: {fileID: 6166077617058031261}
   entityController: {fileID: 3347777260606228085}
-  entityAttractor: {fileID: 3819143144908272473}
+  fastForward: {fileID: 6729321841502290180}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -197,8 +196,6 @@ MonoBehaviour:
   inAirForwardWall: 1
   walkForbiddenForwardUp:
   - Walkable/NoSide
-  - Walkable/Up
-  - Walkable/FastForward
   - Walkable/Dont
   distForward: 0.6
   sizeRadiusForward: 0.3
@@ -212,6 +209,29 @@ MonoBehaviour:
   entitySlide: {fileID: 3259061920373295737}
   isForwardWall: 0
   isForbiddenForward: 0
+--- !u!114 &6729321841502290180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761759092991e2c40a84e56fcb2a0575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeDie: 3
+  fastForwardLayer:
+  - Walkable/FastForward
+  entityController: {fileID: 3347777260606228085}
+  entityJump: {fileID: 6166077617058031261}
+  playerGravity: {fileID: 4342663178068225343}
+  entityAttractor: {fileID: 3819143144908272473}
+  ikillableObject: {fileID: 3347777260606228087}
+  groundCheck: {fileID: 2648358779095376182}
+  fastForward: 0
+  timeDebugFlyAway: 0.3
 --- !u!114 &3259061920373295737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
-  timeBeforeDie: 5
   walkablePlatform:
   - Walkable/Floor
   - Walkable/NoSide
@@ -257,6 +276,7 @@ MonoBehaviour:
   entityAttractor: {fileID: 3819143144908272473}
   entitySwitch: {fileID: 1908652825489971977}
   entityAction: {fileID: 6166077617058031262}
+  fastForward: {fileID: 6729321841502290180}
   moveState: 0
   layerMask: -1
   deathVibration:
@@ -286,8 +306,8 @@ MonoBehaviour:
   jumpHeight: 2
   ratioIncreaseHeightMove: 0.5
   noJumpLayer:
-  - Walkable/FastForward
   - Walkable/Dont
+  - Walkable/NoSide
   distRaycastForNormalSwitch: 5
   stayHold: 0
   canJumpInAir: 1
@@ -300,7 +320,8 @@ MonoBehaviour:
   entityContactSwitch: {fileID: 6963434210853128062}
   entityJumpCalculation: {fileID: 4078160021669779806}
   entitySwitch: {fileID: 1908652825489971977}
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 2648358779095376182}
+  fastForward: {fileID: 6729321841502290180}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -344,7 +365,7 @@ MonoBehaviour:
   marginSideSlope: 0.35
   marginNotMovingTestJump: 0.5
   marginJumpEndDot: 0.86
-  marginJumpEndDotRight: 0.8
+  marginJumpEndDotRight: 0.93
   entityController: {fileID: 3347777260606228085}
   playerLocalyRotate: {fileID: 2648358779582519253}
   rb: {fileID: 3959034400415941276}
@@ -390,6 +411,7 @@ MonoBehaviour:
   entityAction: {fileID: 6166077617058031262}
   entityJump: {fileID: 6166077617058031261}
   entityAttractor: {fileID: 3819143144908272473}
+  fastForward: {fileID: 6729321841502290180}
   entityJumpCalculation: {fileID: 4078160021669779806}
   mainAttractObject: {fileID: 0}
 --- !u!114 &3819143144908272473
@@ -407,8 +429,8 @@ MonoBehaviour:
   playerGravity: {fileID: 4342663178068225343}
   entityController: {fileID: 3347777260606228085}
   groundCheck: {fileID: 2648358779095376182}
-  entityJump: {fileID: 6166077617058031261}
   entitySwitch: {fileID: 1908652825489971977}
+  fastForward: {fileID: 6729321841502290180}
   timeBeforeActiveAttractorInAir: 0.8
   timeBeforeActiveLateAttractor: 1.25
   gravityAttractor: 2
@@ -423,7 +445,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   differenceAngleNormalForUpdatePosition: 5
-  timeDebugFlyAway: 0.3
 --- !u!114 &1908652825489971977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 97.46, y: 32.37, z: 73.59}
+  m_LocalPosition: {x: 7.77, y: 0, z: 10.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}

@@ -70,6 +70,8 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private FastForward fastForward;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJumpCalculation entityJumpCalculation;  
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
@@ -161,7 +163,7 @@ public class PlayerGravity : MonoBehaviour
         }
         if (currentOrientation != OrientationPhysics.NORMALS)
         {
-            entityAttractor.ResetFlyAway();
+            fastForward.ResetFlyAway();
         }
     }
 

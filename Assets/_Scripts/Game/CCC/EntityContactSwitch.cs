@@ -101,7 +101,7 @@ public class EntityContactSwitch : MonoBehaviour
                     //HERE FORWARD, DO SWITCH !!
                     coolDownForward.StartCoolDown(timeBetween2TestForward);
                     //Debug.Log("forward");
-                    groundCheck.SetForwardWall(hitInfo.normal);
+                    groundCheck.SetForwardWall(hitInfo);
                     
                     isForbiddenForward = false;
                 }
