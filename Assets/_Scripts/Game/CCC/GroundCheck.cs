@@ -116,11 +116,12 @@ public class GroundCheck : MonoBehaviour
     {
         //Ray ray = new Ray(origin, direction);
         RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, magnitude, entityController.layerMask))
+        if (Physics.Raycast(origin, direction, out hit, magnitude + collRayCastMargin, entityController.layerMask))
         {
-            Debug.Log("Did Hit");
+            //Debug.Log("Did Hit");
             return (hit.normal);
         }
+        Debug.DrawRay(origin, direction.normalized * (magnitude + collRayCastMargin));
         /*
         if (collToTest.Raycast(ray, out hit, magnitude + collRayCastMargin))
         {

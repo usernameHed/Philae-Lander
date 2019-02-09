@@ -89,6 +89,11 @@ public class FastForward : MonoBehaviour
         {
             return (true);
         }
+
+        Debug.DrawRay(rb.position, newNormal, Color.red, 5f);
+        Debug.DrawRay(rb.position, previousNormal * 0.5f, Color.yellow, 5f);
+
+
         float dotNormal = ExtQuaternion.DotProduct(previousNormal, newNormal);
 
         Debug.Log("dot Diff: " + dotNormal + " (max: " + dotMarginDiffNormal + ")");
@@ -135,8 +140,20 @@ public class FastForward : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("dont update, we are on the same object");
-                    return (false);
+                    if (IsDiffNormalGood(surfaceNormal))
+                    {
+                        Debug.Log("update, we are on the same object, AND difference is negligible");
+                        //here we leave forward layer, update and say yes to GROUNDCHECK
+                        previousNormal = surfaceNormal;
+                        return (true);
+                    }
+                    else
+                    {
+                        Debug.Log("here same object, but surface differ too much... dont update !");
+                        //DONT update previous normal
+                        //DONT update normal in GROUNDCHECK
+                        return (false);
+                    }
                 }
             }
             //here the previous was NOT a fastForward, we can update everything
@@ -165,8 +182,6 @@ public class FastForward : MonoBehaviour
             //if we were in fastforward before...
             if (fastForward)
             {
-
-                
                 //here we can update our normal, difference is negligable
                 if (IsDiffNormalGood(surfaceNormal))
                 {
