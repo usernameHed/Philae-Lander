@@ -54,7 +54,7 @@ public static class ExtUtilityFunction
             //Debug.Log("Did Hit");
             return (hit.normal);
         }
-        Debug.DrawRay(origin, direction.normalized * (magnitude + rayCastMargin));
+        //Debug.DrawRay(origin, direction.normalized * (magnitude + rayCastMargin));
         Debug.LogWarning("we are not suppose to miss that one...");
         return (Vector3.zero);
     }
@@ -68,7 +68,7 @@ public static class ExtUtilityFunction
         float sizeRay = dirCenterToHit.magnitude;
         Vector3 surfaceNormal = CalculateRealNormal(centerCollision, dirCenterToHit, sizeRay, rayCastMargin, layerMask);
 
-        Debug.DrawRay(centerCollision, surfaceNormal, Color.black, 5f);
+        //Debug.DrawRay(centerCollision, surfaceNormal, Color.black, 5f);
         return (surfaceNormal);
     }
 

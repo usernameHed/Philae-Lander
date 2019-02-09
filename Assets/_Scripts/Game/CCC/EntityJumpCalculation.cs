@@ -65,6 +65,8 @@ public class EntityJumpCalculation : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastDOWN = 3f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
+    private float distRaycastHOLE = 5f;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private string[] layerNoSideJump = new string[] { "Walkable/NoSide" };
     //[FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     //private float minDistAcceptedForGoingUp = 5f;
@@ -163,23 +165,6 @@ public class EntityJumpCalculation : MonoBehaviour
             return (true);
         }
         return (false);
-    }
-
-    /// <summary>
-    /// return true if we are far enought from the hit point !
-    /// </summary>
-    /// <returns></returns>
-    private bool IsPlayerAtGoodDistanceForSwitch(Vector3 posFuture, Vector3 hitPoint)
-    {
-        Debug.Log("dont manage dist ?");
-        return (true);
-        /*
-        if (Vector3.SqrMagnitude(posFuture - hitPoint) > minDistAcceptedForGoingUp)
-        {
-            return (true);
-        }
-        return (false);
-        */
     }
 
     /// <summary>
@@ -421,7 +406,7 @@ public class EntityJumpCalculation : MonoBehaviour
     /// 2: normal negative, do nothing !
     /// 3: right angle, we can do TO_DOWN_NORMAL !
     /// <returns></returns>
-    public void DetermineEndNormalsHit()
+    public void DetermineEndNormalsHit(Vector3[] startPlots, Vector3[] endPlots)
     {
         Vector3 normalJump = playerGravity.GetMainAndOnlyGravity();
         Vector3 normalHit = infoJump.normalHit;
@@ -470,39 +455,106 @@ public class EntityJumpCalculation : MonoBehaviour
         else if (rightToImpact == -1)
         {
             Debug.Log("LEFT SIDE !");
-            DetermineEndSphericalJump();
+            DetermineEndSphericalJump(startPlots, endPlots, true);
             return;
         }
 
         Debug.Log("ok, just normal jump then...");
     }
 
-    public void DetermineEndSphericalJump()
+    /*
+    private bool IsNormalOkHere(Vector3 refJumpNormal, Vector3 currentNormal)
+    {
+        Debug.Log("");
+    }
+    */
+
+    private bool IsThereGap(Vector3[] startPlots, Vector3[] endPlots)
+    {
+        Vector3 prevPos = startPlots[0];
+        Vector3 gravityOrientation = -playerGravity.GetMainAndOnlyGravity();
+
+        Vector3 refJumpNormal = -gravityOrientation;
+
+        int depth = 4;
+        bool isOneBadNormal = false;
+
+        //DO Test HOLE
+        for (int i = 0; i < depth - 1; i++)
+        {
+            Vector3 dirRaycast;
+            Vector3 lastPoint = Vector3.zero;
+            bool hit = false;
+
+            int numberPoints = startPlots.Length + endPlots.Length;
+            int indexPoint = ((numberPoints / depth) * (i + 1)) - 1;
+
+
+            Debug.Log("index: " + indexPoint + "(max: " + numberPoints + ")");
+            if (indexPoint >= numberPoints)
+                break;
+
+            lastPoint = (indexPoint < startPlots.Length) ? startPlots[indexPoint] : endPlots[indexPoint - startPlots.Length];
+
+            //dirRaycast = lastPoint - prevPos;
+            hit = DoSphereCast(lastPoint, gravityOrientation, distRaycastHOLE, entityController.layerMask);
+
+            /*if (!hit || !IsNormalOkHere(refJumpNormal, infoJump.normalHit))   //or normal hit realy bad !
+            {
+                Debug.Log("here a gap, or a wrong normal !");
+                ExtDrawGuizmos.DebugWireSphere(infoJump.pointHit, Color.red, 0.1f, 5f);
+                isOneBadNormal = true;
+            }
+            else
+            {
+                if (isOneBadNormal)
+                {
+                    Debug.Log("there where a bad normal previously, and now we are good, there is a gap then !");
+                    return (true);
+                }
+            }*/
+
+
+            prevPos = lastPoint;
+        }
+
+        return (false);
+    }
+
+    /// <summary>
+    /// first test a gap.
+    /// </summary>
+    public void DetermineEndSphericalJump(Vector3[] startPlots, Vector3[] endPlots, bool hasHit)
     {
         Debug.Log("here do the super test: is we are on planet, chose spherical, else, return");
         //infoJump.jumpType = InfoJump.JumpType.TO_SPHERICAL;
+        //bool isThereGap = IsThereGap(startPlots, endPlots);
+
+
+
+        //Debug.B
     }
 
-    private void EndJumpCalculation(Vector3[] lastPlots)
+    private void EndJumpCalculation(Vector3[] startPlots)
     {
         Vector3 futurePosRb = infoJump.ultimatePlotPoint;
         Vector3 lastVelocityRb = infoJump.lastVelocity;
 
         infoJump.Clear();
 
-        Vector3[] plots = Plots(rb, futurePosRb, lastVelocityRb, 30, false, true);
-        infoJump.SetDirLast(plots, futurePosRb);
+        Vector3[] endPlots = Plots(rb, futurePosRb, lastVelocityRb, 30, false, true);
+        infoJump.SetDirLast(endPlots, futurePosRb);
 
         //here we know if we are in JUMP UP
-        bool hit = DoLoopRaycastEndJump(plots, 4);    //return true if we hit a wall in the first jump plot
+        bool hit = DoLoopRaycastEndJump(endPlots, 4);    //return true if we hit a wall in the first jump plot
 
         if (hit)
         {
-            DetermineEndNormalsHit();
+            DetermineEndNormalsHit(startPlots, endPlots);
         }
         else
         {
-            DetermineEndSphericalJump();
+            DetermineEndSphericalJump(startPlots, endPlots, false);
         }
         FinishCalculation();
     }

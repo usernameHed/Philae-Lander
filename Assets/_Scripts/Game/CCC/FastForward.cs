@@ -11,6 +11,9 @@ public class FastForward : MonoBehaviour
     private float dotMarginDiffNormal = 0.71f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] fastForwardLayer = new string[] { "Walkable/FastForward" };
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] dontLayer = new string[] { "Walkable/Dont" };
+
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityController entityController;
@@ -77,6 +80,13 @@ public class FastForward : MonoBehaviour
             return (true);
         return (false);
     }
+    private bool IsDontLayer(int layer)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(dontLayer, LayerMask.LayerToName(layer));
+        if (isForbidden != -1)
+            return (true);
+        return (false);
+    }
 
     /// <summary>
     /// return true if the difference between the previous normal and
@@ -90,8 +100,8 @@ public class FastForward : MonoBehaviour
             return (true);
         }
 
-        Debug.DrawRay(rb.position, newNormal, Color.red, 5f);
-        Debug.DrawRay(rb.position, previousNormal * 0.5f, Color.yellow, 5f);
+        //Debug.DrawRay(rb.position, newNormal, Color.red, 5f);
+        //Debug.DrawRay(rb.position, previousNormal * 0.5f, Color.yellow, 5f);
 
 
         float dotNormal = ExtQuaternion.DotProduct(previousNormal, newNormal);
@@ -123,7 +133,7 @@ public class FastForward : MonoBehaviour
                 previousNormal = surfaceNormal;// newNormal;
                 fastForward = true; //say yes to fastForward
                 lastHitPlatform = hitInfo.transform;
-                Debug.Log("On Ground reset !");
+                //Debug.Log("On Ground reset !");
                 return (true);
             }
 
@@ -132,7 +142,7 @@ public class FastForward : MonoBehaviour
             {
                 if (lastHitPlatform.GetInstanceID() != hitInfo.transform.GetInstanceID())
                 {
-                    Debug.Log("update normal, we change forward");
+                    //Debug.Log("update normal, we change forward");
                     //always update when we STAY in a fastForward
                     previousNormal = surfaceNormal;// newNormal;
                     lastHitPlatform = hitInfo.transform;
@@ -142,14 +152,14 @@ public class FastForward : MonoBehaviour
                 {
                     if (IsDiffNormalGood(surfaceNormal))
                     {
-                        Debug.Log("update, we are on the same object, AND difference is negligible");
+                        //Debug.Log("update, we are on the same object, AND difference is negligible");
                         //here we leave forward layer, update and say yes to GROUNDCHECK
                         previousNormal = surfaceNormal;
                         return (true);
                     }
                     else
                     {
-                        Debug.Log("here same object, but surface differ too much... dont update !");
+                        //Debug.Log("here same object, but surface differ too much... dont update !");
                         //DONT update previous normal
                         //DONT update normal in GROUNDCHECK
                         return (false);
@@ -159,7 +169,7 @@ public class FastForward : MonoBehaviour
             //here the previous was NOT a fastForward, we can update everything
             else
             {
-                Debug.Log("here the previous was NOT a fastForward, we can update everything");
+                //Debug.Log("here the previous was NOT a fastForward, we can update everything");
                 fastForward = true;
                 lastHitPlatform = hitInfo.transform;
                 previousNormal = surfaceNormal;// newNormal;
@@ -175,7 +185,7 @@ public class FastForward : MonoBehaviour
                 previousNormal = surfaceNormal;// newNormal;
                 fastForward = false; //update fastForward
                 lastHitPlatform = hitInfo.transform;
-                Debug.Log("On Ground reset !");
+                //Debug.Log("On Ground reset !");
                 return (true);
             }
 
@@ -183,13 +193,13 @@ public class FastForward : MonoBehaviour
             if (fastForward)
             {
                 //here we can update our normal, difference is negligable
-                if (IsDiffNormalGood(surfaceNormal))
+                if (IsDiffNormalGood(surfaceNormal) && !IsDontLayer(lastLayer))
                 {
                     //here we leave forward layer, update and say yes to GROUNDCHECK
                     previousNormal = surfaceNormal;
                     fastForward = false;
 
-                    Debug.Log("Update normal, difference is negligle");
+                    //Debug.Log("Update normal, difference is negligle");
                     return (true);
                 }
                 //here diff is too important
@@ -197,7 +207,7 @@ public class FastForward : MonoBehaviour
                 {
                     //DONT update previous normal
                     //DONT update normal in GROUNDCHECK
-                    Debug.Log("Dont update !");
+                    //Debug.Log("Dont update !");
                     return (false);
                 }
                 /*
@@ -212,7 +222,7 @@ public class FastForward : MonoBehaviour
             else
             {
                 //nothing related to fastForward here !
-                Debug.Log("nothing related to fastForward here !");
+                //Debug.Log("nothing related to fastForward here !");
                 lastHitPlatform = hitInfo.transform;
                 return (true);
             }
