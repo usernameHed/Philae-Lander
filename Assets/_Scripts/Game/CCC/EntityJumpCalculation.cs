@@ -23,6 +23,7 @@ public struct InfoJump
     public Vector3 initialPosBeforePlots;
     public Vector3 ultimatePlotPoint;
     public Vector3 lastVelocity;
+    public bool lastRaycastHit;
     public JumpType jumpType;
 
     public void SetDirLast(Vector3[] plots, Vector3 initialPos)
@@ -48,6 +49,7 @@ public struct InfoJump
         ultimatePlotPoint = Vector3.zero;
         initialPosBeforePlots = Vector3.zero;
         lastVelocity = Vector3.zero;
+        lastRaycastHit = false;
         jumpType = JumpType.BASE;
     }
 }
@@ -133,6 +135,14 @@ public class EntityJumpCalculation : MonoBehaviour
             ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 5f);
         }
         return (results);
+    }
+
+    /// <summary>
+    /// called by entityJump
+    /// </summary>
+    public void OnGrounded()
+    {
+        infoJump.Clear();
     }
 
     /// <summary>
@@ -234,7 +244,10 @@ public class EntityJumpCalculation : MonoBehaviour
 
             if (i == depth)
             {
+                
                 hit = DoSphereCast(prevPos, infoJump.dirUltimatePlotPoint, distRaycastDOWN, entityController.layerMask);
+                if (hit)
+                    infoJump.lastRaycastHit = true;
             }
             else
             {
@@ -274,7 +287,7 @@ public class EntityJumpCalculation : MonoBehaviour
     public bool CanApplyForceDown()
     {
         if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)
-            return (false);
+            return (true);
 
         //TO_DOWN_NORMAL true
         //BASE true
@@ -381,6 +394,26 @@ public class EntityJumpCalculation : MonoBehaviour
         }
     }
 
+    private void TrySideJumpElseBase()
+    {
+        bool sideJump = DetermineSideJump();
+        if (sideJump && !infoJump.lastRaycastHit)
+        {
+            infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
+            Debug.Log("side jump anyway !");
+        }
+        else
+        {
+            if (infoJump.lastRaycastHit)
+            {
+                Debug.LogWarning("Sorry, but last raycast hit is not precise enought !");
+            }
+
+            infoJump.jumpType = InfoJump.JumpType.BASE;
+            Debug.Log("we realy can't do sideJump sorry..");
+        }
+    }
+
     /// <summary>
     /// return result based on impact normal
     /// </summary>
@@ -404,9 +437,9 @@ public class EntityJumpCalculation : MonoBehaviour
         }
         if (dotImpact < 0)
         {
-            Debug.Log("omg dotImpact negatif ! do nothing !");
+            Debug.Log("omg dotImpact negatif ! try side jump ? !");
+            TrySideJumpElseBase();
             Debug.Break();
-            infoJump.jumpType = InfoJump.JumpType.BASE;
             return;
         }
             
@@ -421,11 +454,12 @@ public class EntityJumpCalculation : MonoBehaviour
 
         if (rightToImpact == 1)
         {
-            Debug.Log("RIGHT SIDE");
+            Debug.Log("RIGHT SIDE: dot: " + dotRight + " (max: " + marginJumpEndDotRight + ")");
             if (dotRight > marginJumpEndDotRight)
             {
                 Debug.Log("mmm, too 90°... we could do SIDE_JUMP, but it's too far away, I prefer do BASE jump");
-                infoJump.jumpType = InfoJump.JumpType.BASE;
+
+                TrySideJumpElseBase();
                 return;
             }
 

@@ -125,6 +125,7 @@ public class EntityJump : MonoBehaviour
             coolDownOnGround.StartCoolDown(justGroundTimer);
             hasJumped = false;
         }
+        entityJumpCalculation.OnGrounded();
     }
 
     private float CalculateJumpVerticalSpeed()

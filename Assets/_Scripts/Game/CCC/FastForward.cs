@@ -24,9 +24,13 @@ public class FastForward : MonoBehaviour
     private GameObject ikillableObject;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private GroundCheck groundCheck;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private Rigidbody rb;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private bool fastForward = false;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    private Transform lastHitPlatform;
 
     [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float timeDebugFlyAway = 0.3f;   //a-t-on un attract point de placé ?
@@ -100,6 +104,7 @@ public class FastForward : MonoBehaviour
     {
         int lastLayer = hitInfo.transform.gameObject.layer;
         Vector3 newNormal = hitInfo.normal;
+        Debug.DrawRay(rb.position, newNormal * 3, Color.black, 5f);
 
         //here we are in forward layer
         if (IsForwardLayer(lastLayer))
@@ -109,30 +114,34 @@ public class FastForward : MonoBehaviour
             {
                 previousNormal = newNormal;
                 fastForward = true; //say yes to fastForward
+                lastHitPlatform = hitInfo.transform;
+                Debug.Log("On Ground reset !");
                 return (true);
             }
 
             //here the previous was a fast forward too
             if (fastForward)
             {
-                //here we can update our normal, difference is negligable
-                if (IsDiffNormalGood(newNormal))
+                if (lastHitPlatform.GetInstanceID() != hitInfo.transform.GetInstanceID())
                 {
+                    Debug.Log("update normal, we change forward");
+                    //always update when we STAY in a fastForward
                     previousNormal = newNormal;
+                    lastHitPlatform = hitInfo.transform;
                     return (true);
                 }
-                //here we have too much difference
                 else
                 {
-                    //DONT update previous normal
-                    //DONT update normal in GROUNDCHECK
+                    Debug.Log("dont update, we are on the same object");
                     return (false);
                 }
             }
             //here the previous was NOT a fastForward, we can update everything
             else
             {
+                Debug.Log("here the previous was NOT a fastForward, we can update everything");
                 fastForward = true;
+                lastHitPlatform = hitInfo.transform;
                 previousNormal = newNormal;
                 return (true);
             }
@@ -145,6 +154,8 @@ public class FastForward : MonoBehaviour
             {
                 previousNormal = newNormal;
                 fastForward = false; //update fastForward
+                lastHitPlatform = hitInfo.transform;
+                Debug.Log("On Ground reset !");
                 return (true);
             }
 
@@ -152,6 +163,7 @@ public class FastForward : MonoBehaviour
             if (fastForward)
             {
 
+                /*
                 //here we can update our normal, difference is negligable
                 if (IsDiffNormalGood(newNormal))
                 {
@@ -170,12 +182,20 @@ public class FastForward : MonoBehaviour
                     Debug.Log("Dont update !");
                     return (false);
                 }
-                
+                */
+                //DONT update previous normal
+                //DONT update normal in GROUNDCHECK
+                Debug.Log("Dont update !");
+                //Debug.DrawRay(rb.position, previousNormal, Color.black, 5f);
+                return (false);
+
             }
             //here we were not in fastForward before.
             else
             {
                 //nothing related to fastForward here !
+                Debug.Log("nothing related to fastForward here !");
+                lastHitPlatform = hitInfo.transform;
                 return (true);
             }
         }

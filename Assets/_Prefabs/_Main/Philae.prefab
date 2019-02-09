@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBeforeDie: 3
+  dotMarginDiffNormal: 0.98
   fastForwardLayer:
   - Walkable/FastForward
   entityController: {fileID: 3347777260606228085}
@@ -359,7 +360,6 @@ MonoBehaviour:
   distRaycastDOWN: 3
   layerNoSideJump:
   - Walkable/NoSide
-  - Walkable/FastForward
   - Walkable/Dont
   timeFeforeCalculateAgainJump: 0.5
   marginSideSlope: 0.35
