@@ -45,6 +45,33 @@ public static class ExtUtilityFunction
         return (collisionCenter);
     }
 
+    public static Vector3 CalculateRealNormal(Vector3 origin, Vector3 direction, float magnitude, float rayCastMargin, int layermask)
+    {
+        //Ray ray = new Ray(origin, direction);
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, magnitude + rayCastMargin, layermask))
+        {
+            //Debug.Log("Did Hit");
+            return (hit.normal);
+        }
+        Debug.DrawRay(origin, direction.normalized * (magnitude + rayCastMargin));
+        Debug.LogWarning("we are not suppose to miss that one...");
+        return (Vector3.zero);
+    }
+
+    public static Vector3 GetSurfaceNormal(Vector3 castOrigin, Vector3 direction,
+        float magnitude, float radius, Vector3 hitPoint,
+        float rayCastMargin, int layerMask)
+    {
+        Vector3 centerCollision = GetCollisionCenterSphereCast(castOrigin, direction, magnitude);
+        Vector3 dirCenterToHit = hitPoint - castOrigin;
+        float sizeRay = dirCenterToHit.magnitude;
+        Vector3 surfaceNormal = CalculateRealNormal(centerCollision, dirCenterToHit, sizeRay, rayCastMargin, layerMask);
+
+        Debug.DrawRay(centerCollision, surfaceNormal, Color.black, 5f);
+        return (surfaceNormal);
+    }
+
     /// <summary>
     /// is target on screen ??
     /// </summary>

@@ -53820,7 +53820,7 @@ PrefabInstance:
     - target: {fileID: 2648358779095376182, guid: 0bf1d571462d8e84fa4718cd103f8f07,
         type: 3}
       propertyPath: collRayCastMargin
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf1d571462d8e84fa4718cd103f8f07, type: 3}
