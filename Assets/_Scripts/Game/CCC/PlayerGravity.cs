@@ -276,9 +276,9 @@ public class PlayerGravity : MonoBehaviour
     /// <summary>
     /// apply base air gravity
     /// </summary>
-    public Vector3 AirBaseGravity(Vector3 gravityOrientation, Vector3 positionEntity)
+    public Vector3 AirBaseGravity(Vector3 gravityOrientation, Vector3 positionEntity, float boost = 1)
     {
-        Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * Time.fixedDeltaTime;
+        Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * boost * Time.fixedDeltaTime;
         Debug.DrawRay(positionEntity, forceBaseGravityInAir, Color.green, 5f);
         return (forceBaseGravityInAir);
     }
@@ -314,7 +314,7 @@ public class PlayerGravity : MonoBehaviour
             //Debug.Log("air gravity");
             //here, apply base gravity when we are InAir
 
-            finalGravity += AirBaseGravity(gravityOrientation, positionObject);
+            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entitySphereAirMove.GetRatioGravity());
         }
         return (finalGravity);
     }

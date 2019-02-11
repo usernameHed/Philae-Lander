@@ -20,7 +20,7 @@ public class GravityAttractor : MonoBehaviour
     private bool takeDistIntoAccount = true;
 
     [FoldoutGroup("Debug"), ReadOnly]
-    public List<Transform> lastListFound = new List<Transform>();
+    public List<GravityPoint> lastListFound = new List<GravityPoint>();
 
     public void SelectedGravityAttractor()
     {
@@ -38,7 +38,7 @@ public class GravityAttractor : MonoBehaviour
     /// get the closest gravity point
     /// </summary>
     /// <param name="entity"></param>
-    public List<Transform> GetPoint(Rigidbody entity)
+    public List<GravityPoint> GetPoint(Rigidbody entity)
     {
         lastListFound.Clear();
 
@@ -61,7 +61,7 @@ public class GravityAttractor : MonoBehaviour
         if (indexGravityPoint == -1)
             Debug.LogError("nothing found");
 
-        lastListFound.Add(gravityPoint[indexGravityPoint].point);
+        lastListFound.Add(gravityPoint[indexGravityPoint]);
 
          /*
         for (int i = 0; i < gravityPoint.Count; i++)
@@ -90,7 +90,7 @@ public class GravityAttractor : MonoBehaviour
             if (gravityPoint[i].point != null)
             {
                 Gizmos.color = Color.white;
-                if (lastListFound.Contains(gravityPoint[i].point))
+                if (lastListFound.Contains(gravityPoint[i]))
                     Gizmos.color = Color.red;
 
                 if (takeDistIntoAccount)

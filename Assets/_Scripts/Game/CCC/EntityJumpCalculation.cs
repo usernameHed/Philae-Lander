@@ -310,15 +310,23 @@ public class EntityJumpCalculation : MonoBehaviour
         return (playerGravity.GetMainAndOnlyGravity());
     }
 
+    private bool IsSideJumpLayerAccepted(int layer)
+    {
+        int isInForbiddenLayer = ExtList.ContainSubStringInArray(layerNoSideJump, LayerMask.LayerToName(layer));
+        if (isInForbiddenLayer == -1)
+            return (true);
+        return (false);
+    }
+
     public bool DetermineSideJump()
     {
         Vector3 normalJump = playerGravity.GetMainAndOnlyGravity();
         Vector3 normalHit = infoJump.normalHit;
 
         float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
-        int isInForbiddenLayer = ExtList.ContainSubStringInArray(layerNoSideJump, LayerMask.LayerToName(infoJump.objHit.gameObject.layer));
+        //int isInForbiddenLayer = ExtList.ContainSubStringInArray(layerNoSideJump, LayerMask.LayerToName(infoJump.objHit.gameObject.layer));
         if (dotImpact > 0 - marginSideSlope && !entityAction.NotMoving(marginNotMovingTestJump)
-            && isInForbiddenLayer == -1 && entitySphereAirMove.IsNormalAcceptedIfWeAreInGA(infoJump.objHit, normalHit))
+            && IsSideJumpLayerAccepted(infoJump.objHit.gameObject.layer) && entitySphereAirMove.IsNormalAcceptedIfWeAreInGA(infoJump.objHit, normalHit))
         {
             Debug.Log("SIDE JUMP DESICED");
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
@@ -569,9 +577,10 @@ public class EntityJumpCalculation : MonoBehaviour
         switch (infoJump.jumpType)
         {
             case (InfoJump.JumpType.TO_SIDE):
-                if (entitySphereAirMove.IsInGravityAttractorMode())
+                if (entitySphereAirMove.IsInGravityAttractorMode()/* && !entitySphereAirMove.IsAirAttractorLayer(infoJump.objHit.gameObject.layer)*/)
                 {
                     Debug.Log("mmm wut ? we decide to leave attractorGravity Mode for side jump !");
+                    //SEULEMENT SI INFO JUMP HIT LAYER n'est pas un sideJUMP !!!
                     entitySphereAirMove.UnselectOldGA();
                 }
 

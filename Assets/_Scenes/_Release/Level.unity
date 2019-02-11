@@ -58660,6 +58660,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8170289391512261097, guid: 6a80c376be219084daf3aad722efaa96,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[0].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a80c376be219084daf3aad722efaa96, type: 3}
 --- !u!1001 &336444244402593659
@@ -59143,6 +59148,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3263568548468811792, guid: 0aeb6af9a8add6341a62ca757e0c9c80,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[0].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263568548468811792, guid: 0aeb6af9a8add6341a62ca757e0c9c80,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[1].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263568548468811792, guid: 0aeb6af9a8add6341a62ca757e0c9c80,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[2].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263568548468811792, guid: 0aeb6af9a8add6341a62ca757e0c9c80,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[3].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263568548468811792, guid: 0aeb6af9a8add6341a62ca757e0c9c80,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[4].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263568548468811792, guid: 0aeb6af9a8add6341a62ca757e0c9c80,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[5].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aeb6af9a8add6341a62ca757e0c9c80, type: 3}
 --- !u!4 &3796316705873826776 stripped
@@ -59317,6 +59352,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3812705120741312159, guid: 8f83cbff9147a614a979670477fcd653,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[0].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f83cbff9147a614a979670477fcd653, type: 3}
 --- !u!1 &3930347132892408758
@@ -59464,6 +59504,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551907353706501068, guid: e41e6bc152b1f164095b3e142f2ef02f,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[0].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551907353706501068, guid: e41e6bc152b1f164095b3e142f2ef02f,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[1].gravityRatio
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41e6bc152b1f164095b3e142f2ef02f, type: 3}
@@ -59849,6 +59899,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6962139165939457001, guid: ead81bd6324a88b4b8f9b93f4172d220,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[0].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962139165939457001, guid: ead81bd6324a88b4b8f9b93f4172d220,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[1].gravityRatio
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead81bd6324a88b4b8f9b93f4172d220, type: 3}
 --- !u!1001 &7122285418945119546
@@ -60097,6 +60157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205184233709603990, guid: 034f7ec3ee7ada240a8d8f90d3c48a36,
+        type: 3}
+      propertyPath: gravityPoint.Array.data[0].gravityRatio
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 034f7ec3ee7ada240a8d8f90d3c48a36, type: 3}

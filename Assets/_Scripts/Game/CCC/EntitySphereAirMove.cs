@@ -19,7 +19,7 @@ public class EntitySphereAirMove : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool gravityAttractorMode = false;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    private List<Transform> gravityPoint = new List<Transform>();
+    private List<GravityAttractor.GravityPoint> gravityPoint = new List<GravityAttractor.GravityPoint>();
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private GravityAttractor gravityAttractor = null;
 
@@ -36,13 +36,26 @@ public class EntitySphereAirMove : MonoBehaviour
         return (sphereGravity);
     }
 
+    public float GetRatioGravity()
+    {
+        if (!gravityAttractorMode)
+            return (1);
+        return (gravityPoint[0].gravityRatio);
+    }
+
+    public bool IsAirAttractorLayer(int layer)
+    {
+        int isGravityAttractor = ExtList.ContainSubStringInArray(gravityAttractorLayer, LayerMask.LayerToName(layer));
+        if (isGravityAttractor == -1)
+            return (false);
+        return (true);
+    }
+
     public bool IsNormalAcceptedIfWeAreInGA(Transform objHit, Vector3 normalHit)
     {
-        int isForbidden = ExtList.ContainSubStringInArray(gravityAttractorLayer, LayerMask.LayerToName(objHit.gameObject.layer));
         //here it doen't concern us, say just yes
-        if (isForbidden == -1)
+        if (!IsAirAttractorLayer(objHit.gameObject.layer))
             return (true);
-
 
         //here we are in this layer, test if we are in a gravityAttractor mode, if not
         if (!gravityAttractorMode)
@@ -128,7 +141,7 @@ public class EntitySphereAirMove : MonoBehaviour
     private void CalculateSphereGravity()
     {
         gravityPoint = gravityAttractor.GetPoint(rbEntity);
-        sphereGravity = (rbEntity.position - gravityPoint[0].position).normalized;
+        sphereGravity = (rbEntity.position - gravityPoint[0].point.position).normalized;
     }
 
     private void FixedUpdate()
