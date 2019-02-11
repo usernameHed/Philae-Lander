@@ -324,7 +324,7 @@ public class EntityJumpCalculation : MonoBehaviour
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
 
             
-            Debug.Break();
+            //Debug.Break();
             return (true);
         }
         else
@@ -426,7 +426,7 @@ public class EntityJumpCalculation : MonoBehaviour
         {
             Debug.Log("omg dotImpact negatif ! try side jump ? !");
             TrySideJumpElseBase();
-            Debug.Break();
+            //Debug.Break();
             return;
         }
             
@@ -569,6 +569,12 @@ public class EntityJumpCalculation : MonoBehaviour
         switch (infoJump.jumpType)
         {
             case (InfoJump.JumpType.TO_SIDE):
+                if (entitySphereAirMove.IsInGravityAttractorMode())
+                {
+                    Debug.Log("mmm wut ? we decide to leave attractorGravity Mode for side jump !");
+                    entitySphereAirMove.UnselectOldGA();
+                }
+
                 Debug.Log("WE DESIDED: TO_SIDE");
                 Vector3 normalGravitySide = -entityController.GetFocusedForwardDirPlayer();
                 playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, normalGravitySide);
@@ -587,6 +593,6 @@ public class EntityJumpCalculation : MonoBehaviour
                 Debug.Log("WE DESIDED: BASE");
                 break;
         }
-        Debug.Break();
+        //Debug.Break();
     }
 }

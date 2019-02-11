@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 378111692992343084}
   - component: {fileID: 4342663178068225342}
   - component: {fileID: 3347777260606228082}
+  - component: {fileID: 2865919325064851209}
   - component: {fileID: 2648358779095376201}
   - component: {fileID: 4342663178068225473}
   - component: {fileID: 424197143998509921}
@@ -495,7 +496,7 @@ MonoBehaviour:
   tagWithAttractor: GravityAttractor
   gravityAttractorLayer:
   - Walkable/GravityAttractor
-  marginDotGA: 0.86
+  marginDotGA: 0.71
   rbEntity: {fileID: 3959034400415941276}
   gravityAttractorMode: 0
   gravityPoint: []
@@ -542,6 +543,27 @@ MonoBehaviour:
   entityJump: {fileID: 6166077617058031261}
   entityContactSwitch: {fileID: 6963434210853128062}
   entitySlide: {fileID: 3259061920373295737}
+--- !u!114 &2865919325064851209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22252d2b3e4d7244f8198a7757ba23e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMoveForward: 5
+  speedMoveSide: 5
+  rb: {fileID: 0}
+  objectRotateLocal: {fileID: 0}
+  entityController: {fileID: 0}
+  entityAction: {fileID: 0}
+  entityJump: {fileID: 0}
+  entityContactSwitch: {fileID: 0}
+  entitySlide: {fileID: 0}
 --- !u!114 &2648358779095376201
 MonoBehaviour:
   m_ObjectHideFlags: 0

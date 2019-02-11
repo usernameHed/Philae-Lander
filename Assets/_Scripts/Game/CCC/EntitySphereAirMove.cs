@@ -68,7 +68,7 @@ public class EntitySphereAirMove : MonoBehaviour
         Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
         Debug.DrawRay(rbEntity.position, sphereGravity * 5, Color.black);
 
-        Debug.Break();
+        //Debug.Break();
         return (false);
     }
 
@@ -115,7 +115,10 @@ public class EntitySphereAirMove : MonoBehaviour
         gravityPoint = gravityAttractor.GetPoint(rbEntity);
     }
 
-    private void UnselectOldGA()
+    /// <summary>
+    /// leave GA
+    /// </summary>
+    public void UnselectOldGA()
     {
         gravityAttractor.UnselectGravityAttractor();
         gravityAttractor = null;

@@ -44,6 +44,8 @@ public class EntityJump : MonoBehaviour
     public GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public FastForward fastForward;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public PlayerAirMove playerAirMove;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -183,6 +185,7 @@ public class EntityJump : MonoBehaviour
         playerGravity.JustJumped();
         entitySwitch.JustJumped();
         fastForward.JustJumped();
+        playerAirMove.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         

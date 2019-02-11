@@ -10,11 +10,12 @@ public class GravityAttractor : MonoBehaviour
     public struct GravityPoint
     {
         public Transform point;
+        public float gravityRatio;
         public float dist;
     }
 
     [FoldoutGroup("GamePlay"), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
-    private List<GravityPoint> gravityPoint;
+    private List<GravityPoint> gravityPoint = new List<GravityPoint>();
     [FoldoutGroup("GamePlay"), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
     private bool takeDistIntoAccount = true;
 
