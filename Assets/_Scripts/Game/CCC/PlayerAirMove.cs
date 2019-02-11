@@ -7,7 +7,9 @@ using UnityEngine;
 public class PlayerAirMove : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
-    private float speedAirMove = 5f;
+    private float speedAirMoveForward = 5f;
+    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    private float speedAirMoveSide = 5f;
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float timeBeforeCanAirMove = 0.6f;
 
@@ -30,7 +32,7 @@ public class PlayerAirMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, speedAirMove * entityAction.GetMagnitudeInput());
+        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
     }
 
     public void JustJumped()
@@ -48,7 +50,7 @@ public class PlayerAirMove : MonoBehaviour
             ? entitySlide.GetStraffDirection()
             : entityController.GetFocusedForwardDirPlayer();
 
-        dirMove = entityAction.GetRelativeDirection();
+        dirMove = entityAction.GetRelativeDirection(speedAirMoveSide, speedAirMoveForward);
 
         MovePhysics(dirMove);
     }
