@@ -118,31 +118,85 @@ public static class ExtComponent
 
     /// <summary>
     /// Get a script on the parent
-    /// Player player = collider.gameObject.GetComponentInParents<Player>();
+    /// Player player = collider.gameObject.GetComponentInAllParents<Player>();
+    /// depth = 0: stop at first parent
+    /// testCurrent: GetAlsoCOmponent In the current gameObject
     /// </summary>
-    public static T GetComponentInParents<T>(this GameObject gameObject)
+    public static T GetComponentInAllParentsWithTag<T>(this GameObject gameObject, string tag, int depth = 99, bool testCurrent = false)
         where T : Component
     {
+        if (testCurrent && gameObject.CompareTag(tag))
+        {
+            T result = gameObject.GetComponent<T>();
+            if (result != null)
+                return (result);
+        }
+
+        int currentDepth = 0;
+        for (Transform t = gameObject.transform; t != null; t = t.parent)
+        {
+            if (!gameObject.CompareTag(tag))
+            {
+                currentDepth++;
+                continue;
+            }
+                
+
+            T result = t.GetComponent<T>();
+            if (result != null)
+                return result;
+            currentDepth++;
+            if (currentDepth >= depth)
+                return (null);
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Get a script on the parent
+    /// Player player = collider.gameObject.GetComponentInAllParents<Player>();
+    /// depth = 0: stop at first parent
+    /// testCurrent: GetAlsoCOmponent In the current gameObject
+    /// </summary>
+    public static T GetComponentInAllParents<T>(this GameObject gameObject, int depth = 99, bool testCurrent = false)
+        where T : Component
+    {
+        if (testCurrent)
+        {
+            T result = gameObject.GetComponent<T>();
+            if (result != null)
+                return (result);
+        }
+
+        int currentDepth = 0;
         for (Transform t = gameObject.transform; t != null; t = t.parent)
         {
             T result = t.GetComponent<T>();
             if (result != null)
                 return result;
+            currentDepth++;
+            if (currentDepth >= depth)
+                return (null);
         }
 
         return null;
     }
-    public static T[] GetComponentsInParents<T>(this GameObject gameObject)
+
+    public static T[] GetComponentsInAllParents<T>(this GameObject gameObject, int depth = -1)
         where T : Component
     {
+        int currentDepth = 0;
         List<T> results = new List<T>();
         for (Transform t = gameObject.transform; t != null; t = t.parent)
         {
             T result = t.GetComponent<T>();
             if (result != null)
                 results.Add(result);
+            currentDepth++;
+            if (depth != -1 && currentDepth >= depth)
+                break;
         }
-
         return results.ToArray();
     }
 

@@ -106,7 +106,7 @@ public class FastForward : MonoBehaviour
 
         float dotNormal = ExtQuaternion.DotProduct(previousNormal, newNormal);
 
-        Debug.Log("dot Diff: " + dotNormal + " (max: " + dotMarginDiffNormal + ")");
+        //Debug.Log("dot Diff: " + dotNormal + " (max: " + dotMarginDiffNormal + ")");
         //here we are too much diff
         if (dotNormal < dotMarginDiffNormal)
         {

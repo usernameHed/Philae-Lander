@@ -96,6 +96,8 @@ public class EntityJumpCalculation : MonoBehaviour
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private GroundCheck groundCheck;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntitySphereAirMove entitySphereAirMove;
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
@@ -316,7 +318,7 @@ public class EntityJumpCalculation : MonoBehaviour
         float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
         int isInForbiddenLayer = ExtList.ContainSubStringInArray(layerNoSideJump, LayerMask.LayerToName(infoJump.objHit.gameObject.layer));
         if (dotImpact > 0 - marginSideSlope && !entityAction.NotMoving(marginNotMovingTestJump)
-            && isInForbiddenLayer == -1)
+            && isInForbiddenLayer == -1 && entitySphereAirMove.IsNormalAcceptedIfWeAreInGA(infoJump.objHit, normalHit))
         {
             Debug.Log("SIDE JUMP DESICED");
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
@@ -327,7 +329,7 @@ public class EntityJumpCalculation : MonoBehaviour
         }
         else
         {
-            Debug.Log("NO SIDE JUMP: Obstacle to inclined, or no input forward, or NoSide layer !");
+            Debug.Log("NO SIDE JUMP: Obstacle to inclined, or no input forward, or NoSide layer, OR BAD NORMAL IN GA");
             return (false);
         }
     }

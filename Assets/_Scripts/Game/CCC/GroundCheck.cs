@@ -10,13 +10,10 @@ public class GroundCheck : MonoBehaviour
     private float groundCheckDistance = 0.8f;
     [FoldoutGroup("GamePlay"), Range(0f, 2f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
     private float stickToFloorDist = 1.4f;
-    [FoldoutGroup("GamePlay"), Range(1f, 1.5f), Tooltip("When almostGrounded, add more gravity to quicly fall down (if there is something close)"), SerializeField]
-    public float stickGravityForce = 1.1f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] dontLayer = new string[] { "Walkable/Dont" };
-
 
     [FoldoutGroup("Object"), SerializeField]
     private SphereCollider sphereCollider;
@@ -30,6 +27,8 @@ public class GroundCheck : MonoBehaviour
     private EntityController entityController;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private FastForward fastForward;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntitySphereAirMove entitySphereAirMove;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -86,56 +85,74 @@ public class GroundCheck : MonoBehaviour
     public void SetForwardWall(RaycastHit hitInfo)
     {
         dirNormal = hitInfo.normal;
-        SetCurrentLayer(hitInfo.transform.gameObject.layer);
+        SetCurrentPlatform(hitInfo.transform);
         isGrounded = true;
         isFlying = false;
     }
 
-    
+    private bool IsInDontLayer(RaycastHit hitInfo)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(dontLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+        if (isForbidden != -1)
+            return (true);
+        return (false);
+    }
 
     private bool CanChangeNormal(RaycastHit hitInfo)
     {
         if (!fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal))
             return (false);
 
-        int isForbidden = ExtList.ContainSubStringInArray(dontLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-        if (isForbidden != -1)
-            return (false);
-
-        
         return (true);
     }
 
-    private void SetCurrentLayer(int layer)
+    private void SetCurrentPlatform(Transform platform)
     {
-        currentFloorLayer = LayerMask.LayerToName(layer);
+        lastPlatform = platform;
+        currentFloorLayer = LayerMask.LayerToName(platform.gameObject.layer);
     }
-
-   
-    
-
 
     /// <summary>
     /// Set isGrounded
     /// sphere cast down just beyond the bottom of the capsule to see/
     /// if the capsule is colliding round the bottom
     /// </summary>
-    private void GroundChecking()
+    private void GroundChecking(float magnitudeToCheck, ref bool groundValue)
     {
         //isGrounded = false;
         //return;
 
         RaycastHit hitInfo;
 
-        //Vector3 dirRaycast = playerGravity.GetMainAndOnlyGravity() * (radius + groundCheckDistance);
+        //Vector3 dirRaycast = playerGravity.GetMainAndOnlyGravity() * (radius + magnitudeToCheck);
         //Debug.DrawRay(rb.transform.position, dirRaycast * -1, Color.blue, 0.1f);
         if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, playerGravity.GetMainAndOnlyGravity() * -0.01f, out hitInfo,
-                               groundCheckDistance, entityController.layerMask, QueryTriggerInteraction.Ignore))
+                               magnitudeToCheck, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            isGrounded = true;
+            //TODO: here if gravityAttractorLayer, qu'on est dans un SphereAirMove mode, et que la normal
+            // n'est pas bonne, ne pas être considéré comme grounded !
             
-            lastPlatform = hitInfo.collider.transform;
-            SetCurrentLayer(hitInfo.collider.gameObject.layer);
+
+            //try to set 
+            if (!lastPlatform || hitInfo.collider.transform.GetInstanceID() != lastPlatform.GetInstanceID())
+                entitySphereAirMove.TryToSetNewGravityAttractor(hitInfo.collider.transform);
+
+            if (IsInDontLayer(hitInfo))
+            {
+                Debug.Log("continiue flying... we are in dont zone");
+                return;
+            }
+
+            if (!entitySphereAirMove.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
+            {
+                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
+                return;
+            }
+            
+
+            SetCurrentPlatform(hitInfo.collider.transform);
+
+            groundValue = true;
 
             dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
                 playerGravity.GetMainAndOnlyGravity() * -0.01f,
@@ -152,13 +169,12 @@ public class GroundCheck : MonoBehaviour
         }
         else
         {
-            isGrounded = false;
+            groundValue = false;
             dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
         }
-        
     }
     
-
+    /*
     /// <summary>
     /// try to stick to floor if the floor is flat, and we juste 
     /// </summary>
@@ -170,8 +186,7 @@ public class GroundCheck : MonoBehaviour
                                stickToFloorDist, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             isAlmostGrounded = true;
-            lastPlatform = hitInfo.collider.transform;
-            SetCurrentLayer(hitInfo.collider.gameObject.layer);
+            SetCurrentPlatform(hitInfo.collider.transform);
 
             dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
                 playerGravity.GetMainAndOnlyGravity() * -0.01f,
@@ -192,6 +207,7 @@ public class GroundCheck : MonoBehaviour
             dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
         }
     }
+    */
 
     /// <summary>
     /// set the drag, and stick to ground if needed
@@ -204,7 +220,7 @@ public class GroundCheck : MonoBehaviour
         }
         else
         {
-            StickToGroundHelper();
+            GroundChecking(stickToFloorDist, ref isAlmostGrounded);
         }
     }
 
@@ -229,7 +245,7 @@ public class GroundCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GroundChecking();           //set whenever or not we are grounded
+        GroundChecking(groundCheckDistance, ref isGrounded);           //set whenever or not we are grounded
         SetDragAndStick();          //set, depending on the grounded, the drag, and stick or not to the floor
         SetFlying();                //set if we fly or not !
     }

@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 4342663178068225343}
   - component: {fileID: 3819143144908272473}
   - component: {fileID: 1908652825489971977}
+  - component: {fileID: 378111692992343084}
   - component: {fileID: 4342663178068225342}
   - component: {fileID: 3347777260606228082}
   - component: {fileID: 2648358779095376201}
@@ -180,7 +181,7 @@ MonoBehaviour:
   isAlmostGrounded: 0
   isFlying: 0
   currentFloorLayer: 
-  shellOffset: 0.1
+  collRayCastMargin: 0.1
 --- !u!114 &6963434210853128062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,13 +226,17 @@ MonoBehaviour:
   dotMarginDiffNormal: 0.98
   fastForwardLayer:
   - Walkable/FastForward
+  dontLayer:
+  - Walkable/Dont
   entityController: {fileID: 3347777260606228085}
   entityJump: {fileID: 6166077617058031261}
   playerGravity: {fileID: 4342663178068225343}
   entityAttractor: {fileID: 3819143144908272473}
   ikillableObject: {fileID: 3347777260606228087}
   groundCheck: {fileID: 2648358779095376182}
+  rb: {fileID: 0}
   fastForward: 0
+  lastHitPlatform: {fileID: 0}
   timeDebugFlyAway: 0.3
 --- !u!114 &3259061920373295737
 MonoBehaviour:
@@ -358,6 +363,7 @@ MonoBehaviour:
   distRaycastSIDE: 2
   distRaycastUP: 3
   distRaycastDOWN: 3
+  distRaycastHOLE: 5
   layerNoSideJump:
   - Walkable/NoSide
   - Walkable/Dont
@@ -383,6 +389,7 @@ MonoBehaviour:
     initialPosBeforePlots: {x: 0, y: 0, z: 0}
     ultimatePlotPoint: {x: 0, y: 0, z: 0}
     lastVelocity: {x: 0, y: 0, z: 0}
+    lastRaycastHit: 0
     jumpType: 0
 --- !u!114 &4342663178068225343
 MonoBehaviour:
@@ -469,6 +476,18 @@ MonoBehaviour:
   rotateToGround: {fileID: 424197143998509921}
   groundCheck: {fileID: 2648358779095376182}
   isOnTransition: 0
+--- !u!114 &378111692992343084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e38431716a9bd40b0fb07f6a3e0c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4342663178068225342
 MonoBehaviour:
   m_ObjectHideFlags: 0
