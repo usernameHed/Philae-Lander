@@ -10,6 +10,7 @@ public class PlayerGravity : MonoBehaviour
         OBJECT,
         NORMALS,
         ATTRACTOR,
+        GRAVITY_ATTRACTOR
     }
 
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
@@ -72,7 +73,9 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private FastForward fastForward;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJumpCalculation entityJumpCalculation;  
+    private EntityJumpCalculation entityJumpCalculation;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntitySphereAirMove entitySphereAirMove;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
@@ -125,7 +128,10 @@ public class PlayerGravity : MonoBehaviour
 
     public void JustJumped()
     {
-
+        if (entitySphereAirMove.IsInGravityAttractorMode())
+        {
+            SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
+        }
     }
 
     private void ChangeStateGravity()
@@ -135,8 +141,11 @@ public class PlayerGravity : MonoBehaviour
         {
             //Debug.Log("try to change gravity state");
             //here player is on fly, and we can create an attractor
-
-            if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
+            if (entitySphereAirMove.IsInGravityAttractorMode())
+            {
+                SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
+            }
+            else if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
             {
                 entityAttractor.ActiveAttractor();
             }
@@ -188,6 +197,9 @@ public class PlayerGravity : MonoBehaviour
                 break;
             case OrientationPhysics.ATTRACTOR:
                 mainAndOnlyGravity = entityAttractor.GetDirAttractor(positionEntity);
+                break;
+            case OrientationPhysics.GRAVITY_ATTRACTOR:
+                mainAndOnlyGravity = entitySphereAirMove.GetDirGAGravity();
                 break;
         }
         return (mainAndOnlyGravity);

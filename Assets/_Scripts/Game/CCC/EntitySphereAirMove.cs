@@ -26,6 +26,16 @@ public class EntitySphereAirMove : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     public Vector3 sphereGravity = Vector3.zero;
 
+    public bool IsInGravityAttractorMode()
+    {
+        return (gravityAttractor);
+    }
+
+    public Vector3 GetDirGAGravity()
+    {
+        return (sphereGravity);
+    }
+
     public bool IsNormalAcceptedIfWeAreInGA(Transform objHit, Vector3 normalHit)
     {
         int isForbidden = ExtList.ContainSubStringInArray(gravityAttractorLayer, LayerMask.LayerToName(objHit.gameObject.layer));
@@ -48,13 +58,17 @@ public class EntitySphereAirMove : MonoBehaviour
         //if angle hitInfo.normal eet notre gravity est pas bonne,
         //dire de ne pas ground ! return false !
         //else, angle ok, return true !
-        float dotDiff = ExtQuaternion.DotProduct(normalHit, -sphereGravity);
+        float dotDiff = ExtQuaternion.DotProduct(normalHit, sphereGravity);
         if (dotDiff > marginDotGA)
         {
             Debug.Log("ok normal correct for moving...");
             return (true);
         }
         Debug.Log("here we... have bad normal ! don't walk...");
+        Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
+        Debug.DrawRay(rbEntity.position, sphereGravity * 5, Color.black);
+
+        Debug.Break();
         return (false);
     }
 

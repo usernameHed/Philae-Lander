@@ -40,6 +40,29 @@ public class GravityAttractor : MonoBehaviour
     public List<Transform> GetPoint(Rigidbody entity)
     {
         lastListFound.Clear();
+
+        float sqrDist = 0;
+        int indexGravityPoint = -1;
+        for (int i = 0; i < gravityPoint.Count; i++)
+        {
+            float dist = (entity.position - gravityPoint[i].point.position).sqrMagnitude;
+            if (i == 0)
+            {
+                indexGravityPoint = 0;
+                sqrDist = dist;
+            }
+            else if (dist < sqrDist)
+            {
+                sqrDist = dist;
+                indexGravityPoint = i;
+            }
+        }
+        if (indexGravityPoint == -1)
+            Debug.LogError("nothing found");
+
+        lastListFound.Add(gravityPoint[indexGravityPoint].point);
+
+         /*
         for (int i = 0; i < gravityPoint.Count; i++)
         {
             float dist = (entity.position - gravityPoint[i].point.position).sqrMagnitude;
@@ -55,7 +78,7 @@ public class GravityAttractor : MonoBehaviour
         }
         if (lastListFound.Count == 0)
             Debug.LogError("nothing found");
-
+            */
         return (lastListFound);
     }
 
