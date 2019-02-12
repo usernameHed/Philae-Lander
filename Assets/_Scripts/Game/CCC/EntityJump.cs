@@ -59,6 +59,7 @@ public class EntityJump : MonoBehaviour
 
     protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
+    private float lastVelocityJump = 0f;
 
     protected bool jumpStop = false;
 
@@ -71,6 +72,12 @@ public class EntityJump : MonoBehaviour
     {
         jumpStop = false;
         hasJumped = false;
+        lastVelocityJump = 0;
+    }
+
+    public float GetLastJumpForwardVelocity()
+    {
+        return (lastVelocityJump);
     }
 
     protected bool CanJump()
@@ -113,7 +120,8 @@ public class EntityJump : MonoBehaviour
     public virtual void OnGrounded()
     {
         Debug.Log("Grounded !");
-        
+        lastVelocityJump = 0f;
+
         coolDownWhenJumped.Reset();
         //here, we just were falling, without jumping
         if (!hasJumped)
@@ -162,7 +170,8 @@ public class EntityJump : MonoBehaviour
     {
         Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
         //Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
-        Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * entityAction.GetMagnitudeInput();
+        lastVelocityJump = entityAction.GetMagnitudeInput();
+        Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * lastVelocityJump;
 
         if (entityContactSwitch.IsForwardForbiddenWall())
             normalizedForwardPlayer = Vector3.zero;
