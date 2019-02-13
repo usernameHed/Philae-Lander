@@ -108,6 +108,11 @@ public class EntityJumpCalculation : MonoBehaviour
     private InfoJump infoJump = new InfoJump();
     private RaycastHit hitInfo;
 
+    public InfoJump.JumpType GetJumpType()
+    {
+        return (infoJump.jumpType);
+    }
+
     public bool CanDoAirMove()
     {
         if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)

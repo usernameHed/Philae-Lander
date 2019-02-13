@@ -91,6 +91,13 @@ public class GroundCheck : MonoBehaviour
         isGrounded = true;
         isFlying = false;
     }
+    public void SetBackwardWall(RaycastHit hitInfo)
+    {
+        dirNormal = hitInfo.normal;
+        SetCurrentPlatform(hitInfo.transform);
+        isGrounded = true;
+        isFlying = false;
+    }
 
     private bool IsInDontLayer(RaycastHit hitInfo)
     {

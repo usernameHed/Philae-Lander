@@ -23022,6 +23022,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b47bd2f74899a4fa9ef2af3f3dc2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &834919707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6166077617058031261, guid: 0bf1d571462d8e84fa4718cd103f8f07,
+    type: 3}
+  m_PrefabInstance: {fileID: 5554820212973769299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d5b7b5a8f61eb4fa89221a922a4204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &835852076
 GameObject:
   m_ObjectHideFlags: 0
@@ -61586,6 +61598,21 @@ PrefabInstance:
         type: 3}
       propertyPath: marginNotMovingTestJump
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963434210853128062, guid: 0bf1d571462d8e84fa4718cd103f8f07,
+        type: 3}
+      propertyPath: entityJumpCalculation
+      value: 
+      objectReference: {fileID: 834919706}
+    - target: {fileID: 6963434210853128062, guid: 0bf1d571462d8e84fa4718cd103f8f07,
+        type: 3}
+      propertyPath: entityJump
+      value: 
+      objectReference: {fileID: 834919707}
+    - target: {fileID: 6963434210853128062, guid: 0bf1d571462d8e84fa4718cd103f8f07,
+        type: 3}
+      propertyPath: distBackward
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6166077617058031261, guid: 0bf1d571462d8e84fa4718cd103f8f07,
         type: 3}
