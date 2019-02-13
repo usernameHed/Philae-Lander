@@ -86,10 +86,10 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         float dotDiff = ExtQuaternion.DotProduct(normalHit, sphereGravity);
         if (dotDiff > marginDotGA)
         {
-            Debug.Log("ok normal correct for moving...");
+            //Debug.Log("ok normal correct for moving...");
             return (true);
         }
-        Debug.Log("here we... have bad normal ! don't walk...");
+        //Debug.Log("here we... have bad normal ! don't walk...");
         Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
         Debug.DrawRay(rbEntity.position, sphereGravity * 5, Color.black);
 
@@ -100,27 +100,28 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     public void TryToSetNewGravityAttractor(Transform obj)
     {
         //bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
-        GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
+        //GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
+        GravityAttractor tmpGravity = obj.GetComponentInParent<GravityAttractor>();
 
-        
+
 
         if (!gravityAttractor && !tmpGravity)
         {
-            Debug.Log("si on a pas d'ancien, et rien de nouveau, ne rien faire");
+            //Debug.Log("si on a pas d'ancien, et rien de nouveau, ne rien faire");
             return;
         }
         if (!gravityAttractor && tmpGravity)
         {
-            Debug.Log("si on a pas d'ancien, mais un nouveau, alors banco");
+            //Debug.Log("si on a pas d'ancien, mais un nouveau, alors banco");
             SelectNewGA(tmpGravity);
             return;
         }
         if (gravityAttractor && tmpGravity)
         {
-            Debug.Log("tmpGravity: " + tmpGravity);
-            Debug.Log("obj.gameObject " + obj.gameObject);
+            //Debug.Log("tmpGravity: " + tmpGravity);
+            //Debug.Log("obj.gameObject " + obj.gameObject);
 
-            Debug.Log("on passe d'un ancien à un nouveau d'un coup !");
+            //Debug.Log("on passe d'un ancien à un nouveau d'un coup !");
             //Debug.Break();
             if (tmpGravity.GetInstanceID() != gravityAttractor.GetInstanceID())
             {
@@ -131,11 +132,11 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         }
         if (gravityAttractor && !tmpGravity)
         {
-            Debug.Log("on passe d'un ancien à rien !");
+            //Debug.Log("on passe d'un ancien à rien !");
             UnselectOldGA();
             return;
         }
-        Debug.Log("not finded ?");
+        //Debug.Log("not found ?");
     }
 
     private void SelectNewGA(GravityAttractor newGA)

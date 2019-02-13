@@ -36,9 +36,9 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Air Gravity"), Tooltip("default air gravity"), SerializeField]
     private float defaultGravityInAir = 2f;
 
-    
+
     [FoldoutGroup("Switch"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
-    private float timeFeforeCalculateAgainJump = 0.5f;
+    private bool isGoingDown = false;
 
     //[FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
     //private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
@@ -123,11 +123,12 @@ public class PlayerGravity : MonoBehaviour
 
     public void OnGrounded()
     {
-
+        isGoingDown = false;
     }
 
     public void JustJumped()
     {
+        isGoingDown = false;
         if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
         {
             SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
@@ -147,6 +148,7 @@ public class PlayerGravity : MonoBehaviour
             }
             else if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
             {
+                //bool aLittleMoreTime = entityJumpCalculation.UltimeTestBeforeAttractor();
                 entityAttractor.ActiveAttractor();
             }
             //here currently attractor attractive
@@ -265,11 +267,11 @@ public class PlayerGravity : MonoBehaviour
     /// </summary>
     private Vector3 AirAddGoingUp(Vector3 gravityOrientation, Vector3 positionEntity)
     {
-        Debug.LogWarning("TEMPORATY DESACTIVE UP JUMP");
-        return (Vector3.zero);
+        //Debug.LogWarning("TEMPORATY DESACTIVE UP JUMP");
+        //return (Vector3.zero);
 
-        Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
-        Debug.DrawRay(positionEntity, orientationDown, Color.blue, 5f);
+        Vector3 orientationDown = -gravityOrientation * gravity * (rbUpAddGravity - 1) * Time.fixedDeltaTime;
+        Debug.DrawRay(positionEntity, orientationDown, Color.yellow, 5f);
         return (orientationDown);
         
         //return (Vector3.zero);
@@ -289,7 +291,8 @@ public class PlayerGravity : MonoBehaviour
     /// return the right gravity
     /// </summary>
     /// <returns></returns>
-    public Vector3 FindAirGravity(Vector3 positionObject, Vector3 rbVelocity, Vector3 gravityOrientation, bool applyForceUp, bool applyForceDown)
+    public Vector3 FindAirGravity(Vector3 positionObject, Vector3 rbVelocity, Vector3 gravityOrientation,
+        bool applyForceUp, bool applyForceDown, bool testForUltimate)
     {
         Vector3 finalGravity = rbVelocity;
 
@@ -301,21 +304,36 @@ public class PlayerGravity : MonoBehaviour
         {
             float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rbVelocity);
             //here we fall down toward a planet, apply gravity down
+
+
+            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity());
+
             if (dotGravityRigidbody < 0)
             {
                 if (applyForceDown)
+                {
                     finalGravity += AirAddGoingDown(gravityOrientation, positionObject);
+
+                    //if first time we fall down, call ultimateTest !
+                    if (testForUltimate && !isGoingDown)
+                    {
+                        entityJumpCalculation.UltimeTestBeforeAttractor();
+                        isGoingDown = true;
+                    }
+
+                }
+
             }
             //here we are going up, and we release the jump button, apply gravity down until the highest point
             else if (dotGravityRigidbody > 0 && !entityAction.Jump)
             {
+                isGoingDown = false;
                 if (applyForceUp)
                     finalGravity += AirAddGoingUp(gravityOrientation, positionObject);
             }
             //Debug.Log("air gravity");
             //here, apply base gravity when we are InAir
 
-            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity());
         }
         return (finalGravity);
     }
@@ -331,7 +349,11 @@ public class PlayerGravity : MonoBehaviour
             return;
 
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
-        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity, entityJumpCalculation.GetSpecialAirGravity(), entityJumpCalculation.CanApplyForceUp(), entityJumpCalculation.CanApplyForceDown());
+        rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
+            entityJumpCalculation.GetSpecialAirGravity(),
+            entityJumpCalculation.CanApplyForceUp(),
+            entityJumpCalculation.CanApplyForceDown(),
+            true);
     }
 
     private void FixedUpdate()

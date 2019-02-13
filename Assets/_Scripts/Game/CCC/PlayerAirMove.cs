@@ -31,6 +31,8 @@ public class PlayerAirMove : MonoBehaviour
     private EntityJump entityJump;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntityJumpCalculation entityJumpCalculation;
 
     protected FrequencyCoolDown coolDownJump = new FrequencyCoolDown();
 
@@ -70,14 +72,14 @@ public class PlayerAirMove : MonoBehaviour
         float lastVelocity = entityJump.GetLastJumpForwardVelocity();
         float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
         //dotDirForward = ExtUtilityFunction.Remap(dotDirForward, )
-        Debug.Log("dotDirForward: " + dotDirForward + "(initial jump forward: " + lastVelocity + ")");
+        //Debug.Log("dotDirForward: " + dotDirForward + "(initial jump forward: " + lastVelocity + ")");
         
 
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForward > dotForward)
         {
             float valueSubstract = Mathf.Abs(lastVelocity - dotDirForward);
-            Debug.Log("value Substract: " + valueSubstract);
+            //Debug.Log("value Substract: " + valueSubstract);
             dirMove = dirMove * valueSubstract;
         }
         Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
@@ -85,13 +87,26 @@ public class PlayerAirMove : MonoBehaviour
         MovePhysics(dirMove * GetRatioAirMove());
     }
 
+    private bool CanDoAirMove()
+    {
+        if (entityController.GetMoveState() != EntityController.MoveState.InAir)
+            return (false);
+
+        if (!coolDownJump.IsReady())
+            return (false);
+
+        if (!entityJumpCalculation.CanDoAirMove())
+            return (false);
+
+        return (true);
+    }
+
     /// <summary>
     /// handle move physics
     /// </summary>
     private void FixedUpdate()
     {
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir
-            && coolDownJump.IsReady())
+        if (CanDoAirMove())
         {
             AirMovePlayer();
         }

@@ -25,6 +25,7 @@ public struct InfoJump
     public Vector3 lastVelocity;
     public bool lastRaycastHit;
     public JumpType jumpType;
+    public bool penultimateRaycastHit;
 
     public void SetDirLast(Vector3[] plots, Vector3 initialPos)
     {
@@ -49,6 +50,7 @@ public struct InfoJump
         ultimatePlotPoint = Vector3.zero;
         initialPosBeforePlots = Vector3.zero;
         lastVelocity = Vector3.zero;
+        penultimateRaycastHit = false;
         lastRaycastHit = false;
         jumpType = JumpType.BASE;
     }
@@ -106,6 +108,14 @@ public class EntityJumpCalculation : MonoBehaviour
     private InfoJump infoJump = new InfoJump();
     private RaycastHit hitInfo;
 
+    public bool CanDoAirMove()
+    {
+        if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)
+            return (false);
+
+        return (true);
+    }
+
     /// <summary>
     /// calculate trajectory of entity
     ///rigidbody: rb of the object
@@ -130,7 +140,8 @@ public class EntityJumpCalculation : MonoBehaviour
             //get the gravity direction, depending on the position
             Vector3 gravityOrientation = playerGravity.CalculateGravity(pos);
             //Get the vector acceleration (dir + magnitude)
-            Vector3 gravityAccel = playerGravity.FindAirGravity(pos, moveStep, gravityOrientation, applyForceUp, applyForceDown) * timestep;// * timestep;
+            Vector3 gravityAccel = playerGravity.FindAirGravity(pos, moveStep,
+                gravityOrientation, applyForceUp, applyForceDown, false) * timestep;// * timestep;
             moveStep += gravityAccel;
             moveStep *= drag;
             pos += moveStep;// * timestep;
@@ -235,6 +246,47 @@ public class EntityJumpCalculation : MonoBehaviour
                 hit = DoSphereCast(prevPos, infoJump.dirUltimatePlotPoint, distRaycastDOWN, entityController.layerMask);
                 if (hit)
                     infoJump.lastRaycastHit = true;
+            }
+            else
+            {
+                int indexPoint = ((infoPlot.Length / depth) * (i + 1)) - 1;
+                Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
+                lastPoint = infoPlot[indexPoint];
+
+                dirRaycast = lastPoint - prevPos;
+                hit = DoSphereCast(prevPos, dirRaycast.normalized, dirRaycast.magnitude, entityController.layerMask);
+
+                if (i == depth - 1 && hit)
+                    infoJump.penultimateRaycastHit = true;
+            }
+
+            if (hit)
+            {
+
+                return (true);
+            }
+
+            prevPos = lastPoint;
+        }
+        return (false);
+    }
+
+    public bool DoLoopRaycastUltime(Vector3[] infoPlot, int depth = 2)
+    {
+        Vector3 prevPos = infoJump.initialPosBeforePlots;//rb.transform.position;
+
+        for (int i = 0; i <= depth; i++)
+        {
+            Vector3 dirRaycast;
+            Vector3 lastPoint = Vector3.zero;
+            bool hit = false;
+
+            if (i == depth)
+            {
+
+                //hit = DoSphereCast(prevPos, infoJump.dirUltimatePlotPoint, distRaycastDOWN, entityController.layerMask);
+                //if (hit)
+                //    infoJump.lastRaycastHit = true;
             }
             else
             {
@@ -416,7 +468,7 @@ public class EntityJumpCalculation : MonoBehaviour
     private void TrySideJumpElseBase()
     {
         bool sideJump = DetermineSideJump();
-        if (sideJump && !infoJump.lastRaycastHit)
+        if (sideJump && !infoJump.lastRaycastHit && !infoJump.penultimateRaycastHit)
         {
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
             Debug.Log("side jump anyway !");
@@ -426,6 +478,10 @@ public class EntityJumpCalculation : MonoBehaviour
             if (infoJump.lastRaycastHit)
             {
                 Debug.LogWarning("Sorry, but last raycast hit is not precise enought !");
+            }
+            if (infoJump.penultimateRaycastHit)
+            {
+                Debug.LogWarning("Sorry, but penultimate raycast hit is not precise enought !");
             }
 
             infoJump.jumpType = InfoJump.JumpType.BASE;
@@ -495,74 +551,14 @@ public class EntityJumpCalculation : MonoBehaviour
 
         Debug.Log("ok, just normal jump then...");
     }
-
-    /*
-    private bool IsNormalOkHere(Vector3 refJumpNormal, Vector3 currentNormal)
-    {
-        Debug.Log("");
-    }
-    */
-
-    private bool IsThereGap(Vector3[] startPlots, Vector3[] endPlots)
-    {
-        Vector3 prevPos = startPlots[0];
-        Vector3 gravityOrientation = -playerGravity.GetMainAndOnlyGravity();
-
-        Vector3 refJumpNormal = -gravityOrientation;
-
-        int depth = 4;
-        bool isOneBadNormal = false;
-
-        //DO Test HOLE
-        for (int i = 0; i < depth - 1; i++)
-        {
-            Vector3 dirRaycast;
-            Vector3 lastPoint = Vector3.zero;
-            bool hit = false;
-
-            int numberPoints = startPlots.Length + endPlots.Length;
-            int indexPoint = ((numberPoints / depth) * (i + 1)) - 1;
-
-
-            Debug.Log("index: " + indexPoint + "(max: " + numberPoints + ")");
-            if (indexPoint >= numberPoints)
-                break;
-
-            lastPoint = (indexPoint < startPlots.Length) ? startPlots[indexPoint] : endPlots[indexPoint - startPlots.Length];
-
-            //dirRaycast = lastPoint - prevPos;
-            hit = DoSphereCast(lastPoint, gravityOrientation, distRaycastHOLE, entityController.layerMask);
-
-            /*if (!hit || !IsNormalOkHere(refJumpNormal, infoJump.normalHit))   //or normal hit realy bad !
-            {
-                Debug.Log("here a gap, or a wrong normal !");
-                ExtDrawGuizmos.DebugWireSphere(infoJump.pointHit, Color.red, 0.1f, 5f);
-                isOneBadNormal = true;
-            }
-            else
-            {
-                if (isOneBadNormal)
-                {
-                    Debug.Log("there where a bad normal previously, and now we are good, there is a gap then !");
-                    return (true);
-                }
-            }*/
-
-
-            prevPos = lastPoint;
-        }
-
-        return (false);
-    }
-
+  
     /// <summary>
     /// first test a gap.
     /// </summary>
     public void DetermineEndSphericalJump(Vector3[] startPlots, Vector3[] endPlots, bool hasHit)
     {
         Debug.Log("here do the super test: is we are on planet, chose spherical, else, return");
-        //infoJump.jumpType = InfoJump.JumpType.TO_SPHERICAL;
-        //bool isThereGap = IsThereGap(startPlots, endPlots);
+
         if (hasHit)
         {
             infoJump.jumpType = InfoJump.JumpType.TO_DOWN_NORMAL;
@@ -571,9 +567,6 @@ public class EntityJumpCalculation : MonoBehaviour
         {
             infoJump.jumpType = InfoJump.JumpType.BASE;
         }
-
-
-        //Debug.B
     }
 
     private void EndJumpCalculation(Vector3[] startPlots)
@@ -598,6 +591,35 @@ public class EntityJumpCalculation : MonoBehaviour
             DetermineEndSphericalJump(startPlots, endPlots, false);
         }
         FinishCalculation();
+    }
+
+    
+
+    /// <summary>
+    /// called just when we fall down !
+    /// </summary>
+    public void UltimeTestBeforeAttractor()
+    {
+        if (infoJump.jumpType == InfoJump.JumpType.BASE
+            && playerGravity.GetOrientationPhysics() == PlayerGravity.OrientationPhysics.NORMALS)
+        {
+            infoJump.Clear();
+            Vector3[] ultimePlots = Plots(rb, rb.position, rb.velocity, 30, false, true);
+
+            infoJump.SetDirLast(ultimePlots, rb.position);
+
+            //here we know if we are in JUMP UP
+            bool hit = DoLoopRaycastUltime(ultimePlots, 4);    //return true if we hit a wall in the first jump plot
+
+            //isOkToCreateAttractor = false;
+            if (hit)
+            {
+                entityAttractor.RetryCoolDown();
+                Debug.Log("OK continiue BASE after a second test !");
+            }
+
+            return;
+        }
     }
 
     /// <summary>

@@ -16,6 +16,8 @@ public class EntityAttractor : MonoBehaviour
     private EntitySwitch entitySwitch;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private FastForward fastForward;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntityJumpCalculation entityJumpCalculation;
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.8f;
@@ -169,6 +171,15 @@ public class EntityAttractor : MonoBehaviour
     {
         Vector3 dirAttractor = positionEntity - transformPointAttractor;
         return (dirAttractor);
+    }
+
+    /// <summary>
+    /// called when we need more time before create attractor !
+    /// </summary>
+    public void RetryCoolDown()
+    {
+        timerBeforeCreateAttractor.StartCoolDown(timeBeforeActiveAttractorInAir);
+        timerBeforeCreateLateAttractor.StartCoolDown(timeBeforeActiveLateAttractor);
     }
 
     /// <summary>

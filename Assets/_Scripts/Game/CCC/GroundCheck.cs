@@ -145,6 +145,12 @@ public class GroundCheck : MonoBehaviour
                 Debug.Log("try to change ??");
                 entityGravityAttractorSwitch.TryToSetNewGravityAttractor(hitInfo.collider.transform);
             }
+            else if (lastPlatform && entityGravityAttractorSwitch.IsInGravityAttractorMode()
+                && !entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.collider.gameObject.layer))
+            {
+                Debug.LogWarning("HEre we detect we are in gravityMode, AND on a different layer platform... force change !");
+                entityGravityAttractorSwitch.TryToSetNewGravityAttractor(hitInfo.collider.transform);
+            }
                 
 
             if (IsInDontLayer(hitInfo))
