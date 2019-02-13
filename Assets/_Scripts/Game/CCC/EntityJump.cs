@@ -46,6 +46,8 @@ public class EntityJump : MonoBehaviour
     public FastForward fastForward;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public PlayerAirMove playerAirMove;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -169,12 +171,22 @@ public class EntityJump : MonoBehaviour
     private Vector3 GetNormalizedJumpDir()
     {
         Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
+
+        if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
+        {
+            normalizedNormalGravity = entityGravityAttractorSwitch.GetDirGAGravity();
+        }
+
         //Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
         lastVelocityJump = entityAction.GetMagnitudeInput();
         Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * lastVelocityJump;
 
         if (entityContactSwitch.IsForwardForbiddenWall())
+        {
+            lastVelocityJump = 0;
             normalizedForwardPlayer = Vector3.zero;
+        }
+
         //Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
         //Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);
 
