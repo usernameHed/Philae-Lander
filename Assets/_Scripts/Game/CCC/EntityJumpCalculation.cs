@@ -97,7 +97,7 @@ public class EntityJumpCalculation : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntitySphereAirMove entitySphereAirMove;
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
@@ -193,7 +193,7 @@ public class EntityJumpCalculation : MonoBehaviour
                 dirRaycast = entityController.GetFocusedForwardDirPlayer();
                 lastPoint = infoJump.ultimatePlotPoint;
                 //lastPoint pas utile de le mettre ?
-                hit = DoSphereCast(lastPoint, dirRaycast, distRaycastSIDE, entityController.layerMask);
+                hit = DoSphereCast(lastPoint, dirRaycast, distRaycastSIDE * entityAction.GetMagnitudeInput(), entityController.layerMask);
                 if (hit)
                 {
                     longEndRaycastHit = true;
@@ -318,6 +318,31 @@ public class EntityJumpCalculation : MonoBehaviour
         return (false);
     }
 
+    private bool CanDoSideJump(float dotImpact)
+    {
+        if (!(dotImpact > 0 - marginSideSlope))
+        {
+            Debug.Log("No: not nice slope: " + dotImpact);
+            return (false);
+        }
+        if (entityAction.NotMoving(marginNotMovingTestJump))
+        {
+            Debug.Log("No: not moving !");
+            return (false);
+        }
+        if (!IsSideJumpLayerAccepted(infoJump.objHit.gameObject.layer))
+        {
+            Debug.Log("not good layer for jumping !");
+            return (false);
+        }
+        if (!entityGravityAttractorSwitch.CanDoSideJump(infoJump.objHit))
+        {
+            Debug.Log("No: GA say not to side Jump !");
+            return (false);
+        }
+        return (true);
+    }
+
     public bool DetermineSideJump()
     {
         Vector3 normalJump = playerGravity.GetMainAndOnlyGravity();
@@ -325,8 +350,7 @@ public class EntityJumpCalculation : MonoBehaviour
 
         float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
         //int isInForbiddenLayer = ExtList.ContainSubStringInArray(layerNoSideJump, LayerMask.LayerToName(infoJump.objHit.gameObject.layer));
-        if (dotImpact > 0 - marginSideSlope && !entityAction.NotMoving(marginNotMovingTestJump)
-            && IsSideJumpLayerAccepted(infoJump.objHit.gameObject.layer) && entitySphereAirMove.IsNormalAcceptedIfWeAreInGA(infoJump.objHit, normalHit))
+        if (CanDoSideJump(dotImpact))
         {
             Debug.Log("SIDE JUMP DESICED");
             infoJump.jumpType = InfoJump.JumpType.TO_SIDE;
@@ -337,7 +361,7 @@ public class EntityJumpCalculation : MonoBehaviour
         }
         else
         {
-            Debug.Log("NO SIDE JUMP: Obstacle to inclined, or no input forward, or NoSide layer, OR BAD NORMAL IN GA");
+            Debug.Log("NO SIDE JUMP: Obstacle to inclined, or no input forward, or NoSide layer, OR GA mode & obhHit is still DA !");
             return (false);
         }
     }
@@ -539,7 +563,14 @@ public class EntityJumpCalculation : MonoBehaviour
         Debug.Log("here do the super test: is we are on planet, chose spherical, else, return");
         //infoJump.jumpType = InfoJump.JumpType.TO_SPHERICAL;
         //bool isThereGap = IsThereGap(startPlots, endPlots);
-
+        if (hasHit)
+        {
+            infoJump.jumpType = InfoJump.JumpType.TO_DOWN_NORMAL;
+        }
+        else
+        {
+            infoJump.jumpType = InfoJump.JumpType.BASE;
+        }
 
 
         //Debug.B
@@ -577,11 +608,22 @@ public class EntityJumpCalculation : MonoBehaviour
         switch (infoJump.jumpType)
         {
             case (InfoJump.JumpType.TO_SIDE):
-                if (entitySphereAirMove.IsInGravityAttractorMode()/* && !entitySphereAirMove.IsAirAttractorLayer(infoJump.objHit.gameObject.layer)*/)
+                if (entityGravityAttractorSwitch.IsInGravityAttractorMode()/* && !entitySphereAirMove.IsAirAttractorLayer(infoJump.objHit.gameObject.layer)*/)
                 {
                     Debug.Log("mmm wut ? we decide to leave attractorGravity Mode for side jump !");
+
+                    //here the layer we want to go is NOT in a airAttractor layer
+                    if (!entityGravityAttractorSwitch.IsAirAttractorLayer(infoJump.objHit.gameObject.layer))
+                    {
+                        entityGravityAttractorSwitch.UnselectOldGA();
+                    }
+                    else
+                    {
+                        Debug.Log("it's the same, or an other ? do nothing ?");
+                    }
+
                     //SEULEMENT SI INFO JUMP HIT LAYER n'est pas un sideJUMP !!!
-                    entitySphereAirMove.UnselectOldGA();
+                    
                 }
 
                 Debug.Log("WE DESIDED: TO_SIDE");

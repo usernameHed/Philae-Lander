@@ -28,7 +28,7 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private FastForward fastForward;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntitySphereAirMove entitySphereAirMove;
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -41,12 +41,14 @@ public class GroundCheck : MonoBehaviour
     private string currentFloorLayer;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float collRayCastMargin = 0.1f;
+    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    private Transform lastPlatform = null;
+    public Transform GetLastPlatform() { return (lastPlatform); }
 
     private float radius;
     private Vector3 dirNormal = Vector3.zero;
     private Vector3 dirSurfaceNormal = Vector3.zero;
-    private Transform lastPlatform = null;
-    public Transform GetLastPlatform() { return (lastPlatform); }
+    
 
     private void Awake()
     {
@@ -119,6 +121,10 @@ public class GroundCheck : MonoBehaviour
     /// </summary>
     private void GroundChecking(float magnitudeToCheck, ref bool groundValue)
     {
+        if (entityJump.IsJumpedAndNotReady())
+        {
+            return;
+        }
         //isGrounded = false;
         //return;
 
@@ -135,7 +141,11 @@ public class GroundCheck : MonoBehaviour
 
             //try to set 
             if (!lastPlatform || hitInfo.collider.transform.GetInstanceID() != lastPlatform.GetInstanceID())
-                entitySphereAirMove.TryToSetNewGravityAttractor(hitInfo.collider.transform);
+            {
+                Debug.Log("try to change ??");
+                entityGravityAttractorSwitch.TryToSetNewGravityAttractor(hitInfo.collider.transform);
+            }
+                
 
             if (IsInDontLayer(hitInfo))
             {
@@ -143,7 +153,7 @@ public class GroundCheck : MonoBehaviour
                 return;
             }
 
-            if (!entitySphereAirMove.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
+            if (!entityGravityAttractorSwitch.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
             {
                 Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
                 return;

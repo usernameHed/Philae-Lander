@@ -38,7 +38,7 @@ public class GravityAttractor : MonoBehaviour
     /// get the closest gravity point
     /// </summary>
     /// <param name="entity"></param>
-    public List<GravityPoint> GetPoint(Rigidbody entity)
+    public List<GravityPoint> GetPoint(Vector3 entity)
     {
         lastListFound.Clear();
 
@@ -46,7 +46,7 @@ public class GravityAttractor : MonoBehaviour
         int indexGravityPoint = -1;
         for (int i = 0; i < gravityPoint.Count; i++)
         {
-            float dist = (entity.position - gravityPoint[i].point.position).sqrMagnitude;
+            float dist = (entity - gravityPoint[i].point.position).sqrMagnitude;
             if (i == 0)
             {
                 indexGravityPoint = 0;

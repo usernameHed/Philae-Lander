@@ -75,7 +75,7 @@ public class PlayerGravity : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJumpCalculation entityJumpCalculation;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntitySphereAirMove entitySphereAirMove;
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
@@ -128,7 +128,7 @@ public class PlayerGravity : MonoBehaviour
 
     public void JustJumped()
     {
-        if (entitySphereAirMove.IsInGravityAttractorMode())
+        if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
         {
             SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
         }
@@ -141,7 +141,7 @@ public class PlayerGravity : MonoBehaviour
         {
             //Debug.Log("try to change gravity state");
             //here player is on fly, and we can create an attractor
-            if (entitySphereAirMove.IsInGravityAttractorMode())
+            if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
             {
                 SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
             }
@@ -199,7 +199,8 @@ public class PlayerGravity : MonoBehaviour
                 mainAndOnlyGravity = entityAttractor.GetDirAttractor(positionEntity);
                 break;
             case OrientationPhysics.GRAVITY_ATTRACTOR:
-                mainAndOnlyGravity = entitySphereAirMove.GetDirGAGravity();
+                entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity);
+                mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
                 break;
         }
         return (mainAndOnlyGravity);
@@ -314,7 +315,7 @@ public class PlayerGravity : MonoBehaviour
             //Debug.Log("air gravity");
             //here, apply base gravity when we are InAir
 
-            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entitySphereAirMove.GetRatioGravity());
+            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity());
         }
         return (finalGravity);
     }

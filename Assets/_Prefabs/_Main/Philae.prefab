@@ -177,7 +177,7 @@ MonoBehaviour:
   entityJump: {fileID: 6166077617058031261}
   entityController: {fileID: 3347777260606228085}
   fastForward: {fileID: 6729321841502290180}
-  entitySphereAirMove: {fileID: 378111692992343084}
+  entityGravityAttractorSwitch: {fileID: 378111692992343084}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -331,6 +331,7 @@ MonoBehaviour:
   entitySwitch: {fileID: 1908652825489971977}
   groundCheck: {fileID: 2648358779095376182}
   fastForward: {fileID: 6729321841502290180}
+  playerAirMove: {fileID: 2865919325064851209}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -371,8 +372,8 @@ MonoBehaviour:
   - Walkable/NoSide
   - Walkable/Dont
   timeFeforeCalculateAgainJump: 0.5
-  marginSideSlope: 0.35
-  marginNotMovingTestJump: 0.5
+  marginSideSlope: 0.71
+  marginNotMovingTestJump: 0.3
   marginJumpEndDot: 0.86
   marginJumpEndDotRight: 0.93
   entityController: {fileID: 3347777260606228085}
@@ -382,7 +383,7 @@ MonoBehaviour:
   playerGravity: {fileID: 4342663178068225343}
   entityAttractor: {fileID: 3819143144908272473}
   groundCheck: {fileID: 2648358779095376182}
-  entitySphereAirMove: {fileID: 378111692992343084}
+  entityGravityAttractorSwitch: {fileID: 378111692992343084}
   magicTrajectoryCorrection: 1.4
   infoJump:
     didWeHit: 0
@@ -424,7 +425,7 @@ MonoBehaviour:
   entityAttractor: {fileID: 3819143144908272473}
   fastForward: {fileID: 6729321841502290180}
   entityJumpCalculation: {fileID: 4078160021669779806}
-  entitySphereAirMove: {fileID: 378111692992343084}
+  entityGravityAttractorSwitch: {fileID: 378111692992343084}
   mainAttractObject: {fileID: 0}
 --- !u!114 &3819143144908272473
 MonoBehaviour:
@@ -555,15 +556,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22252d2b3e4d7244f8198a7757ba23e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMoveForward: 5
-  speedMoveSide: 5
-  rb: {fileID: 0}
-  objectRotateLocal: {fileID: 0}
-  entityController: {fileID: 0}
-  entityAction: {fileID: 0}
-  entityJump: {fileID: 0}
-  entityContactSwitch: {fileID: 0}
-  entitySlide: {fileID: 0}
+  speedAirMoveForward: 10
+  speedAirMoveSide: 5
+  timeBeforeCanAirMove: 0.3
+  dotForward: 0.7
+  ratioWhenGravityAirMove: 0.7
+  rb: {fileID: 3959034400415941276}
+  entityController: {fileID: 3347777260606228085}
+  entityAction: {fileID: 6166077617058031262}
+  entityContactSwitch: {fileID: 6963434210853128062}
+  entitySlide: {fileID: 3259061920373295737}
+  entityJump: {fileID: 6166077617058031261}
+  entityGravityAttractorSwitch: {fileID: 378111692992343084}
 --- !u!114 &2648358779095376201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 36.6, y: 0, z: 33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -718,7 +722,7 @@ Transform:
   - {fileID: 3959034399683835973}
   m_Father: {fileID: 3347777260606228084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &4976704726927159999
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntitySphereAirMove : MonoBehaviour
+public class EntityGravityAttractorSwitch : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private string tagWithAttractor = "GravityAttractor";
@@ -51,6 +51,18 @@ public class EntitySphereAirMove : MonoBehaviour
         return (true);
     }
 
+    /// <summary>
+    /// can do sideJump ONLY if we were NOT
+    /// previously in airMove, AND the layer is still an yellow GA
+    /// </summary>
+    /// <returns></returns>
+    public bool CanDoSideJump(Transform objHit)
+    {
+        bool canDo = !((gravityAttractorMode && IsAirAttractorLayer(objHit.gameObject.layer)));
+        Debug.Log("can du: " + canDo);
+        return (canDo);
+    }
+
     public bool IsNormalAcceptedIfWeAreInGA(Transform objHit, Vector3 normalHit)
     {
         //here it doen't concern us, say just yes
@@ -90,6 +102,8 @@ public class EntitySphereAirMove : MonoBehaviour
         //bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
         GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
 
+        
+
         if (!gravityAttractor && !tmpGravity)
         {
             Debug.Log("si on a pas d'ancien, et rien de nouveau, ne rien faire");
@@ -99,12 +113,15 @@ public class EntitySphereAirMove : MonoBehaviour
         {
             Debug.Log("si on a pas d'ancien, mais un nouveau, alors banco");
             SelectNewGA(tmpGravity);
-            gravityAttractorMode = true;
             return;
         }
         if (gravityAttractor && tmpGravity)
         {
+            Debug.Log("tmpGravity: " + tmpGravity);
+            Debug.Log("obj.gameObject " + obj.gameObject);
+
             Debug.Log("on passe d'un ancien à un nouveau d'un coup !");
+            //Debug.Break();
             if (tmpGravity.GetInstanceID() != gravityAttractor.GetInstanceID())
             {
                 UnselectOldGA();
@@ -116,16 +133,17 @@ public class EntitySphereAirMove : MonoBehaviour
         {
             Debug.Log("on passe d'un ancien à rien !");
             UnselectOldGA();
-            gravityAttractorMode = false;
             return;
         }
+        Debug.Log("not finded ?");
     }
 
     private void SelectNewGA(GravityAttractor newGA)
     {
         gravityAttractor = newGA;
         gravityAttractor.SelectedGravityAttractor();
-        gravityPoint = gravityAttractor.GetPoint(rbEntity);
+        gravityPoint = gravityAttractor.GetPoint(rbEntity.position);
+        gravityAttractorMode = true;
     }
 
     /// <summary>
@@ -136,17 +154,18 @@ public class EntitySphereAirMove : MonoBehaviour
         gravityAttractor.UnselectGravityAttractor();
         gravityAttractor = null;
         gravityPoint = null;
+        gravityAttractorMode = false;
     }
 
-    private void CalculateSphereGravity()
+    public void CalculateSphereGravity(Vector3 posEntity)
     {
-        gravityPoint = gravityAttractor.GetPoint(rbEntity);
-        sphereGravity = (rbEntity.position - gravityPoint[0].point.position).normalized;
+        gravityPoint = gravityAttractor.GetPoint(posEntity);
+        sphereGravity = (posEntity - gravityPoint[0].point.position).normalized;
     }
 
     private void FixedUpdate()
     {
         if (gravityAttractor) //TODO: checker uniquement si on a bougé ??
-            CalculateSphereGravity();
+            CalculateSphereGravity(rbEntity.position);
     }
 }
