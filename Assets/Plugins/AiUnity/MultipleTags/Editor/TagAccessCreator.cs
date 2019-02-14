@@ -95,6 +95,16 @@ namespace AiUnity.MultipleTags.Editor
             this.tagHash = CreateTagHash(InternalEditorUtility.tags);
         }
 
+        private void CreateEnum()
+        {
+            TagAccessStringBuilder.AppendFormat("{0}\tpublic enum TagAccessEnum{0}\t{{{0}", Environment.NewLine);
+            foreach (string tagName in TagService.AllTags.Where(t => !t.Contains('.')).Reverse())
+            {
+                TagAccessStringBuilder.AppendFormat("\t{0},{1}", tagName, Environment.NewLine);
+            }
+            TagAccessStringBuilder.AppendFormat("\t}}{0}", Environment.NewLine);
+        }
+
         /// <summary>
         /// Formats the tag paths.
         /// </summary>
@@ -142,6 +152,7 @@ namespace AiUnity.MultipleTags.Editor
             // Build the various members that members of this example class
             CreateTags();
             CreateTagPaths();
+            CreateEnum();
             CreateGroups();
 
             TagAccessStringBuilder.AppendLine("}");

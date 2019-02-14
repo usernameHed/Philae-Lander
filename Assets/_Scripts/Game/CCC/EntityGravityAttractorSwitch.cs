@@ -7,7 +7,7 @@ using UnityEngine;
 public class EntityGravityAttractorSwitch : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private string tagWithAttractor = "GravityAttractor";
+    private TagAccess.TagAccessEnum tagWithAttractor = TagAccess.TagAccessEnum.GravityAttractor;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] gravityAttractorLayer = new string[] { "Walkable/GravityAttractor" };
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
@@ -99,7 +99,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     public void TryToSetNewGravityAttractor(Transform obj)
     {
-        //bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
+        bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
         //GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
         GravityAttractor tmpGravity = obj.GetComponentInParent<GravityAttractor>();
 

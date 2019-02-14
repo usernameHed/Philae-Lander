@@ -23,6 +23,33 @@ public static class ExtUtilityFunction
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 
+    public static Vector3 GetClosestPoint(Vector3 posEntity, Vector3[] arrayPos)
+    {
+        float sqrDist = 0;
+        int indexGravityPoint = -1;
+        for (int i = 0; i < arrayPos.Length; i++)
+        {
+            float dist = (posEntity - arrayPos[i]).sqrMagnitude;
+            if (i == 0)
+            {
+                indexGravityPoint = 0;
+                sqrDist = dist;
+            }
+            else if (dist < sqrDist)
+            {
+                sqrDist = dist;
+                indexGravityPoint = i;
+            }
+        }
+
+        if (indexGravityPoint == -1)
+        {
+            Debug.LogError("nothing found");
+            return (Vector3.zero);
+        }
+        return (arrayPos[indexGravityPoint]);
+    }
+
     //[MenuItem("Tools/Clear Console %#c")] // CMD + SHIFT + C
     public static void ClearConsole()
     {

@@ -84,6 +84,10 @@ namespace AiUnity.MultipleTags.Core
         {
             return gameObject.Tags().Contains(tag);
         }
+        public static bool HasTag(this GameObject gameObject, TagAccess.TagAccessEnum tag)
+        {
+            return gameObject.Tags().Contains(tag.ToString());
+        }
 
         /// <summary>
         /// Determines if component has the tags derived from specified tagLogic and tag(s).
