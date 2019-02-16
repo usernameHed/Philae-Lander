@@ -11,7 +11,13 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public bool creatorMode = true;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private Transform parentAttactor;
+    private Transform parentAlones;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private Transform parentLines;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private Transform parentTriangles;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private Transform parentQuad;
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private GravityAttractor gravityAttractor;
@@ -35,12 +41,14 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
             if (!gravityAttractor.gravityPoints[i].point)
             {
                 GameObject newPoint = new GameObject("AlonePoint " + i);
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                newPoint.transform.position = parentAlones.position;
+                newPoint.transform.SetParent(parentAlones);
                 GravityAttractor.GravityPoint newGP = gravityAttractor.gravityPoints[i];
                 newGP.point = newPoint.transform;
+                newGP.SetDefautIfFirstTimeCreated();
                 gravityAttractor.gravityPoints[i] = newGP;
             }
+
             allGravityPoint.Add(gravityAttractor.gravityPoints[i].point);
         }
         for (int i = 0; i < gravityAttractor.gravityLines.Count; i++)
@@ -49,19 +57,21 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
 
             if (!gravityAttractor.gravityLines[i].pointA)
             {
-                GameObject newPoint = new GameObject("LinePoint " + i + "(A)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Line " + i + " - Point A");
+                newPoint.transform.position = parentLines.transform.position;
+                newPoint.transform.SetParent(parentLines.transform);
                 newGL.pointA = newPoint.transform;
             }
             if (!gravityAttractor.gravityLines[i].pointB)
             {
-                GameObject newPoint = new GameObject("LinePoint " + i + "(B)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Line " + i + " - Point B");
+                newPoint.transform.position = parentLines.transform.position + new Vector3(5, 0, 0);
+                newPoint.transform.SetParent(parentLines.transform);
                 newGL.pointB = newPoint.transform;
             }
+            newGL.SetDefautIfFirstTimeCreated();
             gravityAttractor.gravityLines[i] = newGL;
+
 
             allGravityPoint.Add(gravityAttractor.gravityLines[i].pointA);
             allGravityPoint.Add(gravityAttractor.gravityLines[i].pointB);
@@ -72,26 +82,28 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
 
             if (!gravityAttractor.gravityTriangles[i].pointA)
             {
-                GameObject newPoint = new GameObject("TrianglePoint " + i + "(A)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Triangle " + i + " - Point A");
+                newPoint.transform.position = parentTriangles.transform.position;
+                newPoint.transform.SetParent(parentTriangles.transform);
                 newGT.pointA = newPoint.transform;
             }
             if (!gravityAttractor.gravityTriangles[i].pointB)
             {
-                GameObject newPoint = new GameObject("TrianglePoint " + i + "(B)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Triangle " + i + " - Point B");
+                newPoint.transform.position = parentTriangles.transform.position + new Vector3(5, 0, 0);
+                newPoint.transform.SetParent(parentTriangles.transform);
                 newGT.pointB = newPoint.transform;
             }
             if (!gravityAttractor.gravityTriangles[i].pointC)
             {
-                GameObject newPoint = new GameObject("TrianglePoint " + i + "(C)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Triangle " + i + " - Point C");
+                newPoint.transform.position = parentTriangles.transform.position + new Vector3(5, 5, 0);
+                newPoint.transform.SetParent(parentTriangles.transform);
                 newGT.pointC = newPoint.transform;
             }
+            newGT.SetDefautIfFirstTimeCreated();
             gravityAttractor.gravityTriangles[i] = newGT;
+
 
             allGravityPoint.Add(gravityAttractor.gravityTriangles[i].pointA);
             allGravityPoint.Add(gravityAttractor.gravityTriangles[i].pointB);
@@ -103,33 +115,35 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
 
             if (!gravityAttractor.gravityQuad[i].pointA)
             {
-                GameObject newPoint = new GameObject("QuadPoint " + i + "(A)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Quad " + i + " - Point A");
+                newPoint.transform.position = parentQuad.transform.position;
+                newPoint.transform.SetParent(parentQuad.transform);
                 newGQ.pointA = newPoint.transform;
             }
             if (!gravityAttractor.gravityQuad[i].pointB)
             {
-                GameObject newPoint = new GameObject("QuadPoint " + i + "(B)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Quad " + i + " - Point B");
+                newPoint.transform.position = parentQuad.transform.position + new Vector3(5, 0, 0);
+                newPoint.transform.SetParent(parentQuad.transform);
                 newGQ.pointB = newPoint.transform;
             }
             if (!gravityAttractor.gravityQuad[i].pointC)
             {
-                GameObject newPoint = new GameObject("QuadPoint " + i + "(C)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Quad " + i + " - Point C");
+                newPoint.transform.position = parentQuad.transform.position + new Vector3(5, 5, 0);
+                newPoint.transform.SetParent(parentQuad.transform);
                 newGQ.pointC = newPoint.transform;
             }
             if (!gravityAttractor.gravityQuad[i].pointD)
             {
-                GameObject newPoint = new GameObject("QuadPoint " + i + "(D)");
-                newPoint.transform.position = parentAttactor.position;
-                newPoint.transform.SetParent(parentAttactor);
+                GameObject newPoint = new GameObject("Quad " + i + " - Point D");
+                newPoint.transform.position = parentQuad.transform.position + new Vector3(0, 5, 0);
+                newPoint.transform.SetParent(parentQuad.transform);
                 newGQ.pointD = newPoint.transform;
             }
+            newGQ.SetDefautIfFirstTimeCreated();
             gravityAttractor.gravityQuad[i] = newGQ;
+
 
             allGravityPoint.Add(gravityAttractor.gravityQuad[i].pointA);
             allGravityPoint.Add(gravityAttractor.gravityQuad[i].pointB);
@@ -142,10 +156,25 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
 
     private void CleanHoldEmptyChild()
     {
-        foreach (Transform child in parentAttactor)
+        foreach (Transform child in parentAlones)
         {
             if (!allGravityPoint.Contains(child))
-                GameObject.Destroy(child.gameObject);
+                GameObject.DestroyImmediate(child.gameObject);
+        }
+        foreach (Transform child in parentLines)
+        {
+            if (!allGravityPoint.Contains(child))
+                GameObject.DestroyImmediate(child.gameObject);
+        }
+        foreach (Transform child in parentTriangles)
+        {
+            if (!allGravityPoint.Contains(child))
+                GameObject.DestroyImmediate(child.gameObject);
+        }
+        foreach (Transform child in parentQuad)
+        {
+            if (!allGravityPoint.Contains(child))
+                GameObject.DestroyImmediate(child.gameObject);
         }
     }
 
@@ -223,13 +252,13 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
 
     private void OnDrawGizmos()
     {
-        if (!gravityAttractor || !parentAttactor)
+        if (!gravityAttractor || !parentAlones || !parentLines || !parentTriangles || !parentQuad)
             return;
 
         DisplayPoint();
         if (!Application.isPlaying && creatorMode)
         {
-            gravityAttractor.SetupArrayPoints();
+            //gravityAttractor.SetupArrayPoints();
             SetupEditorPoint();
             if (testPoint)
             {
