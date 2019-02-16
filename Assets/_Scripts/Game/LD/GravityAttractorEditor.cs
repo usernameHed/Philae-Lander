@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [ExecuteInEditMode]
-public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
+public class GravityAttractorEditor : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public bool creatorMode = true;
@@ -27,6 +27,8 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     private List<Transform> allGravityPoint = new List<Transform>();
     public List<Transform> GetAllGravityPoint() => allGravityPoint;
+
+    private bool isUpdatedFirstTime = false;
 
     private void SetupEditorPoint()
     {
@@ -250,6 +252,14 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
         Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, 0)));
     }
 
+    public void ResetAfterUndo()
+    {
+        Debug.Log("undo/redo performed !");
+        gravityAttractor.SetupArrayPoints();
+        gravityAttractor.valueArrayChanged = true;
+        SetupEditorPoint();
+    }
+
     private void OnDrawGizmos()
     {
         if (!gravityAttractor || !parentAlones || !parentLines || !parentTriangles || !parentQuad)
@@ -258,18 +268,17 @@ public class GravityAttractorEditor : MonoBehaviour, IDeselectHandler
         DisplayPoint();
         if (!Application.isPlaying && creatorMode)
         {
-            //gravityAttractor.SetupArrayPoints();
+            if (!isUpdatedFirstTime)
+            {
+                gravityAttractor.SetupArrayPoints();
+                isUpdatedFirstTime = true;
+            }
             SetupEditorPoint();
             if (testPoint)
             {
                 gravityAttractor.FindNearestPoint(testPoint.position);
             }                
         }
-    }
 
-    public void OnDeselect(BaseEventData data)
-    {
-        Debug.Log("Deselected");
-        //Tools.current = Tool.Transform;
     }
 }

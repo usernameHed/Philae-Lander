@@ -259,7 +259,7 @@ public class GravityAttractor : MonoBehaviour
         int indexResult = 0;
 
         //if there are individual points, add to result
-        if (arrayPoints.Length > 0)
+        if (arrayPoints.Length > 0 && gravityPoints.Count > 0 && gravityPoints.Count == arrayPoints.Length)
         {
             Vector3 closestPoint = GetClosestPointFromGravityPoints(fromPoint);
             //Debug.DrawLine(fromPoint, closestPoint, Color.white);
@@ -273,7 +273,7 @@ public class GravityAttractor : MonoBehaviour
         }
 
         //if there are lines, add to result
-        if (arrayPointsLines.Length > 0)
+        if (arrayPointsLines.Length > 0 && gravityLines.Count > 0 && gravityLines.Count == arrayPointsLines.Length)
         {
             Vector3 closestPointLines = GetClosestPointFromLines(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointLines, Color.cyan);
@@ -287,7 +287,7 @@ public class GravityAttractor : MonoBehaviour
         }
 
         //if there are triangles, add to result
-        if (arrayPointsTriangles.Length > 0)
+        if (arrayPointsTriangles.Length > 0 && gravityTriangles.Count > 0 && gravityTriangles.Count == arrayPointsTriangles.Length)
         {
             Vector3 closestPointTriangles = GetClosestPointFromTriangles(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointTriangles, Color.green);
@@ -300,7 +300,7 @@ public class GravityAttractor : MonoBehaviour
         }
 
         //if there are Quads, add to result
-        if (arrayPointsQuads.Length > 0)
+        if (arrayPointsQuads.Length > 0 && gravityQuad.Count > 0 && gravityQuad.Count == arrayPointsQuads.Length)
         {
             Vector3 closestPointQuads = GetClosestPointFromQuads(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointQuads, Color.red);
@@ -312,14 +312,14 @@ public class GravityAttractor : MonoBehaviour
             indexResult++;
         }
 
-        
 
-        pointInfo.pos = ExtUtilityFunction.GetClosestPoint(fromPoint, allResultPos, ref indexFound);
-        pointInfo.gravityRatio = allResult[indexFound].gravityRatio;
-        pointInfo.noGravity = allResult[indexFound].noGravity;
-
-
-        Debug.DrawLine(fromPoint, pointInfo.pos, Color.red);
+        if (indexResult > 0)
+        {
+            pointInfo.pos = ExtUtilityFunction.GetClosestPoint(fromPoint, allResultPos, ref indexFound);
+            pointInfo.gravityRatio = allResult[indexFound].gravityRatio;
+            pointInfo.noGravity = allResult[indexFound].noGravity;
+            Debug.DrawLine(fromPoint, pointInfo.pos, Color.red);
+        }
         return (pointInfo);
     }
 }
