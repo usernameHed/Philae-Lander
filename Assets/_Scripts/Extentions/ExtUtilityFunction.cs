@@ -23,31 +23,62 @@ public static class ExtUtilityFunction
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 
-    public static Vector3 GetClosestPoint(Vector3 posEntity, Vector3[] arrayPos)
+    /*
+    /// <summary>
+    /// return the closest point in the line
+    /// </summary>
+    public static Vector3 GetClosestPointOnLineSegment(Vector3 A, Vector3 B, Vector3 P)
+    {
+        Vector3 AP = P - A;       //Vector from A to P   
+        Vector3 AB = B - A;       //Vector from A to B  
+
+        float magnitudeAB = AB.sqrMagnitude;     //Magnitude of AB vector (it's length squared)     
+        float ABAPproduct = Vector3.Dot(AP, AB);    //The DOT product of a_to_p and a_to_b     
+        float distance = ABAPproduct / magnitudeAB; //The normalized "distance" from a to your closest point  
+
+        if (distance < 0)     //Check if P projection is over vectorAB     
+        {
+            return A;
+        }
+        else if (distance > 1)
+        {
+            return B;
+        }
+        else
+        {
+            return A + AB * distance;
+        }
+    }
+    */
+
+    /// <summary>
+    /// get closest point from an array of points
+    /// </summary>
+    public static Vector3 GetClosestPoint(Vector3 posEntity, Vector3[] arrayPos, ref int indexFound)
     {
         float sqrDist = 0;
-        int indexGravityPoint = -1;
+        indexFound = -1;
         for (int i = 0; i < arrayPos.Length; i++)
         {
             float dist = (posEntity - arrayPos[i]).sqrMagnitude;
             if (i == 0)
             {
-                indexGravityPoint = 0;
+                indexFound = 0;
                 sqrDist = dist;
             }
             else if (dist < sqrDist)
             {
                 sqrDist = dist;
-                indexGravityPoint = i;
+                indexFound = i;
             }
         }
 
-        if (indexGravityPoint == -1)
+        if (indexFound == -1)
         {
             Debug.LogError("nothing found");
             return (Vector3.zero);
         }
-        return (arrayPos[indexGravityPoint]);
+        return (arrayPos[indexFound]);
     }
 
     //[MenuItem("Tools/Clear Console %#c")] // CMD + SHIFT + C

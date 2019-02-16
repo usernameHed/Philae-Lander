@@ -19,7 +19,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool gravityAttractorMode = false;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    private List<GravityAttractor.GravityPoint> gravityPoint = new List<GravityAttractor.GravityPoint>();
+    private GravityAttractor.PointInfo pointInfo;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private GravityAttractor gravityAttractor = null;
 
@@ -40,7 +40,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     {
         if (!gravityAttractorMode)
             return (1);
-        return (gravityPoint[0].gravityRatio);
+        return (pointInfo.gravityRatio);
     }
 
     public bool IsAirAttractorLayer(int layer)
@@ -143,8 +143,10 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     {
         gravityAttractor = newGA;
         gravityAttractor.SelectedGravityAttractor();
-        gravityPoint = gravityAttractor.GetPoint(rbEntity.position);
+
         gravityAttractorMode = true;
+
+        CalculateSphereGravity(rbEntity.position);
     }
 
     /// <summary>
@@ -154,19 +156,13 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     {
         gravityAttractor.UnselectGravityAttractor();
         gravityAttractor = null;
-        gravityPoint = null;
+        //gravityPoint.Clear();
         gravityAttractorMode = false;
     }
 
     public void CalculateSphereGravity(Vector3 posEntity)
     {
-        gravityPoint = gravityAttractor.GetPoint(posEntity);
-        sphereGravity = (posEntity - gravityPoint[0].point.position).normalized;
-    }
-
-    private void FixedUpdate()
-    {
-        if (gravityAttractor) //TODO: checker uniquement si on a bougé ??
-            CalculateSphereGravity(rbEntity.position);
+        pointInfo = gravityAttractor.FindNearestPoint(posEntity);
+        sphereGravity = (posEntity - pointInfo.pos).normalized;
     }
 }
