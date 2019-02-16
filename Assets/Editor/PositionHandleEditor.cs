@@ -1,20 +1,37 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-[CustomEditor(typeof(PositionHandle)), CanEditMultipleObjects]
+[CustomEditor(typeof(GravityAttractorEditor)), CanEditMultipleObjects]
 public class PositionHandleEditor : Editor
 {
     protected virtual void OnSceneGUI()
     {
-        PositionHandle example = (PositionHandle)target;
+        GravityAttractorEditor example = (GravityAttractorEditor)target;
 
+        if (!example.creatorMode)
+        {
+            //Tools.current = Tool.Transform;
+            return;
+        }
+        Tools.current = Tool.View;
+
+        Vector3[] allPos = new Vector3[example.GetAllGravityPoint().Count];
         EditorGUI.BeginChangeCheck();
-        Vector3 newTargetPosition = Handles.PositionHandle(example.targetPosition, Quaternion.identity);
+
+        for (int i = 0; i < example.GetAllGravityPoint().Count; i++)
+        {
+            allPos[i] = Handles.PositionHandle(example.GetAllGravityPoint()[i].position, Quaternion.identity);
+            //Undo.RecordObject(example.GetAllGravityPoint()[i].gameObject, "Move Custom Handle on: " + example.GetAllGravityPoint()[i].gameObject.name);
+
+            //example.GetAllGravityPoint()[i].position = newTargetPosition;
+        }
         if (EditorGUI.EndChangeCheck())
         {
-            Undo.RecordObject(example, "Change Look At Target Position");
-            example.targetPosition = newTargetPosition;
-            example.Update();
+            for (int i = 0; i < example.GetAllGravityPoint().Count; i++)
+            {
+                example.GetAllGravityPoint()[i].position = allPos[i];
+            }
         }
     }
 }

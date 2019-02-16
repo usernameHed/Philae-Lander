@@ -83,6 +83,9 @@ public class GravityAttractor : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     private PointInfo pointInfo = new PointInfo();
+    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    public bool valueArrayChanged = false;
+
 
     private Vector3[] arrayPoints;
     private Vector3[] arrayPointsLines;
@@ -116,6 +119,8 @@ public class GravityAttractor : MonoBehaviour
 
         allResult = new PointInfo[indexAllResult];
         allResultPos = new Vector3[indexAllResult];
+
+        valueArrayChanged = true;
     }
 
     public void SelectedGravityAttractor()
