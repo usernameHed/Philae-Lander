@@ -48,6 +48,13 @@ public static class ExtRandom
         return (minToMaxValue);
     }
 
+    public static float RemapFromSeedDecimal(float min, float max, System.Random randomSeed)
+    {
+        float zeroToOneValue = (float)randomSeed.NextDouble();
+        float minToMaxValue = ExtUtilityFunction.Remap(zeroToOneValue, 0, 1, min, max);
+        return (minToMaxValue);
+    }
+
     /// <summary>
     /// 
     /// </summary>

@@ -114,6 +114,14 @@ public class GravityAttractor : MonoBehaviour
         }
     }
 
+    public enum GravityPointType
+    {
+        POINT = 0,
+        LINE = 1,
+        TRIANGLE = 2,
+        QUAD = 3,
+    }
+
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
     public List<GravityPoint> gravityPoints = new List<GravityPoint>();
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
@@ -123,6 +131,8 @@ public class GravityAttractor : MonoBehaviour
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
     public List<GravityQuad> gravityQuad = new List<GravityQuad>();
 
+    [FoldoutGroup("Object"), SerializeField]
+    public Transform gravityAttractorEditor;
 
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     private PointInfo pointInfo = new PointInfo();
@@ -146,6 +156,13 @@ public class GravityAttractor : MonoBehaviour
     }
 
     [Button]
+    public void CreateEditor()
+    {
+        if (!gameObject.HasComponent<GravityAttractorEditor>())
+            gameObject.AddComponent(typeof(GravityAttractorEditor));
+    }
+
+    [Button]
     public void SetupArrayPoints()
     {
         int indexAllResult = 0;
@@ -164,6 +181,15 @@ public class GravityAttractor : MonoBehaviour
         allResultPos = new Vector3[indexAllResult];
 
         valueArrayChanged = true;
+    }
+
+    [Button]
+    public void RemoveEditor()
+    {
+        if (gameObject.HasComponent<GravityAttractorEditor>())
+        {
+            DestroyImmediate(gameObject.GetComponent<GravityAttractorEditor>());
+        } 
     }
 
     public void SelectedGravityAttractor()
@@ -300,7 +326,7 @@ public class GravityAttractor : MonoBehaviour
         }
 
         //if there are Quads, add to result
-        if (arrayPointsQuads.Length > 0 && gravityQuad.Count > 0 && gravityQuad.Count == arrayPointsQuads.Length)
+        if (arrayPointsQuads.Length > 0 && gravityQuad.Count > 0 && gravityQuad.Count * 2 == arrayPointsQuads.Length)
         {
             Vector3 closestPointQuads = GetClosestPointFromQuads(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointQuads, Color.red);
