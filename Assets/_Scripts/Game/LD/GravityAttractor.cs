@@ -77,12 +77,14 @@ public class GravityAttractor : MonoBehaviour
         {
             if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointA.gameObject);
+                if (pointA != null)
+                    DestroyImmediate(pointA.gameObject);
                 pointA = newPoint;
             }
             else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointB.gameObject);
+                if (pointB != null)
+                    DestroyImmediate(pointB.gameObject);
                 pointB = newPoint;
             }
         }
@@ -113,17 +115,20 @@ public class GravityAttractor : MonoBehaviour
         {
             if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointA.gameObject);
+                if (pointA != null)
+                    DestroyImmediate(pointA.gameObject);
                 pointA = newPoint;
             }
             else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointB.gameObject);
+                if (pointB != null)
+                    DestroyImmediate(pointB.gameObject);
                 pointB = newPoint;
             }
             else if (index == 2 && newPoint != null && pointC.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointC.gameObject);
+                if (pointC != null)
+                    DestroyImmediate(pointC.gameObject);
                 pointC = newPoint;
             }
         }
@@ -155,23 +160,27 @@ public class GravityAttractor : MonoBehaviour
         {
             if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointA.gameObject);
+                if (pointA != null)
+                    DestroyImmediate(pointA.gameObject);
                 pointA = newPoint;
             }
             else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointB.gameObject);
+                if (pointB != null)
+                    DestroyImmediate(pointB.gameObject);
                 pointB = newPoint;
             }
             else if (index == 2 && newPoint != null && pointC.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointC.gameObject);
+                if (pointC != null)
+                    DestroyImmediate(pointC.gameObject);
                 pointC = newPoint;
             }
             else if (index == 3 && newPoint != null && pointD.GetInstanceID() != newPoint.GetInstanceID())
             {
-                DestroyImmediate(pointD.gameObject);
-                pointC = newPoint;
+                if (pointD != null)
+                    DestroyImmediate(pointD.gameObject);
+                pointD = newPoint;
             }
         }
     }

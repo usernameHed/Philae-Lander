@@ -25,8 +25,7 @@ public class PositionHandleEditor : Editor
         public int indexPointInShape;
     }
 
-    private static float marginFusion = 50f;
-    private static float marginOverPoint = 50f;
+    private static float marginFusion = 100f;
     private GravityAttractorEditor ldGravityAttractor;
     private Vector3 mouse2dPosition;
 
@@ -125,7 +124,7 @@ public class PositionHandleEditor : Editor
 
     private void TryToFusion(Event e, SceneView view)
     {
-        if (!(e.button == 1 && e.shift && mouseClic == MouseClicType.RELEASE))
+        if (!(e.type == EventType.KeyUp && e.keyCode == KeyCode.W))
             return;
 
         
@@ -173,7 +172,7 @@ public class PositionHandleEditor : Editor
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointA,
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointB,
                         indexScript = k,
                         indexShape = i,
                         gravityPointType = GravityAttractor.GravityPointType.LINE,
@@ -204,7 +203,7 @@ public class PositionHandleEditor : Editor
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA,
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointB,
                         indexScript = k,
                         indexShape = i,
                         gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
@@ -218,7 +217,7 @@ public class PositionHandleEditor : Editor
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA,
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointC,
                         indexScript = k,
                         indexShape = i,
                         gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
@@ -249,7 +248,7 @@ public class PositionHandleEditor : Editor
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointB,
                         indexScript = k,
                         indexShape = i,
                         gravityPointType = GravityAttractor.GravityPointType.QUAD,
@@ -263,7 +262,7 @@ public class PositionHandleEditor : Editor
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointC,
                         indexScript = k,
                         indexShape = i,
                         gravityPointType = GravityAttractor.GravityPointType.QUAD,
@@ -277,7 +276,7 @@ public class PositionHandleEditor : Editor
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointD,
                         indexScript = k,
                         indexShape = i,
                         gravityPointType = GravityAttractor.GravityPointType.QUAD,
@@ -295,6 +294,7 @@ public class PositionHandleEditor : Editor
         }
         for (int i = 0; i < allPointToFusion.Count; i++)
         {
+            allGravityAttractor[allPointToFusion[i].indexScript].CleanTheSick();
             allGravityAttractor[allPointToFusion[i].indexScript].ResetAfterUndo();
         }
         Debug.Log("ok fusion !");
@@ -306,21 +306,25 @@ public class PositionHandleEditor : Editor
         {
             GravityAttractor.GravityPoint gravityPointToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityPoints[infoFusionToDelete.indexShape];
             gravityPointToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
+            allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityPoints[infoFusionToDelete.indexShape] = gravityPointToDelete;
         }
         else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.LINE)
         {
             GravityAttractor.GravityLine gravityLineToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityLines[infoFusionToDelete.indexShape];
             gravityLineToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
+            allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityLines[infoFusionToDelete.indexShape] = gravityLineToDelete;
         }
         else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.TRIANGLE)
         {
             GravityAttractor.GravityTriangle gravityTriangleToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityTriangles[infoFusionToDelete.indexShape];
             gravityTriangleToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
+            allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityTriangles[infoFusionToDelete.indexShape] = gravityTriangleToDelete;
         }
         else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.QUAD)
         {
             GravityAttractor.GravityQuad gravityQuadToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityQuad[infoFusionToDelete.indexShape];
             gravityQuadToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
+            allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityQuad[infoFusionToDelete.indexShape] = gravityQuadToDelete;
         }
     }
 
@@ -390,6 +394,25 @@ public class PositionHandleEditor : Editor
         }
     }
 
+    private void HandlerAll()
+    {
+        EditorGUI.BeginChangeCheck();
+        
+        //if (objSelected && objSelected.transform)
+        for (int i = 0; i < ldGravityAttractor.savePosAll.Length; i++)
+        {
+            ldGravityAttractor.savePosAll[i] = Handles.PositionHandle(ldGravityAttractor.allPosGravityPoint[i].gameObject.transform.position, Quaternion.identity);
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            for (int i = 0; i < ldGravityAttractor.savePosAll.Length; i++)
+            {
+                ldGravityAttractor.allPosGravityPoint[i].gameObject.transform.position = ldGravityAttractor.savePosAll[i];
+            }
+        }
+    }
+
     protected virtual void OnSceneGUI()
     {
         if (!ldGravityAttractor.creatorMode)
@@ -407,8 +430,15 @@ public class PositionHandleEditor : Editor
         mouse2dPosition.y = view.camera.pixelRect.height - mouse2dPosition.y;
 
         MouseInputs(view);
-        SearchNewHandler(view);
-        HandlerManager();
+        if (!ldGravityAttractor.alwaysShow)
+        {
+            SearchNewHandler(view);
+            HandlerManager();
+        }
+        else
+        {
+            HandlerAll();
+        }
     }
 
     private void OnDisable()
