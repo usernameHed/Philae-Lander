@@ -20,8 +20,9 @@ public class PositionHandleEditor : Editor
     {
         public Transform point;
         public int indexScript;
+        public int indexShape;
         public GravityAttractor.GravityPointType gravityPointType;
-        public int indexPoint;
+        public int indexPointInShape;
     }
 
     private static float marginFusion = 50f;
@@ -124,30 +125,166 @@ public class PositionHandleEditor : Editor
 
     private void TryToFusion(Event e, SceneView view)
     {
-        if (!(e.button == 2 && e.shift && mouseClic == MouseClicType.RELEASE))
+        if (!(e.button == 1 && e.shift && mouseClic == MouseClicType.RELEASE))
             return;
 
-        /*
+        
         allGravityAttractor = GameObject.FindObjectsOfType<GravityAttractorEditor>();
         allPointToFusion.Clear();
 
         for (int k = 0; k < allGravityAttractor.Length; k++)
         {
-            for (int i = 0; i < allGravityAttractor[k].GetAllGravityPoint().Count; i++)
+            for (int i = 0; i < allGravityAttractor[k].GetGravityAttractor().gravityPoints.Count; i++)
             {
-                Vector2 pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetAllGravityPoint()[i].position);
+                Vector2 pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityPoints[i].point.position);
                 bool isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
                 if (isClose)
                 {
                     InfoFusion infoFusion = new InfoFusion
                     {
-                        point = allGravityAttractor[k].GetAllGravityPoint()[i],
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityPoints[i].point,
                         indexScript = k,
-                        indexInList = i,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.POINT,
+                        indexPointInShape = 0,
                     };
                     allPointToFusion.Add(infoFusion);
                 }
-
+            }
+            for (int i = 0; i < allGravityAttractor[k].GetGravityAttractor().gravityLines.Count; i++)
+            {
+                Vector2 pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointA.position);
+                bool isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.LINE,
+                        indexPointInShape = 0,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+                pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointB.position);
+                isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.LINE,
+                        indexPointInShape = 1,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+            }
+            for (int i = 0; i < allGravityAttractor[k].GetGravityAttractor().gravityTriangles.Count; i++)
+            {
+                Vector2 pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA.position);
+                bool isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
+                        indexPointInShape = 0,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+                pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointB.position);
+                isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
+                        indexPointInShape = 1,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+                pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointC.position);
+                isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
+                        indexPointInShape = 2,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+            }
+            for (int i = 0; i < allGravityAttractor[k].GetGravityAttractor().gravityQuad.Count; i++)
+            {
+                Vector2 pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA.position);
+                bool isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        indexPointInShape = 0,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+                pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointB.position);
+                isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        indexPointInShape = 1,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+                pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointC.position);
+                isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        indexPointInShape = 2,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
+                pos2dObject = view.camera.WorldToScreenPoint(allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointD.position);
+                isClose = (Mathf.Abs(mouse2dPosition.x - pos2dObject.x) < marginFusion && Mathf.Abs(mouse2dPosition.y - pos2dObject.y) < marginFusion);
+                if (isClose)
+                {
+                    InfoFusion infoFusion = new InfoFusion
+                    {
+                        point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
+                        indexScript = k,
+                        indexShape = i,
+                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        indexPointInShape = 3,
+                    };
+                    allPointToFusion.Add(infoFusion);
+                }
             }
         }
         if (allPointToFusion.Count <= 1)
@@ -161,44 +298,32 @@ public class PositionHandleEditor : Editor
             allGravityAttractor[allPointToFusion[i].indexScript].ResetAfterUndo();
         }
         Debug.Log("ok fusion !");
-        */
     }
 
     private void TryToReAssemble(InfoFusion infoFusionToDelete, InfoFusion infoFusionToKeep)
     {
-        /*
-        //find the type of 
-        infoFusionToKeep = FindTransformToKeep();
-
-        //change pointAlone in InfoFusion to delete / reorder
-
-        //GravityAttractor.GravityPoint gravityPointToKeep = allGravityAttractor[infoFusionToKeep.indexScript].GetGravityAttractor().gravityPoints[infoFusionToKeep];
-        //Transform objToKeep = allGravityAttractor[infoFusionToKeep.indexScript].
-
-        int indexScript = infoFusionToDelete.indexScript;
-        int indexPoint = infoFusionToDelete.indexInList;
-        for (int i = 0; i < allGravityAttractor[indexScript].GetGravityAttractor().gravityPoints.Count; i++)
+        if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.POINT)
         {
-            GravityAttractor.GravityPoint gravityPoint = allGravityAttractor[indexScript].GetGravityAttractor().gravityPoints[i];
-            if (gravityPoint.point.GetInstanceID() == infoFusionToKeep.point.GetInstanceID())
-            {
-
-            }
+            GravityAttractor.GravityPoint gravityPointToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityPoints[infoFusionToDelete.indexShape];
+            gravityPointToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
         }
-        */
-    }
-
-    /*
-    private InfoFusion FindTransformToKeep(int indexScript, Transform toKeep)
-    {
-        
-        for (int i = 0; i < allGravityAttractor[indexScript].GetGravityAttractor().gravityPoints.Count)
+        else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.LINE)
         {
-            if (toKeep.GetInstanceID() == allGravityAttractor[indexScript].GetGravityAttractor().gravityPoints[i].point)
-                return ();
+            GravityAttractor.GravityLine gravityLineToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityLines[infoFusionToDelete.indexShape];
+            gravityLineToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
+        }
+        else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.TRIANGLE)
+        {
+            GravityAttractor.GravityTriangle gravityTriangleToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityTriangles[infoFusionToDelete.indexShape];
+            gravityTriangleToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
+        }
+        else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.QUAD)
+        {
+            GravityAttractor.GravityQuad gravityQuadToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityQuad[infoFusionToDelete.indexShape];
+            gravityQuadToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
         }
     }
-    */
+
 
     public void SetAllGravityPointArray(SceneView view)
     {

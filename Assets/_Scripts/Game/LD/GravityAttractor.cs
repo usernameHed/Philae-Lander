@@ -42,6 +42,14 @@ public class GravityAttractor : MonoBehaviour
             pointInfo.Init();
             Debug.Log("Default value changed");
         }
+        public void ChangePoint(int index, Transform newPoint)
+        {
+            if (index == 0 && newPoint != null && point.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(point.gameObject);
+                point = newPoint;
+            }
+        }
     }
 
     [Serializable]
@@ -64,6 +72,19 @@ public class GravityAttractor : MonoBehaviour
             pointInfo = new PointInfo();
             pointInfo.Init();
             Debug.Log("Default value changed");
+        }
+        public void ChangePoint(int index, Transform newPoint)
+        {
+            if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointA.gameObject);
+                pointA = newPoint;
+            }
+            else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointB.gameObject);
+                pointB = newPoint;
+            }
         }
     }
     [Serializable]
@@ -88,6 +109,24 @@ public class GravityAttractor : MonoBehaviour
             pointInfo.Init();
             Debug.Log("Default value changed");
         }
+        public void ChangePoint(int index, Transform newPoint)
+        {
+            if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointA.gameObject);
+                pointA = newPoint;
+            }
+            else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointB.gameObject);
+                pointB = newPoint;
+            }
+            else if (index == 2 && newPoint != null && pointC.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointC.gameObject);
+                pointC = newPoint;
+            }
+        }
     }
     [Serializable]
     public struct GravityQuad
@@ -111,6 +150,29 @@ public class GravityAttractor : MonoBehaviour
             pointInfo = new PointInfo();
             pointInfo.Init();
             Debug.Log("Default value changed");
+        }
+        public void ChangePoint(int index, Transform newPoint)
+        {
+            if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointA.gameObject);
+                pointA = newPoint;
+            }
+            else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointB.gameObject);
+                pointB = newPoint;
+            }
+            else if (index == 2 && newPoint != null && pointC.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointC.gameObject);
+                pointC = newPoint;
+            }
+            else if (index == 3 && newPoint != null && pointD.GetInstanceID() != newPoint.GetInstanceID())
+            {
+                DestroyImmediate(pointD.gameObject);
+                pointC = newPoint;
+            }
         }
     }
 
