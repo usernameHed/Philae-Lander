@@ -21,6 +21,8 @@ public class EntityJump : MonoBehaviour
     protected bool stayHold = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected bool canJumpInAir = true;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    protected bool doGravityAttractorJump = true;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityController entityController;
@@ -170,25 +172,24 @@ public class EntityJump : MonoBehaviour
     /// <returns></returns>
     private Vector3 GetNormalizedJumpDir()
     {
-        Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
+        
+        bool isForbiddenForward = entityContactSwitch.IsForwardForbiddenWall();
+        lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
+        bool canDoGAJump = entityGravityAttractorSwitch.CanDoGAJump(lastVelocityJump) && doGravityAttractorJump;
 
-        if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
-        {
-            normalizedNormalGravity = entityGravityAttractorSwitch.GetDirGAGravity();
-        }
 
-        //Vector3 normalizedForwardPlayer = playerLocalyRotate.forward * entityAction.GetMagnitudeInput();
-        lastVelocityJump = entityAction.GetMagnitudeInput();
-        Vector3 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer() * lastVelocityJump;
+        Vector3 normalizedNormalGravity = (!canDoGAJump) ? playerGravity.GetMainAndOnlyGravity() : entityGravityAttractorSwitch.GetDirGAGravity();
 
-        if (entityContactSwitch.IsForwardForbiddenWall())
-        {
-            lastVelocityJump = 0;
-            normalizedForwardPlayer = Vector3.zero;
-        }
+        entityGravityAttractorSwitch.SetLastDirJump(normalizedNormalGravity);
 
-        //Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
-        //Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);
+        Vector3 normalizedForwardPlayer = (!isForbiddenForward)
+            ? entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump
+            : Vector3.zero;
+
+
+        Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
+        Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);
+        //Debug.Break();
 
         return (normalizedNormalGravity + normalizedForwardPlayer);
     }
@@ -207,6 +208,7 @@ public class EntityJump : MonoBehaviour
         entitySwitch.JustJumped();
         fastForward.JustJumped();
         playerAirMove.JustJumped();
+        entityGravityAttractorSwitch.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         

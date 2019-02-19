@@ -201,8 +201,10 @@ public class PlayerGravity : MonoBehaviour
                 mainAndOnlyGravity = entityAttractor.GetDirAttractor(positionEntity);
                 break;
             case OrientationPhysics.GRAVITY_ATTRACTOR:
+                //TODO:
                 entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity);
                 mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
+                //mainAndOnlyGravity = groundCheck.GetDirLastNormal();
                 break;
         }
         return (mainAndOnlyGravity);

@@ -156,6 +156,7 @@ public class IAController : EntityController, IPooledObject, IKillable
         entityAttractor.OnGrounded();
         entitySwitch.OnGrounded();
         fastForward.OnGrounded();
+        entityGravityAttractorSwitch.OnGrounded();
 
         SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
     }

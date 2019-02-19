@@ -18,6 +18,11 @@ public class PlayerInput : EntityAction
     [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
     public bool focusUp;
 
+    [FoldoutGroup("Debug"), Tooltip("input for dash"), ReadOnly]
+    public bool dash;
+    [FoldoutGroup("Debug"), Tooltip("input for dash"), ReadOnly]
+    public bool dashUp;
+
     [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
     protected PlayerController playerController;
     public PlayerController PlayerController { get { return (playerController); } }
@@ -57,6 +62,9 @@ public class PlayerInput : EntityAction
             JumpUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Jump");
             focus = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Focus");
             focusUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Focus");
+
+            dash = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Dash");
+            dashUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Dash");
 
             mouseInput = new Vector2(
             Input.GetAxisRaw("Mouse X"),

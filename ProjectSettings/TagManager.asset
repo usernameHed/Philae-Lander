@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Floor
   - Enemy
-  - GravityAttractor
   layers:
   - Default
   - TransparentFX

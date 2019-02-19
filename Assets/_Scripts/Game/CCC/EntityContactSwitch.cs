@@ -157,7 +157,7 @@ public class EntityContactSwitch : MonoBehaviour
             {
                 Debug.LogWarning("backward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
                 isForbiddenBackward = true;
-                Debug.Break();
+                //Debug.Break();
                 return;
             }
 
@@ -175,7 +175,7 @@ public class EntityContactSwitch : MonoBehaviour
                 groundCheck.SetBackwardWall(hitInfo);
 
                 isForbiddenBackward = false;
-                Debug.Break();
+                //Debug.Break();
             }
         }
         else
@@ -200,6 +200,6 @@ public class EntityContactSwitch : MonoBehaviour
     {
         //set if the is a wall in front of us (we need flying info)
         ForwardWallCheck();
-        BackwardWallCheck();
+        //BackwardWallCheck();
     }
 }

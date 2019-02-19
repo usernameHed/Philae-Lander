@@ -632,6 +632,8 @@ public class EntityJumpCalculation : MonoBehaviour
     /// </summary>
     private void FinishCalculation()
     {
+
+
         switch (infoJump.jumpType)
         {
             case (InfoJump.JumpType.TO_SIDE):
@@ -659,6 +661,13 @@ public class EntityJumpCalculation : MonoBehaviour
                 Debug.DrawRay(infoJump.pointHit, normalGravitySide, Color.black, 5f);
                 break;
             case (InfoJump.JumpType.TO_DOWN_NORMAL):
+                if (entityGravityAttractorSwitch.IsAirAttractorLayer(infoJump.objHit.gameObject.layer)
+                    && entityGravityAttractorSwitch.IsAirAttractorLayer(groundCheck.GetLastPlatform().gameObject.layer))
+                {
+                    Debug.Log("WE DESIDED: To_DOWN but both previous and next platform is GA, do BASE !");
+                    infoJump.jumpType = InfoJump.JumpType.BASE;
+                    break;
+                }
                 Debug.Log("WE DESIDED: TO_DOWN_NORMAL");
                 Vector3 normalGravity = playerGravity.GetMainAndOnlyGravity();
                 playerGravity.SetObjectAttraction(infoJump.objHit, infoJump.pointHit, normalGravity);

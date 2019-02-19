@@ -35,6 +35,8 @@ public class EntityController : MonoBehaviour
     protected EntityAction entityAction;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected FastForward fastForward;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    protected EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
@@ -66,6 +68,17 @@ public class EntityController : MonoBehaviour
     public Vector3 GetFocusedForwardDirPlayer()
     {
         Vector3 realNormal = playerGravity.GetMainAndOnlyGravity();
+        Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
+        return (forwardNormal);
+    }
+
+    /// <summary>
+    /// return the forward dir we want for the player
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetFocusedForwardDirPlayer(Vector3 realNormalGravity)
+    {
+        Vector3 realNormal = realNormalGravity;
         Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
         return (forwardNormal);
     }

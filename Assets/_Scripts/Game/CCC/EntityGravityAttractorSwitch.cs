@@ -6,15 +6,23 @@ using UnityEngine;
 
 public class EntityGravityAttractorSwitch : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private TagAccess.TagAccessEnum tagWithAttractor = TagAccess.TagAccessEnum.GravityAttractor;
+    //[FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    //private TagAccess.TagAccessEnum tagWithAttractor = TagAccess.TagAccessEnum.GravityAttractor;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] gravityAttractorLayer = new string[] { "Walkable/GravityAttractor" };
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginDotGA = 0.86f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float marginNormalJumpInGA = 0.3f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float timeBeforeActiveAttractor = 0.5f;
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private Rigidbody rbEntity;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityAction entityAction;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private GroundCheck groundCheck;
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool gravityAttractorMode = false;
@@ -22,13 +30,44 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     private GravityAttractor.PointInfo pointInfo;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private GravityAttractor gravityAttractor = null;
+    
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     public Vector3 sphereGravity = Vector3.zero;
 
+    private FrequencyCoolDown coolDownBeforeActiveAtractor = new FrequencyCoolDown();
+    private Vector3 lastNormalJumpChoosen = Vector3.zero;
+
     public bool IsInGravityAttractorMode()
     {
         return (gravityAttractor);
+    }
+
+    /// <summary>
+    /// do we do a jump based on gravity of the GravityAttractorSwitch or not ?
+    /// realMagnitudeInput: input of player, but if we are against a wall, input = 0;
+    /// </summary>
+    /// <returns></returns>
+    public bool CanDoGAJump(float realMagnitudeInput)
+    {
+        if (IsInGravityAttractorMode() && realMagnitudeInput < marginNormalJumpInGA)
+            return (true);
+        return (false);
+    }
+
+    public void JustJumped()
+    {
+        coolDownBeforeActiveAtractor.StartCoolDown(timeBeforeActiveAttractor);
+    }
+
+    public void SetLastDirJump(Vector3 dirNormalChoosen)
+    {
+        lastNormalJumpChoosen = dirNormalChoosen;
+    }
+
+    public void OnGrounded()
+    {
+        coolDownBeforeActiveAtractor.Reset();
     }
 
     public Vector3 GetDirGAGravity()
@@ -38,7 +77,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     public float GetRatioGravity()
     {
-        if (!gravityAttractorMode)
+        if (!gravityAttractorMode || coolDownBeforeActiveAtractor.IsRunning())
             return (1);
         return (pointInfo.gravityRatio);
     }
@@ -99,11 +138,13 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     public void TryToSetNewGravityAttractor(Transform obj)
     {
-        bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
+        //bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
         //GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
         GravityAttractor tmpGravity = obj.GetComponentInParent<GravityAttractor>();
 
-
+        //if there is a gravityAttactor, but wrong layer, do nothing
+        if (!IsAirAttractorLayer(obj.gameObject.layer))
+            tmpGravity = null;
 
         if (!gravityAttractor && !tmpGravity)
         {
@@ -162,7 +203,15 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     public void CalculateSphereGravity(Vector3 posEntity)
     {
-        pointInfo = gravityAttractor.FindNearestPoint(posEntity);
-        sphereGravity = (posEntity - pointInfo.pos).normalized;
+        if (coolDownBeforeActiveAtractor.IsRunning())
+        {
+            //sphereGravity = groundCheck.GetDirLastNormal();
+            sphereGravity = lastNormalJumpChoosen;
+        }
+        else
+        {
+            pointInfo = gravityAttractor.FindNearestPoint(posEntity);
+            sphereGravity = (posEntity - pointInfo.pos).normalized;
+        }
     }
 }

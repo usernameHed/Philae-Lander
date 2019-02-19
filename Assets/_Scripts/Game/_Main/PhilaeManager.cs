@@ -89,10 +89,11 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
                 SceneTransition.Instance.PlayNext();
             }
         }
-        if (PlayerConnected.Instance.GetPlayer(0).GetButton("Focus"))
+        /*if (PlayerConnected.Instance.GetPlayer(0).GetButton("Focus"))
         {
             Debug.Break();
         }
+        */
 
     }
 

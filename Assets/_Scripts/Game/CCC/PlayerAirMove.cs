@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerAirMove : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    private bool canDoAirMove = true;
+    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float speedAirMoveForward = 5f;
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float speedAirMoveSide = 5f;
@@ -89,6 +91,9 @@ public class PlayerAirMove : MonoBehaviour
 
     private bool CanDoAirMove()
     {
+        if (!canDoAirMove)
+            return (false);
+
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (false);
 
