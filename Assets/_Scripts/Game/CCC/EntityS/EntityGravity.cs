@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGravity : MonoBehaviour
+public class EntityGravity : MonoBehaviour
 {
     public enum OrientationPhysics
     {
@@ -76,6 +76,9 @@ public class PlayerGravity : MonoBehaviour
     private EntityJumpCalculation entityJumpCalculation;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityNoGravity entityNoGravity;
+
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private Transform mainAttractObject;
@@ -300,7 +303,7 @@ public class PlayerGravity : MonoBehaviour
 
         if (currentOrientation == OrientationPhysics.ATTRACTOR)
         {
-            finalGravity += entityAttractor.AirAttractor(gravityOrientation, positionObject);
+            finalGravity += entityAttractor.AirAttractor(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
         }
         else
         {
@@ -308,13 +311,13 @@ public class PlayerGravity : MonoBehaviour
             //here we fall down toward a planet, apply gravity down
 
 
-            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity());
+            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
             if (dotGravityRigidbody < 0)
             {
                 if (applyForceDown)
                 {
-                    finalGravity += AirAddGoingDown(gravityOrientation, positionObject);
+                    finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
 
                     //if first time we fall down, call ultimateTest !
                     if (testForUltimate && !isGoingDown)
@@ -331,7 +334,7 @@ public class PlayerGravity : MonoBehaviour
             {
                 isGoingDown = false;
                 if (applyForceUp)
-                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject);
+                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
             }
             //Debug.Log("air gravity");
             //here, apply base gravity when we are InAir

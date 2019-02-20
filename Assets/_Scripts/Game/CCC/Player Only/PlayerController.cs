@@ -29,7 +29,7 @@ public class PlayerController : EntityController, IKillable
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
 
-    private bool isKilled = false;
+    
     private bool isMoving = false;
 
 
@@ -41,7 +41,6 @@ public class PlayerController : EntityController, IKillable
     private void Awake()
     {
         base.Init();
-        isKilled = false;
         PhilaeManager.Instance.InitPlayer(this);
     }
 
@@ -69,7 +68,7 @@ public class PlayerController : EntityController, IKillable
             PhilaeManager.Instance.cameraController.SetBaseCamera();
         }
 
-        SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
+        SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
     }
 
     /// <summary>
@@ -102,7 +101,7 @@ public class PlayerController : EntityController, IKillable
             moveState = MoveState.Move;
             if (!isMoving)
             {
-                SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString());
+                SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString());
                 animator.SetBool("isMarche", true);
             }
 
@@ -113,8 +112,8 @@ public class PlayerController : EntityController, IKillable
             moveState = MoveState.Idle;
             if (isMoving)
             {
-                SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
-                SoundManager.GetSingleton.playSound(GameData.Sounds.Player_End_Movement.ToString());
+                SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
+                SoundManager.Instance.PlaySound(GameData.Sounds.Player_End_Movement.ToString());
                 animator.SetBool("isMarche", false);
             }
 
@@ -134,12 +133,17 @@ public class PlayerController : EntityController, IKillable
 
     public void Kill()
     {
+        if (isKilled)
+            return;
+
+        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
+
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Hit, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         //throw new System.NotImplementedException();
         PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
         EventManager.TriggerEvent(GameData.Event.GameOver);
         renderPlayer.gameObject.SetActive(false);
-        SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Death.ToString());
+        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Death.ToString());
 
         isKilled = true;
     }

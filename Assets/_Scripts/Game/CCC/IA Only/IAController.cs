@@ -158,7 +158,7 @@ public class IAController : EntityController, IPooledObject, IKillable
         fastForward.OnGrounded();
         entityGravityAttractorSwitch.OnGrounded();
 
-        SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
+        SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
     }
 
     /// <summary>
@@ -203,7 +203,7 @@ public class IAController : EntityController, IPooledObject, IKillable
         if (timerScream.IsStartedAndOver())
         {
             StartTimerScream();
-            SoundManager.GetSingleton.playSound(GameData.Sounds.Ennemy_Scream.ToString() + rb.transform.GetInstanceID());
+            SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Scream.ToString() + rb.transform.GetInstanceID());
         }
     }
 

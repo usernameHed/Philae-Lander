@@ -29,7 +29,7 @@ public class EntityContactSwitch : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityController entityController;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityAction entityAction;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]

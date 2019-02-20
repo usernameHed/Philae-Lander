@@ -13,7 +13,7 @@ public class Attractor : MonoBehaviour, IKillable
     private string[] layersRaycast;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("raycast to ground layer")]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
 
     
     private Collider[] overlapResults = new Collider[10];

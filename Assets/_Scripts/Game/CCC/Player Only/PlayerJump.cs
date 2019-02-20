@@ -39,8 +39,8 @@ public class PlayerJump : EntityJump
             rb.ClearVelocity();
             entityAttractor.CreateAttractor();
 
-            SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Thruster.ToString());
-            SoundManager.GetSingleton.playSound(GameData.Sounds.Player_Movement.ToString(), true);
+            SoundManager.Instance.PlaySound(GameData.Sounds.Player_Thruster.ToString());
+            SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
             playerController.animator.SetBool("isJUMP", true);
 
             base.DoJump();

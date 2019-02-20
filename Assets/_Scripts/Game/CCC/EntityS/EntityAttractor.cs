@@ -6,7 +6,7 @@ using UnityEngine;
 public class EntityAttractor : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
@@ -17,7 +17,7 @@ public class EntityAttractor : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private FastForward fastForward;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityJumpCalculation entityJumpCalculation;
+    private EntityNoGravity entityNoGravity;
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.8f;
@@ -156,11 +156,21 @@ public class EntityAttractor : MonoBehaviour
 
     public bool CanCreateAttractor()
     {
-        return (timerBeforeCreateAttractor.IsStartedAndOver() && !fastForward.WhereWeInFastForward());
+        bool canCreate = (timerBeforeCreateAttractor.IsStartedAndOver()
+            && !fastForward.WhereWeInFastForward()
+            && entityNoGravity.IsBaseOrMoreRatio());
+
+        //Debug.Log("test create attractor: " + canCreate);
+        return (canCreate);
     }
     public bool CanCreateLateAttractor()
     {
-        return (timerBeforeCreateLateAttractor.IsStartedAndOver() && !fastForward.WhereWeInFastForward());
+        bool canCreateLate = (timerBeforeCreateLateAttractor.IsStartedAndOver()
+            && !fastForward.WhereWeInFastForward()
+            && entityNoGravity.IsBaseOrMoreRatio());
+
+        //Debug.Log("test create LATE attractor: " + canCreateLate);
+        return (canCreateLate);
     }
 
     /// <summary>
@@ -212,7 +222,7 @@ public class EntityAttractor : MonoBehaviour
     /// </summary>
     public void ActiveAttractor()
     {
-        playerGravity.SetOrientation(PlayerGravity.OrientationPhysics.ATTRACTOR);
+        playerGravity.SetOrientation(EntityGravity.OrientationPhysics.ATTRACTOR);
 
         ExtLog.DebugLogIa("attractor activated !", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
 

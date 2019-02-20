@@ -33,7 +33,7 @@ public class EntityJump : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    protected PlayerGravity playerGravity;
+    protected EntityGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -47,7 +47,7 @@ public class EntityJump : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public FastForward fastForward;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public PlayerAirMove playerAirMove;
+    public EntityAirMove playerAirMove;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 

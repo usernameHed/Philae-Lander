@@ -20,7 +20,7 @@ public class FastForward : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityJump entityJump;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
@@ -300,7 +300,7 @@ public class FastForward : MonoBehaviour
             return;
         }
         if (!entityJump.HasJumped && entityController.GetMoveState() == EntityController.MoveState.InAir
-            && playerGravity.GetOrientationPhysics() == PlayerGravity.OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
+            && playerGravity.GetOrientationPhysics() == EntityGravity.OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
         {
             Debug.Log("mettre le timer du mal");
             timerDebugFlyAway.StartCoolDown(timeDebugFlyAway);

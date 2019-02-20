@@ -93,7 +93,7 @@ public class EntityJumpCalculation : MonoBehaviour
     private EntityAction entityAction;
     
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -606,7 +606,7 @@ public class EntityJumpCalculation : MonoBehaviour
     public void UltimeTestBeforeAttractor()
     {
         if (infoJump.jumpType == InfoJump.JumpType.BASE
-            && playerGravity.GetOrientationPhysics() == PlayerGravity.OrientationPhysics.NORMALS)
+            && playerGravity.GetOrientationPhysics() == EntityGravity.OrientationPhysics.NORMALS)
         {
             infoJump.Clear();
             Vector3[] ultimePlots = Plots(rb, rb.position, rb.velocity, 30, false, true);

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [TypeInfoBox("Player Move forward locally")]
-public class PlayerAirMove : MonoBehaviour
+public class EntityAirMove : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private bool canDoAirMove = true;

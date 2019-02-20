@@ -12,7 +12,7 @@ public class SmoothNormals : MonoBehaviour
 
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
     [FoldoutGroup("Object"), Tooltip("player object"), SerializeField]
     private GameObject rbObject;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]

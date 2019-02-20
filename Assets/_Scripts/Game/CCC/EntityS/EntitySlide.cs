@@ -13,7 +13,7 @@ public class EntitySlide : MonoBehaviour
     private Vector2 minMaxMagnitude = new Vector2(0f, 0.7f);
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]

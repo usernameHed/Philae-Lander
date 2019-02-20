@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
     private Transform rotateCameraY;
     [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
-    private PlayerGravity playerGravity;
+    private EntityGravity playerGravity;
 
     //Target list
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField, ReadOnly]

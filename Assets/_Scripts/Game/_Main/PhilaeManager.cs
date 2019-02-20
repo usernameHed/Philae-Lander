@@ -49,7 +49,7 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
         if (switchPlanet == 1)
         {
             Debug.Log("change to Music theme");
-            SoundManager.GetSingleton.playSound("event:/Music/" + GameData.Sounds.Music_Theme.ToString());
+            SoundManager.Instance.PlaySound("event:/Music/" + GameData.Sounds.Music_Theme.ToString());
         }
     }
 

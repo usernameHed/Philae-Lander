@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [TypeInfoBox("Player Move forward locally")]
-public class PlayerMove : MonoBehaviour
+public class EntityMove : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float speedMove = 5f;

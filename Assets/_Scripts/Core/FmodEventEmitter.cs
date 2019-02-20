@@ -16,7 +16,7 @@ public class FmodEventEmitter : MonoBehaviour
             emitter = gameObject.GetComponent<FMODUnity.StudioEventEmitter>();  //init l'emitter
         string addParent = (addIdOfObject) ? addIdOfObject.GetInstanceID().ToString() : "";
         if (emitter && emitter.Event != "")
-            SoundManager.GetSingleton.AddKey(emitter.Event + additionnalName + addParent, this);
+            SoundManager.Instance.AddKey(emitter.Event + additionnalName + addParent, this);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class FmodEventEmitter : MonoBehaviour
     private void OnDestroy()
     {
         string addParent = (addIdOfObject) ? addIdOfObject.GetInstanceID().ToString() : "";
-        if (emitter && emitter.Event != "" && SoundManager.GetSingleton)
-            SoundManager.GetSingleton.DeleteKey(emitter.Event + additionnalName + addParent, this);
+        if (emitter && emitter.Event != "" && SoundManager.Instance)
+            SoundManager.Instance.DeleteKey(emitter.Event + additionnalName + addParent, this);
     }
 }

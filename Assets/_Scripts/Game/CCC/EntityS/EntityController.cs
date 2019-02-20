@@ -24,7 +24,7 @@ public class EntityController : MonoBehaviour
     public Transform rbRotateObject;
 
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    public PlayerGravity playerGravity;
+    public EntityGravity playerGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
@@ -51,12 +51,14 @@ public class EntityController : MonoBehaviour
     //private Vector3 dirOrientedAllControl;  //save of GetDirOrientedInputForMultipleControl
     protected float oldDrag;
     protected bool planetSwitcher = false;
-    
+    protected bool isKilled = false;
+
     /// <summary>
     /// init player
     /// </summary>
     public void Init()
     {
+        isKilled = false;
         layerMask = LayerMask.GetMask(walkablePlatform);
         oldDrag = rb.drag;
     }
@@ -113,15 +115,6 @@ public class EntityController : MonoBehaviour
         rb.isKinematic = isKinematc;
     }
 
-    /*
-    public void ChangeMainPlanet(Rigidbody rbOther)
-    {
-        Debug.LogWarning("no managed anymore!");
-        playerGravity.ChangeMainAttractObject(rbOther.transform);//, rbOther.transform.position, (rb.transform.position - rbOther.transform.position).normalized);
-    }
-    */
-
-    
     public void SetDragRb(float dragg)
     {
         if (rb.drag != dragg)

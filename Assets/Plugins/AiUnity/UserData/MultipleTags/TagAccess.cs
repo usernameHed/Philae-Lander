@@ -5,7 +5,7 @@ using AiUnity.Common.Tags;
 /// <Summary>
 /// Provide strongly typed access to Unity tags.
 /// <Summary>
-[GeneratedType("19/02/2019 12:44:10")]
+[GeneratedType("20/02/2019 05:13:41")]
 public class TagAccess : ITagAccess
 {
 	public const string Untagged = "Untagged";
