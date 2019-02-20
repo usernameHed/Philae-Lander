@@ -3,7 +3,7 @@ using UnityEditor;
 
 public class SceneViewCameraFunction : ScriptableObject
 {
-    [MenuItem("Felor/Sceneview To Camera _n")]
+    [MenuItem("PERSO/Sceneview To Camera _n")]
     //[MenuItem("Edit/Camera _n")]
 
     public static void MoveSceneViewCamera()
@@ -29,7 +29,7 @@ public class SceneViewCameraFunction : ScriptableObject
         SceneView.lastActiveSceneView.Repaint();
     }
 	
-	[MenuItem("Felor/Vieport/Rotate Vieport up &i")]
+	[MenuItem("PERSO/Vieport/Rotate Vieport up &i")]
     public static void ViewportHotKeysUp()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -39,7 +39,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Rotate Vieport down &k")]
+	[MenuItem("PERSO/Vieport/Rotate Vieport down &k")]
     public static void ViewportHotKeysDown()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -49,7 +49,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Rotate Vieporta right &l")]
+	[MenuItem("PERSO/Vieport/Rotate Vieporta right &l")]
     public static void ViewportHotKeysRight()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -59,7 +59,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Rotate Vieporta left &j")]
+	[MenuItem("PERSO/Vieport/Rotate Vieporta left &j")]
     public static void ViewportHotKeysLeft()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -69,7 +69,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();	
 	}
 	
-	[MenuItem("Felor/Vieport/Pan Vieporta up %&i")]
+	[MenuItem("PERSO/Vieport/Pan Vieporta up %&i")]
     public static void ViewportPanUp()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -78,7 +78,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Pan Vieporta down %&k")]
+	[MenuItem("PERSO/Vieport/Pan Vieporta down %&k")]
     public static void ViewportPanDown()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -87,7 +87,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Pan Vieporta right %&l")]
+	[MenuItem("PERSO/Vieport/Pan Vieporta right %&l")]
     public static void ViewportPanRight()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -96,7 +96,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Pan Vieporta left %&j")]
+	[MenuItem("PERSO/Vieport/Pan Vieporta left %&j")]
     public static void ViewportPanLeft()
 	{
 		Quaternion rotation = SceneView.lastActiveSceneView.rotation;
@@ -105,7 +105,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Vieporta Zoom In &o")]
+	[MenuItem("PERSO/Vieport/Vieporta Zoom In &o")]
     public static void ViewportPanZoomIn(float zoom = 5f)
 	{
         Debug.Log(SceneView.lastActiveSceneView.size);
@@ -114,7 +114,7 @@ public class SceneViewCameraFunction : ScriptableObject
         SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("Felor/Vieport/Vieporta Zoom Out &p")]
+	[MenuItem("PERSO/Vieport/Vieporta Zoom Out &p")]
     public static void ViewportPanZoomOut()
 	{
 		if (SceneView.lastActiveSceneView.size > 0.0f)

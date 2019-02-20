@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Enemy
+  - GravityAttractor
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Walkable/FastForward
   - Walkable/Dont
   - Walkable/GravityAttractor
-  - 
+  - Walkable/OrientedGravity
   - 
   - 
   - 
