@@ -10,7 +10,9 @@ public class FastForward : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("time before die")]
     private float dotMarginDiffNormal = 0.71f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] fastForwardLayer = new string[] { "Walkable/FastForward" };
+    public string[] fastForwardLayer = new string[] { "Walkable/FastForward"};
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] orientedForwardLayer = new string[] { "Walkable/OrientedGravity" };
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] dontLayer = new string[] { "Walkable/Dont" };
 
@@ -20,7 +22,7 @@ public class FastForward : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityJump entityJump;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityGravity playerGravity;
+    private EntityGravity entityGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityAttractor entityAttractor;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
@@ -29,11 +31,17 @@ public class FastForward : MonoBehaviour
     private GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntityAction entityAction;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private bool fastForward = false;
+    public bool IsInFastForward() => fastForward;
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private Transform lastHitPlatform;
+    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    private List<FastForwardTrigger> fastForwardTriggers = new List<FastForwardTrigger>();
+
 
     [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float timeDebugFlyAway = 0.3f;   //a-t-on un attract point de placé ?
@@ -69,14 +77,17 @@ public class FastForward : MonoBehaviour
         ResetFlyAway();
     }
 
-    private bool IsForwardLayer(string layer)
-    {
-        return (IsForwardLayer(LayerMask.NameToLayer(layer)));
-    }
     private bool IsForwardLayer(int layer)
     {
-        int isForbidden = ExtList.ContainSubStringInArray(fastForwardLayer, LayerMask.LayerToName(layer));
-        if (isForbidden != -1)
+        int isFastForward = ExtList.ContainSubStringInArray(fastForwardLayer, LayerMask.LayerToName(layer));
+         if (isFastForward != -1)
+            return (true);
+        return (false);
+    }
+    private bool IsOrientedLayer(int layer)
+    {
+        int isOriented = ExtList.ContainSubStringInArray(orientedForwardLayer, LayerMask.LayerToName(layer));
+        if (isOriented != -1)
             return (true);
         return (false);
     }
@@ -116,21 +127,73 @@ public class FastForward : MonoBehaviour
     }
 
     
+    public void EnterInZone(FastForwardTrigger fastForwardTrigger)
+    {
+        if (!fastForwardTriggers.Contains(fastForwardTrigger))
+            fastForwardTriggers.Add(fastForwardTrigger);
+    }
+
+    public void LeanInZone(FastForwardTrigger fastForwardTrigger)
+    {
+        fastForwardTriggers.Remove(fastForwardTrigger);
+    }
+
+    /// <summary>
+    /// say we want a certain direction gravity, and that it !
+    /// </summary>
+    public void SetNewDirectionFromOutside()
+    {
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir && fastForwardTriggers.Count > 0)
+        {
+            if (fastForwardTriggers[0].IsAutomatic() || (!fastForwardTriggers[0].IsAutomatic() && entityAction.Jump && entityJump.IsJumpCoolDebugDownReady()))
+            {
+                Debug.Log("ici on est dans un trigger, l'activer si automatic, attendre l'input sinon");
+                fastForward = true;
+                SetInAir();
+
+                entityGravity.SetOrientation(EntityGravity.OrientationPhysics.NORMALS);
+                previousNormal = fastForwardTriggers[0].GetGravityDirection(rb.position).normalized;
+                groundCheck.SetNewNormalFromOutside(previousNormal);
+                //playerGravity.SetOrientation
+            }
+        }
+    }
+
+    public bool DoChangeOrientationManually(RaycastHit hitInfo, ref Vector3 newOrientation)
+    {
+        if (!IsOrientedLayer(hitInfo.transform.gameObject.layer))
+            return (false);
+
+        FastForwardOrientationLD fastForwardOrientationLD = hitInfo.transform.gameObject.GetComponentInAllParents<FastForwardOrientationLD>(99, true);
+        if (fastForwardOrientationLD == null)
+            return (false);
+
+        if (!fastForwardOrientationLD.IsAutomatic() && !entityAction.Jump)
+        {
+            return (false);
+        }
+
+        newOrientation = fastForwardOrientationLD.GetGravityDirection(rb.position);
+        Debug.DrawRay(rb.position, newOrientation, Color.black, 5f);
+        return (true);
+    }
 
     public bool CanChangeNormal(RaycastHit hitInfo, Vector3 surfaceNormal)
     {
         int lastLayer = hitInfo.transform.gameObject.layer;
-        //Vector3 newNormal = hitInfo.normal;
-        //Debug.DrawRay(rb.position, newNormal * 3, Color.black, 1f);
-        //Debug.DrawRay(rb.position, realNormalSurface * 3, Color.red, 5f);
+
+        Vector3 tmpNewGravity = Vector3.zero;
+        bool changeManuallyGravity = DoChangeOrientationManually(hitInfo, ref tmpNewGravity);
+
 
         //here we are in forward layer
-        if (IsForwardLayer(lastLayer))
+        if (IsForwardLayer(lastLayer) || IsOrientedLayer(lastLayer))
         {
             //here we just OnGrounded... we were flying ! so accepte the new normal then ?
             if (entityController.GetMoveState() == EntityController.MoveState.InAir)
             {
-                previousNormal = surfaceNormal;// newNormal;
+                previousNormal = (!changeManuallyGravity) ? surfaceNormal : tmpNewGravity;// newNormal;
+                //normalToReturn = previousNormal;
                 fastForward = true; //say yes to fastForward
                 lastHitPlatform = hitInfo.transform;
                 //Debug.Log("On Ground reset !");
@@ -144,7 +207,8 @@ public class FastForward : MonoBehaviour
                 {
                     //Debug.Log("update normal, we change forward");
                     //always update when we STAY in a fastForward
-                    previousNormal = surfaceNormal;// newNormal;
+                    previousNormal = (!changeManuallyGravity) ? surfaceNormal : tmpNewGravity;// newNormal;
+                    //normalToReturn = previousNormal;
                     lastHitPlatform = hitInfo.transform;
                     return (true);
                 }
@@ -154,7 +218,8 @@ public class FastForward : MonoBehaviour
                     {
                         //Debug.Log("update, we are on the same object, AND difference is negligible");
                         //here we leave forward layer, update and say yes to GROUNDCHECK
-                        previousNormal = surfaceNormal;
+                        previousNormal = (!changeManuallyGravity) ? surfaceNormal : tmpNewGravity;// newNormal;
+                        //normalToReturn = previousNormal;
                         return (true);
                     }
                     else
@@ -173,6 +238,7 @@ public class FastForward : MonoBehaviour
                 fastForward = true;
                 lastHitPlatform = hitInfo.transform;
                 previousNormal = surfaceNormal;// newNormal;
+                //normalToReturn = previousNormal;
                 return (true);
             }
         }
@@ -183,6 +249,7 @@ public class FastForward : MonoBehaviour
             if (entityController.GetMoveState() == EntityController.MoveState.InAir)
             {
                 previousNormal = surfaceNormal;// newNormal;
+                //normalToReturn = previousNormal;
                 fastForward = false; //update fastForward
                 lastHitPlatform = hitInfo.transform;
                 //Debug.Log("On Ground reset !");
@@ -197,6 +264,7 @@ public class FastForward : MonoBehaviour
                 {
                     //here we leave forward layer, update and say yes to GROUNDCHECK
                     previousNormal = surfaceNormal;
+                    //normalToReturn = previousNormal;
                     fastForward = false;
 
                     //Debug.Log("Update normal, difference is negligle");
@@ -224,6 +292,7 @@ public class FastForward : MonoBehaviour
                 //nothing related to fastForward here !
                 //Debug.Log("nothing related to fastForward here !");
                 lastHitPlatform = hitInfo.transform;
+                //normalToReturn = previousNormal;
                 return (true);
             }
         }
@@ -300,7 +369,7 @@ public class FastForward : MonoBehaviour
             return;
         }
         if (!entityJump.HasJumped && entityController.GetMoveState() == EntityController.MoveState.InAir
-            && playerGravity.GetOrientationPhysics() == EntityGravity.OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
+            && entityGravity.GetOrientationPhysics() == EntityGravity.OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
         {
             Debug.Log("mettre le timer du mal");
             timerDebugFlyAway.StartCoolDown(timeDebugFlyAway);
@@ -309,7 +378,7 @@ public class FastForward : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //ChangeStageForward();
+        SetNewDirectionFromOutside();
         DebugFlyAway();
     }
 

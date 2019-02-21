@@ -1377,6 +1377,7 @@ GameObject:
   - component: {fileID: 424197143998509921}
   - component: {fileID: 4342663178068225341}
   - component: {fileID: 5470353497594316380}
+  - component: {fileID: 7161600972230661157}
   m_Layer: 12
   m_Name: Philae
   m_TagString: Untagged
@@ -1391,7 +1392,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3347777260606228087}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1436,6 +1437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckDistance: 0.2
   stickToFloorDist: 0.6
+  stickToCeillingDist: 0.6
   sizeRadiusRayCast: 0.4
   dontLayer:
   - Walkable/Dont
@@ -1446,6 +1448,7 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   fastForward: {fileID: 6729321841502290180}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityNoGravity: {fileID: 7161600972230661157}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -1469,6 +1472,7 @@ MonoBehaviour:
   - Walkable/NoSide
   - Walkable/Dont
   - Walkable/GravityAttractor
+  - Walkable/OrientedGravity
   distForward: 0.6
   sizeRadiusForward: 0.3
   dotMarginImpact: 0.3
@@ -1502,6 +1506,8 @@ MonoBehaviour:
   dotMarginDiffNormal: 0.71
   fastForwardLayer:
   - Walkable/FastForward
+  orientedForwardLayer:
+  - Walkable/OrientedGravity
   dontLayer:
   - Walkable/Dont
   entityController: {fileID: 3347777260606228085}
@@ -1550,6 +1556,7 @@ MonoBehaviour:
   - Walkable/NoSide
   - Walkable/Up
   - Walkable/FastForward
+  - Walkable/OrientedGravity
   - Walkable/Dont
   - Walkable/GravityAttractor
   rb: {fileID: 3959034400415941276}
@@ -1588,6 +1595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 3347777260606228085}
+  iAController: {fileID: 0}
+  entityNoGravity: {fileID: 7161600972230661157}
 --- !u!114 &6166077617058031261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,6 +1670,7 @@ MonoBehaviour:
   layerNoSideJump:
   - Walkable/NoSide
   - Walkable/Dont
+  - Walkable/OrientedGravity
   timeFeforeCalculateAgainJump: 0.5
   marginSideSlope: 0.71
   marginNotMovingTestJump: 0.5
@@ -1717,6 +1727,7 @@ MonoBehaviour:
   fastForward: {fileID: 6729321841502290180}
   entityJumpCalculation: {fileID: 4078160021669779806}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityNoGravity: {fileID: 7161600972230661157}
   mainAttractObject: {fileID: 0}
 --- !u!114 &3819143144908272473
 MonoBehaviour:
@@ -1735,7 +1746,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2648358779095376182}
   entitySwitch: {fileID: 1908652825489971977}
   fastForward: {fileID: 6729321841502290180}
-  entityJumpCalculation: {fileID: 0}
+  entityNoGravity: {fileID: 7161600972230661157}
   timeBeforeActiveAttractorInAir: 0.8
   timeBeforeActiveLateAttractor: 1.25
   gravityAttractor: 2
@@ -1908,6 +1919,7 @@ MonoBehaviour:
   - Walkable/NoSide
   - Walkable/Up
   - Walkable/FastForward
+  - Walkable/OrientedGravity
   - Walkable/Dont
   - Walkable/GravityAttractor
   radiusRaycast: 0.7
@@ -1966,6 +1978,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
+--- !u!114 &7161600972230661157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656a48b97ab18a84a8413a5e18ab460a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityAttractor: {fileID: 3819143144908272473}
+  currentRatioGravity: 1
+  zonesNoGravity: []
 --- !u!1 &3347963761015549839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,7 +2199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 36.6, y: 0, z: 33}
+  m_LocalPosition: {x: 71.7, y: 0, z: 68.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}

@@ -478,7 +478,7 @@ public class GravityAttractorEditor : MonoBehaviour
         {
             Gizmos.color = Color.white;
             if (gravityAttractor.gravityPoints[i].point)
-                DrawCross(gravityAttractor.gravityPoints[i].point.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityPoints[i].point.position);
         }
         for (int i = 0; i < gravityAttractor.gravityLines.Count; i++)
         {
@@ -486,8 +486,8 @@ public class GravityAttractorEditor : MonoBehaviour
             {
                 Gizmos.color = Color.cyan;
                 Gizmos.DrawLine(gravityAttractor.gravityLines[i].pointA.position, gravityAttractor.gravityLines[i].pointB.position);
-                DrawCross(gravityAttractor.gravityLines[i].pointA.position);
-                DrawCross(gravityAttractor.gravityLines[i].pointB.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointA.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointB.position);
             }
         }
         for (int i = 0; i < gravityAttractor.gravityTriangles.Count; i++)
@@ -498,9 +498,9 @@ public class GravityAttractorEditor : MonoBehaviour
                 Gizmos.DrawLine(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position);
                 Gizmos.DrawLine(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position);
                 Gizmos.DrawLine(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position);
-                DrawCross(gravityAttractor.gravityTriangles[i].pointA.position);
-                DrawCross(gravityAttractor.gravityTriangles[i].pointB.position);
-                DrawCross(gravityAttractor.gravityTriangles[i].pointC.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointA.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointB.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointC.position);
             }
         }
         for (int i = 0; i < gravityAttractor.gravityQuad.Count; i++)
@@ -512,36 +512,12 @@ public class GravityAttractorEditor : MonoBehaviour
                 Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position);
                 Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position);
                 Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position);
-                DrawCross(gravityAttractor.gravityQuad[i].pointA.position);
-                DrawCross(gravityAttractor.gravityQuad[i].pointB.position);
-                DrawCross(gravityAttractor.gravityQuad[i].pointC.position);
-                DrawCross(gravityAttractor.gravityQuad[i].pointD.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointA.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointB.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointC.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointD.position);
             }
         }
-    }
-
-    private void DrawCross(Vector3 position)
-    {
-        Gizmos.DrawRay(new Ray(position, new Vector3(10, 10, 10)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(-10, -10, -10)));
-
-        Gizmos.DrawRay(new Ray(position, new Vector3(-10, 10, 10)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(10, -10, -10)));
-
-        Gizmos.DrawRay(new Ray(position, new Vector3(-10, 0, 10)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(10, 0, -10)));
-
-        Gizmos.DrawRay(new Ray(position, new Vector3(10, 10, 0)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(-10, -10, 0)));
-
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, 10, 10)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, -10)));
-
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, 10)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, -10)));
-
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, 10, 0)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, 0)));
     }
 
     public void CleanTheSick()

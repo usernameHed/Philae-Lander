@@ -51,6 +51,7 @@ public class GroundCheck : MonoBehaviour
     public Transform GetLastPlatform() { return (lastPlatform); }
 
     private float radius;
+    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     private Vector3 dirNormal = Vector3.zero;
     private Vector3 dirSurfaceNormal = Vector3.zero;
     
@@ -102,6 +103,11 @@ public class GroundCheck : MonoBehaviour
         SetCurrentPlatform(hitInfo.transform);
         isGrounded = true;
         isFlying = false;
+    }
+
+    public void SetNewNormalFromOutside(Vector3 newGravity)
+    {
+        dirNormal = newGravity;
     }
 
     private bool IsInDontLayer(RaycastHit hitInfo)
@@ -190,9 +196,22 @@ public class GroundCheck : MonoBehaviour
                 collRayCastMargin,
                 entityController.layerMask);
 
+            /*
+            Vector3 normlaReturn = hitInfo.normal;
+            if (fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal, ref normlaReturn))
+            {
+                dirNormal
+            }
+            */
+
             if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
+                Vector3 tmpOrientedGravity = dirNormal;
+                if (fastForward.DoChangeOrientationManually(hitInfo, ref tmpOrientedGravity))
+                {
+                    dirNormal = tmpOrientedGravity.normalized;
+                }
             }
         }
         else

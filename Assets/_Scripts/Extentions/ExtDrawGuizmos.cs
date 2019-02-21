@@ -11,27 +11,51 @@ using System.Reflection;
 
 public static class ExtDrawGuizmos
 {
-	#region DebugDrawFunctions
-	
-	/// <summary>
-	/// 	- Debugs a point.
-	/// </summary>
-	/// <param name='position'>
-	/// 	- The point to debug.
-	/// </param>
-	/// <param name='color'>
-	/// 	- The color of the point.
-	/// </param>
-	/// <param name='scale'>
-	/// 	- The size of the point.
-	/// </param>
-	/// <param name='duration'>
-	/// 	- How long to draw the point.
-	/// </param>
-	/// <param name='depthTest'>
-	/// 	- Whether or not this point should be faded when behind other objects.
-	/// </param>
-	public static void DebugPoint(Vector3 position, Color color, float scale = 1.0f, float duration = 0, bool depthTest = true)
+    #region DebugDrawFunctions
+
+    public static void DrawCross(Vector3 position)
+    {
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, 10, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, -10, -10)));
+
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, 10, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, -10, -10)));
+
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, 0, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, 0, -10)));
+
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, 10, 0)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, -10, 0)));
+
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 10, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, -10)));
+
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, -10)));
+
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 10, 0)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, 0)));
+    }
+
+    /// <summary>
+    /// 	- Debugs a point.
+    /// </summary>
+    /// <param name='position'>
+    /// 	- The point to debug.
+    /// </param>
+    /// <param name='color'>
+    /// 	- The color of the point.
+    /// </param>
+    /// <param name='scale'>
+    /// 	- The size of the point.
+    /// </param>
+    /// <param name='duration'>
+    /// 	- How long to draw the point.
+    /// </param>
+    /// <param name='depthTest'>
+    /// 	- Whether or not this point should be faded when behind other objects.
+    /// </param>
+    public static void DebugPoint(Vector3 position, Color color, float scale = 1.0f, float duration = 0, bool depthTest = true)
 	{
 		color = (color == default(Color)) ? Color.white : color;
 		

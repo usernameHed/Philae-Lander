@@ -7,6 +7,10 @@ public class EntityNoGravity : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
     private EntityAttractor entityAttractor;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("")]
+    private FastForward fastForward;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("")]
+    private EntityController entityController;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private float currentRatioGravity = 1f;
@@ -81,6 +85,10 @@ public class EntityNoGravity : MonoBehaviour
         if (currentRatioGravity < 1)
         {
             entityAttractor.RetryCoolDown();
+            if (fastForward.IsInFastForward() && entityController.GetMoveState() == EntityController.MoveState.InAir)
+            {
+                fastForward.SetInAir();
+            }
         }
     }
 }

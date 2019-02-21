@@ -9,6 +9,8 @@ public class EntityTriggerManager : MonoBehaviour
     public IAController iAController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityNoGravity entityNoGravity;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public FastForward fastForward;
     //[FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     //public EntityController entityController;
 
