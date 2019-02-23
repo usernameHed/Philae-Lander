@@ -98,7 +98,7 @@ public class EntityContactSwitch : MonoBehaviour
                 //Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
                 isForwardWall = true;
                 isForbiddenForward = true;
-                entityBumpUp.HereBumpUp();
+                entityBumpUp.HereBumpUp(hitInfo);
                 return;
             }
 
@@ -125,7 +125,7 @@ public class EntityContactSwitch : MonoBehaviour
             {
                 //here we are in front of a forbidden wall !!
                 isForbiddenForward = true;
-                entityBumpUp.HereBumpUp();
+                entityBumpUp.HereBumpUp(hitInfo);
             }
             else
             {

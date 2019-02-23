@@ -50,6 +50,8 @@ public class EntityJump : MonoBehaviour
     public EntityAirMove playerAirMove;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public EntityBumpUp entityBumpUp;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -209,6 +211,7 @@ public class EntityJump : MonoBehaviour
         fastForward.JustJumped();
         playerAirMove.JustJumped();
         entityGravityAttractorSwitch.JustJumped();
+        entityBumpUp.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         
