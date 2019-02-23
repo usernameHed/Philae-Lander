@@ -37,6 +37,8 @@ public class EntityController : MonoBehaviour
     protected FastForward fastForward;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    protected EntityNoGravity entityNoGravity;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;

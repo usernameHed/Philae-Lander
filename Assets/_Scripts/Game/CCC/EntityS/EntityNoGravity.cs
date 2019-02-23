@@ -13,6 +13,10 @@ public class EntityNoGravity : MonoBehaviour
     private EntityController entityController;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    private bool wereWeInNoGravity = false;
+    public bool WereWeInNoGravity() => wereWeInNoGravity;
+
+    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private float currentRatioGravity = 1f;
     public float GetNoGravityRatio() => currentRatioGravity;
 
@@ -80,6 +84,11 @@ public class EntityNoGravity : MonoBehaviour
         currentRatioGravity = CalculateMultipleRatio();
     }
 
+    public void OnGrounded()
+    {
+        wereWeInNoGravity = false;
+    }
+
     private void Update()
     {
         if (currentRatioGravity < 1)
@@ -89,6 +98,12 @@ public class EntityNoGravity : MonoBehaviour
             {
                 fastForward.SetInAir();
             }
+            
+        }
+        if (currentRatioGravity == 0 && entityController.GetMoveState() == EntityController.MoveState.InAir
+            && !wereWeInNoGravity)
+        {
+            wereWeInNoGravity = true;
         }
     }
 }

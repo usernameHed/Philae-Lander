@@ -18,6 +18,8 @@ public class EntityAirMove : MonoBehaviour
     private float dotForward = 0.70f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float ratioWhenGravityAirMove = 0.7f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float limitAirMoveCalculation = 1500f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
@@ -37,6 +39,7 @@ public class EntityAirMove : MonoBehaviour
     private EntityJumpCalculation entityJumpCalculation;
 
     protected FrequencyCoolDown coolDownJump = new FrequencyCoolDown();
+    protected float amountAdded = 0f;
 
     /// <summary>
     /// move with input
@@ -44,12 +47,16 @@ public class EntityAirMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
+        amountAdded += (direction * entityAction.GetMagnitudeInput()).sqrMagnitude;
+        Debug.Log("Amount added: " + amountAdded);
+
         UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
     }
 
     public void JustJumped()
     {
         coolDownJump.StartCoolDown(timeBeforeCanAirMove);
+        amountAdded = 0f;
     }
 
     private float GetRatioAirMove()
@@ -73,9 +80,6 @@ public class EntityAirMove : MonoBehaviour
 
         float lastVelocity = entityJump.GetLastJumpForwardVelocity();
         float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
-        //dotDirForward = ExtUtilityFunction.Remap(dotDirForward, )
-        //Debug.Log("dotDirForward: " + dotDirForward + "(initial jump forward: " + lastVelocity + ")");
-        
 
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForward > dotForward)
@@ -91,16 +95,20 @@ public class EntityAirMove : MonoBehaviour
 
     private bool CanDoAirMove()
     {
+        //can we do air move on this object ?
         if (!canDoAirMove)
             return (false);
-
+        //only airMove in... air !
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (false);
-
+        //start airMove after a little bit of time
         if (!coolDownJump.IsReady())
             return (false);
-
+        //No air Move en Side Jump or other stuff
         if (!entityJumpCalculation.CanDoAirMove())
+            return (false);
+        //if we have done enought airMove in air, don't do more
+        if (amountAdded > limitAirMoveCalculation)
             return (false);
 
         return (true);

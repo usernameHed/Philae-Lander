@@ -11,12 +11,14 @@ public class GravityAttractor : MonoBehaviour
     {
         [ReadOnly]
         public Vector3 pos;
-        public float gravityRatio;
+        public float gravityBaseRatio;
+        public float gravityDownRatio;
         public bool noGravity;
 
         public void Init()
         {
-            gravityRatio = 1f;
+            gravityBaseRatio = 1f;
+            gravityDownRatio = 1f;
             noGravity = false;
         }
     }
@@ -35,7 +37,7 @@ public class GravityAttractor : MonoBehaviour
         }
         public void SetDefautIfFirstTimeCreated()
         {
-            if (pointInfo.gravityRatio != 0)
+            if (pointInfo.gravityBaseRatio != 0)
                 return;
 
             pointInfo = new PointInfo();
@@ -66,7 +68,7 @@ public class GravityAttractor : MonoBehaviour
         }
         public void SetDefautIfFirstTimeCreated()
         {
-            if (pointInfo.gravityRatio != 0)
+            if (pointInfo.gravityBaseRatio != 0)
                 return;
 
             pointInfo = new PointInfo();
@@ -104,7 +106,7 @@ public class GravityAttractor : MonoBehaviour
         }
         public void SetDefautIfFirstTimeCreated()
         {
-            if (pointInfo.gravityRatio != 0)
+            if (pointInfo.gravityBaseRatio != 0)
                 return;
 
             pointInfo = new PointInfo();
@@ -149,7 +151,7 @@ public class GravityAttractor : MonoBehaviour
         }
         public void SetDefautIfFirstTimeCreated()
         {
-            if (pointInfo.gravityRatio != 0)
+            if (pointInfo.gravityBaseRatio != 0)
                 return;
 
             pointInfo = new PointInfo();
@@ -361,7 +363,8 @@ public class GravityAttractor : MonoBehaviour
             Vector3 closestPoint = GetClosestPointFromGravityPoints(fromPoint);
             //Debug.DrawLine(fromPoint, closestPoint, Color.white);
             allResult[indexResult].pos = closestPoint;
-            allResult[indexResult].gravityRatio = gravityPoints[indexFound].GetPointInfo().gravityRatio;
+            allResult[indexResult].gravityBaseRatio = gravityPoints[indexFound].GetPointInfo().gravityBaseRatio;
+            allResult[indexResult].gravityDownRatio = gravityPoints[indexFound].GetPointInfo().gravityDownRatio;
             allResult[indexResult].noGravity = gravityPoints[indexFound].GetPointInfo().noGravity;
 
 
@@ -375,7 +378,8 @@ public class GravityAttractor : MonoBehaviour
             Vector3 closestPointLines = GetClosestPointFromLines(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointLines, Color.cyan);
             allResult[indexResult].pos = closestPointLines;
-            allResult[indexResult].gravityRatio = gravityLines[indexFound].GetPointInfo().gravityRatio;
+            allResult[indexResult].gravityBaseRatio = gravityLines[indexFound].GetPointInfo().gravityBaseRatio;
+            allResult[indexResult].gravityDownRatio = gravityLines[indexFound].GetPointInfo().gravityDownRatio;
             allResult[indexResult].noGravity = gravityLines[indexFound].GetPointInfo().noGravity;
 
 
@@ -389,7 +393,8 @@ public class GravityAttractor : MonoBehaviour
             Vector3 closestPointTriangles = GetClosestPointFromTriangles(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointTriangles, Color.green);
             allResult[indexResult].pos = closestPointTriangles;
-            allResult[indexResult].gravityRatio = gravityTriangles[indexFound].GetPointInfo().gravityRatio;
+            allResult[indexResult].gravityBaseRatio = gravityTriangles[indexFound].GetPointInfo().gravityBaseRatio;
+            allResult[indexResult].gravityDownRatio = gravityTriangles[indexFound].GetPointInfo().gravityDownRatio;
             allResult[indexResult].noGravity = gravityTriangles[indexFound].GetPointInfo().noGravity;
 
             allResultPos[indexResult] = closestPointTriangles;
@@ -402,7 +407,8 @@ public class GravityAttractor : MonoBehaviour
             Vector3 closestPointQuads = GetClosestPointFromQuads(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointQuads, Color.red);
             allResult[indexResult].pos = closestPointQuads;
-            allResult[indexResult].gravityRatio = gravityQuad[indexFound].GetPointInfo().gravityRatio;
+            allResult[indexResult].gravityBaseRatio = gravityQuad[indexFound].GetPointInfo().gravityBaseRatio;
+            allResult[indexResult].gravityDownRatio = gravityQuad[indexFound].GetPointInfo().gravityDownRatio;
             allResult[indexResult].noGravity = gravityQuad[indexFound].GetPointInfo().noGravity;
 
             allResultPos[indexResult] = closestPointQuads;
@@ -413,7 +419,8 @@ public class GravityAttractor : MonoBehaviour
         if (indexResult > 0)
         {
             pointInfo.pos = ExtUtilityFunction.GetClosestPoint(fromPoint, allResultPos, ref indexFound);
-            pointInfo.gravityRatio = allResult[indexFound].gravityRatio;
+            pointInfo.gravityBaseRatio = allResult[indexFound].gravityBaseRatio;
+            pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
             pointInfo.noGravity = allResult[indexFound].noGravity;
             Debug.DrawLine(fromPoint, pointInfo.pos, Color.red);
         }

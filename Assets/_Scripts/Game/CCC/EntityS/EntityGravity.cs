@@ -310,14 +310,13 @@ public class EntityGravity : MonoBehaviour
             float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rbVelocity);
             //here we fall down toward a planet, apply gravity down
 
-
             finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
             if (dotGravityRigidbody < 0)
             {
                 if (applyForceDown)
                 {
-                    finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
+                    finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetRatioGravityDown();
 
                     //if first time we fall down, call ultimateTest !
                     if (testForUltimate && !isGoingDown)
@@ -343,7 +342,16 @@ public class EntityGravity : MonoBehaviour
         return (finalGravity);
     }
 
-    
+    private bool CanApplyForceUp()
+    {
+        if (!entityJumpCalculation.CanApplyForceUp())
+            return (false);
+
+        if (entityNoGravity.WereWeInNoGravity())
+            return (false);
+
+        return (true);
+    }
 
     /// <summary>
     /// apply every gravity force in Air
@@ -356,7 +364,7 @@ public class EntityGravity : MonoBehaviour
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
         rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
             entityJumpCalculation.GetSpecialAirGravity(),
-            entityJumpCalculation.CanApplyForceUp(),
+            CanApplyForceUp(),
             entityJumpCalculation.CanApplyForceDown(),
             true);
     }

@@ -38,6 +38,8 @@ public class EntityContactSwitch : MonoBehaviour
     private EntityJumpCalculation entityJumpCalculation;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityJump entityJump;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForwardWall = false;
@@ -77,6 +79,15 @@ public class EntityContactSwitch : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
                                distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
+            if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
+                && !entityGravityAttractorSwitch.IsNormalOk(hitInfo.transform, hitInfo.normal))
+            {
+                Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
+                isForwardWall = true;
+                isForbiddenForward = true;
+                return;
+            }
+
             //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
             //Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
             ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);

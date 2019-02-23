@@ -23,6 +23,8 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     private EntityAction entityAction;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private GroundCheck groundCheck;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityController entityController;
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool gravityAttractorMode = false;
@@ -37,6 +39,29 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     private FrequencyCoolDown coolDownBeforeActiveAtractor = new FrequencyCoolDown();
     private Vector3 lastNormalJumpChoosen = Vector3.zero;
+
+    
+    /// <summary>
+    /// ratio only for gravityDown
+    /// </summary>
+    /// <returns></returns>
+    public float GetRatioGravityDown()
+    {
+        if (!gravityAttractorMode)
+            return (1);
+        return (pointInfo.gravityDownRatio);
+    }
+    
+    /// <summary>
+    /// gravity base apply on this attractor
+    /// </summary>
+    /// <returns></returns>
+    public float GetRatioGravity()
+    {
+        float normalRatio = (!gravityAttractorMode || coolDownBeforeActiveAtractor.IsRunning()) ? 1 : pointInfo.gravityBaseRatio;
+        //Debug.Log("ratio: " + normalRatio);
+        return (normalRatio);
+    }
 
     public bool IsInGravityAttractorMode()
     {
@@ -75,12 +100,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (sphereGravity);
     }
 
-    public float GetRatioGravity()
-    {
-        if (!gravityAttractorMode || coolDownBeforeActiveAtractor.IsRunning())
-            return (1);
-        return (pointInfo.gravityRatio);
-    }
+   
 
     public bool IsAirAttractorLayer(int layer)
     {
@@ -102,6 +122,43 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (canDo);
     }
 
+    private Vector3 GetTmpSphereGravityForAPoint(Transform objHit, Vector3 posToTest)
+    {
+        GravityAttractor tmpOld = gravityAttractor;
+        TryToSetNewGravityAttractor(objHit);
+        CalculateSphereGravity(rbEntity.position);
+        Vector3 tmpSphereGravity = sphereGravity;
+        
+        if (tmpOld != null)
+        {
+            SelectNewGA(tmpOld);
+        }
+        else
+        {
+            UnselectOldGA();
+        }
+        return (tmpSphereGravity);
+    }
+
+    public bool IsNormalOk(Transform objHit, Vector3 normalHit)
+    {
+        Vector3 tmpSphereGravity = sphereGravity;
+
+        if (!gravityAttractor)
+        {
+            //TODO: here calculate the gravity...
+            tmpSphereGravity = GetTmpSphereGravityForAPoint(objHit, rbEntity.position);
+        }
+
+        float dotDiff = ExtQuaternion.DotProduct(normalHit, tmpSphereGravity);
+        if (dotDiff > marginDotGA)
+        {
+            //Debug.Log("ok normal correct for moving...");
+            return (true);
+        }
+        return (false);
+    }
+
     public bool IsNormalAcceptedIfWeAreInGA(Transform objHit, Vector3 normalHit)
     {
         //here it doen't concern us, say just yes
@@ -114,7 +171,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             //here we are not... mmm what to do ?
             Debug.LogWarning("we are on a gravityAttractor tag, but we are not" +
                 "may be we are in jump calculation, it's okk then");
-
+            TryToSetNewGravityAttractor(objHit);
 
             return (true);
         }
