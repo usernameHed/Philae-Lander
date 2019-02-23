@@ -1361,6 +1361,7 @@ GameObject:
   - component: {fileID: 6963434210853128062}
   - component: {fileID: 6729321841502290180}
   - component: {fileID: 3259061920373295737}
+  - component: {fileID: 8453409706159919432}
   - component: {fileID: 3347777260606228085}
   - component: {fileID: 5131177452785897284}
   - component: {fileID: 6166077617058031261}
@@ -1455,6 +1456,7 @@ MonoBehaviour:
   currentFloorLayer: 
   collRayCastMargin: 0.3
   lastPlatform: {fileID: 0}
+  dirNormal: {x: 0, y: 0, z: 0}
 --- !u!114 &6963434210853128062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1473,6 @@ MonoBehaviour:
   walkForbiddenForwardUp:
   - Walkable/NoSide
   - Walkable/Dont
-  - Walkable/GravityAttractor
   - Walkable/OrientedGravity
   distForward: 0.6
   sizeRadiusForward: 0.3
@@ -1486,6 +1487,7 @@ MonoBehaviour:
   entitySlide: {fileID: 3259061920373295737}
   entityJumpCalculation: {fileID: 4078160021669779806}
   entityJump: {fileID: 6166077617058031261}
+  entityGravityAttractorSwitch: {fileID: 378111692992343084}
   isForwardWall: 0
   isForbiddenForward: 0
   isBackwardWall: 0
@@ -1512,13 +1514,15 @@ MonoBehaviour:
   - Walkable/Dont
   entityController: {fileID: 3347777260606228085}
   entityJump: {fileID: 6166077617058031261}
-  playerGravity: {fileID: 4342663178068225343}
+  entityGravity: {fileID: 4342663178068225343}
   entityAttractor: {fileID: 3819143144908272473}
   ikillableObject: {fileID: 3347777260606228087}
   groundCheck: {fileID: 2648358779095376182}
   rb: {fileID: 3959034400415941276}
+  entityAction: {fileID: 6166077617058031262}
   fastForward: 0
   lastHitPlatform: {fileID: 0}
+  fastForwardTriggers: []
   timeDebugFlyAway: 0.3
 --- !u!114 &3259061920373295737
 MonoBehaviour:
@@ -1538,6 +1542,18 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   entityAction: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
+--- !u!114 &8453409706159919432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347777260606228087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea765e49735f8494f82106140d84d239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3347777260606228085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +1584,7 @@ MonoBehaviour:
   entityAction: {fileID: 6166077617058031262}
   fastForward: {fileID: 6729321841502290180}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityNoGravity: {fileID: 7161600972230661157}
   moveState: 0
   layerMask: -1
   deathVibration:
@@ -1597,6 +1614,7 @@ MonoBehaviour:
   playerController: {fileID: 3347777260606228085}
   iAController: {fileID: 0}
   entityNoGravity: {fileID: 7161600972230661157}
+  fastForward: {fileID: 6729321841502290180}
 --- !u!114 &6166077617058031261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,6 +1632,7 @@ MonoBehaviour:
   noJumpLayer:
   - Walkable/Dont
   - Walkable/NoSide
+  - Walkable/OrientedGravity
   distRaycastForNormalSwitch: 5
   stayHold: 0
   canJumpInAir: 1
@@ -1684,6 +1703,7 @@ MonoBehaviour:
   entityAttractor: {fileID: 3819143144908272473}
   groundCheck: {fileID: 2648358779095376182}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityJump: {fileID: 6166077617058031261}
   magicTrajectoryCorrection: 1.4
   infoJump:
     didWeHit: 0
@@ -1805,10 +1825,12 @@ MonoBehaviour:
   rbEntity: {fileID: 3959034400415941276}
   entityAction: {fileID: 6166077617058031262}
   groundCheck: {fileID: 2648358779095376182}
+  entityController: {fileID: 3347777260606228085}
   gravityAttractorMode: 0
   pointInfo:
     pos: {x: 0, y: 0, z: 0}
-    gravityRatio: 0
+    gravityBaseRatio: 0
+    gravityDownRatio: 0
     noGravity: 0
   gravityAttractor: {fileID: 0}
   sphereGravity: {x: 0, y: 0, z: 0}
@@ -1871,6 +1893,7 @@ MonoBehaviour:
   timeBeforeCanAirMove: 0.1
   dotForward: 0.7
   ratioWhenGravityAirMove: 1
+  limitAirMoveCalculation: 2000
   rb: {fileID: 3959034400415941276}
   entityController: {fileID: 3347777260606228085}
   entityAction: {fileID: 6166077617058031262}
@@ -1879,6 +1902,7 @@ MonoBehaviour:
   entityJump: {fileID: 6166077617058031261}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
   entityJumpCalculation: {fileID: 4078160021669779806}
+  amountAdded: 0
 --- !u!114 &2648358779095376201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,6 +2015,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityAttractor: {fileID: 3819143144908272473}
+  fastForward: {fileID: 6729321841502290180}
+  entityController: {fileID: 3347777260606228085}
+  wereWeInNoGravity: 0
   currentRatioGravity: 1
   zonesNoGravity: []
 --- !u!1 &3347963761015549839
@@ -2199,7 +2226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959034400415941278}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 71.7, y: 0, z: 68.49}
+  m_LocalPosition: {x: -1.76, y: 0, z: -7.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343004304122239355}

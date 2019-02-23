@@ -40,6 +40,8 @@ public class EntityContactSwitch : MonoBehaviour
     private EntityJump entityJump;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntityBumpUp entityBumpUp;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForwardWall = false;
@@ -63,6 +65,17 @@ public class EntityContactSwitch : MonoBehaviour
         return (coolDownForward.IsReady());
     }
 
+    private bool IsForbidenLayerSwitch(string layer)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, layer);
+        if (isForbidden != -1)
+        {
+            //here we are in front of a forbidden wall !!
+            return (true);
+        }
+        return (false);
+    }
+
     private void ForwardWallCheck()
     {
         RaycastHit hitInfo;
@@ -81,10 +94,11 @@ public class EntityContactSwitch : MonoBehaviour
         {
             if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
                 && !entityGravityAttractorSwitch.IsNormalOk(hitInfo.transform, hitInfo.normal))
-            {
-                Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
+            {                
+                //Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
                 isForwardWall = true;
                 isForbiddenForward = true;
+                entityBumpUp.HereBumpUp();
                 return;
             }
 
@@ -106,11 +120,12 @@ public class EntityContactSwitch : MonoBehaviour
                 return;
             }
 
-            int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-            if (isForbidden != -1)
+            //int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+            if (IsForbidenLayerSwitch(LayerMask.LayerToName(hitInfo.transform.gameObject.layer)))
             {
                 //here we are in front of a forbidden wall !!
                 isForbiddenForward = true;
+                entityBumpUp.HereBumpUp();
             }
             else
             {

@@ -100,6 +100,8 @@ public class EntityJumpCalculation : MonoBehaviour
     private GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityJump entityJump;
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
@@ -209,9 +211,11 @@ public class EntityJumpCalculation : MonoBehaviour
                 dirRaycast = entityController.GetFocusedForwardDirPlayer();
                 lastPoint = infoJump.ultimatePlotPoint;
                 //lastPoint pas utile de le mettre ?
-                hit = DoSphereCast(lastPoint, dirRaycast, distRaycastSIDE * entityAction.GetMagnitudeInput(), entityController.layerMask);
+                float realInputForward = entityJump.GetLastJumpForwardVelocity();
+                hit = DoSphereCast(lastPoint, dirRaycast, distRaycastSIDE * realInputForward, entityController.layerMask);
                 if (hit)
                 {
+                    Debug.LogWarning("c'est ici qu'on dit true !");
                     longEndRaycastHit = true;
                 }                    
             }

@@ -38,8 +38,10 @@ public class EntityAirMove : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityJumpCalculation entityJumpCalculation;
 
-    protected FrequencyCoolDown coolDownJump = new FrequencyCoolDown();
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody"), ReadOnly]
     protected float amountAdded = 0f;
+
+    protected FrequencyCoolDown coolDownJump = new FrequencyCoolDown();
 
     /// <summary>
     /// move with input
