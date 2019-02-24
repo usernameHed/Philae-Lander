@@ -218,38 +218,7 @@ public class GravityAttractorEditor : MonoBehaviour
         }
 
         SetAllPointToArray();
-
-        CleanHoldEmptyChild();
     }
-
-
-    private void CleanHoldEmptyChild()
-    {
-        Debug.Log("do a clean in ALL gravityAttractor in the same time ??");
-        /*
-        foreach (Transform child in parentAlones)
-        {
-            if (!allGravityPoint.Contains(child))
-                GameObject.DestroyImmediate(child.gameObject);
-        }
-        foreach (Transform child in parentLines)
-        {
-            if (!allGravityPoint.Contains(child))
-                GameObject.DestroyImmediate(child.gameObject);
-        }
-        foreach (Transform child in parentTriangles)
-        {
-            if (!allGravityPoint.Contains(child))
-                GameObject.DestroyImmediate(child.gameObject);
-        }
-        foreach (Transform child in parentQuad)
-        {
-            if (!allGravityPoint.Contains(child))
-                GameObject.DestroyImmediate(child.gameObject);
-        }
-        */
-    }
-
 
     public int GetLenghtOfAllPoints()
     {

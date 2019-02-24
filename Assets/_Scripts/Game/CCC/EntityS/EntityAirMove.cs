@@ -50,15 +50,25 @@ public class EntityAirMove : MonoBehaviour
     public void MovePhysics(Vector3 direction)
     {
         amountAdded += (direction * entityAction.GetMagnitudeInput()).sqrMagnitude;
-        Debug.Log("Amount added: " + amountAdded);
+        //Debug.Log("Amount added: " + amountAdded);
 
         UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
+    }
+
+    public void ResetAirMove()
+    {
+        amountAdded = 0f;
     }
 
     public void JustJumped()
     {
         coolDownJump.StartCoolDown(timeBeforeCanAirMove);
-        amountAdded = 0f;
+        ResetAirMove();
+    }
+
+    public void OnGrounded()
+    {
+        ResetAirMove();
     }
 
     private float GetRatioAirMove()
@@ -90,7 +100,7 @@ public class EntityAirMove : MonoBehaviour
             //Debug.Log("value Substract: " + valueSubstract);
             dirMove = dirMove * valueSubstract;
         }
-        Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
+        //Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
 
         MovePhysics(dirMove * GetRatioAirMove());
     }
@@ -126,6 +136,4 @@ public class EntityAirMove : MonoBehaviour
             AirMovePlayer();
         }
     }
-
-    
 }

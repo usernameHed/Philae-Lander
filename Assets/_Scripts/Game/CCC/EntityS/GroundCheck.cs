@@ -31,7 +31,8 @@ public class GroundCheck : MonoBehaviour
     private FastForward fastForward;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
-
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    private EntityBumpUp entityBumpUp;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityNoGravity entityNoGravity;
 
@@ -179,13 +180,7 @@ public class GroundCheck : MonoBehaviour
 
             if (!entityGravityAttractorSwitch.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
             {
-                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
-                //if (isGrounded || isAlmostGrounded)
-                //{
-                    //SetFlying();
-                    //TODO: do'nt groundcheck     
-                    //groundValue = false;
-                //}                    
+                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");                  
                 return;
             }
             
@@ -238,6 +233,13 @@ public class GroundCheck : MonoBehaviour
         }
         else
         {
+            if (entityBumpUp.IsBumpingGroundUp())
+            {
+                Debug.Log("continiue to be grounded for now...");
+                isGrounded = true;
+                return;
+            }
+
             GroundChecking(stickToFloorDist, ref isAlmostGrounded, playerGravity.GetMainAndOnlyGravity() * -0.01f);
             if (!isAlmostGrounded && !entityNoGravity.IsBaseOrMoreRatio())
             {

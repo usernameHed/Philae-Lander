@@ -113,7 +113,7 @@ public static class ExtUtilityFunction
             return (hit.normal);
         }
         //Debug.DrawRay(origin, direction.normalized * (magnitude + rayCastMargin));
-        Debug.LogWarning("we are not suppose to miss that one...");
+        //Debug.LogWarning("we are not suppose to miss that one...");
         return (Vector3.zero);
     }
 

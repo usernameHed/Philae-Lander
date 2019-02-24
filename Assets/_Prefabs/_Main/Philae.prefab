@@ -1414,6 +1414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainReferenceObjectDirection: {fileID: 0}
+  entityBumpUp: {fileID: 8453409706159919432}
   moveInput: {x: 0, y: 0}
   Jump: 0
   JumpUp: 0
@@ -1449,6 +1450,7 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   fastForward: {fileID: 6729321841502290180}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityBumpUp: {fileID: 8453409706159919432}
   entityNoGravity: {fileID: 7161600972230661157}
   isGrounded: 0
   isAlmostGrounded: 0
@@ -1488,10 +1490,12 @@ MonoBehaviour:
   entityJumpCalculation: {fileID: 4078160021669779806}
   entityJump: {fileID: 6166077617058031261}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityBumpUp: {fileID: 8453409706159919432}
   isForwardWall: 0
   isForbiddenForward: 0
   isBackwardWall: 0
   isForbiddenBackward: 0
+  collRayCastMargin: 0.1
 --- !u!114 &6729321841502290180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,6 +1546,7 @@ MonoBehaviour:
   entityController: {fileID: 3347777260606228085}
   entityAction: {fileID: 6166077617058031262}
   rb: {fileID: 3959034400415941276}
+  entityBumpUp: {fileID: 8453409706159919432}
 --- !u!114 &8453409706159919432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,6 +1559,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea765e49735f8494f82106140d84d239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeWeCanBumpUp: 0.2
+  dotMargin: 0.5
+  upDistRaycast: 0.1
+  lateralDistRaycast: 0.3
+  distForwardRaycast: 1
+  marginMagnitudeForBump: 0.5
+  boostHeight: 1
+  entityController: {fileID: 3347777260606228085}
+  entityGravity: {fileID: 4342663178068225343}
+  entityAirMove: {fileID: 2865919325064851209}
+  rb: {fileID: 3959034400415941276}
+  entityJump: {fileID: 6166077617058031261}
+  entityJumpCalculation: {fileID: 4078160021669779806}
+  entityAction: {fileID: 6166077617058031262}
+  hasBumpedUp: 0
+  timeBeforeResetBumpUpGround: 0.1
+  isBumpingGroundUp: 0
 --- !u!114 &3347777260606228085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,6 +1607,8 @@ MonoBehaviour:
   fastForward: {fileID: 6729321841502290180}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
   entityNoGravity: {fileID: 7161600972230661157}
+  entityBumpUp: {fileID: 8453409706159919432}
+  entityAirMove: {fileID: 2865919325064851209}
   moveState: 0
   layerMask: -1
   deathVibration:
@@ -1650,6 +1674,7 @@ MonoBehaviour:
   fastForward: {fileID: 6729321841502290180}
   playerAirMove: {fileID: 2865919325064851209}
   entityGravityAttractorSwitch: {fileID: 378111692992343084}
+  entityBumpUp: {fileID: 8453409706159919432}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -1669,6 +1694,7 @@ MonoBehaviour:
     strenthRight: 0.3
     durationRight: 0.1
   playerController: {fileID: 3347777260606228085}
+  playerInput: {fileID: 6166077617058031262}
 --- !u!114 &4078160021669779806
 MonoBehaviour:
   m_ObjectHideFlags: 0

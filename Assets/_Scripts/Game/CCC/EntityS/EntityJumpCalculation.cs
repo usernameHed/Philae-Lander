@@ -122,6 +122,13 @@ public class EntityJumpCalculation : MonoBehaviour
 
         return (true);
     }
+    public bool CanDoBumpUp()
+    {
+        if (infoJump.jumpType == InfoJump.JumpType.TO_SIDE)
+            return (false);
+
+        return (true);
+    }
 
     /// <summary>
     /// calculate trajectory of entity
@@ -154,7 +161,7 @@ public class EntityJumpCalculation : MonoBehaviour
             pos += moveStep;// * timestep;
 
             results[i] = pos;
-            ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 5f);
+            //ExtDrawGuizmos.DebugWireSphere(pos, Color.white, 0.1f, 5f);
         }
         return (results);
     }
@@ -215,14 +222,14 @@ public class EntityJumpCalculation : MonoBehaviour
                 hit = DoSphereCast(lastPoint, dirRaycast, distRaycastSIDE * realInputForward, entityController.layerMask);
                 if (hit)
                 {
-                    Debug.LogWarning("c'est ici qu'on dit true !");
+                    //Debug.LogWarning("c'est ici qu'on dit true !");
                     longEndRaycastHit = true;
                 }                    
             }
             else
             {
                 int indexPoint = ((infoPlot.Length / depth) * (i + 1)) - 1;
-                Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
+                //Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
                 lastPoint = infoPlot[indexPoint];
 
                 dirRaycast = lastPoint - prevPos;
@@ -396,7 +403,7 @@ public class EntityJumpCalculation : MonoBehaviour
             Debug.Log("not good layer for jumping !");
             return (false);
         }
-        if (!entityGravityAttractorSwitch.CanDoSideJump(infoJump.objHit))
+        if (!entityGravityAttractorSwitch.CanDoSideJump(infoJump.objHit, infoJump.normalHit))
         {
             Debug.Log("No: GA say not to side Jump !");
             return (false);

@@ -28,6 +28,7 @@ public class PlayerInput : EntityAction
     public PlayerController PlayerController { get { return (playerController); } }
     
 
+    
     private bool enableScript = true;
 
     private void OnEnable()

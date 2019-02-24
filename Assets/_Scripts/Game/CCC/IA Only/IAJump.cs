@@ -11,25 +11,6 @@ public class IAJump : EntityJump
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private IAController iaController;
 
-    private bool CanJump()
-    {
-        //can't jump in air
-        if (!canJumpInAir && iaController.GetMoveState() == EntityController.MoveState.InAir)
-            return (false);
-
-        if (hasJumped)
-            return (false);
-
-        //don't jump if we just grounded
-        if (!coolDownOnGround.IsReady())
-            return (false);
-
-        if (!entityContactSwitch.IsCoolDownSwitchReady())
-            return (false);
-
-        return (true);
-    }
-
     /// <summary>
     /// called when grounded (after a jump, or a fall !)
     /// </summary>
@@ -60,21 +41,26 @@ public class IAJump : EntityJump
 
         if (entityAction.Jump && CanJump())
         {
-            coolDownWhenJumped.StartCoolDown(justJumpedTimer);
-            iaController.ChangeState(EntityController.MoveState.InAir);
-
-            ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
-            SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_start.ToString() + rb.transform.GetInstanceID());
-
-
-            rb.ClearVelocity();
-            entityAttractor.CreateAttractor();
-
-            base.DoJump();
-
-            hasJumped = true;
-            //Debug.Break();
+            DoTheJump(1);
         }
+    }
+
+    public void DoTheJump(float boostHeight)
+    {
+        coolDownWhenJumped.StartCoolDown(justJumpedTimer);
+        iaController.ChangeState(EntityController.MoveState.InAir);
+
+        ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
+        SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_start.ToString() + rb.transform.GetInstanceID());
+
+
+        rb.ClearVelocity();
+        entityAttractor.CreateAttractor();
+
+        base.DoJump(boostHeight);
+
+        hasJumped = true;
+        //Debug.Break();
     }
 
     private void Update()

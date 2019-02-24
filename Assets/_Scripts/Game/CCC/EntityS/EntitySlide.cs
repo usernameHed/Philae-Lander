@@ -20,6 +20,8 @@ public class EntitySlide : MonoBehaviour
     private EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntityBumpUp entityBumpUp;
 
     [FoldoutGroup("Debug"), ReadOnly, Tooltip("main Straff direction")]
     private Vector3 playerStraff = Vector3.zero;
@@ -55,7 +57,7 @@ public class EntitySlide : MonoBehaviour
     public void CalculateStraffDirection(Vector3 normalHit)
     {
         Vector3 playerDir = entityController.GetFocusedForwardDirPlayer();
-
+        //Debug.Log("ici calcul straff");
         //Debug.DrawRay(rb.transform.position, normalHit, Color.magenta, 5f);
         //Debug.DrawRay(rb.transform.position, playerDir, Color.red, 5f);
 
@@ -63,14 +65,21 @@ public class EntitySlide : MonoBehaviour
         float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
 
         //here the slope is nice for normal forward ?
-        if (1 - dotWrongSide < dotMarginNiceSlope)
+        if (entityBumpUp.IsBumpingGroundUp())
         {
-            Debug.Log("nice slope, do nothing: dot: " + dotWrongSide + "(max: " + dotMarginNiceSlope + ")");
+            //Debug.LogWarning("here bump up, go forward or upwards ??");
+            Vector3 forwardPlayer = entityController.GetFocusedForwardDirPlayer();
+            //playerStraff = upPlayer + forwardPlayer;
+            playerStraff = upPlayer;
+        }
+        else if (1 - dotWrongSide < dotMarginNiceSlope)
+        {
+            //Debug.Log("nice slope, do nothing: dot: " + dotWrongSide + "(max: " + dotMarginNiceSlope + ")");
             playerStraff = entityController.GetFocusedForwardDirPlayer();
         }
         else
         {
-            Debug.Log("can straff !");
+            //Debug.Log("can straff !");
             Vector3 relativeDirPlayer = entityAction.GetRelativeDirection();
             float dotRight = 0f;
             float dotLeft = 0f;
@@ -90,7 +99,7 @@ public class EntitySlide : MonoBehaviour
             }
             else
             {
-                Debug.LogError("forward ???");
+                //Debug.LogError("forward ???");
                 playerStraff = Vector3.zero;
             }
         }

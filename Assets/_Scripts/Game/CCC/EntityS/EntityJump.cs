@@ -169,6 +169,14 @@ public class EntityJump : MonoBehaviour
     }
 
     /// <summary>
+    /// called by entityBumpUp
+    /// </summary>
+    public void ResetInitialJumpDir()
+    {
+        lastVelocityJump = 0f;
+    }
+
+    /// <summary>
     /// return the normalized jump dir()
     /// </summary>
     /// <returns></returns>
@@ -199,10 +207,10 @@ public class EntityJump : MonoBehaviour
     /// <summary>
     /// do a jump
     /// </summary>
-    protected void DoJump()
+    protected void DoJump(float boostHeight)
     {
         Vector3 dirJump = GetNormalizedJumpDir();
-        Vector3 orientedStrenghtJump = AddJumpHeight(dirJump);
+        Vector3 orientedStrenghtJump = AddJumpHeight(dirJump, boostHeight);
 
         rb.velocity = orientedStrenghtJump;
 

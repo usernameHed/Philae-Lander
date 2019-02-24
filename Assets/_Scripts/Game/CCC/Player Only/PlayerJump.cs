@@ -12,6 +12,8 @@ public class PlayerJump : EntityJump
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerController playerController;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private PlayerInput playerInput;
 
     private void JumpManager()
     {
@@ -31,27 +33,32 @@ public class PlayerJump : EntityJump
 
         if (entityAction.Jump && CanJump())
         {
-            coolDownWhenJumped.StartCoolDown(justJumpedTimer);
-            playerController.ChangeState(EntityController.MoveState.InAir);
-
-            Debug.Log("jump !");
-            
-            rb.ClearVelocity();
-            entityAttractor.CreateAttractor();
-
-            SoundManager.Instance.PlaySound(GameData.Sounds.Player_Thruster.ToString());
-            SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
-            playerController.animator.SetBool("isJUMP", true);
-
-            base.DoJump();
-            Vibrate();
-
-            if (!stayHold)
-                jumpStop = true;
-            
-            hasJumped = true;
-            //Debug.Break();
+            DoTheJump(1, false);
         }
+    }
+
+    public void DoTheJump(float boostHeight, bool fromCode)
+    {
+        coolDownWhenJumped.StartCoolDown(justJumpedTimer);
+        playerController.ChangeState(EntityController.MoveState.InAir);
+
+        Debug.Log("jump !");
+
+        rb.ClearVelocity();
+        entityAttractor.CreateAttractor();
+
+        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Thruster.ToString());
+        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
+        playerController.animator.SetBool("isJUMP", true);
+
+        base.DoJump(boostHeight);
+        Vibrate();
+
+        if (!stayHold && !fromCode)
+            jumpStop = true;
+
+        hasJumped = true;
+        //Debug.Break();
     }
 
 

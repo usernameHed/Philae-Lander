@@ -58,6 +58,7 @@ public class EntityMove : MonoBehaviour
             && entityJump.IsJumpCoolDebugDownReady())
         {
             MovePlayer();
+            
         }
     }
 

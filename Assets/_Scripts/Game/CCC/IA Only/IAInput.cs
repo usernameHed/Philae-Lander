@@ -18,8 +18,6 @@ public class IAInput : EntityAction
     {
         //all axis
         moveInput = new Vector2(ExtRandom.GetRandomNumber(-1f, 1f), ExtRandom.GetRandomNumber(-1f, 1f));
-
-        
     }
 
     public void SetRandomJump()

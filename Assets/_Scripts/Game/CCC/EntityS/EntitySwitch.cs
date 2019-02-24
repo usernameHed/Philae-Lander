@@ -44,7 +44,7 @@ public class EntitySwitch : MonoBehaviour
     private void OverlapTest()
     {
         int number = Physics.OverlapSphereNonAlloc(entityController.rb.position, radiusOverlap, results, layermask, QueryTriggerInteraction.Ignore);
-        ExtDrawGuizmos.DebugWireSphere(entityController.rb.position, Color.blue, radiusOverlap, 0.1f);
+        //ExtDrawGuizmos.DebugWireSphere(entityController.rb.position, Color.blue, radiusOverlap, 0.1f);
         for (int i = 0; i < number; i++)
         {
             //if (groundCheck.GetLastPlatform() && results[i].transform.GetInstanceID() == groundCheck.GetLastPlatform().GetInstanceID())

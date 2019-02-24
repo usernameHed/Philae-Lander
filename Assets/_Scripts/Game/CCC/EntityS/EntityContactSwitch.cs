@@ -51,6 +51,8 @@ public class EntityContactSwitch : MonoBehaviour
     private bool isBackwardWall = false;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForbiddenBackward = false;
+    [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
+    public float collRayCastMargin = 0.1f;
 
 
     private FrequencyCoolDown coolDownForward = new FrequencyCoolDown();
@@ -95,10 +97,20 @@ public class EntityContactSwitch : MonoBehaviour
             if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
                 && !entityGravityAttractorSwitch.IsNormalOk(hitInfo.transform, hitInfo.normal))
             {                
-                //Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
+                Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
                 isForwardWall = true;
                 isForbiddenForward = true;
-                entityBumpUp.HereBumpUp(hitInfo);
+
+                Vector3 dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+                                entityController.GetFocusedForwardDirPlayer(),
+                                distForward,
+                                sizeRadiusForward,
+                                hitInfo.point,
+                                collRayCastMargin,
+                                entityController.layerMask);
+
+                entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
+                entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
                 return;
             }
 
@@ -125,7 +137,14 @@ public class EntityContactSwitch : MonoBehaviour
             {
                 //here we are in front of a forbidden wall !!
                 isForbiddenForward = true;
-                entityBumpUp.HereBumpUp(hitInfo);
+                Vector3 dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+                               entityController.GetFocusedForwardDirPlayer(),
+                               distForward,
+                               sizeRadiusForward,
+                               hitInfo.point,
+                               collRayCastMargin,
+                               entityController.layerMask);
+                entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
             }
             else
             {
@@ -137,7 +156,7 @@ public class EntityContactSwitch : MonoBehaviour
                 {
                     //HERE FORWARD, DO SWITCH !!
                     coolDownForward.StartCoolDown(timeBetween2TestForward);
-                    //Debug.Log("forward");
+                    Debug.Log("forward");
                     groundCheck.SetForwardWall(hitInfo);
                     
                     isForbiddenForward = false;

@@ -41,6 +41,8 @@ public class EntityController : MonoBehaviour
     protected EntityNoGravity entityNoGravity;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntityBumpUp entityBumpUp;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    protected EntityAirMove entityAirMove;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;

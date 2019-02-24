@@ -39,6 +39,7 @@ public class EntityGravity : MonoBehaviour
 
     [FoldoutGroup("Switch"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
     private bool isGoingDown = false;
+    public bool IsGoingDown() => isGoingDown;
 
     //[FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
     //private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
@@ -205,7 +206,7 @@ public class EntityGravity : MonoBehaviour
                 break;
             case OrientationPhysics.GRAVITY_ATTRACTOR:
                 //TODO:
-                entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity);
+                entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity, false);
                 mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
                 //mainAndOnlyGravity = groundCheck.GetDirLastNormal();
                 break;

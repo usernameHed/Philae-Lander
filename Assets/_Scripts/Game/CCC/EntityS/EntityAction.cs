@@ -9,6 +9,8 @@ public class EntityAction : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform mainReferenceObjectDirection;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    protected EntityBumpUp entityBumpUp;
 
     [FoldoutGroup("Debug"), Tooltip("input for moving player horizontally"), ReadOnly]
     public Vector2 moveInput;

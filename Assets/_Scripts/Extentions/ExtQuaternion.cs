@@ -68,18 +68,18 @@ public static class ExtQuaternion
 
         dotRight = DotProduct(right, toGoDir);
         dotLeft = DotProduct(left, toGoDir);
-        Debug.Log("left: " + dotLeft + ", right: " + dotRight);
+        //Debug.Log("left: " + dotLeft + ", right: " + dotRight);
         if (dotRight > 0)
         {
-            Debug.Log("go right");
+            //Debug.Log("go right");
             return (1);
         }
         else if (dotLeft > 0)
         {
-            Debug.Log("go left");
+            //Debug.Log("go left");
             return (-1);
         }
-        Debug.Log("go pls");
+        //Debug.Log("go pls");
         return (0);
     }
 

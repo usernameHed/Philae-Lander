@@ -115,18 +115,25 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     /// previously in airMove, AND the layer is still an yellow GA
     /// </summary>
     /// <returns></returns>
-    public bool CanDoSideJump(Transform objHit)
+    public bool CanDoSideJump(Transform objHit, Vector3 normalHit)
     {
-        bool canDo = !((gravityAttractorMode && IsAirAttractorLayer(objHit.gameObject.layer)));
-        Debug.Log("can du: " + canDo);
-        return (canDo);
+        //bool canDo = !((gravityAttractorMode && IsAirAttractorLayer(objHit.gameObject.layer)));
+
+        if (/*!gravityAttractorMode && */IsAirAttractorLayer(objHit.gameObject.layer)/* && IsNormalOk(objHit, normalHit)*/)
+        {
+            Debug.LogWarning("ici on peut pas faire un side jump, ");
+            return (false);
+        }
+
+        Debug.Log("can do side jump switchesss");
+        return (true);
     }
 
     private Vector3 GetTmpSphereGravityForAPoint(Transform objHit, Vector3 posToTest)
     {
         GravityAttractor tmpOld = gravityAttractor;
         TryToSetNewGravityAttractor(objHit);
-        CalculateSphereGravity(rbEntity.position);
+        CalculateSphereGravity(rbEntity.position, true);
         Vector3 tmpSphereGravity = sphereGravity;
         
         if (tmpOld != null)
@@ -144,13 +151,17 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     {
         Vector3 tmpSphereGravity = sphereGravity;
 
-        if (!gravityAttractor)
-        {
+        //if (!gravityAttractor)
+        //{
             //TODO: here calculate the gravity...
             tmpSphereGravity = GetTmpSphereGravityForAPoint(objHit, rbEntity.position);
-        }
+        //}
+
+        Debug.DrawRay(rbEntity.position, normalHit, Color.blue, 5f);
+        Debug.DrawRay(rbEntity.position, tmpSphereGravity, Color.black, 5f);
 
         float dotDiff = ExtQuaternion.DotProduct(normalHit, tmpSphereGravity);
+        //Debug.Log("dot diff: " + dotDiff);
         if (dotDiff > marginDotGA)
         {
             //Debug.Log("ok normal correct for moving...");
@@ -244,7 +255,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
         gravityAttractorMode = true;
 
-        CalculateSphereGravity(rbEntity.position);
+        CalculateSphereGravity(rbEntity.position, false);
     }
 
     /// <summary>
@@ -258,15 +269,22 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         gravityAttractorMode = false;
     }
 
-    public void CalculateSphereGravity(Vector3 posEntity)
+    /// <summary>
+    /// calculate the gravity based on a point
+    /// chose the jump normal at first, and then calculate
+    /// if fromScript is true, always calculate
+    /// </summary>
+    public void CalculateSphereGravity(Vector3 posEntity, bool calculateNow = false)
     {
-        if (coolDownBeforeActiveAtractor.IsRunning())
+        if (coolDownBeforeActiveAtractor.IsRunning() && !calculateNow)
         {
+            //Debug.Log("ici ?");
             //sphereGravity = groundCheck.GetDirLastNormal();
             sphereGravity = lastNormalJumpChoosen;
         }
         else
         {
+            //Debug.Log("ou la ?");
             pointInfo = gravityAttractor.FindNearestPoint(posEntity);
             sphereGravity = (posEntity - pointInfo.pos).normalized;
         }
