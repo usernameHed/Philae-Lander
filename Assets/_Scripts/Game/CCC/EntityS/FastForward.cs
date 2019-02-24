@@ -16,23 +16,22 @@ public class FastForward : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] dontLayer = new string[] { "Walkable/Dont" };
 
-
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityJump entityJump;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityGravity entityGravity;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityAttractor entityAttractor;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private GameObject ikillableObject;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityAction entityAction;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityController entityController = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityJump entityJump = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityGravity entityGravity = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityAttractor entityAttractor = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private GameObject ikillableObject = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private GroundCheck groundCheck = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private Rigidbody rb = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityAction entityAction = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private bool fastForward = false;

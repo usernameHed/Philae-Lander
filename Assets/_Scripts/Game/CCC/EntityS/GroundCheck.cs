@@ -18,23 +18,23 @@ public class GroundCheck : MonoBehaviour
     public string[] dontLayer = new string[] { "Walkable/Dont" };
 
     [FoldoutGroup("Object"), SerializeField]
-    private SphereCollider sphereCollider;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityGravity playerGravity;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityJump entityJump;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private FastForward fastForward;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityBumpUp entityBumpUp;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityNoGravity entityNoGravity;
+    private SphereCollider sphereCollider = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private Rigidbody rb = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityGravity playerGravity = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityJump entityJump = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityController entityController = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private FastForward fastForward = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityBumpUp entityBumpUp = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityNoGravity entityNoGravity = null;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;

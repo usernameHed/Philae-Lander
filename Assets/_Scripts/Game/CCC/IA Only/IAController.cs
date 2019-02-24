@@ -40,17 +40,13 @@ public class IAController : EntityController, IPooledObject, IKillable
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
     private float distForChase = 100f;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private float distForTriggerChangePlanet = 20f;
+    public Rigidbody rigidBodyRef = null;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    public Rigidbody rigidBodyRef;
+    public Transform objRotateRef = null;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    public Transform objRotateRef;
-    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private IAJump iAJump;
-    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private IAInput iAInput;
+    private IAJump iAJump = null;
     [FoldoutGroup("GamePlay"), MinMaxSlider(0, 50), Tooltip("movement speed when we are wandering"), SerializeField]
-    private Vector2 iaScream;
+    private Vector2 iaScream = new Vector2(0, 50);
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private State interactionState = State.WANDER;

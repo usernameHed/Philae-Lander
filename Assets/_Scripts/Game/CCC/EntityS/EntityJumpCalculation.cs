@@ -58,22 +58,16 @@ public struct InfoJump
 
 public class EntityJumpCalculation : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
-    private float radiusSphereCast = 0.4f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastSIDE = 5f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
-    private float distRaycastUP = 3f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastDOWN = 3f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
-    private float distRaycastHOLE = 5f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private string[] layerNoSideJump = new string[] { "Walkable/NoSide" };
     //[FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     //private float minDistAcceptedForGoingUp = 5f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
-    private float timeFeforeCalculateAgainJump = 0.5f;
+//[FoldoutGroup("GamePlay"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
+//private float timeFeforeCalculateAgainJump = 0.5f;
     [FoldoutGroup("GamePlay"), Range(0f, 0.8f), SerializeField, Tooltip("margin slope for SIDE jump")]
     private float marginSideSlope = 0.5f;
     [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
@@ -84,24 +78,21 @@ public class EntityJumpCalculation : MonoBehaviour
     private float marginJumpEndDotRight = 0.5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityController entityController;
+    private EntityController entityController = null;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Transform playerLocalyRotate;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb;
+    private Rigidbody rb = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAction entityAction;
-    
+    private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravity playerGravity;
+    private EntityGravity playerGravity = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAttractor entityAttractor;
+    private EntityAttractor entityAttractor = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private GroundCheck groundCheck;
+    private GroundCheck groundCheck = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJump entityJump;
+    private EntityJump entityJump = null;
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;

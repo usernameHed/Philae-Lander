@@ -18,7 +18,7 @@ public class KillTrigger : MonoBehaviour
 	private bool killOnExit = false;
 
     [SerializeField]
-    private SphereCollider sphereCollider;
+    private SphereCollider sphereCollider = null;
 
 
     private void OnTriggerEnter(Collider other)

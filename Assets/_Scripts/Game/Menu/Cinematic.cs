@@ -10,9 +10,7 @@ using UnityEngine.Video;
 public class Cinematic : SingletonMono<Cinematic>
 {
     [SerializeField]
-    private TextMeshProUGUI text;
-    [SerializeField]
-    private VideoPlayer video;
+    private VideoPlayer video = null;
 
     private void OnEnable()
     {

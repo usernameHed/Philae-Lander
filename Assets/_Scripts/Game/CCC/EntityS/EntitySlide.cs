@@ -13,15 +13,15 @@ public class EntitySlide : MonoBehaviour
     private Vector2 minMaxMagnitude = new Vector2(0f, 0.7f);
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityGravity playerGravity;
+    private EntityGravity playerGravity = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityController entityController;
+    private EntityController entityController = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityAction entityAction;
+    private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb;
+    private Rigidbody rb = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityBumpUp entityBumpUp;
+    private EntityBumpUp entityBumpUp = null;
 
     [FoldoutGroup("Debug"), ReadOnly, Tooltip("main Straff direction")]
     private Vector3 playerStraff = Vector3.zero;

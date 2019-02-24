@@ -6,14 +6,12 @@ using UnityEngine;
 public class PlayerJump : EntityJump
 {
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
-    private Vibration onJump;
+    private Vibration onJump = new Vibration();
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on se pose"), SerializeField]
-    private Vibration onGrounded;
+    private Vibration onGrounded = new Vibration();
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerController playerController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerInput playerInput;
+    private PlayerController playerController = null;
 
     private void JumpManager()
     {

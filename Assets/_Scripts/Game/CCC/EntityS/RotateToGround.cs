@@ -6,7 +6,7 @@ using UnityEngine;
 public class RotateToGround : MonoBehaviour
 {
     [FoldoutGroup("Object"), Tooltip("ref object to rotate"), SerializeField]
-    private GameObject rbObject;
+    private GameObject rbObject = null;
 
     protected void InstantRotate(Vector3 dirSmoothedNormal)
     {

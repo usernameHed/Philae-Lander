@@ -6,18 +6,14 @@ using UnityEngine;
 public class EntityAttractor : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityGravity playerGravity;
+    private EntityGravity playerGravity = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private GroundCheck groundCheck;
+    private EntityController entityController = null;
     
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntitySwitch entitySwitch;
+    private FastForward fastForward = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private FastForward fastForward;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityNoGravity entityNoGravity;
+    private EntityNoGravity entityNoGravity = null;
 
     [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("")]
     private float timeBeforeActiveAttractorInAir = 0.8f;
@@ -28,13 +24,6 @@ public class EntityAttractor : MonoBehaviour
     private float gravityAttractor = 2f;
     [FoldoutGroup("Air Attractor"), Tooltip("default air gravity"), SerializeField]
     private float speedLerpAttractor = 5f;
-
-    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("ref script")]
-    private float distAllowedForNormalGravity = 10f;
-    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("raycast to ground layer")]
-    private float distSpherecastForLightAttractor = 5f;
-    [FoldoutGroup("Air Attractor"), SerializeField, Tooltip("raycast to ground layer")]
-    private float radiusSphereCastForLightAttractor = 0.3f;
 
     [FoldoutGroup("Air Attractor"), Tooltip("position de l'attractpoint"), SerializeField]
     public float lengthPositionAttractPoint = 1f;    //position de l'attract point par rapport à la dernier position / normal

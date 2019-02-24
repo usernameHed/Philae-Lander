@@ -10,10 +10,10 @@ public class InitialVelocity : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
     private float initialAngularVelocity = 30f;
     [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
-    private Transform dirObject;
+    private Transform dirObject = null;
 
     [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
-    private Rigidbody rb;
+    private Rigidbody rb = null;
 
     private void Awake ()
     {

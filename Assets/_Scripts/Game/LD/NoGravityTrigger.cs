@@ -14,7 +14,7 @@ public class NoGravityTrigger : MonoBehaviour
     private List<TagAccess.TagAccessEnum> tagList = new List<TagAccess.TagAccessEnum>() { TagAccess.TagAccessEnum.Player, TagAccess.TagAccessEnum.Enemy};
 
     [SerializeField]
-    private SphereCollider sphereCollider;
+    private SphereCollider sphereCollider = null;
 
     private void OnTriggerEnter(Collider other)
     {

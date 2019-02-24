@@ -20,7 +20,7 @@ public class ObjectsPooler : SingletonMono<ObjectsPooler>
     }
 
     [FoldoutGroup("GamePlay"), Tooltip("new pool"), SerializeField]
-    private List<Pool> pools;
+    private List<Pool> pools = new List<Pool>();
 
     private Dictionary<GameData.PoolTag, List<GameObject>> poolDictionary;
 

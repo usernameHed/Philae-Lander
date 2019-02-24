@@ -10,7 +10,7 @@ public class EntityRotateToGround : RotateToGround
     [FoldoutGroup("GamePlay"), Tooltip("speed of rotation to ground"), SerializeField, OnValueChanged("UpdateSpeed")]
     public float speedLerpRaulBack = 5f;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    private SmoothNormals smoothNormals;
+    private SmoothNormals smoothNormals = null;
 
     private float tmpSpeed;
 

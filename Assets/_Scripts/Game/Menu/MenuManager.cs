@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MenuManager : SingletonMono<MenuManager>
 {
     [SerializeField]
-    private List<Button> listButton;
+    private List<Button> listButton = new List<Button>();
 
 
     private void OnEnable()

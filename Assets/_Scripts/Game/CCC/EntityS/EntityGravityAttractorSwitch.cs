@@ -18,18 +18,12 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     public float timeBeforeActiveAttractor = 0.5f;
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private Rigidbody rbEntity;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityAction entityAction;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityController entityController;
+    private Rigidbody rbEntity = null;
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool gravityAttractorMode = false;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    private GravityAttractor.PointInfo pointInfo;
+    private GravityAttractor.PointInfo pointInfo = new GravityAttractor.PointInfo();
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private GravityAttractor gravityAttractor = null;
     

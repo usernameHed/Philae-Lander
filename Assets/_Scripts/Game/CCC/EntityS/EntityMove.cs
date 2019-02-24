@@ -12,20 +12,18 @@ public class EntityMove : MonoBehaviour
     [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("when we have a little input, set it to this value"), SerializeField]
     private float minInput = 0.15f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Transform objectRotateLocal;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityAction entityAction;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityJump entityJump;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityContactSwitch entityContactSwitch;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntitySlide entitySlide;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private Rigidbody rb = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityController entityController = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityAction entityAction = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityJump entityJump = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityContactSwitch entityContactSwitch = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntitySlide entitySlide = null;
     /// <summary>
     /// move with input
     /// </summary>

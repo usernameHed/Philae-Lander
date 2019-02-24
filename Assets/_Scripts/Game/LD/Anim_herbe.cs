@@ -5,15 +5,7 @@ using UnityEngine;
 public class Anim_herbe : MonoBehaviour
 {
     [SerializeField]
-    private Animator anim;
-
-    bool isBouge;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        isBouge = false;
-    }
+    private Animator anim = null;
 
     private void OnTriggerEnter(Collider other)
     {

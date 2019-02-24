@@ -10,10 +10,10 @@ public class Attractor : MonoBehaviour, IKillable
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private float gravityAdd = 5f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
-    private string[] layersRaycast;
+    private string[] layersRaycast = new string[] { "Player" };
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("raycast to ground layer")]
-    private EntityGravity playerGravity;
+    private EntityGravity playerGravity = null;
 
     
     private Collider[] overlapResults = new Collider[10];

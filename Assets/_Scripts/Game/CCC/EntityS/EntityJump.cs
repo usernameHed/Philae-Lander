@@ -13,10 +13,6 @@ public class EntityJump : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] noJumpLayer = new string[] { "Walkable/FastForward", "Walkable/Dont" };
 
-    [FoldoutGroup("Jump Gravity"), SerializeField, Tooltip("raycast to ground layer")]
-    private float distRaycastForNormalSwitch = 5f;
-
-
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     protected bool stayHold = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
@@ -60,8 +56,6 @@ public class EntityJump : MonoBehaviour
     protected float justJumpedTimer = 0.1f;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected float justGroundTimer = 0.1f;
-    [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
-    private float magicTrajectoryCorrection = 1.4f;
 
     protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();

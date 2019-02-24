@@ -16,8 +16,6 @@ public class EntityGravity : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     private float gravity = 9.81f;
     public float Gravity { get { return (gravity); } }
-    [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
-    private float magicTrajectoryCorrection = 1.4f;
     //[FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     //private float magicTrajectoryCorrectionRatio = 1f;
 
@@ -60,25 +58,25 @@ public class EntityGravity : MonoBehaviour
     }
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityController entityController;
+    private EntityController entityController = null;
     [FoldoutGroup("Object"), Tooltip("ref"), SerializeField]
-    private GroundCheck groundCheck;
+    private GroundCheck groundCheck = null;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb;
+    private Rigidbody rb = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAction entityAction;
+    private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJump entityJump;
+    private EntityJump entityJump = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAttractor entityAttractor;
+    private EntityAttractor entityAttractor = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private FastForward fastForward;
+    private FastForward fastForward = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJumpCalculation entityJumpCalculation;
+    private EntityJumpCalculation entityJumpCalculation = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityNoGravity entityNoGravity;
+    private EntityNoGravity entityNoGravity = null;
 
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]

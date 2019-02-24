@@ -8,15 +8,15 @@ using UnityEngine.UI;
 public class IsOnCamera : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), SerializeField]
-    private float xMargin;
+    private float xMargin = 0;
     [FoldoutGroup("GamePlay"), SerializeField]
-    private float yMargin;
+    private float yMargin = 0;
 
     [FoldoutGroup("GamePlay"), SerializeField]
 	private FrequencyTimer updateTimer = new FrequencyTimer(1.0f);
 
     [FoldoutGroup("Object"), SerializeField]
-    private Transform objetRef;
+    private Transform objetRef = null;
     [FoldoutGroup("Debug"), ReadOnly]
     public bool isOnScreen = false;
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]

@@ -19,13 +19,11 @@ public class EntitySwitch : MonoBehaviour
     private float dotRangeCeilling = 0.5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityController entityController;
+    private EntityController entityController = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityGravity playerGravity;
+    private EntityGravity playerGravity = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityRotateToGround rotateToGround;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private GroundCheck groundCheck;
+    private EntityRotateToGround rotateToGround = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
     private bool isOnTransition = false;
@@ -34,7 +32,6 @@ public class EntitySwitch : MonoBehaviour
     private Collider[] results = new Collider[5];
     private FrequencyCoolDown coolDownOverlap = new FrequencyCoolDown();
     private int layermask;
-    private static float radiusSphereCast = 0.3f;
 
     private void Awake()
     {

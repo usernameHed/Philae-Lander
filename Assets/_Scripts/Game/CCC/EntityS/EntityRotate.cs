@@ -10,13 +10,11 @@ public class EntityRotate : MonoBehaviour
     private float turnRate = 5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAction entityAction;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb;
+    private EntityAction entityAction = null;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
-    private Transform objectToRotate;
+    private Transform objectToRotate = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityController entityController;
+    private EntityController entityController = null;
 
     private void RotatePlayer()
     {

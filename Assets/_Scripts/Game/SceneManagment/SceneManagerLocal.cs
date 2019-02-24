@@ -43,7 +43,7 @@ public class SceneManagerLocal : SingletonMono<SceneManagerLocal>
 
     #region Attributes
     [Tooltip("Scene to load at start"), SerializeField]
-    private List<SceneInfo> sceneToLoad;
+    private List<SceneInfo> sceneToLoad = new List<SceneInfo>();
     public List<SceneInfo> SceneToLoad { get { return (sceneToLoad); } }
 
     private bool enabledScript = true;

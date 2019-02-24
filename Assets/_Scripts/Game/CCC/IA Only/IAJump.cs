@@ -9,7 +9,7 @@ public class IAJump : EntityJump
     private float addRandomJump = 4f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private IAController iaController;
+    private IAController iaController = null;
 
     /// <summary>
     /// called when grounded (after a jump, or a fall !)

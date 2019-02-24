@@ -15,13 +15,13 @@ public class AttractorOverlap : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip("force d'attraction"), SerializeField]
     private float strenght = 1000f;
     [FoldoutGroup("GamePlay"), Tooltip("layer d'attration"), SerializeField]
-    private string [] layerToAttract; //select layer 8 (metallica and colider)
+    private string [] layerToAttract = new string[] { "Player" }; //select layer 8 (metallica and colider)
+
+    [FoldoutGroup("Debug"), Tooltip("opti fps")]
+    public FrequencyTimer updateTimer;
 
     [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
-	private FrequencyTimer updateTimer;
-
-    [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
-    private List<Rigidbody> listObjectOverlaping;
+    private List<Rigidbody> listObjectOverlaping = new List<Rigidbody>();
 
     private Collider[] overlapResults = new Collider[30];
     private int numFound = 0;

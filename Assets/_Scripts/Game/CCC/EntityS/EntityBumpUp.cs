@@ -22,27 +22,27 @@ public class EntityBumpUp : MonoBehaviour
     private float boostHeight = 0.5f;
     public float GetBoostHeight() => boostHeight;
 
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityGravity entityGravity;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityAirMove entityAirMove;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityJump entityJump;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityController entityController = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityGravity entityGravity = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityAirMove entityAirMove = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private Rigidbody rb = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityJump entityJump = null;
 
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityJumpCalculation entityJumpCalculation;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityAction entityAction;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityJumpCalculation entityJumpCalculation = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityAction entityAction = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
 
-    [FoldoutGroup("Debug"), Tooltip("rigidbody"), SerializeField]
+    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool hasBumpedUp = false;
-    [FoldoutGroup("GroundBump"), Tooltip("rigidbody"), SerializeField]
+    [FoldoutGroup("GroundBump"), Tooltip(""), SerializeField]
     private float timeBeforeResetBumpUpGround = 0.1f;
 
     [FoldoutGroup("Debug"), Tooltip("rigidbody"), SerializeField]

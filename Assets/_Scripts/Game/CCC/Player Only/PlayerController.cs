@@ -13,17 +13,16 @@ public class PlayerController : EntityController, IKillable
     }
 
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("death vibration")]
-    private Vibration deathVibration;
+    private Vibration deathVibration = new Vibration();
 
     [FoldoutGroup("Object"), Tooltip("ref script")]
-    public PlayerInput playerInput;
+    public PlayerInput playerInput = null;
     [FoldoutGroup("Object"), Tooltip("ref script")]
-    public PlayerJump playerJump;
-    
+    public PlayerJump playerJump = null;
     [FoldoutGroup("Object"), Tooltip("ref script")]
-    public Transform renderPlayer;
+    public Transform renderPlayer = null;
     [FoldoutGroup("Object"), Tooltip("ref script")]
-    public Animator animator;
+    public Animator animator = null;
 
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]

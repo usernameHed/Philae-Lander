@@ -18,7 +18,6 @@ public class PlayerManageEditor : Editor
 
     private void OwnUpdate()
     {
-        
         if (Application.IsPlaying(playerEditor.rb))
         {
             if (playerEditor.playerInput.dashUp)

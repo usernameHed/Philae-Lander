@@ -11,36 +11,32 @@ using System;
 
 public class CameraController : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField, InlineEditor]
-    private CameraTypes cameraTypes;
+    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), InlineEditor]
+    public CameraTypes cameraTypes;// = new CameraTypes();
     public CameraTypes GetCameraType() { return (cameraTypes); }
     [FoldoutGroup("GamePlay"), Tooltip("Base cam value"), SerializeField]
-    private CameraTypes.CAM_CURRENT camCurrent = new CameraTypes.CAM_CURRENT();
+    private CameraTypes.CAM_CURRENT camCurrent;// = new CameraTypes.CAM_CURRENT();
 
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float closeMargin = 0.1f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private float autoZoomRatio = 1.05f;
-
-    [FoldoutGroup("Object"), Tooltip("ref de la camera"), SerializeField]
-    private Camera cameraRef;
+    
     [FoldoutGroup("Object"), Tooltip("ref de l'objet déplacable de la caméra"), SerializeField]
-    private Transform movingCamera;
+    private Transform movingCamera = null;
     [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
-    private Transform rotateCameraY;
-    [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
-    private EntityGravity playerGravity;
+    private Transform rotateCameraY = null;
 
     //Target list
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField, ReadOnly]
     private List<CameraTarget> targetList = new List<CameraTarget>();
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
-    private Transform targetPosition;
+    private Transform targetPosition = null;
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
-    private Transform targetToLook;
+    private Transform targetToLook = null;
 
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
-    private PlayerRotateCamPoint playerRotateCamPoint;
+    private PlayerRotateCamPoint playerRotateCamPoint = null;
     
 
     private bool freez = false;

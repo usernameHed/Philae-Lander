@@ -14,7 +14,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private float marginTurnVerti = 0.25f;
 
     [FoldoutGroup("Zoom"), MinMaxSlider(2.5f, 15f), SerializeField]
-    private Vector2 minMaxZoom;
+    private Vector2 minMaxZoom = new Vector2(2.5f, 15f);
     [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float speedZoom = 5f;
     [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
@@ -29,17 +29,15 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private float speedBoostZoom = 1f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private Transform mainReferenceObjectDirection;
+    private Transform mainReferenceObjectDirection = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerInput playerInput;
+    private PlayerInput playerInput = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb;
+    private Rigidbody rb = null;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
-    private Transform objectToRotate;
+    private Transform objectToRotate = null;
     [FoldoutGroup("Object"), Tooltip("point child who rotate"), SerializeField]
-    private Transform tpsSpacePoint;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private GroundCheck groundCheck;
+    private Transform tpsSpacePoint = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody")]
     private bool isInsideSomzthing = false;

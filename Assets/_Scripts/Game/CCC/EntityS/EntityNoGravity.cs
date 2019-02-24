@@ -6,11 +6,11 @@ using UnityEngine;
 public class EntityNoGravity : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
-    private EntityAttractor entityAttractor;
+    private EntityAttractor entityAttractor = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
-    private FastForward fastForward;
+    private FastForward fastForward = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
-    private EntityController entityController;
+    private EntityController entityController = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private bool wereWeInNoGravity = false;

@@ -33,10 +33,10 @@ public class RippleEffect : MonoBehaviour
     public float dropInterval = 0.5f;
 
     [SerializeField]
-    private Camera cam;
+    private Camera cam = null;
 
     [SerializeField]
-    private Shader shader;
+    private Shader shader = null;
 
     class Droplet
     {

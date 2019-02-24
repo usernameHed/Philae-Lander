@@ -12,17 +12,15 @@ public class SmoothNormals : MonoBehaviour
 
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private EntityGravity playerGravity;
-    [FoldoutGroup("Object"), Tooltip("player object"), SerializeField]
-    private GameObject rbObject;
+    private EntityGravity playerGravity = null;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
     private Vector3 smoothedNormalCamera;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
     private Vector3 smoothedNormalPlayer;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityController entityController;
+    private EntityController entityController = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private GroundCheck groundCheck;
+    private GroundCheck groundCheck = null;
 
     private void Start()
     {

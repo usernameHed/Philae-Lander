@@ -74,10 +74,10 @@ public class CameraTypes : SerializedScriptableObject
     public CameraController cameraController;
 
     [Tooltip(""), SerializeField]
-    public CameraType camType = CameraType.BASE;
+    public CameraType camType;// = CameraType.BASE;
 
     [Tooltip(""), SerializeField]
-    private List<ICAM_Type> camTypes;
+    public List<ICAM_Type> camTypes;
 
     public float GetDampingMove(ref CAM_CURRENT camCurrent)
     {

@@ -19,38 +19,32 @@ public class EntityContactSwitch : MonoBehaviour
     [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip(""), SerializeField]
     public float timeBetween2TestForward = 0.8f;
 
-    [FoldoutGroup("Backward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
-    private float distBackward = 1f;
+    //[FoldoutGroup("Backward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
+    //private float distBackward = 1f;
 
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private GroundCheck groundCheck;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityGravity playerGravity;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityAction entityAction;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntitySlide entitySlide;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityJumpCalculation entityJumpCalculation;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityJump entityJump;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityBumpUp entityBumpUp;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private GroundCheck groundCheck = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private Rigidbody rb = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityController entityController = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityGravity playerGravity = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityAction entityAction = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntitySlide entitySlide = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityBumpUp entityBumpUp = null;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForwardWall = false;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForbiddenForward = false;
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
-    private bool isBackwardWall = false;
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
-    private bool isForbiddenBackward = false;
+    //[FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    //private bool isBackwardWall = false;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float collRayCastMargin = 0.1f;
 
@@ -169,6 +163,7 @@ public class EntityContactSwitch : MonoBehaviour
         }
     }
 
+    /*
     /// <summary>
     /// backward raycast
     /// </summary>
@@ -228,6 +223,7 @@ public class EntityContactSwitch : MonoBehaviour
             ResetBackwardContact();
         }
     }
+    */
 
     private void ResetContact()
     {
@@ -237,8 +233,8 @@ public class EntityContactSwitch : MonoBehaviour
 
     private void ResetBackwardContact()
     {
-        isBackwardWall = false;
-        isForbiddenBackward = false;
+//isBackwardWall = false;
+//isForbiddenBackward = false;
     }
 
     private void FixedUpdate()

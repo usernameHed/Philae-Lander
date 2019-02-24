@@ -9,7 +9,7 @@ public class ClampRbSpeed : MonoBehaviour
     private float maxSpeed = 10f;
 
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb;
+    private Rigidbody rb = null;
 
     private void ClampSpeed()
     {

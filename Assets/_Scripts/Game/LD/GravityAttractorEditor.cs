@@ -13,19 +13,19 @@ public class GravityAttractorEditor : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public bool alwaysShow = false;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private Transform parentAlones;
+    private Transform parentAlones = null;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private Transform parentLines;
+    private Transform parentLines = null;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private Transform parentTriangles;
+    private Transform parentTriangles = null;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private Transform parentQuad;
+    private Transform parentQuad = null;
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private GravityAttractor gravityAttractor;
+    private GravityAttractor gravityAttractor = null;
     public GravityAttractor GetGravityAttractor() => gravityAttractor;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private Transform testPoint;
+    private Transform testPoint = null;
     
     [HideInInspector]
     public Vector3[] allModifiedPosGravityPoint;

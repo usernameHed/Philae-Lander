@@ -21,24 +21,20 @@ public class EntityAirMove : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float limitAirMoveCalculation = 1500f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityController entityController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityAction entityAction;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityContactSwitch entityContactSwitch;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntitySlide entitySlide;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityJump entityJump;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityJumpCalculation entityJumpCalculation;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private Rigidbody rb = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityController entityController = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityAction entityAction = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityJump entityJump = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityJumpCalculation entityJumpCalculation = null;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody"), ReadOnly]
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref"), ReadOnly]
     protected float amountAdded = 0f;
 
     protected FrequencyCoolDown coolDownJump = new FrequencyCoolDown();
