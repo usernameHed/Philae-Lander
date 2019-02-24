@@ -95,7 +95,7 @@ public class EntityContactSwitch : MonoBehaviour
                                distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
-                && !entityGravityAttractorSwitch.IsNormalOk(hitInfo.transform, hitInfo.normal))
+                && !entityGravityAttractorSwitch.IsNormalOk(hitInfo.transform, hitInfo.normal, true))
             {                
                 Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
                 isForwardWall = true;

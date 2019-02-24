@@ -129,32 +129,44 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (true);
     }
 
-    private Vector3 GetTmpSphereGravityForAPoint(Transform objHit, Vector3 posToTest)
+    /// <summary>
+    /// Do a pre-calcul of a new gravity, but get back to old one after (like in a jumpCalculation)
+    /// for forwardCheck, we can keep our new one found
+    /// </summary>
+    private Vector3 GetTmpSphereGravityForAPoint(Transform objHit, Vector3 posToTest, bool canChangeAttractor)
     {
         GravityAttractor tmpOld = gravityAttractor;
         TryToSetNewGravityAttractor(objHit);
         CalculateSphereGravity(rbEntity.position, true);
         Vector3 tmpSphereGravity = sphereGravity;
         
-        if (tmpOld != null)
+        if (tmpOld != null && !canChangeAttractor)
         {
-            SelectNewGA(tmpOld);
+            Debug.Log("ok, choose to take the old one here");
+            SelectNewGA(tmpOld, true);
         }
         else
         {
-            UnselectOldGA();
+            Debug.Log("choose to unselect here !");
+            //fuck;
+            if (!canChangeAttractor)
+                UnselectOldGA();
         }
         return (tmpSphereGravity);
     }
 
-    public bool IsNormalOk(Transform objHit, Vector3 normalHit)
+    /// <summary>
+    /// Check if the normal collision is ok with this gravity
+    /// canChange: change the attractor at the end if we find another one
+    /// </summary>
+    public bool IsNormalOk(Transform objHit, Vector3 normalHit, bool canChange)
     {
         Vector3 tmpSphereGravity = sphereGravity;
 
         //if (!gravityAttractor)
         //{
             //TODO: here calculate the gravity...
-            tmpSphereGravity = GetTmpSphereGravityForAPoint(objHit, rbEntity.position);
+            tmpSphereGravity = GetTmpSphereGravityForAPoint(objHit, rbEntity.position, canChange);
         //}
 
         Debug.DrawRay(rbEntity.position, normalHit, Color.blue, 5f);
@@ -208,6 +220,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     {
         //bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
         //GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
+        Debug.Log("obj hit: " + obj);
         GravityAttractor tmpGravity = obj.GetComponentInParent<GravityAttractor>();
 
         //if there is a gravityAttactor, but wrong layer, do nothing
@@ -216,27 +229,28 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
         if (!gravityAttractor && !tmpGravity)
         {
-            //Debug.Log("si on a pas d'ancien, et rien de nouveau, ne rien faire");
+            Debug.Log("si on a pas d'ancien, et rien de nouveau, ne rien faire");
             return;
         }
         if (!gravityAttractor && tmpGravity)
         {
-            //Debug.Log("si on a pas d'ancien, mais un nouveau, alors banco");
-            SelectNewGA(tmpGravity);
+            Debug.Log("si on a pas d'ancien, mais un nouveau, alors banco");
+            SelectNewGA(tmpGravity, false);
             return;
         }
         if (gravityAttractor && tmpGravity)
         {
-            //Debug.Log("tmpGravity: " + tmpGravity);
+            Debug.Log("tmpGravity: " + tmpGravity);
             //Debug.Log("obj.gameObject " + obj.gameObject);
 
-            //Debug.Log("on passe d'un ancien à un nouveau d'un coup !");
+            Debug.Log("on passe d'un ancien à un nouveau d'un coup !");
             //Debug.Break();
             if (tmpGravity.GetInstanceID() != gravityAttractor.GetInstanceID())
             {
                 UnselectOldGA();
-                SelectNewGA(tmpGravity);
+                SelectNewGA(tmpGravity, true);
             }
+            //Debug.Break();
             return;
         }
         if (gravityAttractor && !tmpGravity)
@@ -245,17 +259,17 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             UnselectOldGA();
             return;
         }
-        //Debug.Log("not found ?");
+        Debug.Log("not found ?");
     }
 
-    private void SelectNewGA(GravityAttractor newGA)
+    private void SelectNewGA(GravityAttractor newGA, bool calculateNow)
     {
         gravityAttractor = newGA;
         gravityAttractor.SelectedGravityAttractor();
 
         gravityAttractorMode = true;
 
-        CalculateSphereGravity(rbEntity.position, false);
+        CalculateSphereGravity(rbEntity.position, calculateNow);
     }
 
     /// <summary>

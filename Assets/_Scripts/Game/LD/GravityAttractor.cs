@@ -267,13 +267,13 @@ public class GravityAttractor : MonoBehaviour
 
     public void SelectedGravityAttractor()
     {
-        //Debug.Log(gameObject.name + " selected !" + gameObject);
+        Debug.Log(gameObject.name + " selected !" + gameObject);
         //lastListFound.Clear();
     }
 
     public void UnselectGravityAttractor()
     {
-        //Debug.Log(gameObject.name + " un-selected !" + gameObject);
+        Debug.Log(gameObject.name + " un-selected !" + gameObject);
         //lastListFound.Clear();
     }
     
