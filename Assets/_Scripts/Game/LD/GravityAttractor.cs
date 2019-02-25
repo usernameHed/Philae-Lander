@@ -422,7 +422,7 @@ public class GravityAttractor : MonoBehaviour
             pointInfo.gravityBaseRatio = allResult[indexFound].gravityBaseRatio;
             pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
             pointInfo.noGravity = allResult[indexFound].noGravity;
-            Debug.DrawLine(fromPoint, pointInfo.pos, Color.red);
+            Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
         }
         return (pointInfo);
     }

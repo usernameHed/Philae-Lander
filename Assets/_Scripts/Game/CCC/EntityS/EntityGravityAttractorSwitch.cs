@@ -193,6 +193,8 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             return (true);
         }
 
+        CalculateSphereGravity(rbEntity.position, true);
+
         //if angle hitInfo.normal eet notre gravity est pas bonne,
         //dire de ne pas ground ! return false !
         //else, angle ok, return true !

@@ -180,7 +180,7 @@ public class GroundCheck : MonoBehaviour
 
             if (!entityGravityAttractorSwitch.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
             {
-                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");                  
+                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
                 return;
             }
             

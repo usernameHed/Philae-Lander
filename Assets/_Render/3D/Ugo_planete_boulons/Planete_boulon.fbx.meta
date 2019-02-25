@@ -1,0 +1,590 @@
+fileFormatVersion: 2
+guid: 1a768e1d6fd89f8458206cc4105915d1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bas
+    100002: Bas 1
+    100004: Bas 2
+    100006: Bas 3
+    100008: Bas 4
+    100010: Bas 5
+    100012: Bas 6
+    100014: Boulons
+    100016: Exterrieur_boule
+    100018: Gros_tuyau_1
+    100020: Gros_tuyau_2
+    100022: Gros_tuyau_3
+    100024: Gros_tuyaux
+    100026: Haut
+    100028: Haut 1
+    100030: Haut 2
+    100032: Haut 3
+    100034: Haut 4
+    100036: Haut 5
+    100038: Haut 6
+    100040: Interrieur_boule
+    100042: Milieu
+    100044: Milieu 1
+    100046: Milieu 2
+    100048: Milieu 3
+    100050: Milieu 4
+    100052: Milieu 5
+    100054: Milieu 6
+    100056: //RootNode
+    100058: polySurface13
+    100060: polySurface14
+    100062: polySurface16
+    100064: polySurface17
+    100066: polySurface18
+    100068: polySurface19
+    100070: polySurface20
+    100072: polySurface21
+    100074: polySurface22
+    100076: polySurface23
+    100078: polySurface24
+    100080: polySurface25
+    100082: polySurface26
+    100084: polySurface27
+    100086: polySurface28
+    100088: polySurface29
+    100090: polySurface30
+    100092: polySurface31
+    100094: polySurface32
+    100096: polySurface33
+    100098: polySurface34
+    100100: polySurface35
+    100102: polySurface36
+    100104: polySurface37
+    100106: polySurface38
+    100108: polySurface39
+    100110: polySurface40
+    100112: polySurface41
+    100114: polySurface42
+    100116: polySurface43
+    100118: polySurface44
+    100120: polySurface45
+    100122: polySurface46
+    100124: polySurface47
+    100126: polySurface48
+    100128: polySurface49
+    100130: polySurface50
+    100132: polySurface51
+    100134: polySurface52
+    100136: polySurface53
+    100138: polySurface54
+    100140: polySurface55
+    100142: polySurface56
+    100144: polySurface57
+    100146: polySurface58
+    100148: polySurface59
+    100150: polySurface60
+    100152: polySurface61
+    100154: polySurface62
+    100156: polySurface63
+    100158: polySurface64
+    100160: polySurface65
+    100162: polySurface66
+    100164: polySurface67
+    100166: polySurface68
+    100168: polySurface69
+    100170: polySurface70
+    100172: polySurface71
+    100174: polySurface72
+    100176: polySurface73
+    100178: polySurface74
+    100180: polySurface75
+    100182: polySurface76
+    100184: polySurface77
+    100186: polySurface78
+    100188: polySurface79
+    100190: polySurface80
+    100192: polySurface81
+    100194: polySurface82
+    100196: Trou_1
+    100198: Trou_2
+    100200: Trou_3
+    100202: Trou_4
+    100204: Trou_5
+    100206: Trou_6
+    100208: Trou_7
+    400000: Bas
+    400002: Bas 1
+    400004: Bas 2
+    400006: Bas 3
+    400008: Bas 4
+    400010: Bas 5
+    400012: Bas 6
+    400014: Boulons
+    400016: Exterrieur_boule
+    400018: Gros_tuyau_1
+    400020: Gros_tuyau_2
+    400022: Gros_tuyau_3
+    400024: Gros_tuyaux
+    400026: Haut
+    400028: Haut 1
+    400030: Haut 2
+    400032: Haut 3
+    400034: Haut 4
+    400036: Haut 5
+    400038: Haut 6
+    400040: Interrieur_boule
+    400042: Milieu
+    400044: Milieu 1
+    400046: Milieu 2
+    400048: Milieu 3
+    400050: Milieu 4
+    400052: Milieu 5
+    400054: Milieu 6
+    400056: //RootNode
+    400058: polySurface13
+    400060: polySurface14
+    400062: polySurface16
+    400064: polySurface17
+    400066: polySurface18
+    400068: polySurface19
+    400070: polySurface20
+    400072: polySurface21
+    400074: polySurface22
+    400076: polySurface23
+    400078: polySurface24
+    400080: polySurface25
+    400082: polySurface26
+    400084: polySurface27
+    400086: polySurface28
+    400088: polySurface29
+    400090: polySurface30
+    400092: polySurface31
+    400094: polySurface32
+    400096: polySurface33
+    400098: polySurface34
+    400100: polySurface35
+    400102: polySurface36
+    400104: polySurface37
+    400106: polySurface38
+    400108: polySurface39
+    400110: polySurface40
+    400112: polySurface41
+    400114: polySurface42
+    400116: polySurface43
+    400118: polySurface44
+    400120: polySurface45
+    400122: polySurface46
+    400124: polySurface47
+    400126: polySurface48
+    400128: polySurface49
+    400130: polySurface50
+    400132: polySurface51
+    400134: polySurface52
+    400136: polySurface53
+    400138: polySurface54
+    400140: polySurface55
+    400142: polySurface56
+    400144: polySurface57
+    400146: polySurface58
+    400148: polySurface59
+    400150: polySurface60
+    400152: polySurface61
+    400154: polySurface62
+    400156: polySurface63
+    400158: polySurface64
+    400160: polySurface65
+    400162: polySurface66
+    400164: polySurface67
+    400166: polySurface68
+    400168: polySurface69
+    400170: polySurface70
+    400172: polySurface71
+    400174: polySurface72
+    400176: polySurface73
+    400178: polySurface74
+    400180: polySurface75
+    400182: polySurface76
+    400184: polySurface77
+    400186: polySurface78
+    400188: polySurface79
+    400190: polySurface80
+    400192: polySurface81
+    400194: polySurface82
+    400196: Trou_1
+    400198: Trou_2
+    400200: Trou_3
+    400202: Trou_4
+    400204: Trou_5
+    400206: Trou_6
+    400208: Trou_7
+    2100000: m2
+    2100002: m1
+    2100004: m0
+    2100006: m3
+    2300000: Bas
+    2300002: Bas 1
+    2300004: Bas 2
+    2300006: Bas 3
+    2300008: Bas 4
+    2300010: Bas 5
+    2300012: Bas 6
+    2300014: Exterrieur_boule
+    2300016: Gros_tuyau_1
+    2300018: Gros_tuyau_2
+    2300020: Gros_tuyau_3
+    2300022: Haut
+    2300024: Haut 1
+    2300026: Haut 2
+    2300028: Haut 3
+    2300030: Haut 4
+    2300032: Haut 5
+    2300034: Haut 6
+    2300036: Interrieur_boule
+    2300038: Milieu
+    2300040: Milieu 1
+    2300042: Milieu 2
+    2300044: Milieu 3
+    2300046: Milieu 4
+    2300048: Milieu 5
+    2300050: Milieu 6
+    2300052: polySurface13
+    2300054: polySurface14
+    2300056: polySurface16
+    2300058: polySurface17
+    2300060: polySurface18
+    2300062: polySurface19
+    2300064: polySurface20
+    2300066: polySurface21
+    2300068: polySurface22
+    2300070: polySurface23
+    2300072: polySurface24
+    2300074: polySurface25
+    2300076: polySurface26
+    2300078: polySurface27
+    2300080: polySurface28
+    2300082: polySurface29
+    2300084: polySurface30
+    2300086: polySurface31
+    2300088: polySurface32
+    2300090: polySurface33
+    2300092: polySurface34
+    2300094: polySurface35
+    2300096: polySurface36
+    2300098: polySurface37
+    2300100: polySurface38
+    2300102: polySurface39
+    2300104: polySurface40
+    2300106: polySurface41
+    2300108: polySurface42
+    2300110: polySurface43
+    2300112: polySurface44
+    2300114: polySurface45
+    2300116: polySurface46
+    2300118: polySurface47
+    2300120: polySurface48
+    2300122: polySurface49
+    2300124: polySurface50
+    2300126: polySurface51
+    2300128: polySurface52
+    2300130: polySurface53
+    2300132: polySurface54
+    2300134: polySurface55
+    2300136: polySurface56
+    2300138: polySurface57
+    2300140: polySurface58
+    2300142: polySurface59
+    2300144: polySurface60
+    2300146: polySurface61
+    2300148: polySurface62
+    2300150: polySurface63
+    2300152: polySurface64
+    2300154: polySurface65
+    2300156: polySurface66
+    2300158: polySurface67
+    2300160: polySurface68
+    2300162: polySurface69
+    2300164: polySurface70
+    2300166: polySurface71
+    2300168: polySurface72
+    2300170: polySurface73
+    2300172: polySurface74
+    2300174: polySurface75
+    2300176: polySurface76
+    2300178: polySurface77
+    2300180: polySurface78
+    2300182: polySurface79
+    2300184: polySurface80
+    2300186: polySurface81
+    2300188: polySurface82
+    3300000: Bas
+    3300002: Bas 1
+    3300004: Bas 2
+    3300006: Bas 3
+    3300008: Bas 4
+    3300010: Bas 5
+    3300012: Bas 6
+    3300014: Exterrieur_boule
+    3300016: Gros_tuyau_1
+    3300018: Gros_tuyau_2
+    3300020: Gros_tuyau_3
+    3300022: Haut
+    3300024: Haut 1
+    3300026: Haut 2
+    3300028: Haut 3
+    3300030: Haut 4
+    3300032: Haut 5
+    3300034: Haut 6
+    3300036: Interrieur_boule
+    3300038: Milieu
+    3300040: Milieu 1
+    3300042: Milieu 2
+    3300044: Milieu 3
+    3300046: Milieu 4
+    3300048: Milieu 5
+    3300050: Milieu 6
+    3300052: polySurface13
+    3300054: polySurface14
+    3300056: polySurface16
+    3300058: polySurface17
+    3300060: polySurface18
+    3300062: polySurface19
+    3300064: polySurface20
+    3300066: polySurface21
+    3300068: polySurface22
+    3300070: polySurface23
+    3300072: polySurface24
+    3300074: polySurface25
+    3300076: polySurface26
+    3300078: polySurface27
+    3300080: polySurface28
+    3300082: polySurface29
+    3300084: polySurface30
+    3300086: polySurface31
+    3300088: polySurface32
+    3300090: polySurface33
+    3300092: polySurface34
+    3300094: polySurface35
+    3300096: polySurface36
+    3300098: polySurface37
+    3300100: polySurface38
+    3300102: polySurface39
+    3300104: polySurface40
+    3300106: polySurface41
+    3300108: polySurface42
+    3300110: polySurface43
+    3300112: polySurface44
+    3300114: polySurface45
+    3300116: polySurface46
+    3300118: polySurface47
+    3300120: polySurface48
+    3300122: polySurface49
+    3300124: polySurface50
+    3300126: polySurface51
+    3300128: polySurface52
+    3300130: polySurface53
+    3300132: polySurface54
+    3300134: polySurface55
+    3300136: polySurface56
+    3300138: polySurface57
+    3300140: polySurface58
+    3300142: polySurface59
+    3300144: polySurface60
+    3300146: polySurface61
+    3300148: polySurface62
+    3300150: polySurface63
+    3300152: polySurface64
+    3300154: polySurface65
+    3300156: polySurface66
+    3300158: polySurface67
+    3300160: polySurface68
+    3300162: polySurface69
+    3300164: polySurface70
+    3300166: polySurface71
+    3300168: polySurface72
+    3300170: polySurface73
+    3300172: polySurface74
+    3300174: polySurface75
+    3300176: polySurface76
+    3300178: polySurface77
+    3300180: polySurface78
+    3300182: polySurface79
+    3300184: polySurface80
+    3300186: polySurface81
+    3300188: polySurface82
+    4300000: Haut
+    4300002: Milieu
+    4300004: Bas
+    4300006: Haut
+    4300008: Milieu
+    4300010: Bas
+    4300012: Haut
+    4300014: Milieu
+    4300016: Bas
+    4300018: Haut
+    4300020: Milieu
+    4300022: Bas
+    4300024: Haut
+    4300026: Milieu
+    4300028: Bas
+    4300030: Haut
+    4300032: Milieu
+    4300034: Bas
+    4300036: Haut
+    4300038: Milieu
+    4300040: Bas
+    4300042: polySurface16
+    4300044: polySurface17
+    4300046: polySurface18
+    4300048: polySurface19
+    4300050: polySurface20
+    4300052: polySurface21
+    4300054: polySurface22
+    4300056: polySurface23
+    4300058: polySurface24
+    4300060: polySurface25
+    4300062: polySurface26
+    4300064: polySurface27
+    4300066: polySurface28
+    4300068: polySurface29
+    4300070: polySurface30
+    4300072: polySurface31
+    4300074: polySurface32
+    4300076: polySurface33
+    4300078: polySurface34
+    4300080: polySurface35
+    4300082: polySurface36
+    4300084: polySurface37
+    4300086: polySurface38
+    4300088: polySurface39
+    4300090: polySurface40
+    4300092: polySurface41
+    4300094: polySurface42
+    4300096: polySurface43
+    4300098: polySurface44
+    4300100: polySurface45
+    4300102: polySurface46
+    4300104: polySurface47
+    4300106: polySurface48
+    4300108: polySurface49
+    4300110: polySurface50
+    4300112: polySurface51
+    4300114: polySurface52
+    4300116: polySurface53
+    4300118: polySurface54
+    4300120: polySurface55
+    4300122: polySurface56
+    4300124: polySurface57
+    4300126: polySurface58
+    4300128: polySurface59
+    4300130: polySurface60
+    4300132: polySurface61
+    4300134: polySurface62
+    4300136: polySurface63
+    4300138: polySurface64
+    4300140: polySurface65
+    4300142: polySurface66
+    4300144: polySurface67
+    4300146: polySurface68
+    4300148: polySurface69
+    4300150: polySurface70
+    4300152: polySurface71
+    4300154: polySurface72
+    4300156: polySurface73
+    4300158: polySurface74
+    4300160: polySurface75
+    4300162: polySurface76
+    4300164: polySurface77
+    4300166: polySurface78
+    4300168: polySurface79
+    4300170: polySurface80
+    4300172: polySurface81
+    4300174: polySurface82
+    4300176: polySurface13
+    4300178: polySurface14
+    4300180: Gros_tuyau_1
+    4300182: Gros_tuyau_2
+    4300184: Gros_tuyau_3
+    4300186: Exterrieur_boule
+    4300188: Interrieur_boule
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
