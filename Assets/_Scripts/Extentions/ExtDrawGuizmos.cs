@@ -37,6 +37,11 @@ public static class ExtDrawGuizmos
         Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, 0)));
     }
 
+    /*public static void DrawArrow(Vector3 start, Vector3 end)
+    {
+
+    }*/
+
     /// <summary>
     /// 	- Debugs a point.
     /// </summary>

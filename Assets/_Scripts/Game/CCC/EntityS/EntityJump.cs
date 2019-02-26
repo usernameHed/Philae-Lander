@@ -179,7 +179,7 @@ public class EntityJump : MonoBehaviour
         
         bool isForbiddenForward = entityContactSwitch.IsForwardForbiddenWall();
         lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
-        bool canDoGAJump = entityGravityAttractorSwitch.CanDoGAJump(lastVelocityJump) && doGravityAttractorJump;
+        bool canDoGAJump = false;// entityGravityAttractorSwitch.CanDoGAJump(lastVelocityJump) && doGravityAttractorJump;
 
 
         Vector3 normalizedNormalGravity = (!canDoGAJump) ? playerGravity.GetMainAndOnlyGravity() : entityGravityAttractorSwitch.GetDirGAGravity();

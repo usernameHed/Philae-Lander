@@ -9,7 +9,18 @@ using System.Text.RegularExpressions;
 /// <summary>
 public static class ExtUtilityFunction
 {
+    private static Vector3 wrongVector = new Vector3(-9999, -9999, -9999);
+
     #region core script
+
+    public static Vector3 GetNullVector()
+    {
+        return (wrongVector);
+    }
+    public static bool IsNullVector(Vector3 vecToTest)
+    {
+        return (vecToTest == wrongVector);
+    }
 
     /// <summary>
     /// number convert range (55 from 0 to 100, to a base 0 - 1 for exemple)
@@ -58,12 +69,18 @@ public static class ExtUtilityFunction
     {
         float sqrDist = 0;
         indexFound = -1;
+
+        int firstIndex = 0;
+
         for (int i = 0; i < arrayPos.Length; i++)
         {
+            if (IsNullVector(arrayPos[i]))
+                continue;
+
             float dist = (posEntity - arrayPos[i]).sqrMagnitude;
-            if (i == 0)
+            if (firstIndex == 0)
             {
-                indexFound = 0;
+                indexFound = i;
                 sqrDist = dist;
             }
             else if (dist < sqrDist)
@@ -71,12 +88,13 @@ public static class ExtUtilityFunction
                 sqrDist = dist;
                 indexFound = i;
             }
+            firstIndex++;
         }
 
         if (indexFound == -1)
         {
-            Debug.LogError("nothing found");
-            return (Vector3.zero);
+            Debug.LogWarning("nothing found");
+            return (GetNullVector());
         }
         return (arrayPos[indexFound]);
     }

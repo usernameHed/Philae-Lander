@@ -470,6 +470,8 @@ public class GravityAttractorEditor : MonoBehaviour
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointA.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointB.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointC.position);
+
+                //if ()
             }
         }
         for (int i = 0; i < gravityAttractor.gravityQuad.Count; i++)
@@ -485,6 +487,45 @@ public class GravityAttractorEditor : MonoBehaviour
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointB.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointC.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointD.position);
+
+                Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointA.position,
+                    gravityAttractor.gravityQuad[i].pointB.position,
+                    gravityAttractor.gravityQuad[i].pointC.position,
+                    gravityAttractor.gravityQuad[i].pointD.position}, true);
+
+                if (gravityAttractor.gravityQuad[i].unidirectionnal)
+                {
+
+                }
+
+                if (gravityAttractor.gravityQuad[i].infinitePlane || gravityAttractor.gravityQuad[i].noGravityBorders)
+                {
+                    int dirArrow = (gravityAttractor.gravityQuad[i].infinitePlane) ? -1 : 1;
+
+                    Vector3 middleLineA = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position });
+                    Vector3 dirMiddleToMiddleLineA = (middlePlane - middleLineA).normalized;
+                    if (dirArrow == 1)
+                        middleLineA = middleLineA - dirMiddleToMiddleLineA;
+                    ExtDrawGuizmos.DrawArrow(middleLineA, dirMiddleToMiddleLineA * dirArrow);
+
+                    Vector3 middleLineB = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position });
+                    Vector3 dirMiddleToMiddleLineB = (middlePlane - middleLineB).normalized;
+                    if (dirArrow == 1)
+                        middleLineB = middleLineB - dirMiddleToMiddleLineB;
+                    ExtDrawGuizmos.DrawArrow(middleLineB, (middlePlane - middleLineB).normalized * dirArrow);
+
+                    Vector3 middleLineC = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position });
+                    Vector3 dirMiddleToMiddleLineC = (middlePlane - middleLineC).normalized;
+                    if (dirArrow == 1)
+                        middleLineC = middleLineC - dirMiddleToMiddleLineC;
+                    ExtDrawGuizmos.DrawArrow(middleLineC, (middlePlane - middleLineC).normalized * dirArrow);
+
+                    Vector3 middleLineD = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position });
+                    Vector3 dirMiddleToMiddleLineD = (middlePlane - middleLineD).normalized;
+                    if (dirArrow == 1)
+                        middleLineD = middleLineD - dirMiddleToMiddleLineD;
+                    ExtDrawGuizmos.DrawArrow(middleLineD, (middlePlane - middleLineD).normalized * dirArrow);
+                }
             }
         }
     }

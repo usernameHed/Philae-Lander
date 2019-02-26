@@ -126,6 +126,7 @@ public class PlayerController : EntityController, IKillable
     private void FixedUpdate()
     {
         ChangeState();
+        actualVelocity = rb.velocity.magnitude;
     }
 
     private void OnDisable()

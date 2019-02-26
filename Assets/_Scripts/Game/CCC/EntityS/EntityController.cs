@@ -58,6 +58,8 @@ public class EntityController : MonoBehaviour
     protected float oldDrag;
     protected bool planetSwitcher = false;
     protected bool isKilled = false;
+    protected float actualVelocity = 0f;
+    public float GetActualVelocity() => actualVelocity;
 
     /// <summary>
     /// init player

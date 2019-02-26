@@ -206,6 +206,7 @@ public class IAController : EntityController, IPooledObject, IKillable
     private void FixedUpdate()
     {
         ChangeState();
+        actualVelocity = rb.velocity.magnitude;
     }
 
     public void OnObjectSpawn()

@@ -97,6 +97,10 @@ public class GravityAttractor : MonoBehaviour
         public Transform pointA;
         public Transform pointB;
         public Transform pointC;
+        public bool unidirectionnal;    //n'est valide seulement dans un seul sens
+        public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
+        public bool infinitePlane;      //définir ce plan comme infini
+        public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -108,6 +112,11 @@ public class GravityAttractor : MonoBehaviour
         {
             if (pointInfo.gravityBaseRatio != 0)
                 return;
+
+            unidirectionnal = false;
+            inverseDirection = false;
+            infinitePlane = false;
+            noGravityBorders = false;
 
             pointInfo = new PointInfo();
             pointInfo.Init();
@@ -142,6 +151,11 @@ public class GravityAttractor : MonoBehaviour
         public Transform pointB;
         public Transform pointC;
         public Transform pointD;
+        public bool unidirectionnal;    //n'est valide seulement dans un seul sens
+        public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
+        public bool infinitePlane;      //définir ce plan comme infini
+        public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
+
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -153,6 +167,11 @@ public class GravityAttractor : MonoBehaviour
         {
             if (pointInfo.gravityBaseRatio != 0)
                 return;
+
+            unidirectionnal = false;
+            inverseDirection = false;
+            infinitePlane = false;
+            noGravityBorders = false;
 
             pointInfo = new PointInfo();
             pointInfo.Init();
@@ -319,7 +338,11 @@ public class GravityAttractor : MonoBehaviour
             if (!gravityTriangles[i].pointA || !gravityTriangles[i].pointB || !gravityTriangles[i].pointC)
                 continue;
 
-            ExtTriangle triangle = new ExtTriangle(gravityTriangles[i].pointA.position, gravityTriangles[i].pointB.position, gravityTriangles[i].pointC.position);
+            ExtTriangle triangle = new ExtTriangle(gravityTriangles[i].pointA.position, gravityTriangles[i].pointB.position, gravityTriangles[i].pointC.position,
+                gravityTriangles[i].unidirectionnal,
+                gravityTriangles[i].inverseDirection,
+                gravityTriangles[i].infinitePlane,
+                gravityTriangles[i].noGravityBorders);
             arrayPointsTriangles[i] = triangle.ClosestPointTo(posEntity);
         }
         
@@ -337,12 +360,24 @@ public class GravityAttractor : MonoBehaviour
                 continue;
 
             //create 2 triangle.
-            ExtTriangle triangleA = new ExtTriangle(gravityQuad[i].pointA.position, gravityQuad[i].pointB.position, gravityQuad[i].pointC.position);
+            ExtTriangle triangleA = new ExtTriangle(gravityQuad[i].pointA.position, gravityQuad[i].pointB.position, gravityQuad[i].pointC.position,
+                gravityQuad[i].unidirectionnal,
+                gravityQuad[i].inverseDirection,
+                gravityQuad[i].infinitePlane,
+                gravityQuad[i].noGravityBorders);
             arrayPointsQuads[i] = triangleA.ClosestPointTo(posEntity);
-            ExtTriangle triangleB = new ExtTriangle(gravityQuad[i].pointC.position, gravityQuad[i].pointD.position, gravityQuad[i].pointA.position);
+
+            ExtTriangle triangleB = new ExtTriangle(gravityQuad[i].pointC.position, gravityQuad[i].pointD.position, gravityQuad[i].pointA.position,
+                gravityQuad[i].unidirectionnal,
+                gravityQuad[i].inverseDirection,
+                gravityQuad[i].infinitePlane,
+                gravityQuad[i].noGravityBorders);
             arrayPointsQuads[i + gravityQuad.Count] = triangleB.ClosestPointTo(posEntity);
+
         }
         Vector3 closestFound = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsQuads, ref indexFound);
+
+        //Debug.Log("closest found: " + closestFound);
         indexFound = indexFound % gravityQuad.Count;
         return (closestFound);
     }
@@ -419,10 +454,14 @@ public class GravityAttractor : MonoBehaviour
         if (indexResult > 0)
         {
             pointInfo.pos = ExtUtilityFunction.GetClosestPoint(fromPoint, allResultPos, ref indexFound);
-            pointInfo.gravityBaseRatio = allResult[indexFound].gravityBaseRatio;
-            pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
-            pointInfo.noGravity = allResult[indexFound].noGravity;
-            Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
+
+            if (indexFound != -1)
+            {
+                pointInfo.gravityBaseRatio = allResult[indexFound].gravityBaseRatio;
+                pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
+                pointInfo.noGravity = allResult[indexFound].noGravity;
+                Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
+            }
         }
         return (pointInfo);
     }

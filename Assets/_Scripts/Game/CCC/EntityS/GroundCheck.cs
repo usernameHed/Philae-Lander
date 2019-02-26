@@ -16,6 +16,8 @@ public class GroundCheck : MonoBehaviour
     public float sizeRadiusRayCast = 0.5f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] dontLayer = new string[] { "Walkable/Dont" };
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float timeInAirBeforeNotStick = 0.3f;
 
     [FoldoutGroup("Object"), SerializeField]
     private SphereCollider sphereCollider = null;
@@ -55,6 +57,8 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     private Vector3 dirNormal = Vector3.zero;
     private Vector3 dirSurfaceNormal = Vector3.zero;
+
+    private FrequencyCoolDown coolDownForStick = new FrequencyCoolDown();
     
 
     private void Awake()
@@ -62,6 +66,7 @@ public class GroundCheck : MonoBehaviour
         isGrounded = isAlmostGrounded = false;
         isFlying = true;
         radius = sphereCollider.radius;
+        coolDownForStick.Reset();
     }
 
     public string GetLastLayer()
@@ -230,22 +235,34 @@ public class GroundCheck : MonoBehaviour
         if (isGrounded)
         {
             isAlmostGrounded = false;
+            coolDownForStick.Reset();
         }
         else
         {
+            //here we move up a little bit
             if (entityBumpUp.IsBumpingGroundUp())
             {
                 Debug.Log("continiue to be grounded for now...");
                 isGrounded = true;
                 return;
             }
+            //le coolDown inAir n'a pas commencé, OU a commencé, et n'est pas fini
+            if (!coolDownForStick.IsStarted() || coolDownForStick.IsRunning())
+            {
+                //Debug.Log("TRY TO STICK");
+                GroundChecking(stickToFloorDist, ref isAlmostGrounded, playerGravity.GetMainAndOnlyGravity() * -0.01f);
+                
+            }
+            else
+            {
+                isAlmostGrounded = false;
+                //Debug.Log("DONT STICK");
+            }
 
-            GroundChecking(stickToFloorDist, ref isAlmostGrounded, playerGravity.GetMainAndOnlyGravity() * -0.01f);
-            if (!isAlmostGrounded && !entityNoGravity.IsBaseOrMoreRatio())
+            if (!isGrounded && !isAlmostGrounded && !entityNoGravity.IsBaseOrMoreRatio())
             {
                 GroundChecking(stickToCeillingDist, ref isGrounded, playerGravity.GetMainAndOnlyGravity() * 0.01f);
             }
-
         }
     }
 
@@ -265,7 +282,13 @@ public class GroundCheck : MonoBehaviour
             isFlying = false;
             return;
         }
-        isFlying = true;
+
+        if (!isFlying)
+        {
+            Debug.Log("Set flying for the first time !");
+            coolDownForStick.StartCoolDown(timeInAirBeforeNotStick);
+            isFlying = true;
+        }
     }
 
     private void FixedUpdate()

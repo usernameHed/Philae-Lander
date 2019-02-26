@@ -19,7 +19,11 @@ public class EntityAirMove : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float ratioWhenGravityAirMove = 0.7f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float limitAirMoveCalculation = 1500f;
+    public float limitAirCalculationSide = 30f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float limitAirCalculationForward = 60f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float speedDecreaseAddition = 3f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private Rigidbody rb = null;
@@ -45,8 +49,8 @@ public class EntityAirMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        amountAdded += (direction * entityAction.GetMagnitudeInput()).sqrMagnitude;
-        //Debug.Log("Amount added: " + amountAdded);
+        amountAdded += (direction * entityAction.GetMagnitudeInput()).sqrMagnitude * Time.deltaTime;
+        Debug.Log("Amount added: " + amountAdded);
 
         UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
     }
@@ -92,9 +96,18 @@ public class EntityAirMove : MonoBehaviour
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForward > dotForward)
         {
+            if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetRatioGravity())
+                return;
+
             float valueSubstract = Mathf.Abs(lastVelocity - dotDirForward);
             //Debug.Log("value Substract: " + valueSubstract);
             dirMove = dirMove * valueSubstract;
+        }
+        else
+        {
+            //if we have done enought airMove in air, don't do more
+            if (amountAdded > limitAirCalculationSide * entityGravityAttractorSwitch.GetRatioGravity())
+                return;
         }
         //Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
 
@@ -115,11 +128,15 @@ public class EntityAirMove : MonoBehaviour
         //No air Move en Side Jump or other stuff
         if (!entityJumpCalculation.CanDoAirMove())
             return (false);
-        //if we have done enought airMove in air, don't do more
-        if (amountAdded > limitAirMoveCalculation)
-            return (false);
 
         return (true);
+    }
+
+    private void RemoveAdded()
+    {
+        amountAdded -= (speedDecreaseAddition * Time.deltaTime) * (1 - entityAction.GetMagnitudeInput());
+        if (amountAdded < 0)
+            amountAdded = 0f;
     }
 
     /// <summary>
@@ -131,5 +148,6 @@ public class EntityAirMove : MonoBehaviour
         {
             AirMovePlayer();
         }
+        RemoveAdded();
     }
 }

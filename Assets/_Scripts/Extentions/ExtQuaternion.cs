@@ -441,12 +441,14 @@ public static class ExtQuaternion
 
     public static Vector3 GetMiddleOfXVector(ContactPoint[] arrayVect)
     {
+        Vector3[] arrayTmp = new Vector3[arrayVect.Length];
+
         Vector3 sum = Vector3.zero;
         for (int i = 0; i < arrayVect.Length; i++)
         {
-            sum += arrayVect[i].normal;
+            arrayTmp[i] = arrayVect[i].normal;
         }
-        return ((sum).normalized);
+        return (GetMiddleOfXVector(arrayTmp));
     }
 
     public static Vector3 GetMiddleOfXVector(Vector3[] arrayVect)
@@ -457,6 +459,57 @@ public static class ExtQuaternion
             sum += arrayVect[i];
         }
         return ((sum).normalized);
+    }
+
+    /// <summary>
+    /// return the middle of X points
+    /// </summary>
+    public static Vector3 GetMiddleOfXPoint(Vector3[] arrayVect, bool barycenter = true)
+    {
+        if (arrayVect.Length == 0)
+            return (ExtUtilityFunction.GetNullVector());
+
+        if (!barycenter)
+        {
+            Vector3 sum = Vector3.zero;
+            for (int i = 0; i < arrayVect.Length; i++)
+            {
+                sum += arrayVect[i];
+            }
+            return (sum / arrayVect.Length);
+        }
+        else
+        {
+            if (arrayVect.Length == 1)
+                return (arrayVect[0]);
+            
+            float xMin = arrayVect[0].x;
+            float yMin = arrayVect[0].y;
+            float zMin = arrayVect[0].z;
+            float xMax = arrayVect[0].x;
+            float yMax = arrayVect[0].y;
+            float zMax = arrayVect[0].z;
+
+            for (int i = 1; i < arrayVect.Length; i++)
+            {
+                if (arrayVect[i].x < xMin)
+                    xMin = arrayVect[i].x;
+                if (arrayVect[i].x > xMax)
+                    xMax = arrayVect[i].x;
+
+                if (arrayVect[i].y < yMin)
+                    yMin = arrayVect[i].y;
+                if (arrayVect[i].y > yMax)
+                    yMax = arrayVect[i].y;
+
+                if (arrayVect[i].z < zMin)
+                    zMin = arrayVect[i].z;
+                if (arrayVect[i].z > zMax)
+                    zMax = arrayVect[i].z;
+            }
+            Vector3 lastMiddle = new Vector3((xMin + xMax) / 2, (yMin + yMax) / 2, (zMin + zMax) / 2);
+            return (lastMiddle);
+        }
     }
     /// <summary>
     /// get la bisection de 2 vecteur

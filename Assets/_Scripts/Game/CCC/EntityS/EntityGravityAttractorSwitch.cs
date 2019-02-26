@@ -295,7 +295,14 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         else
         {
             //Debug.Log("ou la ?");
-            pointInfo = gravityAttractor.FindNearestPoint(posEntity);
+            GravityAttractor.PointInfo tmpPointInfo = gravityAttractor.FindNearestPoint(posEntity);
+            if (ExtUtilityFunction.IsNullVector(tmpPointInfo.pos))
+            {
+                Debug.LogWarning("ici on a pas trouvé de nouvelle gravité... garder comme maintenant ? mettre le compteur de mort ?");
+                Debug.DrawRay(posEntity, sphereGravity * -10, Color.red, 5f);
+                return;
+            }
+            pointInfo = tmpPointInfo;
             sphereGravity = (posEntity - pointInfo.pos).normalized;
         }
     }
