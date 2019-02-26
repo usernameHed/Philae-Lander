@@ -345,8 +345,8 @@ public class GravityAttractor : MonoBehaviour
                 gravityTriangles[i].noGravityBorders);
             arrayPointsTriangles[i] = triangle.ClosestPointTo(posEntity);
         }
-        
-        return (ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsTriangles, ref indexFound));
+        Vector3 closestFound = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsTriangles, ref indexFound);
+        return (closestFound);
     }
 
     /// <summary>
