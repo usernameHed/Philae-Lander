@@ -23,6 +23,8 @@ public class EntityAirMove : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float limitAirCalculationForward = 60f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float velocityMaxAirMove = 7f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float speedDecreaseAddition = 3f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
@@ -96,7 +98,8 @@ public class EntityAirMove : MonoBehaviour
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForward > dotForward)
         {
-            if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetRatioGravity())
+            if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetRatioGravity()
+                && entityController.GetActualVelocity() > velocityMaxAirMove)
                 return;
 
             float valueSubstract = Mathf.Abs(lastVelocity - dotDirForward);
@@ -106,7 +109,8 @@ public class EntityAirMove : MonoBehaviour
         else
         {
             //if we have done enought airMove in air, don't do more
-            if (amountAdded > limitAirCalculationSide * entityGravityAttractorSwitch.GetRatioGravity())
+            if (amountAdded > limitAirCalculationSide * entityGravityAttractorSwitch.GetRatioGravity()
+                && entityController.GetActualVelocity() > velocityMaxAirMove)
                 return;
         }
         //Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
@@ -134,7 +138,11 @@ public class EntityAirMove : MonoBehaviour
 
     private void RemoveAdded()
     {
-        amountAdded -= (speedDecreaseAddition * Time.deltaTime) * (1 - entityAction.GetMagnitudeInput());
+        float amountInput = (1 - entityAction.GetMagnitudeInput());
+        if (entityController.GetActualVelocity() < velocityMaxAirMove)
+            amountInput = 1f;
+        //entityController.GetActualVelocity() > velocityMaxAirMove
+        amountAdded -= (speedDecreaseAddition * Time.deltaTime) * amountInput;
         if (amountAdded < 0)
             amountAdded = 0f;
     }
