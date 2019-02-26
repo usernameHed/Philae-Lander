@@ -93,7 +93,7 @@ public static class ExtUtilityFunction
 
         if (indexFound == -1)
         {
-            Debug.LogWarning("nothing found");
+            //Debug.LogWarning("nothing found");
             return (GetNullVector());
         }
         return (arrayPos[indexFound]);

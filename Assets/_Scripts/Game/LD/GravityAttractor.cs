@@ -346,6 +346,10 @@ public class GravityAttractor : MonoBehaviour
             arrayPointsTriangles[i] = triangle.ClosestPointTo(posEntity);
         }
         Vector3 closestFound = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsTriangles, ref indexFound);
+
+        //if (ExtUtilityFunction.IsNullVector(closestFound))
+        //    return (closestFound);
+
         return (closestFound);
     }
 
@@ -376,6 +380,9 @@ public class GravityAttractor : MonoBehaviour
 
         }
         Vector3 closestFound = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsQuads, ref indexFound);
+
+        if (ExtUtilityFunction.IsNullVector(closestFound))
+            return (closestFound);
 
         //Debug.Log("closest found: " + closestFound);
         indexFound = indexFound % gravityQuad.Count;
@@ -428,10 +435,12 @@ public class GravityAttractor : MonoBehaviour
             Vector3 closestPointTriangles = GetClosestPointFromTriangles(fromPoint);
             //Debug.DrawLine(fromPoint, closestPointTriangles, Color.green);
             allResult[indexResult].pos = closestPointTriangles;
-            allResult[indexResult].gravityBaseRatio = gravityTriangles[indexFound].GetPointInfo().gravityBaseRatio;
-            allResult[indexResult].gravityDownRatio = gravityTriangles[indexFound].GetPointInfo().gravityDownRatio;
-            allResult[indexResult].noGravity = gravityTriangles[indexFound].GetPointInfo().noGravity;
-
+            if (indexFound != -1)
+            {
+                allResult[indexResult].gravityBaseRatio = gravityTriangles[indexFound].GetPointInfo().gravityBaseRatio;
+                allResult[indexResult].gravityDownRatio = gravityTriangles[indexFound].GetPointInfo().gravityDownRatio;
+                allResult[indexResult].noGravity = gravityTriangles[indexFound].GetPointInfo().noGravity;
+            }
             allResultPos[indexResult] = closestPointTriangles;
             indexResult++;
         }
@@ -440,12 +449,14 @@ public class GravityAttractor : MonoBehaviour
         if (arrayPointsQuads.Length > 0 && gravityQuad.Count > 0 && gravityQuad.Count * 2 == arrayPointsQuads.Length)
         {
             Vector3 closestPointQuads = GetClosestPointFromQuads(fromPoint);
-            //Debug.DrawLine(fromPoint, closestPointQuads, Color.red);
-            allResult[indexResult].pos = closestPointQuads;
-            allResult[indexResult].gravityBaseRatio = gravityQuad[indexFound].GetPointInfo().gravityBaseRatio;
-            allResult[indexResult].gravityDownRatio = gravityQuad[indexFound].GetPointInfo().gravityDownRatio;
-            allResult[indexResult].noGravity = gravityQuad[indexFound].GetPointInfo().noGravity;
 
+            allResult[indexResult].pos = closestPointQuads;
+            if (indexFound != -1)
+            {
+                allResult[indexResult].gravityBaseRatio = gravityQuad[indexFound].GetPointInfo().gravityBaseRatio;
+                allResult[indexResult].gravityDownRatio = gravityQuad[indexFound].GetPointInfo().gravityDownRatio;
+                allResult[indexResult].noGravity = gravityQuad[indexFound].GetPointInfo().noGravity;
+            }
             allResultPos[indexResult] = closestPointQuads;
             indexResult++;
         }
