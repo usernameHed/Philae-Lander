@@ -62,6 +62,13 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (gravityAttractor);
     }
 
+    public bool CanApplyForceDown()
+    {
+        if (coolDownBeforeActiveAtractor.IsRunning())
+            return (false);
+        return (true);
+    }
+
     /// <summary>
     /// do we do a jump based on gravity of the GravityAttractorSwitch or not ?
     /// realMagnitudeInput: input of player, but if we are against a wall, input = 0;

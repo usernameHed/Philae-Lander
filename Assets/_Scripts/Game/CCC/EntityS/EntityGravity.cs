@@ -334,6 +334,18 @@ public class EntityGravity : MonoBehaviour
                 if (applyForceUp)
                     finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
             }
+            
+            
+            //here we are going up, continiue pressing the jump button, AND in gravityAttractor
+            else if (dotGravityRigidbody > 0 && entityAction.Jump && entityGravityAttractorSwitch.IsInGravityAttractorMode()
+                && entityGravityAttractorSwitch.CanApplyForceDown())
+            {
+                isGoingDown = false;
+                if (applyForceUp)
+                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetRatioGravity() / 2);
+            }
+            
+
             //Debug.Log("air gravity");
             //here, apply base gravity when we are InAir
 
