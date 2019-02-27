@@ -416,7 +416,7 @@ public class PositionHandleEditor : OdinEditor
 
     protected virtual void OnSceneGUI()
     {
-        if (!ldGravityAttractor.creatorMode)
+        if (!ldGravityAttractor.handlePoints)
         {
             //Tools.current = Tool.Transform;
             return;

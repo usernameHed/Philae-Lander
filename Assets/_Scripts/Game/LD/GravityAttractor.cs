@@ -15,10 +15,11 @@ public class GravityAttractor : MonoBehaviour
         public float gravityDownRatio;
         public bool stickIfAlreadyGrounded;
 
+        [Button]
         public void Init()
         {
-            gravityBaseRatio = 1f;
-            gravityDownRatio = 1f;
+            gravityBaseRatio = 0.5f;
+            gravityDownRatio = 0.3f;
             stickIfAlreadyGrounded = false;
         }
     }
