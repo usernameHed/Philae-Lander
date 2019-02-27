@@ -115,21 +115,7 @@ public struct ExtTriangle
                 //Debug.Log("ici on est DANS le plane, ET en noGravityBorder: tester la normal ensuite !");
                 if (unidirectionnal)
                 {
-                    Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
-                    Vector3 dirPlayer = p - projectedOnPlane;
-                    
-
-                    float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNorm.normalized);
-                    if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
-                    {
-                        return (projectedOnPlane);
-                    }
-                    else
-                    {
-                        Debug.DrawRay(p, dirPlayer, Color.yellow, 5f);
-                        Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
-                        return (ExtUtilityFunction.GetNullVector());
-                    }
+                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNorm.normalized, p))); //get the good point (or null) in a plane unidirectionnal
                 }
                 else
                 {
@@ -137,17 +123,26 @@ public struct ExtTriangle
                     return (TriPlane.Project(EdgeAb.A, TriNorm.normalized, p));
                 }
             }
+            else if (!noGravityBorders && unidirectionnal)
+            {
+                //here not infinite, and WITH borders AND unidirectionnal
+                if (isInPlane)
+                {
+                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNorm.normalized, p))); //get the good point (or null) in a plane unidirectionnal
+                }
+                else
+                {
+                    return (GetGoodPointUnidirectionnal(p, rightPositionIfOutsidePlane));
+                }
+            }
             else
             {
-                if (unidirectionnal && !isInPlane)
+                //here Not infinite, WITH borders, NO unidirectionnal
+                if (isInPlane)
                 {
-                    //ici verifier le dot entre la normal, et rightPositionIfOutsidePlane, si ok:
-                    //return (rightPositionIfOutsidePlane);
-                    //sinon: return (null);
-                    Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
+                    return (TriPlane.Project(EdgeAb.A, TriNorm.normalized, p));
                 }
-
-                if (!isInPlane)
+                else
                 {
                     return (rightPositionIfOutsidePlane);
                 }
@@ -155,9 +150,10 @@ public struct ExtTriangle
         }
         else
         {
-            //Debug.Log("ici le plan est infini");
-            //Vector3 projectedPoint = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
-            //return (projectedPoint);
+            if (unidirectionnal)
+            {
+                return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNorm.normalized, p))); //get the good point (or null) in a plane unidirectionnal
+            }
         }
 
 
@@ -167,8 +163,30 @@ public struct ExtTriangle
 
         // The closest point is in the triangle so 
         // project to the plane to find it
-        Vector3 projectedPoint = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
-        return (projectedPoint);
+        //Vector3 projectedPoint = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
+        return (TriPlane.Project(EdgeAb.A, TriNorm.normalized, p));
+    }
+
+    /// <summary>
+    /// take into acount unidirectinnal option, return null if not found
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 GetGoodPointUnidirectionnal(Vector3 p, Vector3 foundPosition)
+    {
+        //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
+        Vector3 dirPlayer = p - foundPosition;
+
+        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNorm.normalized);
+        if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
+        {
+            return (foundPosition);
+        }
+        else
+        {
+            Debug.DrawRay(p, dirPlayer, Color.yellow, 5f);
+            Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
+            return (ExtUtilityFunction.GetNullVector());
+        }
     }
 }
 

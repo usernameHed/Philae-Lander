@@ -57,6 +57,11 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (normalRatio);
     }
 
+    public bool KeepSticking()
+    {
+        return (pointInfo.stickIfAlreadyGrounded);
+    }
+
     public bool IsInGravityAttractorMode()
     {
         return (gravityAttractor);

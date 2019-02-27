@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector.Editor;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [CustomEditor(typeof(GravityAttractorEditor)), CanEditMultipleObjects]
-public class PositionHandleEditor : Editor
+public class PositionHandleEditor : OdinEditor
 {
     public enum MouseClicType
     {

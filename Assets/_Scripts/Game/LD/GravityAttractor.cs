@@ -13,13 +13,13 @@ public class GravityAttractor : MonoBehaviour
         public Vector3 pos;
         public float gravityBaseRatio;
         public float gravityDownRatio;
-        public bool noGravity;
+        public bool stickIfAlreadyGrounded;
 
         public void Init()
         {
             gravityBaseRatio = 1f;
             gravityDownRatio = 1f;
-            noGravity = false;
+            stickIfAlreadyGrounded = false;
         }
     }
 
@@ -98,8 +98,11 @@ public class GravityAttractor : MonoBehaviour
         public Transform pointB;
         public Transform pointC;
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
+        [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
+        [DisableIf("noGravityBorders")]
         public bool infinitePlane;      //définir ce plan comme infini
+        [DisableIf("infinitePlane")]
         public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
 
         [SerializeField]
@@ -152,8 +155,11 @@ public class GravityAttractor : MonoBehaviour
         public Transform pointC;
         public Transform pointD;
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
+        [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
+        [DisableIf("noGravityBorders")]
         public bool infinitePlane;      //définir ce plan comme infini
+        [DisableIf("infinitePlane")]
         public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
 
 
@@ -407,7 +413,7 @@ public class GravityAttractor : MonoBehaviour
             allResult[indexResult].pos = closestPoint;
             allResult[indexResult].gravityBaseRatio = gravityPoints[indexFound].GetPointInfo().gravityBaseRatio;
             allResult[indexResult].gravityDownRatio = gravityPoints[indexFound].GetPointInfo().gravityDownRatio;
-            allResult[indexResult].noGravity = gravityPoints[indexFound].GetPointInfo().noGravity;
+            allResult[indexResult].stickIfAlreadyGrounded = gravityPoints[indexFound].GetPointInfo().stickIfAlreadyGrounded;
 
 
             allResultPos[indexResult] = closestPoint;
@@ -422,7 +428,7 @@ public class GravityAttractor : MonoBehaviour
             allResult[indexResult].pos = closestPointLines;
             allResult[indexResult].gravityBaseRatio = gravityLines[indexFound].GetPointInfo().gravityBaseRatio;
             allResult[indexResult].gravityDownRatio = gravityLines[indexFound].GetPointInfo().gravityDownRatio;
-            allResult[indexResult].noGravity = gravityLines[indexFound].GetPointInfo().noGravity;
+            allResult[indexResult].stickIfAlreadyGrounded = gravityLines[indexFound].GetPointInfo().stickIfAlreadyGrounded;
 
 
             allResultPos[indexResult] = closestPointLines;
@@ -439,7 +445,7 @@ public class GravityAttractor : MonoBehaviour
             {
                 allResult[indexResult].gravityBaseRatio = gravityTriangles[indexFound].GetPointInfo().gravityBaseRatio;
                 allResult[indexResult].gravityDownRatio = gravityTriangles[indexFound].GetPointInfo().gravityDownRatio;
-                allResult[indexResult].noGravity = gravityTriangles[indexFound].GetPointInfo().noGravity;
+                allResult[indexResult].stickIfAlreadyGrounded = gravityTriangles[indexFound].GetPointInfo().stickIfAlreadyGrounded;
             }
             allResultPos[indexResult] = closestPointTriangles;
             indexResult++;
@@ -455,7 +461,7 @@ public class GravityAttractor : MonoBehaviour
             {
                 allResult[indexResult].gravityBaseRatio = gravityQuad[indexFound].GetPointInfo().gravityBaseRatio;
                 allResult[indexResult].gravityDownRatio = gravityQuad[indexFound].GetPointInfo().gravityDownRatio;
-                allResult[indexResult].noGravity = gravityQuad[indexFound].GetPointInfo().noGravity;
+                allResult[indexResult].stickIfAlreadyGrounded = gravityQuad[indexFound].GetPointInfo().stickIfAlreadyGrounded;
             }
             allResultPos[indexResult] = closestPointQuads;
             indexResult++;
@@ -470,7 +476,7 @@ public class GravityAttractor : MonoBehaviour
             {
                 pointInfo.gravityBaseRatio = allResult[indexFound].gravityBaseRatio;
                 pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
-                pointInfo.noGravity = allResult[indexFound].noGravity;
+                pointInfo.stickIfAlreadyGrounded = allResult[indexFound].stickIfAlreadyGrounded;
                 Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
             }
         }
