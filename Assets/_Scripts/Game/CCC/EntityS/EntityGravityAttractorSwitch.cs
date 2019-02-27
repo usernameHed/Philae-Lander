@@ -314,7 +314,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     {
         if (coolDownBeforeActiveAtractor.IsRunning() && !calculateNow)
         {
-            //Debug.Log("ici ?");
             //sphereGravity = groundCheck.GetDirLastNormal();
             sphereGravity = lastNormalJumpChoosen;
         }

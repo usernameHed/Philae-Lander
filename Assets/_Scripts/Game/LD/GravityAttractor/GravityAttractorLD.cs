@@ -29,6 +29,7 @@ public class GravityAttractorLD : MonoBehaviour
     {
         [SerializeField]
         public Transform point;
+        public float range;
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -60,6 +61,7 @@ public class GravityAttractorLD : MonoBehaviour
     {
         public Transform pointA;
         public Transform pointB;
+        public float range;
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -98,6 +100,8 @@ public class GravityAttractorLD : MonoBehaviour
         public Transform pointA;
         public Transform pointB;
         public Transform pointC;
+        public float range;
+
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
         [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
@@ -155,6 +159,8 @@ public class GravityAttractorLD : MonoBehaviour
         public Transform pointB;
         public Transform pointC;
         public Transform pointD;
+        public float range;
+
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
         [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
