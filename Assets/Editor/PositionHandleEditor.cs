@@ -22,7 +22,7 @@ public class PositionHandleEditor : OdinEditor
         public Transform point;
         public int indexScript;
         public int indexShape;
-        public GravityAttractor.GravityPointType gravityPointType;
+        public GravityAttractorLD.GravityPointType gravityPointType;
         public int indexPointInShape;
     }
 
@@ -145,7 +145,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityPoints[i].point,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.POINT,
+                        gravityPointType = GravityAttractorLD.GravityPointType.POINT,
                         indexPointInShape = 0,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -162,7 +162,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointA,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.LINE,
+                        gravityPointType = GravityAttractorLD.GravityPointType.LINE,
                         indexPointInShape = 0,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -176,7 +176,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityLines[i].pointB,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.LINE,
+                        gravityPointType = GravityAttractorLD.GravityPointType.LINE,
                         indexPointInShape = 1,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -193,7 +193,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointA,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
+                        gravityPointType = GravityAttractorLD.GravityPointType.TRIANGLE,
                         indexPointInShape = 0,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -207,7 +207,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointB,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
+                        gravityPointType = GravityAttractorLD.GravityPointType.TRIANGLE,
                         indexPointInShape = 1,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -221,7 +221,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityTriangles[i].pointC,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.TRIANGLE,
+                        gravityPointType = GravityAttractorLD.GravityPointType.TRIANGLE,
                         indexPointInShape = 2,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -238,7 +238,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointA,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        gravityPointType = GravityAttractorLD.GravityPointType.QUAD,
                         indexPointInShape = 0,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -252,7 +252,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointB,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        gravityPointType = GravityAttractorLD.GravityPointType.QUAD,
                         indexPointInShape = 1,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -266,7 +266,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointC,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        gravityPointType = GravityAttractorLD.GravityPointType.QUAD,
                         indexPointInShape = 2,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -280,7 +280,7 @@ public class PositionHandleEditor : OdinEditor
                         point = allGravityAttractor[k].GetGravityAttractor().gravityQuad[i].pointD,
                         indexScript = k,
                         indexShape = i,
-                        gravityPointType = GravityAttractor.GravityPointType.QUAD,
+                        gravityPointType = GravityAttractorLD.GravityPointType.QUAD,
                         indexPointInShape = 3,
                     };
                     allPointToFusion.Add(infoFusion);
@@ -303,27 +303,27 @@ public class PositionHandleEditor : OdinEditor
 
     private void TryToReAssemble(InfoFusion infoFusionToDelete, InfoFusion infoFusionToKeep)
     {
-        if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.POINT)
+        if (infoFusionToDelete.gravityPointType == GravityAttractorLD.GravityPointType.POINT)
         {
-            GravityAttractor.GravityPoint gravityPointToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityPoints[infoFusionToDelete.indexShape];
+            GravityAttractorLD.GravityPoint gravityPointToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityPoints[infoFusionToDelete.indexShape];
             gravityPointToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
             allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityPoints[infoFusionToDelete.indexShape] = gravityPointToDelete;
         }
-        else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.LINE)
+        else if (infoFusionToDelete.gravityPointType == GravityAttractorLD.GravityPointType.LINE)
         {
-            GravityAttractor.GravityLine gravityLineToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityLines[infoFusionToDelete.indexShape];
+            GravityAttractorLD.GravityLine gravityLineToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityLines[infoFusionToDelete.indexShape];
             gravityLineToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
             allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityLines[infoFusionToDelete.indexShape] = gravityLineToDelete;
         }
-        else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.TRIANGLE)
+        else if (infoFusionToDelete.gravityPointType == GravityAttractorLD.GravityPointType.TRIANGLE)
         {
-            GravityAttractor.GravityTriangle gravityTriangleToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityTriangles[infoFusionToDelete.indexShape];
+            GravityAttractorLD.GravityTriangle gravityTriangleToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityTriangles[infoFusionToDelete.indexShape];
             gravityTriangleToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
             allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityTriangles[infoFusionToDelete.indexShape] = gravityTriangleToDelete;
         }
-        else if (infoFusionToDelete.gravityPointType == GravityAttractor.GravityPointType.QUAD)
+        else if (infoFusionToDelete.gravityPointType == GravityAttractorLD.GravityPointType.QUAD)
         {
-            GravityAttractor.GravityQuad gravityQuadToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityQuad[infoFusionToDelete.indexShape];
+            GravityAttractorLD.GravityQuad gravityQuadToDelete = allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityQuad[infoFusionToDelete.indexShape];
             gravityQuadToDelete.ChangePoint(infoFusionToDelete.indexPointInShape, infoFusionToKeep.point);
             allGravityAttractor[infoFusionToDelete.indexScript].GetGravityAttractor().gravityQuad[infoFusionToDelete.indexShape] = gravityQuadToDelete;
         }

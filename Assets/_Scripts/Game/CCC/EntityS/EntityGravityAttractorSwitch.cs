@@ -23,10 +23,13 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool gravityAttractorMode = false;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    private GravityAttractor.PointInfo pointInfo = new GravityAttractor.PointInfo();
+    private GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    private GravityAttractor gravityAttractor = null;
-    
+    private GravityAttractorLD gravityAttractor = null;
+
+    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    private List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
+
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     public Vector3 sphereGravity = Vector3.zero;
@@ -34,7 +37,17 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     private FrequencyCoolDown coolDownBeforeActiveAtractor = new FrequencyCoolDown();
     private Vector3 lastNormalJumpChoosen = Vector3.zero;
 
-    
+    public void EnterInZone(GravityAttractorLD refGravityAttractor)
+    {
+        if (!allGravityAttractor.Contains(refGravityAttractor))
+            allGravityAttractor.Add(refGravityAttractor);
+    }
+
+    public void LeanInZone(GravityAttractorLD refGravityAttractor)
+    {
+        allGravityAttractor.Remove(refGravityAttractor);
+    }
+
     /// <summary>
     /// ratio only for gravityDown
     /// </summary>
@@ -141,7 +154,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     /// </summary>
     private Vector3 GetTmpSphereGravityForAPoint(Transform objHit, Vector3 posToTest, bool canChangeAttractor)
     {
-        GravityAttractor tmpOld = gravityAttractor;
+        GravityAttractorLD tmpOld = gravityAttractor;
         TryToSetNewGravityAttractor(objHit);
         CalculateSphereGravity(rbEntity.position, true);
         Vector3 tmpSphereGravity = sphereGravity;
@@ -229,7 +242,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         //bool hasTag = obj.gameObject.HasTag(tagWithAttractor);
         //GravityAttractor tmpGravity = obj.gameObject.GetComponentInAllParentsWithTag<GravityAttractor>(tagWithAttractor, 3, true);
         Debug.Log("obj hit: " + obj);
-        GravityAttractor tmpGravity = obj.GetComponentInParent<GravityAttractor>();
+        GravityAttractorLD tmpGravity = obj.GetComponentInParent<GravityAttractorLD>();
 
         //if there is a gravityAttactor, but wrong layer, do nothing
         if (!IsAirAttractorLayer(obj.gameObject.layer))
@@ -270,12 +283,13 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         Debug.Log("not found ?");
     }
 
-    private void SelectNewGA(GravityAttractor newGA, bool calculateNow)
+    private void SelectNewGA(GravityAttractorLD newGA, bool calculateNow)
     {
         gravityAttractor = newGA;
         gravityAttractor.SelectedGravityAttractor();
 
         gravityAttractorMode = true;
+        //EnterInZone(newGA);
 
         CalculateSphereGravity(rbEntity.position, calculateNow);
     }
@@ -307,7 +321,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         else
         {
             //Debug.Log("ou la ?");
-            GravityAttractor.PointInfo tmpPointInfo = gravityAttractor.FindNearestPoint(posEntity);
+            GravityAttractorLD.PointInfo tmpPointInfo = gravityAttractor.FindNearestPoint(posEntity);
             if (ExtUtilityFunction.IsNullVector(tmpPointInfo.pos))
             {
                 Debug.LogWarning("ici on a pas trouvé de nouvelle gravité... garder comme maintenant ? mettre le compteur de mort ?");
