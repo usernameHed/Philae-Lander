@@ -349,9 +349,9 @@ public class GravityAttractorEditor : MonoBehaviour
             if (gravityAttractor.gravityPoints[i].point)
             {
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityPoints[i].point.position);
-                if (gravityAttractor.gravityPoints[i].range > 0 && alwaysShow)
+                if (gravityAttractor.gravityPoints[i].GetPointInfo().range > 0 && alwaysShow)
                 {
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityPoints[i].point.position, gravityAttractor.gravityPoints[i].range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityPoints[i].point.position, gravityAttractor.gravityPoints[i].GetPointInfo().range);
                 }
             }
                 
@@ -365,11 +365,11 @@ public class GravityAttractorEditor : MonoBehaviour
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointA.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointB.position);
 
-                if (gravityAttractor.gravityLines[i].range > 0 && alwaysShow)
+                if (gravityAttractor.gravityLines[i].GetPointInfo().range > 0 && alwaysShow)
                 {
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityLines[i].pointA.position, gravityAttractor.gravityLines[i].pointB.position, gravityAttractor.gravityLines[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityLines[i].pointA.position, gravityAttractor.gravityLines[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityLines[i].pointB.position, gravityAttractor.gravityLines[i].range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityLines[i].pointA.position, gravityAttractor.gravityLines[i].pointB.position, gravityAttractor.gravityLines[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityLines[i].pointA.position, gravityAttractor.gravityLines[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityLines[i].pointB.position, gravityAttractor.gravityLines[i].GetPointInfo().range);
                 }
             }
         }
@@ -385,15 +385,15 @@ public class GravityAttractorEditor : MonoBehaviour
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointB.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointC.position);
 
-                if (gravityAttractor.gravityTriangles[i].range > 0 && alwaysShow)
+                if (gravityAttractor.gravityTriangles[i].GetPointInfo().range > 0 && alwaysShow)
                 {
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
 
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
                 }
 
                 Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTriangles[i].pointA.position,
@@ -451,17 +451,17 @@ public class GravityAttractorEditor : MonoBehaviour
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointC.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointD.position);
 
-                if (gravityAttractor.gravityQuad[i].range > 0 && alwaysShow)
+                if (gravityAttractor.gravityQuad[i].GetPointInfo().range > 0 && alwaysShow)
                 {
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
 
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
                 }
 
                 Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointA.position,

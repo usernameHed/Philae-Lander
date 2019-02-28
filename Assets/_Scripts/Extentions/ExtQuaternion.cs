@@ -456,6 +456,9 @@ public static class ExtQuaternion
         Vector3 sum = Vector3.zero;
         for (int i = 0; i < arrayVect.Length; i++)
         {
+            if (ExtUtilityFunction.IsNullVector(arrayVect[i]))
+                continue;
+
             sum += arrayVect[i];
         }
         return ((sum).normalized);

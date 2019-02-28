@@ -365,24 +365,24 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     
     private GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
     {
-        /*
-        //Debug.Log("ou la ?");
+        GravityAttractorLD.PointInfo[] allPointInfo = new GravityAttractorLD.PointInfo[allGravityAttractor.Count];
+        Vector3[] closestPost = new Vector3[allGravityAttractor.Count];
+        Vector3[] sphereDir = new Vector3[allGravityAttractor.Count];
+
         for (int i = 0; i < allGravityAttractor.Count; i++)
         {
-            tmpLastPointInfo = allGravityAttractor[i].FindNearestPoint(posEntity);
+            GetClosestPointOfGA(posEntity, allGravityAttractor[i], ref allPointInfo[i]);//allGravityAttractor[i].FindNearestPoint(posEntity);
+            closestPost[i] = allPointInfo[i].pos;
+            sphereDir[i] = allPointInfo[i].sphereGravity;
         }
-        lastClosestGravityAttractor = //le plus proche
-        */
-        tmpLastPointInfo = groundAttractor.FindNearestPoint(posEntity);
-        if (ExtUtilityFunction.IsNullVector(tmpLastPointInfo.pos))
-        {
-            Debug.LogWarning("ici on a pas trouvé de nouvelle gravité... garder comme maintenant ? mettre le compteur de mort ?");
-            Debug.DrawRay(posEntity, pointInfo.sphereGravity * -10, Color.red, 5f);
-            return (pointInfo);
-        }
-        //pointInfo = tmpPointInfo;
-        tmpLastPointInfo.sphereGravity = (posEntity - pointInfo.pos).normalized;
-        return (tmpLastPointInfo);
+
+        int indexFound = -1;
+        Vector3 close = ExtUtilityFunction.GetClosestPoint(posEntity, closestPost, ref indexFound);
+        Vector3 middleOfAllVec = ExtQuaternion.GetMiddleOfXVector(sphereDir);
+
+        GravityAttractorLD.PointInfo closestPoint = allPointInfo[indexFound];
+        closestPoint.sphereGravity = middleOfAllVec;
+        return (closestPoint);
     }
 
     /// <summary>
@@ -401,7 +401,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             return (false);
         }
         //pointInfo = tmpPointInfo;
-        pointInfoToFill.sphereGravity = (posEntity - pointInfo.pos).normalized;
+        pointInfoToFill.sphereGravity = (posEntity - pointInfoToFill.pos).normalized;
         return (true);
     }
 
