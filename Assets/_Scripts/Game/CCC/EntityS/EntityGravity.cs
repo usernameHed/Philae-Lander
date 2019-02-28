@@ -204,7 +204,7 @@ public class EntityGravity : MonoBehaviour
                 break;
             case OrientationPhysics.GRAVITY_ATTRACTOR:
                 //TODO:
-                entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity, false);
+                //entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity, false);
                 mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
                 //mainAndOnlyGravity = groundCheck.GetDirLastNormal();
                 break;

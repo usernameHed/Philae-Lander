@@ -164,17 +164,20 @@ public class GroundCheck : MonoBehaviour
             
 
             //try to set 
-            if (!lastPlatform || hitInfo.collider.transform.GetInstanceID() != lastPlatform.GetInstanceID())
+            
+            //if (!lastPlatform || hitInfo.collider.transform.GetInstanceID() != lastPlatform.GetInstanceID())
+            //{
+                //Debug.Log("ici check ground ??");
+                entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
+            //}
+            if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
+                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
             {
-                Debug.Log("try to change ??");
-                entityGravityAttractorSwitch.TryToSetNewGravityAttractor(hitInfo.collider.transform);
+                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
+                groundValue = false;
+                return;
             }
-            else if (lastPlatform && entityGravityAttractorSwitch.IsInGravityAttractorMode()
-                && !entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.collider.gameObject.layer))
-            {
-                Debug.LogWarning("HEre we detect we are in gravityMode, AND on a different layer platform... force change !");
-                entityGravityAttractorSwitch.TryToSetNewGravityAttractor(hitInfo.collider.transform);
-            }
+            
                 
 
             if (IsInDontLayer(hitInfo))
@@ -182,7 +185,7 @@ public class GroundCheck : MonoBehaviour
                 Debug.Log("continiue flying... we are in dont zone");
                 return;
             }
-
+            /*
             if (!entityGravityAttractorSwitch.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
             {
                 Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
@@ -190,6 +193,7 @@ public class GroundCheck : MonoBehaviour
                     groundValue = false;
                 return;
             }
+            */
             
 
             SetCurrentPlatform(hitInfo.collider.transform);
@@ -203,14 +207,6 @@ public class GroundCheck : MonoBehaviour
                 hitInfo.point,
                 collRayCastMargin,
                 entityController.layerMask);
-
-            /*
-            Vector3 normlaReturn = hitInfo.normal;
-            if (fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal, ref normlaReturn))
-            {
-                dirNormal
-            }
-            */
 
             if (CanChangeNormal(hitInfo))
             {

@@ -72,6 +72,59 @@ public class EntityContactSwitch : MonoBehaviour
         return (false);
     }
 
+    private bool IsSphereGravityAndNormalNotOk(RaycastHit hitInfo)
+    {
+        GravityAttractorLD.PointInfo tmpPointInfo = new GravityAttractorLD.PointInfo();
+
+        bool normalOk = false;
+        bool isThisObjectClouldBeOk = entityGravityAttractorSwitch.IsThisHitImpactCouldBeOk(hitInfo, ref tmpPointInfo, ref normalOk);
+
+        //here we don't touch a valide GravitySpehre, ignore it
+        if (!isThisObjectClouldBeOk)
+        {
+            return (true);
+        }
+        
+        if (normalOk && entityGravityAttractorSwitch.GetGroundAttractor() == null)
+        {
+            Debug.LogWarning("here null, first time we swithc to base to GA ?");
+            entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
+            return (true);
+        }
+
+        //here normal is bad, stop processing the groundForward, and do some action !
+        //si la normal est bonne,  mais que les GA sont different = bad normal
+        //si la normal est bonne, et que le groundAttractor est null aussi
+        if ((!normalOk && entityGravityAttractorSwitch.IsTheSamePointInfo(tmpPointInfo))
+            || (normalOk && !entityGravityAttractorSwitch.IsTheSamePointInfo(tmpPointInfo)))
+        {
+            Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
+            isForwardWall = true;
+            isForbiddenForward = true;
+
+            Vector3 dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+                            entityController.GetFocusedForwardDirPlayer(),
+                            distForward,
+                            sizeRadiusForward,
+                            hitInfo.point,
+                            collRayCastMargin,
+                            entityController.layerMask);
+
+            entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
+            entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
+
+            return (false);
+        }
+        else
+        {
+            entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
+        }
+
+        //here normal is good, we can change orientation !
+        return (true);
+    }
+    
+
     private void ForwardWallCheck()
     {
         RaycastHit hitInfo;
@@ -88,26 +141,10 @@ public class EntityContactSwitch : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
                                distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
-                && !entityGravityAttractorSwitch.IsNormalOk(hitInfo.transform, hitInfo.normal, true))
-            {                
-                Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
-                isForwardWall = true;
-                isForbiddenForward = true;
-
-                Vector3 dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
-                                entityController.GetFocusedForwardDirPlayer(),
-                                distForward,
-                                sizeRadiusForward,
-                                hitInfo.point,
-                                collRayCastMargin,
-                                entityController.layerMask);
-
-                entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
-                entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
+            if (!IsSphereGravityAndNormalNotOk(hitInfo))
                 return;
-            }
 
+            
             //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
             //Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
             ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);

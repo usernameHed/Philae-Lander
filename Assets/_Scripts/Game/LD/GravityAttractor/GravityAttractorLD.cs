@@ -15,6 +15,11 @@ public class GravityAttractorLD : MonoBehaviour
         public float gravityDownRatio;
         public bool stickIfAlreadyGrounded;
 
+        [HideInInspector]
+        public Vector3 sphereGravity;
+        [HideInInspector]
+        public GravityAttractorLD refGA;
+
         [Button]
         public void Init()
         {
@@ -299,13 +304,13 @@ public class GravityAttractorLD : MonoBehaviour
 
     public void SelectedGravityAttractor()
     {
-        Debug.Log(gameObject.name + " selected !" + gameObject);
+        //Debug.Log(gameObject.name + " selected !" + gameObject);
         //lastListFound.Clear();
     }
 
     public void UnselectGravityAttractor()
     {
-        Debug.Log(gameObject.name + " un-selected !" + gameObject);
+        //Debug.Log(gameObject.name + " un-selected !" + gameObject);
         //lastListFound.Clear();
     }
     
@@ -487,6 +492,7 @@ public class GravityAttractorLD : MonoBehaviour
                 Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
             }
         }
+        pointInfo.refGA = this;
         return (pointInfo);
     }
 }

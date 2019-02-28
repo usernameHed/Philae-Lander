@@ -124,11 +124,11 @@ public class EntityBumpUp : MonoBehaviour
             //TODO: here do not bump up si:
             //objHit.layer est une GA, ET normal pas bon
             if (entityGravityAttractorSwitch.IsAirAttractorLayer(objHit.gameObject.layer)
-                && entityGravityAttractorSwitch.IsNormalOk(objHit, normal, false))
+                /*&& entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(normal, entityGravityAttractorSwitch.GetDirGAGravity())*/)
             {
-                Debug.LogError("NOP raté, pas de air bump !");
+                Debug.LogWarning("ici attention pas de bump ou pas ?");
 
-                return;
+                //return;
             }
 
             //Debug.Log("here try to bump up ! dot: " + dotVelocity);
