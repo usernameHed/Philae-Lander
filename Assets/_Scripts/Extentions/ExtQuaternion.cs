@@ -537,6 +537,17 @@ public static class ExtQuaternion
 
         //return (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
     }
+
+    public static Vector3 ProjectVectorIntoPlane(Vector3 relativeDirection, Vector3 normalPlane)
+    {
+        //Projection of a vector on a plane and matrix of the projection.
+        //http://users.telenet.be/jci/math/rmk.htm
+
+        Vector3 Pprime = Vector3.Project(relativeDirection, normalPlane);
+        Vector3 relativeProjeted = relativeDirection - Pprime;
+        return (relativeProjeted);
+    }
+
     /// <summary>
     /// return an angle from a vector
     /// </summary>
