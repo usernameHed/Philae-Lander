@@ -17,6 +17,11 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float timeBeforeActiveAttractor = 0.5f;
 
+    [FoldoutGroup("GamePlay"), Tooltip("More you have, less they attract !"), SerializeField]
+    public float ratioOtherDistance = 1.3f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float maxDistBasedOnHowManyTimeDefault = 3f;
+
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private Rigidbody rbEntity = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
@@ -378,10 +383,36 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
         int indexFound = -1;
         Vector3 close = ExtUtilityFunction.GetClosestPoint(posEntity, closestPost, ref indexFound);
+        Vector3 closestVectorDir = close - posEntity;
+
+        float defaultForce = (closestVectorDir).sqrMagnitude;
+        Debug.DrawRay(posEntity, closestVectorDir.normalized * defaultForce, Color.cyan, 5f);
+
+        for (int i = 0; i < sphereDir.Length; i++)
+        {
+            if (i == indexFound)
+                continue;
+            Vector3 currentVectorDir = closestPost[i] - posEntity;
+            float magnitudeCurrentForce = (currentVectorDir).sqrMagnitude;
+
+            if (magnitudeCurrentForce > defaultForce * maxDistBasedOnHowManyTimeDefault)
+            {
+                Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black, 5f);
+                sphereDir[i] = ExtUtilityFunction.GetNullVector();
+                continue;
+            }
+
+            float currentForce = defaultForce / (magnitudeCurrentForce * ratioOtherDistance);
+            sphereDir[i] *= Mathf.Clamp(currentForce, 0f, 1f);
+
+            Debug.DrawRay(posEntity, currentVectorDir.normalized * currentForce, Color.magenta, 5f);
+        }
+
         Vector3 middleOfAllVec = ExtQuaternion.GetMiddleOfXVector(sphereDir);
 
         GravityAttractorLD.PointInfo closestPoint = allPointInfo[indexFound];
         closestPoint.sphereGravity = middleOfAllVec;
+        //Debug.Break();
         return (closestPoint);
     }
 
@@ -397,7 +428,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         if (ExtUtilityFunction.IsNullVector(pointInfoToFill.pos))
         {
             Debug.LogWarning("ici on a pas trouvé de nouvelle gravité... garder comme maintenant ? mettre le compteur de mort ?");
-            Debug.DrawRay(posEntity, pointInfo.sphereGravity * -10, Color.red, 5f);
+            //Debug.DrawRay(posEntity, pointInfo.sphereGravity * -10, Color.red, 5f);
             return (false);
         }
         //pointInfo = tmpPointInfo;
@@ -524,8 +555,8 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         Debug.Log("on arrive jusque l'a ?");
         Debug.Log(pointInfoToCatch.refGA);
         Debug.Log(pointInfoToCatch.refGA.gameObject.name);
-        Debug.DrawRay(rbEntity.position, htiInfoToCheck.normal, Color.green, 3f);
-        Debug.DrawRay(rbEntity.position, pointInfoToCatch.sphereGravity, Color.red, 3f);
+        //Debug.DrawRay(rbEntity.position, htiInfoToCheck.normal, Color.green, 3f);
+        //Debug.DrawRay(rbEntity.position, pointInfoToCatch.sphereGravity, Color.red, 3f);
 
         //here we have a valide point in this gravitySphere !
         //return true if the normal is ok

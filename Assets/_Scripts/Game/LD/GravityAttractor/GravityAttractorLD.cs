@@ -494,7 +494,7 @@ public class GravityAttractorLD : MonoBehaviour
                 pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
                 pointInfo.stickIfAlreadyGrounded = allResult[indexFound].stickIfAlreadyGrounded;
                 pointInfo.range = allResult[indexFound].range;
-                Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
+                //Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
             }
         }
         pointInfo.refGA = this;

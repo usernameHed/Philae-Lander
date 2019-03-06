@@ -170,7 +170,7 @@ public class EntityJumpCalculation : MonoBehaviour
     /// </summary>
     private bool DoSphereCast(Vector3 origin, Vector3 dir, float maxDist, int layers)
     {
-        Debug.DrawRay(origin, dir * maxDist, Color.red, 5f);
+        //Debug.DrawRay(origin, dir * maxDist, Color.red, 5f);
         if (Physics.SphereCast(origin, 0.3f, dir, out hitInfo,
                                    maxDist, layers, QueryTriggerInteraction.Ignore))
         {
