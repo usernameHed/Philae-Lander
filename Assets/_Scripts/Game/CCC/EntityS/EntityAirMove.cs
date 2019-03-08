@@ -52,7 +52,7 @@ public class EntityAirMove : MonoBehaviour
     public void MovePhysics(Vector3 direction)
     {
         amountAdded += (direction * entityAction.GetMagnitudeInput()).sqrMagnitude * Time.deltaTime;
-        Debug.Log("Amount added: " + amountAdded);
+        //Debug.Log("Amount added: " + amountAdded);
 
         UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
     }

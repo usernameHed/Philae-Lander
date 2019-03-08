@@ -374,7 +374,7 @@ public class EntityGravity : MonoBehaviour
 
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
         rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
-            entityJumpCalculation.GetSpecialAirGravity(),
+            GetMainAndOnlyGravity(),
             CanApplyForceUp(),
             entityJumpCalculation.CanApplyForceDown(),
             true);
