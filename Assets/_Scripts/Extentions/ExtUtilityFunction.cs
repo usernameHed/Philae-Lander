@@ -22,6 +22,21 @@ public static class ExtUtilityFunction
         return (vecToTest == wrongVector);
     }
 
+    public static Vector3 [] CreateNullVectorArray(int lenght)
+    {
+        Vector3[] arrayPoints = new Vector3[lenght];
+        FillArrayWithWrongVector(ref arrayPoints);
+        return (arrayPoints);
+    }
+
+    public static void FillArrayWithWrongVector(ref Vector3[] arrayToFill)
+    {
+        for (int i = 0; i < arrayToFill.Length; i++)
+        {
+            arrayToFill[i] = GetNullVector();
+        }
+    }
+
     /// <summary>
     /// number convert range (55 from 0 to 100, to a base 0 - 1 for exemple)
     /// </summary>

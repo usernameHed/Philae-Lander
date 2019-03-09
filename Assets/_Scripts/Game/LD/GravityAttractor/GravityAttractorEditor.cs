@@ -43,6 +43,7 @@ public class GravityAttractorEditor : MonoBehaviour
     private const string trianglesParent = "Triangles (autogenerate)";
     private const string quadsParent = "Quads (autogenerate)";
     private const string triggerAttractorName = "GRAVITY ATTRACTOR TRIGGER";
+    private const string triggerAttractorChildName = "Trigger";
     private const string triggerAttractorLayer = "Walkable/GravityAttractor";
 
     private void SetupEditorPoint()
@@ -112,16 +113,27 @@ public class GravityAttractorEditor : MonoBehaviour
         if (!trigger)
         {
             GameObject triggerAttractor = new GameObject(triggerAttractorName);
+            GameObject childTrigger = new GameObject(triggerAttractorChildName);
+
             triggerAttractor.layer = LayerMask.NameToLayer(triggerAttractorLayer);
+            childTrigger.layer = LayerMask.NameToLayer(triggerAttractorLayer);
+
             triggerAttractor.transform.SetParent(transform);
             triggerAttractor.transform.SetAsFirstSibling();
             triggerAttractor.transform.localPosition = Vector3.zero;
             triggerAttractor.transform.localRotation = Quaternion.identity;
+
+            childTrigger.transform.SetParent(triggerAttractor.transform);
+            childTrigger.transform.ResetTransform();
+
             GravityAttractorTrigger gaTrigger = triggerAttractor.AddComponent<GravityAttractorTrigger>();
             gaTrigger.refGravityAttractor = gravityAttractor;
 
-            SphereCollider sphere = triggerAttractor.AddComponent<SphereCollider>();
-            sphere.radius = 12f;
+            Rigidbody rbTrigger = triggerAttractor.AddComponent<Rigidbody>();
+            rbTrigger.isKinematic = true;
+
+            SphereCollider sphere = childTrigger.AddComponent<SphereCollider>();
+            sphere.radius = 5f;
             sphere.isTrigger = true;
         }
     }

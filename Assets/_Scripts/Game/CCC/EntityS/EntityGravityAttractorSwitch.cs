@@ -15,7 +15,9 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginNormalJumpInGA = 0.3f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float timeBeforeActiveAttractor = 0.5f;
+    public float timeBeforeActiveAttractor = 0.4f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public int maxGravityApplied = 3;
 
     [FoldoutGroup("GamePlay"), Tooltip("More you have, less they attract !"), SerializeField]
     public float ratioOtherDistance = 1.3f;
@@ -41,7 +43,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
-
 
     //[FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     //public Vector3 sphereGravity = Vector3.zero;
@@ -171,24 +172,45 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         }
     }
 
-    
+    /// <summary>
+    /// get median of all attraction (3 max ?)
+    /// </summary>
     private GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
     {
+        //prepare array
         GravityAttractorLD.PointInfo[] allPointInfo = new GravityAttractorLD.PointInfo[allGravityAttractor.Count];
         Vector3[] closestPost = new Vector3[allGravityAttractor.Count];
         Vector3[] sphereDir = new Vector3[allGravityAttractor.Count];
 
+        //fill array with data from 
         for (int i = 0; i < allGravityAttractor.Count; i++)
         {
-            GetClosestPointOfGA(posEntity, allGravityAttractor[i], ref allPointInfo[i]);//allGravityAttractor[i].FindNearestPoint(posEntity);
-            closestPost[i] = allPointInfo[i].pos;
+            GetClosestPointOfGA(posEntity, allGravityAttractor[i], ref allPointInfo[i]);
+
             sphereDir[i] = allPointInfo[i].sphereGravity;
+
+            //correct pos depending on ratio ?
+            closestPost[i] = allPointInfo[i].posRange;
+            //closestPost[i] = allPointInfo[i].pos;
+
+            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f, 5f);
+            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f, 5f);
         }
 
+        //setup the closest point, and his vector director
         int indexFound = -1;
         Vector3 close = ExtUtilityFunction.GetClosestPoint(posEntity, closestPost, ref indexFound);
+
+
+//////////////////////////////////////////////////// TMP
+//GravityAttractorLD.PointInfo closestPointTmp = allPointInfo[indexFound];
+//return (closestPointTmp);
+//////////////////////////////////////////////////// TMP
+
+
         Vector3 closestVectorDir = close - posEntity;
 
+        //the default force is this point
         float defaultForce = (closestVectorDir).sqrMagnitude;
         Debug.DrawRay(posEntity, closestVectorDir.normalized * defaultForce, Color.cyan, 5f);
 
@@ -217,6 +239,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         GravityAttractorLD.PointInfo closestPoint = allPointInfo[indexFound];
         closestPoint.sphereGravity = middleOfAllVec;
         //Debug.Break();
+        
         return (closestPoint);
     }
 
