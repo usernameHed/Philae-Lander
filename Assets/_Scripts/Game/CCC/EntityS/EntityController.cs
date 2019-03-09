@@ -28,13 +28,7 @@ public class EntityController : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    protected EntityAttractor entityAttractor;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    protected EntitySwitch entitySwitch;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntityAction entityAction;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    protected FastForward fastForward;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntityGravityAttractorSwitch entityGravityAttractorSwitch;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]

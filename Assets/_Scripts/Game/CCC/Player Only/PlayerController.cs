@@ -57,9 +57,6 @@ public class PlayerController : EntityController, IKillable
     {
         playerJump.OnGrounded();
         playerGravity.OnGrounded();
-        entityAttractor.OnGrounded();
-        entitySwitch.OnGrounded();
-        fastForward.OnGrounded();
         entityGravityAttractorSwitch.OnGrounded();
         entityNoGravity.OnGrounded();
         entityBumpUp.OnGrounded();

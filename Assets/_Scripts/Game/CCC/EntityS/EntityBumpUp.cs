@@ -18,9 +18,7 @@ public class EntityBumpUp : MonoBehaviour
     private Rigidbody rb = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJump entityJump = null;
-
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityJumpCalculation entityJumpCalculation = null;
+    
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
 
@@ -34,9 +32,6 @@ public class EntityBumpUp : MonoBehaviour
             return (false);
         //do a bump only if we are going upwards !
         if (entityGravity.IsGoingDown())
-            return (false);
-
-        if (!entityJumpCalculation.CanDoBumpUp())
             return (false);
 
         return (true);
@@ -65,16 +60,6 @@ public class EntityBumpUp : MonoBehaviour
         float dotVelocity = ExtQuaternion.DotProduct(currentDirInverted, normal);
         if (dotVelocity > dotMargin)
         {
-            //TODO: here do not bump up si:
-            //objHit.layer est une GA, ET normal pas bon
-            if (entityGravityAttractorSwitch.IsAirAttractorLayer(objHit.gameObject.layer)
-                /*&& entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(normal, entityGravityAttractorSwitch.GetDirGAGravity())*/)
-            {
-                Debug.LogWarning("ici attention pas de bump ou pas ?");
-
-                //return;
-            }
-
             //Debug.Log("here try to bump up ! dot: " + dotVelocity);
             Vector3 upJump = entityGravity.GetMainAndOnlyGravity();
             rb.velocity = upJump * rb.velocity.magnitude;

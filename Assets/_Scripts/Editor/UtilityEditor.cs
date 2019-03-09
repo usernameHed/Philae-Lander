@@ -29,4 +29,35 @@ public class UtilityEditor : ScriptableObject
         AssetDatabase.Refresh();
     }
 
+    [MenuItem("PERSO/Philae/SetGround Layer & Material")]
+    public static void SetGroundLayerAndMat()
+    {
+        GameObject activeOne = Selection.activeGameObject;
+        if (!activeOne)
+            return;
+
+        Transform[] allChild = activeOne.GetComponentsInChildren<Transform>();
+        
+
+        for (int i = 0; i < allChild.Length; i++)
+        {
+            MeshFilter mesh = allChild[i].GetComponent<MeshFilter>();
+            MeshRenderer meshRenderer = allChild[i].GetComponent<MeshRenderer>();
+
+            TextMesh text = allChild[i].GetComponent<TextMesh>();
+            if (text)
+                continue;
+
+            if (mesh && meshRenderer)
+            {
+                Undo.RecordObject(allChild[i].gameObject, "layer change");
+                Undo.RecordObject(meshRenderer, "materials change");
+
+                allChild[i].gameObject.layer = LayerMask.NameToLayer("Walkable/Ground");
+                var mat = AssetDatabase.LoadAssetAtPath("Assets/Resources/Ground.mat", typeof(Material));
+                Debug.Log("mat: " + mat);
+                meshRenderer.material = (Material)mat;
+            }
+        }        
+    }
 }

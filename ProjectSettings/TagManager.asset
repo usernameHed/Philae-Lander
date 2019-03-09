@@ -21,13 +21,13 @@ TagManager:
   - Object
   - Enemy
   - Player
-  - Walkable/Floor
-  - Walkable/NoSide
-  - Walkable/Up
-  - Walkable/FastForward
-  - Walkable/Dont
-  - Walkable/GravityAttractor
-  - Walkable/OrientedGravity
+  - Walkable/Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

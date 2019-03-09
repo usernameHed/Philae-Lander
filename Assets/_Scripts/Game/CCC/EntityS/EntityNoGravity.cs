@@ -6,10 +6,6 @@ using UnityEngine;
 public class EntityNoGravity : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
-    private EntityAttractor entityAttractor = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("")]
-    private FastForward fastForward = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("")]
     private EntityController entityController = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
@@ -58,11 +54,6 @@ public class EntityNoGravity : MonoBehaviour
         //reset ratio of nothing
         if (zonesNoGravity.Count == 0 && currentRatioGravity != 1)
         {
-            if (currentRatioGravity == 0)
-            {
-                entityAttractor.RetryCoolDown();
-            }
-
             return (1);
         }
 
@@ -93,11 +84,12 @@ public class EntityNoGravity : MonoBehaviour
     {
         if (currentRatioGravity < 1)
         {
-            entityAttractor.RetryCoolDown();
+            /*
             if (fastForward.IsInFastForward() && entityController.GetMoveState() == EntityController.MoveState.InAir)
             {
                 fastForward.SetInAir();
             }
+            */
             
         }
         if (currentRatioGravity == 0 && entityController.GetMoveState() == EntityController.MoveState.InAir

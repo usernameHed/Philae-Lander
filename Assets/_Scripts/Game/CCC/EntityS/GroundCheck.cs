@@ -15,8 +15,6 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] dontLayer = new string[] { "Walkable/Dont" };
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float timeInAirBeforeNotStick = 0.3f;
 
     [FoldoutGroup("Object"), SerializeField]
@@ -29,8 +27,6 @@ public class GroundCheck : MonoBehaviour
     private EntityJump entityJump = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private FastForward fastForward = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
@@ -65,6 +61,27 @@ public class GroundCheck : MonoBehaviour
         isFlying = true;
         radius = sphereCollider.radius;
         coolDownForStick.Reset();
+
+        ResearchInitialGround();
+    }
+
+    private void ResearchInitialGround()
+    {
+        RaycastHit hit;
+        //int raycastLayerMask = LayerMask.GetMask(entityController.walkablePlatform);
+        Vector3 dirDown = rb.transform.up * -1;
+        Debug.DrawRay(rb.transform.position, dirDown, Color.magenta, 5f);
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, entityController.layerMask))
+        {
+            dirNormal = hit.normal;
+            Debug.Log("Did Hit");
+        }
+        else
+        {
+            dirNormal = Vector3.up;
+            Debug.Log("Did NO Hit");
+        }
     }
 
     public string GetLastLayer()
@@ -114,19 +131,8 @@ public class GroundCheck : MonoBehaviour
         dirNormal = newGravity;
     }
 
-    private bool IsInDontLayer(RaycastHit hitInfo)
-    {
-        int isForbidden = ExtList.ContainSubStringInArray(dontLayer, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-        if (isForbidden != -1)
-            return (true);
-        return (false);
-    }
-
     private bool CanChangeNormal(RaycastHit hitInfo)
     {
-        if (!fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal))
-            return (false);
-
         return (true);
     }
 
@@ -157,46 +163,15 @@ public class GroundCheck : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, dirRay, out hitInfo,
                                magnitudeToCheck, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            //TODO: here if gravityAttractorLayer, qu'on est dans un SphereAirMove mode, et que la normal
-            // n'est pas bonne, ne pas être considéré comme grounded !
             
-
-            //try to set 
-            
-            //if (!lastPlatform || hitInfo.collider.transform.GetInstanceID() != lastPlatform.GetInstanceID())
-            //{
-                //Debug.Log("ici check ground ??");
-                //entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
-            //}
-
-            /*
-            if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
-                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity())
-                && isFlying)
+            if (!entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
             {
                 Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
                 groundValue = false;
                 return;
             }
-            */
             
-                
 
-            if (IsInDontLayer(hitInfo))
-            {
-                Debug.Log("continiue flying... we are in dont zone");
-                return;
-            }
-            /*
-            if (!entityGravityAttractorSwitch.IsNormalAcceptedIfWeAreInGA(hitInfo.transform, hitInfo.normal))
-            {
-                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
-                if (!entityGravityAttractorSwitch.KeepSticking())
-                    groundValue = false;
-                return;
-            }
-            */
-            
 
             SetCurrentPlatform(hitInfo.collider.transform);
 
@@ -213,11 +188,13 @@ public class GroundCheck : MonoBehaviour
             if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
+                /*
                 Vector3 tmpOrientedGravity = dirNormal;
                 if (fastForward.DoChangeOrientationManually(hitInfo, ref tmpOrientedGravity))
                 {
                     dirNormal = tmpOrientedGravity.normalized;
                 }
+                */
             }
         }
         else

@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class EntityGravityAttractorSwitch : MonoBehaviour
 {
-    //[FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    //private TagAccess.TagAccessEnum tagWithAttractor = TagAccess.TagAccessEnum.GravityAttractor;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] gravityAttractorLayer = new string[] { "Walkable/GravityAttractor" };
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginDotGA = 0.86f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
@@ -29,17 +25,11 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityController entityController;
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
-    private bool gravityAttractorMode = false;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
     
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     private GravityAttractorLD.PointInfo tmpLastPointInfo = new GravityAttractorLD.PointInfo();
-
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    private GravityAttractorLD groundAttractor = null;
-    public GravityAttractorLD GetGroundAttractor() => groundAttractor;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
@@ -77,8 +67,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     /// <returns></returns>
     public float GetRatioGravityDown()
     {
-        if (!gravityAttractorMode)
-            return (1);
         return (pointInfo.gravityDownRatio);
     }
     
@@ -88,14 +76,8 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     /// <returns></returns>
     public float GetRatioGravity()
     {
-        float normalRatio = (!gravityAttractorMode || coolDownBeforeActiveAtractor.IsRunning()) ? 1 : pointInfo.gravityBaseRatio;
-        //Debug.Log("ratio: " + normalRatio);
+        float normalRatio = (coolDownBeforeActiveAtractor.IsRunning()) ? 1 : pointInfo.gravityBaseRatio;
         return (normalRatio);
-    }
-
-    public bool IsInGravityAttractorMode()
-    {
-        return (groundAttractor);
     }
 
     public bool CanApplyForceDown()
@@ -103,18 +85,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         if (coolDownBeforeActiveAtractor.IsRunning())
             return (false);
         return (true);
-    }
-
-    /// <summary>
-    /// do we do a jump based on gravity of the GravityAttractorSwitch or not ?
-    /// realMagnitudeInput: input of player, but if we are against a wall, input = 0;
-    /// </summary>
-    /// <returns></returns>
-    public bool CanDoGAJump(float realMagnitudeInput)
-    {
-        if (IsInGravityAttractorMode() && realMagnitudeInput < marginNormalJumpInGA)
-            return (true);
-        return (false);
     }
 
     public void JustJumped()
@@ -137,38 +107,15 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (pointInfo.sphereGravity);
     }
 
-    public bool IsAirAttractorLayer(int layer)
+    private void CalculateGAGravity()
     {
-        int isGravityAttractor = ExtList.ContainSubStringInArray(gravityAttractorLayer, LayerMask.LayerToName(layer));
-        if (isGravityAttractor == -1)
-            return (false);
-        return (true);
-    }
-    
-    /// <summary>
-    /// calculate the gravity based on a point
-    /// chose the jump normal at first, and then calculate
-    /// if fromScript is true, always calculate
-    /// </summary>
-    public void CalculateSphereGravity(Vector3 posEntity, bool calculateNow = false)
-    {
-        if (coolDownBeforeActiveAtractor.IsRunning() && !calculateNow)
+        if (coolDownBeforeActiveAtractor.IsRunning())
         {
-            //sphereGravity = groundCheck.GetDirLastNormal();
             pointInfo.sphereGravity = lastNormalJumpChoosen;
         }
         else
         {
-            //Debug.Log("ou la ?");
-            GravityAttractorLD.PointInfo tmpPointInfo = groundAttractor.FindNearestPoint(posEntity);
-            if (ExtUtilityFunction.IsNullVector(tmpPointInfo.pos))
-            {
-                Debug.LogWarning("ici on a pas trouvé de nouvelle gravité... garder comme maintenant ? mettre le compteur de mort ?");
-                Debug.DrawRay(posEntity, pointInfo.sphereGravity * -10, Color.red, 5f);
-                return;
-            }
-            pointInfo = tmpPointInfo;
-            pointInfo.sphereGravity = (posEntity - pointInfo.pos).normalized;
+            pointInfo = GetAirSphereGravity(rbEntity.position);
         }
     }
 
@@ -269,38 +216,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     }
 
     
-    private void CalculateGAGravity()
-    {
-        if (IsInGravityAttractorMode())
-        {
-            if (coolDownBeforeActiveAtractor.IsRunning())
-            {
-                //sphereGravity = groundCheck.GetDirLastNormal();
-                pointInfo.sphereGravity = lastNormalJumpChoosen;
-            }
-            else
-            {
-                pointInfo = GetAirSphereGravity(rbEntity.position);
-            }
-        }
-        else
-        {
-            /*
-            //ici on est pas en attractor mode, on prend les plus proche trouvé
-            //MAIS il faut qu'il soit à une distance mminimum !
-            //si on est assez proche, alors isAttractorMode = true !
-            //sphereGravity = ;
-            Vector3 tmpSphereGravity = GetSphereGravity(rbEntity.position);
-            if ((rbEntity.position - pointInfo.pos).sqrMagnitude < 10)
-            {
-                //active gravityAttractor
-                SelectNewGA(pointInfo.gravityAttractor, true);
-            }
-            //sphereGravity = GetSphereGravity(rbEntity.position);
-            */
-        }
-    }
-
     /// <summary>
     /// get the closest grabityLdAttractor !
     /// </summary>
@@ -324,21 +239,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (allGravityAttractor[indexFound]);
     }
 
-    private void SelectNewGA(GravityAttractorLD newGA)
-    {
-        groundAttractor = newGA;
-        groundAttractor.SelectedGravityAttractor();
-        gravityAttractorMode = true;
-    }
-
-    public void UnselectOldGA()
-    {
-        if (groundAttractor)
-            groundAttractor.UnselectGravityAttractor();
-        groundAttractor = null;
-        gravityAttractorMode = false;
-    }
-
     public bool IsNormalIsOkWithCurrentGravity(Vector3 normalHit, Vector3 currentGravity)
     {
         //if angle hitInfo.normal eet notre gravity est pas bonne,
@@ -358,93 +258,8 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (false);
     }
 
-    /// <summary>
-    /// called by entityContact switch to know if this object normal is ok
-    /// </summary>
-    /// <returns></returns>
-    public bool IsThisHitImpactCouldBeOk(RaycastHit htiInfoToCheck,
-        ref GravityAttractorLD.PointInfo pointInfoToCatch, ref bool normalOk)
-    {
-        //here this object is not in the good layer
-        if (!IsAirAttractorLayer(htiInfoToCheck.transform.gameObject.layer))
-        {
-            Debug.Log("on est ici normalement non ??????????");
-            return (false);
-        }
-        Debug.Log("ou pas...............");
-            
-
-        GravityAttractorLD tmpGA = htiInfoToCheck.transform.gameObject.GetComponentInParent<GravityAttractorLD>();
-        //here we don't even find a gravityAttractorLD associeted !
-        if (!tmpGA)
-            return (false);
-
-        bool closestPooint = GetClosestPointOfGA(rbEntity.position, tmpGA, ref pointInfoToCatch);
-        //here we do not find any point !
-        if (!closestPooint)
-            return (false);
-
-        Debug.Log("on arrive jusque l'a ?");
-        Debug.Log(pointInfoToCatch.refGA);
-        Debug.Log(pointInfoToCatch.refGA.gameObject.name);
-        //Debug.DrawRay(rbEntity.position, htiInfoToCheck.normal, Color.green, 3f);
-        //Debug.DrawRay(rbEntity.position, pointInfoToCatch.sphereGravity, Color.red, 3f);
-
-        //here we have a valide point in this gravitySphere !
-        //return true if the normal is ok
-        normalOk = IsNormalIsOkWithCurrentGravity(htiInfoToCheck.normal, pointInfoToCatch.sphereGravity);
-
-        Debug.Log("normal: " + normalOk);
-
-        //Debug.Break();
-        return (true);
-    }
-
-    /*
-    /// <summary>
-    /// called by GroundCheck every time we are on a new ground object
-    /// </summary>
-    /// <param name="hitInfo"></param>
-    public void UpdateGroundObject(RaycastHit hitInfo)
-    {
-        if (!IsAirAttractorLayer(hitInfo.transform.gameObject.layer))
-        {
-            //Debug.Log("unselect");
-            UnselectOldGA();
-        }
-        else
-        {
-            //Debug.Log("select one ????");
-            groundAttractor = hitInfo.transform.gameObject.GetComponentInParent<GravityAttractorLD>();
-            if (groundAttractor == null)
-                groundAttractor = FindClosestGravityAttractor(rbEntity.position);
-            if (groundAttractor == null)
-            {
-                UnselectOldGA();
-                return;
-            }
-            
-            bool findGround = GetClosestPointOfGA(rbEntity.position, groundAttractor, ref tmpLastPointInfo);
-
-            if (findGround)
-            {
-                SelectNewGA(groundAttractor);
-                pointInfo = tmpLastPointInfo;
-            }
-            else
-            {
-                UnselectOldGA();
-                return;
-            }
-        }
-    }
-    */
-
     private void FixedUpdate()
     {
-        //if (entityController.GetMoveState() == EntityController.MoveState.InAir)
-        //{
-            CalculateGAGravity();
-        //}
+        CalculateGAGravity();
     }
 }

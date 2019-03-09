@@ -30,18 +30,10 @@ public class EntityJump : MonoBehaviour
     protected EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityGravity playerGravity;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    protected EntityAttractor entityAttractor;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    protected EntityContactSwitch entityContactSwitch;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public EntityJumpCalculation entityJumpCalculation;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public EntitySwitch entitySwitch;
+    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    //protected EntityContactSwitch entityContactSwitch;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public GroundCheck groundCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public FastForward fastForward;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityAirMove playerAirMove;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -97,8 +89,8 @@ public class EntityJump : MonoBehaviour
         if (!coolDownOnGround.IsReady())
             return (false);
 
-        if (!entityContactSwitch.IsCoolDownSwitchReady())
-            return (false);
+        //if (!entityContactSwitch.IsCoolDownSwitchReady())
+        //    return (false);
 
         int isForbidden = ExtList.ContainSubStringInArray(noJumpLayer, groundCheck.GetLastLayer());
         if (isForbidden != -1)
@@ -135,7 +127,6 @@ public class EntityJump : MonoBehaviour
             coolDownOnGround.StartCoolDown(justGroundTimer);
             hasJumped = false;
         }
-        entityJumpCalculation.OnGrounded();
     }
 
     private float CalculateJumpVerticalSpeed()
@@ -146,8 +137,8 @@ public class EntityJump : MonoBehaviour
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityAction.GetMagnitudeInput()));
 
-        if (entityContactSwitch.IsForwardForbiddenWall())
-            jumpBoostHeight = jumpHeight;
+        //if (entityContactSwitch.IsForwardForbiddenWall())
+        //    jumpBoostHeight = jumpHeight;
 
         //Debug.Log("boost height: " + jumpBoostHeight);
         return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
@@ -176,8 +167,8 @@ public class EntityJump : MonoBehaviour
     /// <returns></returns>
     private Vector3 GetNormalizedJumpDir()
     {
-        
-        bool isForbiddenForward = entityContactSwitch.IsForwardForbiddenWall();
+        //bool isForbiddenForward = entityContactSwitch.IsForwardForbiddenWall();
+        bool isForbiddenForward = false;
         lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
         bool canDoGAJump = false;// entityGravityAttractorSwitch.CanDoGAJump(lastVelocityJump) && doGravityAttractorJump;
 
@@ -209,14 +200,11 @@ public class EntityJump : MonoBehaviour
         rb.velocity = orientedStrenghtJump;
 
         playerGravity.JustJumped();
-        entitySwitch.JustJumped();
-        fastForward.JustJumped();
         playerAirMove.JustJumped();
         entityGravityAttractorSwitch.JustJumped();
         entityBumpUp.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         
-        entityJumpCalculation.JumpCalculation(orientedStrenghtJump);
     }
 }

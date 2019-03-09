@@ -20,7 +20,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
             TriggerController triggerController = other.gameObject.GetComponent<TriggerController>();
             if (triggerController)
             {
-                triggerController.entityTriggerManager.fastForward.EnterInZone(this);
+                //triggerController.entityTriggerManager.fastForward.EnterInZone(this);
             }
         }
     }
@@ -32,7 +32,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
             TriggerController triggerController = other.gameObject.GetComponent<TriggerController>();
             if (triggerController)
             {
-                triggerController.entityTriggerManager.fastForward.LeanInZone(this);
+                //triggerController.entityTriggerManager.fastForward.LeanInZone(this);
             }
         }
 	}

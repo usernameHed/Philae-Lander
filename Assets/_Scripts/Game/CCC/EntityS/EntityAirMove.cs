@@ -37,8 +37,6 @@ public class EntityAirMove : MonoBehaviour
     private EntityJump entityJump = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private EntityJumpCalculation entityJumpCalculation = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref"), ReadOnly]
     protected float amountAdded = 0f;
@@ -75,14 +73,7 @@ public class EntityAirMove : MonoBehaviour
 
     private float GetRatioAirMove()
     {
-        if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
-        {
-            //here more ratio if more gravity !
-            float ratioAirMove = entityGravityAttractorSwitch.GetRatioGravity();
-            //here reduce this ratio
-            return (ratioAirMove * ratioWhenGravityAirMove);
-        }
-        return (1);
+        return (entityGravityAttractorSwitch.GetRatioGravity());
     }
 
     /// <summary>
@@ -128,9 +119,6 @@ public class EntityAirMove : MonoBehaviour
             return (false);
         //start airMove after a little bit of time
         if (!coolDownJump.IsReady())
-            return (false);
-        //No air Move en Side Jump or other stuff
-        if (!entityJumpCalculation.CanDoAirMove())
             return (false);
 
         return (true);

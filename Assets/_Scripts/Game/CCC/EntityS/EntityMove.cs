@@ -20,8 +20,8 @@ public class EntityMove : MonoBehaviour
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private EntityJump entityJump = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private EntityContactSwitch entityContactSwitch = null;
+    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    //private EntityContactSwitch entityContactSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private EntitySlide entitySlide = null;
     /// <summary>
@@ -38,11 +38,13 @@ public class EntityMove : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
+        /*
         //if we are in front of a NoSide Object, Slide, else, go forward
         Vector3 dirMove = (entityContactSwitch.IsForwardForbiddenWall())
             ? entitySlide.GetStraffDirection()
             : entityController.GetFocusedForwardDirPlayer();
-
+        */
+        Vector3 dirMove = entityController.GetFocusedForwardDirPlayer();
 
         MovePhysics(dirMove);
     }

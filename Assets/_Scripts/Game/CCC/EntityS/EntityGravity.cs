@@ -31,17 +31,6 @@ public class EntityGravity : MonoBehaviour
     private bool isGoingDown = false;
     public bool IsGoingDown() => isGoingDown;
 
-    //[FoldoutGroup("Swtich"), Tooltip("min dist when we don't change planet !"), SerializeField]
-    //private float distMinForChange = 2f;   //a-t-on un attract point de placé ?
-
-    [FoldoutGroup("Debug"), Tooltip("default air gravity"), SerializeField]
-    private OrientationPhysics currentOrientation = OrientationPhysics.OBJECT;
-    public OrientationPhysics GetOrientationPhysics() { return (currentOrientation); }
-    public void SetOrientation(OrientationPhysics orientation)
-    {
-        currentOrientation = orientation;
-    }
-
     private Vector3 mainAndOnlyGravity = Vector3.zero;
 
     public Vector3 GetMainAndOnlyGravity()
@@ -60,60 +49,9 @@ public class EntityGravity : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAttractor entityAttractor = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private FastForward fastForward = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJumpCalculation entityJumpCalculation = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityNoGravity entityNoGravity = null;
-
-
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
-    private Transform mainAttractObject;
-    private Vector3 mainAttractPoint;
-    private Vector3 mainAttractNormal;
-    public Transform GetMainAttractObject() { return (mainAttractObject); }
-
-    private void Start()
-    {
-        ResearchInitialGround();
-        CalculateGravity(rb.transform.position);
-    }
-
-    public void SetObjectAttraction(Transform target)
-    {
-        SetObjectAttraction(target, target.position, Vector3.zero);
-    }
-    public void SetObjectAttraction(Transform target, Vector3 point, Vector3 normalHit)
-    {
-        SetOrientation(OrientationPhysics.OBJECT);
-        mainAttractObject = target;
-        mainAttractPoint = point;
-        mainAttractNormal = normalHit;
-    }
-
-    private void ResearchInitialGround()
-    {
-        RaycastHit hit;
-        //int raycastLayerMask = LayerMask.GetMask(entityController.walkablePlatform);
-        Vector3 dirDown = rb.transform.up * -1;
-        Debug.DrawRay(rb.transform.position, dirDown, Color.magenta, 5f);
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, entityController.layerMask))
-        {
-            mainAttractObject = hit.transform;
-            mainAttractPoint = hit.point;
-            mainAttractNormal = hit.normal;
-            ExtLog.DebugLogIa("Did Hit", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-        }
-        else
-        {
-            ExtLog.DebugLogIa("No hit", (entityController.isPlayer) ? ExtLog.Log.BASE : ExtLog.Log.IA);
-        }
-    }
 
     public void OnGrounded()
     {
@@ -123,83 +61,17 @@ public class EntityGravity : MonoBehaviour
     public void JustJumped()
     {
         isGoingDown = false;
-        if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
-        {
-            SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
-        }
-    }
-
-    private void ChangeStateGravity()
-    {
-        //here player is on fly
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
-        {
-            //Debug.Log("try to change gravity state");
-            //here player is on fly, and we can create an attractor
-            if (entityGravityAttractorSwitch.IsInGravityAttractorMode())
-            {
-                SetOrientation(OrientationPhysics.GRAVITY_ATTRACTOR);
-            }
-            else if (entityAttractor.CanCreateAttractor() && currentOrientation == OrientationPhysics.NORMALS)
-            {
-                //bool aLittleMoreTime = entityJumpCalculation.UltimeTestBeforeAttractor();
-                entityAttractor.ActiveAttractor();
-            }
-            //here currently attractor attractive
-            else if (currentOrientation == OrientationPhysics.ATTRACTOR)
-            {
-
-            }
-            //here on fly but still attracted by the last normal
-            else if (currentOrientation != OrientationPhysics.OBJECT)
-            {
-                SetOrientation(OrientationPhysics.NORMALS);
-            }
-            //here attracted by an object
-            else if (entityAttractor.CanCreateLateAttractor() && currentOrientation == OrientationPhysics.OBJECT)
-            {
-                entityAttractor.ActiveAttractor();
-            }
-        }
-        //here on ground
-        else
-        {
-            currentOrientation = OrientationPhysics.NORMALS;
-        }
-        if (currentOrientation != OrientationPhysics.NORMALS)
-        {
-            fastForward.ResetFlyAway();
-        }
     }
 
     public Vector3 CalculateGravity(Vector3 positionEntity)
     {
-        switch (currentOrientation)
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
         {
-            case OrientationPhysics.OBJECT:
-                if (entityJumpCalculation.CanApplyNormalizedObjectGravity())
-                {
-                    mainAndOnlyGravity = mainAttractNormal;
-                    //Debug.Log("go To Object (attract Normal)");
-                }
-                else
-                {
-                    Vector3 direction = positionEntity - mainAttractPoint;
-                    mainAndOnlyGravity = direction.normalized;
-                }
-                break;
-            case OrientationPhysics.NORMALS:
-                mainAndOnlyGravity = groundCheck.GetDirLastNormal();
-                break;
-            case OrientationPhysics.ATTRACTOR:
-                mainAndOnlyGravity = entityAttractor.GetDirAttractor(positionEntity);
-                break;
-            case OrientationPhysics.GRAVITY_ATTRACTOR:
-                //TODO:
-                //entityGravityAttractorSwitch.CalculateSphereGravity(positionEntity, false);
-                mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
-                //mainAndOnlyGravity = groundCheck.GetDirLastNormal();
-                break;
+            mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
+        }
+        else
+        {
+            mainAndOnlyGravity = groundCheck.GetDirLastNormal();
         }
         return (mainAndOnlyGravity);
     }
@@ -213,8 +85,6 @@ public class EntityGravity : MonoBehaviour
             return;
         if (!entityJump.IsJumpCoolDebugDownReady())
             return;
-
-        
 
         Vector3 gravityOrientation = GetMainAndOnlyGravity();
 
@@ -288,68 +158,51 @@ public class EntityGravity : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public Vector3 FindAirGravity(Vector3 positionObject, Vector3 rbVelocity, Vector3 gravityOrientation,
-        bool applyForceUp, bool applyForceDown, bool testForUltimate)
+        bool applyForceUp, bool applyForceDown)
     {
         Vector3 finalGravity = rbVelocity;
 
-        if (currentOrientation == OrientationPhysics.ATTRACTOR)
-        {
-            finalGravity += entityAttractor.AirAttractor(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
-        }
-        else
-        {
-            float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rbVelocity);
-            //here we fall down toward a planet, apply gravity down
+        float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rbVelocity);
+        //here we fall down toward a planet, apply gravity down
 
-            finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity()) * entityNoGravity.GetNoGravityRatio();
+        finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
-            if (dotGravityRigidbody < 0)
+        if (dotGravityRigidbody < 0)
+        {
+            if (applyForceDown)
             {
-                if (applyForceDown)
+                finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetRatioGravityDown();
+
+                //if first time we fall down, call ultimateTest !
+                if (!isGoingDown)
                 {
-                    finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetRatioGravityDown();
-
-                    //if first time we fall down, call ultimateTest !
-                    if (testForUltimate && !isGoingDown)
-                    {
-                        entityJumpCalculation.UltimeTestBeforeAttractor();
-                        isGoingDown = true;
-                    }
-
+                    isGoingDown = true;
                 }
 
             }
-            //here we are going up, and we release the jump button, apply gravity down until the highest point
-            else if (dotGravityRigidbody > 0 && !entityAction.Jump)
-            {
-                isGoingDown = false;
-                if (applyForceUp)
-                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
-            }
-            
-            
-            //here we are going up, continiue pressing the jump button, AND in gravityAttractor
-            else if (dotGravityRigidbody > 0 && entityAction.Jump && entityGravityAttractorSwitch.IsInGravityAttractorMode()
-                && entityGravityAttractorSwitch.CanApplyForceDown())
-            {
-                isGoingDown = false;
-                if (applyForceUp)
-                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetRatioGravity() / 2);
-            }
-            
-
-            //Debug.Log("air gravity");
-            //here, apply base gravity when we are InAir
 
         }
+        //here we are going up, and we release the jump button, apply gravity down until the highest point
+        else if (dotGravityRigidbody > 0 && !entityAction.Jump)
+        {
+            isGoingDown = false;
+            if (applyForceUp)
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
+        }
+        //here we are going up, continiue pressing the jump button, AND in gravityAttractor
+        else if (dotGravityRigidbody > 0 && entityAction.Jump
+            && entityGravityAttractorSwitch.CanApplyForceDown())
+        {
+            isGoingDown = false;
+            if (applyForceUp)
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetRatioGravity() / 2);
+        }
+
         return (finalGravity);
     }
 
     private bool CanApplyForceUp()
     {
-        if (!entityJumpCalculation.CanApplyForceUp())
-            return (false);
-
         if (entityNoGravity.WereWeInNoGravity())
             return (false);
 
@@ -368,13 +221,11 @@ public class EntityGravity : MonoBehaviour
         rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
             GetMainAndOnlyGravity(),
             CanApplyForceUp(),
-            entityJumpCalculation.CanApplyForceDown(),
             true);
     }
 
     private void FixedUpdate()
     {
-        ChangeStateGravity();
         CalculateGravity(rb.transform.position);
 
         ApplyGroundGravity();

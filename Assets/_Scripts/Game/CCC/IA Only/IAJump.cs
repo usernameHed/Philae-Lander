@@ -55,7 +55,6 @@ public class IAJump : EntityJump
 
 
         rb.ClearVelocity();
-        entityAttractor.CreateAttractor();
 
         base.DoJump(boostHeight);
 

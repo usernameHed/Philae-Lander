@@ -149,9 +149,6 @@ public class IAController : EntityController, IPooledObject, IKillable
     {
         iAJump.OnGrounded();
         playerGravity.OnGrounded();
-        entityAttractor.OnGrounded();
-        entitySwitch.OnGrounded();
-        fastForward.OnGrounded();
         entityGravityAttractorSwitch.OnGrounded();
 
         SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
