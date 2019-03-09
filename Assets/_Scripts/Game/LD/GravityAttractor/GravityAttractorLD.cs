@@ -573,6 +573,8 @@ public class GravityAttractorLD : MonoBehaviour
                 pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
                 pointInfo.range = allResult[indexFound].range;
                 //Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
+                ExtDrawGuizmos.DebugWireSphere(pointInfo.posRange, Color.red, 1f);
+                ExtDrawGuizmos.DebugWireSphere(pointInfo.pos, Color.red, 1f);
             }
         }
         pointInfo.refGA = this;

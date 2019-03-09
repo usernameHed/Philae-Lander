@@ -99,6 +99,12 @@ public static class ExtTransform
         trans.localRotation = Quaternion.identity;
         trans.localScale = Vector3.one;
     }
+    public static void ResetLocalTransform(this Transform trans)
+    {
+        trans.localPosition = Vector3.zero;
+        trans.localRotation = Quaternion.identity;
+        trans.localScale = Vector3.one;
+    }
     public static void SetX(this Transform transform, float x)
     {
         transform.position = new Vector3(x, transform.position.y, transform.position.z);

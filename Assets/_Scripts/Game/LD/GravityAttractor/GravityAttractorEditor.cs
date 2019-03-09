@@ -124,7 +124,7 @@ public class GravityAttractorEditor : MonoBehaviour
             triggerAttractor.transform.localRotation = Quaternion.identity;
 
             childTrigger.transform.SetParent(triggerAttractor.transform);
-            childTrigger.transform.ResetTransform();
+            childTrigger.transform.ResetLocalTransform();
 
             GravityAttractorTrigger gaTrigger = triggerAttractor.AddComponent<GravityAttractorTrigger>();
             gaTrigger.refGravityAttractor = gravityAttractor;

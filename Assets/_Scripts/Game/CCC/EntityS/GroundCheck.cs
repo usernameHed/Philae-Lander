@@ -34,8 +34,6 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityBumpUp entityBumpUp = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityNoGravity entityNoGravity = null;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
@@ -168,15 +166,19 @@ public class GroundCheck : MonoBehaviour
             //if (!lastPlatform || hitInfo.collider.transform.GetInstanceID() != lastPlatform.GetInstanceID())
             //{
                 //Debug.Log("ici check ground ??");
-                entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
+                //entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
             //}
+
+            /*
             if (entityGravityAttractorSwitch.IsAirAttractorLayer(hitInfo.transform.gameObject.layer)
-                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
+                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity())
+                && isFlying)
             {
                 Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
                 groundValue = false;
                 return;
             }
+            */
             
                 
 
@@ -237,13 +239,6 @@ public class GroundCheck : MonoBehaviour
         }
         else
         {
-            //here we move up a little bit
-            if (entityBumpUp.IsBumpingGroundUp())
-            {
-                Debug.Log("continiue to be grounded for now...");
-                isGrounded = true;
-                return;
-            }
             //le coolDown inAir n'a pas commencé, OU a commencé, et n'est pas fini
             if (!coolDownForStick.IsStarted() || coolDownForStick.IsRunning())
             {

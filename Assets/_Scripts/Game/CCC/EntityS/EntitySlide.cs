@@ -20,8 +20,6 @@ public class EntitySlide : MonoBehaviour
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private EntityBumpUp entityBumpUp = null;
 
     [FoldoutGroup("Debug"), ReadOnly, Tooltip("main Straff direction")]
     private Vector3 playerStraff = Vector3.zero;
@@ -65,14 +63,7 @@ public class EntitySlide : MonoBehaviour
         float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
 
         //here the slope is nice for normal forward ?
-        if (entityBumpUp.IsBumpingGroundUp())
-        {
-            //Debug.LogWarning("here bump up, go forward or upwards ??");
-            Vector3 forwardPlayer = entityController.GetFocusedForwardDirPlayer();
-            //playerStraff = upPlayer + forwardPlayer;
-            playerStraff = upPlayer;
-        }
-        else if (1 - dotWrongSide < dotMarginNiceSlope)
+        if (1 - dotWrongSide < dotMarginNiceSlope)
         {
             //Debug.Log("nice slope, do nothing: dot: " + dotWrongSide + "(max: " + dotMarginNiceSlope + ")");
             playerStraff = entityController.GetFocusedForwardDirPlayer();

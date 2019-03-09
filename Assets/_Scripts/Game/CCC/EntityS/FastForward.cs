@@ -344,41 +344,9 @@ public class FastForward : MonoBehaviour
         WeAreSavedYeah();
     }
 
-    /// <summary>
-    /// active attractor if we are far away !
-    /// </summary>
-    private void DebugFlyAway()
-    {
-        if (IsCurrentlyWaitingForDeath())
-        {
-            return;
-        }
-
-        if (timerDebugFlyAway.IsStartedAndOver())
-        {
-            if (WhereWeInFastForward())
-            {
-                SetInAir();
-                return;
-            }
-
-            Debug.LogError("ok on est dans le mal !");
-            timerDebugFlyAway.Reset();
-            entityAttractor.ActiveAttractor();
-            return;
-        }
-        if (!entityJump.HasJumped && entityController.GetMoveState() == EntityController.MoveState.InAir
-            && entityGravity.GetOrientationPhysics() == EntityGravity.OrientationPhysics.NORMALS && !timerDebugFlyAway.IsRunning())
-        {
-            Debug.Log("mettre le timer du mal");
-            timerDebugFlyAway.StartCoolDown(timeDebugFlyAway);
-        }
-    }
-
     private void FixedUpdate()
     {
         SetNewDirectionFromOutside();
-        DebugFlyAway();
     }
 
     private void Update()

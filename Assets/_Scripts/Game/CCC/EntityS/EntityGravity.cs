@@ -5,14 +5,6 @@ using UnityEngine;
 
 public class EntityGravity : MonoBehaviour
 {
-    public enum OrientationPhysics
-    {
-        OBJECT,
-        NORMALS,
-        ATTRACTOR,
-        GRAVITY_ATTRACTOR
-    }
-
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     private float gravity = 9.81f;
     public float Gravity { get { return (gravity); } }

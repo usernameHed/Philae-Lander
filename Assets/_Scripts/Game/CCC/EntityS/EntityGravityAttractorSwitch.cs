@@ -193,14 +193,19 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             closestPost[i] = allPointInfo[i].posRange;
             //closestPost[i] = allPointInfo[i].pos;
 
-            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f, 5f);
-            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f, 5f);
+            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f);
+            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f);
         }
 
         //setup the closest point, and his vector director
         int indexFound = -1;
         Vector3 close = ExtUtilityFunction.GetClosestPoint(posEntity, closestPost, ref indexFound);
 
+        if (ExtUtilityFunction.IsNullVector(close))
+        {
+            Debug.LogError("null gravity !!");
+            return (pointInfo);
+        }
 
 //////////////////////////////////////////////////// TMP
 //GravityAttractorLD.PointInfo closestPointTmp = allPointInfo[indexFound];
@@ -212,7 +217,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
         //the default force is this point
         float defaultForce = (closestVectorDir).sqrMagnitude;
-        Debug.DrawRay(posEntity, closestVectorDir.normalized * defaultForce, Color.cyan, 5f);
+        Debug.DrawRay(posEntity, closestVectorDir.normalized * defaultForce, Color.cyan);
 
         for (int i = 0; i < sphereDir.Length; i++)
         {
@@ -223,7 +228,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
             if (magnitudeCurrentForce > defaultForce * maxDistBasedOnHowManyTimeDefault)
             {
-                Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black, 5f);
+                Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
                 sphereDir[i] = ExtUtilityFunction.GetNullVector();
                 continue;
             }
@@ -231,7 +236,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             float currentForce = defaultForce / (magnitudeCurrentForce * ratioOtherDistance);
             sphereDir[i] *= Mathf.Clamp(currentForce, 0f, 1f);
 
-            Debug.DrawRay(posEntity, currentVectorDir.normalized * currentForce, Color.magenta, 5f);
+            Debug.DrawRay(posEntity, currentVectorDir.normalized * currentForce, Color.magenta);
         }
 
         Vector3 middleOfAllVec = ExtQuaternion.GetMiddleOfXVector(sphereDir);
@@ -395,6 +400,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (true);
     }
 
+    /*
     /// <summary>
     /// called by GroundCheck every time we are on a new ground object
     /// </summary>
@@ -432,12 +438,13 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             }
         }
     }
+    */
 
     private void FixedUpdate()
     {
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
-        {
+        //if (entityController.GetMoveState() == EntityController.MoveState.InAir)
+        //{
             CalculateGAGravity();
-        }
+        //}
     }
 }

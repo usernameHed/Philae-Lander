@@ -71,7 +71,7 @@ public class EntityContactSwitch : MonoBehaviour
         }
         return (false);
     }
-
+    /*
     private bool IsSphereGravityAndNormalNotOk(RaycastHit hitInfo)
     {
         GravityAttractorLD.PointInfo tmpPointInfo = new GravityAttractorLD.PointInfo();
@@ -123,7 +123,7 @@ public class EntityContactSwitch : MonoBehaviour
         //here normal is good, we can change orientation !
         return (true);
     }
-    
+    */
 
     private void ForwardWallCheck()
     {
@@ -141,8 +141,8 @@ public class EntityContactSwitch : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
                                distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            if (!IsSphereGravityAndNormalNotOk(hitInfo))
-                return;
+            //if (!IsSphereGravityAndNormalNotOk(hitInfo))
+            //    return;
 
             
             //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
@@ -199,69 +199,7 @@ public class EntityContactSwitch : MonoBehaviour
             ResetContact();
         }
     }
-
-    /*
-    /// <summary>
-    /// backward raycast
-    /// </summary>
-    private void BackwardWallCheck()
-    {
-        RaycastHit hitInfo;
-
-        ResetBackwardContact();
-
-        if (entityController.GetMoveState() != EntityController.MoveState.InAir)
-            return;
-        if (entityJumpCalculation.GetJumpType() != InfoJump.JumpType.TO_SIDE)
-            return;
-        if (entityJump.IsJumpedAndNotReady())
-            return;
-
-        if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, -entityController.GetFocusedForwardDirPlayer(), out hitInfo,
-                               distBackward, entityController.layerMask, QueryTriggerInteraction.Ignore))
-        {
-            //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
-            //Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.yellow, 0.1f, 0.1f);
-
-            isBackwardWall = true;
-
-            Vector3 normalHit = hitInfo.normal;
-            Vector3 upPlayer = playerGravity.GetMainAndOnlyGravity();
-
-            float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
-            if (dotWrongSide < -dotMarginImpact)
-            {
-                Debug.LogWarning("backward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
-                isForbiddenBackward = true;
-                //Debug.Break();
-                return;
-            }
-
-            int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-            if (isForbidden != -1)
-            {
-                //here we are in front of a forbidden wall !!
-                isForbiddenBackward = true;
-            }
-            else
-            {
-                //HERE BACKWARD, DO SWITCH !!
-
-                Debug.Log("BACKWARD");
-                groundCheck.SetBackwardWall(hitInfo);
-
-                isForbiddenBackward = false;
-                //Debug.Break();
-            }
-        }
-        else
-        {
-            ResetBackwardContact();
-        }
-    }
-    */
-
+    
     private void ResetContact()
     {
         isForwardWall = false;
