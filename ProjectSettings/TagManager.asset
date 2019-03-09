@@ -22,8 +22,8 @@ TagManager:
   - Enemy
   - Player
   - Walkable/Ground
-  - 
-  - 
+  - Walkable/Stick
+  - Walkable/Dont
   - 
   - 
   - 

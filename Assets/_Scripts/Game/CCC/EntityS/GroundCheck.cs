@@ -164,7 +164,8 @@ public class GroundCheck : MonoBehaviour
                                magnitudeToCheck, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
             
-            if (!entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
+            if (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer))
+                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
             {
                 Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
                 groundValue = false;

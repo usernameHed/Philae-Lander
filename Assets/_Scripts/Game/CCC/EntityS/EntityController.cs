@@ -16,7 +16,13 @@ public class EntityController : MonoBehaviour
     public bool isPlayer = false;
     
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] walkablePlatform = new string[] { "Walkable/Floor" };
+    public string[] allWalkablePlatform = new string[] { "Walkable/Ground", "Walkable/Stick" };
+
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] marioGalaxyPlatform = new string[] { "Walkable/Ground" };
+
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] stickPlatform = new string[] { "Walkable/Stick" };
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     public Rigidbody rb;
@@ -61,8 +67,30 @@ public class EntityController : MonoBehaviour
     public void Init()
     {
         isKilled = false;
-        layerMask = LayerMask.GetMask(walkablePlatform);
+        layerMask = LayerMask.GetMask(allWalkablePlatform);
         oldDrag = rb.drag;
+    }
+
+    public bool IsWalkablePlatform(string layer)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(allWalkablePlatform, layer);
+        if (isForbidden != -1)
+            return (true);
+        return (false);
+    }
+    public bool IsMarioGalaxyPlatform(string layer)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(marioGalaxyPlatform, layer);
+        if (isForbidden != -1)
+            return (true);
+        return (false);
+    }
+    public bool IsStickPlatform(string layer)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(stickPlatform, layer);
+        if (isForbidden != -1)
+            return (true);
+        return (false);
     }
 
     /// <summary>

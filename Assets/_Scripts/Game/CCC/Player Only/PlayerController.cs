@@ -5,13 +5,6 @@ using UnityEngine;
 [TypeInfoBox("Main player controller")]
 public class PlayerController : EntityController, IKillable
 {
-    public enum PhysicType
-    {
-        BASE,
-        PLANET_CENTER,
-        DIRECTION_CENTER,
-    }
-
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("death vibration")]
     private Vibration deathVibration = new Vibration();
 
