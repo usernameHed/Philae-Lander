@@ -51,7 +51,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     private FrequencyCoolDown coolDownBeforeAttract = new FrequencyCoolDown();
     private Vector3 lastNormalJumpChoosen = Vector3.zero;
     private bool applyGalaxyForce = false;
-    //private bool isGoingDown = false;
+    private bool isGoingDown = false;
 
     public void EnterInZone(GravityAttractorLD refGravityAttractor)
     {
@@ -96,7 +96,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         if (entityController.GetMoveState() == EntityController.MoveState.InAir && !entityJump.HasJumped())
             return (true);
 
-        if (entityGravity.IsGoingDown())
+        if (isGoingDown)
             return (true);
 
         Debug.Log("can't");
@@ -135,7 +135,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         coolDownBeforeAttract.Reset();
         coolDownBeforeApplyForceDown.StartCoolDown(timeBeforeApplyForceDown);
         applyGalaxyForce = false;
-        //isGoingDown = false;
+        isGoingDown = false;
     }
 
     public void SetLastDirJump(Vector3 dirNormalChoosen)
@@ -148,7 +148,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         coolDownBeforeAttract.Reset();
         coolDownBeforeApplyForceDown.Reset();
         applyGalaxyForce = false;
-        //isGoingDown = false;
+        isGoingDown = false;
     }
 
     public Vector3 GetDirGAGravity()
@@ -170,11 +170,12 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
             }
         }
-        //if (!isGoingDown && entityGravity.IsGoingDown())
-        //    isGoingDown = true;
+        if (!isGoingDown && entityGravity.IsGoingDown())
+            isGoingDown = true;
 
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
+            Debug.Log("ground force !");
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
         }
         //here we can't apply, because we just jump (OR because we are falling and in the timer

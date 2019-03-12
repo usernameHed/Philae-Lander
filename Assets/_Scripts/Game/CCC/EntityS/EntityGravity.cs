@@ -59,13 +59,11 @@ public class EntityGravity : MonoBehaviour
     public void OnGrounded()
     {
         isGoingDown = false;
-        Debug.Log("ici not down");
     }
 
     public void JustJumped()
     {
         isGoingDown = false;
-        Debug.Log("ici not down");
     }
 
     public Vector3 CalculateGravity(Vector3 positionEntity)
@@ -172,7 +170,7 @@ public class EntityGravity : MonoBehaviour
 
         finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetAirRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
-        if (dotGravityRigidbody < 0 || isGoingDown)
+        if (dotGravityRigidbody < 0)
         {
             if (applyForceDown)
             {
@@ -182,34 +180,26 @@ public class EntityGravity : MonoBehaviour
                 if (!isGoingDown)
                 {
                     isGoingDown = true;
-                    //Debug.Log("ici down");
                 }
 
             }
 
         }
-
-        if (!isGoingDown)
+        //here we are going up, and we release the jump button, apply gravity down until the highest point
+        else if (dotGravityRigidbody > 0 && !entityAction.Jump)
         {
-            //here we are going up, and we release the jump button, apply gravity down until the highest point
-            if (dotGravityRigidbody > 0 && !entityAction.Jump)
-            {
-                isGoingDown = false;
-                //Debug.Log("ici not down");
-                if (applyForceUp)
-                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
-            }
-            //here we are going up, continiue pressing the jump button, AND in gravityAttractor
-            else if (dotGravityRigidbody > 0 && entityAction.Jump
-                && entityGravityAttractorSwitch.CanApplyForceDown())
-            {
-                isGoingDown = false;
-                //Debug.Log("ici not down");
-                if (applyForceUp)
-                    finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetAirRatioGravity() / 2);
-            }
+            isGoingDown = false;
+            if (applyForceUp)
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
         }
-        
+        //here we are going up, continiue pressing the jump button, AND in gravityAttractor
+        else if (dotGravityRigidbody > 0 && entityAction.Jump
+            && entityGravityAttractorSwitch.CanApplyForceDown())
+        {
+            isGoingDown = false;
+            if (applyForceUp)
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetAirRatioGravity() / 2);
+        }
 
         return (finalGravity);
     }
