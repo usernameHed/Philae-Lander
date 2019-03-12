@@ -3,6 +3,7 @@ using UnityEditor;
 
 public class SceneViewCameraFunction : ScriptableObject
 {
+    /*
     [MenuItem("PERSO/Sceneview To Camera _n")]
     //[MenuItem("Edit/Camera _n")]
 
@@ -28,7 +29,20 @@ public class SceneViewCameraFunction : ScriptableObject
 		
         SceneView.lastActiveSceneView.Repaint();
     }
-	
+    */
+
+    
+
+    [MenuItem("PERSO/Vieport/Vieporta Zoom In")]
+    public static void ViewportPanZoomIn(float zoom = 5f)
+    {
+        Debug.Log(SceneView.lastActiveSceneView.size);
+        if (SceneView.lastActiveSceneView.size > zoom)
+            SceneView.lastActiveSceneView.size = zoom;
+        SceneView.lastActiveSceneView.Repaint();
+    }
+
+    /*
 	[MenuItem("PERSO/Vieport/Rotate Vieport up &i")]
     public static void ViewportHotKeysUp()
 	{
@@ -105,14 +119,7 @@ public class SceneViewCameraFunction : ScriptableObject
 		SceneView.lastActiveSceneView.Repaint();
 	}
 	
-	[MenuItem("PERSO/Vieport/Vieporta Zoom In &o")]
-    public static void ViewportPanZoomIn(float zoom = 5f)
-	{
-        Debug.Log(SceneView.lastActiveSceneView.size);
-        if (SceneView.lastActiveSceneView.size > zoom)
-            SceneView.lastActiveSceneView.size = zoom;
-        SceneView.lastActiveSceneView.Repaint();
-	}
+	
 	
 	[MenuItem("PERSO/Vieport/Vieporta Zoom Out &p")]
     public static void ViewportPanZoomOut()
@@ -121,4 +128,5 @@ public class SceneViewCameraFunction : ScriptableObject
 			SceneView.lastActiveSceneView.size += (SceneView.lastActiveSceneView.size/50);
 		SceneView.lastActiveSceneView.Repaint();
 	}
+    */
 }

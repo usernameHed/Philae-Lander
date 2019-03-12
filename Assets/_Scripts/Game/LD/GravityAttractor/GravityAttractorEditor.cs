@@ -9,7 +9,9 @@ using UnityEngine.EventSystems;
 public class GravityAttractorEditor : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public bool creatorMode = true;
+    public int createMode = 0;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public bool mergeMode = false;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public bool alwaysShow = false;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
@@ -21,13 +23,23 @@ public class GravityAttractorEditor : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private Transform parentQuad = null;
 
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public Transform previewPoint;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public Transform parentTmpPoints;
+
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private GravityAttractorLD gravityAttractor = null;
     public GravityAttractorLD GetGravityAttractor() => gravityAttractor;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private Transform testPoint = null;
 
-    
+    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
+    public List<GameObject> tmpPointCreated = new List<GameObject>();
+
+    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
+    public List<GameObject> tmpForm = new List<GameObject>();
+
+    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    public GameObject objectPreview;
 
     [HideInInspector]
     public Vector3[] allModifiedPosGravityPoint;
@@ -36,16 +48,30 @@ public class GravityAttractorEditor : MonoBehaviour
     [HideInInspector]
     public Vector3[] savePosAll;
 
-    private bool isUpdatedFirstTime = false;
+    [HideInInspector]
+    public bool isUpdatedFirstTime = false;
     private const string parentGravityName = "GRAVITY ATTRACTOR EDITOR (autogenerate)";
     private const string alonesParent = "Alones (autogenerate)";
     private const string linesParent = "Lines (autogenerate)";
     private const string trianglesParent = "Triangles (autogenerate)";
     private const string quadsParent = "Quads (autogenerate)";
+    private const string tmpPoints = "TmpPoints";
+    private const string previewPointName = "+";
     private const string triggerAttractorName = "GRAVITY ATTRACTOR TRIGGER";
     private const string triggerAttractorChildName = "Trigger";
-    private const string triggerAttractorLayer = "Walkable/GravityAttractor";
+    private const string triggerAttractorLayer = "Walkable/Ground";
+    [HideInInspector]
+    public string layerPoint = "Point";
 
+    private void OnEnable()
+    {
+        if (!gravityAttractor)
+            gravityAttractor = GetComponent<GravityAttractorLD>();
+
+        CreateTrigger();
+    }
+
+    /*
     private void SetupEditorPoint()
     {
         if (!gravityAttractor.valueArrayChanged)
@@ -85,7 +111,12 @@ public class GravityAttractorEditor : MonoBehaviour
 
         SetAllPointToArray();
     }
+    */
 
+    /// <summary>
+    /// for initialisation
+    /// </summary>
+    /// <returns></returns>
     public int GetLenghtOfAllPoints()
     {
         return (gravityAttractor.gravityPoints.Count
@@ -94,15 +125,150 @@ public class GravityAttractorEditor : MonoBehaviour
             + gravityAttractor.gravityQuad.Count * 4);
     }
 
-    private void OnEnable()
+    /// <summary>
+    /// clean empty point
+    /// </summary>
+    public void CleanUpTmpPointForm()
     {
-        if (!gravityAttractor)
-            gravityAttractor = GetComponent<GravityAttractorLD>();
-        
-        if (creatorMode)
-            CreateTrigger();
+        for (int i = tmpForm.Count - 1; i >= 0; i--)
+        {
+            if (tmpForm[i] == null)
+                tmpForm.RemoveAt(i);
+        }
+    }
+    public void CleanUpPointCreated()
+    {
+        for (int i = tmpPointCreated.Count - 1; i >= 0; i--)
+        {
+            if (tmpPointCreated[i] == null)
+                tmpPointCreated.RemoveAt(i);
+        }
     }
 
+    /// <summary>
+    /// creat an unique point attractor
+    /// </summary>
+    private void CreatePoint(GameObject point)
+    {
+        GravityAttractorLD.GravityPoint newPoint = new GravityAttractorLD.GravityPoint();
+        newPoint.SetDefautIfFirstTimeCreated();
+        point.transform.SetParent(parentAlones);
+        point.name = "P" + gravityAttractor.gravityPoints.Count.ToString();
+
+        newPoint.ChangePoint(0, point.transform);
+
+
+        gravityAttractor.gravityPoints.Add(newPoint);
+    }
+    /// <summary>
+    /// creat an unique point attractor
+    /// </summary>
+    private void CreateLine(GameObject pointA, GameObject pointB)
+    {
+        GravityAttractorLD.GravityLine newLine = new GravityAttractorLD.GravityLine();
+        newLine.SetDefautIfFirstTimeCreated();
+
+        Transform newLineTransform = null;
+        CreateTransform(ref newLineTransform, gravityAttractor.gravityLines.Count.ToString(), parentLines);
+        pointA.transform.SetParent(newLineTransform);
+        pointB.transform.SetParent(newLineTransform);
+
+        pointA.name = "L" + gravityAttractor.gravityLines.Count.ToString() + " - 1";
+        pointB.name = "L" + gravityAttractor.gravityLines.Count.ToString() + " - 2";
+
+        newLine.ChangePoint(0, pointA.transform);
+        newLine.ChangePoint(1, pointB.transform);
+        gravityAttractor.gravityLines.Add(newLine);
+    }
+
+    /// <summary>
+    /// creat an unique point attractor
+    /// </summary>
+    private void CreateTriangle(GameObject pointA, GameObject pointB, GameObject pointC)
+    {
+        GravityAttractorLD.GravityTriangle newTriangle = new GravityAttractorLD.GravityTriangle();
+        newTriangle.SetDefautIfFirstTimeCreated();
+
+        Transform newTriangleTransform = null;
+        CreateTransform(ref newTriangleTransform, gravityAttractor.gravityTriangles.Count.ToString(), parentTriangles);
+        pointA.transform.SetParent(newTriangleTransform);
+        pointB.transform.SetParent(newTriangleTransform);
+        pointC.transform.SetParent(newTriangleTransform);
+
+        pointA.name = "T" + gravityAttractor.gravityTriangles.Count.ToString() + " - 1";
+        pointB.name = "T" + gravityAttractor.gravityTriangles.Count.ToString() + " - 2";
+        pointC.name = "T" + gravityAttractor.gravityTriangles.Count.ToString() + " - 3";
+
+        newTriangle.ChangePoint(0, pointA.transform);
+        newTriangle.ChangePoint(1, pointB.transform);
+        newTriangle.ChangePoint(2, pointC.transform);
+        gravityAttractor.gravityTriangles.Add(newTriangle);
+    }
+
+    /// <summary>
+    /// creat an unique point attractor
+    /// </summary>
+    private void CreateQuad(GameObject pointA, GameObject pointB, GameObject pointC, GameObject pointD)
+    {
+        GravityAttractorLD.GravityQuad newQuad = new GravityAttractorLD.GravityQuad();
+        newQuad.SetDefautIfFirstTimeCreated();
+
+        Transform newQuadTransform = null;
+        CreateTransform(ref newQuadTransform, gravityAttractor.gravityQuad.Count.ToString(), parentQuad);
+        pointA.transform.SetParent(newQuadTransform);
+        pointB.transform.SetParent(newQuadTransform);
+        pointC.transform.SetParent(newQuadTransform);
+        pointD.transform.SetParent(newQuadTransform);
+
+        pointA.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 1";
+        pointB.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 2";
+        pointC.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 3";
+        pointC.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 4";
+
+        newQuad.ChangePoint(0, pointA.transform);
+        newQuad.ChangePoint(1, pointB.transform);
+        newQuad.ChangePoint(2, pointC.transform);
+        newQuad.ChangePoint(3, pointD.transform);
+        gravityAttractor.gravityQuad.Add(newQuad);
+    }
+
+
+    /// <summary>
+    /// ok, we create a form Based on edit point !
+    /// </summary>
+    public void SetupAForm()
+    {
+        CleanUpTmpPointForm();
+        //tmpForm
+        if (tmpForm.Count == 0 || tmpForm.Count > 4)
+            return;
+
+        if (tmpForm.Count == 1)
+        {
+            CreatePoint(tmpForm[0]);
+        }
+        else if (tmpForm.Count == 2)
+        {
+            CreateLine(tmpForm[0], tmpForm[1]);
+        }
+        else if (tmpForm.Count == 3)
+        {
+            CreateTriangle(tmpForm[0], tmpForm[1], tmpForm[2]);
+        }
+        else if (tmpForm.Count == 4)
+        {
+            CreateQuad(tmpForm[0], tmpForm[1], tmpForm[2], tmpForm[3]);
+        }
+
+        
+
+        gravityAttractor.SetupArrayPoints();
+        
+    }
+
+    /// <summary>
+    /// create trigger object
+    /// </summary>
     [Button]
     public void CreateTrigger()
     {
@@ -145,6 +311,25 @@ public class GravityAttractorEditor : MonoBehaviour
             DestroyImmediate(trigger.gameObject);
     }
 
+    private void CreateTransform(ref Transform linkedTransfrom, string nameNewTransform, Transform parentToSet)
+    {
+        if (!linkedTransfrom)
+        {
+            Transform newParent = parentToSet.transform.Find(nameNewTransform);
+            if (!newParent)
+            {
+                GameObject newObjParent = new GameObject(nameNewTransform);
+                newParent = newObjParent.transform;
+            }
+            newParent.SetParent(parentToSet);
+            newParent.localPosition = Vector3.zero;
+            linkedTransfrom = newParent;
+        }
+    }
+
+    /// <summary>
+    /// generate parenting of object
+    /// </summary>
     [Button("GenerateParenting")]
     public void GenerateParenting()
     {
@@ -156,72 +341,46 @@ public class GravityAttractorEditor : MonoBehaviour
             Debug.Log("no gravity attractor ?");
             return;
         }
+        isUpdatedFirstTime = true;
 
-        if (!gravityAttractor.gravityAttractorEditor)
+        CreateTransform(ref gravityAttractor.gravityAttractorEditor, parentGravityName, gravityAttractor.transform);
+        gravityAttractor.gravityAttractorEditor.SetAsFirstSibling();
+
+        CreateTransform(ref parentAlones, alonesParent, gravityAttractor.gravityAttractorEditor);
+        CreateTransform(ref parentLines, linesParent, gravityAttractor.gravityAttractorEditor);
+        CreateTransform(ref parentTriangles, trianglesParent, gravityAttractor.gravityAttractorEditor);
+        CreateTransform(ref parentQuad, quadsParent, gravityAttractor.gravityAttractorEditor);
+        
+        GeneratePreview();
+    }
+
+    /// <summary>
+    /// generate preview poitns for editor creation
+    /// </summary>
+    public void GeneratePreview()
+    {
+        CreateTransform(ref previewPoint, previewPointName, gravityAttractor.gravityAttractorEditor);
+        previewPoint.gameObject.layer = LayerMask.NameToLayer("Lock");
+        CreateTransform(ref parentTmpPoints, tmpPoints, gravityAttractor.gravityAttractorEditor);
+    }
+
+    public void RemoveParenting()
+    {
+        if (!gravityAttractor)
+            gravityAttractor = GetComponent<GravityAttractorLD>();
+        if (!gravityAttractor)
         {
-            Transform newParent = transform.Find(parentGravityName);
-            if (!newParent)
-            {
-                GameObject newObjParent = new GameObject(parentGravityName);
-                newParent = newObjParent.transform;
-            }
-                
-            newParent.SetParent(gravityAttractor.transform);
-            newParent.localPosition = Vector3.zero;
-            newParent.SetAsFirstSibling();
-            gravityAttractor.gravityAttractorEditor = newParent;
+            Debug.Log("no gravity attractor ?");
+            return;
         }
 
-        if (!parentAlones)
+        if (gravityAttractor.gravityAttractorEditor)
         {
-            Transform newParent = gravityAttractor.gravityAttractorEditor.transform.Find(alonesParent);
-            if (!newParent)
-            {
-                GameObject newObjParent = new GameObject(alonesParent);
-                newParent = newObjParent.transform;
-            }
-            newParent.SetParent(gravityAttractor.gravityAttractorEditor);
-            newParent.localPosition = Vector3.zero;
-            parentAlones = newParent;
-        }
-        if (!parentLines)
-        {
-            Transform newParent = gravityAttractor.gravityAttractorEditor.transform.Find(linesParent);
-            if (!newParent)
-            {
-                GameObject newObjParent = new GameObject(linesParent);
-                newParent = newObjParent.transform;
-            }
-            newParent.SetParent(gravityAttractor.gravityAttractorEditor);
-            newParent.localPosition = Vector3.zero;
-            parentLines = newParent;
-        }
-        if (!parentTriangles)
-        {
-            Transform newParent = gravityAttractor.gravityAttractorEditor.transform.Find(trianglesParent);
-            if (!newParent)
-            {
-                GameObject newObjParent = new GameObject(trianglesParent);
-                newParent = newObjParent.transform;
-            }
-            newParent.SetParent(gravityAttractor.gravityAttractorEditor);
-            newParent.localPosition = Vector3.zero;
-            parentTriangles = newParent;
-        }
-        if (!parentQuad)
-        {
-            Transform newParent = gravityAttractor.gravityAttractorEditor.transform.Find(quadsParent);
-            if (!newParent)
-            {
-                GameObject newObjParent = new GameObject(quadsParent);
-                newParent = newObjParent.transform;
-            }
-            newParent.SetParent(gravityAttractor.gravityAttractorEditor);
-            newParent.localPosition = Vector3.zero;
-            parentQuad = newParent;
+            DestroyImmediate(gravityAttractor.gravityAttractorEditor.gameObject);
         }
     }
 
+    /*
     /// <summary>
     /// return all point as one bug array
     /// </summary>
@@ -265,6 +424,7 @@ public class GravityAttractorEditor : MonoBehaviour
             indexAll++;
         }
     }
+    
 
     public bool ContainThisTransform(Transform point, ref GravityAttractorLD.GravityPointType gravityPointType, ref int indexShape, ref int indexPoint)
     {
@@ -352,7 +512,11 @@ public class GravityAttractorEditor : MonoBehaviour
         }
         return (false);
     }
+    */
 
+    /// <summary>
+    /// display allpoint of arrays, with there option (plane, infinite, border...)
+    /// </summary>
     private void DisplayPoint()
     {
         for (int i = 0; i < gravityAttractor.gravityPoints.Count; i++)
@@ -536,69 +700,43 @@ public class GravityAttractorEditor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// a point has been removed, clean the one with bad point
+    /// </summary>
     public void CleanTheSick()
     {
         for (int i = gravityAttractor.gravityPoints.Count - 1; i >= 0; i--)
         {
-            /*if (gravityAttractor.gravityPoints[i].point.parent.name != alonesParent)
+            if (gravityAttractor.gravityPoints[i].point == null)
             {
-                Debug.Log("remove point: " + i);
                 gravityAttractor.gravityPoints.RemoveAt(i);
             }
-            else */for (int k = i - 1; k >= 0; k--)
-            {
-                Debug.Log("i: " + i + ", k: " + k);
-                if (gravityAttractor.gravityPoints[k].point.GetInstanceID() == gravityAttractor.gravityPoints[i].point.GetInstanceID())
-                {
-                    gravityAttractor.gravityPoints.RemoveAt(i);
-                    i--;
-                }
-            }
         }
-        
-
         for (int i = gravityAttractor.gravityLines.Count - 1; i >= 0; i--)
         {
-            if (gravityAttractor.gravityLines[i].pointA.GetInstanceID() == gravityAttractor.gravityLines[i].pointB.GetInstanceID())
+            if (gravityAttractor.gravityLines[i].pointA == null || gravityAttractor.gravityLines[i].pointB == null)
             {
                 gravityAttractor.gravityLines.RemoveAt(i);
             }
         }
         for (int i = gravityAttractor.gravityTriangles.Count - 1; i >= 0; i--)
         {
-            //here just change triangle into a point ! there are all the same
-            if (gravityAttractor.gravityTriangles[i].pointA.GetInstanceID() == gravityAttractor.gravityTriangles[i].pointB.GetInstanceID()
-                && gravityAttractor.gravityTriangles[i].pointA.GetInstanceID() == gravityAttractor.gravityTriangles[i].pointC.GetInstanceID())
+            if (gravityAttractor.gravityTriangles[i].pointA == null || gravityAttractor.gravityTriangles[i].pointB == null
+                || gravityAttractor.gravityTriangles[i].pointC == null)
             {
                 gravityAttractor.gravityTriangles.RemoveAt(i);
             }
-            else if (gravityAttractor.gravityTriangles[i].pointA.GetInstanceID() == gravityAttractor.gravityTriangles[i].pointB.GetInstanceID())
-                gravityAttractor.gravityTriangles.RemoveAt(i);
-            else if (gravityAttractor.gravityTriangles[i].pointA.GetInstanceID() == gravityAttractor.gravityTriangles[i].pointC.GetInstanceID())
-                gravityAttractor.gravityTriangles.RemoveAt(i);
-            else if (gravityAttractor.gravityTriangles[i].pointB.GetInstanceID() == gravityAttractor.gravityTriangles[i].pointC.GetInstanceID())
-                gravityAttractor.gravityTriangles.RemoveAt(i);
         }
         for (int i = gravityAttractor.gravityQuad.Count - 1; i >= 0; i--)
         {
-            if (gravityAttractor.gravityQuad[i].pointA.GetInstanceID() == gravityAttractor.gravityQuad[i].pointB.GetInstanceID()
-                || gravityAttractor.gravityQuad[i].pointA.GetInstanceID() == gravityAttractor.gravityQuad[i].pointC.GetInstanceID()
-                || gravityAttractor.gravityQuad[i].pointA.GetInstanceID() == gravityAttractor.gravityQuad[i].pointD.GetInstanceID())
-            {
-                gravityAttractor.gravityQuad.RemoveAt(i);
-            }
-            else if (gravityAttractor.gravityQuad[i].pointB.GetInstanceID() == gravityAttractor.gravityQuad[i].pointC.GetInstanceID()
-                || gravityAttractor.gravityQuad[i].pointB.GetInstanceID() == gravityAttractor.gravityQuad[i].pointD.GetInstanceID())
-            {
-                gravityAttractor.gravityQuad.RemoveAt(i);
-            }
-            else if (gravityAttractor.gravityQuad[i].pointC.GetInstanceID() == gravityAttractor.gravityQuad[i].pointD.GetInstanceID())
+            if (gravityAttractor.gravityQuad[i].pointA == null || gravityAttractor.gravityQuad[i].pointB == null
+                || gravityAttractor.gravityQuad[i].pointC == null || gravityAttractor.gravityQuad[i].pointD == null)
             {
                 gravityAttractor.gravityQuad.RemoveAt(i);
             }
         }
     }
-
+    /*
     public void ResetAfterUndo()
     {
         Debug.Log("undo/redo performed !");
@@ -606,6 +744,9 @@ public class GravityAttractorEditor : MonoBehaviour
         gravityAttractor.valueArrayChanged = true;
         SetupEditorPoint();
     }
+    */
+
+    
 
     private void OnDrawGizmos()
     {
@@ -613,19 +754,5 @@ public class GravityAttractorEditor : MonoBehaviour
             return;
 
         DisplayPoint();
-        if (!Application.isPlaying && creatorMode)
-        {
-            if (!isUpdatedFirstTime)
-            {
-                gravityAttractor.SetupArrayPoints();
-                isUpdatedFirstTime = true;
-            }
-            SetupEditorPoint();
-            if (testPoint)
-            {
-                gravityAttractor.FindNearestPoint(testPoint.position);
-            }                
-        }
-
     }
 }

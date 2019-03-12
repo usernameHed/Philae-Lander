@@ -166,6 +166,17 @@ public static class ExtQuaternion
 
         return rotateZToUp * rotateYToZ;
     }
+    public static Quaternion SmoothTurretLookRotation(Vector3 approximateForward, Vector3 exactUp,
+        Quaternion objCurrentRotation, float maxDegreesPerSecond)
+    {
+        Quaternion desiredOrientation = TurretLookRotation(approximateForward, exactUp);
+        Quaternion smoothOrientation = Quaternion.RotateTowards(
+                                    objCurrentRotation,
+                                    desiredOrientation,
+                                    maxDegreesPerSecond * Time.deltaTime
+                                 );
+        return (smoothOrientation);
+    }
 
     /*
     public static Quaternion ClampAroundXAxis(Quaternion q, float minY, float maxY)

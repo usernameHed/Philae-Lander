@@ -73,7 +73,7 @@ public class EntityAirMove : MonoBehaviour
 
     private float GetRatioAirMove()
     {
-        return (entityGravityAttractorSwitch.GetRatioGravity());
+        return (entityGravityAttractorSwitch.GetAirRatioGravity());
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class EntityAirMove : MonoBehaviour
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForward > dotForward)
         {
-            if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetRatioGravity()
+            if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetAirRatioGravity()
                 && entityController.GetActualVelocity() > velocityMaxAirMove)
                 return;
 
@@ -100,7 +100,7 @@ public class EntityAirMove : MonoBehaviour
         else
         {
             //if we have done enought airMove in air, don't do more
-            if (amountAdded > limitAirCalculationSide * entityGravityAttractorSwitch.GetRatioGravity()
+            if (amountAdded > limitAirCalculationSide * entityGravityAttractorSwitch.GetAirRatioGravity()
                 && entityController.GetActualVelocity() > velocityMaxAirMove)
                 return;
         }

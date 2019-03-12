@@ -43,7 +43,7 @@ public class EntityJump : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
-    public bool HasJumped { get { return (hasJumped); } }
+    public bool HasJumped() => hasJumped;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected float justJumpedTimer = 0.1f;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
@@ -170,10 +170,8 @@ public class EntityJump : MonoBehaviour
         //bool isForbiddenForward = entityContactSwitch.IsForwardForbiddenWall();
         bool isForbiddenForward = false;
         lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
-        bool canDoGAJump = false;// entityGravityAttractorSwitch.CanDoGAJump(lastVelocityJump) && doGravityAttractorJump;
 
-
-        Vector3 normalizedNormalGravity = (!canDoGAJump) ? playerGravity.GetMainAndOnlyGravity() : entityGravityAttractorSwitch.GetDirGAGravity();
+        Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
 
         entityGravityAttractorSwitch.SetLastDirJump(normalizedNormalGravity);
 

@@ -205,6 +205,7 @@ public struct ExtLine
 
     public Vector3 PointAt(double t) => A + (float)t * Delta;
     public double LengthSquared => Delta.sqrMagnitude;
+    public double LengthLine => Delta.magnitude;
 
     public Vector3 ClosestPointTo(Vector3 p)
     {
@@ -223,6 +224,11 @@ public struct ExtLine
         {
             return A + Delta * (float)distance;
         }
+    }
+
+    public double GetLenght()
+    {
+        return (LengthLine);
     }
 
     public double Project(Vector3 p) => ExtQuaternion.DotProduct(Delta, p - A) / LengthSquared;

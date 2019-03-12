@@ -55,9 +55,8 @@ public class GravityAttractorLD : MonoBehaviour
         }
         public void ChangePoint(int index, Transform newPoint)
         {
-            if (index == 0 && newPoint != null && point.GetInstanceID() != newPoint.GetInstanceID())
+            if (index == 0 && newPoint != null)
             {
-                DestroyImmediate(point.gameObject);
                 point = newPoint;
             }
         }
@@ -87,16 +86,12 @@ public class GravityAttractorLD : MonoBehaviour
         }
         public void ChangePoint(int index, Transform newPoint)
         {
-            if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
+            if (index == 0 && newPoint != null)
             {
-                if (pointA != null)
-                    DestroyImmediate(pointA.gameObject);
                 pointA = newPoint;
             }
-            else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
+            else if (index == 1 && newPoint != null)
             {
-                if (pointB != null)
-                    DestroyImmediate(pointB.gameObject);
                 pointB = newPoint;
             }
         }
@@ -139,22 +134,16 @@ public class GravityAttractorLD : MonoBehaviour
         }
         public void ChangePoint(int index, Transform newPoint)
         {
-            if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
+            if (index == 0 && newPoint != null)
             {
-                if (pointA != null)
-                    DestroyImmediate(pointA.gameObject);
                 pointA = newPoint;
             }
-            else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
+            else if (index == 1 && newPoint != null)
             {
-                if (pointB != null)
-                    DestroyImmediate(pointB.gameObject);
                 pointB = newPoint;
             }
-            else if (index == 2 && newPoint != null && pointC.GetInstanceID() != newPoint.GetInstanceID())
+            else if (index == 2 && newPoint != null)
             {
-                if (pointC != null)
-                    DestroyImmediate(pointC.gameObject);
                 pointC = newPoint;
             }
         }
@@ -199,28 +188,20 @@ public class GravityAttractorLD : MonoBehaviour
         }
         public void ChangePoint(int index, Transform newPoint)
         {
-            if (index == 0 && newPoint != null && pointA.GetInstanceID() != newPoint.GetInstanceID())
+            if (index == 0 && newPoint != null)
             {
-                if (pointA != null)
-                    DestroyImmediate(pointA.gameObject);
                 pointA = newPoint;
             }
-            else if (index == 1 && newPoint != null && pointB.GetInstanceID() != newPoint.GetInstanceID())
+            else if (index == 1 && newPoint != null)
             {
-                if (pointB != null)
-                    DestroyImmediate(pointB.gameObject);
                 pointB = newPoint;
             }
-            else if (index == 2 && newPoint != null && pointC.GetInstanceID() != newPoint.GetInstanceID())
+            else if (index == 2 && newPoint != null)
             {
-                if (pointC != null)
-                    DestroyImmediate(pointC.gameObject);
                 pointC = newPoint;
             }
-            else if (index == 3 && newPoint != null && pointD.GetInstanceID() != newPoint.GetInstanceID())
+            else if (index == 3 && newPoint != null)
             {
-                if (pointD != null)
-                    DestroyImmediate(pointD.gameObject);
                 pointD = newPoint;
             }
         }
@@ -233,6 +214,7 @@ public class GravityAttractorLD : MonoBehaviour
         TRIANGLE = 2,
         QUAD = 3,
     }
+
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
     public List<GravityPoint> gravityPoints = new List<GravityPoint>();
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
@@ -275,7 +257,9 @@ public class GravityAttractorLD : MonoBehaviour
     public void CreateEditor()
     {
         if (!gameObject.HasComponent<GravityAttractorEditor>())
+        {
             gameObject.AddComponent(typeof(GravityAttractorEditor));
+        }            
     }
 
     [Button]
