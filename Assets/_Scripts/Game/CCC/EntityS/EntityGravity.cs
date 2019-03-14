@@ -27,11 +27,16 @@ public class EntityGravity : MonoBehaviour
     private float defaultGravityInAir = 2f;
 
 
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("MUST PRECEED AIR ATTRACTOR TIME !!")]
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois")]
+    private bool doWeSwitchBetweenBoth = true;
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("up or down selon la normal dot"), ReadOnly]
     private bool isGoingDown = false;
-    public bool IsGoingDown()
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois"), ReadOnly]
+    private bool isGoingDownToGround = false;
+
+    public bool IsGoingDownToGround()
     {
-        return (isGoingDown);
+        return (isGoingDownToGround);
     }
 
     private Vector3 mainAndOnlyGravity = Vector3.zero;
@@ -58,12 +63,12 @@ public class EntityGravity : MonoBehaviour
 
     public void OnGrounded()
     {
-        isGoingDown = false;
+        isGoingDown = isGoingDownToGround = false;
     }
 
     public void JustJumped()
     {
-        isGoingDown = false;
+        isGoingDown = isGoingDownToGround = false;
     }
 
     public Vector3 CalculateGravity(Vector3 positionEntity)
@@ -170,7 +175,7 @@ public class EntityGravity : MonoBehaviour
 
         finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetAirRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
-        if (dotGravityRigidbody < 0)
+        if (dotGravityRigidbody < 0 || (isGoingDown && !doWeSwitchBetweenBoth))
         {
             if (applyForceDown)
             {
@@ -181,10 +186,15 @@ public class EntityGravity : MonoBehaviour
                 {
                     isGoingDown = true;
                 }
+                if (!isGoingDownToGround)
+                {
+                    isGoingDownToGround = true;
+                }
 
             }
 
         }
+
         //here we are going up, and we release the jump button, apply gravity down until the highest point
         else if (dotGravityRigidbody > 0 && !entityAction.Jump)
         {

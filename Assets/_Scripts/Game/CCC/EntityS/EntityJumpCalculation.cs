@@ -124,7 +124,7 @@ public class EntityJumpCalculation : MonoBehaviour
     /// </summary>
     private bool DoSphereCast(Vector3 origin, Vector3 dir, float maxDist, int layers)
     {
-        //Debug.DrawRay(origin, dir * maxDist, Color.red, 5f);
+        Debug.DrawRay(origin, dir * maxDist, Color.red, 5f);
         if (Physics.SphereCast(origin, 0.3f, dir, out hitInfo,
                                    maxDist, layers, QueryTriggerInteraction.Ignore))
         {
@@ -181,10 +181,9 @@ public class EntityJumpCalculation : MonoBehaviour
 
             if (i == depth)
             {
-
-                //hit = DoSphereCast(prevPos, infoJump.dirUltimatePlotPoint, distRaycastDOWN, entityController.layerMask);
-                //if (hit)
-                //    infoJump.lastRaycastHit = true;
+                hit = DoSphereCast(prevPos, infoJump.dirUltimatePlotPoint, distRaycastDOWN, entityController.layerMask);
+                if (hit)
+                    infoJump.lastRaycastHit = true;
             }
             else
             {
@@ -207,14 +206,19 @@ public class EntityJumpCalculation : MonoBehaviour
         return (false);
     }
 
+    public Vector3 GetHitPoint()
+    {
+        if (infoJump.didWeHit)
+            return (infoJump.pointHit);
+        return (ExtUtilityFunction.GetNullVector());
+    }
+
     /// <summary>
     /// called just when we fall down !
     /// </summary>
     public bool UltimeTestBeforeAttractor()
     {
         infoJump.Clear();
-
-        return (false);
 
         Vector3[] ultimePlots = Plots(rb, rb.position, rb.velocity, 30, false, true);
 
@@ -223,19 +227,8 @@ public class EntityJumpCalculation : MonoBehaviour
         //here we know if we are in JUMP UP
         bool hit = DoLoopRaycastUltime(ultimePlots, 4);    //return true if we hit a wall in the first jump plot
 
-        //isOkToCreateAttractor = false;
-
-
-
         if (hit)
-        {
-            Debug.Log("OK we hit, fall down");
-
-            Debug.Break();
             return (true);
-        }
-        Debug.Log("no hit");
-        Debug.Break();
         return (false);
     }
 }

@@ -82,6 +82,7 @@ public class GroundCheck : MonoBehaviour
             dirNormal = Vector3.up;
             Debug.Log("Did NO Hit");
         }
+        //entityGravityAttractorSwitch.SetLastDirJump(dirNormal);
     }
 
     public string GetLastLayer()
@@ -165,14 +166,12 @@ public class GroundCheck : MonoBehaviour
         {
             
             if (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer))
-                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
+                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetWantedGravityOnGround()))
             {
                 Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
                 groundValue = false;
                 return;
             }
-            
-
 
             SetCurrentPlatform(hitInfo.collider.transform);
 

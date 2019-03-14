@@ -31,7 +31,7 @@ public class EntityBumpUp : MonoBehaviour
         if (hasBumpedUp)
             return (false);
         //do a bump only if we are going upwards !
-        if (entityGravity.IsGoingDown())
+        if (entityGravity.IsGoingDownToGround())
             return (false);
 
         return (true);

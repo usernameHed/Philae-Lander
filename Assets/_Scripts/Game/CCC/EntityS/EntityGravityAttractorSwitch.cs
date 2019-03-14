@@ -11,6 +11,8 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginNormalJumpInGA = 0.3f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public float marginNegativeJumpHit = -0.1f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float timeBeforeApplyForceDown = 0.4f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float timeBeforeActiveAllAttractorAfterJumpCalculation = 2f;
@@ -49,9 +51,12 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
     private FrequencyCoolDown coolDownBeforeApplyForceDown = new FrequencyCoolDown();
     private FrequencyCoolDown coolDownBeforeAttract = new FrequencyCoolDown();
-    private Vector3 lastNormalJumpChoosen = Vector3.zero;
+    private Vector3 lastNormalJumpChoosen = Vector3.up;
     private bool applyGalaxyForce = false;
-    private bool isGoingDown = false;
+    private Vector3 wantedDirGravityOnGround = Vector3.zero;
+
+    public Vector3 GetWantedGravityOnGround() => wantedDirGravityOnGround;
+    //private bool isGoingDown = false;
 
     public void EnterInZone(GravityAttractorLD refGravityAttractor)
     {
@@ -96,10 +101,9 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         if (entityController.GetMoveState() == EntityController.MoveState.InAir && !entityJump.HasJumped())
             return (true);
 
-        if (isGoingDown)
+        if (entityGravity.IsGoingDownToGround())
             return (true);
 
-        Debug.Log("can't");
         return (false);
     }
     private bool WeCanApplyGravityForceButCanWeApplyAll()
@@ -135,12 +139,11 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         coolDownBeforeAttract.Reset();
         coolDownBeforeApplyForceDown.StartCoolDown(timeBeforeApplyForceDown);
         applyGalaxyForce = false;
-        isGoingDown = false;
     }
 
     public void SetLastDirJump(Vector3 dirNormalChoosen)
     {
-        lastNormalJumpChoosen = dirNormalChoosen;
+        lastNormalJumpChoosen = wantedDirGravityOnGround = dirNormalChoosen;
     }
 
     public void OnGrounded()
@@ -148,7 +151,6 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         coolDownBeforeAttract.Reset();
         coolDownBeforeApplyForceDown.Reset();
         applyGalaxyForce = false;
-        isGoingDown = false;
     }
 
     public Vector3 GetDirGAGravity()
@@ -159,7 +161,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     private void CalculateGAGravity()
     {
         //Setup jump calculation when going down
-        if (!applyGalaxyForce && entityGravity.IsGoingDown())
+        if (!applyGalaxyForce && entityGravity.IsGoingDownToGround())
         {
             //here do a jumpCalculation
             applyGalaxyForce = true;
@@ -170,23 +172,21 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
             }
         }
-        if (!isGoingDown && entityGravity.IsGoingDown())
-            isGoingDown = true;
 
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
-            Debug.Log("ground force !");
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
+            wantedDirGravityOnGround = GetAirSphereGravity(rbEntity.position).sphereGravity;
         }
         //here we can't apply, because we just jump (OR because we are falling and in the timer
         else if (!CanApplyGravityForce())
         {
-            pointInfo.sphereGravity = lastNormalJumpChoosen;
-            Debug.Log("chose normal !");
+            pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
         else
         {
             pointInfo = GetAirSphereGravity(rbEntity.position);
+            wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
     }
 
@@ -196,16 +196,11 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
     private GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
     {
         bool applyAllForce = WeCanApplyGravityForceButCanWeApplyAll();
-        if (!applyAllForce)
-        {
-            Debug.Log("here don't apply all force");
-        }
-        
 
         //prepare array
         GravityAttractorLD.PointInfo[] allPointInfo = new GravityAttractorLD.PointInfo[allGravityAttractor.Count];
-        Vector3[] closestPost = new Vector3[allGravityAttractor.Count];
-        Vector3[] sphereDir = new Vector3[allGravityAttractor.Count];
+        Vector3[] closestPost = ExtUtilityFunction.CreateNullVectorArray(allGravityAttractor.Count + 1);
+        Vector3[] sphereDir = ExtUtilityFunction.CreateNullVectorArray(allGravityAttractor.Count + 1);
 
         //fill array with data from 
         for (int i = 0; i < allGravityAttractor.Count; i++)
@@ -222,6 +217,28 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f);
         }
 
+
+        if (!applyAllForce)
+        {
+            //ici anuller les gravités avec un dot positif au jump            
+            for (int i = 0; i < allGravityAttractor.Count; i++)
+            {
+                float dotGravity = ExtQuaternion.DotProduct(sphereDir[i], lastNormalJumpChoosen);
+                //Debug.Log("dot: " + dotGravity);
+                if (dotGravity > marginNegativeJumpHit)
+                {
+                    sphereDir[i] = closestPost[i] = ExtUtilityFunction.GetNullVector();
+                }
+            }
+            //here create a fake gravity close enought (from the hit point);
+            Vector3 pointHit = entityJumpCalculation.GetHitPoint();
+            sphereDir[allGravityAttractor.Count] = lastNormalJumpChoosen;
+            closestPost[allGravityAttractor.Count] = posEntity + lastNormalJumpChoosen.normalized * (posEntity - pointHit).magnitude;
+            //Debug.DrawRay(posEntity, sphereDir[allGravityAttractor.Count], Color.black, 2f);
+            //ExtDrawGuizmos.DebugWireSphere(closestPost[allGravityAttractor.Count], Color.black, 2f, 2f);
+        }
+
+
         //setup the closest point, and his vector director
         int indexFound = -1;
         Vector3 close = ExtUtilityFunction.GetClosestPoint(posEntity, closestPost, ref indexFound);
@@ -229,6 +246,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         if (ExtUtilityFunction.IsNullVector(close))
         {
             Debug.LogError("null gravity !!");
+            pointInfo.sphereGravity = lastNormalJumpChoosen;
             return (pointInfo);
         }
 
@@ -248,9 +266,15 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         {
             if (i == indexFound)
                 continue;
+
+            if (ExtUtilityFunction.IsNullVector(sphereDir[i]) || ExtUtilityFunction.IsNullVector(closestPost[i]))
+                continue;
+
+
             Vector3 currentVectorDir = closestPost[i] - posEntity;
             float magnitudeCurrentForce = (currentVectorDir).sqrMagnitude;
 
+            //
             if (magnitudeCurrentForce > defaultForce * maxDistBasedOnHowManyTimeDefault)
             {
                 Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
@@ -258,13 +282,25 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
                 continue;
             }
 
+            //tesst dot product
+
+
+
             float currentForce = defaultForce / (magnitudeCurrentForce * ratioOtherDistance);
             sphereDir[i] *= Mathf.Clamp(currentForce, 0f, 1f);
 
-            Debug.DrawRay(posEntity, currentVectorDir.normalized * currentForce, Color.magenta);
+            //Debug.DrawRay(posEntity, currentVectorDir.normalized * currentForce, Color.magenta);
         }
 
         Vector3 middleOfAllVec = ExtQuaternion.GetMiddleOfXVector(sphereDir);
+
+        //here we found nothing exept the last jump !
+        if (indexFound >= allPointInfo.Length)
+        {
+            GravityAttractorLD.PointInfo closestPointJump = pointInfo;
+            closestPointJump.sphereGravity = middleOfAllVec;
+            return (closestPointJump);
+        }
 
         GravityAttractorLD.PointInfo closestPoint = allPointInfo[indexFound];
         closestPoint.sphereGravity = middleOfAllVec;
