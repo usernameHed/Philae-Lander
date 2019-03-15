@@ -24,6 +24,9 @@ public class EntityController : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] stickPlatform = new string[] { "Walkable/Stick" };
 
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] walkForbiddenForwardUp = new string[] { "Walkable/Dont" };
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     public Rigidbody rb;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
@@ -90,6 +93,16 @@ public class EntityController : MonoBehaviour
         int isForbidden = ExtList.ContainSubStringInArray(stickPlatform, layer);
         if (isForbidden != -1)
             return (true);
+        return (false);
+    }
+    public bool IsForbidenLayerSwitch(string layer)
+    {
+        int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, layer);
+        if (isForbidden != -1)
+        {
+            //here we are in front of a forbidden wall !!
+            return (true);
+        }
         return (false);
     }
 

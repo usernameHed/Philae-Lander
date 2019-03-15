@@ -158,6 +158,19 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         return (pointInfo.sphereGravity);
     }
 
+
+    public Vector3 GetGAGravityAtThisPoint(Vector3 posEntity)
+    {
+        return (GetAirSphereGravity(posEntity).sphereGravity);
+    }
+
+    /// <summary>
+    /// calculate and set the gravity
+    /// if justCalculate = true, do NOT set the gravity, but return it
+    /// </summary>
+    /// <param name="entityPosition"></param>
+    /// <param name="justCalculate"></param>
+    /// <returns></returns>
     private void CalculateGAGravity()
     {
         //Setup jump calculation when going down
@@ -168,8 +181,12 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
             if (entityJumpCalculation.UltimeTestBeforeAttractor())
             {
-                Debug.Log("here we have hit, fall down with normal gravity jump");
+                Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
+            }
+            else
+            {
+                Debug.Log("here no hit, or not good angle");
             }
         }
 

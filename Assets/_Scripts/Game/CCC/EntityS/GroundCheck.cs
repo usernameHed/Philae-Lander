@@ -164,13 +164,26 @@ public class GroundCheck : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, sizeRadiusRayCast, dirRay, out hitInfo,
                                magnitudeToCheck, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            
-            if (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer))
-                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetWantedGravityOnGround()))
+            //si on est sur un mur Galaxy...
+            if (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer)))
+                //&& !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
             {
-                Debug.Log("here sphereAirMove tell us we are in a bad normal, continiue to fall");
-                groundValue = false;
-                return;
+                //si on était en l'air, test la gravité par rapport à la vrai gravité !
+                if (isFlying && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
+                {
+                    Debug.Log("here sphereAirMove tell us we are in a bad normal, (we were inAir before) continiue to fall");
+                    groundValue = false;
+                    return;
+                }
+                else if (!isFlying && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetWantedGravityOnGround()))
+                {
+                    Debug.Log("here sphereAirMove tell us we are in a bad normal, (we were onGround Before, first time fly ?) continiue to fall");
+                    groundValue = false;
+                    return;
+                }
+
+
+
             }
 
             SetCurrentPlatform(hitInfo.collider.transform);

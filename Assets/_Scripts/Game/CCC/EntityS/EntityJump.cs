@@ -30,8 +30,8 @@ public class EntityJump : MonoBehaviour
     protected EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityGravity playerGravity;
-    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    //protected EntityContactSwitch entityContactSwitch;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    protected GroundForwardCheck groundForwardCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public GroundCheck groundCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -167,8 +167,8 @@ public class EntityJump : MonoBehaviour
     /// <returns></returns>
     private Vector3 GetNormalizedJumpDir()
     {
-        //bool isForbiddenForward = entityContactSwitch.IsForwardForbiddenWall();
-        bool isForbiddenForward = false;
+        bool isForbiddenForward = groundForwardCheck.IsForwardForbiddenWall();
+        //bool isForbiddenForward = false;
         lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
 
         Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();

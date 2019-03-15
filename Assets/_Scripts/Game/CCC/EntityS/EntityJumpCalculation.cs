@@ -55,6 +55,8 @@ public class EntityJumpCalculation : MonoBehaviour
     [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
     private float marginJumpEndDot = 0.5f;
 
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
+    private float minJumpSpeedForNormalGravity = 0.7f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityController entityController = null;
@@ -67,6 +69,8 @@ public class EntityJumpCalculation : MonoBehaviour
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
@@ -227,8 +231,29 @@ public class EntityJumpCalculation : MonoBehaviour
         //here we know if we are in JUMP UP
         bool hit = DoLoopRaycastUltime(ultimePlots, 4);    //return true if we hit a wall in the first jump plot
 
+        //if we hit... have normal gravity
         if (hit)
+        {
+            string layerNameHit = LayerMask.LayerToName(infoJump.objHit.gameObject.layer);
+            //if this is stick layer, keep sticking !
+            if (entityController.IsStickPlatform(layerNameHit))
+                return (true);
+            //else, if this is a Dont platform, and normal is NOT ok, return false
+            if (entityController.IsForbidenLayerSwitch(layerNameHit)
+                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(infoJump.normalHit, entityGravityAttractorSwitch.GetGAGravityAtThisPoint(infoJump.pointHit)))
+            {
+                return (false);
+            }
+            //else, if this is a mario galaxy platform, whatever normal, if forwardSpeed is FAST; return false
+            if (entityController.IsMarioGalaxyPlatform(layerNameHit) && entityJump.GetLastJumpForwardVelocity() > minJumpSpeedForNormalGravity)
+            {
+                return (false);
+            }
+
+
             return (true);
+        }
+            
         return (false);
     }
 }

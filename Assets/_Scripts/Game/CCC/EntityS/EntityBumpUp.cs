@@ -58,9 +58,14 @@ public class EntityBumpUp : MonoBehaviour
     {
         Vector3 currentDirInverted = -rb.velocity.normalized;
         float dotVelocity = ExtQuaternion.DotProduct(currentDirInverted, normal);
+
+        Debug.DrawRay(rb.position, normal, Color.blue, 5f);
+        Debug.DrawRay(rb.position, currentDirInverted, Color.cyan, 5f);
+
+        Debug.Log("here try to bump up ! dot: " + dotVelocity);
         if (dotVelocity > dotMargin)
         {
-            //Debug.Log("here try to bump up ! dot: " + dotVelocity);
+            Debug.Log("bump up !");
             Vector3 upJump = entityGravity.GetMainAndOnlyGravity();
             rb.velocity = upJump * rb.velocity.magnitude;
 
