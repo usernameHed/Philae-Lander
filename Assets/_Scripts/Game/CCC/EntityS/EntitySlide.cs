@@ -11,6 +11,8 @@ public class EntitySlide : MonoBehaviour
     private float dotMarginNiceSlope = 0.3f;
     [FoldoutGroup("GamePlay"), MinMaxSlider(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
     private Vector2 minMaxMagnitude = new Vector2(0f, 0.7f);
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    private float minMagnitudeSlideWhenCastRightOrLeft = 0.4f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityGravity playerGravity = null;
@@ -20,34 +22,19 @@ public class EntitySlide : MonoBehaviour
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private EntityRotate entityRotate = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    private GroundForwardCheck groundForwardCheck;
 
     [FoldoutGroup("Debug"), ReadOnly, Tooltip("main Straff direction")]
     private Vector3 playerStraff = Vector3.zero;
 
     public Vector3 GetStraffDirection()
     {
-        Debug.Log("straff required for moving");
+        //Debug.Log("straff required for moving: " + playerStraff);
         return (playerStraff);
     }
-
-    /*/// <summary>
-    /// take an angle in parameter.
-    /// if the angle is close to 0, or 180, we touch floor or ceilling, reutrn false;
-    /// </summary>
-    private bool IsGoodAngleForSliding(Vector3 angleVector)
-    {
-        float closeToFloor = ExtQuaternion.GetAngleFromVector3(angleVector, Vector3.up);
-        float closeToCeilling = ExtQuaternion.GetAngleFromVector3(angleVector, -Vector3.up);
-        
-        if (ExtQuaternion.IsAngleCloseToOtherByAmount(angleFloor, closeToFloor, marginForSlideFloor))
-        {
-            //Debug.DrawRay(transform.position, angleVector, Color.red, 3f);
-            return (false);
-        }            
-
-            
-        return (true);
-    }*/
 
     /// <summary>
     /// calculate the normal direction, based on the hit forward
@@ -55,8 +42,8 @@ public class EntitySlide : MonoBehaviour
     public void CalculateStraffDirection(Vector3 normalHit)
     {
         Vector3 playerDir = entityController.GetFocusedForwardDirPlayer();
-        //Debug.Log("ici calcul straff");
-        //Debug.DrawRay(rb.transform.position, normalHit, Color.magenta, 5f);
+        //Debug.Log("ici calcul straff, normal hit: " + normalHit);
+        
         //Debug.DrawRay(rb.transform.position, playerDir, Color.red, 5f);
 
         Vector3 upPlayer = playerGravity.GetMainAndOnlyGravity();
@@ -81,20 +68,71 @@ public class EntitySlide : MonoBehaviour
             if (rightOrLeft == 1)
             {
                 playerStraff = ExtQuaternion.GetProjectionOfAOnB(relativeDirPlayer, right, upPlayer, minMaxMagnitude.x, minMaxMagnitude.y);// right * (dotRight);
-                Debug.DrawRay(rb.position, playerStraff, Color.magenta, 0.1f);
+                if (groundForwardCheck.IsAdvancedForwardCastRightOrLeft())
+                {
+                    //Debug.LogWarning("zero ! warning, slide if not both " + playerStraff);
+                    if (playerStraff.magnitude < minMagnitudeSlideWhenCastRightOrLeft)
+                    {
+                        playerStraff = playerStraff.normalized * minMagnitudeSlideWhenCastRightOrLeft;
+                    }
+                    //playerStraff = right;
+                }
+
+                //Debug.DrawRay(rb.position, playerStraff, Color.magenta, 0.1f);
+                //Debug.Log("ok right");
             }
             else if (rightOrLeft == -1)
             {
                 playerStraff = ExtQuaternion.GetProjectionOfAOnB(relativeDirPlayer, - right, upPlayer, minMaxMagnitude.x, minMaxMagnitude.y);//-right * dotLeft;
-                Debug.DrawRay(rb.position, playerStraff, Color.magenta, 0.1f);
+                if (groundForwardCheck.IsAdvancedForwardCastRightOrLeft())
+                {
+                    //Debug.LogWarning("zero ! warning, slide if not both" + playerStraff);
+                    if (playerStraff.magnitude < minMagnitudeSlideWhenCastRightOrLeft)
+                    {
+                        playerStraff = playerStraff.normalized * minMagnitudeSlideWhenCastRightOrLeft;
+                    }
+                    //playerStraff = -right;
+                }
+
+                //Debug.DrawRay(rb.position, playerStraff, Color.magenta, 0.1f);
+                //Debug.Log("ok left");
             }
             else
             {
+                
+                if (entityAction.GetDirInput().x < 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_RIGHT))
+                {
+                    //Debug.Log("left ?");
+                    playerStraff = -right;
+                    return;
+                }
+                else if (entityAction.GetDirInput().x < 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_RIGHT))
+                {
+                    //Debug.Log("right ?");
+                    playerStraff = right;
+                    return;
+                }
+                else if (entityAction.GetDirInput().x > 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_RIGHT))
+                {
+                    //Debug.Log("right ?");
+                    playerStraff = right;
+                    return;
+                }
+                else if (entityAction.GetDirInput().x > 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_RIGHT))
+                {
+                    //Debug.Log("left ?");
+                    playerStraff = -right;
+                    return;
+                }
                 //Debug.LogError("forward ???");
                 playerStraff = Vector3.zero;
+
             }
         }
-
-
+        
     }
 }

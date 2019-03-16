@@ -13,7 +13,10 @@ public class GravityAttractorLD : MonoBehaviour
         public Vector3 pos;
         public float gravityBaseRatio;
         public float gravityDownRatio;
+        [OnValueChanged("OnMaxRangeChange")]
         public float range;
+        [OnValueChanged("OnMaxRangeChange")]
+        public float maxRange;
 
         [HideInInspector]
         public Vector3 posRange;
@@ -22,12 +25,19 @@ public class GravityAttractorLD : MonoBehaviour
         [HideInInspector]
         public GravityAttractorLD refGA;
 
+        public void OnMaxRangeChange()
+        {
+            if (maxRange < range)
+                maxRange = range;
+        }
+
         [Button]
         public void Init()
         {
             gravityBaseRatio = 0.5f;
             gravityDownRatio = 0.3f;
             range = 0f;
+            maxRange = 0f;
         }
     }
 
@@ -36,7 +46,6 @@ public class GravityAttractorLD : MonoBehaviour
     {
         [SerializeField]
         public Transform point;
-        //public float range;
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -67,7 +76,9 @@ public class GravityAttractorLD : MonoBehaviour
     {
         public Transform pointA;
         public Transform pointB;
-        //public float range;
+
+        public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
+
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -102,7 +113,6 @@ public class GravityAttractorLD : MonoBehaviour
         public Transform pointA;
         public Transform pointB;
         public Transform pointC;
-        //public float range;
 
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
         [EnableIf("unidirectionnal")]
@@ -155,7 +165,6 @@ public class GravityAttractorLD : MonoBehaviour
         public Transform pointB;
         public Transform pointC;
         public Transform pointD;
-        //public float range;
 
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
         [EnableIf("unidirectionnal")]
@@ -311,21 +320,40 @@ public class GravityAttractorLD : MonoBehaviour
         //lastListFound.Clear();
     }
     
-    private Vector3 GetRightPosWithRange(Vector3 posEntity, Vector3 posCenter, float range)
+    private Vector3 GetRightPosWithRange(Vector3 posEntity, Vector3 posCenter, float range, float maxRange)
     {
+        Vector3 posFound = posCenter;
+        float lenghtCenterToPlayer = 0;
+
         if (range > 0)
         {
             Vector3 realPos = posCenter + (posEntity - posCenter).normalized * range;
-            float lenghtCenterToPlayer = (posEntity - posCenter).sqrMagnitude;
+            lenghtCenterToPlayer = (posEntity - posCenter).sqrMagnitude;
             float lenghtCenterToRangeMax = (realPos - posCenter).sqrMagnitude;
             if (lenghtCenterToRangeMax > lenghtCenterToPlayer)
             {
                 realPos = posEntity;
             }
-            
-            return (realPos);
+
+            posFound = realPos;
         }
-        return (posCenter);
+
+        //if player is out of range, return null
+        if (maxRange > range)
+        {
+            Vector3 realPos = posCenter + (posEntity - posCenter).normalized * maxRange;
+            //calculate only if we havn't already calculate
+            if (range == 0)
+                lenghtCenterToPlayer = (posEntity - posCenter).sqrMagnitude;
+            float lenghtCenterToRangeMax = (realPos - posCenter).sqrMagnitude;
+            if (lenghtCenterToPlayer > lenghtCenterToRangeMax)
+            {
+                posFound = ExtUtilityFunction.GetNullVector();
+            }
+
+        }
+
+        return (posFound);
     }
 
     private void GetClosestPointFromGravityPoints(Vector3 posEntity, ref Vector3 closestPoint, ref Vector3 closestRangePoint)
@@ -337,7 +365,7 @@ public class GravityAttractorLD : MonoBehaviour
             if (!gravityPoints[i].point)
                 continue;
             //arrayPoints[i] = gravityPoints[i].point.position;
-            arrayPoints[i] = GetRightPosWithRange(posEntity, gravityPoints[i].point.position, gravityPoints[i].GetPointInfo().range);
+            arrayPoints[i] = GetRightPosWithRange(posEntity, gravityPoints[i].point.position, gravityPoints[i].GetPointInfo().range, gravityPoints[i].GetPointInfo().maxRange);
         }
         //closestRangePoint = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPoints, ref indexFound);
         //closestPoint = gravityPoints[indexFound].point.position;
@@ -361,9 +389,9 @@ public class GravityAttractorLD : MonoBehaviour
             if (!gravityLines[i].pointA || !gravityLines[i].pointB)
                 continue;
 
-            ExtLine line = new ExtLine(gravityLines[i].pointA.position, gravityLines[i].pointB.position);
+            ExtLine line = new ExtLine(gravityLines[i].pointA.position, gravityLines[i].pointB.position, gravityLines[i].noGravityBorders);
             arrayPointsLinesCenterTmp[i] = line.ClosestPointTo(posEntity);
-            arrayPointsLines[i] = GetRightPosWithRange(posEntity, arrayPointsLinesCenterTmp[i], gravityLines[i].GetPointInfo().range);
+            arrayPointsLines[i] = GetRightPosWithRange(posEntity, arrayPointsLinesCenterTmp[i], gravityLines[i].GetPointInfo().range, gravityLines[i].GetPointInfo().maxRange);
         }
         closestRangePoint = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsLines, ref indexFound);
         if (indexFound != -1)
@@ -392,7 +420,7 @@ public class GravityAttractorLD : MonoBehaviour
                 gravityTriangles[i].noGravityBorders);
 
             arrayPointsTrianglesCenterTmp[i] = triangle.ClosestPointTo(posEntity);
-            arrayPointsTriangles[i] = GetRightPosWithRange(posEntity, arrayPointsTrianglesCenterTmp[i], gravityTriangles[i].GetPointInfo().range);
+            arrayPointsTriangles[i] = GetRightPosWithRange(posEntity, arrayPointsTrianglesCenterTmp[i], gravityTriangles[i].GetPointInfo().range, gravityTriangles[i].GetPointInfo().maxRange);
 
             //arrayPointsTriangles[i] = triangle.ClosestPointTo(posEntity);
         }
@@ -426,7 +454,7 @@ public class GravityAttractorLD : MonoBehaviour
                 gravityQuad[i].noGravityBorders);
 
             arrayPointsQuadsCenterTmp[i] = triangleA.ClosestPointTo(posEntity);
-            arrayPointsQuads[i] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i], gravityQuad[i].GetPointInfo().range);
+            arrayPointsQuads[i] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i], gravityQuad[i].GetPointInfo().range, gravityQuad[i].GetPointInfo().maxRange);
 
             ExtTriangle triangleB = new ExtTriangle(gravityQuad[i].pointC.position, gravityQuad[i].pointD.position, gravityQuad[i].pointA.position,
                 gravityQuad[i].unidirectionnal,
@@ -435,7 +463,7 @@ public class GravityAttractorLD : MonoBehaviour
                 gravityQuad[i].noGravityBorders);
 
             arrayPointsQuadsCenterTmp[i + gravityQuad.Count] = triangleB.ClosestPointTo(posEntity);
-            arrayPointsQuads[i + gravityQuad.Count] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i + gravityQuad.Count], gravityQuad[i].GetPointInfo().range);
+            arrayPointsQuads[i + gravityQuad.Count] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i + gravityQuad.Count], gravityQuad[i].GetPointInfo().range, gravityQuad[i].GetPointInfo().maxRange);
         }
         //Vector3 closestFound = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsQuads, ref indexFound);
 
@@ -497,10 +525,12 @@ public class GravityAttractorLD : MonoBehaviour
             //Debug.DrawLine(fromPoint, closestPointLines, Color.cyan);
             allResult[indexResult].pos = closestPoint;
             allResult[indexResult].posRange = closestRangePoint;
-            allResult[indexResult].gravityBaseRatio = gravityLines[indexFound].GetPointInfo().gravityBaseRatio;
-            allResult[indexResult].gravityDownRatio = gravityLines[indexFound].GetPointInfo().gravityDownRatio;
-            allResult[indexResult].range = gravityLines[indexFound].GetPointInfo().range;
-
+            if (indexFound != -1)
+            {
+                allResult[indexResult].gravityBaseRatio = gravityLines[indexFound].GetPointInfo().gravityBaseRatio;
+                allResult[indexResult].gravityDownRatio = gravityLines[indexFound].GetPointInfo().gravityDownRatio;
+                allResult[indexResult].range = gravityLines[indexFound].GetPointInfo().range;
+            }
             allResultPos[indexResult] = closestPoint;
             allResultPosRange[indexResult] = closestRangePoint;
 

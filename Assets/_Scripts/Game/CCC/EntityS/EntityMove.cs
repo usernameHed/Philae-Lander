@@ -38,13 +38,19 @@ public class EntityMove : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
-        //if we are in front of a NoSide Object, Slide, else, go forward
-        Vector3 dirMove = (groundForwardCheck.IsForwardForbiddenWall())
-            ? entitySlide.GetStraffDirection()
-            : entityController.GetFocusedForwardDirPlayer();
+        Vector3 dirMove = Vector3.zero;
 
-        //Vector3 dirMove = entityController.GetFocusedForwardDirPlayer();
-
+        if (groundForwardCheck.IsForwardForbiddenWall())
+        {
+            //Debug.Log("move Straff");
+            dirMove = entitySlide.GetStraffDirection();
+        }
+        else
+        {
+            //Debug.Log("move forward");
+            dirMove = entityController.GetFocusedForwardDirPlayer();
+        }
+        Debug.DrawRay(rb.position, dirMove * 5, Color.blue);
         MovePhysics(dirMove);
     }
 

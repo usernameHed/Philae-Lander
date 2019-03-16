@@ -77,7 +77,7 @@ public class UtilityEditor : ScriptableObject
         {
             Selection.activeGameObject = gravityAttractorLD.transform.gameObject;
             Debug.Log("we found a gravityAttractor here !!");
-            FocusOnSelection(Selection.activeGameObject, -1);
+            //FocusOnSelection(Selection.activeGameObject, -1);
             //SetSearchFilter(Selection.activeGameObject.name, FILTERMODE_ALL);
 
             return (true);

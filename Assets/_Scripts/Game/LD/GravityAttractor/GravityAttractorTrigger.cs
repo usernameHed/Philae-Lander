@@ -13,7 +13,7 @@ public class GravityAttractorTrigger : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref of the main GravityAttractor")]
     public GravityAttractorLD refGravityAttractor = null;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
 		if (ExtEnum.ListContain(other.tag, tagList))
 		{

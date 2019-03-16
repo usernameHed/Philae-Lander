@@ -5,18 +5,45 @@ using UnityEngine;
 
 public class GroundForwardCheck : MonoBehaviour
 {
+    public enum AdvancedForwardType
+    {
+        LEFT = -1,
+        RIGHT_AND_LEFT = 0,
+        RIGHT = 1,
+        NONE = 2,
+    }
+
     [FoldoutGroup("GamePlay"), SerializeField]
     private bool inAirForwardWall = true;
+    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip(""), SerializeField]
+    public float timeBetween2TestForward = 0.8f;
 
-    
     [FoldoutGroup("Forward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
     private float distForward = 0.6f;
     [FoldoutGroup("Forward"), Tooltip(""), SerializeField]
     public float sizeRadiusForward = 0.3f;
     [FoldoutGroup("Forward"), Range(0f, 1f), Tooltip(""), SerializeField]
     public float dotMarginImpact = 0.3f;
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip(""), SerializeField]
-    public float timeBetween2TestForward = 0.8f;
+    
+
+    [FoldoutGroup("Advance Forward"), Tooltip("rigidbody"), SerializeField]
+    private float upDistRaycast = 0.1f;
+    [FoldoutGroup("Advance Forward"), Tooltip("rigidbody"), SerializeField]
+    private float lateralDistRaycast = 0.3f;
+    [FoldoutGroup("Advance Forward"), Tooltip("rigidbody"), SerializeField]
+    private float distForwardRaycast = 1f;
+
+    [FoldoutGroup("Advance Forward"), ReadOnly, SerializeField]
+    private bool isAdvancedForward = false;
+    [FoldoutGroup("Advance Forward"), ReadOnly, SerializeField]
+    private bool isForwardAdvanceNormalOk = false;
+    [FoldoutGroup("Advance Forward"), ReadOnly, SerializeField]
+    private AdvancedForwardType isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
+    public bool IsAdvancedForwardCastRightOrLeft()
+    {
+        return (isForwardAdvanceRightOrLeft == AdvancedForwardType.RIGHT
+            || isForwardAdvanceRightOrLeft == AdvancedForwardType.LEFT);
+    }
 
     //[FoldoutGroup("Backward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
     //private float distBackward = 1f;
@@ -28,7 +55,7 @@ public class GroundForwardCheck : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityController entityController = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityGravity playerGravity = null;
+    private EntityGravity entityGravity = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
@@ -42,6 +69,8 @@ public class GroundForwardCheck : MonoBehaviour
     private bool isForwardWall = false;
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isForbiddenForward = false;
+
+    
     //[FoldoutGroup("Debug"), ReadOnly, SerializeField]
     //private bool isBackwardWall = false;
     [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
@@ -49,10 +78,11 @@ public class GroundForwardCheck : MonoBehaviour
 
 
     private FrequencyCoolDown coolDownForward = new FrequencyCoolDown();
+    private Vector3 dirSurfaceNormal;
 
     public bool IsForwardForbiddenWall()
     {
-        return (isForwardWall && isForbiddenForward);
+        return ((isForwardWall && isForbiddenForward) || (isAdvancedForward && !isForwardAdvanceNormalOk));
     }
 
     public bool IsCoolDownSwitchReady()
@@ -60,72 +90,70 @@ public class GroundForwardCheck : MonoBehaviour
         return (coolDownForward.IsReady());
     }
 
-    /*
-    private bool IsSphereGravityAndNormalNotOk(RaycastHit hitInfo)
+    private void AdvanceForwardCheck()
     {
-        GravityAttractorLD.PointInfo tmpPointInfo = new GravityAttractorLD.PointInfo();
+        isAdvancedForward = isForwardAdvanceNormalOk = false;
+        isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
 
-        bool normalOk = false;
-        bool isThisObjectClouldBeOk = entityGravityAttractorSwitch.IsThisHitImpactCouldBeOk(hitInfo, ref tmpPointInfo, ref normalOk);
+        RaycastHit hitLeft;
+        RaycastHit hitRight;
+        Vector3 origin = rb.position + entityGravity.GetMainAndOnlyGravity() * upDistRaycast;
+        Vector3 originRight = origin + entityController.GetFocusedRightDirPlayer() * lateralDistRaycast;
+        Vector3 originLeft = origin - entityController.GetFocusedRightDirPlayer() * lateralDistRaycast;
+        Vector3 dirRaycast = entityController.GetFocusedForwardDirPlayer();
 
-        //here we don't touch a valide GravitySpehre, ignore it
-        if (!isThisObjectClouldBeOk)
+        //Debug.DrawRay(origin, dirRaycast, Color.magenta);
+        Debug.DrawRay(originRight, dirRaycast, Color.magenta);
+        Debug.DrawRay(originLeft, dirRaycast, Color.magenta);
+
+        if (Physics.Raycast(originRight, dirRaycast, out hitRight, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            return (true);
+            //Debug.Log("Did Hit: " + hitRight.collider.gameObject, hitRight.collider.gameObject);
+            isAdvancedForward = true;
+            isForwardAdvanceNormalOk = IsNormalOk(hitRight);
+            isForwardAdvanceRightOrLeft = AdvancedForwardType.RIGHT;
+            entitySlide.CalculateStraffDirection(hitRight.normal);    //calculate SLIDE
+            
+            //return (true);
         }
-        
-        if (normalOk && entityGravityAttractorSwitch.GetGroundAttractor() == null)
+        if (Physics.Raycast(originLeft, dirRaycast, out hitLeft, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
-            Debug.LogWarning("here null, first time we swithc to base to GA ?");
-            entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
-            return (true);
+            //Debug.Log("Did Hit: " + hitLeft.collider.gameObject, hitLeft.collider.gameObject);
+            isAdvancedForward = true;
+            isForwardAdvanceNormalOk = IsNormalOk(hitLeft);
+
+            isForwardAdvanceRightOrLeft = (isForwardAdvanceRightOrLeft == AdvancedForwardType.NONE) ? AdvancedForwardType.LEFT : AdvancedForwardType.RIGHT_AND_LEFT;
+            entitySlide.CalculateStraffDirection(hitLeft.normal);    //calculate SLIDE            
         }
+    }
 
-        //here normal is bad, stop processing the groundForward, and do some action !
-        //si la normal est bonne,  mais que les GA sont different = bad normal
-        //si la normal est bonne, et que le groundAttractor est null aussi
-        if ((!normalOk && entityGravityAttractorSwitch.IsTheSamePointInfo(tmpPointInfo))
-            || (normalOk && !entityGravityAttractorSwitch.IsTheSamePointInfo(tmpPointInfo)))
+    public bool IsNormalOk(RaycastHit hitInfo)
+    {
+        if (entityController.IsForbidenLayerSwitch(LayerMask.LayerToName(hitInfo.transform.gameObject.layer))
+                || (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer)))
+                    && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetGAGravityAtThisPoint(hitInfo.point)))
         {
-            Debug.LogWarning("here sphereAirMove tell us we are in a bad normal, do NOT do forward");
-            isForwardWall = true;
-            isForbiddenForward = true;
-
-            Vector3 dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
-                            entityController.GetFocusedForwardDirPlayer(),
-                            distForward,
-                            sizeRadiusForward,
-                            hitInfo.point,
-                            collRayCastMargin,
-                            entityController.layerMask);
-
-            entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
-            entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
-
+            //here we are in front of a forbidden wall !!
             return (false);
         }
-        else
-        {
-            entityGravityAttractorSwitch.UpdateGroundObject(hitInfo);
-        }
-
-        //here normal is good, we can change orientation !
         return (true);
     }
-    */
 
     private void ForwardWallCheck()
     {
         RaycastHit hitInfo;
 
         ResetContact();
+        isAdvancedForward = isForwardAdvanceNormalOk = false;
 
         //do nothing if not moving
         if (entityAction.NotMoving())
             return;
         //do nothing if input and forward player are not equal
         if (!entityController.IsLookingTowardTheInput(dotMarginImpact))
-            return;            
+            return;
+
+        AdvanceForwardCheck();
 
         if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
                                distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
@@ -141,8 +169,18 @@ public class GroundForwardCheck : MonoBehaviour
             isForwardWall = true;
 
             Vector3 normalHit = hitInfo.normal;
-            Vector3 upPlayer = playerGravity.GetMainAndOnlyGravity();
-            entitySlide.CalculateStraffDirection(normalHit);    //calculate SLIDE
+            Vector3 upPlayer = entityGravity.GetMainAndOnlyGravity();
+            Vector3 tmpDirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+                               entityController.GetFocusedForwardDirPlayer(),
+                               distForward,
+                               sizeRadiusForward,
+                               hitInfo.point,
+                               collRayCastMargin,
+                               entityController.layerMask);
+            if (tmpDirSurfaceNormal != Vector3.zero)
+                dirSurfaceNormal = tmpDirSurfaceNormal;
+
+            entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
 
             float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
             if (dotWrongSide < -dotMarginImpact)
@@ -153,19 +191,11 @@ public class GroundForwardCheck : MonoBehaviour
             }
 
             //int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-            if (entityController.IsForbidenLayerSwitch(LayerMask.LayerToName(hitInfo.transform.gameObject.layer))
-                || (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer)))
-                    && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetGAGravityAtThisPoint(hitInfo.point)))
+            if (!IsNormalOk(hitInfo))
             {
                 //here we are in front of a forbidden wall !!
                 isForbiddenForward = true;
-                Vector3 dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
-                               entityController.GetFocusedForwardDirPlayer(),
-                               distForward,
-                               sizeRadiusForward,
-                               hitInfo.point,
-                               collRayCastMargin,
-                               entityController.layerMask);
+                
                 entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
             }
             else
@@ -178,7 +208,7 @@ public class GroundForwardCheck : MonoBehaviour
                 {
                     //HERE FORWARD, DO SWITCH !!
                     coolDownForward.StartCoolDown(timeBetween2TestForward);
-                    Debug.Log("forward");
+                    //Debug.Log("forward");
                     groundCheck.SetForwardWall(hitInfo);
                     
                     isForbiddenForward = false;
@@ -187,6 +217,7 @@ public class GroundForwardCheck : MonoBehaviour
         }
         else
         {
+            
             ResetContact();
         }
     }

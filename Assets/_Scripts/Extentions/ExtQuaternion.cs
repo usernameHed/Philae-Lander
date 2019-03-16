@@ -12,6 +12,15 @@ public static class ExtQuaternion
         ALL,
     }
 
+    public enum OrientationRotation
+    {
+        NONE = -1,
+        FORWARD_AND_RIGHT = 0,
+        FORWARD_AND_LEFT = 1,
+        BEHIND_AND_RIGHT = 2,
+        BEHIND_AND_LEFT = 3,
+    }
+
     /// <summary>
     /// formula behind smoothDamp
     /// </summary>
@@ -81,6 +90,39 @@ public static class ExtQuaternion
         }
         //Debug.Log("go pls");
         return (0);
+    }
+
+    public static OrientationRotation IsForwardBackWardRightLeft(Vector3 forwardDir,
+        Vector3 toGoDir, Vector3 relativeUp, Vector3 debugPosition)
+    {
+        float dotDir = ExtQuaternion.DotProduct(forwardDir, toGoDir);
+        float right = 0f;
+        float left = 0f;
+        int irol = ExtQuaternion.IsRightOrLeft(forwardDir, relativeUp, toGoDir, debugPosition, ref left, ref right);
+
+        if (dotDir > 0)
+        {
+            if (irol == 1)
+            {
+                return (OrientationRotation.FORWARD_AND_RIGHT);
+            }
+            else if (irol == -1)
+            {
+                return (OrientationRotation.FORWARD_AND_LEFT);
+            }
+        }
+        else if (dotDir < 0)
+        {
+            if (irol == 1)
+            {
+                return (OrientationRotation.BEHIND_AND_RIGHT);
+            }
+            else if (irol == -1)
+            {
+                return (OrientationRotation.BEHIND_AND_LEFT);
+            }
+        }
+        return (OrientationRotation.NONE);
     }
 
     /// <summary>

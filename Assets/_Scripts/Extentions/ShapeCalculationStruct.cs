@@ -19,9 +19,9 @@ public struct ExtTriangle
         bool _unidirectionnal, bool _inverseDirection, bool _infinitePlane,
         bool _noGravityBorders)
     {
-        EdgeAb = new ExtLine(a, b);
-        EdgeBc = new ExtLine(b, c);
-        EdgeCa = new ExtLine(c, a);
+        EdgeAb = new ExtLine(a, b, false);
+        EdgeBc = new ExtLine(b, c, false);
+        EdgeCa = new ExtLine(c, a, false);
 
         unidirectionnal = _unidirectionnal;
         inverseDirection = _inverseDirection;
@@ -195,12 +195,14 @@ public struct ExtLine
     public readonly Vector3 A;
     public readonly Vector3 B;
     public readonly Vector3 Delta;
+    public bool noGravityBorders;
 
-    public ExtLine(Vector3 a, Vector3 b)
+    public ExtLine(Vector3 a, Vector3 b, bool _noGravityBorders)
     {
         A = a;
         B = b;
         Delta = b - a;
+        noGravityBorders = _noGravityBorders;
     }
 
     public Vector3 PointAt(double t) => A + (float)t * Delta;
@@ -214,10 +216,14 @@ public struct ExtLine
 
         if (distance < 0)     //Check if P projection is over vectorAB     
         {
+            if (noGravityBorders)
+                return (ExtUtilityFunction.GetNullVector());
             return A;
         }
         else if (distance > 1)
         {
+            if (noGravityBorders)
+                return (ExtUtilityFunction.GetNullVector());
             return B;
         }
         else
