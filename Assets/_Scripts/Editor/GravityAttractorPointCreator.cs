@@ -128,7 +128,11 @@ public class GravityAttractorPointCreator : OdinEditor
 
     private void CorrectPositionPreview(Event e)
     {
-        if (!e.control && gravityAttractorEditor.objectPreview && gravityAttractorEditor.objectPreview.activeInHierarchy)
+        if (e.shift && gravityAttractorEditor.objectPreview && gravityAttractorEditor.objectPreview.activeInHierarchy)
+        {
+            gravityAttractorEditor.previewPoint.position = Selection.activeGameObject.transform.position;
+        }
+        else if (e.control && gravityAttractorEditor.objectPreview && gravityAttractorEditor.objectPreview.activeInHierarchy)
         {
             gravityAttractorEditor.previewPoint.position = GetPointOfTriangle(saveRaycastHit);
         }
@@ -141,7 +145,7 @@ public class GravityAttractorPointCreator : OdinEditor
         newObjParent.transform.position = pos;
         newObjParent.layer = LayerMask.NameToLayer(gravityAttractorEditor.layerPoint);
         SphereCollider sphere = newObjParent.AddComponent<SphereCollider>();
-        sphere.radius = 0.1f;
+        sphere.radius = 0.25f;
         sphere.isTrigger = false;
         UtilityEditor.AssignLabel(newObjParent, 1);
 
@@ -242,7 +246,7 @@ public class GravityAttractorPointCreator : OdinEditor
             return;
 
         //create point
-        if (gravityAttractorEditor.objectPreview && !e.alt && !e.shift
+        if (gravityAttractorEditor.objectPreview && !e.alt
             && e.button == 1 && !gravityAttractorEditor.tmpPointCreated.Contains(gravityAttractorEditor.objectPreview))
         {
             Undo.RecordObject(gravityAttractorEditor, "list creation");

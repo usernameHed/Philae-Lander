@@ -62,7 +62,7 @@ public class EntityBumpUp : MonoBehaviour
         Debug.DrawRay(rb.position, normal, Color.blue, 5f);
         Debug.DrawRay(rb.position, currentDirInverted, Color.cyan, 5f);
 
-        Debug.Log("here try to bump up ! dot: " + dotVelocity);
+        //Debug.Log("here try to bump up ! dot: " + dotVelocity);
         if (dotVelocity > dotMargin)
         {
             Debug.Log("bump up !");

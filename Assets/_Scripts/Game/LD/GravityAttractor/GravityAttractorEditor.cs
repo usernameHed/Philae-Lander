@@ -40,6 +40,8 @@ public class GravityAttractorEditor : MonoBehaviour
 
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     public GameObject objectPreview;
+    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    public GameObject triggerRef;
 
     [HideInInspector]
     public Vector3[] allModifiedPosGravityPoint;
@@ -68,7 +70,7 @@ public class GravityAttractorEditor : MonoBehaviour
         if (!gravityAttractor)
             gravityAttractor = GetComponent<GravityAttractorLD>();
 
-        CreateTrigger();
+        
     }
 
     /*
@@ -301,6 +303,13 @@ public class GravityAttractorEditor : MonoBehaviour
             SphereCollider sphere = childTrigger.AddComponent<SphereCollider>();
             sphere.radius = 5f;
             sphere.isTrigger = true;
+            BoxCollider box = childTrigger.AddComponent<BoxCollider>();
+            box.size = new Vector3(5f, 5f, 5f);
+            box.isTrigger = true;
+            box.enabled = false;
+
+            triggerRef = childTrigger;
+            Debug.Log("ici trigger ref: " + triggerRef);
         }
     }
     [Button]

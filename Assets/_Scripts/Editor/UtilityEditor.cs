@@ -166,10 +166,13 @@ public class UtilityEditor : ScriptableObject
         GravityAttractorEditor gravityAttractorEditor = Selection.activeGameObject.GetComponent<GravityAttractorEditor>();
         gravityAttractorEditor.GenerateParenting();
         gravityAttractorEditor.createMode = 1;
+        gravityAttractorEditor.CreateTrigger();
 
         AddCustomEditorToObject(Selection.activeGameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
 
         SceneView.FocusWindowIfItsOpen(typeof(SceneView));
+
+        Selection.activeGameObject = gravityAttractorEditor.triggerRef;
     }
 
     [MenuItem("PERSO/Philae/Delete Gravity Attractor %&g")]
@@ -201,6 +204,11 @@ public class UtilityEditor : ScriptableObject
     public static void SetDontLayerAndMat()
     {
         SetLayerAndMat("Assets/Resources/Dont.mat", "Walkable/Dont");
+    }
+    [MenuItem("PERSO/Philae/SetGround Layer & Material FastForward")]
+    public static void SetFastForwardLayerAndMat()
+    {
+        SetLayerAndMat("Assets/Resources/FastForward.mat", "Walkable/FastForward");
     }
 
     public static void AssignLabel(GameObject g, int colorIconById)

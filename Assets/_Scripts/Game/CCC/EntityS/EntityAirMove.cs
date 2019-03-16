@@ -37,6 +37,8 @@ public class EntityAirMove : MonoBehaviour
     private EntityJump entityJump = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private GroundForwardCheck groundForwardCheck = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref"), ReadOnly]
     protected float amountAdded = 0f;
@@ -92,6 +94,10 @@ public class EntityAirMove : MonoBehaviour
             if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetAirRatioGravity()
                 && entityController.GetActualVelocity() > velocityMaxAirMove)
                 return;
+            //ne pas avancer si c'est un forbidden wall
+            if (groundForwardCheck.IsForwardForbiddenWall())
+                return;
+
 
             float valueSubstract = Mathf.Abs(lastVelocity - dotDirForward);
             //Debug.Log("value Substract: " + valueSubstract);

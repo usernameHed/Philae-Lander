@@ -137,8 +137,8 @@ public class EntityJump : MonoBehaviour
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityAction.GetMagnitudeInput()));
 
-        //if (entityContactSwitch.IsForwardForbiddenWall())
-        //    jumpBoostHeight = jumpHeight;
+        if (groundForwardCheck.IsForwardForbiddenWall())
+            jumpBoostHeight = jumpHeight;
 
         //Debug.Log("boost height: " + jumpBoostHeight);
         return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
