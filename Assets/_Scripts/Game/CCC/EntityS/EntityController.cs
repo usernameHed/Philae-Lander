@@ -63,6 +63,9 @@ public class EntityController : MonoBehaviour
     protected bool isKilled = false;
     protected float actualVelocity = 0f;
     public float GetActualVelocity() => actualVelocity;
+    protected float actualAcceleration = 0f;
+    public float GetActualAcceleration() => actualAcceleration;
+    protected Vector3 actualAccelerationVector = Vector3.zero;
 
     /// <summary>
     /// init player

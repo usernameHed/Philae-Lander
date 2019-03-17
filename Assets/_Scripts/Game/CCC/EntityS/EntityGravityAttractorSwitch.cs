@@ -179,7 +179,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
             //here do a jumpCalculation
             applyGalaxyForce = true;
 
-            if (entityJumpCalculation.UltimeTestBeforeAttractor())
+            if (entityJump.HasJumped() && entityJumpCalculation.UltimeTestBeforeAttractor())
             {
                 Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
@@ -192,6 +192,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
 
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
+            coolDownBeforeAttract.Reset();
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
             wantedDirGravityOnGround = GetAirSphereGravity(rbEntity.position).sphereGravity;
         }

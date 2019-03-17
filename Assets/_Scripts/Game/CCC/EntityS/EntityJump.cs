@@ -40,6 +40,8 @@ public class EntityJump : MonoBehaviour
     public EntityGravityAttractorSwitch entityGravityAttractorSwitch;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityBumpUp entityBumpUp;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public EntityYoshiBoost entityYoshiBoost;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -54,6 +56,7 @@ public class EntityJump : MonoBehaviour
     private float lastVelocityJump = 0f;
 
     protected bool jumpStop = false;
+    public bool IsJumpStoped() => jumpStop;
 
     private void Awake()
     {
@@ -201,6 +204,7 @@ public class EntityJump : MonoBehaviour
         playerAirMove.JustJumped();
         entityGravityAttractorSwitch.JustJumped();
         entityBumpUp.JustJumped();
+        entityYoshiBoost.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         

@@ -1148,7 +1148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5681305196537818921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49, y: 2.68, z: 7.78}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6218873525988586700}
@@ -1795,6 +1795,7 @@ GameObject:
   - component: {fileID: 6223110023887662018}
   - component: {fileID: 4547727989925978867}
   - component: {fileID: 3295248281479973674}
+  - component: {fileID: 468871667025130994}
   - component: {fileID: 4930703892372734088}
   - component: {fileID: 9013407796872692123}
   - component: {fileID: 3373334750824284554}
@@ -1896,16 +1897,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inAirForwardWall: 1
-  walkForbiddenForwardUp:
-  - Walkable/Dont
+  timeBetween2TestForward: 0.8
   distForward: 0.6
   sizeRadiusForward: 0.3
   dotMarginImpact: 0.3
-  timeBetween2TestForward: 0.8
+  upDistRaycast: 0
+  lateralDistRaycast: 0.5
+  distForwardRaycast: 1
+  isAdvancedForward: 0
+  isForwardAdvanceNormalOk: 0
+  isForwardAdvanceRightOrLeft: 2
   groundCheck: {fileID: 6695023544682400897}
   rb: {fileID: 5681305196537818923}
   entityController: {fileID: 6223110023887662018}
-  playerGravity: {fileID: 4930703892372734088}
+  entityGravity: {fileID: 4930703892372734088}
   entityAction: {fileID: 3295248281479973673}
   entitySlide: {fileID: 6130489510535227342}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
@@ -1927,10 +1932,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotMarginNiceSlope: 0.2
   minMaxMagnitude: {x: 0, y: 0.7}
+  minMagnitudeSlideWhenCastRightOrLeft: 0.4
   playerGravity: {fileID: 4930703892372734088}
   entityController: {fileID: 6223110023887662018}
   entityAction: {fileID: 3295248281479973673}
   rb: {fileID: 5681305196537818923}
+  entityRotate: {fileID: 6695023544682401022}
+  groundForwardCheck: {fileID: 8552415473636058212}
 --- !u!114 &6068529678874368934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,7 +1951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea765e49735f8494f82106140d84d239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dotMargin: 0.86
+  dotMargin: 0.4
   entityController: {fileID: 6223110023887662018}
   entityGravity: {fileID: 4930703892372734088}
   entityAirMove: {fileID: 6912064760247042750}
@@ -1972,6 +1980,8 @@ MonoBehaviour:
   - Walkable/Ground
   stickPlatform:
   - Walkable/Stick
+  walkForbiddenForwardUp:
+  - Walkable/Dont
   rb: {fileID: 5681305196537818923}
   rbRotateObject: {fileID: 6695023544966986338}
   playerGravity: {fileID: 4930703892372734088}
@@ -1994,6 +2004,7 @@ MonoBehaviour:
   playerJump: {fileID: 3295248281479973674}
   renderPlayer: {fileID: 6695023545297213784}
   animator: {fileID: 8683863032487683829}
+  entityYoshiBoost: {fileID: 0}
   idPlayer: 0
 --- !u!114 &4547727989925978867
 MonoBehaviour:
@@ -2034,10 +2045,12 @@ MonoBehaviour:
   rb: {fileID: 5681305196537818923}
   entityAction: {fileID: 3295248281479973673}
   playerGravity: {fileID: 4930703892372734088}
+  groundForwardCheck: {fileID: 8552415473636058212}
   groundCheck: {fileID: 6695023544682400897}
   playerAirMove: {fileID: 6912064760247042750}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityBumpUp: {fileID: 6068529678874368934}
+  entityYoshiBoost: {fileID: 0}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -2056,6 +2069,33 @@ MonoBehaviour:
     strenthRight: 0.3
     durationRight: 0.1
   playerController: {fileID: 6223110023887662018}
+--- !u!114 &468871667025130994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223110023887662016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0505c863a59acce4dbc51bb1404dbd8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeJump: 0.4
+  boostTime: 1.5
+  timeBefore2Jump: 2
+  onBoost:
+    vibrateLeft: 0
+    strenthLeft: 0
+    durationLeft: 0
+    vibrateRight: 0
+    strenthRight: 0
+    durationRight: 0
+  rbEntity: {fileID: 0}
+  entityJump: {fileID: 0}
+  entityAction: {fileID: 0}
+  playerController: {fileID: 0}
+  isBoosting: 0
 --- !u!114 &4930703892372734088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,6 +2124,7 @@ MonoBehaviour:
   entityJump: {fileID: 3295248281479973674}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityNoGravity: {fileID: 1966456849331468690}
+  entityYoshiBoost: {fileID: 0}
 --- !u!114 &9013407796872692123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2115,6 +2156,7 @@ MonoBehaviour:
     gravityBaseRatio: 0
     gravityDownRatio: 0
     range: 0
+    maxRange: 0
     posRange: {x: 0, y: 0, z: 0}
     sphereGravity: {x: 0, y: 0, z: 0}
     refGA: {fileID: 0}
@@ -2123,6 +2165,7 @@ MonoBehaviour:
     gravityBaseRatio: 0
     gravityDownRatio: 0
     range: 0
+    maxRange: 0
     posRange: {x: 0, y: 0, z: 0}
     sphereGravity: {x: 0, y: 0, z: 0}
     refGA: {fileID: 0}
@@ -2141,10 +2184,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distRaycastDOWN: 4
   marginJumpEndDot: 0.5
+  minJumpSpeedForNormalGravity: 0.7
   entityController: {fileID: 6223110023887662018}
   rb: {fileID: 5681305196537818923}
   playerGravity: {fileID: 4930703892372734088}
   entityJump: {fileID: 3295248281479973674}
+  entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   magicTrajectoryCorrection: 1.4
   infoJump:
     didWeHit: 0
@@ -2194,6 +2239,7 @@ MonoBehaviour:
   entityController: {fileID: 6223110023887662018}
   entityAction: {fileID: 3295248281479973673}
   entityJump: {fileID: 3295248281479973674}
+  groundForwardCheck: {fileID: 8552415473636058212}
   entitySlide: {fileID: 6130489510535227342}
 --- !u!114 &6912064760247042750
 MonoBehaviour:
@@ -2222,6 +2268,7 @@ MonoBehaviour:
   entityAction: {fileID: 3295248281479973673}
   entityJump: {fileID: 3295248281479973674}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
+  groundForwardCheck: {fileID: 8552415473636058212}
   amountAdded: 0
 --- !u!114 &6695023544682401022
 MonoBehaviour:
@@ -2236,6 +2283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnRate: 700
+  CameraFromPlayerOrientation: -1
+  InputFromPlayerOrientation: -1
+  InputFromCameraOrientation: -1
+  forwardDot: 0.3
+  behindDot: 0.3
   entityAction: {fileID: 3295248281479973673}
   objectToRotate: {fileID: 6695023544966986338}
   entityController: {fileID: 6223110023887662018}

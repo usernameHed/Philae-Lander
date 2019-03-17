@@ -16,6 +16,8 @@ public class PlayerController : EntityController, IKillable
     public Transform renderPlayer = null;
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public Animator animator = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public EntityYoshiBoost entityYoshiBoost;
 
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
@@ -54,6 +56,7 @@ public class PlayerController : EntityController, IKillable
         entityNoGravity.OnGrounded();
         entityBumpUp.OnGrounded();
         entityAirMove.OnGrounded();
+        entityYoshiBoost.OnGrounded();
 
         if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
         {
@@ -117,6 +120,9 @@ public class PlayerController : EntityController, IKillable
     {
         ChangeState();
         actualVelocity = rb.velocity.magnitude;
+        //actualAcceleration = 
+        ExtMaths.LinearAcceleration(out actualAccelerationVector, rb.position, 4);
+        actualAcceleration = actualAccelerationVector.magnitude;
     }
 
     private void OnDisable()

@@ -13,6 +13,23 @@ public class ClampRbSpeed : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private EntityController entityController = null;
 
+    public void ReduceDecendingSpeedToAMin(float minSpeedDecent)
+    {
+        //TODO 
+        if (entityController.GetActualVelocity() > minSpeedDecent)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, minSpeedDecent);
+        }
+    }
+
+    public void DoClamp(float speed)
+    {
+        if (entityController.GetActualVelocity() > speed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, speed);
+        }
+    }
+
     private void ClampSpeed()
     {
         if (entityController.GetActualVelocity() > maxSpeed)

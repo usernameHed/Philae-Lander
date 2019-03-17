@@ -31,6 +31,7 @@ public class EntityGravity : MonoBehaviour
     private bool doWeSwitchBetweenBoth = true;
     [FoldoutGroup("Switch"), SerializeField, Tooltip("up or down selon la normal dot"), ReadOnly]
     private bool isGoingDown = false;
+    public bool IsGoingDown() => isGoingDown;
     [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois"), ReadOnly]
     private bool isGoingDownToGround = false;
 
@@ -60,6 +61,8 @@ public class EntityGravity : MonoBehaviour
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityNoGravity entityNoGravity = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityYoshiBoost entityYoshiBoost = null;
 
     public void OnGrounded()
     {
@@ -159,7 +162,17 @@ public class EntityGravity : MonoBehaviour
         Debug.DrawRay(positionEntity, forceBaseGravityInAir, Color.green, 5f);
         return (forceBaseGravityInAir);
     }
-    
+
+    /// <summary>
+    /// apply base air gravity
+    /// </summary>
+    public Vector3 AirBoostYoshiGravity(Vector3 gravityOrientation, Vector3 positionEntity, float boost = 1)
+    {
+        Vector3 forceBaseGravityInAir = gravityOrientation * gravity * (entityYoshiBoost.GetYoshiBoost() - 1) * boost * Time.fixedDeltaTime;
+        Debug.DrawRay(positionEntity, forceBaseGravityInAir, Color.green, 5f);
+        return (forceBaseGravityInAir);
+    }
+
 
     /// <summary>
     /// return the right gravity
@@ -177,20 +190,19 @@ public class EntityGravity : MonoBehaviour
 
         if (dotGravityRigidbody < 0 || (isGoingDown && !doWeSwitchBetweenBoth))
         {
+            //first time falling
+            if (!isGoingDown)
+            {
+                isGoingDown = true;
+            }
+            if (!isGoingDownToGround)
+            {
+                isGoingDownToGround = true;
+            }
+
             if (applyForceDown)
             {
                 finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetRatioGravityDown();
-
-                //if first time we fall down, call ultimateTest !
-                if (!isGoingDown)
-                {
-                    isGoingDown = true;
-                }
-                if (!isGoingDownToGround)
-                {
-                    isGoingDownToGround = true;
-                }
-
             }
 
         }
@@ -200,7 +212,7 @@ public class EntityGravity : MonoBehaviour
         {
             isGoingDown = false;
             if (applyForceUp)
-                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio();
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetAirRatioGravity();
         }
         //here we are going up, continiue pressing the jump button, AND in gravityAttractor
         else if (dotGravityRigidbody > 0 && entityAction.Jump
@@ -211,12 +223,26 @@ public class EntityGravity : MonoBehaviour
                 finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetAirRatioGravity() / 2);
         }
 
+        if (entityYoshiBoost.AreWeBoosting())
+            finalGravity += AirBoostYoshiGravity(gravityOrientation, positionObject) * entityGravityAttractorSwitch.GetAirRatioGravity();
+
         return (finalGravity);
     }
 
     private bool CanApplyForceUp()
     {
         if (entityNoGravity.WereWeInNoGravity())
+            return (false);
+
+        if (entityYoshiBoost.AreWeBoosting())
+            return (false);
+
+        return (true);
+    }
+
+    private bool CanApplyForceDown()
+    {
+        if (entityYoshiBoost.AreWeBoosting())
             return (false);
 
         return (true);
@@ -234,7 +260,7 @@ public class EntityGravity : MonoBehaviour
         rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
             GetMainAndOnlyGravity(),
             CanApplyForceUp(),
-            true);
+            CanApplyForceDown());
     }
 
     private void FixedUpdate()
