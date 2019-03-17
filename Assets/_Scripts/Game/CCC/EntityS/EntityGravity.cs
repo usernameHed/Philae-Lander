@@ -223,7 +223,7 @@ public class EntityGravity : MonoBehaviour
                 finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetAirRatioGravity() / 2);
         }
 
-        if (entityYoshiBoost.AreWeBoosting())
+        if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
             finalGravity += AirBoostYoshiGravity(gravityOrientation, positionObject) * entityGravityAttractorSwitch.GetAirRatioGravity();
 
         return (finalGravity);
@@ -234,7 +234,7 @@ public class EntityGravity : MonoBehaviour
         if (entityNoGravity.WereWeInNoGravity())
             return (false);
 
-        if (entityYoshiBoost.AreWeBoosting())
+        if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
             return (false);
 
         return (true);
@@ -242,7 +242,7 @@ public class EntityGravity : MonoBehaviour
 
     private bool CanApplyForceDown()
     {
-        if (entityYoshiBoost.AreWeBoosting())
+        if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
             return (false);
 
         return (true);

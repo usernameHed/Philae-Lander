@@ -153,6 +153,16 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         applyGalaxyForce = false;
     }
 
+    public void SetDefaultGAgravity(Vector3 posHit, Vector3 gravity)
+    {
+        pointInfo.gravityBaseRatio = 0.3f;
+        pointInfo.gravityDownRatio = 0.5f;
+        pointInfo.pos = posHit;
+        pointInfo.posRange = posHit;
+        pointInfo.sphereGravity = gravity;
+        pointInfo.range = 0f;
+        pointInfo.maxRange = 0f;
+    }
     public Vector3 GetDirGAGravity()
     {
         return (pointInfo.sphereGravity);

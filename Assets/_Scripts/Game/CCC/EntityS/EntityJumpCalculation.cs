@@ -64,7 +64,7 @@ public class EntityJumpCalculation : MonoBehaviour
     private Rigidbody rb = null;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravity playerGravity = null;
+    private EntityGravity entityGravity = null;
 
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -101,9 +101,9 @@ public class EntityJumpCalculation : MonoBehaviour
         while (++i < steps)
         {
             //get the gravity direction, depending on the position
-            Vector3 gravityOrientation = playerGravity.CalculateGravity(pos);
+            Vector3 gravityOrientation = entityGravity.CalculateGravity(pos);
             //Get the vector acceleration (dir + magnitude)
-            Vector3 gravityAccel = playerGravity.FindAirGravity(pos, moveStep,
+            Vector3 gravityAccel = entityGravity.FindAirGravity(pos, moveStep,
                 gravityOrientation, applyForceUp, applyForceDown) * timestep;// * timestep;
             moveStep += gravityAccel;
             moveStep *= drag;
@@ -152,7 +152,7 @@ public class EntityJumpCalculation : MonoBehaviour
     /// <returns></returns>
     public bool IsNormalOkToLand()
     {
-        Vector3 normalJump = playerGravity.GetMainAndOnlyGravity();
+        Vector3 normalJump = entityGravity.GetMainAndOnlyGravity();
         Vector3 normalHit = infoJump.normalHit;
         Vector3 rightPlayer = entityController.GetFocusedRightDirPlayer();
 

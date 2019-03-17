@@ -76,13 +76,14 @@ public class GroundCheck : MonoBehaviour
         {
             dirNormal = hit.normal;
             Debug.Log("Did Hit");
+            entityGravityAttractorSwitch.SetDefaultGAgravity(hit.point, dirNormal);
         }
         else
         {
-            dirNormal = Vector3.up;
+            dirNormal = rb.transform.up;
             Debug.Log("Did NO Hit");
+            entityGravityAttractorSwitch.SetDefaultGAgravity(rb.position - dirNormal * 9999, dirNormal);
         }
-        //entityGravityAttractorSwitch.SetLastDirJump(dirNormal);
     }
 
     public string GetLastLayer()
