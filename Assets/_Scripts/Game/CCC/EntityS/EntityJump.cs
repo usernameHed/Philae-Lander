@@ -201,10 +201,12 @@ public class EntityJump : MonoBehaviour
         rb.velocity = orientedStrenghtJump;
 
         playerGravity.JustJumped();
-        playerAirMove.JustJumped();
+        if (playerAirMove)
+            playerAirMove.JustJumped();
         entityGravityAttractorSwitch.JustJumped();
         entityBumpUp.JustJumped();
-        entityYoshiBoost.JustJumped();
+        if (entityYoshiBoost)
+            entityYoshiBoost.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         

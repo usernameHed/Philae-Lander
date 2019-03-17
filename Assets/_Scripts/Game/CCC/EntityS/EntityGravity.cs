@@ -3,89 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityGravity : MonoBehaviour
+public class EntityGravity : BaseGravity
 {
-    [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
-    private float gravity = 9.81f;
-    public float Gravity { get { return (gravity); } }
-    //[FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
-    //private float magicTrajectoryCorrectionRatio = 1f;
-
     [FoldoutGroup("Ground Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
-    private float groundAddGravity = 45f;
-    [FoldoutGroup("Ground Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
-    private float stickToFloorGravity = 6f;
+    private float groundAddGravity = 5.5f;
 
-    
-    
 
     [FoldoutGroup("Air Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
-    private float rbUpAddGravity = 2.5f;
-    [FoldoutGroup("Air Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
-    private float rbDownAddGravity = 5f;
-    [FoldoutGroup("Air Gravity"), Tooltip("default air gravity"), SerializeField]
-    private float defaultGravityInAir = 2f;
+    private float rbUpAddGravity = 2f;
 
-
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois")]
-    private bool doWeSwitchBetweenBoth = true;
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("up or down selon la normal dot"), ReadOnly]
-    private bool isGoingDown = false;
-    public bool IsGoingDown() => isGoingDown;
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois"), ReadOnly]
-    private bool isGoingDownToGround = false;
-
-    public bool IsGoingDownToGround()
-    {
-        return (isGoingDownToGround);
-    }
-
-    private Vector3 mainAndOnlyGravity = Vector3.zero;
-
-    public Vector3 GetMainAndOnlyGravity()
-    {
-        return (mainAndOnlyGravity);
-    }
-
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityController entityController = null;
-    [FoldoutGroup("Object"), Tooltip("ref"), SerializeField]
-    private GroundCheck groundCheck = null;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityNoGravity entityNoGravity = null;
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityYoshiBoost entityYoshiBoost = null;
-
-    public void OnGrounded()
-    {
-        isGoingDown = isGoingDownToGround = false;
-    }
-
-    public void JustJumped()
-    {
-        isGoingDown = isGoingDownToGround = false;
-    }
-
-    public Vector3 CalculateGravity(Vector3 positionEntity)
-    {
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
-        {
-            mainAndOnlyGravity = entityGravityAttractorSwitch.GetDirGAGravity();
-        }
-        else
-        {
-            mainAndOnlyGravity = groundCheck.GetDirLastNormal();
-        }
-        return (mainAndOnlyGravity);
-    }
 
     /// <summary>
     /// apply gravity on ground
@@ -231,6 +164,9 @@ public class EntityGravity : MonoBehaviour
 
     private bool CanApplyForceUp()
     {
+        if (!entityController.isPlayer)
+            return (false);
+
         if (entityNoGravity.WereWeInNoGravity())
             return (false);
 

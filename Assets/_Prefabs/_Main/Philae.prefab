@@ -1147,8 +1147,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5681305196537818921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 67, y: 13.22, z: -61.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6218873525988586700}
@@ -1156,7 +1156,7 @@ Transform:
   - {fileID: 5681305195676128754}
   m_Father: {fileID: 6223110023887662019}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &4411718538208714504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,7 +2004,7 @@ MonoBehaviour:
   playerJump: {fileID: 3295248281479973674}
   renderPlayer: {fileID: 6695023545297213784}
   animator: {fileID: 8683863032487683829}
-  entityYoshiBoost: {fileID: 0}
+  entityYoshiBoost: {fileID: 468871667025130994}
   idPlayer: 0
 --- !u!114 &4547727989925978867
 MonoBehaviour:
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   playerAirMove: {fileID: 6912064760247042750}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityBumpUp: {fileID: 6068529678874368934}
-  entityYoshiBoost: {fileID: 0}
+  entityYoshiBoost: {fileID: 468871667025130994}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -2081,20 +2081,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0505c863a59acce4dbc51bb1404dbd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeJump: 0.4
-  boostTime: 1.5
-  timeBefore2Jump: 2
+  timeBeforeJump: 0.3
+  boostTime: 0.7
+  timeBefore2Jump: 1
+  speedMax: 4
+  speedMinDownWhenStart: 2
+  yoshiBoostGravity: 3
   onBoost:
-    vibrateLeft: 0
-    strenthLeft: 0
-    durationLeft: 0
-    vibrateRight: 0
-    strenthRight: 0
-    durationRight: 0
-  rbEntity: {fileID: 0}
-  entityJump: {fileID: 0}
-  entityAction: {fileID: 0}
-  playerController: {fileID: 0}
+    vibrateLeft: 1
+    strenthLeft: 0.1
+    durationLeft: 0.1
+    vibrateRight: 1
+    strenthRight: 0.1
+    durationRight: 0.1
+  rbEntity: {fileID: 5681305196537818923}
+  entityJump: {fileID: 3295248281479973674}
+  entityAction: {fileID: 3295248281479973673}
+  playerController: {fileID: 6223110023887662018}
+  entityGravity: {fileID: 4930703892372734088}
+  clampRbSpeed: {fileID: 4930703892372734090}
   isBoosting: 0
 --- !u!114 &4930703892372734088
 MonoBehaviour:
@@ -2124,7 +2129,7 @@ MonoBehaviour:
   entityJump: {fileID: 3295248281479973674}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityNoGravity: {fileID: 1966456849331468690}
-  entityYoshiBoost: {fileID: 0}
+  entityYoshiBoost: {fileID: 468871667025130994}
 --- !u!114 &9013407796872692123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,7 +2192,7 @@ MonoBehaviour:
   minJumpSpeedForNormalGravity: 0.7
   entityController: {fileID: 6223110023887662018}
   rb: {fileID: 5681305196537818923}
-  playerGravity: {fileID: 4930703892372734088}
+  entityGravity: {fileID: 4930703892372734088}
   entityJump: {fileID: 3295248281479973674}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   magicTrajectoryCorrection: 1.4

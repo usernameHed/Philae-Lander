@@ -162,6 +162,7 @@ public class EntityGravityAttractorSwitch : MonoBehaviour
         pointInfo.sphereGravity = gravity;
         pointInfo.range = 0f;
         pointInfo.maxRange = 0f;
+        lastNormalJumpChoosen = gravity;
     }
     public Vector3 GetDirGAGravity()
     {

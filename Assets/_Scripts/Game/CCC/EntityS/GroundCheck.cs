@@ -151,7 +151,7 @@ public class GroundCheck : MonoBehaviour
     /// </summary>
     private void GroundChecking(float magnitudeToCheck, ref bool groundValue, Vector3 dirRay)
     {
-        if (entityJump.IsJumpedAndNotReady())
+        if (entityJump && entityJump.IsJumpedAndNotReady())
         {
             return;
         }
@@ -202,13 +202,6 @@ public class GroundCheck : MonoBehaviour
             if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
-                /*
-                Vector3 tmpOrientedGravity = dirNormal;
-                if (fastForward.DoChangeOrientationManually(hitInfo, ref tmpOrientedGravity))
-                {
-                    dirNormal = tmpOrientedGravity.normalized;
-                }
-                */
             }
         }
         else
@@ -255,7 +248,7 @@ public class GroundCheck : MonoBehaviour
     /// </summary>
     private void SetFlying()
     {
-        if (entityJump.IsJumpedAndNotReady())
+        if (entityJump && entityJump.IsJumpedAndNotReady())
         {
             isGrounded = false;
             isAlmostGrounded = false;

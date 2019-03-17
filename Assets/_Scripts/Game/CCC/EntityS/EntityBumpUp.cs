@@ -50,7 +50,8 @@ public class EntityBumpUp : MonoBehaviour
     private void BumpUpDone()
     {
         hasBumpedUp = true;
-        entityAirMove.ResetAirMove();
+        if (entityAirMove)
+            entityAirMove.ResetAirMove();
         entityJump.ResetInitialJumpDir();
     }
 

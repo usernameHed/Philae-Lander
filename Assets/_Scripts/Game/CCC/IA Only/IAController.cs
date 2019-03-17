@@ -54,7 +54,7 @@ public class IAController : EntityController, IPooledObject, IKillable
     private FrequencyCoolDown timerScream = new FrequencyCoolDown();
 
 
-    [SerializeField, ReadOnly]
+    [SerializeField]
     public PlayerController playerController;
 
     private void Awake()
@@ -65,7 +65,8 @@ public class IAController : EntityController, IPooledObject, IKillable
     private void Start()
     {
         StartTimerScream();
-        playerController = PhilaeManager.Instance.playerControllerRef;
+        if (!playerController)
+            playerController = PhilaeManager.Instance.playerControllerRef;
     }
 
     public void DoWandering()
@@ -150,6 +151,8 @@ public class IAController : EntityController, IPooledObject, IKillable
         iAJump.OnGrounded();
         playerGravity.OnGrounded();
         entityGravityAttractorSwitch.OnGrounded();
+        entityNoGravity.OnGrounded();
+        entityBumpUp.OnGrounded();
 
         SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
     }
