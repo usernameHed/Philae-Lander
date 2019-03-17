@@ -33,13 +33,13 @@ public class EntityController : MonoBehaviour
     public Transform rbRotateObject;
 
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    public EntityGravity playerGravity;
+    public BaseGravity baseGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntityAction entityAction;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
-    protected EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    protected BaseGravityAttractorSwitch baseGravityAttractorSwitch;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     protected EntityNoGravity entityNoGravity;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
@@ -115,7 +115,7 @@ public class EntityController : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetFocusedForwardDirPlayer()
     {
-        Vector3 realNormal = playerGravity.GetMainAndOnlyGravity();
+        Vector3 realNormal = baseGravity.GetMainAndOnlyGravity();
         Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
         return (forwardNormal);
     }
@@ -150,7 +150,7 @@ public class EntityController : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetFocusedRightDirPlayer()
     {
-        Vector3 realNormal = playerGravity.GetMainAndOnlyGravity();
+        Vector3 realNormal = baseGravity.GetMainAndOnlyGravity();
         Vector3 rightNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.forward);
         return (rightNormal);
         //return (rbRotateObject.transform.forward);

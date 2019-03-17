@@ -12,7 +12,7 @@ public class SmoothNormals : MonoBehaviour
 
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private EntityGravity playerGravity = null;
+    private BaseGravity baseGravity = null;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
     private Vector3 smoothedNormalCamera;
     [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
@@ -42,7 +42,7 @@ public class SmoothNormals : MonoBehaviour
     {
         if (entityController.GetMoveState() == EntityController.MoveState.InAir)
         {
-            return (playerGravity.GetMainAndOnlyGravity());
+            return (baseGravity.GetMainAndOnlyGravity());
         }
         return (groundCheck.GetDirLastNormal());
     }

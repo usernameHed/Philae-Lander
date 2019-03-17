@@ -22,13 +22,13 @@ public class GroundCheck : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private Rigidbody rb = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityGravity playerGravity = null;
+    private BaseGravity baseGravity = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJump entityJump = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityController entityController = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
+    private BaseGravityAttractorSwitch baseGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityNoGravity entityNoGravity = null;
 
@@ -76,13 +76,13 @@ public class GroundCheck : MonoBehaviour
         {
             dirNormal = hit.normal;
             Debug.Log("Did Hit");
-            entityGravityAttractorSwitch.SetDefaultGAgravity(hit.point, dirNormal);
+            baseGravityAttractorSwitch.SetDefaultGAgravity(hit.point, dirNormal);
         }
         else
         {
             dirNormal = rb.transform.up;
             Debug.Log("Did NO Hit");
-            entityGravityAttractorSwitch.SetDefaultGAgravity(rb.position - dirNormal * 9999, dirNormal);
+            baseGravityAttractorSwitch.SetDefaultGAgravity(rb.position - dirNormal * 9999, dirNormal);
         }
     }
 
@@ -170,13 +170,13 @@ public class GroundCheck : MonoBehaviour
                 //&& !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
             {
                 //si on était en l'air, test la gravité par rapport à la vrai gravité !
-                if (isFlying && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
+                if (isFlying && !baseGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, baseGravityAttractorSwitch.GetDirGAGravity()))
                 {
                     Debug.Log("here sphereAirMove tell us we are in a bad normal, (we were inAir before) continiue to fall");
                     groundValue = false;
                     return;
                 }
-                else if (!isFlying && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetWantedGravityOnGround()))
+                else if (!isFlying && !baseGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, baseGravityAttractorSwitch.GetWantedGravityOnGround()))
                 {
                     Debug.Log("here sphereAirMove tell us we are in a bad normal, (we were onGround Before, first time fly ?) continiue to fall");
                     groundValue = false;
@@ -192,7 +192,7 @@ public class GroundCheck : MonoBehaviour
             groundValue = true;
 
             dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
-                playerGravity.GetMainAndOnlyGravity() * -0.01f,
+                baseGravity.GetMainAndOnlyGravity() * -0.01f,
                 groundCheckDistance,
                 sizeRadiusRayCast,
                 hitInfo.point,
@@ -207,7 +207,7 @@ public class GroundCheck : MonoBehaviour
         else
         {
             groundValue = false;
-            dirNormal = playerGravity.GetMainAndOnlyGravity() * 1;
+            dirNormal = baseGravity.GetMainAndOnlyGravity() * 1;
         }
     }
     
@@ -227,7 +227,7 @@ public class GroundCheck : MonoBehaviour
             if (!coolDownForStick.IsStarted() || coolDownForStick.IsRunning())
             {
                 //Debug.Log("TRY TO STICK");
-                GroundChecking(stickToFloorDist, ref isAlmostGrounded, playerGravity.GetMainAndOnlyGravity() * -0.01f);
+                GroundChecking(stickToFloorDist, ref isAlmostGrounded, baseGravity.GetMainAndOnlyGravity() * -0.01f);
                 
             }
             else
@@ -238,7 +238,7 @@ public class GroundCheck : MonoBehaviour
 
             if (!isGrounded && !isAlmostGrounded && !entityNoGravity.IsBaseOrMoreRatio())
             {
-                GroundChecking(stickToCeillingDist, ref isGrounded, playerGravity.GetMainAndOnlyGravity() * 0.01f);
+                GroundChecking(stickToCeillingDist, ref isGrounded, baseGravity.GetMainAndOnlyGravity() * 0.01f);
             }
         }
     }
@@ -270,7 +270,7 @@ public class GroundCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GroundChecking(groundCheckDistance, ref isGrounded, playerGravity.GetMainAndOnlyGravity() * -0.01f);           //set whenever or not we are grounded
+        GroundChecking(groundCheckDistance, ref isGrounded, baseGravity.GetMainAndOnlyGravity() * -0.01f);           //set whenever or not we are grounded
         SetDragAndStick();          //set, depending on the grounded, the drag, and stick or not to the floor
         SetFlying();                //set if we fly or not !
     }

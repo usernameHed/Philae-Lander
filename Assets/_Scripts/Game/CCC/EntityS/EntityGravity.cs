@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class EntityGravity : BaseGravity
 {
-    [FoldoutGroup("Ground Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
-    private float groundAddGravity = 5.5f;
+    //[FoldoutGroup("Ground Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
+    //private float groundAddGravity = 5.5f;
+    [FoldoutGroup("Ground Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
+    private float stickToFloorGravity = 6f;
 
 
     [FoldoutGroup("Air Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
@@ -16,27 +18,26 @@ public class EntityGravity : BaseGravity
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = null;
-
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityYoshiBoost entityYoshiBoost = null;
 
-    /// <summary>
-    /// apply gravity on ground
-    /// </summary>
-    private void ApplyGroundGravity()
+    public override void OnGrounded()
     {
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
-            return;
+        isGoingDown = isGoingDownToGround = false;
+    }
+
+    public override void JustJumped()
+    {
+        isGoingDown = isGoingDownToGround = false;
+    }
+
+    private bool CanDoGroundGravity()
+    {
         if (!entityJump.IsJumpCoolDebugDownReady())
-            return;
-
-        Vector3 gravityOrientation = GetMainAndOnlyGravity();
-
-        //here, apply base gravity when we are InAir
-        Vector3 forceBaseGravity = -gravityOrientation * gravity * (groundAddGravity - 1) * Time.fixedDeltaTime;
-        //Debug.DrawRay(rb.transform.position, forceBaseGravity, Color.green, 5f);
-        //Debug.Log("apply ground gravity");
-        rb.velocity += forceBaseGravity;
+            return (false);
+        return (true);
     }
 
     /// <summary>
@@ -45,7 +46,7 @@ public class EntityGravity : BaseGravity
     /// stick to the floor as soon as possible !
     /// (exept when we just jumped !)
     /// </summary>
-    private void ApplySuplementGravity()
+    private void ApplySuplementGroundGravity()
     {
         //here we are not almost grounded
         if (!groundCheck.IsAlmostGrounded())
@@ -63,37 +64,13 @@ public class EntityGravity : BaseGravity
     }
 
     /// <summary>
-    /// here we fall down toward a planet, apply gravity down
-    /// </summary>
-    private Vector3 AirAddGoingDown(Vector3 gravityOrientation, Vector3 positionEntity)
-    {
-        //Debug.Log("ici down ?");
-        Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
-        Debug.DrawRay(positionEntity, orientationDown, Color.blue, 5f);
-        return (orientationDown);
-    }
-    /// <summary>
     /// here we are going up, and we release the jump button, apply gravity down until the highest point
     /// </summary>
     private Vector3 AirAddGoingUp(Vector3 gravityOrientation, Vector3 positionEntity)
     {
-        //Debug.LogWarning("TEMPORATY DESACTIVE UP JUMP");
-        //return (Vector3.zero);
-
         Vector3 orientationDown = -gravityOrientation * gravity * (rbUpAddGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(positionEntity, orientationDown, Color.yellow, 5f);
         return (orientationDown);
-        
-        //return (Vector3.zero);
-    }
-    /// <summary>
-    /// apply base air gravity
-    /// </summary>
-    public Vector3 AirBaseGravity(Vector3 gravityOrientation, Vector3 positionEntity, float boost = 1)
-    {
-        Vector3 forceBaseGravityInAir = -gravityOrientation * gravity * (defaultGravityInAir - 1) * boost * Time.fixedDeltaTime;
-        Debug.DrawRay(positionEntity, forceBaseGravityInAir, Color.green, 5f);
-        return (forceBaseGravityInAir);
     }
 
     /// <summary>
@@ -116,48 +93,32 @@ public class EntityGravity : BaseGravity
     {
         Vector3 finalGravity = rbVelocity;
 
-        float dotGravityRigidbody = ExtQuaternion.DotProduct(gravityOrientation, rbVelocity);
-        //here we fall down toward a planet, apply gravity down
+        finalGravity += AirBaseGravity(gravityOrientation, positionObject, baseGravityAttractorSwitch.GetAirRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
-        finalGravity += AirBaseGravity(gravityOrientation, positionObject, entityGravityAttractorSwitch.GetAirRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
-        if (dotGravityRigidbody < 0 || (isGoingDown && !doWeSwitchBetweenBoth))
+        if (isGoingDown && applyForceDown)
         {
-            //first time falling
-            if (!isGoingDown)
-            {
-                isGoingDown = true;
-            }
-            if (!isGoingDownToGround)
-            {
-                isGoingDownToGround = true;
-            }
-
-            if (applyForceDown)
-            {
-                finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetRatioGravityDown();
-            }
-
+            finalGravity += base.AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * baseGravityAttractorSwitch.GetRatioGravityDown();
         }
 
         //here we are going up, and we release the jump button, apply gravity down until the highest point
-        else if (dotGravityRigidbody > 0 && !entityAction.Jump)
+        else if (!isGoingDown && !entityAction.Jump)
         {
             isGoingDown = false;
             if (applyForceUp)
-                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * entityGravityAttractorSwitch.GetAirRatioGravity();
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * baseGravityAttractorSwitch.GetAirRatioGravity();
         }
         //here we are going up, continiue pressing the jump button, AND in gravityAttractor
-        else if (dotGravityRigidbody > 0 && entityAction.Jump
+        else if (!isGoingDown && entityAction.Jump
             && entityGravityAttractorSwitch.CanApplyForceDown())
         {
             isGoingDown = false;
             if (applyForceUp)
-                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (entityGravityAttractorSwitch.GetAirRatioGravity() / 2);
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (baseGravityAttractorSwitch.GetAirRatioGravity() / 2);
         }
 
         if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
-            finalGravity += AirBoostYoshiGravity(gravityOrientation, positionObject) * entityGravityAttractorSwitch.GetAirRatioGravity();
+            finalGravity += AirBoostYoshiGravity(gravityOrientation, positionObject) * baseGravityAttractorSwitch.GetAirRatioGravity();
 
         return (finalGravity);
     }
@@ -192,6 +153,8 @@ public class EntityGravity : BaseGravity
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return;
 
+        base.SetGoingDown();
+
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
         rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
             GetMainAndOnlyGravity(),
@@ -201,12 +164,11 @@ public class EntityGravity : BaseGravity
 
     private void FixedUpdate()
     {
-        CalculateGravity(rb.transform.position);
+        base.CalculateGravity(rb.transform.position);
 
-        ApplyGroundGravity();
-        ApplySuplementGravity();
+        if (CanDoGroundGravity())
+            base.ApplyGroundGravity(base.defaultGravityOnGround); //set to 5.5
+        ApplySuplementGroundGravity();
         ApplyAirGravity();
-        //ExtDrawGuizmos.DebugWireSphere(rb.transform.position, Color.red, 0.1f, 1f);
-        //Debug.DrawRay(rb.transform.position, GetMainAndOnlyGravity(), Color.red, 5f);
     }
 }

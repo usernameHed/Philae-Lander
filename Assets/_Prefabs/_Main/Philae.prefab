@@ -1147,8 +1147,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5681305196537818921}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 67, y: 13.22, z: -61.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6218873525988586700}
@@ -1156,7 +1156,7 @@ Transform:
   - {fileID: 5681305195676128754}
   m_Father: {fileID: 6223110023887662019}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4411718538208714504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,7 +1337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6221780156956403068}
   m_LocalRotation: {x: -0.25561863, y: -0.571943, z: 0.77353776, w: -0.09581135}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.152, y: 0, z: 0}
   m_LocalScale: {x: 0.5000005, y: 0.50000036, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6218873525988586700}
@@ -1352,9 +1352,9 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6221780156956403068}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -1381,7 +1381,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.5
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1450,7 +1450,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -1481,7 +1481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6222379376615855854}
   m_LocalRotation: {x: -0.052798763, y: -0.7567693, z: 0.30538043, w: -0.5755479}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.152, y: 0, z: 0}
   m_LocalScale: {x: 0.5000001, y: 0.5, z: 0.5000001}
   m_Children: []
   m_Father: {fileID: 6218873525988586700}
@@ -1496,9 +1496,9 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6222379376615855854}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -1525,7 +1525,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.5
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1594,7 +1594,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -1615,7 +1615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6218873525988586700
 Transform:
   m_ObjectHideFlags: 0
@@ -1659,7 +1659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6222481858427145020}
   m_LocalRotation: {x: -0.30839452, y: 0.06471081, z: 0.77073026, w: 0.5537873}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.152, y: 0, z: 0}
   m_LocalScale: {x: 0.50000036, y: 0.5000006, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6218873525988586700}
@@ -1674,9 +1674,9 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6222481858427145020}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -1703,7 +1703,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.5
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1772,7 +1772,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -1872,10 +1872,10 @@ MonoBehaviour:
   timeInAirBeforeNotStick: 0.2
   sphereCollider: {fileID: 5681305196537818922}
   rb: {fileID: 5681305196537818923}
-  playerGravity: {fileID: 4930703892372734088}
+  baseGravity: {fileID: 4930703892372734088}
   entityJump: {fileID: 3295248281479973674}
   entityController: {fileID: 6223110023887662018}
-  entityGravityAttractorSwitch: {fileID: 9013407796872692123}
+  baseGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityNoGravity: {fileID: 1966456849331468690}
   isGrounded: 0
   isAlmostGrounded: 0
@@ -1984,10 +1984,10 @@ MonoBehaviour:
   - Walkable/Dont
   rb: {fileID: 5681305196537818923}
   rbRotateObject: {fileID: 6695023544966986338}
-  playerGravity: {fileID: 4930703892372734088}
+  baseGravity: {fileID: 4930703892372734088}
   groundCheck: {fileID: 6695023544682400897}
   entityAction: {fileID: 3295248281479973673}
-  entityGravityAttractorSwitch: {fileID: 9013407796872692123}
+  baseGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityNoGravity: {fileID: 1966456849331468690}
   entityBumpUp: {fileID: 6068529678874368934}
   entityAirMove: {fileID: 6912064760247042750}
@@ -2020,8 +2020,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 6223110023887662018}
   iAController: {fileID: 0}
+  coinController: {fileID: 0}
   entityNoGravity: {fileID: 1966456849331468690}
-  entityGravityAttractorSwitch: {fileID: 9013407796872692123}
+  baseGravityAttractorSwitch: {fileID: 9013407796872692123}
 --- !u!114 &3295248281479973674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,21 +2115,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9.81
-  groundAddGravity: 5.5
-  stickToFloorGravity: 6
-  rbUpAddGravity: 2
-  rbDownAddGravity: 3.5
   defaultGravityInAir: 2
+  defaultGravityOnGround: 5.5
+  rbDownAddGravity: 3.5
   doWeSwitchBetweenBoth: 1
   isGoingDown: 0
   isGoingDownToGround: 0
   entityController: {fileID: 6223110023887662018}
   groundCheck: {fileID: 6695023544682400897}
   rb: {fileID: 5681305196537818923}
+  baseGravityAttractorSwitch: {fileID: 9013407796872692123}
+  entityNoGravity: {fileID: 1966456849331468690}
+  stickToFloorGravity: 6
+  rbUpAddGravity: 2
   entityAction: {fileID: 3295248281479973673}
   entityJump: {fileID: 3295248281479973674}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
-  entityNoGravity: {fileID: 1966456849331468690}
   entityYoshiBoost: {fileID: 468871667025130994}
 --- !u!114 &9013407796872692123
 MonoBehaviour:
@@ -2152,10 +2154,8 @@ MonoBehaviour:
   maxDistBasedOnHowManyTimeDefault: 3
   rbEntity: {fileID: 5681305196537818923}
   entityController: {fileID: 6223110023887662018}
-  entityJumpCalculation: {fileID: 3373334750824284554}
-  entityGravity: {fileID: 4930703892372734088}
+  baseGravity: {fileID: 4930703892372734088}
   groundCheck: {fileID: 6695023544682400897}
-  entityJump: {fileID: 3295248281479973674}
   pointInfo:
     pos: {x: 0, y: 0, z: 0}
     gravityBaseRatio: 0
@@ -2175,6 +2175,8 @@ MonoBehaviour:
     sphereGravity: {x: 0, y: 0, z: 0}
     refGA: {fileID: 0}
   allGravityAttractor: []
+  entityJumpCalculation: {fileID: 3373334750824284554}
+  entityJump: {fileID: 3295248281479973674}
 --- !u!114 &3373334750824284554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2221,7 +2223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeedCamera: 2
   smoothSpeedPlayer: 4
-  playerGravity: {fileID: 4930703892372734088}
+  baseGravity: {fileID: 4930703892372734088}
   smoothedNormalCamera: {x: 0, y: 0, z: 0}
   smoothedNormalPlayer: {x: 0, y: 0, z: 0}
   entityController: {fileID: 6223110023887662018}
@@ -2413,7 +2415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6223701436763062840}
   m_LocalRotation: {x: 0.048905935, y: 0.7473052, z: -0.28468576, w: 0.5984123}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.152, y: 0, z: 0}
   m_LocalScale: {x: 0.5000001, y: 0.50000006, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6218873525988586700}
@@ -2428,9 +2430,9 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6223701436763062840}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -2457,7 +2459,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.5
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -2526,7 +2528,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1

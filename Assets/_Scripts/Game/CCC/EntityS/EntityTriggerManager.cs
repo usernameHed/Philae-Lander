@@ -8,9 +8,11 @@ public class EntityTriggerManager : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public IAController iAController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public CoinController coinController;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityNoGravity entityNoGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    public BaseGravityAttractorSwitch baseGravityAttractorSwitch;
     //[FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     //public EntityController entityController;
 
@@ -55,5 +57,7 @@ public class EntityTriggerManager : MonoBehaviour
             playerController.Kill();
         if (iAController)
             iAController.Kill();
+        if (coinController)
+            coinController.Kill();
     }
 }

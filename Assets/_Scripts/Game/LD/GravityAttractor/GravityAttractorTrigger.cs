@@ -20,7 +20,7 @@ public class GravityAttractorTrigger : MonoBehaviour
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
             {
-                entityNoGravity.entityTriggerManager.entityGravityAttractorSwitch.EnterInZone(refGravityAttractor);
+                entityNoGravity.entityTriggerManager.baseGravityAttractorSwitch.EnterInZone(refGravityAttractor);
             }
 		}
     }
@@ -32,7 +32,7 @@ public class GravityAttractorTrigger : MonoBehaviour
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
             {
-                entityNoGravity.entityTriggerManager.entityGravityAttractorSwitch.LeanInZone(refGravityAttractor);
+                entityNoGravity.entityTriggerManager.baseGravityAttractorSwitch.LeanInZone(refGravityAttractor);
             }
         }
 	}

@@ -5,10 +5,6 @@ using UnityEngine;
 [TypeInfoBox("Main player controller")]
 public class CoinController : EntityController, IPooledObject, IKillable
 {
-    [FoldoutGroup("Object"), Tooltip("ref script")]
-    public IAInput iaInput;
-
-    
     private void Awake()
     {
         base.Init();
@@ -16,10 +12,11 @@ public class CoinController : EntityController, IPooledObject, IKillable
 
     private void OnGrounded()
     {
-        playerGravity.OnGrounded();
-        entityGravityAttractorSwitch.OnGrounded();
+        baseGravity.OnGrounded();
+        baseGravityAttractorSwitch.OnGrounded();
         entityNoGravity.OnGrounded();
-        entityBumpUp.OnGrounded();
+        if (entityBumpUp)
+            entityBumpUp.OnGrounded();
 
         SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
     }
@@ -46,16 +43,9 @@ public class CoinController : EntityController, IPooledObject, IKillable
             SetDragRb(oldDrag);
 
 
-        if (!iaInput.NotMoving())
-        {
-            moveState = MoveState.Move;
-        }
-        else
-        {
-            moveState = MoveState.Idle;
-        }
+        moveState = MoveState.Idle;
     }
-
+    
     private void FixedUpdate()
     {
         ChangeState();

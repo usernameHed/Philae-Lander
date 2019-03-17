@@ -149,8 +149,8 @@ public class IAController : EntityController, IPooledObject, IKillable
     private void OnGrounded()
     {
         iAJump.OnGrounded();
-        playerGravity.OnGrounded();
-        entityGravityAttractorSwitch.OnGrounded();
+        baseGravity.OnGrounded();
+        baseGravityAttractorSwitch.OnGrounded();
         entityNoGravity.OnGrounded();
         entityBumpUp.OnGrounded();
 
