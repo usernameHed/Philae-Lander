@@ -285,7 +285,7 @@ public class GroundCheck : MonoBehaviour
         if (!isFlying)
         {
             Debug.Log("Set flying for the first time !");
-            if (fastForward.IsInFastForward())
+            if (fastForward && fastForward.IsInFastForward())
             {
                 fastForward.SetFlyingForTheFirstTime();
             }

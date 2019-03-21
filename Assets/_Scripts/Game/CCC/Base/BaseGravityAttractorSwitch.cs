@@ -4,8 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseGravityAttractorSwitch : MonoBehaviour
+public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
 {
+    /*
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginDotGA = 0.71f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
@@ -23,6 +24,7 @@ public class BaseGravityAttractorSwitch : MonoBehaviour
     public float ratioOtherDistance = 1.3f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float maxDistBasedOnHowManyTimeDefault = 3f;
+    */
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     protected Rigidbody rbEntity = null;
