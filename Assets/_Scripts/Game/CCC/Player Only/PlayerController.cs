@@ -57,6 +57,7 @@ public class PlayerController : EntityController, IKillable
         entityBumpUp.OnGrounded();
         entityAirMove.OnGrounded();
         entityYoshiBoost.OnGrounded();
+        fastForward.OnGrounded();
 
         if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
         {

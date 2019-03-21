@@ -42,6 +42,8 @@ public class EntityJump : MonoBehaviour
     public EntityBumpUp entityBumpUp;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityYoshiBoost entityYoshiBoost;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public FastForward fastForward;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -97,6 +99,9 @@ public class EntityJump : MonoBehaviour
 
         int isForbidden = ExtList.ContainSubStringInArray(noJumpLayer, groundCheck.GetLastLayer());
         if (isForbidden != -1)
+            return (false);
+
+        if (!fastForward.CanJump())
             return (false);
 
         return (true);
@@ -175,6 +180,7 @@ public class EntityJump : MonoBehaviour
         lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
 
         Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
+        //Vector3 normalizedNormalGravity = groundCheck.GetDirLastNormal();
 
         entityGravityAttractorSwitch.SetLastDirJump(normalizedNormalGravity);
 
@@ -207,6 +213,8 @@ public class EntityJump : MonoBehaviour
         entityBumpUp.JustJumped();
         if (entityYoshiBoost)
             entityYoshiBoost.JustJumped();
+        if (fastForward)
+            fastForward.JustJumped();
         //JustJump();
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         

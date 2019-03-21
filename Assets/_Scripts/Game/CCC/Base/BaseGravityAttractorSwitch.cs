@@ -99,7 +99,8 @@ public class BaseGravityAttractorSwitch : MonoBehaviour
 
     public void SetLastDirJump(Vector3 dirNormalChoosen)
     {
-        lastNormalJumpChoosen = wantedDirGravityOnGround = dirNormalChoosen;
+        lastNormalJumpChoosen = dirNormalChoosen;
+        wantedDirGravityOnGround = dirNormalChoosen;
     }
 
     public virtual void OnGrounded()

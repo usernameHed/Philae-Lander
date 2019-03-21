@@ -5,9 +5,18 @@ using UnityEngine;
 [TypeInfoBox("Main player controller")]
 public class CoinController : EntityController, IPooledObject, IKillable
 {
+    [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
+    private bool isKinematic = false;
+
     private void Awake()
     {
         base.Init();
+        SetKinematic();
+    }
+
+    private void SetKinematic()
+    {
+        rb.isKinematic = isKinematic;
     }
 
     private void OnGrounded()

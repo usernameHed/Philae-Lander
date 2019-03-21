@@ -8,6 +8,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 {
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJumpCalculation entityJumpCalculation;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private FastForward fastForward;
     //[FoldoutGroup("Object"), Tooltip(""), SerializeField]
     //private EntityGravity entityGravity;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
@@ -31,6 +33,10 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     {
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (true);
+
+        if (!fastForward.CanApplyGravity())
+            return (false);
+
         if (entityController.GetMoveState() == EntityController.MoveState.InAir && !entityJump.HasJumped())
             return (true);
 
@@ -99,6 +105,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         //Setup jump calculation when going down
         if (!applyGalaxyForce && baseGravity.IsGoingDownToGround())
         {
+            Debug.Log("ici going down ?");
             //here do a jumpCalculation
             applyGalaxyForce = true;
 
@@ -115,6 +122,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
+            //Debug.Log("ici gravité terrestre ?");
             coolDownBeforeAttract.Reset();
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
             wantedDirGravityOnGround = GetAirSphereGravity(rbEntity.position).sphereGravity;
@@ -122,10 +130,12 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         //here we can't apply, because we just jump (OR because we are falling and in the timer
         else if (!CanApplyGravityForce())
         {
+            //Debug.Log("ici gravité last jump !");
             pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
         else
         {
+            //Debug.Log("ici in air gravity");
             pointInfo = GetAirSphereGravity(rbEntity.position);
             wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
@@ -186,7 +196,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
         if (ExtUtilityFunction.IsNullVector(close))
         {
-            Debug.LogError("null gravity !!");
+            Debug.LogWarning("null gravity !!");
             pointInfo.sphereGravity = lastNormalJumpChoosen;
             return (pointInfo);
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1161157732100463470}
   - component: {fileID: 6918303751102555623}
   - component: {fileID: 2758832509287479424}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6300604056549739964}
   - component: {fileID: 9182967631721964439}
   - component: {fileID: 2997031547318935302}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: RIGIDBODY Moving Object (Planet oriented)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3420702225712315160}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Render (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 604099195267659582}
   - component: {fileID: 7378694172435630544}
   - component: {fileID: 2137863682501281049}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 39687707323877935}
   - component: {fileID: 4147531740115751040}
   - component: {fileID: 5139831641507815250}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4165173078224086277}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8668375749662280402}
   - component: {fileID: 3016324719349638810}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Trail (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8580139850547214857}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: ROTATE Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 6495124206672099702}
   - component: {fileID: 4915375095620802462}
   - component: {fileID: 1201352390933214280}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8831475543821258606}
   - component: {fileID: 6855712840897692544}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 415811589873117065}
   - component: {fileID: 1666555948466309396}
   - component: {fileID: 5209711790016254831}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,6 +1062,7 @@ MonoBehaviour:
   entityController: {fileID: 7541991829763045660}
   baseGravityAttractorSwitch: {fileID: 7541991829763045662}
   entityNoGravity: {fileID: 1666555948466309396}
+  fastForward: {fileID: 0}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -1092,6 +1093,8 @@ MonoBehaviour:
   - Walkable/Stick
   walkForbiddenForwardUp:
   - Walkable/Dont
+  fastForwardPlatform:
+  - Walkable/FastForward
   rb: {fileID: 2997031547318935302}
   rbRotateObject: {fileID: 8580139850547214857}
   baseGravity: {fileID: 7541991829763045661}
@@ -1101,8 +1104,10 @@ MonoBehaviour:
   entityNoGravity: {fileID: 1666555948466309396}
   entityBumpUp: {fileID: 0}
   entityAirMove: {fileID: 0}
+  fastForward: {fileID: 0}
   moveState: 0
   layerMask: -1
+  isKinematic: 0
 --- !u!114 &1539831522773060381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f535906421e1e8b4ca688f270d98d6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnRate: 5
+  turnRate: 100
   objToRotate: {fileID: 8580139850547214857}
 --- !u!1 &8422768976357269839
 GameObject:
@@ -1277,7 +1282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6933564557680554302}
   - component: {fileID: 3331972930698131947}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Trail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5785426961279528910}
   - component: {fileID: 1042544687633307584}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Trail (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

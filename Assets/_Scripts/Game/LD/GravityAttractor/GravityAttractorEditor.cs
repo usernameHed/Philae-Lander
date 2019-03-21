@@ -13,7 +13,7 @@ public class GravityAttractorEditor : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public bool mergeMode = false;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public bool alwaysShow = false;
+    public bool alwaysShow = true;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private Transform parentAlones = null;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]

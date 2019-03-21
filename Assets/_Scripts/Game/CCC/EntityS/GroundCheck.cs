@@ -31,6 +31,8 @@ public class GroundCheck : MonoBehaviour
     private BaseGravityAttractorSwitch baseGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityNoGravity entityNoGravity = null;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private FastForward fastForward = null;
 
     [FoldoutGroup("Debug"), ReadOnly, SerializeField]
     private bool isGrounded = false;
@@ -116,16 +118,10 @@ public class GroundCheck : MonoBehaviour
     public void SetForwardWall(RaycastHit hitInfo)
     {
         dirNormal = hitInfo.normal;
-        SetCurrentPlatform(hitInfo.transform);
+        
         isGrounded = true;
         isFlying = false;
-    }
-    public void SetBackwardWall(RaycastHit hitInfo)
-    {
-        dirNormal = hitInfo.normal;
         SetCurrentPlatform(hitInfo.transform);
-        isGrounded = true;
-        isFlying = false;
     }
 
     public void SetNewNormalFromOutside(Vector3 newGravity)
@@ -135,13 +131,21 @@ public class GroundCheck : MonoBehaviour
 
     private bool CanChangeNormal(RaycastHit hitInfo)
     {
+        if (fastForward && !fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal))
+            return (false);
+
         return (true);
     }
 
-    private void SetCurrentPlatform(Transform platform)
+    private bool SetCurrentPlatform(Transform platform)
     {
-        lastPlatform = platform;
-        currentFloorLayer = LayerMask.LayerToName(platform.gameObject.layer);
+        if (lastPlatform != platform)
+        {
+            lastPlatform = platform;
+            currentFloorLayer = LayerMask.LayerToName(platform.gameObject.layer);
+            return (true);
+        }
+        return (false);
     }
 
     /// <summary>
@@ -187,7 +191,10 @@ public class GroundCheck : MonoBehaviour
 
             }
 
-            SetCurrentPlatform(hitInfo.collider.transform);
+            if (SetCurrentPlatform(hitInfo.collider.transform))
+            {
+                //Debug.Log("test de fastForward ?");
+            }
 
             groundValue = true;
 
@@ -199,15 +206,30 @@ public class GroundCheck : MonoBehaviour
                 collRayCastMargin,
                 entityController.layerMask);
 
+
+            bool previous = fastForward && fastForward.IsInFastForward() && !fastForward.SwithcingIsRunning();
             if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
+                if (fastForward && previous && fastForward.IsInFastForward())
+                {
+                    Debug.LogWarning("mmm ici ???");
+                    dirNormal = dirSurfaceNormal;
+                }
+
+
+                Vector3 tmpOrientedGravity = dirNormal;
+                if (fastForward && fastForward.DoChangeOrientationManually(hitInfo, ref tmpOrientedGravity))
+                {
+                    Debug.LogWarning("ici fast forwaard");
+                    dirNormal = tmpOrientedGravity.normalized;
+                }
             }
         }
         else
         {
             groundValue = false;
-            dirNormal = baseGravity.GetMainAndOnlyGravity() * 1;
+            //dirNormal = baseGravity.GetMainAndOnlyGravity() * 1;
         }
     }
     
@@ -263,6 +285,10 @@ public class GroundCheck : MonoBehaviour
         if (!isFlying)
         {
             Debug.Log("Set flying for the first time !");
+            if (fastForward.IsInFastForward())
+            {
+                fastForward.SetFlyingForTheFirstTime();
+            }
             coolDownForStick.StartCoolDown(timeInAirBeforeNotStick);
             isFlying = true;
         }

@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 6744551704169965037}
   - component: {fileID: 3746570082600007948}
   - component: {fileID: 537690208178106452}
+  - component: {fileID: 5776315375348734568}
   - component: {fileID: 1946426094882001108}
   m_Layer: 11
   m_Name: IA Follower
@@ -459,6 +460,7 @@ MonoBehaviour:
   entityController: {fileID: 4030741380261741711}
   baseGravityAttractorSwitch: {fileID: 537690208178106448}
   entityNoGravity: {fileID: 537690208178106452}
+  fastForward: {fileID: 0}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -564,6 +566,8 @@ MonoBehaviour:
   - Walkable/Stick
   walkForbiddenForwardUp:
   - Walkable/Dont
+  fastForwardPlatform:
+  - Walkable/FastForward
   rb: {fileID: 8558135673731581516}
   rbRotateObject: {fileID: 1564282204669084742}
   baseGravity: {fileID: 7664884488448998126}
@@ -573,6 +577,7 @@ MonoBehaviour:
   entityNoGravity: {fileID: 537690208178106452}
   entityBumpUp: {fileID: 537690208178106463}
   entityAirMove: {fileID: 0}
+  fastForward: {fileID: 0}
   moveState: 0
   layerMask: -1
   iaInput: {fileID: 2872185176216241161}
@@ -630,6 +635,7 @@ MonoBehaviour:
   entityGravityAttractorSwitch: {fileID: 537690208178106448}
   entityBumpUp: {fileID: 537690208178106463}
   entityYoshiBoost: {fileID: 0}
+  fastForward: {fileID: 0}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 1
@@ -709,6 +715,7 @@ MonoBehaviour:
     refGA: {fileID: 0}
   allGravityAttractor: []
   entityJumpCalculation: {fileID: 537690208178106449}
+  fastForward: {fileID: 0}
   entityJump: {fileID: 877396873506430848}
 --- !u!114 &537690208178106449
 MonoBehaviour:
@@ -849,6 +856,31 @@ MonoBehaviour:
   wereWeInNoGravity: 0
   currentRatioGravity: 1
   zonesNoGravity: []
+--- !u!114 &5776315375348734568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946426094882001107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761759092991e2c40a84e56fcb2a0575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeWithNoGravity: 3
+  dotMarginDiffNormal: 0.71
+  entityController: {fileID: 0}
+  entityJump: {fileID: 0}
+  ikillableObject: {fileID: 0}
+  groundCheck: {fileID: 0}
+  rb: {fileID: 0}
+  entityAction: {fileID: 0}
+  baseGravityAttractorSwitch: {fileID: 0}
+  fastForward: 0
+  lastHitPlatform: {fileID: 0}
+  timeBeforeSwitch: 0.1
+  fastForwardTriggers: []
 --- !u!114 &1946426094882001108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,7 +3428,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1102686579407572, guid: 8271d09672f5693458972e9b522f9c6b, type: 3}
+    - target: {fileID: 1891757124185602, guid: 8271d09672f5693458972e9b522f9c6b, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
@@ -3404,11 +3436,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1891757124185602, guid: 8271d09672f5693458972e9b522f9c6b, type: 3}
+    - target: {fileID: 1365107211836816, guid: 8271d09672f5693458972e9b522f9c6b, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1365107211836816, guid: 8271d09672f5693458972e9b522f9c6b, type: 3}
+    - target: {fileID: 1102686579407572, guid: 8271d09672f5693458972e9b522f9c6b, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}

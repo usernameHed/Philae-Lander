@@ -16,7 +16,7 @@ public class EntityController : MonoBehaviour
     public bool isPlayer = false;
     
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public string[] allWalkablePlatform = new string[] { "Walkable/Ground", "Walkable/Stick" };
+    public string[] allWalkablePlatform = new string[] { "Walkable/Ground", "Walkable/Stick", "Walkable/Dont", "Walkable/FastForward" };
 
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] marioGalaxyPlatform = new string[] { "Walkable/Ground" };
@@ -26,6 +26,9 @@ public class EntityController : MonoBehaviour
 
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] walkForbiddenForwardUp = new string[] { "Walkable/Dont" };
+
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public string[] fastForwardPlatform = new string[] { "Walkable/FastForward" };
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     public Rigidbody rb;
@@ -46,6 +49,9 @@ public class EntityController : MonoBehaviour
     protected EntityBumpUp entityBumpUp;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected EntityAirMove entityAirMove;
+
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    protected FastForward fastForward;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
@@ -106,6 +112,13 @@ public class EntityController : MonoBehaviour
             //here we are in front of a forbidden wall !!
             return (true);
         }
+        return (false);
+    }
+    public bool IsFastForwardLayer(int layer)
+    {
+        int isFastForward = ExtList.ContainSubStringInArray(fastForwardPlatform, LayerMask.LayerToName(layer));
+        if (isFastForward != -1)
+            return (true);
         return (false);
     }
 
