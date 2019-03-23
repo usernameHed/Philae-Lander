@@ -12,7 +12,7 @@
       <actionProperty componentName="IAController" action="IsChasingPlayer" />
       <actionVoid componentName="IAController" action="DoChase" />
       <sequence>
-        <actionBool componentName="IAController" action="IsNotCloseToPlayer" />
+        <actionBool componentName="IAController" action="IsTooFarFromPlayer" />
         <actionVoid componentName="IAController" action="LosePlayer" />
       </sequence>
     </sequence>

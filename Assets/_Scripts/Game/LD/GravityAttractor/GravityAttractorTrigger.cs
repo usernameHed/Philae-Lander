@@ -25,7 +25,8 @@ public class GravityAttractorTrigger : MonoBehaviour
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
             {
-                entityNoGravity.entityTriggerManager.baseGravityAttractorSwitch.EnterInZone(refGravityAttractor);
+                if (entityNoGravity.entityTriggerManager.uniqueGravityAttractorSwitch)
+                    entityNoGravity.entityTriggerManager.uniqueGravityAttractorSwitch.EnterInZone(refGravityAttractor);
             }
 		}
     }
@@ -37,14 +38,9 @@ public class GravityAttractorTrigger : MonoBehaviour
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
             {
-                entityNoGravity.entityTriggerManager.baseGravityAttractorSwitch.LeanInZone(refGravityAttractor);
+                if (entityNoGravity.entityTriggerManager.uniqueGravityAttractorSwitch)
+                    entityNoGravity.entityTriggerManager.uniqueGravityAttractorSwitch.LeanInZone(refGravityAttractor);
             }
         }
 	}
-
-    private void OnDrawGizmos()
-    {
-        
-    }
-    
 }

@@ -10,13 +10,14 @@ public class ClampRbSpeed : MonoBehaviour
 
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private EntityController entityController = null;
+
+    private float actualVelocity = 0f;
+    public float GetActualVelocity() => actualVelocity;
 
     public void ReduceDecendingSpeedToAMin(float minSpeedDecent)
     {
         //TODO 
-        if (entityController.GetActualVelocity() > minSpeedDecent)
+        if (GetActualVelocity() > minSpeedDecent)
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, minSpeedDecent);
         }
@@ -24,7 +25,7 @@ public class ClampRbSpeed : MonoBehaviour
 
     public void DoClamp(float speed)
     {
-        if (entityController.GetActualVelocity() > speed)
+        if (GetActualVelocity() > speed)
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, speed);
         }
@@ -32,7 +33,7 @@ public class ClampRbSpeed : MonoBehaviour
 
     private void ClampSpeed()
     {
-        if (entityController.GetActualVelocity() > maxSpeed)
+        if (GetActualVelocity() > maxSpeed)
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
@@ -40,6 +41,7 @@ public class ClampRbSpeed : MonoBehaviour
 
     private void FixedUpdate()
     {
+        actualVelocity = rb.velocity.magnitude;
         ClampSpeed();
     }
 }

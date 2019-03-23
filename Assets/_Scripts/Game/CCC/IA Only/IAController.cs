@@ -5,6 +5,14 @@ using UnityEngine;
 [TypeInfoBox("Main player controller")]
 public class IAController : EntityController, IPooledObject, IKillable
 {
+    [FoldoutGroup("IA", Order = 0), Tooltip("movement speed when we are wandering"), SerializeField]
+    private bool canLosePlayer = false;
+    [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
+    private float distForChase = 100f;
+    [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
+    private float distForLosePlayer = 200f;
+
+
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public IAInput iaInput;
 
@@ -35,10 +43,9 @@ public class IAController : EntityController, IPooledObject, IKillable
             return (interactionState == State.GO_TO_WAYPOINT);
         }
     }*/
-    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private bool canLosePlayer = false;
-    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private float distForChase = 100f;
+    
+
+
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
     public Rigidbody rigidBodyRef = null;
     [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
@@ -76,15 +83,20 @@ public class IAController : EntityController, IPooledObject, IKillable
         iaInput.SetRandomJump();
     }
 
-    public bool IsNotCloseToPlayer()
+    public bool IsTooFarFromPlayer()
     {
-        return (!IsCloseToPlayer());
+        float dist = Vector3.SqrMagnitude(rigidBodyRef.position - playerController.rb.position);
+        if (dist > distForLosePlayer * distForLosePlayer)
+        {
+            return (true);
+        }
+        return (false);
     }
 
     public bool IsCloseToPlayer()
     {
         float dist = Vector3.SqrMagnitude(rigidBodyRef.position - playerController.rb.position);
-        if (dist < distForChase)
+        if (dist < distForChase * distForChase)
         {
             return (true);
         }
@@ -207,7 +219,6 @@ public class IAController : EntityController, IPooledObject, IKillable
     private void FixedUpdate()
     {
         ChangeState();
-        actualVelocity = rb.velocity.magnitude;
     }
 
     public void OnObjectSpawn()
@@ -230,5 +241,11 @@ public class IAController : EntityController, IPooledObject, IKillable
     public void GetHit(int amount, Vector3 posAttacker)
     {
         //throw new System.NotImplementedException();
+    }
+
+    private void OnDrawGizmos()
+    {
+        ExtDrawGuizmos.DebugWireSphere(rb.position, Color.red, distForChase);
+        ExtDrawGuizmos.DebugWireSphere(rb.position, Color.green, distForLosePlayer);
     }
 }

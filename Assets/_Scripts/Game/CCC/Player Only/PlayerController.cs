@@ -120,8 +120,6 @@ public class PlayerController : EntityController, IKillable
     private void FixedUpdate()
     {
         ChangeState();
-        actualVelocity = rb.velocity.magnitude;
-        //actualAcceleration = 
         ExtMaths.LinearAcceleration(out actualAccelerationVector, rb.position, 4);
         actualAcceleration = actualAccelerationVector.magnitude;
     }

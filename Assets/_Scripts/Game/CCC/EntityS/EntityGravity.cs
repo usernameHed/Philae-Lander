@@ -60,6 +60,7 @@ public class EntityGravity : BaseGravity
 
         Vector3 orientationDown = -gravityOrientation * gravity * (stickToFloorGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(rb.transform.position, orientationDown, Color.red, 5f);
+        Debug.Log("ici suplement gravity");
         rb.velocity += orientationDown;
     }
 
@@ -92,14 +93,16 @@ public class EntityGravity : BaseGravity
         bool applyForceUp, bool applyForceDown)
     {
         Vector3 finalGravity = rbVelocity;
-
+        
         finalGravity += AirBaseGravity(gravityOrientation, positionObject, baseGravityAttractorSwitch.GetAirRatioGravity()) * entityNoGravity.GetNoGravityRatio();
 
-
+        
         if (isGoingDown && applyForceDown)
         {
             finalGravity += base.AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * baseGravityAttractorSwitch.GetRatioGravityDown();
         }
+
+        
 
         //here we are going up, and we release the jump button, apply gravity down until the highest point
         else if (!isGoingDown && !entityAction.Jump)
@@ -119,7 +122,9 @@ public class EntityGravity : BaseGravity
 
         if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
             finalGravity += AirBoostYoshiGravity(gravityOrientation, positionObject) * baseGravityAttractorSwitch.GetAirRatioGravity();
-
+        
+        Debug.Log(finalGravity);
+        
         return (finalGravity);
     }
 
@@ -155,6 +160,7 @@ public class EntityGravity : BaseGravity
 
         base.SetGoingDown();
 
+        
         //if (currentOrientation != OrientationPhysics.ATTRACTOR)
         rb.velocity = FindAirGravity(rb.transform.position, rb.velocity,
             GetMainAndOnlyGravity(),
@@ -167,7 +173,7 @@ public class EntityGravity : BaseGravity
         base.CalculateGravity(rb.transform.position);
 
         if (CanDoGroundGravity())
-            base.ApplyGroundGravity(base.defaultGravityOnGround); //set to 5.5
+            base.ApplyGroundGravity(base.defaultGravityOnGround);
         ApplySuplementGroundGravity();
         ApplyAirGravity();
     }

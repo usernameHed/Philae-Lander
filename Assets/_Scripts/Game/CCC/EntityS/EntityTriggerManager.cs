@@ -1,5 +1,7 @@
-﻿using Sirenix.OdinInspector;
+﻿using AiUnity.MultipleTags.Core;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityTriggerManager : MonoBehaviour
 {
@@ -12,9 +14,9 @@ public class EntityTriggerManager : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityNoGravity entityNoGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public BaseGravityAttractorSwitch baseGravityAttractorSwitch;
-    //[FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    //public EntityController entityController;
+    public UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
+
+
 
     public void OwnTriggerEnter(Collider other)
     {
@@ -38,12 +40,7 @@ public class EntityTriggerManager : MonoBehaviour
 
     public void OwnCollisionStay(Collision collision)
     {
-        /*if (entityController.GetMoveState() == EntityController.MoveState.InAir
-            && !entityNoGravity.IsBaseOrMoreRatio())
-        {
-            entityNoGravity.IsCollidingWhileNoGravity(collision);
-        }
-        */
+
     }
 
     public void OwnCollisionExit(Collision collision)

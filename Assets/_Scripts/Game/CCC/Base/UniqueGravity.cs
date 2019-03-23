@@ -14,11 +14,36 @@ public class UniqueGravity : MonoBehaviour
     
     [FoldoutGroup("GamePlay"), Tooltip("default air gravity"), SerializeField]
     protected float defaultGravityInAir = 2f;
+    [FoldoutGroup("Air Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
+    protected float rbDownAddGravity = 3.5f;
+
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois")]
+    protected bool doWeSwitchBetweenBoth = true;
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("up or down selon la normal dot"), ReadOnly]
+    protected bool isGoingDown = false;
+    public bool IsGoingDown() => isGoingDown;
+    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois"), ReadOnly]
+    protected bool isGoingDownToGround = false;
+
+    public bool IsGoingDownToGround()
+    {
+        return (isGoingDownToGround);
+    }
+
+    public virtual void OnGrounded()
+    {
+        isGoingDown = isGoingDownToGround = false;
+    }
+
+    public virtual void JustJumped()
+    {
+        isGoingDown = isGoingDownToGround = false;
+    }
 
     [FoldoutGroup("GamePlay"), Tooltip("default air gravity"), SerializeField]
     protected UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
 
-    private Vector3 mainAndOnlyGravity = Vector3.zero;
+    protected Vector3 mainAndOnlyGravity = Vector3.zero;
 
     public Vector3 GetMainAndOnlyGravity()
     {
@@ -28,7 +53,7 @@ public class UniqueGravity : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected Rigidbody rb = null;
 
-    public Vector3 CalculateGravity(Vector3 positionEntity)
+    public virtual Vector3 CalculateGravity(Vector3 positionEntity)
     {
         mainAndOnlyGravity = uniqueGravityAttractorSwitch.GetDirGAGravity();
 
@@ -45,11 +70,63 @@ public class UniqueGravity : MonoBehaviour
         return (forceBaseGravityInAir);
     }
 
+    /// <summary>
+    /// here we fall down toward a planet, apply gravity down
+    /// </summary>
+    protected Vector3 AirAddGoingDown(Vector3 gravityOrientation, Vector3 positionEntity)
+    {
+        //Debug.Log("ici down ?");
+        Vector3 orientationDown = -gravityOrientation * gravity * (rbDownAddGravity - 1) * Time.fixedDeltaTime;
+        Debug.DrawRay(positionEntity, orientationDown, Color.blue, 5f);
+        return (orientationDown);
+    }
+
+    protected void SetGoingDown()
+    {
+        float dotGravityRigidbody = ExtQuaternion.DotProduct(GetMainAndOnlyGravity(), rb.velocity);
+        if (dotGravityRigidbody < 0 || (isGoingDown && !doWeSwitchBetweenBoth))
+        {
+            //first time falling
+            if (!isGoingDown)
+            {
+                isGoingDown = true;
+            }
+            if (!isGoingDownToGround)
+            {
+                isGoingDownToGround = true;
+            }
+        }
+        else
+        {
+            isGoingDown = false;
+        }
+    }
+
+    /// <summary>
+    /// return the right gravity
+    /// </summary>
+    /// <returns></returns>
+    protected virtual Vector3 FindAirGravity(Vector3 positionObject, Vector3 rbVelocity, Vector3 gravityOrientation)
+    {
+        Vector3 finalGravity = rbVelocity;
+
+        finalGravity += AirBaseGravity(gravityOrientation, positionObject, uniqueGravityAttractorSwitch.GetAirRatioGravity());
+
+        if (isGoingDown)
+        {
+            finalGravity += AirAddGoingDown(gravityOrientation, positionObject) * uniqueGravityAttractorSwitch.GetRatioGravityDown();
+        }
+        
+        return (finalGravity);
+    }
+
     private void FixedUpdate()
     {
         if (isUniqueGravity)
         {
-            rb.velocity += AirBaseGravity(CalculateGravity(rb.position), rb.position);
+            CalculateGravity(rb.position);
+            SetGoingDown();
+            rb.velocity = FindAirGravity(rb.position, rb.velocity, GetMainAndOnlyGravity());
         }
     }
 }

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &308729161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 308729162}
+  - component: {fileID: 308729163}
+  - component: {fileID: 308729164}
+  m_Layer: 10
+  m_Name: KillCoin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &308729162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308729161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5681305196537818920}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &308729163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308729161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02507aa4c9fda784b9ee08ef23dd77c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagList: 0b000000
+  tryParent: 1
+  killOnEnter: 1
+  killOnExit: 0
+  sphereCollider: {fileID: 308729164}
+--- !u!135 &308729164
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308729161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4826845242620456193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,12 +1211,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5681305196537818921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.18, y: 8.89, z: -12.59}
+  m_LocalPosition: {x: 3.79, y: 0, z: -6.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6218873525988586700}
   - {fileID: 6695023544966986338}
   - {fileID: 5681305195676128754}
+  - {fileID: 308729162}
   m_Father: {fileID: 6223110023887662019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1170,9 +1233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5f98ab72ef7e84d8b4df5a394c1086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 10
+  initialSpeed: 0
   initialAngularVelocity: 0
   dirObject: {fileID: 3243737824250508625}
+  randomDir: 1
+  timeMinBeforeBump: 5
+  timeMaxRandomToAdd: 5
   rb: {fileID: 5681305196537818923}
 --- !u!114 &4411718538208714504
 MonoBehaviour:
@@ -2015,6 +2081,7 @@ MonoBehaviour:
   entityBumpUp: {fileID: 6068529678874368934}
   entityAirMove: {fileID: 6912064760247042750}
   fastForward: {fileID: 3948622104594274118}
+  clampRbSpeed: {fileID: 4930703892372734090}
   moveState: 0
   layerMask: -1
   deathVibration:
@@ -2046,7 +2113,7 @@ MonoBehaviour:
   iAController: {fileID: 0}
   coinController: {fileID: 0}
   entityNoGravity: {fileID: 1966456849331468690}
-  baseGravityAttractorSwitch: {fileID: 9013407796872692123}
+  uniqueGravityAttractorSwitch: {fileID: 9013407796872692123}
 --- !u!114 &3295248281479973674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2107,6 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0505c863a59acce4dbc51bb1404dbd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableBoost: 0
   timeBeforeJump: 0.3
   boostTime: 0.7
   timeBefore2Jump: 1
@@ -2139,16 +2207,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec49121122b28684a80ad157074dcdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUniqueGravity: 1
   gravity: 9.81
   defaultGravityInAir: 2
-  defaultGravityOnGround: 5.5
   rbDownAddGravity: 3.5
   doWeSwitchBetweenBoth: 1
   isGoingDown: 0
   isGoingDownToGround: 0
+  uniqueGravityAttractorSwitch: {fileID: 9013407796872692123}
+  rb: {fileID: 5681305196537818923}
+  defaultGravityOnGround: 5.5
   entityController: {fileID: 6223110023887662018}
   groundCheck: {fileID: 6695023544682400897}
-  rb: {fileID: 5681305196537818923}
   baseGravityAttractorSwitch: {fileID: 9013407796872692123}
   entityNoGravity: {fileID: 1966456849331468690}
   stickToFloorGravity: 6
@@ -2169,18 +2239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e38431716a9bd40b0fb07f6a3e0c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUniqueGravity: 1
   marginDotGA: 0.71
-  marginNormalJumpInGA: 0.3
-  marginNegativeJumpHit: -0.1
-  timeBeforeApplyForceDown: 0.4
-  timeBeforeActiveAllAttractorAfterJumpCalculation: 2
-  maxGravityApplied: 3
   ratioOtherDistance: 1.3
   maxDistBasedOnHowManyTimeDefault: 3
   rbEntity: {fileID: 5681305196537818923}
-  entityController: {fileID: 6223110023887662018}
-  baseGravity: {fileID: 4930703892372734088}
-  groundCheck: {fileID: 6695023544682400897}
   pointInfo:
     pos: {x: 0, y: 0, z: 0}
     gravityBaseRatio: 0
@@ -2190,16 +2253,13 @@ MonoBehaviour:
     posRange: {x: 0, y: 0, z: 0}
     sphereGravity: {x: 0, y: 0, z: 0}
     refGA: {fileID: 0}
-  tmpLastPointInfo:
-    pos: {x: 0, y: 0, z: 0}
-    gravityBaseRatio: 0
-    gravityDownRatio: 0
-    range: 0
-    maxRange: 0
-    posRange: {x: 0, y: 0, z: 0}
-    sphereGravity: {x: 0, y: 0, z: 0}
-    refGA: {fileID: 0}
   allGravityAttractor: []
+  entityController: {fileID: 6223110023887662018}
+  baseGravity: {fileID: 4930703892372734088}
+  groundCheck: {fileID: 6695023544682400897}
+  timeBeforeApplyForceDown: 0.4
+  timeBeforeActiveAllAttractorAfterJumpCalculation: 2
+  marginNegativeJumpHit: -0.1
   entityJumpCalculation: {fileID: 3373334750824284554}
   fastForward: {fileID: 3948622104594274118}
   entityJump: {fileID: 3295248281479973674}
@@ -2247,11 +2307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e426d7872088f940af41433bfd0b13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeedCamera: 2
   smoothSpeedPlayer: 4
-  baseGravity: {fileID: 4930703892372734088}
-  smoothedNormalCamera: {x: 0, y: 0, z: 0}
+  uniqueGravity: {fileID: 4930703892372734088}
   smoothedNormalPlayer: {x: 0, y: 0, z: 0}
+  smoothSpeedCamera: 2
+  smoothedNormalCamera: {x: 0, y: 0, z: 0}
   entityController: {fileID: 6223110023887662018}
   groundCheck: {fileID: 6695023544682400897}
 --- !u!114 &6223110023887662021
@@ -2370,7 +2430,7 @@ MonoBehaviour:
   rbObject: {fileID: 5681305196537818921}
   speedRotate: 700
   speedLerpRaulBack: 5
-  smoothNormals: {fileID: 4930703892372734089}
+  uniqueSmoothNormals: {fileID: 4930703892372734089}
 --- !u!114 &4930703892372734090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2385,7 +2445,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   rb: {fileID: 5681305196537818923}
-  entityController: {fileID: 6223110023887662018}
 --- !u!114 &3730042292699098091
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - GravityAttractor
   - Object
+  - Coin
   layers:
   - Default
   - TransparentFX

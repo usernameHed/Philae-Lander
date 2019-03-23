@@ -52,6 +52,8 @@ public class EntityController : MonoBehaviour
 
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected FastForward fastForward;
+    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    protected ClampRbSpeed clampRbSpeed;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
@@ -67,12 +69,12 @@ public class EntityController : MonoBehaviour
     protected float oldDrag;
     protected bool planetSwitcher = false;
     protected bool isKilled = false;
-    protected float actualVelocity = 0f;
-    public float GetActualVelocity() => actualVelocity;
+    
     protected float actualAcceleration = 0f;
     public float GetActualAcceleration() => actualAcceleration;
     protected Vector3 actualAccelerationVector = Vector3.zero;
-
+    
+    public float GetActualVelocity() => clampRbSpeed.GetActualVelocity();
     /// <summary>
     /// init player
     /// </summary>

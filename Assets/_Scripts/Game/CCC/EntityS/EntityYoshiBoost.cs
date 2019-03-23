@@ -6,6 +6,9 @@ using UnityEngine;
 public class EntityYoshiBoost : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    private bool enableBoost = true;
+
+    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
     private float timeBeforeJump = 0.4f;
     [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
     private float boostTime = 1.5f;
@@ -125,6 +128,7 @@ public class EntityYoshiBoost : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TryToBoost();
+        if (enableBoost)
+            TryToBoost();
     }
 }

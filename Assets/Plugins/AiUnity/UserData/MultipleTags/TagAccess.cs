@@ -5,7 +5,7 @@ using AiUnity.Common.Tags;
 /// <Summary>
 /// Provide strongly typed access to Unity tags.
 /// <Summary>
-[GeneratedType("17/03/2019 16:03:19")]
+[GeneratedType("22/03/2019 00:22:58")]
 public class TagAccess : ITagAccess
 {
 	public const string Untagged = "Untagged";
@@ -19,6 +19,7 @@ public class TagAccess : ITagAccess
 	public const string Enemy = "Enemy";
 	public const string GravityAttractor = "GravityAttractor";
 	public const string Object = "Object";
+	public const string Coin = "Coin";
 
 	private static readonly List<string> tagPaths = new List<string>()
 	{
@@ -32,7 +33,8 @@ public class TagAccess : ITagAccess
 		"Floor",
 		"Enemy",
 		"GravityAttractor",
-		"Object"
+		"Object",
+		"Coin"
 	};
 
 	public IEnumerable<string> TagPaths { get { return tagPaths.AsReadOnly(); } }
@@ -51,6 +53,7 @@ public class TagAccess : ITagAccess
 	Enemy,
 	GravityAttractor,
 	Object,
+	Coin,
 	}
 }
 

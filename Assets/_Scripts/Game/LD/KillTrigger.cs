@@ -10,6 +10,8 @@ public class KillTrigger : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("enum to interact")]
     private List<TagAccess.TagAccessEnum> tagList = new List<TagAccess.TagAccessEnum>() { TagAccess.TagAccessEnum.Player, TagAccess.TagAccessEnum.Enemy };
 
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("enum to interact")]
+    private bool tryParent = true;
 
     [SerializeField]
 	private bool killOnEnter = true;
@@ -44,6 +46,14 @@ public class KillTrigger : MonoBehaviour
 		{
 			killable.Kill ();
 		}
+        else if (tryParent)
+        {
+            killable = other.GetComponentInParent<IKillable>();
+            if (killable != null)
+            {
+                killable.Kill();
+            }
+        }
 	}
 
     private void OnDrawGizmos()

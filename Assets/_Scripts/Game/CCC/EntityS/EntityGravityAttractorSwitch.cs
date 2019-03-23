@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 {
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private float timeBeforeApplyForceDown = 0.4f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private float timeBeforeActiveAllAttractorAfterJumpCalculation = 2f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private float marginNegativeJumpHit = -0.1f;
+
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJumpCalculation entityJumpCalculation;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private FastForward fastForward;
-    //[FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    //private EntityGravity entityGravity;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJump entityJump;
 
@@ -132,6 +137,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             //Debug.Log("ici gravité last jump !");
             pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
+            //Debug.Log(pointInfo.sphereGravity);
         }
         else
         {

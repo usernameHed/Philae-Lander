@@ -8,20 +8,10 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     protected bool isUniqueGravity = true;
-
+    
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginDotGA = 0.71f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float marginNormalJumpInGA = 0.3f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float marginNegativeJumpHit = -0.1f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float timeBeforeApplyForceDown = 0.4f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float timeBeforeActiveAllAttractorAfterJumpCalculation = 2f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public int maxGravityApplied = 3;
-
+    
     [FoldoutGroup("GamePlay"), Tooltip("More you have, less they attract !"), SerializeField]
     public float ratioOtherDistance = 1.3f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
@@ -33,14 +23,9 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     protected GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
     
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    protected GravityAttractorLD.PointInfo tmpLastPointInfo = new GravityAttractorLD.PointInfo();
-
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     protected List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
-
-    //private bool isGoingDown = false;
-
+    
     protected Vector3 lastNormalJumpChoosen = Vector3.up;
 
     public void EnterInZone(GravityAttractorLD refGravityAttractor)
@@ -63,18 +48,9 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         return (tmpInfo.refGA.GetInstanceID() == pointInfo.refGA.GetInstanceID());
     }
 
-    public void SetLastDirJump(Vector3 dirNormalChoosen)
+    public virtual void SetLastDirJump(Vector3 dirNormalChoosen)
     {
         lastNormalJumpChoosen = dirNormalChoosen;
-    }
-
-    /// <summary>
-    /// ratio only for gravityDown
-    /// </summary>
-    /// <returns></returns>
-    public float GetRatioGravityDown()
-    {
-        return (pointInfo.gravityDownRatio);
     }
 
     /// <summary>
@@ -87,7 +63,16 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         return (normalRatio);
     }
 
-    public void SetDefaultGAgravity(Vector3 posHit, Vector3 gravity)
+    /// <summary>
+    /// ratio only for gravityDown
+    /// </summary>
+    /// <returns></returns>
+    public float GetRatioGravityDown()
+    {
+        return (pointInfo.gravityDownRatio);
+    }
+
+    public virtual void SetDefaultGAgravity(Vector3 posHit, Vector3 gravity)
     {
         pointInfo.gravityBaseRatio = 0.3f;
         pointInfo.gravityDownRatio = 0.5f;
@@ -96,6 +81,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         pointInfo.sphereGravity = gravity;
         pointInfo.range = 0f;
         pointInfo.maxRange = 0f;
+        lastNormalJumpChoosen = gravity;
     }
     public Vector3 GetDirGAGravity()
     {
