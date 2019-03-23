@@ -31,6 +31,18 @@ public class BaseGravity : UniqueGravity
         return (mainAndOnlyGravity);
     }
 
+    public override Vector3 GetPointGravityDown()
+    {
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
+        {
+            return (uniqueGravityAttractorSwitch.GetPosRange());
+        }
+        else
+        {
+            return (groundCheck.GetPointLastHit());
+        }        
+    }
+
     /// <summary>
     /// apply gravity on ground
     /// </summary>

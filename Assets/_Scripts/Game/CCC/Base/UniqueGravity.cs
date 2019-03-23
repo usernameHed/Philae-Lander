@@ -49,6 +49,11 @@ public class UniqueGravity : MonoBehaviour
     {
         return (mainAndOnlyGravity);
     }
+
+    public virtual Vector3 GetPointGravityDown()
+    {
+        return (uniqueGravityAttractorSwitch.GetPosRange());
+    }
     
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected Rigidbody rb = null;

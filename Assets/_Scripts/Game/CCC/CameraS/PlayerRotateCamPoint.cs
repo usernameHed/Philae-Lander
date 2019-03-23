@@ -133,7 +133,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
         if (Physics.SphereCast(rb.transform.position, radiusRaycast, dirPoint, out hitInfo,
                                dist, layerMask, QueryTriggerInteraction.Ignore))
         {
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
+            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
             Debug.DrawRay(rb.transform.position, dirPoint.normalized * dist);
 
             float distPlayerToPoint = Vector3.Distance(hitInfo.point, objectToRotate.position);

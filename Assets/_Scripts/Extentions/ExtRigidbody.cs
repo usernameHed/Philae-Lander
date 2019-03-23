@@ -27,7 +27,7 @@ public static class ExtRigidbody
 		if (accel.sqrMagnitude > maxAccel * maxAccel)
 			accel = accel.normalized * maxAccel;
 
-        Debug.DrawRay(body.transform.position, accel, Color.blue, 1f);
+        //Debug.DrawRay(body.transform.position, accel, Color.blue, 1f);
         body.AddForce(accel, forceMode);
 	}
 

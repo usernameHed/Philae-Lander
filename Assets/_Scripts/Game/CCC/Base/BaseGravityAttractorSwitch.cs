@@ -85,10 +85,6 @@ public bool IsTheSamePointInfo(GravityAttractorLD.PointInfo tmpInfo)
             return (1f);
 
         float normalRatio = pointInfo.gravityBaseRatio;
-        if (normalRatio == 0)
-        {
-            Debug.LogWarning("0 !");
-        }
         return (normalRatio);
     }
 

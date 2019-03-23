@@ -42,7 +42,7 @@ public class Attractor : MonoBehaviour, IKillable
         {
             rigidBody[i] = overlapResults[i].transform.GetComponent<Rigidbody>();
 
-            Debug.DrawLine(transform.position, overlapResults[i].transform.position, Color.red);
+            //Debug.DrawLine(transform.position, overlapResults[i].transform.position, Color.red);
         }
     }
 
@@ -61,7 +61,7 @@ public class Attractor : MonoBehaviour, IKillable
     {
         if (timer.Ready())
         {
-            ExtDrawGuizmos.DebugWireSphere(transform.position, Color.red, radius, 0.1f);
+            //ExtDrawGuizmos.DebugWireSphere(transform.position, Color.red, radius, 0.1f);
             UpdateObjectToAttract();
         }
 

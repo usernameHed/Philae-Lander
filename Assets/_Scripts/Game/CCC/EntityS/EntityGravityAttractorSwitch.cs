@@ -34,7 +34,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     /// if the timer is still running, we can't neiter
     /// </summary>
     /// <returns></returns>
-    private bool CanApplyGravityForce()
+    public override bool CanApplyGravityForce()
     {
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (true);
@@ -130,6 +130,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //Debug.Log("ici gravité terrestre ?");
             coolDownBeforeAttract.Reset();
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
+            pointInfo.pos = pointInfo.posRange = groundCheck.GetPointLastHit();
             wantedDirGravityOnGround = GetAirSphereGravity(rbEntity.position).sphereGravity;
         }
         //here we can't apply, because we just jump (OR because we are falling and in the timer
@@ -137,7 +138,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             //Debug.Log("ici gravité last jump !");
             pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
-            //Debug.Log(pointInfo.sphereGravity);
+            pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround();
         }
         else
         {
@@ -170,8 +171,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             closestPost[i] = allPointInfo[i].posRange;
             //closestPost[i] = allPointInfo[i].pos;
 
-            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f);
-            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f);
+            //ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f);
+            //ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f);
         }
 
 
@@ -204,6 +205,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             Debug.LogWarning("null gravity !!");
             pointInfo.sphereGravity = lastNormalJumpChoosen;
+            pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround();
             return (pointInfo);
         }
 
@@ -234,7 +236,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //
             if (magnitudeCurrentForce > defaultForce * maxDistBasedOnHowManyTimeDefault)
             {
-                Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
+                //Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
                 sphereDir[i] = ExtUtilityFunction.GetNullVector();
                 continue;
             }

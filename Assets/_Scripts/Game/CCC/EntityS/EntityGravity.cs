@@ -60,7 +60,7 @@ public class EntityGravity : BaseGravity
 
         Vector3 orientationDown = -gravityOrientation * gravity * (stickToFloorGravity - 1) * Time.fixedDeltaTime;
         Debug.DrawRay(rb.transform.position, orientationDown, Color.red, 5f);
-        Debug.Log("ici suplement gravity");
+        //Debug.Log("ici suplement gravity");
         rb.velocity += orientationDown;
     }
 
@@ -123,7 +123,7 @@ public class EntityGravity : BaseGravity
         if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
             finalGravity += AirBoostYoshiGravity(gravityOrientation, positionObject) * baseGravityAttractorSwitch.GetAirRatioGravity();
         
-        Debug.Log(finalGravity);
+        //Debug.Log(finalGravity);
         
         return (finalGravity);
     }

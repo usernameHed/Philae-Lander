@@ -161,7 +161,7 @@ public class FastForward : MonoBehaviour
     {
         int lastLayer = hitInfo.transform.gameObject.layer;
 
-        Debug.DrawRay(hitInfo.point, surfaceNormal, Color.black, 3f);
+        //Debug.DrawRay(hitInfo.point, surfaceNormal, Color.black, 3f);
 
         Vector3 tmpNewGravity = Vector3.zero;
         bool changeManuallyGravity = DoChangeOrientationManually(hitInfo, ref tmpNewGravity);

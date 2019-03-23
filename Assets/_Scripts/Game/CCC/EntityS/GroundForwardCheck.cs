@@ -103,8 +103,8 @@ public class GroundForwardCheck : MonoBehaviour
         Vector3 dirRaycast = entityController.GetFocusedForwardDirPlayer();
 
         //Debug.DrawRay(origin, dirRaycast, Color.magenta);
-        Debug.DrawRay(originRight, dirRaycast, Color.magenta);
-        Debug.DrawRay(originLeft, dirRaycast, Color.magenta);
+        //Debug.DrawRay(originRight, dirRaycast, Color.magenta);
+        //Debug.DrawRay(originLeft, dirRaycast, Color.magenta);
 
         if (Physics.Raycast(originRight, dirRaycast, out hitRight, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
         {
@@ -164,7 +164,7 @@ public class GroundForwardCheck : MonoBehaviour
             
             //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
             //Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);
+            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);
 
             isForwardWall = true;
 

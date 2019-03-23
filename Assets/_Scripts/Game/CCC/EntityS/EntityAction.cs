@@ -50,7 +50,17 @@ public class EntityAction : MonoBehaviour
         Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x * xBoost + mainReferenceObjectDirection.forward * dirInput.y * yBoost;
         return (relativeDirection);
     }
-    
+
+    /// <summary>
+    /// get the relative direction 
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetRelativeDirectionFromManualInput(Vector2 inputManual, float xBoost = 1, float yBoost = 1)
+    {
+        Vector3 relativeDirection = mainReferenceObjectDirection.right * inputManual.x * xBoost + mainReferenceObjectDirection.forward * inputManual.y * yBoost;
+        return (relativeDirection);
+    }
+
     public Vector3 GetMainReferenceForwardDirection()
     {
         Vector3 relativeDirection = mainReferenceObjectDirection.forward;

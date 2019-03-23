@@ -183,8 +183,8 @@ public struct ExtTriangle
         }
         else
         {
-            Debug.DrawRay(p, dirPlayer, Color.yellow, 5f);
-            Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
+            //Debug.DrawRay(p, dirPlayer, Color.yellow, 5f);
+            //Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
             return (ExtUtilityFunction.GetNullVector());
         }
     }

@@ -29,7 +29,9 @@ public class EntityJump : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityAction entityAction;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    protected EntityGravity playerGravity;
+    protected EntityRotate entityRotate;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    protected BaseGravity baseGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected GroundForwardCheck groundForwardCheck;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -119,7 +121,7 @@ public class EntityJump : MonoBehaviour
 
     public virtual void OnGrounded()
     {
-        Debug.Log("Grounded !");
+        //Debug.Log("Grounded !");
         lastVelocityJump = 0f;
 
         coolDownWhenJumped.Reset();
@@ -149,7 +151,7 @@ public class EntityJump : MonoBehaviour
             jumpBoostHeight = jumpHeight;
 
         //Debug.Log("boost height: " + jumpBoostHeight);
-        return Mathf.Sqrt(2 * jumpBoostHeight * playerGravity.Gravity);
+        return Mathf.Sqrt(2 * jumpBoostHeight * baseGravity.Gravity);
     }
 
     private Vector3 AddJumpHeight(Vector3 normalizedDirJump, float boost = 1f)
@@ -179,13 +181,14 @@ public class EntityJump : MonoBehaviour
         //bool isForbiddenForward = false;
         lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
 
-        Vector3 normalizedNormalGravity = playerGravity.GetMainAndOnlyGravity();
+        Vector3 normalizedNormalGravity = baseGravity.GetMainAndOnlyGravity();
         //Vector3 normalizedNormalGravity = groundCheck.GetDirLastNormal();
 
         entityGravityAttractorSwitch.SetLastDirJump(normalizedNormalGravity);
 
         Vector3 normalizedForwardPlayer = (!isForbiddenForward)
-            ? entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump
+            //? entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump
+            ? entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump
             : Vector3.zero;
 
 
@@ -206,7 +209,7 @@ public class EntityJump : MonoBehaviour
 
         rb.velocity = orientedStrenghtJump;
 
-        playerGravity.JustJumped();
+        baseGravity.JustJumped();
         if (playerAirMove)
             playerAirMove.JustJumped();
         entityGravityAttractorSwitch.JustJumped();

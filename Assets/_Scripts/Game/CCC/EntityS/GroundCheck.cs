@@ -55,7 +55,7 @@ public class GroundCheck : MonoBehaviour
     private Vector3 dirSurfaceNormal = Vector3.zero;
 
     private FrequencyCoolDown coolDownForStick = new FrequencyCoolDown();
-    
+    private Vector3 pointHit;
 
     private void Awake()
     {
@@ -67,7 +67,7 @@ public class GroundCheck : MonoBehaviour
         ResearchInitialGround();
     }
 
-    private void ResearchInitialGround()
+    public Vector3 ResearchInitialGround()
     {
         RaycastHit hit;
         //int raycastLayerMask = LayerMask.GetMask(entityController.walkablePlatform);
@@ -79,12 +79,14 @@ public class GroundCheck : MonoBehaviour
             dirNormal = hit.normal;
             Debug.Log("Did Hit");
             baseGravityAttractorSwitch.SetDefaultGAgravity(hit.point, dirNormal);
+            return (hit.point);
         }
         else
         {
             dirNormal = rb.transform.up;
             Debug.Log("Did NO Hit");
             baseGravityAttractorSwitch.SetDefaultGAgravity(rb.position - dirNormal * 9999, dirNormal);
+            return (rb.position - dirNormal * 9999);
         }
     }
 
@@ -114,11 +116,15 @@ public class GroundCheck : MonoBehaviour
     {
         return (dirSurfaceNormal);
     }
+    public Vector3 GetPointLastHit()
+    {
+        return (pointHit);
+    }
 
     public void SetForwardWall(RaycastHit hitInfo)
     {
         dirNormal = hitInfo.normal;
-        
+        pointHit = hitInfo.point;
         isGrounded = true;
         isFlying = false;
         SetCurrentPlatform(hitInfo.transform);
@@ -211,6 +217,8 @@ public class GroundCheck : MonoBehaviour
             if (CanChangeNormal(hitInfo))
             {
                 dirNormal = hitInfo.normal;
+                pointHit = hitInfo.point;
+
                 if (fastForward && previous && fastForward.IsInFastForward())
                 {
                     Debug.LogWarning("mmm ici ???");

@@ -8,7 +8,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
     protected bool isUniqueGravity = true;
-    
+
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginDotGA = 0.71f;
     
@@ -22,6 +22,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     protected GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
+    public Vector3 GetPosRange() => pointInfo.posRange;
     
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     protected List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
@@ -127,8 +128,8 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
             closestPost[i] = allPointInfo[i].posRange;
             //closestPost[i] = allPointInfo[i].pos;
 
-            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f);
-            ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f);
+            //ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].posRange, Color.blue, 1f);
+            //ExtDrawGuizmos.DebugWireSphere(allPointInfo[i].pos, Color.green, 1f);
         }
 
         //setup the closest point, and his vector director
@@ -169,7 +170,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
             //
             if (magnitudeCurrentForce > defaultForce * maxDistBasedOnHowManyTimeDefault)
             {
-                Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
+                //Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
                 sphereDir[i] = ExtUtilityFunction.GetNullVector();
                 continue;
             }
@@ -245,6 +246,11 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         return (allGravityAttractor[indexFound]);
     }
 
+    public virtual bool CanApplyGravityForce()
+    {
+        return (true);
+    }
+
     public bool IsNormalIsOkWithCurrentGravity(Vector3 normalHit, Vector3 currentGravity)
     {
         //if angle hitInfo.normal eet notre gravity est pas bonne,
@@ -259,8 +265,8 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
             return (true);
         }
         //Debug.Log("here we... have bad normal ! don't walk...");
-        Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
-        Debug.DrawRay(rbEntity.position, currentGravity * 5, Color.black);
+        //Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
+        //Debug.DrawRay(rbEntity.position, currentGravity * 5, Color.black);
         return (false);
     }
 
