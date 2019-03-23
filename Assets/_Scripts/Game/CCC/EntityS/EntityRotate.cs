@@ -35,7 +35,6 @@ public class EntityRotate : MonoBehaviour
     private EntityController entityController = null;
 
     private Vector3 lastRelativeDirection;  //last desired rotation
-    public Vector3 GetLastDesiredDirection() => lastRelativeDirection;
     private Vector3 lastPosDir = Vector3.zero;
 
     private bool isFullSpeedBefore = false;
@@ -61,6 +60,7 @@ public class EntityRotate : MonoBehaviour
         Quaternion desiredOrientation = ExtQuaternion.TurretLookRotation(relativeDirection, up);
 
         Debug.DrawRay(objectToRotate.position, relativeDirection, Color.blue);  //normalize ?
+
         //Debug.DrawRay(objectToRotate.position, entityAction.GetMainReferenceForwardDirection(), Color.red);
         //Debug.DrawRay(objectToRotate.position, objectToRotate.forward, Color.red, 2f);
 
@@ -102,6 +102,8 @@ public class EntityRotate : MonoBehaviour
         {
             lastPosDir = objectToRotate.position;
             lastRelativeDirection = entityAction.GetRelativeDirection().normalized;
+
+
             RotatePlayer(entityAction.GetRelativeDirection());
 
             Debug.DrawRay(objectToRotate.position, lastRelativeDirection, Color.green, 2f);
@@ -125,7 +127,6 @@ public class EntityRotate : MonoBehaviour
                 Vector3 last = lastRelativeDirection;
                 //Debug.DrawRay(lastPosDir, last, Color.red, 2f);
                 RotatePlayer(last);
-
             }
         }
         

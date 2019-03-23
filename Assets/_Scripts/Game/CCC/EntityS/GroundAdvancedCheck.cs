@@ -12,6 +12,8 @@ public class GroundAdvancedCheck : MonoBehaviour
     private BaseGravity baseGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private Rigidbody rb;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private GroundCheck groundCheck;
 
     private void Awake()
     {
@@ -26,7 +28,8 @@ public class GroundAdvancedCheck : MonoBehaviour
     private void FixedUpdate()
     {
         //Vector3 dirGravity = baseGravity.GetMainAndOnlyGravity();
-        Vector3 posGravity = baseGravity.GetPointGravityDown();
+        Vector3 posGravity = groundCheck.ResearchInitialGround(false);
+        //Vector3 posGravity = baseGravity.GetPointGravityDown();
         drawTargetObject.posToLookAt = posGravity;
 
         ExtDrawGuizmos.DebugWireSphere(drawTargetObject.posToLookAt, Color.red, 0.1f, 5f);
