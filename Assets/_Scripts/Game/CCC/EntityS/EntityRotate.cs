@@ -95,6 +95,7 @@ public class EntityRotate : MonoBehaviour
 
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
+            isFullSpeedBefore = true;
             return;
         }
 
