@@ -67,7 +67,7 @@ public class GroundCheck : MonoBehaviour
         ResearchInitialGround();
     }
 
-    public Vector3 ResearchInitialGround()
+    public Vector3 ResearchInitialGround(bool setGAGravity = true)
     {
         RaycastHit hit;
         //int raycastLayerMask = LayerMask.GetMask(entityController.walkablePlatform);
@@ -76,17 +76,23 @@ public class GroundCheck : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(rb.transform.position, dirDown, out hit, Mathf.Infinity, entityController.layerMask))
         {
-            dirNormal = hit.normal;
-            Debug.Log("Did Hit");
-            baseGravityAttractorSwitch.SetDefaultGAgravity(hit.point, dirNormal);
+            if (setGAGravity)
+            {
+                dirNormal = hit.normal;
+                Debug.Log("Did Hit");
+                baseGravityAttractorSwitch.SetDefaultGAgravity(hit.point, dirNormal);
+            }
             return (hit.point);
         }
         else
         {
-            dirNormal = rb.transform.up;
-            Debug.Log("Did NO Hit");
-            baseGravityAttractorSwitch.SetDefaultGAgravity(rb.position - dirNormal * 9999, dirNormal);
-            return (rb.position - dirNormal * 9999);
+            if (setGAGravity)
+            {
+                dirNormal = rb.transform.up;
+                Debug.Log("Did NO Hit");
+                baseGravityAttractorSwitch.SetDefaultGAgravity(rb.position - dirNormal * 9999, dirNormal);
+            }
+            return (rb.position - rb.transform.up * 9999);
         }
     }
 

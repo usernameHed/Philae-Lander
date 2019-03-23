@@ -138,7 +138,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             //Debug.Log("ici gravité last jump !");
             pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
-            pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround();
+            pointGroundHit = groundCheck.ResearchInitialGround(false);
+            //pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround(false);
         }
         else
         {
@@ -205,7 +206,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             Debug.LogWarning("null gravity !!");
             pointInfo.sphereGravity = lastNormalJumpChoosen;
-            pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround();
+            pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround(false);
             return (pointInfo);
         }
 
@@ -258,13 +259,15 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             GravityAttractorLD.PointInfo closestPointJump = pointInfo;
             closestPointJump.sphereGravity = middleOfAllVec;
+            pointGroundHit = groundCheck.ResearchInitialGround(false);
             return (closestPointJump);
         }
 
         GravityAttractorLD.PointInfo closestPoint = allPointInfo[indexFound];
         closestPoint.sphereGravity = middleOfAllVec;
+        pointGroundHit = closestPoint.posRange;
         //Debug.Break();
-        
+
         return (closestPoint);
     }
 

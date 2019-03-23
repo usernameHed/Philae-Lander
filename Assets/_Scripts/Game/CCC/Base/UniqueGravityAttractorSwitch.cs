@@ -22,7 +22,8 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
     protected GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
-    public Vector3 GetPosRange() => pointInfo.posRange;
+    public Vector3 GetPosRange() => pointGroundHit;
+    protected Vector3 pointGroundHit;
     
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     protected List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
@@ -79,6 +80,8 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         pointInfo.gravityDownRatio = 0.5f;
         pointInfo.pos = posHit;
         pointInfo.posRange = posHit;
+        pointGroundHit = posHit;
+
         pointInfo.sphereGravity = gravity;
         pointInfo.range = 0f;
         pointInfo.maxRange = 0f;
@@ -140,6 +143,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         {
             Debug.LogError("null gravity !!");
             pointInfo.sphereGravity = lastNormalJumpChoosen;
+            pointGroundHit = lastNormalJumpChoosen * 999;
             return (pointInfo);
         }
 
@@ -197,8 +201,9 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 
         GravityAttractorLD.PointInfo closestPoint = allPointInfo[indexFound];
         closestPoint.sphereGravity = middleOfAllVec;
+        pointGroundHit = closestPoint.posRange;
         //Debug.Break();
-        
+
         return (closestPoint);
     }
 
