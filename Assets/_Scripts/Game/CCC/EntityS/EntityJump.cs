@@ -183,6 +183,8 @@ public class EntityJump : MonoBehaviour
         //bool isForbiddenForward = false;
         lastVelocityJump = (isForbiddenForward) ? 0 : entityMove.GetMagnitudeAcceleration();
 
+        Debug.Log("velocityJump: " + lastVelocityJump);
+
         Vector3 normalizedNormalGravity = baseGravity.GetMainAndOnlyGravity();
         //Vector3 normalizedNormalGravity = groundCheck.GetDirLastNormal();
 

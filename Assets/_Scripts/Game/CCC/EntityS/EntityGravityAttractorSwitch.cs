@@ -110,18 +110,18 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         //Setup jump calculation when going down
         if (!applyGalaxyForce && baseGravity.IsGoingDownToGround())
         {
-            Debug.Log("ici going down ?");
+            //Debug.Log("ici going down ?");
             //here do a jumpCalculation
             applyGalaxyForce = true;
 
             if (entityJump.HasJumped() && entityJumpCalculation.UltimeTestBeforeAttractor())
             {
-                Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
+                //Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
             }
             else
             {
-                Debug.Log("here no hit, or not good angle");
+                //Debug.Log("here no hit, or not good angle");
             }
         }
 

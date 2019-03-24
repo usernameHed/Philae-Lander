@@ -132,7 +132,7 @@ public class EntityJumpCalculation : MonoBehaviour
         if (Physics.SphereCast(origin, 0.3f, dir, out hitInfo,
                                    maxDist, layers, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log("find something raycast !");
+            //Debug.Log("find something raycast !");
             infoJump.didWeHit = true;
             infoJump.normalHit = hitInfo.normal;
             infoJump.objHit = hitInfo.transform;
@@ -192,7 +192,7 @@ public class EntityJumpCalculation : MonoBehaviour
             else
             {
                 int indexPoint = ((infoPlot.Length / depth) * (i + 1)) - 1;
-                Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
+                //Debug.Log("index: " + indexPoint + "(max: " + infoPlot.Length);
                 lastPoint = infoPlot[indexPoint];
 
                 dirRaycast = lastPoint - prevPos;

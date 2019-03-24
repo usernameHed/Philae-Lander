@@ -22,7 +22,6 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("GamePlay"), Range(0, 1), Tooltip("base speed"), SerializeField]
     private float ratioConsideredFullSpeed = 0.5f;
 
-
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -35,10 +34,8 @@ public class EntityRotate : MonoBehaviour
     private EntityController entityController = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Transform rotateObject;
-
-
+    
     private Vector3 lastVectorRelativeDirection;  //last desired rotation
-
     private Quaternion lastQuaternionRelativeDirection;  //last desired rotation
     public Vector3 GetLastDesiredDirection() => rotateObject.forward;
     private Vector3 lastPosDir = Vector3.zero;
@@ -91,11 +88,6 @@ public class EntityRotate : MonoBehaviour
         InputFromCameraOrientation = ExtQuaternion.IsForwardBackWardRightLeft(relativeDirectionCamera, relativeInputPlayer, entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
     }
 
-    private void SaveLastForward()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         SetOrientationRotation();
@@ -103,7 +95,7 @@ public class EntityRotate : MonoBehaviour
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             isFullSpeedBefore = true;
-            Debug.Log("iiciii ???");
+            //Debug.Log("iiciii ???");
             return;
         }
 

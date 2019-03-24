@@ -40,8 +40,6 @@ public class PlayerJump : EntityJump
         coolDownWhenJumped.StartCoolDown(justJumpedTimer);
         playerController.ChangeState(EntityController.MoveState.InAir);
 
-        Debug.Log("jump !");
-
         rb.ClearVelocity();
 
         SoundManager.Instance.PlaySound(GameData.Sounds.Player_Thruster.ToString());
