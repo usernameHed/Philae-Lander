@@ -33,8 +33,14 @@ public class EntityRotate : MonoBehaviour
     private Transform objectToRotate = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityController entityController = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    private Transform rotateObject;
 
-    private Vector3 lastRelativeDirection;  //last desired rotation
+
+    private Vector3 lastVectorRelativeDirection;  //last desired rotation
+
+    private Quaternion lastQuaternionRelativeDirection;  //last desired rotation
+    public Vector3 GetLastDesiredDirection() => rotateObject.forward;
     private Vector3 lastPosDir = Vector3.zero;
 
     private bool isFullSpeedBefore = false;
@@ -42,32 +48,33 @@ public class EntityRotate : MonoBehaviour
     private void Start()
     {
         Vector3 normalizedNormalGravity = baseGravity.GetMainAndOnlyGravity();
-        lastRelativeDirection = entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity);
+        lastQuaternionRelativeDirection = GetLastDesiredRotation(entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity), objectToRotate.up);
         lastPosDir = objectToRotate.position;
     }
 
-    private void RotatePlayer(Vector3 relativeDirection)
+    private Quaternion GetLastDesiredRotation(Vector3 dirRelativeInput, Vector3 up)
     {
-        //Debug.DrawRay(objectToRotate.position, relativeDirection, Color.white, 3f);
-
+        //Vector3 relativeDirection = entityAction.GetRelativeDirection().normalized;
         // Preserve our current up direction
         // (or you could calculate this as the direction away from the planet's center)
-        Vector3 up = objectToRotate.up;
+        //Vector3 up = objectToRotate.up;
         //Vector3 up = baseGravity.GetMainAndOnlyGravity();
 
         // Form a rotation facing the desired direction while keeping our
         // local up vector exactly matching the current up direction.
-        Quaternion desiredOrientation = ExtQuaternion.TurretLookRotation(relativeDirection, up);
+        return (ExtQuaternion.TurretLookRotation(dirRelativeInput, up));
+    }
 
-        Debug.DrawRay(objectToRotate.position, relativeDirection, Color.blue);  //normalize ?
-
+    private void DoRotate(Quaternion calculatedDir)
+    {
+        
         //Debug.DrawRay(objectToRotate.position, entityAction.GetMainReferenceForwardDirection(), Color.red);
         //Debug.DrawRay(objectToRotate.position, objectToRotate.forward, Color.red, 2f);
 
         // Move toward that rotation at a controlled, even speed regardless of framerate.
         objectToRotate.rotation = Quaternion.RotateTowards(
                                 objectToRotate.rotation,
-                                desiredOrientation,
+                                calculatedDir,
                                 turnRate * Time.deltaTime);
     }
 
@@ -96,18 +103,16 @@ public class EntityRotate : MonoBehaviour
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             isFullSpeedBefore = true;
+            Debug.Log("iiciii ???");
             return;
         }
 
         if (!entityAction.NotMoving())
         {
             lastPosDir = objectToRotate.position;
-            lastRelativeDirection = entityAction.GetRelativeDirection().normalized;
+            lastVectorRelativeDirection = entityAction.GetRelativeDirection();
 
-
-            RotatePlayer(entityAction.GetRelativeDirection());
-
-            Debug.DrawRay(objectToRotate.position, lastRelativeDirection, Color.green, 2f);
+            DoRotate(GetLastDesiredRotation(lastVectorRelativeDirection, objectToRotate.up));
             isFullSpeedBefore = false;
         }
         else
@@ -115,22 +120,22 @@ public class EntityRotate : MonoBehaviour
             //if we are considered at full speed before, don't turn
             if (entityMove.IsInputRelativeFullSpeed(ratioConsideredFullSpeed))
             {
-                lastRelativeDirection = entityAction.GetRelativeDirection().normalized;
+                //lastVectorRelativeDirection = entityAction.GetRelativeDirection();
                 isFullSpeedBefore = true;
             }
 
             //rotate only if we have moved a very little bit
             if (!isFullSpeedBefore)
             {
-                Debug.DrawRay(lastPosDir, lastRelativeDirection, Color.magenta, 2f);
-                //Vector3 last = entityAction.GetRelativeDirectionFromManualInput(new Vector2(lastRelativeDirection.x, lastRelativeDirection.z));
-                //Vector3 last = entityAction.GetMainReferenceUpDirection() + lastRelativeDirection;
-                Vector3 last = lastRelativeDirection;
-                //Debug.DrawRay(lastPosDir, last, Color.red, 2f);
-                RotatePlayer(last);
+                DoRotate(GetLastDesiredRotation(lastVectorRelativeDirection, objectToRotate.up));
             }
         }
-        
 
+        lastQuaternionRelativeDirection = GetLastDesiredRotation(lastVectorRelativeDirection, baseGravity.GetMainAndOnlyGravity());
+
+        rotateObject.rotation = lastQuaternionRelativeDirection;
+
+        Debug.DrawRay(lastPosDir, lastVectorRelativeDirection * 5, Color.blue, 5f);
+        Debug.DrawRay(lastPosDir, rotateObject.forward * 5, Color.red, 5f);
     }
 }

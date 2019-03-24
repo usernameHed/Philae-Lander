@@ -27,12 +27,12 @@ public class GroundAdvancedCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Vector3 dirGravity = baseGravity.GetMainAndOnlyGravity();
-        Vector3 posGravity = groundCheck.ResearchInitialGround(false);
+        Vector3 dirGravity = baseGravity.GetMainAndOnlyGravity();
+        //Vector3 posGravity = groundCheck.ResearchInitialGround(false);
         //Vector3 posGravity = baseGravity.GetPointGravityDown();
-        drawTargetObject.posToLookAt = posGravity;
+        drawTargetObject.posToLookAt = (rb.position - (rb.transform.up * 999));
 
-        ExtDrawGuizmos.DebugWireSphere(drawTargetObject.posToLookAt, Color.red, 0.1f, 5f);
-        Debug.DrawLine(rb.position, posGravity, Color.cyan, 5f);
+        //ExtDrawGuizmos.DebugWireSphere(drawTargetObject.posToLookAt, Color.red, 0.1f, 5f);
+        //Debug.DrawLine(rb.position, posGravity, Color.cyan, 5f);
     }
 }

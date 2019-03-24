@@ -187,8 +187,8 @@ public class EntityJump : MonoBehaviour
         entityGravityAttractorSwitch.SetLastDirJump(normalizedNormalGravity);
 
         Vector3 normalizedForwardPlayer = (!isForbiddenForward)
-            ? entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump
-            //? entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump
+            //? entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump
+            ? entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump
             : Vector3.zero;
 
 
