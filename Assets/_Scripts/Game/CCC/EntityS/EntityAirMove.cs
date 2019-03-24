@@ -39,6 +39,10 @@ public class EntityAirMove : MonoBehaviour
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private GroundForwardCheck groundForwardCheck = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityMove entityMove = null;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private EntityRotate entityRotate = null;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref"), ReadOnly]
     protected float amountAdded = 0f;
@@ -51,10 +55,11 @@ public class EntityAirMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        amountAdded += (direction * entityAction.GetMagnitudeInput()).sqrMagnitude * Time.deltaTime;
+        amountAdded += (direction * entityMove.GetMagnitudeAcceleration()).sqrMagnitude * Time.deltaTime;
         //Debug.Log("Amount added: " + amountAdded);
 
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
+        //UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
+        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityMove.GetMagnitudeAcceleration());
     }
 
     public void ResetAirMove()
@@ -86,7 +91,8 @@ public class EntityAirMove : MonoBehaviour
         Vector3 dirMove = entityAction.GetRelativeDirection(speedAirMoveSide, speedAirMoveForward);
 
         float lastVelocity = entityJump.GetLastJumpForwardVelocity();
-        float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
+        //float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
+        float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityJump.GetLastJumpForwardDirection());
 
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForward > dotForward)
@@ -113,6 +119,7 @@ public class EntityAirMove : MonoBehaviour
         //Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
 
         MovePhysics(dirMove * GetRatioAirMove());
+        entityRotate.DoAirRotate();
     }
 
     private bool CanDoAirMove()
@@ -132,7 +139,7 @@ public class EntityAirMove : MonoBehaviour
 
     private void RemoveAdded()
     {
-        float amountInput = (1 - entityAction.GetMagnitudeInput());
+        float amountInput = (1 - entityMove.GetMagnitudeAcceleration());
         if (entityController.GetActualVelocity() < velocityMaxAirMove)
             amountInput = 1f;
         //entityController.GetActualVelocity() > velocityMaxAirMove

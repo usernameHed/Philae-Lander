@@ -60,6 +60,7 @@ public class EntityJump : MonoBehaviour
     protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();
     protected FrequencyCoolDown coolDownOnGround = new FrequencyCoolDown();
     private float lastVelocityJump = 0f;
+    private Vector3 lastDirForwardJump = Vector3.zero;
 
     protected bool jumpStop = false;
     public bool IsJumpStoped() => jumpStop;
@@ -74,11 +75,17 @@ public class EntityJump : MonoBehaviour
         jumpStop = false;
         hasJumped = false;
         lastVelocityJump = 0;
+        lastDirForwardJump = Vector3.zero;
     }
 
     public float GetLastJumpForwardVelocity()
     {
         return (lastVelocityJump);
+    }
+
+    public Vector3 GetLastJumpForwardDirection()
+    {
+        return (lastDirForwardJump);
     }
 
     protected bool CanJump()
@@ -125,6 +132,7 @@ public class EntityJump : MonoBehaviour
     {
         //Debug.Log("Grounded !");
         lastVelocityJump = 0f;
+        lastDirForwardJump = Vector3.zero;
 
         coolDownWhenJumped.Reset();
         //here, we just were falling, without jumping
@@ -171,6 +179,7 @@ public class EntityJump : MonoBehaviour
     public void ResetInitialJumpDir()
     {
         lastVelocityJump = 0f;
+        lastDirForwardJump = Vector3.zero;
     }
 
     /// <summary>
@@ -195,6 +204,7 @@ public class EntityJump : MonoBehaviour
             ? entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump
             : Vector3.zero;
 
+        lastDirForwardJump = normalizedForwardPlayer;
 
         Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
         Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);

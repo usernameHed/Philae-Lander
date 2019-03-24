@@ -9,6 +9,8 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float turnRate = 700f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    private float turnRateInAir = 300f;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation CameraFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation InputFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
@@ -62,7 +64,7 @@ public class EntityRotate : MonoBehaviour
         return (ExtQuaternion.TurretLookRotation(dirRelativeInput, up));
     }
 
-    private void DoRotate(Quaternion calculatedDir)
+    private void DoRotate(Quaternion calculatedDir, float speed)
     {
         
         //Debug.DrawRay(objectToRotate.position, entityAction.GetMainReferenceForwardDirection(), Color.red);
@@ -72,7 +74,7 @@ public class EntityRotate : MonoBehaviour
         objectToRotate.rotation = Quaternion.RotateTowards(
                                 objectToRotate.rotation,
                                 calculatedDir,
-                                turnRate * Time.deltaTime);
+                                speed * Time.deltaTime);
     }
 
     private void SetOrientationRotation()
@@ -86,6 +88,17 @@ public class EntityRotate : MonoBehaviour
         CameraFromPlayerOrientation = ExtQuaternion.IsForwardBackWardRightLeft(objectToRotate.forward, entityAction.GetMainReferenceForwardDirection(), entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
         InputFromPlayerOrientation = ExtQuaternion.IsForwardBackWardRightLeft(objectToRotate.forward, relativeInputPlayer, entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
         InputFromCameraOrientation = ExtQuaternion.IsForwardBackWardRightLeft(relativeDirectionCamera, relativeInputPlayer, entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
+    }
+
+    /// <summary>
+    /// called by entityAirMove
+    /// </summary>
+    public void DoAirRotate()
+    {
+        if (entityAction.NotMoving(0.05f))
+            return;
+        Vector3 dirInput = entityAction.GetRelativeDirection();
+        DoRotate(GetLastDesiredRotation(dirInput, objectToRotate.up), turnRateInAir);
     }
 
     private void FixedUpdate()
@@ -104,7 +117,7 @@ public class EntityRotate : MonoBehaviour
             lastPosDir = objectToRotate.position;
             lastVectorRelativeDirection = entityAction.GetRelativeDirection();
 
-            DoRotate(GetLastDesiredRotation(lastVectorRelativeDirection, objectToRotate.up));
+            DoRotate(GetLastDesiredRotation(lastVectorRelativeDirection, objectToRotate.up), turnRate);
             isFullSpeedBefore = false;
         }
         else
@@ -119,7 +132,7 @@ public class EntityRotate : MonoBehaviour
             //rotate only if we have moved a very little bit
             if (!isFullSpeedBefore)
             {
-                DoRotate(GetLastDesiredRotation(lastVectorRelativeDirection, objectToRotate.up));
+                DoRotate(GetLastDesiredRotation(lastVectorRelativeDirection, objectToRotate.up), turnRate);
             }
         }
 
