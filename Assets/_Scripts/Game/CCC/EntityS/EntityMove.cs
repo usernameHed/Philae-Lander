@@ -51,6 +51,24 @@ public class EntityMove : MonoBehaviour
         return (false);
     }
 
+    /// <summary>
+    /// return a value from 0 to 1, representing the "player input", with rb acceleration
+    /// </summary>
+    /// <returns></returns>
+    public float GetMagnitudeAcceleration()
+    {
+        float playerInput = entityAction.GetMagnitudeInput();
+
+        //TODO: a super lerp;
+        //min: minAcceleration
+        //max: speedMove
+        //current: currentSpeedMove
+        float remapCurrentSpeed = ExtUtilityFunction.Remap(currentSpeedMove, minAcceleration, speedMove, 0, 1);
+
+
+        return (remapCurrentSpeed * playerInput);
+    }
+
     private void ChangeLerp()
     {
         if (entityAction.NotMoving())

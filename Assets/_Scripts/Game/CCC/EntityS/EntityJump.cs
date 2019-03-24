@@ -46,6 +46,8 @@ public class EntityJump : MonoBehaviour
     public EntityYoshiBoost entityYoshiBoost;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public FastForward fastForward;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public EntityMove entityMove;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
@@ -145,7 +147,7 @@ public class EntityJump : MonoBehaviour
         // for the character to reach at the apex.
 
         //reduce height when max speed
-        float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityAction.GetMagnitudeInput()));
+        float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityMove.GetMagnitudeAcceleration()));
 
         if (groundForwardCheck.IsForwardForbiddenWall())
             jumpBoostHeight = jumpHeight;
@@ -179,7 +181,7 @@ public class EntityJump : MonoBehaviour
     {
         bool isForbiddenForward = groundForwardCheck.IsForwardForbiddenWall();
         //bool isForbiddenForward = false;
-        lastVelocityJump = (isForbiddenForward) ? 0 : entityAction.GetMagnitudeInput();
+        lastVelocityJump = (isForbiddenForward) ? 0 : entityMove.GetMagnitudeAcceleration();
 
         Vector3 normalizedNormalGravity = baseGravity.GetMainAndOnlyGravity();
         //Vector3 normalizedNormalGravity = groundCheck.GetDirLastNormal();
