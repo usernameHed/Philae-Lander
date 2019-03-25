@@ -108,7 +108,6 @@ public class EntityRotate : MonoBehaviour
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             isFullSpeedBefore = true;
-            //Debug.Log("iiciii ???");
             return;
         }
 
@@ -140,7 +139,7 @@ public class EntityRotate : MonoBehaviour
 
         rotateObject.rotation = lastQuaternionRelativeDirection;
 
-        Debug.DrawRay(lastPosDir, lastVectorRelativeDirection * 5, Color.blue, 5f);
-        Debug.DrawRay(lastPosDir, rotateObject.forward * 5, Color.red, 5f);
+        //Debug.DrawRay(lastPosDir, lastVectorRelativeDirection * 5, Color.blue, 5f);
+        //Debug.DrawRay(lastPosDir, rotateObject.forward * 5, Color.red, 5f);
     }
 }

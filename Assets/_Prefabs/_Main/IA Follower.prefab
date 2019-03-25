@@ -396,7 +396,6 @@ GameObject:
   - component: {fileID: 405}
   - component: {fileID: 400}
   - component: {fileID: 389}
-  - component: {fileID: 403}
   - component: {fileID: 396}
   m_Layer: 11
   m_Name: IA Follower
@@ -461,7 +460,7 @@ MonoBehaviour:
   entityController: {fileID: 401}
   baseGravityAttractorSwitch: {fileID: 387}
   entityNoGravity: {fileID: 389}
-  fastForward: {fileID: 403}
+  fastForward: {fileID: 0}
   isGrounded: 0
   isAlmostGrounded: 0
   isFlying: 0
@@ -578,8 +577,8 @@ MonoBehaviour:
   entityNoGravity: {fileID: 389}
   entityBumpUp: {fileID: 392}
   entityAirMove: {fileID: 0}
-  fastForward: {fileID: 403}
-  clampRbSpeed: {fileID: 0}
+  fastForward: {fileID: 0}
+  clampRbSpeed: {fileID: 400}
   moveState: 0
   layerMask: -1
   canLosePlayer: 1
@@ -631,14 +630,16 @@ MonoBehaviour:
   playerLocalyRotate: {fileID: 99}
   rb: {fileID: 195}
   entityAction: {fileID: 399}
-  playerGravity: {fileID: 407}
+  entityRotate: {fileID: 404}
+  baseGravity: {fileID: 407}
   groundForwardCheck: {fileID: 390}
   groundCheck: {fileID: 397}
   playerAirMove: {fileID: 0}
   entityGravityAttractorSwitch: {fileID: 387}
   entityBumpUp: {fileID: 392}
   entityYoshiBoost: {fileID: 0}
-  fastForward: {fileID: 403}
+  fastForward: {fileID: 0}
+  entityMove: {fileID: 408}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 1
@@ -710,7 +711,7 @@ MonoBehaviour:
   timeBeforeActiveAllAttractorAfterJumpCalculation: 2
   marginNegativeJumpHit: -0.1
   entityJumpCalculation: {fileID: 388}
-  fastForward: {fileID: 403}
+  fastForward: {fileID: 0}
   entityJump: {fileID: 393}
 --- !u!114 &388
 MonoBehaviour:
@@ -775,14 +776,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca00765efa83f6469eeb208463557f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMove: 70
-  minInput: 0.15
+  speedMove: 100
+  easeAcceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.09832764
+      value: 0.99438095
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minAcceleration: 10
+  minInput: 0.35
   rb: {fileID: 195}
   entityController: {fileID: 401}
   entityAction: {fileID: 399}
   entityJump: {fileID: 393}
   groundForwardCheck: {fileID: 390}
   entitySlide: {fileID: 391}
+  currentSpeedMove: 10
 --- !u!114 &404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,14 +823,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnRate: 300
+  turnRateInAir: 300
   CameraFromPlayerOrientation: -1
   InputFromPlayerOrientation: -1
   InputFromCameraOrientation: -1
   forwardDot: 0.3
   behindDot: 0.3
+  ratioConsideredFullSpeed: 0.5
   entityAction: {fileID: 399}
+  baseGravity: {fileID: 407}
+  entityMove: {fileID: 408}
   objectToRotate: {fileID: 99}
   entityController: {fileID: 401}
+  rotateObject: {fileID: 1059119098}
 --- !u!114 &405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,31 +882,6 @@ MonoBehaviour:
   wereWeInNoGravity: 0
   currentRatioGravity: 1
   zonesNoGravity: []
---- !u!114 &403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 761759092991e2c40a84e56fcb2a0575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeWithNoGravity: 3
-  dotMarginDiffNormal: 0.71
-  entityController: {fileID: 401}
-  entityJump: {fileID: 393}
-  ikillableObject: {fileID: 45}
-  groundCheck: {fileID: 397}
-  rb: {fileID: 195}
-  entityAction: {fileID: 399}
-  baseGravityAttractorSwitch: {fileID: 387}
-  fastForward: 0
-  lastHitPlatform: {fileID: 0}
-  timeBeforeSwitch: 0.1
-  fastForwardTriggers: []
 --- !u!114 &396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2576,6 +2583,7 @@ Transform:
   - {fileID: 467071262012082493}
   - {fileID: 99}
   - {fileID: 83}
+  - {fileID: 1059119098}
   m_Father: {fileID: 115}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3359,6 +3367,114 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &470015562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470015563}
+  - component: {fileID: 470015565}
+  - component: {fileID: 470015564}
+  m_Layer: 12
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &470015563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470015562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.88}
+  m_LocalScale: {x: 0.10485244, y: 0.10485244, z: 4.0337014}
+  m_Children: []
+  m_Father: {fileID: 1059119098}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &470015565
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470015562}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &470015564
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470015562}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73cd38b43e5320a4cb1b49a884a36ab1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &1059119097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059119098}
+  m_Layer: 12
+  m_Name: Rotate
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059119098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059119097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 470015563}
+  m_Father: {fileID: 111}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &462274043591230749
 PrefabInstance:
   m_ObjectHideFlags: 0

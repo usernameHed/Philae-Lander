@@ -12,7 +12,7 @@ public class TriggerController : MonoBehaviour, IKillable
     {
         //throw new System.NotImplementedException();
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         entityTriggerManager.OwnTriggerEnter(other);
@@ -37,6 +37,7 @@ public class TriggerController : MonoBehaviour, IKillable
     {
         entityTriggerManager.OwnCollisionExit(collision);
     }
+    */
 
     public void Kill()
     {

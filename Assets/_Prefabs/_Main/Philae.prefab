@@ -270,7 +270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2768143984903197640
 Transform:
   m_ObjectHideFlags: 0
@@ -2301,7 +2301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 2
-  ratioIncreaseHeightMove: 0.5
+  ratioIncreaseHeightMove: 1
   noJumpLayer: []
   stayHold: 0
   canJumpInAir: 1
@@ -2319,6 +2319,7 @@ MonoBehaviour:
   entityBumpUp: {fileID: 6068529678874368934}
   entityYoshiBoost: {fileID: 468871667025130994}
   fastForward: {fileID: 3948622104594274118}
+  entityMove: {fileID: 6223110023887662021}
   hasJumped: 0
   justJumpedTimer: 0.2
   justGroundTimer: 0.1
@@ -2563,6 +2564,8 @@ MonoBehaviour:
   entityJump: {fileID: 3295248281479973674}
   entityGravityAttractorSwitch: {fileID: 9013407796872692123}
   groundForwardCheck: {fileID: 8552415473636058212}
+  entityMove: {fileID: 6223110023887662021}
+  entityRotate: {fileID: 6695023544682401022}
   amountAdded: 0
 --- !u!114 &6695023544682401022
 MonoBehaviour:
@@ -2577,6 +2580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnRate: 700
+  turnRateInAir: 200
   CameraFromPlayerOrientation: -1
   InputFromPlayerOrientation: -1
   InputFromCameraOrientation: -1

@@ -64,7 +64,7 @@ public class GroundCheck : MonoBehaviour
         radius = sphereCollider.radius;
         coolDownForStick.Reset();
 
-        ResearchInitialGround();
+        ResearchInitialGround(true);
     }
 
     public Vector3 ResearchInitialGround(bool setGAGravity = true)
@@ -143,8 +143,11 @@ public class GroundCheck : MonoBehaviour
 
     private bool CanChangeNormal(RaycastHit hitInfo)
     {
-        if (fastForward && !fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal))
-            return (false);
+        if (fastForward)
+        {
+            if (!fastForward.CanChangeNormal(hitInfo, dirSurfaceNormal))
+                return (false);
+        }
 
         return (true);
     }

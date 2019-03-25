@@ -9,6 +9,8 @@ public class EntityJump : MonoBehaviour
     protected float jumpHeight = 3f;
     [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("increase the height jump when we move faster")]
     protected float ratioIncreaseHeightMove = 0.5f;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
+    protected bool inputJump = true;
 
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] noJumpLayer = new string[] { "Walkable/FastForward", "Walkable/Dont" };
@@ -112,7 +114,7 @@ public class EntityJump : MonoBehaviour
         if (isForbidden != -1)
             return (false);
 
-        if (!fastForward.CanJump())
+        if (fastForward && !fastForward.CanJump())
             return (false);
 
         return (true);
@@ -199,10 +201,14 @@ public class EntityJump : MonoBehaviour
 
         entityGravityAttractorSwitch.SetLastDirJump(normalizedNormalGravity);
 
-        Vector3 normalizedForwardPlayer = (!isForbiddenForward)
-            //? entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump
-            ? entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump
-            : Vector3.zero;
+        Vector3 normalizedForwardPlayer = Vector3.zero;
+        if (!isForbiddenForward)
+        {
+            if (inputJump)
+                normalizedForwardPlayer = entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump;
+            else
+                normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump;
+        }
 
         lastDirForwardJump = normalizedForwardPlayer;
 

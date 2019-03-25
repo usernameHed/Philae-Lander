@@ -17,12 +17,12 @@ public class EntityTriggerManager : MonoBehaviour
     public UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
 
 
-
+    /*
     public void OwnTriggerEnter(Collider other)
     {
 
     }
-
+    
     public void OwnTriggerStay(Collider other)
     {
 
@@ -47,6 +47,7 @@ public class EntityTriggerManager : MonoBehaviour
     {
 
     }
+    */
 
     public void Kill()
     {
