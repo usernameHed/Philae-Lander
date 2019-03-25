@@ -6,75 +6,17 @@ using UnityEngine;
 
 public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
 {
-    /*
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float marginDotGA = 0.71f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float marginNormalJumpInGA = 0.3f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float marginNegativeJumpHit = -0.1f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float timeBeforeApplyForceDown = 0.4f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float timeBeforeActiveAllAttractorAfterJumpCalculation = 2f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public int maxGravityApplied = 3;
-
-    [FoldoutGroup("GamePlay"), Tooltip("More you have, less they attract !"), SerializeField]
-    public float ratioOtherDistance = 1.3f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    public float maxDistBasedOnHowManyTimeDefault = 3f;
-    */
-
-    //[FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    //protected Rigidbody rbEntity = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     protected EntityController entityController;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     protected BaseGravity baseGravity;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     protected GroundCheck groundCheck;
-    /*
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    protected GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
     
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
-    protected GravityAttractorLD.PointInfo tmpLastPointInfo = new GravityAttractorLD.PointInfo();
-
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
-    protected List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
-
-
-    protected Vector3 lastNormalJumpChoosen = Vector3.up;
-    */
     protected Vector3 wantedDirGravityOnGround = Vector3.zero;
 
     public Vector3 GetWantedGravityOnGround() => wantedDirGravityOnGround;
-    //private bool isGoingDown = false;
-
-    /*
-public void EnterInZone(GravityAttractorLD refGravityAttractor)
-{
-    if (!allGravityAttractor.Contains(refGravityAttractor))
-        allGravityAttractor.Add(refGravityAttractor);
-}
-
-public void LeanInZone(GravityAttractorLD refGravityAttractor)
-{
-    allGravityAttractor.Remove(refGravityAttractor);
-}
-
-
-public bool IsTheSamePointInfo(GravityAttractorLD.PointInfo tmpInfo)
-{
-    //if (!tmpInfo.refGA && !pointInfo.refGA)
-    //    return (true);
-    if (!tmpInfo.refGA || !pointInfo.refGA)
-        return (false);
-    return (tmpInfo.refGA.GetInstanceID() == pointInfo.refGA.GetInstanceID());
-}
-*/
-
+    
     /// <summary>
     /// gravity base apply on this attractor
     /// </summary>
@@ -112,16 +54,16 @@ public bool IsTheSamePointInfo(GravityAttractorLD.PointInfo tmpInfo)
     /// <param name="entityPosition"></param>
     /// <param name="justCalculate"></param>
     /// <returns></returns>
-    protected override void CalculateGAGravity()
+    protected override void CalculateGAGravity(Vector3 rbPos)
     {
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
-            wantedDirGravityOnGround = GetAirSphereGravity(rbEntity.position).sphereGravity;
+            wantedDirGravityOnGround = GetAirSphereGravity(rbPos).sphereGravity;
         }
         else
         {
-            pointInfo = GetAirSphereGravity(rbEntity.position);
+            pointInfo = GetAirSphereGravity(rbPos);
             wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
     }

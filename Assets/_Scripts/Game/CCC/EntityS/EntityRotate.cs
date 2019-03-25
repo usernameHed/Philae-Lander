@@ -16,6 +16,8 @@ public class EntityRotate : MonoBehaviour
     public ExtQuaternion.OrientationRotation InputFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation InputFromCameraOrientation = ExtQuaternion.OrientationRotation.NONE;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    private bool calculateOrientation = true;
 
     [FoldoutGroup("GamePlay"), Range(0, 1), SerializeField, Tooltip("ref rigidbody")]
     private float forwardDot = 0.3f;
@@ -103,7 +105,8 @@ public class EntityRotate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetOrientationRotation();
+        if (calculateOrientation)
+            SetOrientationRotation();
 
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {

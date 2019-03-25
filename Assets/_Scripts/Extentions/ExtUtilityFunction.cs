@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 /// <summary>
 public static class ExtUtilityFunction
 {
-    private static Vector3 wrongVector = new Vector3(-9999, -9999, -9999);
+    private static Vector3 wrongVector = new Vector3(0.42f, 0, 0);
 
     #region core script
 

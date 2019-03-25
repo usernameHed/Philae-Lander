@@ -98,7 +98,7 @@ public class EntityMove : MonoBehaviour
     {
         Vector3 dirMove = Vector3.zero;
 
-        if (groundForwardCheck.IsForwardForbiddenWall())
+        if (groundForwardCheck && groundForwardCheck.IsForwardForbiddenWall())
         {
             //Debug.Log("move Straff");
             dirMove = entitySlide.GetStraffDirection();

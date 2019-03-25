@@ -93,13 +93,15 @@ public class EntityGravity : BaseGravity
         bool applyForceUp, bool applyForceDown)
     {
         Vector3 finalGravity = rbVelocity;
-        
-        finalGravity += AirBaseGravity(gravityOrientation, positionObject, baseGravityAttractorSwitch.GetAirRatioGravity()) * entityNoGravity.GetNoGravityRatio();
+        float noGravityRatio = (entityNoGravity ? entityNoGravity.GetNoGravityRatio() : 1f);
+
+
+        finalGravity += AirBaseGravity(gravityOrientation, positionObject, baseGravityAttractorSwitch.GetAirRatioGravity()) * noGravityRatio;
 
         
         if (isGoingDown && applyForceDown)
         {
-            finalGravity += base.AirAddGoingDown(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * baseGravityAttractorSwitch.GetRatioGravityDown();
+            finalGravity += base.AirAddGoingDown(gravityOrientation, positionObject) * noGravityRatio * baseGravityAttractorSwitch.GetRatioGravityDown();
         }
 
         
@@ -109,7 +111,7 @@ public class EntityGravity : BaseGravity
         {
             isGoingDown = false;
             if (applyForceUp)
-                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * baseGravityAttractorSwitch.GetAirRatioGravity();
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * noGravityRatio * baseGravityAttractorSwitch.GetAirRatioGravity();
         }
         //here we are going up, continiue pressing the jump button, AND in gravityAttractor
         else if (!isGoingDown && entityAction.Jump
@@ -117,7 +119,7 @@ public class EntityGravity : BaseGravity
         {
             isGoingDown = false;
             if (applyForceUp)
-                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * entityNoGravity.GetNoGravityRatio() * (baseGravityAttractorSwitch.GetAirRatioGravity() / 2);
+                finalGravity += AirAddGoingUp(gravityOrientation, positionObject) * noGravityRatio * (baseGravityAttractorSwitch.GetAirRatioGravity() / 2);
         }
 
         if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())
@@ -133,7 +135,7 @@ public class EntityGravity : BaseGravity
         if (!entityController.isPlayer)
             return (false);
 
-        if (entityNoGravity.WereWeInNoGravity())
+        if (entityNoGravity && entityNoGravity.WereWeInNoGravity())
             return (false);
 
         if (entityYoshiBoost && entityYoshiBoost.AreWeBoosting())

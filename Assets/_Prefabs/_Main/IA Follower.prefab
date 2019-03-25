@@ -381,21 +381,16 @@ GameObject:
   - component: {fileID: 115}
   - component: {fileID: 399}
   - component: {fileID: 397}
-  - component: {fileID: 390}
-  - component: {fileID: 391}
-  - component: {fileID: 392}
   - component: {fileID: 401}
   - component: {fileID: 398}
   - component: {fileID: 393}
   - component: {fileID: 407}
   - component: {fileID: 387}
-  - component: {fileID: 388}
   - component: {fileID: 395}
   - component: {fileID: 408}
   - component: {fileID: 404}
   - component: {fileID: 405}
   - component: {fileID: 400}
-  - component: {fileID: 389}
   - component: {fileID: 396}
   m_Layer: 11
   m_Name: IA Follower
@@ -453,13 +448,14 @@ MonoBehaviour:
   stickToCeillingDist: 0.6
   sizeRadiusRayCast: 0.4
   timeInAirBeforeNotStick: 0.3
+  calculateSurfaceNormal: 0
   sphereCollider: {fileID: 201}
   rb: {fileID: 195}
   baseGravity: {fileID: 407}
   entityJump: {fileID: 393}
   entityController: {fileID: 401}
   baseGravityAttractorSwitch: {fileID: 387}
-  entityNoGravity: {fileID: 389}
+  entityNoGravity: {fileID: 0}
   fastForward: {fileID: 0}
   isGrounded: 0
   isAlmostGrounded: 0
@@ -468,81 +464,6 @@ MonoBehaviour:
   collRayCastMargin: 0.3
   lastPlatform: {fileID: 0}
   dirNormal: {x: 0, y: 0, z: 0}
---- !u!114 &390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3982bef8fd26640865935e153bc170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inAirForwardWall: 1
-  timeBetween2TestForward: 0.8
-  distForward: 0.6
-  sizeRadiusForward: 0.3
-  dotMarginImpact: 0.3
-  upDistRaycast: 0
-  lateralDistRaycast: 0.5
-  distForwardRaycast: 1
-  isAdvancedForward: 0
-  isForwardAdvanceNormalOk: 0
-  isForwardAdvanceRightOrLeft: 2
-  groundCheck: {fileID: 397}
-  rb: {fileID: 195}
-  entityController: {fileID: 401}
-  entityGravity: {fileID: 407}
-  entityAction: {fileID: 399}
-  entitySlide: {fileID: 391}
-  entityGravityAttractorSwitch: {fileID: 387}
-  entityBumpUp: {fileID: 392}
-  isForwardWall: 0
-  isForbiddenForward: 0
-  collRayCastMargin: 0.1
---- !u!114 &391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54dc0b7c6147634998c6c59bf5d5a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dotMarginNiceSlope: 0.2
-  minMaxMagnitude: {x: 0, y: 0.7}
-  minMagnitudeSlideWhenCastRightOrLeft: 0.4
-  playerGravity: {fileID: 407}
-  entityController: {fileID: 401}
-  entityAction: {fileID: 399}
-  rb: {fileID: 195}
-  entityRotate: {fileID: 404}
-  groundForwardCheck: {fileID: 390}
---- !u!114 &392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea765e49735f8494f82106140d84d239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dotMargin: 0.4
-  entityController: {fileID: 401}
-  entityGravity: {fileID: 407}
-  entityAirMove: {fileID: 0}
-  rb: {fileID: 195}
-  entityJump: {fileID: 393}
-  entityGravityAttractorSwitch: {fileID: 387}
-  hasBumpedUp: 0
 --- !u!114 &401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,8 +495,8 @@ MonoBehaviour:
   groundCheck: {fileID: 397}
   entityAction: {fileID: 399}
   baseGravityAttractorSwitch: {fileID: 387}
-  entityNoGravity: {fileID: 389}
-  entityBumpUp: {fileID: 392}
+  entityNoGravity: {fileID: 0}
+  entityBumpUp: {fileID: 0}
   entityAirMove: {fileID: 0}
   fastForward: {fileID: 0}
   clampRbSpeed: {fileID: 400}
@@ -606,7 +527,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   iAController: {fileID: 401}
   coinController: {fileID: 0}
-  entityNoGravity: {fileID: 389}
+  entityNoGravity: {fileID: 0}
   uniqueGravityAttractorSwitch: {fileID: 387}
 --- !u!114 &393
 MonoBehaviour:
@@ -622,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 1.5
   ratioIncreaseHeightMove: 0.5
+  inputJump: 0
   noJumpLayer: []
   stayHold: 0
   canJumpInAir: 1
@@ -632,11 +554,11 @@ MonoBehaviour:
   entityAction: {fileID: 399}
   entityRotate: {fileID: 404}
   baseGravity: {fileID: 407}
-  groundForwardCheck: {fileID: 390}
+  groundForwardCheck: {fileID: 0}
   groundCheck: {fileID: 397}
   playerAirMove: {fileID: 0}
   entityGravityAttractorSwitch: {fileID: 387}
-  entityBumpUp: {fileID: 392}
+  entityBumpUp: {fileID: 0}
   entityYoshiBoost: {fileID: 0}
   fastForward: {fileID: 0}
   entityMove: {fileID: 408}
@@ -670,7 +592,7 @@ MonoBehaviour:
   entityController: {fileID: 401}
   groundCheck: {fileID: 397}
   baseGravityAttractorSwitch: {fileID: 387}
-  entityNoGravity: {fileID: 389}
+  entityNoGravity: {fileID: 0}
   stickToFloorGravity: 6
   rbUpAddGravity: 2
   entityAction: {fileID: 399}
@@ -710,41 +632,10 @@ MonoBehaviour:
   timeBeforeApplyForceDown: 0.4
   timeBeforeActiveAllAttractorAfterJumpCalculation: 2
   marginNegativeJumpHit: -0.1
-  entityJumpCalculation: {fileID: 388}
+  calculateGroundPos: 0
+  entityJumpCalculation: {fileID: 0}
   fastForward: {fileID: 0}
   entityJump: {fileID: 393}
---- !u!114 &388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59df0b8bcf807b84ea1bd8b232ae48d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distRaycastDOWN: 4
-  marginJumpEndDot: 0.5
-  minJumpSpeedForNormalGravity: 0.7
-  entityController: {fileID: 401}
-  rb: {fileID: 195}
-  entityGravity: {fileID: 407}
-  entityJump: {fileID: 393}
-  entityGravityAttractorSwitch: {fileID: 387}
-  magicTrajectoryCorrection: 1.4
-  infoJump:
-    didWeHit: 0
-    pointHit: {x: 0, y: 0, z: 0}
-    normalHit: {x: 0, y: 0, z: 0}
-    objHit: {fileID: 0}
-    dirUltimatePlotPoint: {x: 0, y: 0, z: 0}
-    initialPosBeforePlots: {x: 0, y: 0, z: 0}
-    ultimatePlotPoint: {x: 0, y: 0, z: 0}
-    lastVelocity: {x: 0, y: 0, z: 0}
-    lastRaycastHit: 0
-    penultimateRaycastHit: 0
 --- !u!114 &395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,8 +698,8 @@ MonoBehaviour:
   entityController: {fileID: 401}
   entityAction: {fileID: 399}
   entityJump: {fileID: 393}
-  groundForwardCheck: {fileID: 390}
-  entitySlide: {fileID: 391}
+  groundForwardCheck: {fileID: 0}
+  entitySlide: {fileID: 0}
   currentSpeedMove: 10
 --- !u!114 &404
 MonoBehaviour:
@@ -827,6 +718,7 @@ MonoBehaviour:
   CameraFromPlayerOrientation: -1
   InputFromPlayerOrientation: -1
   InputFromCameraOrientation: -1
+  calculateOrientation: 0
   forwardDot: 0.3
   behindDot: 0.3
   ratioConsideredFullSpeed: 0.5
@@ -866,22 +758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   rb: {fileID: 195}
---- !u!114 &389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656a48b97ab18a84a8413a5e18ab460a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityController: {fileID: 401}
-  wereWeInNoGravity: 0
-  currentRatioGravity: 1
-  zonesNoGravity: []
 --- !u!114 &396
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -159,7 +159,7 @@ public class EntityJump : MonoBehaviour
         //reduce height when max speed
         float jumpBoostHeight = jumpHeight / (1 + ((1 - ratioIncreaseHeightMove) * entityMove.GetMagnitudeAcceleration()));
 
-        if (groundForwardCheck.IsForwardForbiddenWall())
+        if (groundForwardCheck && groundForwardCheck.IsForwardForbiddenWall())
             jumpBoostHeight = jumpHeight;
 
         //Debug.Log("boost height: " + jumpBoostHeight);
@@ -190,7 +190,9 @@ public class EntityJump : MonoBehaviour
     /// <returns></returns>
     private Vector3 GetNormalizedJumpDir()
     {
-        bool isForbiddenForward = groundForwardCheck.IsForwardForbiddenWall();
+        bool isForbiddenForward = false;
+        if (groundForwardCheck)
+            isForbiddenForward = groundForwardCheck.IsForwardForbiddenWall();
         //bool isForbiddenForward = false;
         lastVelocityJump = (isForbiddenForward) ? 0 : entityMove.GetMagnitudeAcceleration();
 
@@ -233,7 +235,8 @@ public class EntityJump : MonoBehaviour
         if (playerAirMove)
             playerAirMove.JustJumped();
         entityGravityAttractorSwitch.JustJumped();
-        entityBumpUp.JustJumped();
+        if (entityBumpUp)
+            entityBumpUp.JustJumped();
         if (entityYoshiBoost)
             entityYoshiBoost.JustJumped();
         if (fastForward)

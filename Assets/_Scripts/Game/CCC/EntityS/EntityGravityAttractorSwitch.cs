@@ -12,6 +12,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     private float timeBeforeActiveAllAttractorAfterJumpCalculation = 2f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private float marginNegativeJumpHit = -0.1f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private bool calculateGroundPos = true;
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJumpCalculation entityJumpCalculation;
@@ -105,7 +107,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     /// <param name="entityPosition"></param>
     /// <param name="justCalculate"></param>
     /// <returns></returns>
-    protected override void CalculateGAGravity()
+    protected override void CalculateGAGravity(Vector3 rbPos)
     {
         //Setup jump calculation when going down
         if (!applyGalaxyForce && baseGravity.IsGoingDownToGround())
@@ -114,7 +116,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //here do a jumpCalculation
             applyGalaxyForce = true;
 
-            if (entityJump.HasJumped() && entityJumpCalculation.UltimeTestBeforeAttractor())
+            if (entityJump.HasJumped() && entityJumpCalculation && entityJumpCalculation.UltimeTestBeforeAttractor())
             {
                 //Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
@@ -131,7 +133,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             coolDownBeforeAttract.Reset();
             pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
             pointInfo.pos = pointInfo.posRange = groundCheck.GetPointLastHit();
-            wantedDirGravityOnGround = GetAirSphereGravity(rbEntity.position).sphereGravity;
+            wantedDirGravityOnGround = GetAirSphereGravity(rbPos).sphereGravity;
         }
         //here we can't apply, because we just jump (OR because we are falling and in the timer
         else if (!CanApplyGravityForce())
@@ -139,12 +141,13 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //Debug.Log("ici gravité last jump !");
             pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
             //pointGroundHit = groundCheck.ResearchInitialGround(false);
-            pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround(false);
+            if (calculateGroundPos)
+                pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround(false);
         }
         else
         {
             //Debug.Log("ici in air gravity");
-            pointInfo = GetAirSphereGravity(rbEntity.position);
+            pointInfo = GetAirSphereGravity(rbPos);
             wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
     }
@@ -206,8 +209,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             Debug.LogWarning("null gravity !!");
             pointInfo.sphereGravity = lastNormalJumpChoosen;
-            //pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround(false);
-            pointInfo.pos = pointInfo.posRange = lastNormalJumpChoosen * 999;
+            if (calculateGroundPos)
+                pointInfo.pos = pointInfo.posRange = lastNormalJumpChoosen * 999;
             return (pointInfo);
         }
 
@@ -260,7 +263,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             GravityAttractorLD.PointInfo closestPointJump = pointInfo;
             closestPointJump.sphereGravity = middleOfAllVec;
-            closestPointJump.pos = closestPointJump.posRange = groundCheck.ResearchInitialGround(false);
+            if (calculateGroundPos)
+                closestPointJump.pos = closestPointJump.posRange = groundCheck.ResearchInitialGround(false);
             return (closestPointJump);
         }
 
@@ -274,6 +278,6 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
     private void FixedUpdate()
     {
-        CalculateGAGravity();
+        CalculateGAGravity(rbEntity.transform.position);
     }
 }

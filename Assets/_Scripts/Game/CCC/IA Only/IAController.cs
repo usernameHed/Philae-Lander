@@ -163,8 +163,6 @@ public class IAController : EntityController, IPooledObject, IKillable
         iAJump.OnGrounded();
         baseGravity.OnGrounded();
         baseGravityAttractorSwitch.OnGrounded();
-        entityNoGravity.OnGrounded();
-        entityBumpUp.OnGrounded();
 
         SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
     }
@@ -223,23 +221,21 @@ public class IAController : EntityController, IPooledObject, IKillable
     public void OnObjectSpawn()
     {
         rb.transform.position = transform.position;
-        //throw new System.NotImplementedException();
     }
 
     public void OnDesactivePool()
     {
-        //throw new System.NotImplementedException();
+
     }
 
     public void Kill()
     {
         Destroy(gameObject);
-        //throw new System.NotImplementedException();
     }
 
     public void GetHit(int amount, Vector3 posAttacker)
     {
-        //throw new System.NotImplementedException();
+
     }
 
     private void OnDrawGizmos()

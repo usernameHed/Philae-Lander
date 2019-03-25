@@ -16,6 +16,8 @@ public class GroundCheck : MonoBehaviour
     public float sizeRadiusRayCast = 0.5f;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float timeInAirBeforeNotStick = 0.3f;
+    [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    private bool calculateSurfaceNormal = true;
 
     [FoldoutGroup("Object"), SerializeField]
     private SphereCollider sphereCollider = null;
@@ -213,13 +215,20 @@ public class GroundCheck : MonoBehaviour
 
             groundValue = true;
 
-            dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
-                baseGravity.GetMainAndOnlyGravity() * -0.01f,
-                groundCheckDistance,
-                sizeRadiusRayCast,
-                hitInfo.point,
-                collRayCastMargin,
-                entityController.layerMask);
+            if (calculateSurfaceNormal)
+            {
+                dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+                    baseGravity.GetMainAndOnlyGravity() * -0.01f,
+                    groundCheckDistance,
+                    sizeRadiusRayCast,
+                    hitInfo.point,
+                    collRayCastMargin,
+                    entityController.layerMask);
+            }
+            else
+            {
+                dirSurfaceNormal = hitInfo.normal;
+            }
 
 
             bool previous = fastForward && fastForward.IsInFastForward() && !fastForward.SwithcingIsRunning();
@@ -275,7 +284,7 @@ public class GroundCheck : MonoBehaviour
                 //Debug.Log("DONT STICK");
             }
 
-            if (!isGrounded && !isAlmostGrounded && !entityNoGravity.IsBaseOrMoreRatio())
+            if (!isGrounded && !isAlmostGrounded && (entityNoGravity && !entityNoGravity.IsBaseOrMoreRatio()) )
             {
                 GroundChecking(stickToCeillingDist, ref isGrounded, baseGravity.GetMainAndOnlyGravity() * 0.01f);
             }

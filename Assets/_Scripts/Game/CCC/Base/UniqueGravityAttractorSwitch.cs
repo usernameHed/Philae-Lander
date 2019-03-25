@@ -105,9 +105,9 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
     /// <param name="entityPosition"></param>
     /// <param name="justCalculate"></param>
     /// <returns></returns>
-    protected virtual void CalculateGAGravity()
+    protected virtual void CalculateGAGravity(Vector3 rbPos)
     {
-        pointInfo = GetAirSphereGravity(rbEntity.position);
+        pointInfo = GetAirSphereGravity(rbPos);
     }
 
     /// <summary>
@@ -279,6 +279,6 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
     private void FixedUpdate()
     {
         if (isUniqueGravity)
-            CalculateGAGravity();
+            CalculateGAGravity(rbEntity.transform.position);
     }
 }
