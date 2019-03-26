@@ -7,7 +7,7 @@ using UnityEngine;
 public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
-    protected bool isUniqueGravity = true;
+    protected bool calculateEveryFixedFrame = true;
 
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float marginDotGA = 0.71f;
@@ -27,7 +27,10 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
     
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     protected List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
-    
+
+    [FoldoutGroup("Debug"), Tooltip("time between 2 update"), SerializeField]
+    protected FrequencyTimer frequencyTimer;
+
     protected Vector3 lastNormalJumpChoosen = Vector3.up;
 
     public void EnterInZone(GravityAttractorLD refGravityAttractor)
@@ -278,7 +281,14 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isUniqueGravity)
+        if (!calculateEveryFixedFrame)
+        {
+            if (frequencyTimer.Ready())
+                CalculateGAGravity(rbEntity.transform.position);
+        }
+        else
+        {
             CalculateGAGravity(rbEntity.transform.position);
+        }
     }
 }

@@ -225,6 +225,8 @@ public class GravityAttractorLD : MonoBehaviour
     }
 
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    public bool isMovingLD = false;
+    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
     public List<GravityPoint> gravityPoints = new List<GravityPoint>();
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
     public List<GravityLine> gravityLines = new List<GravityLine>();
@@ -255,6 +257,9 @@ public class GravityAttractorLD : MonoBehaviour
     private Vector3[] arrayPointsTrianglesCenterTmp;
     private Vector3[] arrayPointsQuadsCenterTmp;
 
+    private ExtTriangle[] arrayExtQuads;
+    private ExtTriangle[] arrayExtTriangles;
+    private ExtLine[] arrayExtLines;
 
 
     private void Start()
@@ -295,6 +300,45 @@ public class GravityAttractorLD : MonoBehaviour
         allResultPosRange = ExtUtilityFunction.CreateNullVectorArray(indexAllResult);
 
         valueArrayChanged = true;
+
+        PrecalculAll();
+    }
+
+    [Button]
+    public void PrecalculAll()
+    {
+        arrayExtLines = new ExtLine[gravityLines.Count];
+        arrayExtTriangles = new ExtTriangle[gravityTriangles.Count];
+        arrayExtQuads = new ExtTriangle[gravityQuad.Count * 2];
+
+        for (int i = 0; i < gravityLines.Count; i++)
+        {
+            arrayExtLines[i] = new ExtLine(gravityLines[i].pointA.position, gravityLines[i].pointB.position, gravityLines[i].noGravityBorders);
+        }
+        for (int i = 0; i < gravityTriangles.Count; i++)
+        {
+            arrayExtTriangles[i] = new ExtTriangle(gravityTriangles[i].pointA.position, gravityTriangles[i].pointB.position, gravityTriangles[i].pointC.position,
+                gravityTriangles[i].unidirectionnal,
+                gravityTriangles[i].inverseDirection,
+                gravityTriangles[i].infinitePlane,
+                gravityTriangles[i].noGravityBorders);
+        }
+        for (int i = 0; i < gravityQuad.Count; i++)
+        {
+            //create 2 triangle.
+            arrayExtQuads[i] = new ExtTriangle(gravityQuad[i].pointA.position, gravityQuad[i].pointB.position, gravityQuad[i].pointC.position,
+                gravityQuad[i].unidirectionnal,
+                gravityQuad[i].inverseDirection,
+                gravityQuad[i].infinitePlane,
+                gravityQuad[i].noGravityBorders);
+
+            arrayExtQuads[i + gravityQuad.Count] = new ExtTriangle(gravityQuad[i].pointC.position, gravityQuad[i].pointD.position, gravityQuad[i].pointA.position,
+                gravityQuad[i].unidirectionnal,
+                gravityQuad[i].inverseDirection,
+                gravityQuad[i].infinitePlane,
+                gravityQuad[i].noGravityBorders);
+        }
+
     }
 
     
@@ -358,12 +402,12 @@ public class GravityAttractorLD : MonoBehaviour
 
     private void GetClosestPointFromGravityPoints(Vector3 posEntity, ref Vector3 closestPoint, ref Vector3 closestRangePoint)
     {
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPoints);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPoints);
 
         for (int i = 0; i < gravityPoints.Count; i++)
         {
-            if (!gravityPoints[i].point)
-                continue;
+            //if (!gravityPoints[i].point)
+            //    continue;
             //arrayPoints[i] = gravityPoints[i].point.position;
             arrayPoints[i] = GetRightPosWithRange(posEntity, gravityPoints[i].point.position, gravityPoints[i].GetPointInfo().range, gravityPoints[i].GetPointInfo().maxRange);
         }
@@ -381,16 +425,16 @@ public class GravityAttractorLD : MonoBehaviour
     /// <returns></returns>
     private void GetClosestPointFromLines(Vector3 posEntity, ref Vector3 closestPoint, ref Vector3 closestRangePoint)
     {
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsLines);
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsLinesCenterTmp);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsLines);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsLinesCenterTmp);
 
         for (int i = 0; i < gravityLines.Count; i++)
         {
-            if (!gravityLines[i].pointA || !gravityLines[i].pointB)
-                continue;
+            //if (!gravityLines[i].pointA || !gravityLines[i].pointB)
+            //    continue;
 
-            ExtLine line = new ExtLine(gravityLines[i].pointA.position, gravityLines[i].pointB.position, gravityLines[i].noGravityBorders);
-            arrayPointsLinesCenterTmp[i] = line.ClosestPointTo(posEntity);
+            //ExtLine line = new ExtLine(gravityLines[i].pointA.position, gravityLines[i].pointB.position, gravityLines[i].noGravityBorders);
+            arrayPointsLinesCenterTmp[i] = arrayExtLines[i].ClosestPointTo(posEntity);
             arrayPointsLines[i] = GetRightPosWithRange(posEntity, arrayPointsLinesCenterTmp[i], gravityLines[i].GetPointInfo().range, gravityLines[i].GetPointInfo().maxRange);
         }
         closestRangePoint = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsLines, ref indexFound);
@@ -405,21 +449,22 @@ public class GravityAttractorLD : MonoBehaviour
     /// <returns></returns>
     private void GetClosestPointFromTriangles(Vector3 posEntity, ref Vector3 closestPoint, ref Vector3 closestRangePoint)
     {
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsTriangles);
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsTrianglesCenterTmp);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsTriangles);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsTrianglesCenterTmp);
 
         for (int i = 0; i < gravityTriangles.Count; i++)
         {
-            if (!gravityTriangles[i].pointA || !gravityTriangles[i].pointB || !gravityTriangles[i].pointC)
-                continue;
+            //if (!gravityTriangles[i].pointA || !gravityTriangles[i].pointB || !gravityTriangles[i].pointC)
+            //    continue;
 
-            ExtTriangle triangle = new ExtTriangle(gravityTriangles[i].pointA.position, gravityTriangles[i].pointB.position, gravityTriangles[i].pointC.position,
-                gravityTriangles[i].unidirectionnal,
-                gravityTriangles[i].inverseDirection,
-                gravityTriangles[i].infinitePlane,
-                gravityTriangles[i].noGravityBorders);
+            
+            //ExtTriangle triangle = new ExtTriangle(gravityTriangles[i].pointA.position, gravityTriangles[i].pointB.position, gravityTriangles[i].pointC.position,
+            //    gravityTriangles[i].unidirectionnal,
+            //    gravityTriangles[i].inverseDirection,
+            //    gravityTriangles[i].infinitePlane,
+            //    gravityTriangles[i].noGravityBorders);
 
-            arrayPointsTrianglesCenterTmp[i] = triangle.ClosestPointTo(posEntity);
+            arrayPointsTrianglesCenterTmp[i] = arrayExtTriangles[i].ClosestPointTo(posEntity);
             arrayPointsTriangles[i] = GetRightPosWithRange(posEntity, arrayPointsTrianglesCenterTmp[i], gravityTriangles[i].GetPointInfo().range, gravityTriangles[i].GetPointInfo().maxRange);
 
             //arrayPointsTriangles[i] = triangle.ClosestPointTo(posEntity);
@@ -437,32 +482,34 @@ public class GravityAttractorLD : MonoBehaviour
     /// </summary>
     private void GetClosestPointFromQuads(Vector3 posEntity, ref Vector3 closestPoint, ref Vector3 closestRangePoint)
     {
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsQuads);
-        ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsQuadsCenterTmp);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsQuads);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref arrayPointsQuadsCenterTmp);
 
 
         for (int i = 0; i < gravityQuad.Count; i++)
         {
-            if (!gravityQuad[i].pointA || !gravityQuad[i].pointB || !gravityQuad[i].pointC || !gravityQuad[i].pointD)
-                continue;
+            //if (!gravityQuad[i].pointA || !gravityQuad[i].pointB || !gravityQuad[i].pointC || !gravityQuad[i].pointD)
+            //    continue;
 
-            //create 2 triangle.
+            /*//create 2 triangle.
             ExtTriangle triangleA = new ExtTriangle(gravityQuad[i].pointA.position, gravityQuad[i].pointB.position, gravityQuad[i].pointC.position,
                 gravityQuad[i].unidirectionnal,
                 gravityQuad[i].inverseDirection,
                 gravityQuad[i].infinitePlane,
                 gravityQuad[i].noGravityBorders);
-
-            arrayPointsQuadsCenterTmp[i] = triangleA.ClosestPointTo(posEntity);
+                */
+            arrayPointsQuadsCenterTmp[i] = arrayExtQuads[i].ClosestPointTo(posEntity);
             arrayPointsQuads[i] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i], gravityQuad[i].GetPointInfo().range, gravityQuad[i].GetPointInfo().maxRange);
 
+            /*
             ExtTriangle triangleB = new ExtTriangle(gravityQuad[i].pointC.position, gravityQuad[i].pointD.position, gravityQuad[i].pointA.position,
                 gravityQuad[i].unidirectionnal,
                 gravityQuad[i].inverseDirection,
                 gravityQuad[i].infinitePlane,
                 gravityQuad[i].noGravityBorders);
+                */
 
-            arrayPointsQuadsCenterTmp[i + gravityQuad.Count] = triangleB.ClosestPointTo(posEntity);
+            arrayPointsQuadsCenterTmp[i + gravityQuad.Count] = arrayExtQuads[i + gravityQuad.Count].ClosestPointTo(posEntity);
             arrayPointsQuads[i + gravityQuad.Count] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i + gravityQuad.Count], gravityQuad[i].GetPointInfo().range, gravityQuad[i].GetPointInfo().maxRange);
         }
         //Vector3 closestFound = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPointsQuads, ref indexFound);
@@ -494,8 +541,8 @@ public class GravityAttractorLD : MonoBehaviour
         Vector3 closestPoint = ExtUtilityFunction.GetNullVector();
         Vector3 closestRangePoint = ExtUtilityFunction.GetNullVector();
 
-        ExtUtilityFunction.FillArrayWithWrongVector(ref allResultPos);
-        ExtUtilityFunction.FillArrayWithWrongVector(ref allResultPosRange);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref allResultPos);
+        //ExtUtilityFunction.FillArrayWithWrongVector(ref allResultPosRange);
 
 
         //if there are individual points, add to result

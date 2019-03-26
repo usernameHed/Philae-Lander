@@ -26,6 +26,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     private FrequencyCoolDown coolDownBeforeApplyForceDown = new FrequencyCoolDown();
     private FrequencyCoolDown coolDownBeforeAttract = new FrequencyCoolDown();
 
+
     private bool applyGalaxyForce = false;
 
 
@@ -278,6 +279,14 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
     private void FixedUpdate()
     {
-        CalculateGAGravity(rbEntity.transform.position);
+        if (!calculateEveryFixedFrame)
+        {
+            if (frequencyTimer.Ready())
+                CalculateGAGravity(rbEntity.transform.position);
+        }
+        else
+        {
+            CalculateGAGravity(rbEntity.transform.position);
+        }
     }
 }

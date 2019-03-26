@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aaa0316b593314994ba5a0dd0ac388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUniqueGravity: 1
+  calculateEveryFixedFrame: 0
   marginDotGA: 0.71
   ratioOtherDistance: 1.3
   maxDistBasedOnHowManyTimeDefault: 3
@@ -1117,6 +1117,11 @@ MonoBehaviour:
     sphereGravity: {x: 0, y: 0, z: 0}
     refGA: {fileID: 0}
   allGravityAttractor: []
+  frequencyTimer:
+    updateFrequency: 0.3
+    addRandomAtStart: 1
+    notTheFirstTime: 0
+    waitOnlyOnce: 0
 --- !u!114 &3546694355151382722
 MonoBehaviour:
   m_ObjectHideFlags: 0

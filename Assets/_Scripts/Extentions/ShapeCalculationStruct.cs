@@ -29,15 +29,13 @@ public struct ExtTriangle
         noGravityBorders = _noGravityBorders;
 
         TriNorm = Vector3.Cross(a - b, a - c);
-
-        //try to inverse normal
-        //if (unidirectionnal && inverseDirection)
-        //    TriNorm *= -1;
+        TriNormNormalize = TriNorm.normalized;
     }
 
     public Vector3[] Verticies => new[] { A, B, C };
 
     public readonly Vector3 TriNorm;
+    public readonly Vector3 TriNormNormalize;
 
     //private static readonly RangeDouble ZeroToOne = new RangeDouble(0, 1);
 
@@ -115,12 +113,12 @@ public struct ExtTriangle
                 //Debug.Log("ici on est DANS le plane, ET en noGravityBorder: tester la normal ensuite !");
                 if (unidirectionnal)
                 {
-                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNorm.normalized, p))); //get the good point (or null) in a plane unidirectionnal
+                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNormNormalize, p))); //get the good point (or null) in a plane unidirectionnal
                 }
                 else
                 {
                     //ici en gravityBorder, et on est dans le plan, et c'esst multi directionnel, alors OK dac !
-                    return (TriPlane.Project(EdgeAb.A, TriNorm.normalized, p));
+                    return (TriPlane.Project(EdgeAb.A, TriNormNormalize, p));
                 }
             }
             else if (!noGravityBorders && unidirectionnal)
@@ -128,7 +126,7 @@ public struct ExtTriangle
                 //here not infinite, and WITH borders AND unidirectionnal
                 if (isInPlane)
                 {
-                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNorm.normalized, p))); //get the good point (or null) in a plane unidirectionnal
+                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNormNormalize, p))); //get the good point (or null) in a plane unidirectionnal
                 }
                 else
                 {
@@ -140,7 +138,7 @@ public struct ExtTriangle
                 //here Not infinite, WITH borders, NO unidirectionnal
                 if (isInPlane)
                 {
-                    return (TriPlane.Project(EdgeAb.A, TriNorm.normalized, p));
+                    return (TriPlane.Project(EdgeAb.A, TriNormNormalize, p));
                 }
                 else
                 {
@@ -152,7 +150,7 @@ public struct ExtTriangle
         {
             if (unidirectionnal)
             {
-                return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNorm.normalized, p))); //get the good point (or null) in a plane unidirectionnal
+                return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNormNormalize, p))); //get the good point (or null) in a plane unidirectionnal
             }
         }
 
@@ -164,7 +162,7 @@ public struct ExtTriangle
         // The closest point is in the triangle so 
         // project to the plane to find it
         //Vector3 projectedPoint = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
-        return (TriPlane.Project(EdgeAb.A, TriNorm.normalized, p));
+        return (TriPlane.Project(EdgeAb.A, TriNormNormalize, p));
     }
 
     /// <summary>
@@ -176,7 +174,7 @@ public struct ExtTriangle
         //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
         Vector3 dirPlayer = p - foundPosition;
 
-        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNorm.normalized);
+        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNormNormalize);
         if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
         {
             return (foundPosition);
