@@ -47,6 +47,9 @@ public class GravityAttractorPointCreator : OdinEditor
         Mesh mesh = meshCollider.sharedMesh;
         Vector3[] vertices = mesh.vertices;
         int[] triangles = mesh.triangles;
+        if (triangles.Length == 0)
+            return (Vector3.zero);
+
         Vector3 p0 = vertices[triangles[hit.triangleIndex * 3 + 0]];
         Vector3 p1 = vertices[triangles[hit.triangleIndex * 3 + 1]];
         Vector3 p2 = vertices[triangles[hit.triangleIndex * 3 + 2]];

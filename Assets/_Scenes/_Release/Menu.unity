@@ -1974,6 +1974,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114658215080283818, guid: 826318be7ec2f5541b7b2e0c647be4b1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 533026121, guid: 826318be7ec2f5541b7b2e0c647be4b1, type: 3}
       propertyPath: Event
       value: event:/Music/Music_Intro

@@ -626,9 +626,9 @@ public class GravityAttractorEditor : MonoBehaviour
                             gravityAttractor.gravityTriangles[i].infinitePlane,
                             gravityAttractor.gravityTriangles[i].noGravityBorders);
                     if (!gravityAttractor.gravityTriangles[i].inverseDirection)
-                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNorm.normalized, triangleA.TriNorm.normalized);
+                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNormNormalize.normalized, triangleA.TriNormNormalize.normalized);
                     else
-                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNorm.normalized, -triangleA.TriNorm.normalized);
+                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNormNormalize.normalized, -triangleA.TriNormNormalize.normalized);
                 }
 
                 if (gravityAttractor.gravityTriangles[i].infinitePlane || gravityAttractor.gravityTriangles[i].noGravityBorders)
@@ -709,9 +709,9 @@ public class GravityAttractorEditor : MonoBehaviour
                             gravityAttractor.gravityQuad[i].infinitePlane,
                             gravityAttractor.gravityQuad[i].noGravityBorders);
                     if (!gravityAttractor.gravityQuad[i].inverseDirection)
-                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNorm.normalized, triangleA.TriNorm.normalized);
+                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNormNormalize.normalized, triangleA.TriNormNormalize.normalized);
                     else
-                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNorm.normalized, -triangleA.TriNorm.normalized);
+                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNormNormalize.normalized, -triangleA.TriNormNormalize.normalized);
 
                     ExtTriangle triangleB = new ExtTriangle(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position,
                             gravityAttractor.gravityQuad[i].unidirectionnal,
@@ -719,9 +719,9 @@ public class GravityAttractorEditor : MonoBehaviour
                             gravityAttractor.gravityQuad[i].infinitePlane,
                             gravityAttractor.gravityQuad[i].noGravityBorders);
                     if (!gravityAttractor.gravityQuad[i].inverseDirection)
-                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleB.TriNorm.normalized, triangleB.TriNorm.normalized);
+                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleB.TriNormNormalize.normalized, triangleB.TriNormNormalize.normalized);
                     else
-                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleB.TriNorm.normalized, -triangleB.TriNorm.normalized);
+                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleB.TriNormNormalize.normalized, -triangleB.TriNormNormalize.normalized);
                 }
 
                 if (gravityAttractor.gravityQuad[i].infinitePlane || gravityAttractor.gravityQuad[i].noGravityBorders)
