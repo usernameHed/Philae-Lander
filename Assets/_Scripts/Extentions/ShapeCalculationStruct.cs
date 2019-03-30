@@ -63,6 +63,20 @@ public struct ExtTriangle
     private bool calculateBC;
     private bool calculateCA;
     private bool calculateCorner;
+    private LastType lastType;
+    public LastType GetLastType() => lastType;
+
+    public enum LastType
+    {
+        NONE,
+        A,
+        B,
+        C,
+        AB,
+        BC,
+        CA,
+        ABC,
+    }
 
     public ExtTriangle(Vector3 a, Vector3 b, Vector3 c,
         bool _unidirectionnal, bool _inverseDirection,
@@ -85,6 +99,8 @@ public struct ExtTriangle
         calculateBC = _calculateBC;
         calculateCA = _calculateCA;
         calculateCorner = _calculateCorner;
+
+        lastType = LastType.NONE;
     }
 
     private Vector3 GetGoodPointUnidirectionnal(Vector3 p, Vector3 foundPosition)
@@ -109,14 +125,19 @@ public struct ExtTriangle
     {
         // Check if P in vertex region outside A
         Vector3 ap = p - A;
+        lastType = LastType.NONE;
         float d1 = Vector3.Dot(AB, ap);
         float d2 = Vector3.Dot(AC, ap);
         if (d1 <= 0.0f && d2 <= 0.0f)
         {
+            lastType = LastType.A;
+
             if (noGravityBorders && (!calculateCorner || (calculateCorner && !calculateAB && !calculateCA) ))
                 return (ExtUtilityFunction.GetNullVector());
             if (unidirectionnal)
                 return (GetGoodPointUnidirectionnal(p, A));
+
+            
             return A; // barycentric coordinates (1,0,0)
         }
 
@@ -126,11 +147,15 @@ public struct ExtTriangle
         float d4 = Vector3.Dot(AC, bp);
         if (d3 >= 0.0f && d4 <= d3)
         {
+            lastType = LastType.B;
+
             if (noGravityBorders && (!calculateCorner || (calculateCorner && !calculateAB && !calculateBC)))
                 return (ExtUtilityFunction.GetNullVector());
 
             if (unidirectionnal)
                 return (GetGoodPointUnidirectionnal(p, B));
+
+            
             return B; // barycentric coordinates (0,1,0)
         }
 
@@ -138,6 +163,8 @@ public struct ExtTriangle
         float vc = d1 * d4 - d3 * d2;
         if (vc <= 0.0f && d1 >= 0.0f && d3 <= 0.0f)
         {
+            lastType = LastType.AB;
+
             if (noGravityBorders && !calculateAB)
                 return (ExtUtilityFunction.GetNullVector());
 
@@ -145,6 +172,8 @@ public struct ExtTriangle
 
             if (unidirectionnal)
                 return (GetGoodPointUnidirectionnal(p, A + v1 * AB));
+
+            
             return A + v1 * AB; // barycentric coordinates (1-v,v,0)
         }
 
@@ -154,11 +183,16 @@ public struct ExtTriangle
         float d6 = Vector3.Dot(AC, cp);
         if (d6 >= 0.0f && d5 <= d6)
         {
+            lastType = LastType.C;
+
             if (noGravityBorders && (!calculateCorner || (calculateCorner && !calculateBC && !calculateCA)))
                 return (ExtUtilityFunction.GetNullVector());
 
+            
             if (unidirectionnal)
                 return (GetGoodPointUnidirectionnal(p, C));
+
+            
             return C; // barycentric coordinates (0,0,1)
         }
 
@@ -166,32 +200,49 @@ public struct ExtTriangle
         float vb = d5 * d2 - d1 * d6;
         if (vb <= 0.0f && d2 >= 0.0f && d6 <= 0.0f)
         {
+            lastType = LastType.CA;
+
             if (noGravityBorders && !calculateCA)
                 return (ExtUtilityFunction.GetNullVector());
 
             float w1 = d2 / (d2 - d6);
+            
+
             if (unidirectionnal)
                 return (GetGoodPointUnidirectionnal(p, A + w1 * AC));
+
+            
             return A + w1 * AC; // barycentric coordinates (1-w,0,w)
         }
         // Check if P in edge region of BC, if so return projection of P onto BC
         float va = d3 * d6 - d5 * d4;
         if (va <= 0.0f && (d4 - d3) >= 0.0f && (d5 - d6) >= 0.0f)
         {
+            lastType = LastType.BC;
+
             if (noGravityBorders && !calculateBC)
                 return (ExtUtilityFunction.GetNullVector());
 
             float w2 = (d4 - d3) / ((d4 - d3) + (d5 - d6));
+            
+
             if (unidirectionnal)
                 return (GetGoodPointUnidirectionnal(p, B + w2 * (C - B)));
+            
             return B + w2 * (C - B); // barycentric coordinates (0,1-w,w)
         }
         // P inside face region. Compute Q through its barycentric coordinates (u,v,w)
+        lastType = LastType.ABC;
+
         float denom = 1.0f / (va + vb + vc);
         float v = vb * denom;
         float w = vc * denom;
+
+        
+
         if (unidirectionnal)
             return (GetGoodPointUnidirectionnal(p, A + AB * v + AC * w));
+        
         return A + AB * v + AC * w; // = u*a + v*b + w*c, u = va * denom = 1.0f-v-w
     }
 }
@@ -307,10 +358,14 @@ public struct ExtTetra
     public bool unidirectionnal;
     public bool inverseDirection;
     public bool noGravityBorders;
+    public bool precise;
+
+    private readonly Vector3 TriNorm;
+    public readonly Vector3 TriNormNormalize;
 
     public ExtTetra(Vector3 a, Vector3 b, Vector3 c, Vector3 d,
         bool _unidirectionnal, bool _inverseDirection,
-        bool _noGravityBorders)
+        bool _noGravityBorders, bool _precise)
     {
         A = a;
         B = b;
@@ -323,10 +378,26 @@ public struct ExtTetra
 
         crossBACA = Vector3.Cross(B - A, C - A);
 
-        triangleA = new ExtTriangle(a, b, c, false, false, _noGravityBorders, false, false, true, true);
-        triangleB = new ExtTriangle(a, c, d, false, false, _noGravityBorders, true, false, false, true);
-        triangleC = new ExtTriangle(a, d, b, false, false, _noGravityBorders, false, true, false, true);
-        triangleD = new ExtTriangle(b, d, c, false, false, _noGravityBorders, true, false, false, true);
+        TriNorm = ExtQuaternion.GetMiddleOf2Vector(Vector3.Cross(a - b, a - c), Vector3.Cross(a - c, a - d));
+        TriNormNormalize = TriNorm.normalized;
+
+        precise = _precise;
+
+        if (precise)
+        {
+            triangleA = new ExtTriangle(a, b, c, false, false, _noGravityBorders, false, false, true, true);
+            triangleB = new ExtTriangle(a, c, d, false, false, _noGravityBorders, true, false, false, true);
+            triangleC = new ExtTriangle(a, d, b, false, false, _noGravityBorders, false, true, false, true);
+            triangleD = new ExtTriangle(b, d, c, false, false, _noGravityBorders, true, false, false, true);
+        }
+        else
+        {
+            triangleA = new ExtTriangle(a, b, c, _unidirectionnal, _inverseDirection, _noGravityBorders, false, false, true, false);
+            triangleB = new ExtTriangle(c, d, a, _unidirectionnal, _inverseDirection, _noGravityBorders, false, false, true, false);
+            triangleC = new ExtTriangle();
+            triangleD = new ExtTriangle();
+        }
+
 
         unidirectionnal = _unidirectionnal;
         inverseDirection = _inverseDirection;
@@ -348,15 +419,16 @@ public struct ExtTetra
         return signp * signd < 0.0f;
     }
 
-    // Return point q on (or in) rect (specified by a, b, and c), closest to given point p
-    public Vector3 ClosestPtPointRect(Vector3 p)
+    public Vector3 CalculateSmothlyFourPlane(Vector3 p)
     {
         // Start out assuming point inside all halfspaces, so closest to itself
         Vector3 closestPt = p;
         float bestSqDist = float.MaxValue;
+        bool insideAll = true;
         // If point outside face abc then compute closest point on abc
         if (PointOutsideOfPlane(p, A, B, C))
         {
+            insideAll = false;
             Vector3 q = triangleA.ClosestPointTo(p);
             if (!ExtUtilityFunction.IsNullVector(q))
             {
@@ -372,6 +444,7 @@ public struct ExtTetra
         // Repeat test for face acd
         if (PointOutsideOfPlane(p, A, C, D))
         {
+            insideAll = false;
             Vector3 q = triangleB.ClosestPointTo(p);
             if (!ExtUtilityFunction.IsNullVector(q))
             {
@@ -387,6 +460,7 @@ public struct ExtTetra
         // Repeat test for face adb
         if (PointOutsideOfPlane(p, A, D, B))
         {
+            insideAll = false;
             Vector3 q = triangleC.ClosestPointTo(p);
             if (!ExtUtilityFunction.IsNullVector(q))
             {
@@ -401,6 +475,7 @@ public struct ExtTetra
         // Repeat test for face bdc
         if (PointOutsideOfPlane(p, B, D, C))
         {
+            insideAll = false;
             Vector3 q = triangleD.ClosestPointTo(p);
             if (!ExtUtilityFunction.IsNullVector(q))
             {
@@ -412,7 +487,81 @@ public struct ExtTetra
                 }
             }
         }
+
+        if (unidirectionnal)
+            return (GetGoodPointUnidirectionnal(p, closestPt));
+
+        if (noGravityBorders && !insideAll && closestPt == p)
+            return (ExtUtilityFunction.GetNullVector());
+
         return closestPt;
+    }
+
+    private Vector3 GetGoodPointUnidirectionnal(Vector3 p, Vector3 foundPosition)
+    {
+        //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
+        Vector3 dirPlayer = p - foundPosition;
+
+        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNormNormalize);
+        if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
+        {
+            return (foundPosition);
+        }
+        else
+        {
+            //Debug.DrawRay(p, dirPlayer, Color.yellow, 5f);
+            //Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
+            return (ExtUtilityFunction.GetNullVector());
+        }
+    }
+
+    public Vector3 CalculateWithTwoTriangle(Vector3 p)
+    {
+        Vector3 closestToA = triangleA.ClosestPointTo(p);
+        Vector3 closestToB = triangleB.ClosestPointTo(p);
+
+        //aditional test when no Gravity Border
+        if (noGravityBorders)
+        {
+            //if A is nul and not B. return null IF B is from the middle !
+            if (ExtUtilityFunction.IsNullVector(closestToA) && !ExtUtilityFunction.IsNullVector(closestToB))
+            {
+                if (triangleB.GetLastType() == ExtTriangle.LastType.CA)
+                    return (ExtUtilityFunction.GetNullVector());
+            }
+            //if B is nul and not A. return null IF A is from the middle !
+            if (ExtUtilityFunction.IsNullVector(closestToB) && !ExtUtilityFunction.IsNullVector(closestToA))
+            {
+                if (triangleA.GetLastType() == ExtTriangle.LastType.CA)
+                    return (ExtUtilityFunction.GetNullVector());
+            }
+        }
+        if (unidirectionnal)
+        {
+            //if A is nul and not B. return null IF B is from the middle !
+            if (ExtUtilityFunction.IsNullVector(closestToA) && !ExtUtilityFunction.IsNullVector(closestToB))
+            {
+                if (triangleB.GetLastType() == ExtTriangle.LastType.CA || triangleB.GetLastType() == ExtTriangle.LastType.C || triangleB.GetLastType() == ExtTriangle.LastType.A)
+                    return (ExtUtilityFunction.GetNullVector());
+            }
+            //if B is nul and not A. return null IF A is from the middle !
+            if (ExtUtilityFunction.IsNullVector(closestToB) && !ExtUtilityFunction.IsNullVector(closestToA))
+            {
+                if (triangleA.GetLastType() == ExtTriangle.LastType.CA || triangleA.GetLastType() == ExtTriangle.LastType.C || triangleA.GetLastType() == ExtTriangle.LastType.A)
+                    return (ExtUtilityFunction.GetNullVector());
+            }
+        }
+
+        int indexFound = -1;
+        return (ExtUtilityFunction.GetClosestPoint(p, new Vector3[] { closestToA, closestToB }, ref indexFound));
+    }
+
+    // Return point q on (or in) rect (specified by a, b, and c), closest to given point p
+    public Vector3 ClosestPtPointRect(Vector3 p)
+    {
+        if (precise)
+            return (CalculateSmothlyFourPlane(p));
+        return (CalculateWithTwoTriangle(p));
     }
 }
 

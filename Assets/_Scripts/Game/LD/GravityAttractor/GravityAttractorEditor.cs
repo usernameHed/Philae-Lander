@@ -784,11 +784,22 @@ public class GravityAttractorEditor : MonoBehaviour
         {
             if (gravityAttractor.gravityTetra[i].pointA && gravityAttractor.gravityTetra[i].pointB && gravityAttractor.gravityTetra[i].pointC && gravityAttractor.gravityTetra[i].pointD)
             {
+
+                Gizmos.color = Color.yellow;
+                if (gravityAttractor.gravityTetra[i].preciseCalculation)
+                {
+                    Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointD.position);
+                }
+                Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointC.position);
+
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointB.position);
                 Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointC.position);
                 Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].pointD.position);
                 Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].pointA.position);
+
+
+
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointA.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointB.position);
                 ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointC.position);

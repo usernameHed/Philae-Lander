@@ -188,7 +188,8 @@ public class GravityAttractorLD : MonoBehaviour
         [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
         public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
-
+        //[DisableIf("noGravityBorders")]
+        public bool preciseCalculation; //est-ce que on veut des calcule précis ?
 
         [SerializeField]
         private PointInfo pointInfo;
@@ -204,6 +205,7 @@ public class GravityAttractorLD : MonoBehaviour
             unidirectionnal = false;
             inverseDirection = false;
             noGravityBorders = false;
+            preciseCalculation = false;
 
             pointInfo = new PointInfo();
             pointInfo.Init();
@@ -350,7 +352,8 @@ public class GravityAttractorLD : MonoBehaviour
             arrayExtTetra[i] = new ExtTetra(gravityTetra[i].pointA.position, gravityTetra[i].pointB.position, gravityTetra[i].pointC.position, gravityTetra[i].pointD.position,
                 gravityTetra[i].unidirectionnal,
                 gravityTetra[i].inverseDirection,
-                gravityTetra[i].noGravityBorders);
+                gravityTetra[i].noGravityBorders,
+                gravityTetra[i].preciseCalculation);
         }
 
     }
