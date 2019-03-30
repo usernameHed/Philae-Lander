@@ -58,6 +58,7 @@ public class EntityAirMove : MonoBehaviour
         amountAdded += (direction * entityMove.GetMagnitudeAcceleration()).sqrMagnitude * Time.deltaTime;
         //Debug.Log("Amount added: " + amountAdded);
 
+        Debug.DrawRay(rb.position, direction, Color.green, 5f);
         //UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
         UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityMove.GetMagnitudeAcceleration());
     }

@@ -1,175 +1,92 @@
 ﻿using UnityEngine;
 
-/*
-public struct ExtTriangle
+/// <summary>
+/// a perfect quad OR triangle (3 points)
+/// </summary>
+public struct ExtTriangleOrQuad
 {
-    public Vector3 A => EdgeAb.A;
-    public Vector3 B => EdgeBc.A;
-    public Vector3 C => EdgeCa.A;
-
-    public readonly ExtLine EdgeAb;
-    public readonly ExtLine EdgeBc;
-    public readonly ExtLine EdgeCa;
-
     public bool unidirectionnal;
     public bool inverseDirection;
-    public bool infinitePlane;
     public bool noGravityBorders;
+    public bool isQuad;
 
-    public ExtTriangle(Vector3 a, Vector3 b, Vector3 c,
-        bool _unidirectionnal, bool _inverseDirection, bool _infinitePlane,
-        bool _noGravityBorders)
+    public ExtQuad quad;
+    public ExtTriangle triangle;
+
+    public ExtTriangleOrQuad(Vector3 a, Vector3 b, Vector3 c,
+        bool _unidirectionnal, bool _inverseDirection,
+        bool _noGravityBorders, bool _calculateAB, bool _calculateBC, bool _calculateCA, bool _calculateCorner, bool _isQuad)
     {
-        EdgeAb = new ExtLine(a, b, false);
-        EdgeBc = new ExtLine(b, c, false);
-        EdgeCa = new ExtLine(c, a, false);
-
         unidirectionnal = _unidirectionnal;
         inverseDirection = _inverseDirection;
-        infinitePlane = _infinitePlane;
         noGravityBorders = _noGravityBorders;
+        isQuad = _isQuad;
 
-        TriNorm = Vector3.Cross(a - b, a - c);
-        TriNormNormalize = TriNorm.normalized;
+        quad = new ExtQuad(a, b, c, _unidirectionnal, _inverseDirection, _noGravityBorders);
+        triangle = new ExtTriangle(a, b, c, _unidirectionnal, _inverseDirection, _noGravityBorders, _calculateAB, _calculateBC, _calculateCA, _calculateCorner);
     }
 
-    public Vector3[] Verticies => new[] { A, B, C };
-
-    public readonly Vector3 TriNorm;
-    public readonly Vector3 TriNormNormalize;
-
-    //private static readonly RangeDouble ZeroToOne = new RangeDouble(0, 1);
-
-    public ExtPlane TriPlane => new ExtPlane(A, TriNorm);
-
-    // The below three could be pre-calculated to
-    // trade off space vs time
-
-    public ExtPlane PlaneAb => new ExtPlane(EdgeAb.A, Vector3.Cross(TriNorm, EdgeAb.Delta));
-    public ExtPlane PlaneBc => new ExtPlane(EdgeBc.A, Vector3.Cross(TriNorm, EdgeBc.Delta));
-    public ExtPlane PlaneCa => new ExtPlane(EdgeCa.A, Vector3.Cross(TriNorm, EdgeCa.Delta));
-
-    //public static readonly RangeDouble Zero1 = new RangeDouble(0, 1);
-
-    private Vector3 CalculateCornerAndLine(Vector3 p, double uab, double uca, ref bool isInPlane)
+    public Vector3 GetNormal()
     {
-        if (uca > 1 && uab < 0)
-        {
-            isInPlane = false;
-            return (A);
-        }
-        var ubc = EdgeBc.Project(p);
-        if (uab > 1 && ubc < 0)
-        {
-            isInPlane = false;
-            return (B);
-        }
-        if (ubc > 1 && uca < 0)
-        {
-            isInPlane = false;
-            return (C);
-        }
-
-        //line
-        if (uab >= 0 && uab <= 1 && !PlaneAb.IsAbove(p))
-        {
-            isInPlane = false;
-            return (EdgeAb.PointAt(uab));
-        }
-        if (ubc >= 0 && ubc <= 1 && !PlaneBc.IsAbove(p))
-        {
-            isInPlane = false;
-            return (EdgeBc.PointAt(ubc));
-        }
-        if (uca >= 0 && uca <= 1 && !PlaneCa.IsAbove(p))
-        {
-            isInPlane = false;
-            return (EdgeCa.PointAt(uca));
-        }
-        isInPlane = true;
-        return (Vector3.zero);
+        if (isQuad)
+            return (quad.TriNormNormalize);
+        return (triangle.TriNormNormalize);
     }
 
     public Vector3 ClosestPointTo(Vector3 p)
     {
-        // Find the projection of the point onto the edge
+        if (isQuad)
+            return (quad.ClosestPtPointRect(p));
+        return (triangle.ClosestPointTo(p));
+    }
+}
 
-        var uab = EdgeAb.Project(p);
-        var uca = EdgeCa.Project(p);
-        bool isInPlane = false;
+/// <summary>
+/// a 3D triangle
+/// </summary>
+public struct ExtTriangle
+{
+    public readonly Vector3 A;
+    public readonly Vector3 B;
+    public readonly Vector3 C;
+    private Vector3 AB;
+    private Vector3 AC;
 
-        Vector3 rightPositionIfOutsidePlane = CalculateCornerAndLine(p, uab, uca, ref isInPlane);
+    public bool unidirectionnal;
+    public bool inverseDirection;
+    public bool noGravityBorders;
 
-        if (!infinitePlane)
-        {
-            //ici on est dans un plan fini, si on dis de ne pas prendre
-            //en compte les borders, juste tomber !
-            if (noGravityBorders && !isInPlane)
-            {
-                //Debug.Log("ici on est PAS dans le plane, juste tomber !");
-                return (ExtUtilityFunction.GetNullVector());
-            }
-            else if (noGravityBorders && isInPlane)
-            {
-                //Debug.Log("ici on est DANS le plane, ET en noGravityBorder: tester la normal ensuite !");
-                if (unidirectionnal)
-                {
-                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNormNormalize, p))); //get the good point (or null) in a plane unidirectionnal
-                }
-                else
-                {
-                    //ici en gravityBorder, et on est dans le plan, et c'esst multi directionnel, alors OK dac !
-                    return (TriPlane.Project(EdgeAb.A, TriNormNormalize, p));
-                }
-            }
-            else if (!noGravityBorders && unidirectionnal)
-            {
-                //here not infinite, and WITH borders AND unidirectionnal
-                if (isInPlane)
-                {
-                    return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNormNormalize, p))); //get the good point (or null) in a plane unidirectionnal
-                }
-                else
-                {
-                    return (GetGoodPointUnidirectionnal(p, rightPositionIfOutsidePlane));
-                }
-            }
-            else
-            {
-                //here Not infinite, WITH borders, NO unidirectionnal
-                if (isInPlane)
-                {
-                    return (TriPlane.Project(EdgeAb.A, TriNormNormalize, p));
-                }
-                else
-                {
-                    return (rightPositionIfOutsidePlane);
-                }
-            }
-        }
-        else
-        {
-            if (unidirectionnal)
-            {
-                return (GetGoodPointUnidirectionnal(p, TriPlane.Project(EdgeAb.A, TriNormNormalize, p))); //get the good point (or null) in a plane unidirectionnal
-            }
-        }
+    private readonly Vector3 TriNorm;
+    public readonly Vector3 TriNormNormalize;
 
+    private bool calculateAB;
+    private bool calculateBC;
+    private bool calculateCA;
+    private bool calculateCorner;
 
+    public ExtTriangle(Vector3 a, Vector3 b, Vector3 c,
+        bool _unidirectionnal, bool _inverseDirection,
+        bool _noGravityBorders, bool _calculateAB, bool _calculateBC, bool _calculateCA, bool _calculateCorner)
+    {
+        A = a;
+        B = b;
+        C = c;
 
-        //ici le plan est infini, OU fini mais on est dedant
+        AB = B - A;
+        AC = C - A;
 
+        unidirectionnal = _unidirectionnal;
+        inverseDirection = _inverseDirection;
+        noGravityBorders = _noGravityBorders;
 
-        // The closest point is in the triangle so 
-        // project to the plane to find it
-        //Vector3 projectedPoint = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
-        return (TriPlane.Project(EdgeAb.A, TriNormNormalize, p));
+        TriNorm = Vector3.Cross(a - b, a - c);
+        TriNormNormalize = TriNorm.normalized;
+        calculateAB = _calculateAB;
+        calculateBC = _calculateBC;
+        calculateCA = _calculateCA;
+        calculateCorner = _calculateCorner;
     }
 
-    /// <summary>
-    /// take into acount unidirectinnal option, return null if not found
-    /// </summary>
-    /// <returns></returns>
     private Vector3 GetGoodPointUnidirectionnal(Vector3 p, Vector3 foundPosition)
     {
         //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
@@ -187,44 +104,6 @@ public struct ExtTriangle
             return (ExtUtilityFunction.GetNullVector());
         }
     }
-}
-*/
-
-public struct ExtTriangle
-{
-    public readonly Vector3 A;
-    public readonly Vector3 B;
-    public readonly Vector3 C;
-    private Vector3 AB;
-    private Vector3 AC;
-
-    public bool unidirectionnal;
-    public bool inverseDirection;
-    public bool infinitePlane;
-    public bool noGravityBorders;
-
-    private readonly Vector3 TriNorm;
-    public readonly Vector3 TriNormNormalize;
-
-    public ExtTriangle(Vector3 a, Vector3 b, Vector3 c,
-        bool _unidirectionnal, bool _inverseDirection, bool _infinitePlane,
-        bool _noGravityBorders)
-    {
-        A = a;
-        B = b;
-        C = c;
-
-        AB = B - C;
-        AC = C - A;
-
-        unidirectionnal = _unidirectionnal;
-        inverseDirection = _inverseDirection;
-        infinitePlane = _infinitePlane;
-        noGravityBorders = _noGravityBorders;
-
-        TriNorm = Vector3.Cross(a - b, a - c);
-        TriNormNormalize = TriNorm.normalized;
-    }
 
     public Vector3 ClosestPointTo(Vector3 p)
     {
@@ -232,47 +111,94 @@ public struct ExtTriangle
         Vector3 ap = p - A;
         float d1 = Vector3.Dot(AB, ap);
         float d2 = Vector3.Dot(AC, ap);
-        if (d1 <= 0.0f && d2 <= 0.0f) return A; // barycentric coordinates (1,0,0)
-                                                // Check if P in vertex region outside B
+        if (d1 <= 0.0f && d2 <= 0.0f)
+        {
+            if (noGravityBorders && (!calculateCorner || (calculateCorner && !calculateAB && !calculateCA) ))
+                return (ExtUtilityFunction.GetNullVector());
+            if (unidirectionnal)
+                return (GetGoodPointUnidirectionnal(p, A));
+            return A; // barycentric coordinates (1,0,0)
+        }
+
+        // Check if P in vertex region outside B
         Vector3 bp = p - B;
         float d3 = Vector3.Dot(AB, bp);
         float d4 = Vector3.Dot(AC, bp);
-        if (d3 >= 0.0f && d4 <= d3) return B; // barycentric coordinates (0,1,0)
-                                              // Check if P in edge region of AB, if so return projection of P onto AB
+        if (d3 >= 0.0f && d4 <= d3)
+        {
+            if (noGravityBorders && (!calculateCorner || (calculateCorner && !calculateAB && !calculateBC)))
+                return (ExtUtilityFunction.GetNullVector());
+
+            if (unidirectionnal)
+                return (GetGoodPointUnidirectionnal(p, B));
+            return B; // barycentric coordinates (0,1,0)
+        }
+
+        // Check if P in edge region of AB, if so return projection of P onto AB
         float vc = d1 * d4 - d3 * d2;
         if (vc <= 0.0f && d1 >= 0.0f && d3 <= 0.0f)
         {
+            if (noGravityBorders && !calculateAB)
+                return (ExtUtilityFunction.GetNullVector());
+
             float v1 = d1 / (d1 - d3);
+
+            if (unidirectionnal)
+                return (GetGoodPointUnidirectionnal(p, A + v1 * AB));
             return A + v1 * AB; // barycentric coordinates (1-v,v,0)
         }
+
         // Check if P in vertex region outside C
         Vector3 cp = p - C;
         float d5 = Vector3.Dot(AB, cp);
         float d6 = Vector3.Dot(AC, cp);
-        if (d6 >= 0.0f && d5 <= d6) return C; // barycentric coordinates (0,0,1)
+        if (d6 >= 0.0f && d5 <= d6)
+        {
+            if (noGravityBorders && (!calculateCorner || (calculateCorner && !calculateBC && !calculateCA)))
+                return (ExtUtilityFunction.GetNullVector());
+
+            if (unidirectionnal)
+                return (GetGoodPointUnidirectionnal(p, C));
+            return C; // barycentric coordinates (0,0,1)
+        }
 
         // Check if P in edge region of AC, if so return projection of P onto AC
         float vb = d5 * d2 - d1 * d6;
         if (vb <= 0.0f && d2 >= 0.0f && d6 <= 0.0f)
         {
+            if (noGravityBorders && !calculateCA)
+                return (ExtUtilityFunction.GetNullVector());
+
             float w1 = d2 / (d2 - d6);
+            if (unidirectionnal)
+                return (GetGoodPointUnidirectionnal(p, A + w1 * AC));
             return A + w1 * AC; // barycentric coordinates (1-w,0,w)
         }
         // Check if P in edge region of BC, if so return projection of P onto BC
         float va = d3 * d6 - d5 * d4;
         if (va <= 0.0f && (d4 - d3) >= 0.0f && (d5 - d6) >= 0.0f)
         {
+            if (noGravityBorders && !calculateBC)
+                return (ExtUtilityFunction.GetNullVector());
+
             float w2 = (d4 - d3) / ((d4 - d3) + (d5 - d6));
+            if (unidirectionnal)
+                return (GetGoodPointUnidirectionnal(p, B + w2 * (C - B)));
             return B + w2 * (C - B); // barycentric coordinates (0,1-w,w)
         }
         // P inside face region. Compute Q through its barycentric coordinates (u,v,w)
         float denom = 1.0f / (va + vb + vc);
         float v = vb * denom;
         float w = vc * denom;
+        if (unidirectionnal)
+            return (GetGoodPointUnidirectionnal(p, A + AB * v + AC * w));
         return A + AB * v + AC * w; // = u*a + v*b + w*c, u = va * denom = 1.0f-v-w
     }
 }
 
+/// <summary>
+/// a perfect 3D Quad, with 3 points
+/// </summary>
 public struct ExtQuad
 {
     public readonly Vector3 A;
@@ -285,26 +211,48 @@ public struct ExtQuad
 
     public bool unidirectionnal;
     public bool inverseDirection;
-    public bool infinitePlane;
     public bool noGravityBorders;
+    
+    private readonly Vector3 TriNorm;
+    public readonly Vector3 TriNormNormalize;
 
     public ExtQuad(Vector3 a, Vector3 b, Vector3 c,
-        bool _unidirectionnal, bool _inverseDirection, bool _infinitePlane,
+        bool _unidirectionnal, bool _inverseDirection,
         bool _noGravityBorders)
     {
         A = a;
         B = b;
         C = c;
 
-        AB = B - C;
+        AB = B - A;
         AC = C - A;
         maxdistA = Vector3.Dot(AB, AB);
         maxdistC = Vector3.Dot(AC, AC);
 
         unidirectionnal = _unidirectionnal;
         inverseDirection = _inverseDirection;
-        infinitePlane = _infinitePlane;
         noGravityBorders = _noGravityBorders;
+        
+        TriNorm = Vector3.Cross(a - b, a - c);
+        TriNormNormalize = TriNorm.normalized;
+    }
+
+    private Vector3 GetGoodPointUnidirectionnal(Vector3 p, Vector3 foundPosition)
+    {
+        //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
+        Vector3 dirPlayer = p - foundPosition;
+
+        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNormNormalize);
+        if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
+        {
+            return (foundPosition);
+        }
+        else
+        {
+            //Debug.DrawRay(p, dirPlayer, Color.yellow, 5f);
+            //Debug.DrawRay(p, TriNorm.normalized, Color.black, 5f);
+            return (ExtUtilityFunction.GetNullVector());
+        }
     }
 
     // Return point q on (or in) rect (specified by a, b, and c), closest to given point p
@@ -328,10 +276,16 @@ public struct ExtQuad
         else if (dist > 0.0f)
             q += (dist / maxdistC) * AC;
 
+        //if (unidirectionnal)
+        //    return (GetGoodPointUnidirectionnal(p, q));
+
         return (q);
     }
 }
 
+/// <summary>
+/// a 3D Tetra: 4 points linked together
+/// </summary>
 public struct ExtTetra
 {
     public readonly Vector3 A;
@@ -352,11 +306,10 @@ public struct ExtTetra
 
     public bool unidirectionnal;
     public bool inverseDirection;
-    public bool infinitePlane;
     public bool noGravityBorders;
 
     public ExtTetra(Vector3 a, Vector3 b, Vector3 c, Vector3 d,
-        bool _unidirectionnal, bool _inverseDirection, bool _infinitePlane,
+        bool _unidirectionnal, bool _inverseDirection,
         bool _noGravityBorders)
     {
         A = a;
@@ -370,14 +323,13 @@ public struct ExtTetra
 
         crossBACA = Vector3.Cross(B - A, C - A);
 
-        triangleA = new ExtTriangle(a, b, c, _unidirectionnal, _inverseDirection, _infinitePlane, _noGravityBorders);
-        triangleB = new ExtTriangle(a, c, d, _unidirectionnal, _inverseDirection, _infinitePlane, _noGravityBorders);
-        triangleC = new ExtTriangle(a, d, b, _unidirectionnal, _inverseDirection, _infinitePlane, _noGravityBorders);
-        triangleD = new ExtTriangle(b, d, c, _unidirectionnal, _inverseDirection, _infinitePlane, _noGravityBorders);
+        triangleA = new ExtTriangle(a, b, c, false, false, _noGravityBorders, false, false, true, true);
+        triangleB = new ExtTriangle(a, c, d, false, false, _noGravityBorders, true, false, false, true);
+        triangleC = new ExtTriangle(a, d, b, false, false, _noGravityBorders, false, true, false, true);
+        triangleD = new ExtTriangle(b, d, c, false, false, _noGravityBorders, true, false, false, true);
 
         unidirectionnal = _unidirectionnal;
         inverseDirection = _inverseDirection;
-        infinitePlane = _infinitePlane;
         noGravityBorders = _noGravityBorders;
     }
 
@@ -406,23 +358,29 @@ public struct ExtTetra
         if (PointOutsideOfPlane(p, A, B, C))
         {
             Vector3 q = triangleA.ClosestPointTo(p);
-            float sqDist = Vector3.Dot(q - p, q - p);
-            // Update best closest point if (squared) distance is less than current best
-            if (sqDist < bestSqDist)
+            if (!ExtUtilityFunction.IsNullVector(q))
             {
-                bestSqDist = sqDist;
-                closestPt = q;
+                float sqDist = Vector3.Dot(q - p, q - p);
+                // Update best closest point if (squared) distance is less than current best
+                if (sqDist < bestSqDist)
+                {
+                    bestSqDist = sqDist;
+                    closestPt = q;
+                }
             }
         }
         // Repeat test for face acd
         if (PointOutsideOfPlane(p, A, C, D))
         {
             Vector3 q = triangleB.ClosestPointTo(p);
-            float sqDist = Vector3.Dot(q - p, q - p);
-            if (sqDist < bestSqDist)
+            if (!ExtUtilityFunction.IsNullVector(q))
             {
-                bestSqDist = sqDist;
-                closestPt = q;
+                float sqDist = Vector3.Dot(q - p, q - p);
+                if (sqDist < bestSqDist)
+                {
+                    bestSqDist = sqDist;
+                    closestPt = q;
+                }
             }
         }
 
@@ -430,28 +388,37 @@ public struct ExtTetra
         if (PointOutsideOfPlane(p, A, D, B))
         {
             Vector3 q = triangleC.ClosestPointTo(p);
-            float sqDist = Vector3.Dot(q - p, q - p);
-            if (sqDist < bestSqDist)
+            if (!ExtUtilityFunction.IsNullVector(q))
             {
-                bestSqDist = sqDist;
-                closestPt = q;
+                float sqDist = Vector3.Dot(q - p, q - p);
+                if (sqDist < bestSqDist)
+                {
+                    bestSqDist = sqDist;
+                    closestPt = q;
+                }
             }
         }
         // Repeat test for face bdc
         if (PointOutsideOfPlane(p, B, D, C))
         {
             Vector3 q = triangleD.ClosestPointTo(p);
-            float sqDist = Vector3.Dot(q - p, q - p);
-            if (sqDist < bestSqDist)
+            if (!ExtUtilityFunction.IsNullVector(q))
             {
-                bestSqDist = sqDist;
-                closestPt = q;
+                float sqDist = Vector3.Dot(q - p, q - p);
+                if (sqDist < bestSqDist)
+                {
+                    bestSqDist = sqDist;
+                    closestPt = q;
+                }
             }
         }
         return closestPt;
     }
 }
 
+/// <summary>
+/// a 3D line, with 2 points
+/// </summary>
 public struct ExtLine
 {
     public readonly Vector3 A;
@@ -556,6 +523,9 @@ public struct ExtLine
     */
 }
 
+/// <summary>
+/// a 3D plane
+/// </summary>
 public struct ExtPlane
 {
     public Vector3 Point;

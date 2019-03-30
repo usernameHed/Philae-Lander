@@ -123,8 +123,8 @@ public class GravityAttractorEditor : MonoBehaviour
     {
         return (gravityAttractor.gravityPoints.Count
             + gravityAttractor.gravityLines.Count * 2
-            + gravityAttractor.gravityTriangles.Count * 3
-            + gravityAttractor.gravityQuad.Count * 4);
+            + gravityAttractor.gravityTrianglesOrQuad.Count * 3
+            + gravityAttractor.gravityTetra.Count * 4);
     }
 
     /// <summary>
@@ -192,19 +192,19 @@ public class GravityAttractorEditor : MonoBehaviour
         newTriangle.SetDefautIfFirstTimeCreated();
 
         Transform newTriangleTransform = null;
-        CreateTransform(ref newTriangleTransform, gravityAttractor.gravityTriangles.Count.ToString(), parentTriangles);
+        CreateTransform(ref newTriangleTransform, gravityAttractor.gravityTrianglesOrQuad.Count.ToString(), parentTriangles);
         pointA.transform.SetParent(newTriangleTransform);
         pointB.transform.SetParent(newTriangleTransform);
         pointC.transform.SetParent(newTriangleTransform);
 
-        pointA.name = "T" + gravityAttractor.gravityTriangles.Count.ToString() + " - 1";
-        pointB.name = "T" + gravityAttractor.gravityTriangles.Count.ToString() + " - 2";
-        pointC.name = "T" + gravityAttractor.gravityTriangles.Count.ToString() + " - 3";
+        pointA.name = "T" + gravityAttractor.gravityTrianglesOrQuad.Count.ToString() + " - 1";
+        pointB.name = "T" + gravityAttractor.gravityTrianglesOrQuad.Count.ToString() + " - 2";
+        pointC.name = "T" + gravityAttractor.gravityTrianglesOrQuad.Count.ToString() + " - 3";
 
         newTriangle.ChangePoint(0, pointA.transform);
         newTriangle.ChangePoint(1, pointB.transform);
         newTriangle.ChangePoint(2, pointC.transform);
-        gravityAttractor.gravityTriangles.Add(newTriangle);
+        gravityAttractor.gravityTrianglesOrQuad.Add(newTriangle);
     }
 
     /// <summary>
@@ -216,22 +216,22 @@ public class GravityAttractorEditor : MonoBehaviour
         newQuad.SetDefautIfFirstTimeCreated();
 
         Transform newQuadTransform = null;
-        CreateTransform(ref newQuadTransform, gravityAttractor.gravityQuad.Count.ToString(), parentQuad);
+        CreateTransform(ref newQuadTransform, gravityAttractor.gravityTetra.Count.ToString(), parentQuad);
         pointA.transform.SetParent(newQuadTransform);
         pointB.transform.SetParent(newQuadTransform);
         pointC.transform.SetParent(newQuadTransform);
         pointD.transform.SetParent(newQuadTransform);
 
-        pointA.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 1";
-        pointB.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 2";
-        pointC.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 3";
-        pointC.name = "Q" + gravityAttractor.gravityQuad.Count.ToString() + " - 4";
+        pointA.name = "Q" + gravityAttractor.gravityTetra.Count.ToString() + " - 1";
+        pointB.name = "Q" + gravityAttractor.gravityTetra.Count.ToString() + " - 2";
+        pointC.name = "Q" + gravityAttractor.gravityTetra.Count.ToString() + " - 3";
+        pointC.name = "Q" + gravityAttractor.gravityTetra.Count.ToString() + " - 4";
 
         newQuad.ChangePoint(0, pointA.transform);
         newQuad.ChangePoint(1, pointB.transform);
         newQuad.ChangePoint(2, pointC.transform);
         newQuad.ChangePoint(3, pointD.transform);
-        gravityAttractor.gravityQuad.Add(newQuad);
+        gravityAttractor.gravityTetra.Add(newQuad);
     }
 
 
@@ -573,184 +573,307 @@ public class GravityAttractorEditor : MonoBehaviour
 
                 if (gravityAttractor.gravityLines[i].noGravityBorders)
                 {
-                    ExtDrawGuizmos.DrawArrow(gravityAttractor.gravityLines[i].pointA.position + (gravityAttractor.gravityLines[i].pointA.position - gravityAttractor.gravityLines[i].pointB.position).normalized * 2, (gravityAttractor.gravityLines[i].pointB.position - gravityAttractor.gravityLines[i].pointA.position).normalized * 2);
-                    ExtDrawGuizmos.DrawArrow(gravityAttractor.gravityLines[i].pointB.position + (gravityAttractor.gravityLines[i].pointB.position - gravityAttractor.gravityLines[i].pointA.position).normalized * 2, (gravityAttractor.gravityLines[i].pointA.position - gravityAttractor.gravityLines[i].pointB.position).normalized * 2);
+                    ExtDrawGuizmos.DrawArrow(gravityAttractor.gravityLines[i].pointA.position + (gravityAttractor.gravityLines[i].pointA.position - gravityAttractor.gravityLines[i].pointB.position).normalized * 2, (gravityAttractor.gravityLines[i].pointB.position - gravityAttractor.gravityLines[i].pointA.position).normalized * 2, Color.red);
+                    ExtDrawGuizmos.DrawArrow(gravityAttractor.gravityLines[i].pointB.position + (gravityAttractor.gravityLines[i].pointB.position - gravityAttractor.gravityLines[i].pointA.position).normalized * 2, (gravityAttractor.gravityLines[i].pointA.position - gravityAttractor.gravityLines[i].pointB.position).normalized * 2, Color.red);
                 }
             }
         }
-        for (int i = 0; i < gravityAttractor.gravityTriangles.Count; i++)
+        for (int i = 0; i < gravityAttractor.gravityTrianglesOrQuad.Count; i++)
         {
-            if (gravityAttractor.gravityTriangles[i].pointA && gravityAttractor.gravityTriangles[i].pointB && gravityAttractor.gravityTriangles[i].pointC)
+            if (gravityAttractor.gravityTrianglesOrQuad[i].pointA && gravityAttractor.gravityTrianglesOrQuad[i].pointB && gravityAttractor.gravityTrianglesOrQuad[i].pointC)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawLine(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position);
-                Gizmos.DrawLine(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position);
-                Gizmos.DrawLine(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointB.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTriangles[i].pointC.position);
+                Gizmos.DrawLine(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position);
+                Gizmos.DrawLine(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position);
+
+                Vector3 pointD = gravityAttractor.gravityTrianglesOrQuad[i].pointA.position - (gravityAttractor.gravityTrianglesOrQuad[i].pointB.position - gravityAttractor.gravityTrianglesOrQuad[i].pointC.position);
+
+                if (gravityAttractor.gravityTrianglesOrQuad[i].isQuad)
+                {
+                    Gizmos.DrawLine(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, pointD);
+                    Gizmos.DrawLine(pointD, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position);
+                }
+                else
+                {
+                    Gizmos.DrawLine(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position);
+                }
+
+                
+
+
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position);
+
+                if (gravityAttractor.gravityTrianglesOrQuad[i].isQuad)
+                    ExtDrawGuizmos.DrawCross(pointD);
+
 
                 Gizmos.color = Color.white;
-                if (gravityAttractor.gravityTriangles[i].GetPointInfo().range > 0 && alwaysShow)
+                if (gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range > 0 && alwaysShow)
                 {
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position, Color.white, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position, Color.white, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position, Color.white, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, Color.white, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, Color.white, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
 
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].GetPointInfo().range);
+                    if (gravityAttractor.gravityTrianglesOrQuad[i].isQuad)
+                    {
+                        ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, pointD, Color.white, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+                        ExtDrawGuizmos.DrawCylinder(pointD, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, Color.white, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+
+                        Gizmos.DrawWireSphere(pointD, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+                    }
+                    else
+                    {
+                        ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, Color.white, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+                    }
+                    
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range);
+
                 }
-                if (gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange > gravityAttractor.gravityTriangles[i].GetPointInfo().range && alwaysShow)
+                if (gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange > gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().range && alwaysShow)
                 {
                     Gizmos.color = Color.red;
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position, Color.red, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position, Color.red, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position, Color.red, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, Color.red, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, Color.red, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
 
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
-                }
+                    if (gravityAttractor.gravityTrianglesOrQuad[i].isQuad)
+                    {
+                        ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, pointD, Color.red, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
+                        ExtDrawGuizmos.DrawCylinder(pointD, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, Color.red, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
 
-
-                Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTriangles[i].pointA.position,
-                    gravityAttractor.gravityTriangles[i].pointB.position,
-                    gravityAttractor.gravityTriangles[i].pointC.position}, false);
-
-                if (gravityAttractor.gravityTriangles[i].unidirectionnal)
-                {
-                    ExtTriangle triangleA = new ExtTriangle(gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position,
-                            gravityAttractor.gravityTriangles[i].unidirectionnal,
-                            gravityAttractor.gravityTriangles[i].inverseDirection,
-                            gravityAttractor.gravityTriangles[i].infinitePlane,
-                            gravityAttractor.gravityTriangles[i].noGravityBorders);
-                    if (!gravityAttractor.gravityTriangles[i].inverseDirection)
-                        ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNormNormalize.normalized, triangleA.TriNormNormalize.normalized);
+                        Gizmos.DrawWireSphere(pointD, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
+                    }
                     else
-                        ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNormNormalize.normalized, -triangleA.TriNormNormalize.normalized);
+                    {
+                        ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, Color.red, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
+                    }
+
+                    //ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position, Color.red, gravityAttractor.gravityTriangles[i].GetPointInfo().maxRange);
+
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, gravityAttractor.gravityTrianglesOrQuad[i].GetPointInfo().maxRange);
                 }
 
-                if (gravityAttractor.gravityTriangles[i].infinitePlane || gravityAttractor.gravityTriangles[i].noGravityBorders)
+
+                if (gravityAttractor.gravityTrianglesOrQuad[i].isQuad)
                 {
-                    int dirArrow = (gravityAttractor.gravityTriangles[i].infinitePlane) ? -1 : 1;
+                    Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointA.position,
+                    gravityAttractor.gravityTrianglesOrQuad[i].pointB.position,
+                    gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, pointD}, false);
 
-                    Vector3 middleLineA = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTriangles[i].pointA.position, gravityAttractor.gravityTriangles[i].pointB.position });
-                    Vector3 dirMiddleToMiddleLineA = (middlePlane - middleLineA).normalized;
-                    if (dirArrow == 1)
-                        middleLineA = middleLineA - dirMiddleToMiddleLineA;
-                    ExtDrawGuizmos.DrawArrow(middleLineA, dirMiddleToMiddleLineA * dirArrow);
+                    if (gravityAttractor.gravityTrianglesOrQuad[i].unidirectionnal)
+                    {
+                        ExtTriangle triangleA = new ExtTriangle(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position,
+                                gravityAttractor.gravityTrianglesOrQuad[i].unidirectionnal,
+                                gravityAttractor.gravityTrianglesOrQuad[i].inverseDirection,
+                                gravityAttractor.gravityTrianglesOrQuad[i].noGravityBorders, false, false, false, false);
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].inverseDirection)
+                            ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNormNormalize.normalized, triangleA.TriNormNormalize.normalized);
+                        else
+                            ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNormNormalize.normalized, -triangleA.TriNormNormalize.normalized);
+                    }
 
-                    Vector3 middleLineB = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTriangles[i].pointB.position, gravityAttractor.gravityTriangles[i].pointC.position });
-                    Vector3 dirMiddleToMiddleLineB = (middlePlane - middleLineB).normalized;
-                    if (dirArrow == 1)
-                        middleLineB = middleLineB - dirMiddleToMiddleLineB;
-                    ExtDrawGuizmos.DrawArrow(middleLineB, (middlePlane - middleLineB).normalized * dirArrow);
+                    if (gravityAttractor.gravityTrianglesOrQuad[i].noGravityBorders)
+                    {
+                        int dirArrow = 1;
 
-                    Vector3 middleLineC = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTriangles[i].pointC.position, gravityAttractor.gravityTriangles[i].pointA.position });
-                    Vector3 dirMiddleToMiddleLineC = (middlePlane - middleLineC).normalized;
-                    if (dirArrow == 1)
-                        middleLineC = middleLineC - dirMiddleToMiddleLineC;
-                    ExtDrawGuizmos.DrawArrow(middleLineC, (middlePlane - middleLineC).normalized * dirArrow);
+                        Vector3 middleLineA = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position });
+                        Vector3 dirMiddleToMiddleLineA = (middlePlane - middleLineA).normalized;
+                        if (dirArrow == 1)
+                            middleLineA = middleLineA - dirMiddleToMiddleLineA;
+                        ExtDrawGuizmos.DrawArrow(middleLineA, dirMiddleToMiddleLineA * dirArrow, Color.red);
+
+                        Vector3 middleLineB = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position });
+                        Vector3 dirMiddleToMiddleLineB = (middlePlane - middleLineB).normalized;
+                        if (dirArrow == 1)
+                            middleLineB = middleLineB - dirMiddleToMiddleLineB;
+                        ExtDrawGuizmos.DrawArrow(middleLineB, (middlePlane - middleLineB).normalized * dirArrow, Color.red);
+
+                        Vector3 middleLineC = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, pointD });
+                        Vector3 dirMiddleToMiddleLineC = (middlePlane - middleLineC).normalized;
+                        if (dirArrow == 1)
+                            middleLineC = middleLineC - dirMiddleToMiddleLineC;
+                        ExtDrawGuizmos.DrawArrow(middleLineC, (middlePlane - middleLineC).normalized * dirArrow, Color.red);
+
+                        Vector3 middleLineD = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { pointD, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position });
+                        Vector3 dirMiddleToMiddleLineD = (middlePlane - middleLineD).normalized;
+                        if (dirArrow == 1)
+                            middleLineD = middleLineD - dirMiddleToMiddleLineD;
+                        ExtDrawGuizmos.DrawArrow(middleLineD, (middlePlane - middleLineD).normalized * dirArrow, Color.red);
+                    }
                 }
+                else
+                {
+                    Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointA.position,
+                    gravityAttractor.gravityTrianglesOrQuad[i].pointB.position,
+                    gravityAttractor.gravityTrianglesOrQuad[i].pointC.position}, false);
+
+                    if (gravityAttractor.gravityTrianglesOrQuad[i].unidirectionnal)
+                    {
+                        ExtTriangle triangleA = new ExtTriangle(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position,
+                                gravityAttractor.gravityTrianglesOrQuad[i].unidirectionnal,
+                                gravityAttractor.gravityTrianglesOrQuad[i].inverseDirection,
+                                gravityAttractor.gravityTrianglesOrQuad[i].noGravityBorders, false, false, false, false);
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].inverseDirection)
+                            ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNormNormalize.normalized, triangleA.TriNormNormalize.normalized);
+                        else
+                            ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNormNormalize.normalized, -triangleA.TriNormNormalize.normalized);
+                    }
+
+                    if (gravityAttractor.gravityTrianglesOrQuad[i].noGravityBorders)
+                    {
+                        int dirArrow = 1;
+                        
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].calculateAB)
+                        {
+                            Vector3 middleLineA = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, gravityAttractor.gravityTrianglesOrQuad[i].pointB.position });
+                            Vector3 dirMiddleToMiddleLineA = (middlePlane - middleLineA).normalized;
+                            if (dirArrow == 1)
+                                middleLineA = middleLineA - dirMiddleToMiddleLineA;
+                            ExtDrawGuizmos.DrawArrow(middleLineA, dirMiddleToMiddleLineA * dirArrow, Color.red);
+                        }
+
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].calculateBC)
+                        {
+                            Vector3 middleLineB = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, gravityAttractor.gravityTrianglesOrQuad[i].pointC.position });
+                            Vector3 dirMiddleToMiddleLineB = (middlePlane - middleLineB).normalized;
+                            if (dirArrow == 1)
+                                middleLineB = middleLineB - dirMiddleToMiddleLineB;
+                            ExtDrawGuizmos.DrawArrow(middleLineB, (middlePlane - middleLineB).normalized * dirArrow, Color.red);
+                        }
+                        
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].calculateCA)
+                        {
+                            Vector3 middleLineC = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, gravityAttractor.gravityTrianglesOrQuad[i].pointA.position });
+                            Vector3 dirMiddleToMiddleLineC = (middlePlane - middleLineC).normalized;
+                            if (dirArrow == 1)
+                                middleLineC = middleLineC - dirMiddleToMiddleLineC;
+                            ExtDrawGuizmos.DrawArrow(middleLineC, (middlePlane - middleLineC).normalized * dirArrow, Color.red);
+                        }
+
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].calculateCorner || (gravityAttractor.gravityTrianglesOrQuad[i].calculateCorner && !gravityAttractor.gravityTrianglesOrQuad[i].calculateAB && !gravityAttractor.gravityTrianglesOrQuad[i].calculateCA))
+                        {
+                            Vector3 startACorner = gravityAttractor.gravityTrianglesOrQuad[i].pointA.position + (gravityAttractor.gravityTrianglesOrQuad[i].pointA.position - middlePlane).normalized * 2;
+                            Vector3 dirACorner = -(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position - middlePlane).normalized * 2;
+                            ExtDrawGuizmos.DrawArrow(startACorner, dirACorner, Color.red);
+                        }
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].calculateCorner || (gravityAttractor.gravityTrianglesOrQuad[i].calculateCorner && !gravityAttractor.gravityTrianglesOrQuad[i].calculateAB && !gravityAttractor.gravityTrianglesOrQuad[i].calculateBC))
+                        {
+                            Vector3 startBCorner = gravityAttractor.gravityTrianglesOrQuad[i].pointB.position + (gravityAttractor.gravityTrianglesOrQuad[i].pointB.position - middlePlane).normalized * 2;
+                            Vector3 dirBCorner = -(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position - middlePlane).normalized * 2;
+                            ExtDrawGuizmos.DrawArrow(startBCorner, dirBCorner, Color.red);
+                        }
+                        if (!gravityAttractor.gravityTrianglesOrQuad[i].calculateCorner || (gravityAttractor.gravityTrianglesOrQuad[i].calculateCorner && !gravityAttractor.gravityTrianglesOrQuad[i].calculateBC && !gravityAttractor.gravityTrianglesOrQuad[i].calculateCA))
+                        {
+                            Vector3 startCCorner = gravityAttractor.gravityTrianglesOrQuad[i].pointC.position + (gravityAttractor.gravityTrianglesOrQuad[i].pointC.position - middlePlane).normalized * 2;
+                            Vector3 dirCCorner = -(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position - middlePlane).normalized * 2;
+                            ExtDrawGuizmos.DrawArrow(startCCorner, dirCCorner, Color.red);
+                        }
+
+                        
+                    }
+                }
+
+                
             }
         }
-        for (int i = 0; i < gravityAttractor.gravityQuad.Count; i++)
+        for (int i = 0; i < gravityAttractor.gravityTetra.Count; i++)
         {
-            if (gravityAttractor.gravityQuad[i].pointA && gravityAttractor.gravityQuad[i].pointB && gravityAttractor.gravityQuad[i].pointC && gravityAttractor.gravityQuad[i].pointD)
+            if (gravityAttractor.gravityTetra[i].pointA && gravityAttractor.gravityTetra[i].pointB && gravityAttractor.gravityTetra[i].pointC && gravityAttractor.gravityTetra[i].pointD)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position);
-                Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position);
-                Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position);
-                Gizmos.DrawLine(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointB.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointC.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityQuad[i].pointD.position);
+                Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointB.position);
+                Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointC.position);
+                Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].pointD.position);
+                Gizmos.DrawLine(gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].pointA.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointA.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointB.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointC.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointD.position);
 
                 Gizmos.color = Color.white;
-                if (gravityAttractor.gravityQuad[i].GetPointInfo().range > 0 && alwaysShow)
+                if (gravityAttractor.gravityTetra[i].GetPointInfo().range > 0 && alwaysShow)
                 {
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position, Color.white, gravityAttractor.gravityQuad[i].GetPointInfo().range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position, Color.white, gravityAttractor.gravityQuad[i].GetPointInfo().range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position, Color.white, gravityAttractor.gravityQuad[i].GetPointInfo().range);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position, Color.white, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointB.position, Color.white, gravityAttractor.gravityTetra[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointC.position, Color.white, gravityAttractor.gravityTetra[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].pointD.position, Color.white, gravityAttractor.gravityTetra[i].GetPointInfo().range);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].pointA.position, Color.white, gravityAttractor.gravityTetra[i].GetPointInfo().range);
 
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].GetPointInfo().range);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].GetPointInfo().range);
                 }
-                if (gravityAttractor.gravityQuad[i].GetPointInfo().maxRange > gravityAttractor.gravityQuad[i].GetPointInfo().range && alwaysShow)
+                if (gravityAttractor.gravityTetra[i].GetPointInfo().maxRange > gravityAttractor.gravityTetra[i].GetPointInfo().range && alwaysShow)
                 {
                     Gizmos.color = Color.red;
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position, Color.red, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position, Color.red, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position, Color.red, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
-                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position, Color.red, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointB.position, Color.red, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointC.position, Color.red, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].pointD.position, Color.red, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
+                    ExtDrawGuizmos.DrawCylinder(gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].pointA.position, Color.red, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
 
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
-                    Gizmos.DrawWireSphere(gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].GetPointInfo().maxRange);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
+                    Gizmos.DrawWireSphere(gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].GetPointInfo().maxRange);
                 }
 
-                Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointA.position,
-                    gravityAttractor.gravityQuad[i].pointB.position,
-                    gravityAttractor.gravityQuad[i].pointC.position,
-                    gravityAttractor.gravityQuad[i].pointD.position}, true);
+                Vector3 middlePlane = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTetra[i].pointA.position,
+                    gravityAttractor.gravityTetra[i].pointB.position,
+                    gravityAttractor.gravityTetra[i].pointC.position,
+                    gravityAttractor.gravityTetra[i].pointD.position}, true);
 
-                if (gravityAttractor.gravityQuad[i].unidirectionnal)
+                if (gravityAttractor.gravityTetra[i].unidirectionnal)
                 {
-                    ExtTriangle triangleA = new ExtTriangle(gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position,
-                            gravityAttractor.gravityQuad[i].unidirectionnal,
-                            gravityAttractor.gravityQuad[i].inverseDirection,
-                            gravityAttractor.gravityQuad[i].infinitePlane,
-                            gravityAttractor.gravityQuad[i].noGravityBorders);
-                    if (!gravityAttractor.gravityQuad[i].inverseDirection)
+                    ExtTriangle triangleA = new ExtTriangle(gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointC.position,
+                            gravityAttractor.gravityTetra[i].unidirectionnal,
+                            gravityAttractor.gravityTetra[i].inverseDirection,
+                            gravityAttractor.gravityTetra[i].noGravityBorders, false, false, false, false);
+                    if (!gravityAttractor.gravityTetra[i].inverseDirection)
                         ExtDrawGuizmos.DrawArrow(middlePlane - triangleA.TriNormNormalize.normalized, triangleA.TriNormNormalize.normalized);
                     else
                         ExtDrawGuizmos.DrawArrow(middlePlane + triangleA.TriNormNormalize.normalized, -triangleA.TriNormNormalize.normalized);
 
-                    ExtTriangle triangleB = new ExtTriangle(gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position,
-                            gravityAttractor.gravityQuad[i].unidirectionnal,
-                            gravityAttractor.gravityQuad[i].inverseDirection,
-                            gravityAttractor.gravityQuad[i].infinitePlane,
-                            gravityAttractor.gravityQuad[i].noGravityBorders);
-                    if (!gravityAttractor.gravityQuad[i].inverseDirection)
+                    ExtTriangle triangleB = new ExtTriangle(gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].pointA.position,
+                            gravityAttractor.gravityTetra[i].unidirectionnal,
+                            gravityAttractor.gravityTetra[i].inverseDirection,
+                            gravityAttractor.gravityTetra[i].noGravityBorders, false, false, false, false);
+                    if (!gravityAttractor.gravityTetra[i].inverseDirection)
                         ExtDrawGuizmos.DrawArrow(middlePlane - triangleB.TriNormNormalize.normalized, triangleB.TriNormNormalize.normalized);
                     else
                         ExtDrawGuizmos.DrawArrow(middlePlane + triangleB.TriNormNormalize.normalized, -triangleB.TriNormNormalize.normalized);
                 }
 
-                if (gravityAttractor.gravityQuad[i].infinitePlane || gravityAttractor.gravityQuad[i].noGravityBorders)
+                if (gravityAttractor.gravityTetra[i].noGravityBorders)
                 {
-                    int dirArrow = (gravityAttractor.gravityQuad[i].infinitePlane) ? -1 : 1;
+                    int dirArrow = 1;
 
-                    Vector3 middleLineA = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointA.position, gravityAttractor.gravityQuad[i].pointB.position });
+                    Vector3 middleLineA = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTetra[i].pointA.position, gravityAttractor.gravityTetra[i].pointB.position });
                     Vector3 dirMiddleToMiddleLineA = (middlePlane - middleLineA).normalized;
                     if (dirArrow == 1)
                         middleLineA = middleLineA - dirMiddleToMiddleLineA;
-                    ExtDrawGuizmos.DrawArrow(middleLineA, dirMiddleToMiddleLineA * dirArrow);
+                    ExtDrawGuizmos.DrawArrow(middleLineA, dirMiddleToMiddleLineA * dirArrow, Color.red);
 
-                    Vector3 middleLineB = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointB.position, gravityAttractor.gravityQuad[i].pointC.position });
+                    Vector3 middleLineB = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTetra[i].pointB.position, gravityAttractor.gravityTetra[i].pointC.position });
                     Vector3 dirMiddleToMiddleLineB = (middlePlane - middleLineB).normalized;
                     if (dirArrow == 1)
                         middleLineB = middleLineB - dirMiddleToMiddleLineB;
-                    ExtDrawGuizmos.DrawArrow(middleLineB, (middlePlane - middleLineB).normalized * dirArrow);
+                    ExtDrawGuizmos.DrawArrow(middleLineB, (middlePlane - middleLineB).normalized * dirArrow, Color.red);
 
-                    Vector3 middleLineC = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointC.position, gravityAttractor.gravityQuad[i].pointD.position });
+                    Vector3 middleLineC = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTetra[i].pointC.position, gravityAttractor.gravityTetra[i].pointD.position });
                     Vector3 dirMiddleToMiddleLineC = (middlePlane - middleLineC).normalized;
                     if (dirArrow == 1)
                         middleLineC = middleLineC - dirMiddleToMiddleLineC;
-                    ExtDrawGuizmos.DrawArrow(middleLineC, (middlePlane - middleLineC).normalized * dirArrow);
+                    ExtDrawGuizmos.DrawArrow(middleLineC, (middlePlane - middleLineC).normalized * dirArrow, Color.red);
 
-                    Vector3 middleLineD = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityQuad[i].pointD.position, gravityAttractor.gravityQuad[i].pointA.position });
+                    Vector3 middleLineD = ExtQuaternion.GetMiddleOfXPoint(new Vector3[] { gravityAttractor.gravityTetra[i].pointD.position, gravityAttractor.gravityTetra[i].pointA.position });
                     Vector3 dirMiddleToMiddleLineD = (middlePlane - middleLineD).normalized;
                     if (dirArrow == 1)
                         middleLineD = middleLineD - dirMiddleToMiddleLineD;
-                    ExtDrawGuizmos.DrawArrow(middleLineD, (middlePlane - middleLineD).normalized * dirArrow);
+                    ExtDrawGuizmos.DrawArrow(middleLineD, (middlePlane - middleLineD).normalized * dirArrow, Color.red);
                 }
             }
         }
@@ -775,20 +898,20 @@ public class GravityAttractorEditor : MonoBehaviour
                 gravityAttractor.gravityLines.RemoveAt(i);
             }
         }
-        for (int i = gravityAttractor.gravityTriangles.Count - 1; i >= 0; i--)
+        for (int i = gravityAttractor.gravityTrianglesOrQuad.Count - 1; i >= 0; i--)
         {
-            if (gravityAttractor.gravityTriangles[i].pointA == null || gravityAttractor.gravityTriangles[i].pointB == null
-                || gravityAttractor.gravityTriangles[i].pointC == null)
+            if (gravityAttractor.gravityTrianglesOrQuad[i].pointA == null || gravityAttractor.gravityTrianglesOrQuad[i].pointB == null
+                || gravityAttractor.gravityTrianglesOrQuad[i].pointC == null)
             {
-                gravityAttractor.gravityTriangles.RemoveAt(i);
+                gravityAttractor.gravityTrianglesOrQuad.RemoveAt(i);
             }
         }
-        for (int i = gravityAttractor.gravityQuad.Count - 1; i >= 0; i--)
+        for (int i = gravityAttractor.gravityTetra.Count - 1; i >= 0; i--)
         {
-            if (gravityAttractor.gravityQuad[i].pointA == null || gravityAttractor.gravityQuad[i].pointB == null
-                || gravityAttractor.gravityQuad[i].pointC == null || gravityAttractor.gravityQuad[i].pointD == null)
+            if (gravityAttractor.gravityTetra[i].pointA == null || gravityAttractor.gravityTetra[i].pointB == null
+                || gravityAttractor.gravityTetra[i].pointC == null || gravityAttractor.gravityTetra[i].pointD == null)
             {
-                gravityAttractor.gravityQuad.RemoveAt(i);
+                gravityAttractor.gravityTetra.RemoveAt(i);
             }
         }
     }
