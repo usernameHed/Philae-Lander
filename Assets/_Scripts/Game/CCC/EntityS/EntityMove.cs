@@ -69,6 +69,23 @@ public class EntityMove : MonoBehaviour
         return (remapCurrentSpeed * playerInput);
     }
 
+    public float GetCurrentSpeedClamped01()
+    {
+        float currentVelocity = entityController.GetActualVelocity();
+        float velocityRemapped = ExtUtilityFunction.Remap(currentVelocity, 0, 10, 0, 1);
+
+        //Debug.Log("velocity remapped: " + velocityRemapped + "(actual: " + currentVelocity + ")");
+        return (Mathf.Clamp01(velocityRemapped));
+    }
+    public float GetCurrentSpeedForwardClamped01()
+    {
+        float currentVelocity = entityController.GetActualAccelerationForward().magnitude;
+        float velocityRemapped = ExtUtilityFunction.Remap(currentVelocity, 0, 10, 0, 1);
+
+        //Debug.Log("velocity forward not mapped: " + currentVelocity);
+        return (Mathf.Clamp01(velocityRemapped));
+    }
+
     private void ChangeLerp()
     {
         if (entityAction.NotMoving())
@@ -79,6 +96,8 @@ public class EntityMove : MonoBehaviour
         {
             currentSpeedMove = Mathf.Lerp(currentSpeedMove, speedMove, easeAcceleration.Evaluate(Time.deltaTime));
         }
+
+        
     }
 
     /// <summary>
@@ -118,6 +137,8 @@ public class EntityMove : MonoBehaviour
     private void FixedUpdate()
     {
         ChangeLerp();
+
+        //GetCurrentSpeedClamped01();
 
         if (entityController.GetMoveState() == EntityController.MoveState.Move
             && entityJump.IsJumpCoolDebugDownReady())

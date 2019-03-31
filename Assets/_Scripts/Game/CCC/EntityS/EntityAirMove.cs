@@ -27,6 +27,13 @@ public class EntityAirMove : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public float speedDecreaseAddition = 3f;
 
+    [FoldoutGroup("AirRotate"), Tooltip(""), SerializeField]
+    public float dotInverse = -0.9f;
+    [FoldoutGroup("AirRotate"), Tooltip(""), SerializeField]
+    public float inverseRatioAcceleration = 1f;
+    [FoldoutGroup("AirRotate"), Range(0, 1), Tooltip(""), SerializeField]
+    public float minRatioTurn = 0.3f;
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private Rigidbody rb = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
@@ -53,10 +60,14 @@ public class EntityAirMove : MonoBehaviour
     /// move with input
     /// </summary>
     /// <param name="direction"></param>
-    public void MovePhysics(Vector3 direction)
+    public void MovePhysics(Vector3 direction, bool addAmount = true)
     {
-        amountAdded += (direction * entityMove.GetMagnitudeAcceleration()).sqrMagnitude * Time.deltaTime;
-        //Debug.Log("Amount added: " + amountAdded);
+        if (addAmount)
+        {
+            float toAdd = (direction * entityMove.GetMagnitudeAcceleration()).sqrMagnitude * entityMove.GetCurrentSpeedForwardClamped01() * Time.deltaTime;
+            Debug.Log("toAdd: " + toAdd);
+            amountAdded += toAdd;
+        }
 
         Debug.DrawRay(rb.position, direction, Color.green, 5f);
         //UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
@@ -93,10 +104,11 @@ public class EntityAirMove : MonoBehaviour
 
         float lastVelocity = entityJump.GetLastJumpForwardVelocity();
         //float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
-        float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityJump.GetLastJumpForwardDirection());
+        float dotDirForwardJump = ExtQuaternion.DotProduct(dirMove.normalized, entityJump.GetLastJumpForwardDirection());
+        float dotDirAcceleration = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetActualDirForward().normalized);
 
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
-        if (dotDirForward > dotForward)
+        if (dotDirForwardJump > dotForward)
         {
             if (amountAdded > limitAirCalculationForward * entityGravityAttractorSwitch.GetAirRatioGravity()
                 && entityController.GetActualVelocity() > velocityMaxAirMove)
@@ -106,7 +118,7 @@ public class EntityAirMove : MonoBehaviour
                 return;
 
 
-            float valueSubstract = Mathf.Abs(lastVelocity - dotDirForward);
+            float valueSubstract = Mathf.Abs(lastVelocity - dotDirForwardJump);
             //Debug.Log("value Substract: " + valueSubstract);
             dirMove = dirMove * valueSubstract;
         }
@@ -115,12 +127,28 @@ public class EntityAirMove : MonoBehaviour
             //if we have done enought airMove in air, don't do more
             if (amountAdded > limitAirCalculationSide * entityGravityAttractorSwitch.GetAirRatioGravity()
                 && entityController.GetActualVelocity() > velocityMaxAirMove)
+            {
+                Debug.Log("stop airMove");
                 return;
+            }
+                
+            
+            //dotInverse = -0.8, dot when input inverse: -0.95
+            if (dotDirAcceleration < dotInverse)
+            {
+                float ratioAccel = (1 + (1 - dotDirAcceleration)) * inverseRatioAcceleration;
+                Debug.Log("inverse ratio: " + ratioAccel);
+                dirMove = dirMove * ratioAccel;
+
+                MovePhysics(dirMove * GetRatioAirMove(), false);
+                //entityRotate.DoAirRotate(Mathf.Max(minRatioTurn, 1 - lastVelocity));
+                return;
+            }
         }
         //Debug.DrawRay(rb.position, dirMove, Color.yellow, 5f);
 
         MovePhysics(dirMove * GetRatioAirMove());
-        entityRotate.DoAirRotate();
+        entityRotate.DoAirRotate(Mathf.Max(minRatioTurn, 1 - lastVelocity));
     }
 
     private bool CanDoAirMove()

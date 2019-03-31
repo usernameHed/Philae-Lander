@@ -36,12 +36,13 @@ public class EntityRotate : MonoBehaviour
     private Transform objectToRotate = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private Transform rotateObject;
+
+    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    private Vector3 lastDesiredDirection;
     
     private Vector3 lastVectorRelativeDirection;  //last desired rotation
     private Quaternion lastQuaternionRelativeDirection;  //last desired rotation
-    public Vector3 GetLastDesiredDirection() => rotateObject.forward;
+    public Vector3 GetLastDesiredDirection() => lastDesiredDirection;
     private Vector3 lastPosDir = Vector3.zero;
 
     private bool isFullSpeedBefore = false;
@@ -95,12 +96,15 @@ public class EntityRotate : MonoBehaviour
     /// <summary>
     /// called by entityAirMove
     /// </summary>
-    public void DoAirRotate()
+    public void DoAirRotate(float speedRatio = 1)
     {
         if (entityAction.NotMoving(0.05f))
             return;
+
+        //Debug.Log("ratio speedRotate air: " + speedRatio);
+
         Vector3 dirInput = entityAction.GetRelativeDirection();
-        DoRotate(GetLastDesiredRotation(dirInput, objectToRotate.up), turnRateInAir);
+        DoRotate(GetLastDesiredRotation(dirInput, objectToRotate.up), turnRateInAir * speedRatio);
     }
 
     private void FixedUpdate()
@@ -139,10 +143,10 @@ public class EntityRotate : MonoBehaviour
         }
 
         lastQuaternionRelativeDirection = GetLastDesiredRotation(lastVectorRelativeDirection, baseGravity.GetMainAndOnlyGravity());
+        lastDesiredDirection = lastQuaternionRelativeDirection * Vector3.forward;
+        //rotateObject.rotation = lastQuaternionRelativeDirection;
 
-        rotateObject.rotation = lastQuaternionRelativeDirection;
-
-        //Debug.DrawRay(lastPosDir, lastVectorRelativeDirection * 5, Color.blue, 5f);
+        Debug.DrawRay(lastPosDir, lastDesiredDirection, Color.blue, 5f);
         //Debug.DrawRay(lastPosDir, rotateObject.forward * 5, Color.red, 5f);
     }
 }

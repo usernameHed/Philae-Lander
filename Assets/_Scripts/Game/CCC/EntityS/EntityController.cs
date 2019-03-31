@@ -75,6 +75,27 @@ public class EntityController : MonoBehaviour
     protected Vector3 actualAccelerationVector = Vector3.zero;
     
     public float GetActualVelocity() => clampRbSpeed.GetActualVelocity();
+    public Vector3 GetActualVelocityVector() => rb.velocity;
+    public Vector3 GetActualAccelerationDir() => actualAccelerationVector;
+    //here get the acceleration forward depending on the gravity
+    public Vector3 GetActualDirForward()
+    {
+        Quaternion forwardDir = ExtQuaternion.TurretLookRotation(GetActualVelocityVector(), baseGravity.GetMainAndOnlyGravity());
+        return (forwardDir * Vector3.forward);
+    }
+    public Vector3 GetActualAccelerationForward()
+    {
+        Vector3 dirForward = GetActualDirForward();
+        Vector3 dirVelocity = rb.velocity;
+
+        Vector3 projected = ExtQuaternion.GetProjectionOfAOnB(dirVelocity, dirForward, baseGravity.GetMainAndOnlyGravity());
+
+        //Debug.DrawRay(rb.transform.position, dirForward, Color.blue);
+        //Debug.DrawRay(rb.transform.position, dirVelocity, Color.red);
+        //Debug.DrawRay(rb.transform.position, projected, Color.green);
+        return (projected);
+    }
+
     /// <summary>
     /// init player
     /// </summary>
@@ -84,6 +105,8 @@ public class EntityController : MonoBehaviour
         layerMask = LayerMask.GetMask(allWalkablePlatform);
         oldDrag = rb.drag;
     }
+
+    
 
     public bool IsWalkablePlatform(string layer)
     {
