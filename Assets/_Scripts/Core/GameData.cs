@@ -187,12 +187,14 @@ public static class GameData
         RedEye,
     }
 
+    /*
     public enum Sounds
     {
         Music_Intro,
         Music_Theme,
         Music_Enemy,
 
+        
         Bushes,
         Ennemy_FTPS,
         Ennemy_Jump_End,
@@ -208,10 +210,12 @@ public static class GameData
         Player_End_Movement,
         Player_ReadyToLaunch,
         Player_Thruster,
+        
         UI_Back,
         UI_Enter,
         UI_Start,
         
     }
+    */
     #endregion
 }

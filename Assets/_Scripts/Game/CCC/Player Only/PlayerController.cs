@@ -19,6 +19,18 @@ public class PlayerController : EntityController, IKillable
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityYoshiBoost entityYoshiBoost;
 
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_jump;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_grounded;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_playerMove;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_playerEndMove;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_playerDeath;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_Boost;
 
     [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
@@ -64,7 +76,7 @@ public class PlayerController : EntityController, IKillable
             PhilaeManager.Instance.cameraController.SetBaseCamera();
         }
 
-        SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
+        SoundManager.Instance.PlaySound(SFX_grounded);
     }
 
     /// <summary>
@@ -97,7 +109,7 @@ public class PlayerController : EntityController, IKillable
             moveState = MoveState.Move;
             if (!isMoving)
             {
-                SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString());
+                SoundManager.Instance.PlaySound(SFX_playerMove);
                 animator.SetBool("isMarche", true);
             }
 
@@ -108,8 +120,8 @@ public class PlayerController : EntityController, IKillable
             moveState = MoveState.Idle;
             if (isMoving)
             {
-                SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
-                SoundManager.Instance.PlaySound(GameData.Sounds.Player_End_Movement.ToString());
+                SoundManager.Instance.PlaySound(SFX_playerMove, false);
+                SoundManager.Instance.PlaySound(SFX_playerEndMove);
                 animator.SetBool("isMarche", false);
             }
 
@@ -134,14 +146,14 @@ public class PlayerController : EntityController, IKillable
         if (isKilled)
             return;
 
-        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Movement.ToString(), false);
+        SoundManager.Instance.PlaySound(SFX_playerMove, false);
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Hit, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         //throw new System.NotImplementedException();
         PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
         EventManager.TriggerEvent(GameData.Event.GameOver);
         renderPlayer.gameObject.SetActive(false);
-        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Death.ToString());
+        SoundManager.Instance.PlaySound(SFX_playerDeath);
 
         isKilled = true;
     }

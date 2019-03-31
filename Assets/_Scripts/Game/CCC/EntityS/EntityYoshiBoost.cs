@@ -115,7 +115,7 @@ public class EntityYoshiBoost : MonoBehaviour
         clampRbSpeed.DoClamp(speedMax);
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rbEntity.position, rbEntity.rotation, ObjectsPooler.Instance.transform);
         Vibrate();
-        SoundManager.Instance.PlaySound(GameData.Sounds.Player_Thruster.ToString());
+        SoundManager.Instance.PlaySound(playerController.SFX_Boost);
     }
 
     /// <summary>

@@ -12,6 +12,12 @@ public class IAController : EntityController, IPooledObject, IKillable
     [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
     private float distForLosePlayer = 200f;
 
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_jump;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_grounded;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_Scream;
 
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public IAInput iaInput;
@@ -164,7 +170,7 @@ public class IAController : EntityController, IPooledObject, IKillable
         baseGravity.OnGrounded();
         baseGravityAttractorSwitch.OnGrounded();
 
-        SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Jump_End.ToString() + rb.transform.GetInstanceID());
+        SoundManager.Instance.PlaySound(SFX_grounded);
     }
 
     /// <summary>
@@ -209,7 +215,7 @@ public class IAController : EntityController, IPooledObject, IKillable
         if (timerScream.IsStartedAndOver())
         {
             StartTimerScream();
-            SoundManager.Instance.PlaySound(GameData.Sounds.Ennemy_Scream.ToString() + rb.transform.GetInstanceID());
+            SoundManager.Instance.PlaySound(SFX_Scream);
         }
     }
 

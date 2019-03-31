@@ -104,9 +104,6 @@
         <property name="randomized">
             <value>false</value>
         </property>
-        <property name="playlistMode">
-            <value>1</value>
-        </property>
         <relationship name="sounds">
             <destination>{6f0664ff-5dbb-4018-9ccc-1fc17d401950}</destination>
             <destination>{545b5a42-b6e2-4c34-bf2e-af58e87b219c}</destination>
@@ -115,6 +112,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{87c40543-87af-427a-a26d-59c107f6de76}">
+        <property name="volume">
+            <value>8.5</value>
+        </property>
         <property name="name">
             <value>Audio 1</value>
         </property>

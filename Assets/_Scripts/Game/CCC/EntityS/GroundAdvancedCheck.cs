@@ -9,6 +9,9 @@ public class GroundAdvancedCheck : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private DrawTargetObject drawTargetObject;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    private Projector projector;
+
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private BaseGravity baseGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private Rigidbody rb;
@@ -29,10 +32,11 @@ public class GroundAdvancedCheck : MonoBehaviour
     {
         Vector3 dirGravity = baseGravity.GetMainAndOnlyGravity();
         //Vector3 posGravity = groundCheck.ResearchInitialGround(false);
-        //Vector3 posGravity = baseGravity.GetPointGravityDown();
+        Vector3 posGravity = baseGravity.GetPointGravityDown();
         drawTargetObject.posToLookAt = (rb.position - (rb.transform.up * 999));
+        projector.farClipPlane = Mathf.Max(3, 1 + (rb.transform.position - posGravity).magnitude);
 
-        //ExtDrawGuizmos.DebugWireSphere(drawTargetObject.posToLookAt, Color.red, 0.1f, 5f);
+        ExtDrawGuizmos.DebugWireSphere(posGravity, Color.red, 0.5f, 5f);
         //Debug.DrawLine(rb.position, posGravity, Color.cyan, 5f);
     }
 }

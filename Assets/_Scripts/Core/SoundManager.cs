@@ -118,7 +118,7 @@ public class SoundManager : SerializedMonoBehaviour                             
     /// ici play l'emitter (ou le stop)
     /// </summary>
     /// <param name="emitterScript"></param>
-    public void PlaySound(FmodEventEmitter emitterScript, bool play)
+    public void PlaySound(FmodEventEmitter emitterScript, bool play = true)
     {
 
         if (!emitterScript)

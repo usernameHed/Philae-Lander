@@ -17,6 +17,8 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
     private float waitUntilRestart = 1f;
 
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_Music_Theme;
 
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]
     public GameObject pausePanel;
@@ -49,7 +51,7 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
         if (switchPlanet == 1)
         {
             Debug.Log("change to Music theme");
-            SoundManager.Instance.PlaySound("event:/Music/" + GameData.Sounds.Music_Theme.ToString());
+            SoundManager.Instance.PlaySound(SFX_Music_Theme);
         }
     }
 

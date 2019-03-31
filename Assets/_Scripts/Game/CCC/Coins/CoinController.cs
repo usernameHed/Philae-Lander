@@ -10,6 +10,11 @@ public class CoinController : MonoBehaviour, IPooledObject, IKillable
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
     private Rigidbody rb;
 
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_kill;
+    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
+    public FmodEventEmitter SFX_loop;
+
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
     private int reward = 1;
 
@@ -41,6 +46,7 @@ public class CoinController : MonoBehaviour, IPooledObject, IKillable
 
     public void Kill()
     {
+        SoundManager.Instance.PlaySound(SFX_kill);
         Destroy(gameObject);
         //throw new System.NotImplementedException();
     }
