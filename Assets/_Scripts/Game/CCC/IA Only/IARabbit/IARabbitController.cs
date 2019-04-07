@@ -71,6 +71,8 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
 
     public bool IsTooFarFromPlayer()
     {
+        if (!playerController)
+            return (true);
         float dist = Vector3.SqrMagnitude(rb.transform.position - playerController.rb.position);
         if (dist > distForLosePlayer * distForLosePlayer)
         {
@@ -81,6 +83,9 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
 
     public bool IsCloseToPlayer()
     {
+        if (!playerController)
+            return (false);
+
         float dist = Vector3.SqrMagnitude(rb.transform.position - playerController.rb.position);
         if (dist < distForChase * distForChase)
         {

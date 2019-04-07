@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54426b9c397db944873daac79c8d0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainReferenceObjectDirection: {fileID: 1410850844761491254}
+  mainReferenceObjectDirection: {fileID: 1410850844761491258}
   moveInput: {x: 0, y: 0}
   Jump: 0
   JumpUp: 0
@@ -791,11 +791,9 @@ MonoBehaviour:
   moveState: 0
   layerMask: -1
   canLosePlayer: 0
-  distForChase: 100
-  distForLosePlayer: 200
+  distForChase: 5
+  distForLosePlayer: 15
   IARabbitInput: {fileID: 2829743453774446179}
-  rigidBodyRef: {fileID: 1410850844761491354}
-  objRotateRef: {fileID: 1410850844761491242}
   entityJump: {fileID: 5865089577137853132}
   iaScream: {x: 2.5139666, y: 10.893854}
   interactionState: 0
@@ -815,8 +813,7 @@ MonoBehaviour:
   jumpHeight: 3
   ratioIncreaseHeightMove: 0.5
   inputJump: 1
-  noJumpLayer:
-  - Walkable/FastForward
+  noJumpLayer: []
   stayHold: 0
   canJumpInAir: 1
   doGravityAttractorJump: 1
@@ -834,8 +831,8 @@ MonoBehaviour:
   fastForward: {fileID: 0}
   entityMove: {fileID: 1410850844761491137}
   hasJumped: 0
-  justJumpedTimer: 0.1
-  justGroundTimer: 0.1
+  justJumpedTimer: 0.2
+  justGroundTimer: 1
   addRandomJump: 4
   iaRabbitController: {fileID: 7954439004656090341}
 --- !u!114 &1410850844761491159
