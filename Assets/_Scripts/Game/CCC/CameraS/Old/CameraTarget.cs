@@ -17,7 +17,7 @@ public class CameraTarget : MonoBehaviour
 
 
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
-    private CameraController cameraController;
+    private CameraControllerOld cameraController;
 
     private void Awake()
     {

@@ -38,7 +38,11 @@ namespace DynamicShadowProjector.Editor {
 			bool isGUIEnabled = GUI.enabled;
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_target"));
 			SerializedProperty prop = serializedObject.FindProperty("m_renderChildren");
-			EditorGUILayout.PropertyField(prop);
+
+            SerializedProperty propRotateTo = serializedObject.FindProperty("rotateToVector");
+            EditorGUILayout.PropertyField(propRotateTo);
+
+            EditorGUILayout.PropertyField(prop);
 			++EditorGUI.indentLevel;
 			GUI.enabled = isGUIEnabled && prop.boolValue;
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_layerMask"));

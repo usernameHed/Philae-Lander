@@ -10,6 +10,7 @@ public class GroundAdvancedCheck : MonoBehaviour
     private DrawTargetObject drawTargetObject;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private Projector projector;
+    public GameObject GetObjProjector() => projector.gameObject;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private BaseGravity baseGravity;
@@ -36,7 +37,7 @@ public class GroundAdvancedCheck : MonoBehaviour
         drawTargetObject.posToLookAt = (rb.position - (rb.transform.up * 999));
         projector.farClipPlane = Mathf.Max(3, 1 + (rb.transform.position - posGravity).magnitude);
 
-        ExtDrawGuizmos.DebugWireSphere(posGravity, Color.red, 0.5f, 5f);
+        //ExtDrawGuizmos.DebugWireSphere(posGravity, Color.red, 0.5f, 5f);
         //Debug.DrawLine(rb.position, posGravity, Color.cyan, 5f);
     }
 }

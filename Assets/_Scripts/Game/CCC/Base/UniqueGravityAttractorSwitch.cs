@@ -26,7 +26,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
     //protected Vector3 pointGroundHit;
     
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
-    protected List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
+    public List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
 
     [FoldoutGroup("Debug"), Tooltip("time between 2 update"), SerializeField]
     protected FrequencyTimer frequencyTimer;
@@ -116,7 +116,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
     /// <summary>
     /// get median of all attraction (3 max ?)
     /// </summary>
-    protected virtual GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
+    public virtual GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
     {
         //prepare array
         GravityAttractorLD.PointInfo[] allPointInfo = new GravityAttractorLD.PointInfo[allGravityAttractor.Count];

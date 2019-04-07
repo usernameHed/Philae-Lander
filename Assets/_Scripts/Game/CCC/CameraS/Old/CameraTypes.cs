@@ -71,7 +71,7 @@ public class CameraTypes : SerializedScriptableObject
     }
 
     [Tooltip(""), SerializeField]
-    public CameraController cameraController;
+    public CameraControllerOld cameraController;
 
     [Tooltip(""), SerializeField]
     public CameraType camType;// = CameraType.BASE;

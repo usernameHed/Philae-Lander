@@ -18,6 +18,8 @@ public class PlayerController : EntityController, IKillable
     public Animator animator = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityYoshiBoost entityYoshiBoost;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    public GroundAdvancedCheck groundAdvancedCheck;
 
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
     public FmodEventEmitter SFX_jump;
@@ -48,6 +50,7 @@ public class PlayerController : EntityController, IKillable
     {
         base.Init();
         PhilaeManager.Instance.InitPlayer(this);
+        groundAdvancedCheck.GetObjProjector().SetActive(true);
     }
 
     
@@ -70,11 +73,6 @@ public class PlayerController : EntityController, IKillable
         entityAirMove.OnGrounded();
         entityYoshiBoost.OnGrounded();
         fastForward.OnGrounded();
-
-        if (PhilaeManager.Instance.cameraController.IsOnAttractorMode())
-        {
-            PhilaeManager.Instance.cameraController.SetBaseCamera();
-        }
 
         SoundManager.Instance.PlaySound(SFX_grounded);
     }
@@ -145,6 +143,10 @@ public class PlayerController : EntityController, IKillable
     {
         if (isKilled)
             return;
+
+        rb.isKinematic = true;
+
+        groundAdvancedCheck.GetObjProjector().SetActive(false);
 
         SoundManager.Instance.PlaySound(SFX_playerMove, false);
 

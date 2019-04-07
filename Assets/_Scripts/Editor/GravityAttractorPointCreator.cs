@@ -34,7 +34,15 @@ public class GravityAttractorPointCreator : OdinEditor
     public void SetupPointCreator()
     {
         if (!gravityAttractorEditor.previewPoint)
+        {
             gravityAttractorEditor.GenerateParenting();
+            if (gravityAttractorEditor.GetGravityAttractor())
+            {
+                gravityAttractorEditor.GetGravityAttractor().philaeManager = UtilityEditor.GetScript<PhilaeManager>();
+                gravityAttractorEditor.GetGravityAttractor().philaeManager.ldManager.FillList(false);
+            }
+        }
+
         UtilityEditor.AssignLabel(gravityAttractorEditor.previewPoint.gameObject, 0);
     }
 
@@ -424,5 +432,16 @@ public class GravityAttractorPointCreator : OdinEditor
     private void OnDisable()
     {
         EditorApplication.update -= OwnUpdate;
+    }
+
+    public void OnDestroy()
+    {
+        if (Application.isEditor)
+        {
+            PhilaeManager phiTmp = UtilityEditor.GetScript<PhilaeManager>();
+            
+            if (phiTmp)
+                phiTmp.ldManager.FillList(false);
+        }
     }
 }

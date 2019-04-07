@@ -31,9 +31,7 @@ public class SceneViewCameraFunction : ScriptableObject
     }
     */
 
-    
-
-    [MenuItem("PERSO/Vieport/Vieporta Zoom In")]
+   
     public static void ViewportPanZoomIn(float zoom = 5f)
     {
         //Debug.Log(SceneView.lastActiveSceneView.size);

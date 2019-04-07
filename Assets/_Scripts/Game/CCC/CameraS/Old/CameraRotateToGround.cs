@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraRotateToGround : RotateToGround
 {
     [FoldoutGroup("Object"), Tooltip("speed of rotation to ground"), SerializeField]
-    public CameraController cameraController = null;
+    public CameraControllerOld cameraController = null;
     [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
     private SmoothNormals smoothNormals = null;
 

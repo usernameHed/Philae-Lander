@@ -156,7 +156,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     /// <summary>
     /// get median of all attraction (3 max ?)
     /// </summary>
-    protected override GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
+    public override GravityAttractorLD.PointInfo GetAirSphereGravity(Vector3 posEntity)
     {
         bool applyAllForce = WeCanApplyGravityForceButCanWeApplyAll();
 

@@ -19,17 +19,7 @@ public class PlayerRotateCamPoint : MonoBehaviour
     private float speedZoom = 5f;
     [FoldoutGroup("Zoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float stepZoom = 1f;
-    [FoldoutGroup("Sight"), Tooltip(""), SerializeField]
-    private string[] objOnSight = new string[] { "Walkable/Floor", "Walkable/NoSide", "Walkable/Up" };
-    [FoldoutGroup("Sight"), Tooltip(""), SerializeField]
-    private float radiusRaycast = 0.7f;
-    [FoldoutGroup("Sight"), Tooltip("dist min when we need to zoom the camera"), SerializeField]
-    private float minDistToZoom = 0.1f;
-    [FoldoutGroup("Sight"), Tooltip("dist min when we need to zoom the camera"), SerializeField]
-    private float speedBoostZoom = 1f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private Transform mainReferenceObjectDirection = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerInput playerInput = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
@@ -39,17 +29,9 @@ public class PlayerRotateCamPoint : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip("point child who rotate"), SerializeField]
     private Transform tpsSpacePoint = null;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody")]
-    private bool isInsideSomzthing = false;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref rigidbody")]
-    private bool isFocusing = false;
-
     [FoldoutGroup("Debug"), SerializeField, Tooltip("default Length CamPoint"), ReadOnly]
     private float defaultLenghtCamPointDist;
 
-    private float oldDefaultLenghtCamPointDist;
-    private bool hasZoomed = false;
-    private bool isRaulbacking = false;
 
     private void Start()
     {
@@ -73,14 +55,11 @@ public class PlayerRotateCamPoint : MonoBehaviour
         if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
         {
             float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(dirInput.y), marginTurnVerti, 1f, 0f, 1f);
-            hasZoomed = isRaulbacking = false;  //cancel raulback
 
             if (dirInput.y < 0)
             {
                 float lerpValue = Mathf.Lerp(defaultLenghtCamPointDist, defaultLenghtCamPointDist + stepZoom, Time.deltaTime * speedZoom * remapedInput);
                 float clampValue = Mathf.Clamp(lerpValue, minMaxZoom.x, minMaxZoom.y);
-
-                //float realStickValue = (Mathf.Abs(dirInput.y - marginTurnVerti) * 1 / (1 - marginTurnVerti)) * Mathf.Sign(dirInput.y);
 
                 defaultLenghtCamPointDist = clampValue;
             }
@@ -106,98 +85,12 @@ public class PlayerRotateCamPoint : MonoBehaviour
         defaultLenghtCamPointDist = clampValue;
     }
 
-    /// <summary>
-    /// tel if we are inside something
-    /// </summary>
-    /// <returns></returns>
-    public bool IsInsideSomething()
-    {
-        return (isInsideSomzthing);
-    }
-
-    private void ZoomIfSometingOnSight()
-    {
-        Vector2 dirInput = playerInput.GetCameraInput();
-
-        if (Mathf.Abs(dirInput.y) >= marginTurnVerti)
-            return;
-
-        RaycastHit hitInfo;
-
-        int layerMask = LayerMask.GetMask(objOnSight);
-
-
-        Vector3 dirPoint = (tpsSpacePoint.position - objectToRotate.position).normalized;
-        float dist = Vector3.Distance(objectToRotate.position, mainReferenceObjectDirection.position);
-
-        if (Physics.SphereCast(rb.transform.position, radiusRaycast, dirPoint, out hitInfo,
-                               dist, layerMask, QueryTriggerInteraction.Ignore))
-        {
-            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 3f);
-            Debug.DrawRay(rb.transform.position, dirPoint.normalized * dist);
-
-            float distPlayerToPoint = Vector3.Distance(hitInfo.point, objectToRotate.position);
-            float diffDist = dist - distPlayerToPoint;
-            
-            if (diffDist > minDistToZoom)
-            {
-                /*if (!hasZoomed)
-                {
-                    oldDefaultLenghtCamPointDist = defaultLenghtCamPointDist;
-                    hasZoomed = true;
-                }*/
-
-
-
-                diffDist = Mathf.Clamp(diffDist, 0, 10) / 10;
-                isInsideSomzthing = true;
-                Zoom(diffDist * speedBoostZoom);
-                ChangePositionPoint();
-            }
-            /*else
-            {
-                if (hasZoomed && !isRaulbacking)
-                {
-                    defaultLenghtCamPointDist = oldDefaultLenghtCamPointDist;
-                    isRaulbacking = true;
-                }
-            }*/
-        }
-    }
-
-    private void Raulbacking()
-    {
-        if (isRaulbacking)
-        {
-            Zoom(0.2f);
-            ChangePositionPoint();
-        }
-    }
-
-    private void InputFocus()
-    {
-        if (playerInput.focus && !isFocusing)
-        {
-            isFocusing = true;
-
-        }
-    }
-
     private void Update()
     {
-        isInsideSomzthing = false;
-        
-
         if (!playerInput.NotMovingCamera())
         {
             InputRotate();
             InputZoom();
         }
-        else
-        {
-            InputFocus();
-        }
-        ZoomIfSometingOnSight();
-        //Raulbacking();
     }
 }

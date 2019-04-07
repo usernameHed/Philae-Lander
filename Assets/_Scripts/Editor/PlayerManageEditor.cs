@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class PlayerManageEditor : Editor
 {
     private PlayerEditor playerEditor;
+    private GravityAttractorLD.PointInfo point;
 
     private void OnEnable()
     {
@@ -18,7 +19,7 @@ public class PlayerManageEditor : Editor
 
     private void OwnUpdate()
     {
-        if (Application.IsPlaying(playerEditor.rb))
+        if (Application.isPlaying)
         {
             if (playerEditor.playerInput.dashUp)
             {
@@ -31,6 +32,17 @@ public class PlayerManageEditor : Editor
                 Debug.Break();
             }
         }
+    }
+
+    private void OnSceneGUI()
+    {
+        if (!Application.isPlaying)
+        {
+            PhilaeManager phiTmp = UtilityEditor.GetScript<PhilaeManager>();
+            point = ExtGetGravityAtPoints.GetAirSphereGravityStatic(playerEditor.rb.transform.position, phiTmp.ldManager.allGravityAttractorLd);
+
+            Debug.DrawLine(playerEditor.rb.transform.position, point.posRange, Color.cyan);
+        }            
     }
 
     private void FocusOnSelection()

@@ -343,13 +343,14 @@ public class GravityAttractorEditor : MonoBehaviour
     public void GenerateParenting()
     {
         if (!gravityAttractor)
-            gravityAttractor = GetComponent<GravityAttractorLD>();
+            gravityAttractor = gameObject.GetComponent<GravityAttractorLD>();
 
         if (!gravityAttractor)
         {
             Debug.Log("no gravity attractor ?");
             return;
         }
+
         isUpdatedFirstTime = true;
 
         CreateTransform(ref gravityAttractor.gravityAttractorEditor, parentGravityName, gravityAttractor.transform);
@@ -376,7 +377,7 @@ public class GravityAttractorEditor : MonoBehaviour
     public void RemoveParenting()
     {
         if (!gravityAttractor)
-            gravityAttractor = GetComponent<GravityAttractorLD>();
+            gravityAttractor = gameObject.GetComponent<GravityAttractorLD>();
         if (!gravityAttractor)
         {
             Debug.Log("no gravity attractor ?");

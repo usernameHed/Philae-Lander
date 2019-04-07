@@ -8,8 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class PhilaeManager : SingletonMono<PhilaeManager>
 {
+    [FoldoutGroup("Object"), Tooltip("text debug to display")]
+    public LDManager ldManager;
+
+
     [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
-    public CameraController cameraController;
+    public CameraControllerOld cameraController;
     [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
     public bool releaseScene = false;
     [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
@@ -22,6 +26,8 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
 
     [FoldoutGroup("Debug"), Tooltip("text debug to display")]
     public GameObject pausePanel;
+    [FoldoutGroup("Debug"), Tooltip("text debug to display")]
+    public bool needRecalculate = false;
 
     [HideInInspector]
     public PlayerController playerControllerRef;

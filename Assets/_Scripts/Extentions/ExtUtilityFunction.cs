@@ -37,6 +37,11 @@ public static class ExtUtilityFunction
         }
     }
 
+    public static Vector3 SphereOrCapsuleCastCenterOnCollision(Vector3 origin, Vector3 directionCast, float hitInfoDistance)
+    {
+        return origin + (directionCast.normalized * hitInfoDistance);
+    }
+
     /// <summary>
     /// number convert range (55 from 0 to 100, to a base 0 - 1 for exemple)
     /// </summary>

@@ -146,7 +146,7 @@ public class EntityRotate : MonoBehaviour
         lastDesiredDirection = lastQuaternionRelativeDirection * Vector3.forward;
         //rotateObject.rotation = lastQuaternionRelativeDirection;
 
-        Debug.DrawRay(lastPosDir, lastDesiredDirection, Color.blue, 5f);
+        //Debug.DrawRay(lastPosDir, lastDesiredDirection, Color.blue, 5f);
         //Debug.DrawRay(lastPosDir, rotateObject.forward * 5, Color.red, 5f);
     }
 }

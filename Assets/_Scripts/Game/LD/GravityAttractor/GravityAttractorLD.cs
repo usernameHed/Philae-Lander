@@ -253,6 +253,8 @@ public class GravityAttractorLD : MonoBehaviour
 
     [FoldoutGroup("Object"), SerializeField]
     public Transform gravityAttractorEditor;
+    [FoldoutGroup("Object"), SerializeField]
+    public PhilaeManager philaeManager;
 
     [FoldoutGroup("Debug"), SerializeField, ReadOnly]
     private PointInfo pointInfo = new PointInfo();
@@ -277,11 +279,12 @@ public class GravityAttractorLD : MonoBehaviour
     private ExtTriangleOrQuad[] arrayExtTrianglesOrQuad;
     private ExtLine[] arrayExtLines;
 
-
+    
     private void Start()
     {
         SetupArrayPoints();
     }
+    
 
     [Button]
     public void CreateEditor()
@@ -290,6 +293,11 @@ public class GravityAttractorLD : MonoBehaviour
         {
             gameObject.AddComponent(typeof(GravityAttractorEditor));
         }            
+    }
+
+    public void OnMove()
+    {
+        Debug.Log("called here when we move, don't create, but just change position arrayPoints");
     }
 
     [Button]
@@ -348,6 +356,9 @@ public class GravityAttractorLD : MonoBehaviour
         }
         for (int i = 0; i < gravityTetra.Count; i++)
         {
+            if (arrayExtTetra == null || gravityTetra[i].pointA == null || gravityTetra[i].pointB == null || gravityTetra[i].pointC == null || gravityTetra[i].pointD == null)
+                continue;
+
             //create a tetra
             arrayExtTetra[i] = new ExtTetra(gravityTetra[i].pointA.position, gravityTetra[i].pointB.position, gravityTetra[i].pointC.position, gravityTetra[i].pointD.position,
                 gravityTetra[i].unidirectionnal,
@@ -414,6 +425,13 @@ public class GravityAttractorLD : MonoBehaviour
             //if (!gravityPoints[i].point)
             //    continue;
             //arrayPoints[i] = gravityPoints[i].point.position;
+            if (gravityPoints[i].point == null)
+            {
+                arrayPoints[i] = ExtUtilityFunction.GetNullVector();
+                continue;
+            }
+                
+
             arrayPoints[i] = GetRightPosWithRange(posEntity, gravityPoints[i].point.position, gravityPoints[i].GetPointInfo().range, gravityPoints[i].GetPointInfo().maxRange);
         }
         //closestRangePoint = ExtUtilityFunction.GetClosestPoint(posEntity, arrayPoints, ref indexFound);
@@ -435,6 +453,8 @@ public class GravityAttractorLD : MonoBehaviour
 
         for (int i = 0; i < gravityLines.Count; i++)
         {
+            if (arrayExtLines == null)
+                return;
             //if (!gravityLines[i].pointA || !gravityLines[i].pointB)
             //    continue;
 
@@ -478,6 +498,10 @@ public class GravityAttractorLD : MonoBehaviour
         
         for (int i = 0; i < gravityTetra.Count; i++)
         {
+            if (arrayExtTetra == null)
+                return;
+
+
             arrayPointsQuadsCenterTmp[i] = arrayExtTetra[i].ClosestPtPointRect(posEntity);
             arrayPointsQuads[i] = GetRightPosWithRange(posEntity, arrayPointsQuadsCenterTmp[i], gravityTetra[i].GetPointInfo().range, gravityTetra[i].GetPointInfo().maxRange);
         }

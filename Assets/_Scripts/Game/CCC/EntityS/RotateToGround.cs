@@ -15,6 +15,11 @@ public class RotateToGround : MonoBehaviour
         rbObject.transform.rotation = Quaternion.FromToRotation(rbObject.transform.up, dirOrientation) * rbObject.transform.rotation;
     }
 
+    public static void InstantRotateObject(Vector3 dirOrientation, Transform objToRotate)
+    {
+        objToRotate.rotation = Quaternion.FromToRotation(objToRotate.transform.up, dirOrientation) * objToRotate.transform.rotation;
+    }
+
     protected void RotateObject(float speedRotate, Vector3 dirSmoothedNormal)
     {
         Vector3 dirOrientation = dirSmoothedNormal;

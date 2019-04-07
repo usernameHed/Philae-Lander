@@ -62,7 +62,10 @@ namespace DynamicShadowProjector.Editor {
 			EditorGUILayout.IntPopup(serializedObject.FindProperty("m_textureHeight"), s_textureSizeDisplayOption, s_textureSizeOption);
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_multiSampling"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_superSampling"));
-			SerializedProperty prop = serializedObject.FindProperty("m_blurLevel");
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("changeScale"));
+
+            SerializedProperty prop = serializedObject.FindProperty("m_blurLevel");
 			EditorGUILayout.IntPopup(prop, s_blurLevelDisplayOption, s_blurLevelOption);
 			++EditorGUI.indentLevel;
 			GUI.enabled = isGUIEnabled && 0 < prop.intValue;

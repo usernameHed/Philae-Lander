@@ -76,6 +76,8 @@ namespace DynamicShadowProjector {
 		private RenderTextureFormat[] m_preferredTextureFormats;
 		[SerializeField]
 		private Camera[] m_camerasForViewClipTest;
+        [SerializeField]
+        private bool changeScale = false;
 
 		// public properties
 		public TextureMultiSample multiSampling
@@ -587,11 +589,17 @@ namespace DynamicShadowProjector {
 			m_isRenderingFromUpdate = true;
 			// it is necessary to set camera parameters before Render, because render events will not be invoked if the volume of the view frustum is zero,
 			// and there is no chance to fix the camera parameters in OnPreCull function.
-			m_camera.orthographic = m_projector.orthographic;
-			m_camera.orthographicSize = m_projector.orthographicSize;
-			m_camera.fieldOfView = m_projector.fieldOfView;
-			m_camera.aspect = m_projector.aspectRatio;
-			m_camera.farClipPlane = m_projector.farClipPlane;
+
+            if (!changeScale)
+            {
+                m_camera.orthographic = m_projector.orthographic;
+                m_camera.orthographicSize = m_projector.orthographicSize;
+                m_camera.fieldOfView = m_projector.fieldOfView;
+                m_camera.aspect = m_projector.aspectRatio;
+                m_camera.farClipPlane = m_projector.farClipPlane;
+            }
+
+			
 			// In edit mode, Unity 2017 has a bug that will happen when render target is changed during OnPreRender. To avoid it, change render target here.
 			if (useIntermediateTexture) {
 				int width = m_textureWidth * (int)m_superSampling;
@@ -672,13 +680,16 @@ namespace DynamicShadowProjector {
 			if (m_isTexturePropertyChanged) {
 				CreateRenderTexture();
 			}
-			m_camera.orthographic = m_projector.orthographic;
-			m_camera.orthographicSize = m_projector.orthographicSize;
-			m_camera.fieldOfView = m_projector.fieldOfView;
-			m_camera.aspect = m_projector.aspectRatio;
-			m_camera.farClipPlane = m_projector.farClipPlane;
-			// view clip test
-			bool isVisible = true;
+            if (!changeScale)
+            {
+                m_camera.orthographic = m_projector.orthographic;
+                m_camera.orthographicSize = m_projector.orthographicSize;
+                m_camera.fieldOfView = m_projector.fieldOfView;
+                m_camera.aspect = m_projector.aspectRatio;
+                m_camera.farClipPlane = m_projector.farClipPlane;
+            }
+            // view clip test
+            bool isVisible = true;
 			if (!m_projector.enabled) {
 				isVisible = false;
 			}

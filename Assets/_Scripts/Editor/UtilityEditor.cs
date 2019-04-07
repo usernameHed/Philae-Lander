@@ -5,6 +5,7 @@ using UnityEditor.IMGUI.Controls;
 using System.Reflection;
 using Borodar.RainbowHierarchy;
 using System;
+using System.Collections.Generic;
 
 public class UtilityEditor : ScriptableObject
 {
@@ -38,11 +39,56 @@ public class UtilityEditor : ScriptableObject
         AssetDatabase.Refresh();
     }
 
+    public static T GetScript<T>()
+    {
+        object obj = UnityEngine.Object.FindObjectOfType(typeof(T));
+
+        if (obj != null)
+        {
+            return ((T)obj);
+            //gameManager = (GameManager)obj;
+            //gameManager.indexSaveEditorTmp = gameManager.saveManager.GetMainData().GetLastMapSelectedIndex();
+        }
+
+        return (default(T));
+    }
+
     public static void FocusOnSelection(GameObject objToFocus, float zoom = 5f)
     {
         SceneView.lastActiveSceneView.LookAt(objToFocus.transform.position);
         if (zoom != -1)
             SceneViewCameraFunction.ViewportPanZoomIn(zoom);
+    }
+
+    /// <summary>
+    /// Get all editor window type.
+    /// If we want just the one open, we can do just:
+    /// EditorWindow[] allWindows = Resources.FindObjectsOfTypeAll<EditorWindow>();
+    /// </summary>
+    /// <returns></returns>
+    public static System.Type[] GetAllEditorWindowTypes()
+    {
+        var result = new System.Collections.Generic.List<System.Type>();
+        System.Reflection.Assembly[] AS = System.AppDomain.CurrentDomain.GetAssemblies();
+        System.Type editorWindow = typeof(EditorWindow);
+        foreach (var A in AS)
+        {
+            System.Type[] types = A.GetTypes();
+            foreach (var T in types)
+            {
+                if (T.IsSubclassOf(editorWindow))
+                    result.Add(T);
+            }
+        }
+        return result.ToArray();
+    }
+
+    public static void DisplayAllMethodes(IEnumerable<MethodInfo> method)
+    {
+        foreach (MethodInfo e in method)
+        {
+            Debug.Log(e);
+        }
     }
 
     public static void SetSearchFilter(string filter, int filterMode)
@@ -165,14 +211,21 @@ public class UtilityEditor : ScriptableObject
 
         GravityAttractorEditor gravityAttractorEditor = Selection.activeGameObject.GetComponent<GravityAttractorEditor>();
         gravityAttractorEditor.GenerateParenting();
+
         gravityAttractorEditor.createMode = 1;
         gravityAttractorEditor.CreateTrigger();
 
-        AddCustomEditorToObject(Selection.activeGameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
+        //AddCustomEditorToObject(Selection.activeGameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
 
         SceneView.FocusWindowIfItsOpen(typeof(SceneView));
 
         Selection.activeGameObject = gravityAttractorEditor.triggerRef;
+
+        if (gravityAttractorEditor.GetGravityAttractor())
+        {
+            gravityAttractorEditor.GetGravityAttractor().philaeManager = UtilityEditor.GetScript<PhilaeManager>();
+            gravityAttractorEditor.GetGravityAttractor().philaeManager.ldManager.FillList(true);
+        }
     }
 
     [MenuItem("PERSO/Philae/Delete Gravity Attractor %&g")]
@@ -180,9 +233,10 @@ public class UtilityEditor : ScriptableObject
     {
         if (!SelectParentOfAttractor())
             return;
+        
         GravityAttractorLD gravityAttractorLD = Selection.activeGameObject.GetComponent<GravityAttractorLD>();
         GravityAttractorEditor gravityAttractorEditor = Selection.activeGameObject.GetComponent<GravityAttractorEditor>();
-        AddCustomEditorToObject(Selection.activeGameObject, false);
+        
 
         gravityAttractorEditor.RemoveTrigger();
         gravityAttractorEditor.RemoveParenting();

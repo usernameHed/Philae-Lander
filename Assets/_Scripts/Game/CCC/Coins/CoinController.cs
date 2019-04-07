@@ -7,6 +7,10 @@ public class CoinController : MonoBehaviour, IPooledObject, IKillable
 {
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
     private bool isKinematic = false;
+
+    [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
+    private bool autoRotateAtStart = true;
+
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
     private Rigidbody rb;
 
@@ -26,6 +30,11 @@ public class CoinController : MonoBehaviour, IPooledObject, IKillable
     private void SetKinematic()
     {
         rb.isKinematic = isKinematic;
+        if (autoRotateAtStart)
+        {
+            //here rotate
+
+        }
     }
 
     private void FixedUpdate()
