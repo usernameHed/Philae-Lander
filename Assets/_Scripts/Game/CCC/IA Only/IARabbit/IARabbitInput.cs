@@ -34,7 +34,7 @@ public class IARabbitInput : EntityAction
 
     public void SetDirectionPlayer()
     {
-        Vector3 forwardLocalIA = iaRabbitController.rb.transform.forward;
+        Vector3 forwardLocalIA = GetMainReferenceForwardDirection();//iaFollowerController.rb.transform.forward;
         Vector3 iaDir = iaRabbitController.playerController.rb.transform.position - iaRabbitController.rb.transform.transform.position;
         Vector3 upLocalIA = iaRabbitController.rb.transform.up;
 

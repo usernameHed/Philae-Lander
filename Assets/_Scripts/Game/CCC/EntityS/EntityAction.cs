@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 public class EntityAction : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private Transform mainReferenceObjectDirection = null;
+    protected Transform mainReferenceObjectDirection = null;
 
     [FoldoutGroup("Debug"), Tooltip("input for moving player horizontally"), ReadOnly]
     public Vector2 moveInput = Vector2.zero;

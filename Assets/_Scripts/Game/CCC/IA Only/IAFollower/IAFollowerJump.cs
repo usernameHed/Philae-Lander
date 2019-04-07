@@ -14,7 +14,7 @@ public class IAFollowerJump : EntityJump
     {
         base.OnGrounded();
 
-        ExtLog.DebugLogIa("Grounded !", ExtLog.Log.IA);
+        Debug.Log("grounded !");
 
         coolDownOnGround.StartCoolDown(justGroundTimer + ExtRandom.GetRandomNumber(0f, addRandomJump));
     }
@@ -52,10 +52,10 @@ public class IAFollowerJump : EntityJump
 
         rb.ClearVelocity();
 
+        
         base.DoJump(boostHeight);
 
         hasJumped = true;
-        Debug.Break();
     }
 
     private void Update()

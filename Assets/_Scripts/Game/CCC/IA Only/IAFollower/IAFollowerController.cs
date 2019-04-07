@@ -165,6 +165,8 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
 
     private void OnGrounded()
     {
+        Debug.Log("grounded !");
+
         iAJump.OnGrounded();
         baseGravity.OnGrounded();
         baseGravityAttractorSwitch.OnGrounded();

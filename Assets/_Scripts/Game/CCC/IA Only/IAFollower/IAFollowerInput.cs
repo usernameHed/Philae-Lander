@@ -35,7 +35,7 @@ public class IAFollowerInput : EntityAction
 
     public void SetDirectionPlayer()
     {
-        Vector3 forwardLocalIA = iaFollowerController.rb.transform.forward;
+        Vector3 forwardLocalIA = GetMainReferenceForwardDirection();//iaFollowerController.rb.transform.forward;
         Vector3 iaDir = iaFollowerController.playerController.rb.transform.position - iaFollowerController.rb.transform.transform.position;
         Vector3 upLocalIA = iaFollowerController.rb.transform.up;
 
