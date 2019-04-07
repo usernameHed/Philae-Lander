@@ -534,7 +534,7 @@ public class GravityAttractorEditor : MonoBehaviour
             
             if (gravityAttractor.gravityPoints[i].point)
             {
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityPoints[i].point.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityPoints[i].point.position, 2f);
                 if (gravityAttractor.gravityPoints[i].GetPointInfo().range > 0 && alwaysShow)
                 {
                     Gizmos.color = Color.white;
@@ -554,8 +554,8 @@ public class GravityAttractorEditor : MonoBehaviour
             {
                 Gizmos.color = Color.cyan;
                 Gizmos.DrawLine(gravityAttractor.gravityLines[i].pointA.position, gravityAttractor.gravityLines[i].pointB.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointB.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointA.position, 2f);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityLines[i].pointB.position, 2f);
 
                 Gizmos.color = Color.white;
                 if (gravityAttractor.gravityLines[i].GetPointInfo().range > 0 && alwaysShow)
@@ -602,12 +602,12 @@ public class GravityAttractorEditor : MonoBehaviour
                 
 
 
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointA.position, 2f);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointB.position, 2f);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTrianglesOrQuad[i].pointC.position, 2f);
 
                 if (gravityAttractor.gravityTrianglesOrQuad[i].isQuad)
-                    ExtDrawGuizmos.DrawCross(pointD);
+                    ExtDrawGuizmos.DrawCross(pointD, 2f);
 
 
                 Gizmos.color = Color.white;
@@ -801,10 +801,10 @@ public class GravityAttractorEditor : MonoBehaviour
 
 
 
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointA.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointB.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointC.position);
-                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointD.position);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointA.position, 2f);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointB.position, 2f);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointC.position, 2f);
+                ExtDrawGuizmos.DrawCross(gravityAttractor.gravityTetra[i].pointD.position, 2f);
 
                 Gizmos.color = Color.white;
                 if (gravityAttractor.gravityTetra[i].GetPointInfo().range > 0 && alwaysShow)

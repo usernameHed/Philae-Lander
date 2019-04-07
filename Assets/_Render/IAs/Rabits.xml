@@ -1,0 +1,20 @@
+<root>
+  <selector>
+    <sequence>
+      <actionProperty componentName="IAController" action="IsWandering" />
+      <actionVoid componentName="IAController" action="DoWandering" />
+      <sequence>
+        <actionBool componentName="IAController" action="IsCloseToPlayer" />
+        <actionVoid componentName="IAController" action="SetChase" />
+      </sequence>
+    </sequence>
+    <sequence>
+      <actionProperty componentName="IAController" action="IsChasingPlayer" />
+      <actionVoid componentName="IAController" action="DoChase" />
+      <sequence>
+        <actionBool componentName="IAController" action="IsTooFarFromPlayer" />
+        <actionVoid componentName="IAController" action="LosePlayer" />
+      </sequence>
+    </sequence>
+  </selector>
+</root>

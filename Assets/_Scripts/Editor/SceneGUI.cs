@@ -98,6 +98,8 @@ public class SceneGUI : EditorWindow
             return;
         for (int i = 0; i < philaeManager.ldManager.allGravityAttractorLd.Count; i++)
         {
+            if (philaeManager.ldManager.allGravityAttractorLd[i] == null)
+                continue;
             UtilityEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, false);
         }
 

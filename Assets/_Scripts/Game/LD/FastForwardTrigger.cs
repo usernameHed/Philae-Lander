@@ -48,7 +48,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
         if (!gravityTowardDirection)
         {
             Gizmos.color = Color.green;
-            ExtDrawGuizmos.DrawCross(GetPosition());
+            ExtDrawGuizmos.DrawCross(GetPosition(), 2f);
         }
         else
         {

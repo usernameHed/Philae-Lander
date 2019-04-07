@@ -602,6 +602,18 @@ public static class ExtQuaternion
     }
 
     /// <summary>
+    /// https://docs.unity3d.com/ScriptReference/Vector3.Reflect.html
+    /// VectorA: input
+    /// VectorB: normal
+    /// Vector3: result
+    /// </summary>
+    /// <returns></returns>
+    public static Vector3 GetReflectAngle(Vector3 inputVector, Vector3 normalVector)
+    {
+        return (Vector3.Reflect(inputVector.normalized, normalVector.normalized));
+    }
+
+    /// <summary>
     /// return an angle from a vector
     /// </summary>
     public static float GetAngleFromVector3(Vector3 dir, Vector3 reference)

@@ -24,19 +24,22 @@ public class EntityRaycastForward : MonoBehaviour
         }
     }
 
-    [FoldoutGroup("Forward"), Tooltip("number of steps"), SerializeField]
+    [FoldoutGroup("Forward"), Tooltip("number of steps"), Range(0, 200), SerializeField]
     private int stepsForward = 5;
     [FoldoutGroup("Forward"), Tooltip(""), SerializeField]
     private float backWardRatioWhenHit = 0.1f;
 
-    [FoldoutGroup("Down"), Tooltip(""), SerializeField]
+    [FoldoutGroup("Down"), Tooltip(""), Range(0, 3), SerializeField]
     private float distDownRaycast = 1f;
     [FoldoutGroup("Down"), Tooltip(""), SerializeField]
     private float distDownConsideredAsTooHight = 0.4f;
+    [FoldoutGroup("Down"), Tooltip(""), SerializeField]
+    private bool doBackWardFromNormal = true;
 
-    [FoldoutGroup("SphereCast"), Tooltip(""), SerializeField]
+
+    [FoldoutGroup("SphereCast"), Tooltip(""), Range(0, 2), SerializeField]
     public float sizeRadiusSphereCast = 0.3f;
-    [FoldoutGroup("SphereCast"), Tooltip("dist to check forward player"), SerializeField]
+    [FoldoutGroup("SphereCast"), Tooltip("dist to check forward player"), Range(0.1f, 10), SerializeField]
     private float distForwardRaycast = 0.6f;
 
     
@@ -60,7 +63,10 @@ public class EntityRaycastForward : MonoBehaviour
     private InfoHit DoRayCastForward(Vector3 posA, Vector3 posB, Vector3 focusDir, float dist, bool isForward)
     {
         if (isForward)
+        {
             ExtDrawGuizmos.DebugWireSphere(posA, Color.blue, sizeRadiusSphereCast);
+        }
+            
 
         RaycastHit hitInfo;
         if (Physics.SphereCast(posA, sizeRadiusSphereCast, focusDir, out hitInfo,
@@ -71,28 +77,34 @@ public class EntityRaycastForward : MonoBehaviour
             Debug.DrawLine(posA, centerOnCollision, Color.red);
 
             if (isForward)
+            {
                 ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.cyan, sizeRadiusSphereCast);
+                Debug.DrawLine(centerOnCollision, hitInfo.point, Color.red);
+                ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f);
+            }
             else
+            {
                 ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.grey, sizeRadiusSphereCast);
+                Debug.DrawLine(centerOnCollision, hitInfo.point, Color.grey);
+                ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.grey, 0.1f);
+            }
 
-
-            Debug.DrawLine(centerOnCollision, hitInfo.point, Color.red);
-
-            ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f);
+            
 
             return (new InfoHit(posA, centerOnCollision, true, hitInfo.point, hitInfo.normal));
         }
         else
         {
             if (isForward)
+            {
                 Debug.DrawLine(posA, posB, Color.green);
-            else
-                Debug.DrawLine(posA, posB, Color.grey);
-
-            if (isForward)
                 ExtDrawGuizmos.DebugWireSphere(posB, Color.cyan, sizeRadiusSphereCast);
+            }                
             else
+            {
+                Debug.DrawLine(posA, posB, Color.grey);
                 ExtDrawGuizmos.DebugWireSphere(posB, Color.grey, sizeRadiusSphereCast);
+            }
 
             return (new InfoHit(posA, posB, false, ExtUtilityFunction.GetNullVector(), ExtUtilityFunction.GetNullVector()));
         }
@@ -109,8 +121,8 @@ public class EntityRaycastForward : MonoBehaviour
         //float dot = ExtQuaternion.DotProduct(infoHit.normal, -prevFocusDir);
         //Debug.Log(dot);
 
-        Vector3 refUp = ExtQuaternion.CrossProduct(prevFocusDir, focusRightDir);
-        Debug.DrawRay(infoHit.posB, refUp, Color.black);
+        //Vector3 refUp = ExtQuaternion.CrossProduct(prevFocusDir, focusRightDir);
+        //Debug.DrawRay(infoHit.posB, refUp, Color.black);
 
         Vector3 downDir = ExtQuaternion.CrossProduct(infoHit.normal, focusRightDir);
         Vector3 upDir = -downDir;
@@ -130,17 +142,17 @@ public class EntityRaycastForward : MonoBehaviour
     /// <summary>
     /// here we have hit at down
     /// </summary>
-    private bool SetupDownHit(ref InfoHit infoHitDown, ref Vector3 prevFocusDirDown, ref InfoHit infoHitForward)
+    private bool SetupDownHit(ref InfoHit infoHitDown, ref Vector3 prevFocusDirDown, ref InfoHit infoHitForward, ref Vector3 prevFocusDirToChange)
     {
         float distDown = (infoHitDown.posA - infoHitDown.posB).magnitude;
 
         if (distDown > distDownConsideredAsTooHight)
         {
-            Debug.Log("dist down to high: " + distDown);
+            //Debug.Log("dist down to high: " + distDown);
             currentDistChecked += distDown;
 
-            Vector3 refUp = ExtQuaternion.CrossProduct(prevFocusDirDown, focusRightDir);
-            Debug.DrawRay(infoHitDown.posB, refUp, Color.black);
+            //Vector3 refUp = ExtQuaternion.CrossProduct(prevFocusDirDown, focusRightDir);
+            //Debug.DrawRay(infoHitDown.posB, refUp, Color.black);
 
             Vector3 downDir = ExtQuaternion.CrossProduct(infoHitDown.normal, focusRightDir);
             Vector3 upDir = -downDir;
@@ -148,8 +160,11 @@ public class EntityRaycastForward : MonoBehaviour
             Debug.DrawRay(infoHitDown.posB, upDir * 0.3f, Color.magenta);
             Debug.DrawRay(infoHitDown.posB, downDir * 0.3f, Color.green);
 
-            infoHitDown.posA = infoHitDown.posB - (prevFocusDirDown * backWardRatioWhenHit);    //backward a little bit for the next move
-            //infoHitDown.posA = infoHitDown.posB - (-infoHitDown.normal * backWardRatioWhenHit);    //backward a little bit for the next move
+            if (doBackWardFromNormal)
+                infoHitDown.posA = infoHitDown.posB - (-infoHitDown.normal * backWardRatioWhenHit);    //backward a little bit for the next move
+            else
+                infoHitDown.posA = infoHitDown.posB - (prevFocusDirDown * backWardRatioWhenHit);    //backward a little bit for the next move
+
 
             //then change dir
             prevFocusDirDown = upDir.normalized;
@@ -159,9 +174,69 @@ public class EntityRaycastForward : MonoBehaviour
             //set to forward our down result
             infoHitForward.posA = infoHitDown.posA;
             infoHitForward.posB = infoHitDown.posB;
+            prevFocusDirToChange = prevFocusDirDown;
+
             return (true);
         }
         return (false);
+    }
+
+    private void SetupGoingDown(ref InfoHit infoHitDown, ref Vector3 prevFocusDown, ref InfoHit infoHit, ref Vector3 prevFocusDir)
+    {
+        Vector3 backDir = infoHit.posA - infoHitDown.posB;
+        InfoHit infoHitBack = DoRayCastForward(infoHitDown.posB, infoHit.posA, backDir, backDir.magnitude, false);   //do a raycast
+        if (!infoHitBack.hasHit)
+        {
+            //Debug.Log("Here NO HIT BACK !!! Reflect !");
+
+            Vector3 posA = infoHitDown.posB;
+            Vector3 dirReflect = ExtQuaternion.GetReflectAngle(-backDir, infoHit.posA - infoHit.posB);
+            Vector3 posB = posA + dirReflect * (infoHit.posA - infoHit.posB).magnitude;
+
+            currentDistChecked += GetDistDown();
+
+            prevFocusDir = dirReflect;
+            infoHit.posA = posA;
+            infoHit.posB = posB;
+        }
+        else
+        {
+            Vector3 posA = infoHit.posA;
+            Vector3 posB = infoHitBack.posB;
+            Vector3 dirBack = posB - posA;
+
+            Vector3 downDir = ExtQuaternion.CrossProduct(infoHitBack.normal, focusRightDir);
+            Vector3 upDir = -downDir;
+
+            Debug.DrawRay(posB, upDir * 0.3f, Color.magenta);
+            Debug.DrawRay(posB, downDir * 0.3f, Color.green);
+
+            prevFocusDir = upDir;
+
+            if (doBackWardFromNormal)
+                infoHit.posA = posB - infoHitBack.normal * -backWardRatioWhenHit;    //backward a little bit for the next move
+            else
+                infoHit.posA = posB - dirBack * -backWardRatioWhenHit;    //backward a little bit for the next move
+
+
+            //infoHit.posA = posB - dirBack * -backWardRatioWhenHit;
+
+            infoHit.posB = infoHit.posA + prevFocusDir * GetDistForward();
+
+            currentDistChecked += GetDistDown();
+
+            /*
+            Vector3 ToCenterTriangle = -ExtQuaternion.CrossProduct((posA - posB), focusRightDir).normalized;
+
+            Debug.DrawRay(posB, ToCenterTriangle * backWardRatioUpWhenHit, Color.green);
+
+            //infoHit.posA // n'a pas changé
+            infoHit.posB = posB;
+            prevFocusDir = infoHitBack.posB - posB;
+
+            breakLoop = true;
+            */
+        }
     }
 
     /// <summary>
@@ -175,7 +250,6 @@ public class EntityRaycastForward : MonoBehaviour
         Vector3 downDir = -ExtQuaternion.CrossProduct(prevFocusDir, focusRightDir);
         Vector3 posC = infoHit.posB + downDir * GetDistDown();
 
-
         InfoHit infoHitDown = DoRayCastForward(infoHit.posB, posC, downDir, GetDistDown(), false);   //do a raycast
 
         //Debug.DrawRay(infoHit.posB, downDir, Color.blue);
@@ -184,7 +258,7 @@ public class EntityRaycastForward : MonoBehaviour
         if (infoHitDown.hasHit)
         {
             //if we are realy in down, change info in SetupDown !
-            if (!SetupDownHit(ref infoHitDown, ref downDir, ref infoHit))
+            if (!SetupDownHit(ref infoHitDown, ref downDir, ref infoHit, ref prevFocusDir))
             {
                 //here down fail, continiue forward
                 infoHit.posA = infoHit.posB;
@@ -196,8 +270,10 @@ public class EntityRaycastForward : MonoBehaviour
         }
         else
         {
-            Debug.Log("no hit in down ???");
-            breakLoop = true;
+            //Debug.Log("no hit in down ???");
+            SetupGoingDown(ref infoHitDown, ref downDir, ref infoHit, ref prevFocusDir);
+
+            //breakLoop = true;
             return;
         }
     }
@@ -217,7 +293,7 @@ public class EntityRaycastForward : MonoBehaviour
             //mais on arrete quand meme, trop de test !
             if (i >= maxStepsWhenAdditionnalCalculs)
             {
-                Debug.Log("ok, no enought dist, but we did all additionnal steps");
+                //Debug.Log("ok, no enought dist, but we did all additionnal steps");
                 return (false);
             }
 
@@ -243,6 +319,8 @@ public class EntityRaycastForward : MonoBehaviour
             {
                 SetupNoHit(ref infoHit, ref focusDir);
             }
+
+            //Debug.Log("loop 1 done");
 
             i++;
         } while (ContinueLoop(i, stepsForward, currentDistChecked, distMax));
@@ -291,13 +369,19 @@ public class EntityRaycastForward : MonoBehaviour
         DoLoop(stepsForward, ref infoHit, ref focusDir, ref i);
 
 
-        Debug.Log("maxDist: " + distMax + ", dist effecctued: " + currentDistChecked + "(steps: " + i + ")");
-
+        //Debug.Log("<color=blue>maxDist: " + distMax + ", dist effecctued: " + currentDistChecked + "(steps: " + i + ")</color>");
     }
 
     // Update is called once per frame
     private void Update()
     {
-        DoStepForward();
+        if (!Application.isPlaying)
+            DoStepForward();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Application.isPlaying)
+            DoStepForward();
     }
 }
