@@ -6,11 +6,8 @@ using UnityEngine.Events;
 public class EntityTriggerManager : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public PlayerController playerController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public IAController iAController;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public CoinController coinController;
+    public EntityController entityController;
+    
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityNoGravity entityNoGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -51,11 +48,7 @@ public class EntityTriggerManager : MonoBehaviour
 
     public void Kill()
     {
-        if (playerController)
-            playerController.Kill();
-        if (iAController)
-            iAController.Kill();
-        if (coinController)
-            coinController.Kill();
+        if (entityController)
+            entityController.Kill();
     }
 }

@@ -22,10 +22,6 @@ public class PlayerController : EntityController, IKillable
     public GroundAdvancedCheck groundAdvancedCheck;
 
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    public FmodEventEmitter SFX_jump;
-    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    public FmodEventEmitter SFX_grounded;
-    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
     public FmodEventEmitter SFX_playerMove;
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
     public FmodEventEmitter SFX_playerEndMove;
@@ -139,7 +135,7 @@ public class PlayerController : EntityController, IKillable
         EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 
-    public void Kill()
+    public override void Kill()
     {
         if (isKilled)
             return;
@@ -160,7 +156,7 @@ public class PlayerController : EntityController, IKillable
         isKilled = true;
     }
 
-    public void GetHit(int amount, Vector3 posAttacker)
+    public override void GetHit(int amount, Vector3 posAttacker)
     {
         //throw new System.NotImplementedException();
     }

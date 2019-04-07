@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [TypeInfoBox("Main player controller")]
-public class EntityController : MonoBehaviour
+public class EntityController : MonoBehaviour, IKillable
 {
     public enum MoveState
     {
@@ -56,11 +56,11 @@ public class EntityController : MonoBehaviour
     protected ClampRbSpeed clampRbSpeed;
 
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    protected FmodEventEmitter SFX_jump;
+    public FmodEventEmitter SFX_jump;
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    protected FmodEventEmitter SFX_grounded;
+    public FmodEventEmitter SFX_grounded;
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    protected FmodEventEmitter SFX_Scream;
+    public FmodEventEmitter SFX_Scream;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
@@ -216,5 +216,15 @@ public class EntityController : MonoBehaviour
     {
         moveState = MoveState.InAir;
         rb.drag = 0;
+    }
+
+    public virtual void Kill()
+    {
+        
+    }
+
+    public virtual void GetHit(int amount, Vector3 posAttacker)
+    {
+        
     }
 }

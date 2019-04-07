@@ -1,0 +1,20 @@
+<root>
+  <selector>
+    <sequence>
+      <actionProperty componentName="IARabbitController" action="IsWandering" />
+      <actionVoid componentName="IARabbitController" action="DoWandering" />
+      <sequence>
+        <actionBool componentName="IARabbitController" action="IsCloseToPlayer" />
+        <actionVoid componentName="IARabbitController" action="SetChase" />
+      </sequence>
+    </sequence>
+    <sequence>
+      <actionProperty componentName="IARabbitController" action="IsChasingPlayer" />
+      <actionVoid componentName="IARabbitController" action="DoChase" />
+      <sequence>
+        <actionBool componentName="IARabbitController" action="IsTooFarFromPlayer" />
+        <actionVoid componentName="IARabbitController" action="LosePlayer" />
+      </sequence>
+    </sequence>
+  </selector>
+</root>

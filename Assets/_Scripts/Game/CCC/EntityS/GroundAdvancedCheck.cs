@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GroundAdvancedCheck : MonoBehaviour
 {
+    [FoldoutGroup("GamePLay"), SerializeField, Tooltip("ref")]
+    private float minDistShadow = 3.5f;
+
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private DrawTargetObject drawTargetObject;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
@@ -35,7 +38,7 @@ public class GroundAdvancedCheck : MonoBehaviour
         //Vector3 posGravity = groundCheck.ResearchInitialGround(false);
         Vector3 posGravity = baseGravity.GetPointGravityDown();
         drawTargetObject.posToLookAt = (rb.position - (rb.transform.up * 999));
-        projector.farClipPlane = Mathf.Max(3, 1 + (rb.transform.position - posGravity).magnitude);
+        projector.farClipPlane = Mathf.Max(minDistShadow, 1 + (rb.transform.position - posGravity).magnitude);
 
         //ExtDrawGuizmos.DebugWireSphere(posGravity, Color.red, 0.5f, 5f);
         //Debug.DrawLine(rb.position, posGravity, Color.cyan, 5f);

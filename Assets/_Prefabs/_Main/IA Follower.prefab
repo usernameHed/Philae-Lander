@@ -148,11 +148,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 115}
-  - component: {fileID: 399}
+  - component: {fileID: 216777314201691486}
   - component: {fileID: 397}
-  - component: {fileID: 401}
+  - component: {fileID: 8544601831628834816}
   - component: {fileID: 398}
-  - component: {fileID: 393}
+  - component: {fileID: 3124669454909337200}
   - component: {fileID: 407}
   - component: {fileID: 387}
   - component: {fileID: 395}
@@ -184,7 +184,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &399
+--- !u!114 &216777314201691486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,14 +193,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 45}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dfaf65d934b51544b78488a5b5d0128, type: 3}
+  m_Script: {fileID: 11500000, guid: be42deb38e17d864ea70e47a948cb877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainReferenceObjectDirection: {fileID: 99}
   moveInput: {x: 0, y: 0}
   Jump: 0
   JumpUp: 0
-  iaController: {fileID: 401}
+  iaFollowerController: {fileID: 8544601831628834816}
 --- !u!114 &397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
   sphereCollider: {fileID: 201}
   rb: {fileID: 195}
   baseGravity: {fileID: 407}
-  entityJump: {fileID: 393}
-  entityController: {fileID: 401}
+  entityJump: {fileID: 3124669454909337200}
+  entityController: {fileID: 8544601831628834816}
   baseGravityAttractorSwitch: {fileID: 387}
   entityNoGravity: {fileID: 0}
   fastForward: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   collRayCastMargin: 0.3
   lastPlatform: {fileID: 0}
   dirNormal: {x: 0, y: 0, z: 0}
---- !u!114 &401
+--- !u!114 &8544601831628834816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 45}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851f19cca37cde8449f97369d8256c89, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e5e7ad16862104ca09ffa295e8bfd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   - Walkable/Ground
   - Walkable/Stick
   - Walkable/Dont
+  - Walkable/FastForward
   marioGalaxyPlatform:
   - Walkable/Ground
   stickPlatform:
@@ -263,26 +264,24 @@ MonoBehaviour:
   rbRotateObject: {fileID: 99}
   baseGravity: {fileID: 407}
   groundCheck: {fileID: 397}
-  entityAction: {fileID: 399}
+  entityAction: {fileID: 216777314201691486}
   baseGravityAttractorSwitch: {fileID: 387}
   entityNoGravity: {fileID: 0}
   entityBumpUp: {fileID: 0}
   entityAirMove: {fileID: 0}
   fastForward: {fileID: 0}
   clampRbSpeed: {fileID: 400}
+  SFX_jump: {fileID: 2689181525780651812}
+  SFX_grounded: {fileID: 8920680828745062947}
+  SFX_Scream: {fileID: 8870187308173586894}
   moveState: 0
   layerMask: -1
   canLosePlayer: 1
   distForChase: 5
   distForLosePlayer: 15
-  SFX_jump: {fileID: 2689181525780651812}
-  SFX_grounded: {fileID: 8920680828745062947}
-  SFX_Scream: {fileID: 8870187308173586894}
-  iaInput: {fileID: 399}
-  rigidBodyRef: {fileID: 195}
-  objRotateRef: {fileID: 99}
-  iAJump: {fileID: 393}
-  iaScream: {x: 3.5798604, y: 13.611332}
+  followerInput: {fileID: 216777314201691486}
+  iAJump: {fileID: 3124669454909337200}
+  iaScream: {x: 4.1899443, y: 20.111732}
   interactionState: 0
   playerController: {fileID: 0}
 --- !u!114 &398
@@ -297,12 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba97ead0c7817c34d8b2e15f49105194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  iAController: {fileID: 401}
-  coinController: {fileID: 0}
+  entityController: {fileID: 8544601831628834816}
   entityNoGravity: {fileID: 0}
   uniqueGravityAttractorSwitch: {fileID: 387}
---- !u!114 &393
+--- !u!114 &3124669454909337200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,7 +308,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 45}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52239a19d2586c4e96345561b6ed728, type: 3}
+  m_Script: {fileID: 11500000, guid: 7460b89d6940ce44b83b950c2bec3c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 1.5
@@ -321,10 +318,9 @@ MonoBehaviour:
   stayHold: 0
   canJumpInAir: 1
   doGravityAttractorJump: 1
-  entityController: {fileID: 401}
-  playerLocalyRotate: {fileID: 99}
+  entityController: {fileID: 8544601831628834816}
   rb: {fileID: 195}
-  entityAction: {fileID: 399}
+  entityAction: {fileID: 216777314201691486}
   entityRotate: {fileID: 404}
   baseGravity: {fileID: 407}
   groundForwardCheck: {fileID: 0}
@@ -339,7 +335,6 @@ MonoBehaviour:
   justJumpedTimer: 0.2
   justGroundTimer: 1
   addRandomJump: 4
-  iaController: {fileID: 401}
 --- !u!114 &407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,24 +347,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec49121122b28684a80ad157074dcdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUniqueGravity: 1
+  isUniqueGravity: 0
   gravity: 9.81
   defaultGravityInAir: 2
   rbDownAddGravity: 3.5
   doWeSwitchBetweenBoth: 1
   isGoingDown: 0
   isGoingDownToGround: 0
-  uniqueGravityAttractorSwitch: {fileID: 0}
+  uniqueGravityAttractorSwitch: {fileID: 387}
   rb: {fileID: 195}
   defaultGravityOnGround: 5.5
-  entityController: {fileID: 401}
+  entityController: {fileID: 8544601831628834816}
   groundCheck: {fileID: 397}
   baseGravityAttractorSwitch: {fileID: 387}
   entityNoGravity: {fileID: 0}
   stickToFloorGravity: 6
   rbUpAddGravity: 2
-  entityAction: {fileID: 399}
-  entityJump: {fileID: 393}
+  entityAction: {fileID: 216777314201691486}
+  entityJump: {fileID: 3124669454909337200}
   entityGravityAttractorSwitch: {fileID: 387}
   entityYoshiBoost: {fileID: 0}
 --- !u!114 &387
@@ -404,7 +399,7 @@ MonoBehaviour:
     addRandomAtStart: 1
     notTheFirstTime: 0
     waitOnlyOnce: 0
-  entityController: {fileID: 401}
+  entityController: {fileID: 8544601831628834816}
   baseGravity: {fileID: 407}
   groundCheck: {fileID: 397}
   timeBeforeApplyForceDown: 0.4
@@ -413,7 +408,7 @@ MonoBehaviour:
   calculateGroundPos: 0
   entityJumpCalculation: {fileID: 0}
   fastForward: {fileID: 0}
-  entityJump: {fileID: 393}
+  entityJump: {fileID: 3124669454909337200}
 --- !u!114 &395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +426,7 @@ MonoBehaviour:
   smoothedNormalPlayer: {x: 0, y: 0, z: 0}
   smoothSpeedCamera: 2
   smoothedNormalCamera: {x: 0, y: 0, z: 0}
-  entityController: {fileID: 401}
+  entityController: {fileID: 8544601831628834816}
   groundCheck: {fileID: 397}
 --- !u!114 &408
 MonoBehaviour:
@@ -473,9 +468,9 @@ MonoBehaviour:
   minAcceleration: 10
   minInput: 0.35
   rb: {fileID: 195}
-  entityController: {fileID: 401}
-  entityAction: {fileID: 399}
-  entityJump: {fileID: 393}
+  entityController: {fileID: 8544601831628834816}
+  entityAction: {fileID: 216777314201691486}
+  entityJump: {fileID: 3124669454909337200}
   groundForwardCheck: {fileID: 0}
   entitySlide: {fileID: 0}
   currentSpeedMove: 10
@@ -500,11 +495,11 @@ MonoBehaviour:
   forwardDot: 0.3
   behindDot: 0.3
   ratioConsideredFullSpeed: 0.5
-  entityAction: {fileID: 399}
+  entityAction: {fileID: 216777314201691486}
   baseGravity: {fileID: 407}
   entityMove: {fileID: 408}
   objectToRotate: {fileID: 99}
-  entityController: {fileID: 401}
+  entityController: {fileID: 8544601831628834816}
   lastDesiredDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &405
 MonoBehaviour:
@@ -548,8 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576b3b79d8b2d2e498511c2340e065fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  angle: 90
+  radius: 3.9466858
+  angle: 0
+  colorFov: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &396
 MonoBehaviour:
   m_ObjectHideFlags: 0

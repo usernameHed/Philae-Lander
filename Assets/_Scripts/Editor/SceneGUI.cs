@@ -140,8 +140,8 @@ public class SceneGUI : EditorWindow
         //
         //GUILayout.Label("hi");
 
-        
-        DisplayStringIn3D(playerController.rb.position + Vector3.up * 0.7f, playerController.rb.velocity.magnitude.ToString("F2"));
+        if (playerController)
+            DisplayStringIn3D(playerController.rb.position + Vector3.up * 0.7f, playerController.rb.velocity.magnitude.ToString("F2"));
 
 
         PhilaeManagerUI(view);

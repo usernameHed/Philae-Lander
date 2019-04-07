@@ -25,8 +25,6 @@ public class EntityJump : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityController entityController;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    protected Transform playerLocalyRotate;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected Rigidbody rb;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     protected EntityAction entityAction;
