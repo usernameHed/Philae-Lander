@@ -186,7 +186,7 @@ public class EntityJump : MonoBehaviour
     /// return the normalized jump dir()
     /// </summary>
     /// <returns></returns>
-    private Vector3 GetNormalizedJumpDir()
+    private Vector3 GetNormalizedJumpDir(float boostForward = 1)
     {
         bool isForbiddenForward = false;
         if (groundForwardCheck)
@@ -213,18 +213,18 @@ public class EntityJump : MonoBehaviour
         lastDirForwardJump = normalizedForwardPlayer;
 
         Debug.DrawRay(rb.position, normalizedNormalGravity, Color.yellow, 5f);
-        Debug.DrawRay(rb.position, normalizedForwardPlayer, Color.green, 5f);
+        Debug.DrawRay(rb.position, normalizedForwardPlayer * boostForward, Color.green, 5f);
         //Debug.Break();
 
-        return (normalizedNormalGravity + normalizedForwardPlayer);
+        return (normalizedNormalGravity + normalizedForwardPlayer * boostForward);
     }
 
     /// <summary>
     /// do a jump
     /// </summary>
-    protected void DoJump(float boostHeight)
+    protected void DoJump(float boostHeight, float boostForward = 1f)
     {
-        Vector3 dirJump = GetNormalizedJumpDir();
+        Vector3 dirJump = GetNormalizedJumpDir(boostForward);
         Vector3 orientedStrenghtJump = AddJumpHeight(dirJump, boostHeight);
 
         rb.velocity = orientedStrenghtJump;

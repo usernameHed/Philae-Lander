@@ -9,7 +9,7 @@ public class EntityMove : MonoBehaviour
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
     private float speedMove = 5f;
     [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
-    private AnimationCurve easeAcceleration;
+    private AnimationCurve easeAcceleration = default;
     [FoldoutGroup("GamePlay"), Tooltip("base speed"), SerializeField]
     private float minAcceleration = 10f;
 

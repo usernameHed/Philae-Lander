@@ -11,20 +11,18 @@ public class FastForward : MonoBehaviour
     private float dotMarginDiffNormal = 0.71f;
     
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private EntityController entityController = null;
+    private EntityController entityController = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private EntityJump entityJump = null;
+    private EntityJump entityJump = default;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private GameObject ikillableObject = null;
+    private GroundCheck groundCheck = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private GroundCheck groundCheck = null;
+    private Rigidbody rb = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private Rigidbody rb = null;
+    private EntityAction entityAction = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private BaseGravityAttractorSwitch baseGravityAttractorSwitch;
+    private BaseGravityAttractorSwitch baseGravityAttractorSwitch = default;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
     private bool fastForward = false;

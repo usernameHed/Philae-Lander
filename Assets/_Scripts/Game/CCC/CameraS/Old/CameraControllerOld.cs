@@ -19,8 +19,6 @@ public class CameraControllerOld : MonoBehaviour
 
     [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float closeMargin = 0.1f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
-    private float autoZoomRatio = 1.05f;
     
     [FoldoutGroup("Object"), Tooltip("ref de l'objet déplacable de la caméra"), SerializeField]
     private Transform movingCamera = null;
@@ -34,9 +32,6 @@ public class CameraControllerOld : MonoBehaviour
     private Transform targetPosition = null;
     [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
     private Transform targetToLook = null;
-
-    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
-    private PlayerRotateCamPoint playerRotateCamPoint = null;
     
 
     private bool freez = false;

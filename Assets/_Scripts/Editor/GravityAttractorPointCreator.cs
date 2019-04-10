@@ -20,12 +20,11 @@ public class GravityAttractorPointCreator : OdinEditor
         NONE,
     }
 
-    private MouseClicType mouseClic = MouseClicType.NONE;
     private Vector3 oldPos;
     private RaycastHit saveRaycastHit;
     
 
-    private void OnEnable()
+    private new void OnEnable()
     {
         EditorApplication.update += OwnUpdate;
         gravityAttractorEditor = (GravityAttractorEditor)target;
@@ -43,7 +42,7 @@ public class GravityAttractorPointCreator : OdinEditor
             }
         }
 
-        UtilityEditor.AssignLabel(gravityAttractorEditor.previewPoint.gameObject, 0);
+        ExtReflexion.AssignLabel(gravityAttractorEditor.previewPoint.gameObject, 0);
     }
 
     private Vector3 GetPointOfTriangle(RaycastHit hit)
@@ -122,7 +121,7 @@ public class GravityAttractorPointCreator : OdinEditor
     {
         for (int i = 0; i < gravityAttractorEditor.tmpPointCreated.Count; i++)
         {
-            UtilityEditor.AssignLabel(gravityAttractorEditor.tmpPointCreated[i], 1);
+            ExtReflexion.AssignLabel(gravityAttractorEditor.tmpPointCreated[i], 1);
         }
 
         if (gravityAttractorEditor.createMode != 2)
@@ -133,7 +132,7 @@ public class GravityAttractorPointCreator : OdinEditor
         for (int i = 0; i < gravityAttractorEditor.tmpForm.Count; i++)
         {
             gravityAttractorEditor.tmpForm[i].name = i.ToString();
-            UtilityEditor.AssignLabel(gravityAttractorEditor.tmpForm[i], 2);
+            ExtReflexion.AssignLabel(gravityAttractorEditor.tmpForm[i], 2);
         }
     }
 
@@ -158,7 +157,7 @@ public class GravityAttractorPointCreator : OdinEditor
         SphereCollider sphere = newObjParent.AddComponent<SphereCollider>();
         sphere.radius = 0.25f;
         sphere.isTrigger = false;
-        UtilityEditor.AssignLabel(newObjParent, 1);
+        ExtReflexion.AssignLabel(newObjParent, 1);
 
         // Register root object for undo.
         //Undo.RegisterCreatedObjectUndo(newObjParent, "Create object");
@@ -222,7 +221,7 @@ public class GravityAttractorPointCreator : OdinEditor
         {
             gravityAttractorEditor.tmpForm.Remove(gravityAttractorEditor.objectPreview);
 
-            UtilityEditor.AssignLabel(gravityAttractorEditor.objectPreview, 0);
+            ExtReflexion.AssignLabel(gravityAttractorEditor.objectPreview, 0);
 
             gravityAttractorEditor.CleanUpTmpPointForm();
             //e.Use();
@@ -241,7 +240,7 @@ public class GravityAttractorPointCreator : OdinEditor
 
             for (int i = 0; i < gravityAttractorEditor.tmpForm.Count; i++)
             {
-                UtilityEditor.AssignLabel(gravityAttractorEditor.tmpForm[i], 4);
+                ExtReflexion.AssignLabel(gravityAttractorEditor.tmpForm[i], 4);
             }
             gravityAttractorEditor.tmpForm.Clear();
 
@@ -309,26 +308,16 @@ public class GravityAttractorPointCreator : OdinEditor
         switch (e.GetTypeForControl(controlID))
         {
             case EventType.MouseDown:
-                //GUIUtility.hotControl = controlID;
-                //Debug.Log("Left Click");
-
-                
-
-                mouseClic = MouseClicType.CLICK;
-                
 
                 break;
             case EventType.MouseUp:
-                //GUIUtility.hotControl = controlID;
-                //Debug.Log("Left CLick Up");
-                mouseClic = MouseClicType.RELEASE;
-                //e.Use();
+
                 TryToCreatePoint(e);
                 TryToCreateMergePoint(e);
                 break;
 
             case EventType.MouseDrag:
-                mouseClic = MouseClicType.HOLD;
+
                 break;
         }
 
@@ -429,7 +418,7 @@ public class GravityAttractorPointCreator : OdinEditor
         }
     }
 
-    private void OnDisable()
+    private new void OnDisable()
     {
         EditorApplication.update -= OwnUpdate;
     }

@@ -27,7 +27,6 @@ public class SceneGUI : EditorWindow
         }
 
         SceneView.onSceneGUIDelegate += OnScene;
-        Debug.Log("Scene GUI : Enabled");
         isEnabled = true;
 
         SetupAllScripts();

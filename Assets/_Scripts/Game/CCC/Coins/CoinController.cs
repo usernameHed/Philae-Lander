@@ -6,21 +6,18 @@ using UnityEngine;
 public class CoinController : MonoBehaviour, IPooledObject, IKillable
 {
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
-    private bool isKinematic = false;
+    private readonly bool isKinematic = false;
 
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
-    private bool autoRotateAtStart = true;
+    private readonly bool autoRotateAtStart = true;
 
     [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
-    private Rigidbody rb;
+    private Rigidbody rb = default;
 
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
     public FmodEventEmitter SFX_kill;
     [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
     public FmodEventEmitter SFX_loop;
-
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
-    private int reward = 1;
 
     private void Awake()
     {

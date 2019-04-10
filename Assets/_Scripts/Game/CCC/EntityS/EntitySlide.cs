@@ -25,7 +25,7 @@ public class EntitySlide : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
     private EntityRotate entityRotate = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private GroundForwardCheck groundForwardCheck;
+    private GroundForwardCheck groundForwardCheck = default;
 
     [FoldoutGroup("Debug"), ReadOnly, Tooltip("main Straff direction")]
     private Vector3 playerStraff = Vector3.zero;

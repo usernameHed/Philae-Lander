@@ -10,7 +10,7 @@ public class SetGravityRotation : MonoBehaviour
     private bool autoRotate = true;
 
     [FoldoutGroup("Object"), Tooltip("gravité du saut"), SerializeField]
-    private Transform objToRotate;
+    private Transform objToRotate = default;
     [FoldoutGroup("Object"), Tooltip("gravité du saut"), SerializeField, ReadOnly]
     public PhilaeManager philaeManager;
 

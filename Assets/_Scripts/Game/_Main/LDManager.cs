@@ -7,7 +7,7 @@ using UnityEngine;
 public class LDManager : MonoBehaviour
 {
     [FoldoutGroup("Object"), Tooltip("text debug to display"), SerializeField]
-    private PhilaeManager philaeManager;
+    private PhilaeManager philaeManager = default;
     
     [FoldoutGroup("Debug"), Tooltip("text debug to display"), ReadOnly]
     public List<GravityAttractorLD> allGravityAttractorLd = new List<GravityAttractorLD>();
@@ -19,7 +19,7 @@ public class LDManager : MonoBehaviour
     public void FillList(bool calculateAfter)
     {
         philaeManager.needRecalculate = false;
-        Debug.Log("<color=cyan>fill all gravity LD</color>");
+        //Debug.Log("<color=cyan>fill all gravity LD</color>");
 
         object[] allGA = Resources.FindObjectsOfTypeAll(typeof(GravityAttractorLD));
         allGravityAttractorLd.Clear();
@@ -47,8 +47,8 @@ public class LDManager : MonoBehaviour
 
     private void CalculateFromList()
     {
-        Debug.Log("<color=red>Setup all individual GA (precalculate faces)</color>"); //SetupArrayPoints
-        Debug.Log("Setup all SetGravityOrientation"); //SetupArrayPoints
+        //Debug.Log("<color=red>Setup all individual GA (precalculate faces)</color>"); //SetupArrayPoints
+        //Debug.Log("Setup all SetGravityOrientation"); //SetupArrayPoints
         
         for (int i = 0; i < allGravityAttractorLd.Count; i++)
         {

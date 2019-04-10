@@ -19,10 +19,6 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private bool calculateOrientation = true;
 
-    [FoldoutGroup("GamePlay"), Range(0, 1), SerializeField, Tooltip("ref rigidbody")]
-    private float forwardDot = 0.3f;
-    [FoldoutGroup("GamePlay"), Range(0, 1), SerializeField, Tooltip("ref rigidbody")]
-    private float behindDot = 0.3f;
     [FoldoutGroup("GamePlay"), Range(0, 1), Tooltip("base speed"), SerializeField]
     private float ratioConsideredFullSpeed = 0.5f;
 
@@ -31,7 +27,7 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private BaseGravity baseGravity = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityMove entityMove;
+    private EntityMove entityMove = default;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
     private Transform objectToRotate = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]

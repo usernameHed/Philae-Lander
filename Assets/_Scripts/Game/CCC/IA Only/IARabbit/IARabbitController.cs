@@ -6,11 +6,11 @@ using UnityEngine;
 public class IARabbitController : EntityController, IPooledObject, IKillable
 {
     [FoldoutGroup("IA", Order = 0), Tooltip("movement speed when we are wandering"), SerializeField]
-    private bool canLosePlayer = false;
+    private bool canForgetPlayer = false;
     [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private float distForChase = 100f;
+    private float distForFlee = 5f;
     [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private float distForLosePlayer = 200f;
+    private float distForGoBackToNormal = 10f;
 
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public IARabbitInput IARabbitInput;
@@ -18,7 +18,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
     public enum State
     {
         WANDER,
-        CHASE_PLAYER,
+        FLEE_PLAYER,
         //GO_TO_WAYPOINT,
     }
     public bool IsWandering
@@ -28,11 +28,11 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
             return (interactionState == State.WANDER);
         }
     }
-    public bool IsChasingPlayer
+    public bool IsFleeingPlayer
     {
         get
         {
-            return (interactionState == State.CHASE_PLAYER);
+            return (interactionState == State.FLEE_PLAYER);
         }
     }
 
@@ -74,7 +74,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
         if (!playerController)
             return (true);
         float dist = Vector3.SqrMagnitude(rb.transform.position - playerController.rb.position);
-        if (dist > distForLosePlayer * distForLosePlayer)
+        if (dist > distForGoBackToNormal * distForGoBackToNormal)
         {
             return (true);
         }
@@ -87,7 +87,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
             return (false);
 
         float dist = Vector3.SqrMagnitude(rb.transform.position - playerController.rb.position);
-        if (dist < distForChase * distForChase)
+        if (dist < distForFlee * distForFlee)
         {
             return (true);
         }
@@ -108,16 +108,16 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
         return (false);
     }*/
 
-    public void SetChase()
+    public void SetFlee()
     {
         //Debug.Log("close !!!");
-        interactionState = State.CHASE_PLAYER;
+        interactionState = State.FLEE_PLAYER;
     }
 
-    public void DoChase()
+    public void DoFlee()
     {
         //Debug.Log("Do chase");
-        IARabbitInput.SetDirectionPlayer();
+        IARabbitInput.SetDirectionPlayerOut();
         IARabbitInput.SetRandomJump();
     }
 
@@ -135,59 +135,20 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
 
     public void LosePlayer()
     {
-        if (canLosePlayer)
+        if (canForgetPlayer)
         {
             Debug.Log("LOSE PLAYER");
             interactionState = State.WANDER;
         }
     }
 
-    /*
-    public void ChangePlanet()
-    {
-        Debug.Log("try to change planet !");
-        iAInput.SetJump();
-    }*/
-
-    private void OnGrounded()
+    protected override void OnGrounded()
     {
         entityJump.OnGrounded();
         baseGravity.OnGrounded();
         baseGravityAttractorSwitch.OnGrounded();
 
         SoundManager.Instance.PlaySound(SFX_grounded);
-    }
-
-    /// <summary>
-    /// set state of player
-    /// </summary>
-    private void ChangeState()
-    {
-        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
-        {
-            OnGrounded();
-        }
-
-        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
-        {
-            //IN AIR
-            moveState = MoveState.InAir;
-            SetDragRb(0);
-            return;
-        }
-
-        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
-            SetDragRb(oldDrag);
-
-
-        if (!IARabbitInput.NotMoving())
-        {
-            moveState = MoveState.Move;
-        }
-        else
-        {
-            moveState = MoveState.Idle;
-        }
     }
 
     private void StartTimerScream()
@@ -206,7 +167,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
 
     private void FixedUpdate()
     {
-        ChangeState();
+        base.ChangeState();
     }
 
     public void OnObjectSpawn()
@@ -234,7 +195,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
         if (!rb)
             return;
 
-        ExtDrawGuizmos.DebugWireSphere(rb.position, Color.red, distForChase);
-        ExtDrawGuizmos.DebugWireSphere(rb.position, Color.green, distForLosePlayer);
+        ExtDrawGuizmos.DebugWireSphere(rb.position, Color.red, distForFlee);
+        ExtDrawGuizmos.DebugWireSphere(rb.position, Color.green, distForGoBackToNormal);
     }
 }

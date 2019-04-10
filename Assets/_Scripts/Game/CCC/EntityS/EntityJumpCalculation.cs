@@ -59,18 +59,18 @@ public class EntityJumpCalculation : MonoBehaviour
     private float minJumpSpeedForNormalGravity = 0.7f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityController entityController = null;
+    private EntityController entityController = default;
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
-    private Rigidbody rb = null;
+    private Rigidbody rb = default;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravity entityGravity = null;
+    private EntityGravity entityGravity = default;
 
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJump entityJump = null;
+    private EntityJump entityJump = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch;
+    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = default;
 
     [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;

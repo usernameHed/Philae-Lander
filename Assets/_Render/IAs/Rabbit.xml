@@ -5,12 +5,12 @@
       <actionVoid componentName="IARabbitController" action="DoWandering" />
       <sequence>
         <actionBool componentName="IARabbitController" action="IsCloseToPlayer" />
-        <actionVoid componentName="IARabbitController" action="SetChase" />
+        <actionVoid componentName="IARabbitController" action="SetFlee" />
       </sequence>
     </sequence>
     <sequence>
-      <actionProperty componentName="IARabbitController" action="IsChasingPlayer" />
-      <actionVoid componentName="IARabbitController" action="DoChase" />
+      <actionProperty componentName="IARabbitController" action="IsFleeingPlayer" />
+      <actionVoid componentName="IARabbitController" action="DoFlee" />
       <sequence>
         <actionBool componentName="IARabbitController" action="IsTooFarFromPlayer" />
         <actionVoid componentName="IARabbitController" action="LosePlayer" />

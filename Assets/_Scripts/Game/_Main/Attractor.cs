@@ -6,8 +6,6 @@ using UnityEngine;
 public class Attractor : MonoBehaviour, IKillable
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
-    private float radius = 3f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private float gravityAdd = 5f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
     private string[] layersRaycast = new string[] { "Player" };

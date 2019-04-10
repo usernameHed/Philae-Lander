@@ -44,9 +44,9 @@ public class EntityRaycastForward : MonoBehaviour
 
     
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private Rigidbody rb;
+    private Rigidbody rb = default;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityController entityController;
+    private EntityController entityController = default;
 
     [FoldoutGroup("Debug"), Tooltip("dist to check forward player"), SerializeField, ReadOnly]
     private float distMax = 0;

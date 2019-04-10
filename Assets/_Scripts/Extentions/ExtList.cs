@@ -30,4 +30,14 @@ public static class ExtList
         }
         return (-1);
     }
+
+    public static List<Transform> FillListFromChilds(Transform parent)
+    {
+        List<Transform> allChild = new List<Transform>();
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            allChild.Add(parent.GetChild(0));
+        }
+        return (allChild);
+    }
 }

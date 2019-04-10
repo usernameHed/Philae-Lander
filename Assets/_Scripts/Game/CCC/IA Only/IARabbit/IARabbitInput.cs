@@ -32,10 +32,10 @@ public class IARabbitInput : EntityAction
         JumpUp = false;
     }
 
-    public void SetDirectionPlayer()
+    public void SetDirectionPlayerOut()
     {
         Vector3 forwardLocalIA = GetMainReferenceForwardDirection();//iaFollowerController.rb.transform.forward;
-        Vector3 iaDir = iaRabbitController.playerController.rb.transform.position - iaRabbitController.rb.transform.transform.position;
+        Vector3 iaDir = iaRabbitController.rb.transform.transform.position - iaRabbitController.playerController.rb.transform.position;
         Vector3 upLocalIA = iaRabbitController.rb.transform.up;
 
         Debug.DrawRay(iaRabbitController.rb.transform.position, iaDir, Color.white, 5f);
@@ -49,7 +49,7 @@ public class IARabbitInput : EntityAction
 
         float dotRight = ExtQuaternion.DotProduct(right, iaDir);
         float dotLeft = ExtQuaternion.DotProduct(left, iaDir);
-        Debug.Log("left: " + dotLeft + ", right: " + dotRight);
+        //Debug.Log("left: " + dotLeft + ", right: " + dotRight);
         //Quaternion turret = ExtQuaternion.TurretLookRotation(-iaDir, iaController.objRotateRef.up);
         //Vector3 dirUp = turret.eulerAngles;
 
@@ -60,17 +60,17 @@ public class IARabbitInput : EntityAction
         if (dotRight > 0)
         {
             xInput = 1f;
-            Debug.Log("go right");
+            //Debug.Log("go right");
         }
         else if (dotLeft > 0)
         {
             xInput = -1f;
-            Debug.Log("go left");
+            //Debug.Log("go left");
         }
         else
         {
             xInput = 0f;
-            Debug.Log("go pls");
+            //Debug.Log("go pls");
         }
 
         moveInput = new Vector2(xInput, 0);

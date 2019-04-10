@@ -30,17 +30,17 @@ public class EntityYoshiBoost : MonoBehaviour
     private Vibration onBoost = new Vibration();
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private Rigidbody rbEntity;
+    private Rigidbody rbEntity = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityJump entityJump;
+    private EntityJump entityJump = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityAction entityAction;
+    private EntityAction entityAction = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private PlayerController playerController = null;
+    private PlayerController playerController = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private EntityGravity entityGravity;
+    private EntityGravity entityGravity = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private ClampRbSpeed clampRbSpeed;
+    private ClampRbSpeed clampRbSpeed = default;
 
     [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
     private bool isBoosting = false;

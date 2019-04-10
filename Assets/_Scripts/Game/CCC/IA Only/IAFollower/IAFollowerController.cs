@@ -6,11 +6,11 @@ using UnityEngine;
 public class IAFollowerController : EntityController, IPooledObject, IKillable
 {
     [FoldoutGroup("IA", Order = 0), Tooltip("movement speed when we are wandering"), SerializeField]
-    private bool canLosePlayer = false;
+    private readonly bool canLosePlayer = false;
     [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private float distForChase = 100f;
+    private readonly float distForChase = 5f;
     [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
-    private float distForLosePlayer = 200f;
+    private readonly float distForLosePlayer = 10f;
 
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public IAFollowerInput followerInput;
@@ -163,7 +163,7 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
         iAInput.SetJump();
     }*/
 
-    private void OnGrounded()
+    protected override void OnGrounded()
     {
         Debug.Log("grounded !");
 
@@ -172,38 +172,6 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
         baseGravityAttractorSwitch.OnGrounded();
 
         SoundManager.Instance.PlaySound(SFX_grounded);
-    }
-
-    /// <summary>
-    /// set state of player
-    /// </summary>
-    private void ChangeState()
-    {
-        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
-        {
-            OnGrounded();
-        }
-
-        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
-        {
-            //IN AIR
-            moveState = MoveState.InAir;
-            SetDragRb(0);
-            return;
-        }
-
-        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
-            SetDragRb(oldDrag);
-
-
-        if (!followerInput.NotMoving())
-        {
-            moveState = MoveState.Move;
-        }
-        else
-        {
-            moveState = MoveState.Idle;
-        }
     }
 
     private void StartTimerScream()
@@ -222,7 +190,7 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
 
     private void FixedUpdate()
     {
-        ChangeState();
+        base.ChangeState();
     }
 
     public void OnObjectSpawn()

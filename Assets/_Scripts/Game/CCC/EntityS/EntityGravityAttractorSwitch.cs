@@ -16,11 +16,11 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     private bool calculateGroundPos = true;
 
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityJumpCalculation entityJumpCalculation;
+    private EntityJumpCalculation entityJumpCalculation = default;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private FastForward fastForward;
+    private FastForward fastForward = default;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityJump entityJump;
+    private EntityJump entityJump = default;
 
 
     private FrequencyCoolDown coolDownBeforeApplyForceDown = new FrequencyCoolDown();

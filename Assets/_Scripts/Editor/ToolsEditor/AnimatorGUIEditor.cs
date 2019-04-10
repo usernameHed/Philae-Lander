@@ -15,8 +15,29 @@ public class AnimatorGUIEditor : OdinEditor
         animatorGUI = (AnimatorGUI)target;
 
         Handles.color = Color.green;
-        if (Handles.Button(animatorGUI.transform.position, Quaternion.identity, 0.2f, 0.2f, Handles.SphereHandleCap))
+        if (Handles.Button(animatorGUI.transform.position + Vector3.up * 1 + Vector3.right * 0.3f, Quaternion.identity, 0.2f, 0.2f, Handles.SphereHandleCap))
         {
+            System.Reflection.Assembly editorAssembly = System.Reflection.Assembly.GetAssembly(typeof(EditorWindow));
+            System.Type animationWindowType = ExtReflexion.GetTypeFromAssembly(ExtReflexion.AllNameAssembly.AnimationWindow.ToString(), editorAssembly);
+            System.Object animationWindowObject = EditorWindow.GetWindow(animationWindowType);
+
+            //ethodInfo[] allMathod = animationWindowType.GetMethods();
+
+            if (animationWindowObject != null)
+            {
+                System.Reflection.MethodInfo previewMethod = animationWindowType.GetMethod("PreviewFrame", ExtReflexion.GetFullBinding());
+                
+                ExtReflexion.GetAllMethodeOfType(animationWindowType, true);
+                Debug.Log(previewMethod);
+                //previewMethod.Invoke(animationWindowObject, new System.Object[]);
+            }
+
+            //ExtReflexion.GetAllOpennedWindow(true);
+            //ExtReflexion.GetAllEditorWindowTypes(true);
+
+            //SEARCH WINDOW WHEN OPENING GRAVITY ATTRACTOR !!!
+
+            /*
             EditorWindow[] allWindows = Resources.FindObjectsOfTypeAll<EditorWindow>();
             bool isOpen = false;
             for (int i = 0; i < allWindows.Length; i++)
@@ -56,21 +77,22 @@ public class AnimatorGUIEditor : OdinEditor
                         editorWindow.Focus();
                         break;
                     }
-                    /*
-                    EditorWindow editorWindow = EditorWindow.GetWindow(allUnityWindow[i]);
-                    Debug.Log(editorWindow);
-                    if (string.Equals(editorWindow.titleContent.text, "Animation"))
-                    {
+                    
+                    //EditorWindow editorWindow = EditorWindow.GetWindow(allUnityWindow[i]);
+                    //Debug.Log(editorWindow);
+                    //if (string.Equals(editorWindow.titleContent.text, "Animation"))
+                    //{
                         //allWindows[i].Show();
                         //break;
-                    }
-                    */
+                    //}
+                    
                     //Debug.Log();
                 }
 
                 //EditorWindow animationWindow = EditorWindow.GetWindow(Animation);
                 //EditorWindow animationWindow = ScriptableObject.CreateInstance<EditorWindow>();
             }
+            */
             //animatorGUI.PlayAnimation();
         }
     }

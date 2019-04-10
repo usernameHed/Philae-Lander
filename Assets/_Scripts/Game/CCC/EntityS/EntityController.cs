@@ -218,6 +218,44 @@ public class EntityController : MonoBehaviour, IKillable
         rb.drag = 0;
     }
 
+    protected virtual void OnGrounded()
+    {
+        baseGravity.OnGrounded();
+        baseGravityAttractorSwitch.OnGrounded();
+    }
+
+    /// <summary>
+    /// set state of player
+    /// </summary>
+    protected void ChangeState()
+    {
+        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
+        {
+            OnGrounded();
+        }
+
+        if (groundCheck.IsFlying()/* || playerJump.IsJumpedAndNotReady()*/)
+        {
+            //IN AIR
+            moveState = MoveState.InAir;
+            SetDragRb(0);
+            return;
+        }
+
+        if (rb.drag != oldDrag/* && playerJump.IsJumpCoolDebugDownReady()*/)
+            SetDragRb(oldDrag);
+
+
+        if (!entityAction.NotMoving())
+        {
+            moveState = MoveState.Move;
+        }
+        else
+        {
+            moveState = MoveState.Idle;
+        }
+    }
+
     public virtual void Kill()
     {
         

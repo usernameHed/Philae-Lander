@@ -18,9 +18,6 @@ public class EntityBumpUp : MonoBehaviour
     private Rigidbody rb = null;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityJump entityJump = null;
-    
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
 
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private bool hasBumpedUp = false;

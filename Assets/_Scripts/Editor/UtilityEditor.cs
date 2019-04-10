@@ -60,60 +60,7 @@ public class UtilityEditor : ScriptableObject
             SceneViewCameraFunction.ViewportPanZoomIn(zoom);
     }
 
-    /// <summary>
-    /// Get all editor window type.
-    /// If we want just the one open, we can do just:
-    /// EditorWindow[] allWindows = Resources.FindObjectsOfTypeAll<EditorWindow>();
-    /// </summary>
-    /// <returns></returns>
-    public static System.Type[] GetAllEditorWindowTypes()
-    {
-        var result = new System.Collections.Generic.List<System.Type>();
-        System.Reflection.Assembly[] AS = System.AppDomain.CurrentDomain.GetAssemblies();
-        System.Type editorWindow = typeof(EditorWindow);
-        foreach (var A in AS)
-        {
-            System.Type[] types = A.GetTypes();
-            foreach (var T in types)
-            {
-                if (T.IsSubclassOf(editorWindow))
-                    result.Add(T);
-            }
-        }
-        return result.ToArray();
-    }
-
-    public static void DisplayAllMethodes(IEnumerable<MethodInfo> method)
-    {
-        foreach (MethodInfo e in method)
-        {
-            Debug.Log(e);
-        }
-    }
-
-    public static void SetSearchFilter(string filter, int filterMode)
-    {
-        
-        SearchableEditorWindow[] windows = (SearchableEditorWindow[])Resources.FindObjectsOfTypeAll(typeof(SearchableEditorWindow));
-        SearchableEditorWindow hierarchy = windows[0];
-        foreach (SearchableEditorWindow window in windows)
-        {
-
-            if (window.GetType().ToString() == "UnityEditor.SceneHierarchyWindow")
-            {
-                hierarchy = window;
-                break;
-            }
-        }
-
-        if (hierarchy == null)
-            return;
-
-        MethodInfo setSearchType = typeof(SearchableEditorWindow).GetMethod("SetSearchFilter", BindingFlags.NonPublic | BindingFlags.Instance);
-        object[] parameters = new object[] { filter, filterMode, false };
-
-        setSearchType.Invoke(hierarchy, parameters);
-    }
+    
 
     [MenuItem("PERSO/Philae/Select Gravity Attractor _g")]
     public static bool SelectParentOfAttractor()
@@ -131,6 +78,7 @@ public class UtilityEditor : ScriptableObject
         }
         return (false);
     }
+
     [MenuItem("PERSO/Philae/CreateEmptyParent #e")]
     public static void CreateEmptyParent()
     {
@@ -148,26 +96,12 @@ public class UtilityEditor : ScriptableObject
         //EditorGUIUtility.PingObject(Selection.activeGameObject);
         Selection.activeGameObject = newParent;
 
-        SetExpandedRecursive(newParent, true);
+        ExtReflexion.SetExpandedRecursive(newParent, true);
 
         //EditorGUILayout.Foldout(true, newParent);
     }
 
-    /// <summary>
-    /// expand recursivly a hierarchy foldout
-    /// </summary>
-    /// <param name="go"></param>
-    /// <param name="expand"></param>
-    public static void SetExpandedRecursive(GameObject go, bool expand)
-    {
-        var type = typeof(EditorWindow).Assembly.GetType("UnityEditor.SceneHierarchyWindow");
-        var methodInfo = type.GetMethod("SetExpandedRecursive");
-
-        EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
-        var window = EditorWindow.focusedWindow;
-
-        methodInfo.Invoke(window, new object[] { go.GetInstanceID(), expand });
-    }
+    
 
 
 
@@ -264,16 +198,7 @@ public class UtilityEditor : ScriptableObject
     {
         SetLayerAndMat("Assets/Resources/FastForward.mat", "Walkable/FastForward");
     }
-
-    public static void AssignLabel(GameObject g, int colorIconById)
-    {
-        Texture2D tex = EditorGUIUtility.IconContent("sv_label_" + colorIconById).image as Texture2D;
-        Type editorGUIUtilityType = typeof(EditorGUIUtility);
-        BindingFlags bindingFlags = BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.NonPublic;
-        object[] args = new object[] { g, tex };
-        editorGUIUtilityType.InvokeMember("SetIconForObject", bindingFlags, null, null, args);
-    }
-
+    
     public static void SetLayerAndMat(string materialName, string layer)
     {
         GameObject[] activeOne = Selection.gameObjects;//Selection.activeGameObject;

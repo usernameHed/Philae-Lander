@@ -10,7 +10,7 @@ public class RotatorOneAxisEditor : OdinEditor
     RotatorOneAxis rotatorOneAxis;
     int discRotateControlId;
 
-    private void OnEnable()
+    private new void OnEnable()
     {
         rotatorOneAxis = (RotatorOneAxis)target;
     }

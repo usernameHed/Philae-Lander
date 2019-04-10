@@ -59,7 +59,7 @@ public class PlayerController : EntityController, IKillable
         PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
     }
 
-    private void OnGrounded()
+    protected override void OnGrounded()
     {
         playerJump.OnGrounded();
         baseGravity.OnGrounded();
@@ -76,7 +76,7 @@ public class PlayerController : EntityController, IKillable
     /// <summary>
     /// set state of player
     /// </summary>
-    private void ChangeState()
+    private new void ChangeState()
     {
         //Check if is flying
         if (groundCheck.IsFlying())

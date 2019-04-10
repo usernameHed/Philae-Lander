@@ -11,7 +11,7 @@ public class FOVVisualizeEditor : OdinEditor
     FOVVisualize fOVVisualize;
     ArcHandle arcHandle;
 
-    private void OnEnable()
+    private new void OnEnable()
     {
         fOVVisualize = (FOVVisualize)target;
         arcHandle = new ArcHandle();

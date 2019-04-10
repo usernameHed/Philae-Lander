@@ -10,15 +10,15 @@ public class GroundAdvancedCheck : MonoBehaviour
     private float minDistShadow = 3.5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private DrawTargetObject drawTargetObject;
+    private DrawTargetObject drawTargetObject = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private Projector projector;
+    private Projector projector = default;
     public GameObject GetObjProjector() => projector.gameObject;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private BaseGravity baseGravity;
+    private BaseGravity baseGravity = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
-    private Rigidbody rb;
+    private Rigidbody rb = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
     private GroundCheck groundCheck;
 

@@ -7,6 +7,8 @@ public class IARabbitJump : EntityJump
 {
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
     private float addRandomJump = 4f;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    private float ratioMoveForward = 1.5f;
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private IARabbitController iaRabbitController = null;
@@ -56,7 +58,7 @@ public class IARabbitJump : EntityJump
 
         rb.ClearVelocity();
 
-        base.DoJump(boostHeight);
+        base.DoJump(boostHeight, ratioMoveForward);
 
         hasJumped = true;
         //Debug.Break();

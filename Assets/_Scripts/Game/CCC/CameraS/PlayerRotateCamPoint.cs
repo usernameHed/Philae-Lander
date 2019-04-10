@@ -22,8 +22,6 @@ public class PlayerRotateCamPoint : MonoBehaviour
 
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerInput playerInput = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
-    private Rigidbody rb = null;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
     private Transform objectToRotate = null;
     [FoldoutGroup("Object"), Tooltip("point child who rotate"), SerializeField]
