@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 [TypeInfoBox("Player input")]
 public class IARabbitInput : EntityAction
 {
-    [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     protected IARabbitController iaRabbitController;
     public IARabbitController IaRabbitController() => iaRabbitController;
     /// <summary>
@@ -59,12 +59,12 @@ public class IARabbitInput : EntityAction
         float xInput = 0;
         if (dotRight > 0)
         {
-            xInput = 1f;
+            xInput = 1;
             //Debug.Log("go right");
         }
         else if (dotLeft > 0)
         {
-            xInput = -1f;
+            xInput = -1;
             //Debug.Log("go left");
         }
         else

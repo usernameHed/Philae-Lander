@@ -11,6 +11,8 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float turnRateInAir = 300f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    private bool doSimpleAirRotate = false;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation CameraFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation InputFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
@@ -111,6 +113,8 @@ public class EntityRotate : MonoBehaviour
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             isFullSpeedBefore = true;
+            if (doSimpleAirRotate)
+                DoAirRotate();
             return;
         }
 

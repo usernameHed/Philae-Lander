@@ -65,8 +65,11 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
     public void DoWandering()
     {
         //Debug.Log("Wander");
-        IARabbitInput.SetRandomInput();
-        IARabbitInput.SetRandomJump();
+        if (GetMoveState() != MoveState.InAir)
+        {
+            IARabbitInput.SetRandomInput();
+            IARabbitInput.SetRandomJump();
+        }
     }
 
     public bool IsTooFarFromPlayer()
