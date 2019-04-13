@@ -9,6 +9,7 @@ TagManager:
   - GravityAttractor
   - Object
   - Coin
+  - IgnoreCamera
   layers:
   - Default
   - TransparentFX

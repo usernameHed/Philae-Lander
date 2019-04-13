@@ -325,7 +325,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124214159504772}
-  m_LocalRotation: {x: 0.17000113, y: -0, z: -0, w: 0.98544383}
+  m_LocalRotation: {x: 0.17000307, y: 0, z: 0, w: 0.98544353}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -750,6 +750,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 2
+    - _id: 26
+      _name: Both Trigger
+      _type: 0
+      _descriptiveName: Trigger left/right
+      _positiveDescriptiveName: Move Right
+      _negativeDescriptiveName: Move Left
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 2
     - _id: 8
       _name: Jump
       _type: 1
@@ -800,7 +809,7 @@ MonoBehaviour:
       - categoryId: 1
         actionIds: 02000000030000000400000005000000
       - categoryId: 2
-        actionIds: 060000000f0000000700000010000000080000001800000019000000
+        actionIds: 060000000f00000007000000100000000800000018000000190000001a000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -985,6 +994,28 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 26
+        _elementType: 1
+        _elementIdentifierId: 11
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 26
+        _elementType: 1
+        _elementIdentifierId: 13
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
         _keyboardKeyCode: 0
         _modifierKey1: 0
         _modifierKey2: 0
@@ -1199,7 +1230,7 @@ MonoBehaviour:
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 9
-    actionIdCounter: 26
+    actionIdCounter: 27
     actionCategoryIdCounter: 3
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1

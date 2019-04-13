@@ -65,7 +65,7 @@ public class EntityAirMove : MonoBehaviour
         if (addAmount)
         {
             float toAdd = (direction * entityMove.GetMagnitudeAcceleration()).sqrMagnitude * entityMove.GetCurrentSpeedForwardClamped01() * Time.deltaTime;
-            Debug.Log("toAdd: " + toAdd);
+            //Debug.Log("toAdd: " + toAdd);
             amountAdded += toAdd;
         }
 
