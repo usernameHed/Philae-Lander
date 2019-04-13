@@ -59,9 +59,7 @@ public class UtilityEditor : ScriptableObject
         if (zoom != -1)
             SceneViewCameraFunction.ViewportPanZoomIn(zoom);
     }
-
     
-
     [MenuItem("PERSO/Philae/Select Gravity Attractor _g")]
     public static bool SelectParentOfAttractor()
     {
@@ -72,7 +70,7 @@ public class UtilityEditor : ScriptableObject
             Debug.Log("we found a gravityAttractor here !!");
             //FocusOnSelection(Selection.activeGameObject, -1);
             //SetSearchFilter(Selection.activeGameObject.name, FILTERMODE_ALL);
-
+            ExtReflexion.SetSearch(gravityAttractorLD.transform.gameObject.name);
             return (true);
             
         }
