@@ -6,8 +6,8 @@ public struct FrequencyEase
 {
     [SerializeField, Tooltip("speed")]
     private float speedIn;
-    [SerializeField, Tooltip("Ratio Settings (default 1)")]
-    public float ratioSettings;
+
+    
     [SerializeField, Tooltip("timer back to 0 speed (default 1)")]
     private float ratioDecelerate;
     [SerializeField, Tooltip("curve, default: time: 0 to X; value: 0 to 1")]
@@ -16,12 +16,18 @@ public struct FrequencyEase
     [SerializeField, ReadOnly, Tooltip("")]
     private bool timerStarted;
     [SerializeField, ReadOnly, Tooltip("")]
+    private bool timerIsEnding;
+
+    [SerializeField, ReadOnly, Tooltip("")]
     private float timeStart;
     [SerializeField, ReadOnly, Tooltip("")]
     private float timeEnd;
     [SerializeField, ReadOnly, Tooltip("")]
-    private float currentTime;    
-    
+    private float currentTime;
+
+    private float timeWhenStart;
+    private float previousTimeFrame;
+
     public void Init()
     {
         speedIn = 5f;
@@ -34,6 +40,7 @@ public struct FrequencyEase
         animationCurve.preWrapMode = WrapMode.Clamp;
 
         timerStarted = false;
+        timerIsEnding = false;
         timeStart = 0f;
         timeEnd = 0f;
         currentTime = 0f;
@@ -48,11 +55,14 @@ public struct FrequencyEase
         timeEnd = _maxSecond;
 
         timerStarted = true;
+        timerIsEnding = false;
+        timeWhenStart = Time.fixedTime;
+        previousTimeFrame = Time.fixedTime;
     }
 
     public float Evaluate()
     {
-        return (animationCurve.Evaluate(currentTime) * speedIn * ratioSettings);
+        return (animationCurve.Evaluate(currentTime) * Time.deltaTime * speedIn);
     }
 
     /// <summary>
@@ -72,23 +82,47 @@ public struct FrequencyEase
 
     public void BackToTime()
     {
-        if (!timerStarted)
+        if (!timerStarted && !timerIsEnding)
         {
-            currentTime = 0;
+            //Debug.Log("here go backward, but we did'nt go forward at first... do nothing");
             return;
         }
+
+        if (timerStarted && !timerIsEnding)
+        {
+            //Debug.Log("here first time we go backward !");
+            timerIsEnding = true;
+        }
+        timerStarted = false;
+
         RemoveOneFrame();
+
+        if (currentTime == 0)
+        {
+            timerIsEnding = false;
+        }        
     }
 
     private void AddOneFrame()
     {
-        currentTime += Time.deltaTime;
+        //float timePast = Time.fixedTime - timeWhenStart;
+        float amountToAdd = Time.fixedTime - previousTimeFrame;
+        currentTime += amountToAdd;
+
         currentTime = Mathf.Clamp(currentTime, 0, timeEnd);
+
+        //Debug.Log("timePast: " + currentTime);
+
+        previousTimeFrame = Time.fixedTime;
     }
     private void RemoveOneFrame()
     {
-        currentTime -= Time.deltaTime * ratioDecelerate;
+        float amountToDelete = Time.fixedTime - previousTimeFrame;
+
+        currentTime -= amountToDelete;
         currentTime = Mathf.Clamp(currentTime, 0, timeEnd);
+
+        previousTimeFrame = Time.fixedTime;
     }
     
 }
