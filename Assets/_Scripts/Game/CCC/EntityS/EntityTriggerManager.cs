@@ -6,8 +6,7 @@ using UnityEngine.Events;
 public class EntityTriggerManager : MonoBehaviour
 {
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    public EntityController entityController;
-    
+    public GameObject objectToKill;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     public EntityNoGravity entityNoGravity;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -48,7 +47,11 @@ public class EntityTriggerManager : MonoBehaviour
 
     public void Kill()
     {
-        if (entityController)
-            entityController.Kill();
+        if (objectToKill == null)
+            return;
+        IKillable kill = objectToKill.GetComponent<IKillable>();
+
+        if (kill != null)
+            kill.Kill();
     }
 }

@@ -276,9 +276,6 @@ MonoBehaviour:
   SFX_Scream: {fileID: 8870187308173586894}
   moveState: 0
   layerMask: -1
-  canLosePlayer: 1
-  distForChase: 5
-  distForLosePlayer: 15
   followerInput: {fileID: 216777314201691486}
   iAJump: {fileID: 3124669454909337200}
   iaScream: {x: 4.1899443, y: 20.111732}
@@ -296,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba97ead0c7817c34d8b2e15f49105194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityController: {fileID: 8544601831628834816}
+  objectToKill: {fileID: 45}
   entityNoGravity: {fileID: 0}
   uniqueGravityAttractorSwitch: {fileID: 387}
 --- !u!114 &3124669454909337200
@@ -488,12 +485,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnRate: 300
   turnRateInAir: 300
+  doSimpleAirRotate: 0
   CameraFromPlayerOrientation: -1
   InputFromPlayerOrientation: -1
   InputFromCameraOrientation: -1
   calculateOrientation: 0
-  forwardDot: 0.3
-  behindDot: 0.3
   ratioConsideredFullSpeed: 0.5
   entityAction: {fileID: 216777314201691486}
   baseGravity: {fileID: 407}

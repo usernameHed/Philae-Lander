@@ -21,6 +21,7 @@ public class PlayerManageEditor : Editor
     {
         if (Application.isPlaying)
         {
+            /*
             if (playerEditor.playerInput.dashUp)
             {
                 FocusOnSelection();
@@ -31,6 +32,7 @@ public class PlayerManageEditor : Editor
                 FocusOnSelection();
                 Debug.Break();
             }
+            */
         }
     }
 

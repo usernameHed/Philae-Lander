@@ -812,9 +812,9 @@ MonoBehaviour:
   SFX_Scream: {fileID: 7533788810988811927}
   moveState: 0
   layerMask: -1
-  canLosePlayer: 0
-  distForChase: 5
-  distForLosePlayer: 15
+  canForgetPlayer: 1
+  distForFlee: 5
+  distForGoBackToNormal: 10
   IARabbitInput: {fileID: 2829743453774446179}
   entityJump: {fileID: 5865089577137853132}
   iaScream: {x: 2.5139666, y: 10.893854}
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c7cbe788c3f2c45a351d5f5b2019ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 3
+  jumpHeight: 1
   ratioIncreaseHeightMove: 0.5
   inputJump: 1
   noJumpLayer: []
@@ -853,9 +853,10 @@ MonoBehaviour:
   fastForward: {fileID: 0}
   entityMove: {fileID: 1410850844761491137}
   hasJumped: 0
-  justJumpedTimer: 0.2
+  justJumpedTimer: 0.3
   justGroundTimer: 1
-  addRandomJump: 4
+  addRandomJump: 0
+  ratioMoveForward: 2.2
   iaRabbitController: {fileID: 7954439004656090341}
 --- !u!114 &1410850844761491159
 MonoBehaviour:
@@ -869,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba97ead0c7817c34d8b2e15f49105194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityController: {fileID: 7954439004656090341}
+  objectToKill: {fileID: 1410850844761491316}
   entityNoGravity: {fileID: 0}
   uniqueGravityAttractorSwitch: {fileID: 1410850844761491162}
 --- !u!114 &1410850844761491150
@@ -977,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca00765efa83f6469eeb208463557f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMove: 100
+  speedMove: 67
   easeAcceleration:
     serializedVersion: 2
     m_Curve:
@@ -1024,13 +1025,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnRate: 300
-  turnRateInAir: 300
+  turnRateInAir: 800
+  doSimpleAirRotate: 1
   CameraFromPlayerOrientation: -1
   InputFromPlayerOrientation: -1
   InputFromCameraOrientation: -1
   calculateOrientation: 0
-  forwardDot: 0.3
-  behindDot: 0.3
   ratioConsideredFullSpeed: 0.5
   entityAction: {fileID: 2829743453774446179}
   baseGravity: {fileID: 1410850844761491150}

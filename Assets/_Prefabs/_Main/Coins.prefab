@@ -1384,12 +1384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ae5b65dd32af49a22aeb037a13a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isKinematic: 0
-  autoRotateAtStart: 1
   rb: {fileID: 2997031547318935302}
   SFX_kill: {fileID: 35795234}
   SFX_loop: {fileID: 1054665570}
-  reward: 1
 --- !u!114 &1539831522773060381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,9 +1399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba97ead0c7817c34d8b2e15f49105194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  iAController: {fileID: 0}
-  coinController: {fileID: 7541991829763045660}
+  objectToKill: {fileID: 7991025484444825896}
   entityNoGravity: {fileID: 0}
   uniqueGravityAttractorSwitch: {fileID: 3546694355151382748}
 --- !u!114 &3546694355151382723

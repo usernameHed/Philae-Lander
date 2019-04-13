@@ -41,16 +41,20 @@ public class KillTrigger : MonoBehaviour
 
 	private void TryKill(GameObject other)
 	{
+        Debug.Log("try to kill ?");
+
 		IKillable killable = other.GetComponent<IKillable> ();
 		if (killable != null)
 		{
-			killable.Kill ();
+            Debug.Log("here");
+            killable.Kill ();
 		}
         else if (tryParent)
         {
             killable = other.GetComponentInParent<IKillable>();
             if (killable != null)
             {
+                Debug.Log("or here");
                 killable.Kill();
             }
         }
