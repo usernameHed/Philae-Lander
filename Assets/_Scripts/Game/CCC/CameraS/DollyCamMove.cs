@@ -48,6 +48,9 @@ public class DollyCamMove : MonoBehaviour
 
     private CinemachineTrackedDolly cineDolly;
 
+    private CinemachineCollider cineCollider;
+    public CinemachineCollider GetCineCollider() => cineCollider;
+
     private void Start()
     {
         Init();
@@ -103,15 +106,17 @@ public class DollyCamMove : MonoBehaviour
         cineDolly.m_PathPosition = currentIndexDolly;
     }
 
-    private void InputZoom()
+    /// <summary>
+    /// tel to zoom
+    /// </summary>
+    /// <param name="zoomRatio">between -1 and 1</param>
+    public void InputZoom(float zoomRatio, float speedRatio = 1f)
     {
-        float zoom = playerInput.trigger;
-
-        if (Mathf.Abs(zoom) >= deadZoneZoom)
+        if (Mathf.Abs(zoomRatio) >= deadZoneZoom)
         {
-            float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(zoom), deadZoneVerti, 1f, 0f, 1f);
+            float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(zoomRatio), deadZoneVerti, 1f, 0f, 1f);
             float localScaleAllAxis = toScale.localScale.x;
-            localScaleAllAxis += speedZoom * remapedInput * Mathf.Sign(zoom) * Time.deltaTime;
+            localScaleAllAxis += speedZoom * remapedInput * speedRatio * Mathf.Sign(zoomRatio) * Time.deltaTime;
             localScaleAllAxis = Mathf.Clamp(localScaleAllAxis, minMaxZoom.x, minMaxZoom.y);
 
             toScale.localScale = new Vector3(localScaleAllAxis, localScaleAllAxis, localScaleAllAxis);
@@ -133,7 +138,7 @@ public class DollyCamMove : MonoBehaviour
 
     private void Update()
     {
-        InputZoom();
+        InputZoom(playerInput.trigger);
 
         InputRotate();
         InputDolly();

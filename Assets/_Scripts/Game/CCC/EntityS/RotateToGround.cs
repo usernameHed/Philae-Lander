@@ -7,6 +7,8 @@ public class RotateToGround : MonoBehaviour
 {
     [FoldoutGroup("Object"), Tooltip("ref object to rotate"), SerializeField]
     private GameObject rbObject = null;
+    [FoldoutGroup("Object"), Tooltip("ref object to rotate"), SerializeField]
+    protected bool instantRotation = false;
 
     protected void InstantRotate(Vector3 dirSmoothedNormal)
     {

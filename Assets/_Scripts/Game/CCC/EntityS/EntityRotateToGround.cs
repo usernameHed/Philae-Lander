@@ -31,6 +31,12 @@ public class EntityRotateToGround : RotateToGround
 
     private void FixedUpdate()
     {
+        if (instantRotation)
+        {
+            InstantRotate(uniqueSmoothNormals.GetRotationOrientationDown());
+            return;
+        }
+
         RotateObject(speedRotate, uniqueSmoothNormals.GetSmoothedNormalPlayer());
         speedRotate = Mathf.Lerp(speedRotate, tmpSpeed, Time.deltaTime * speedLerpRaulBack);
     }

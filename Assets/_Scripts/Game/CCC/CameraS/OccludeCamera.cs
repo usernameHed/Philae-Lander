@@ -7,6 +7,10 @@ using UnityEngine;
 public class OccludeCamera : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private FrequencyEase easeZoom = new FrequencyEase();
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private float backABit = 0.1f;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] allRaycastLayer = new string[] { "Walkable/Ground", "Walkable/Stick", "Walkable/Dont", "Walkable/FastForward" };
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public TagAccess.TagAccessEnum[] allTagToZoom = new TagAccess.TagAccessEnum[] { TagAccess.TagAccessEnum.ZoomCamera };
@@ -15,6 +19,8 @@ public class OccludeCamera : MonoBehaviour
     private Transform camPoint;
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private Transform lookAt;
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    private DollyCamMove dollyCamMove;
 
     [FoldoutGroup("SphereCast"), Tooltip(""), Range(0, 2), SerializeField]
     public float sizeRadiusSphereCast = 0.3f;
@@ -57,10 +63,19 @@ public class OccludeCamera : MonoBehaviour
     {
         Vector3 dir = lookAt.position - camPoint.position;
         float dist = dir.magnitude;
+        dir = dir.normalized;
 
-        if (DoRayCastForward(camPoint.position, lookAt.position, dir.normalized, dist))
+        if (DoRayCastForward(camPoint.position - (dir * backABit), lookAt.position, dir, dist))
         {
+            easeZoom.StartOrContinue();
             Debug.Log("zoom or conturn ?");
+
+            //dollyCamMove.GetCineCollider().OnTargetObjectWarped
+            dollyCamMove.InputZoom(-1, easeZoom.Evaluate());
+        }
+        else
+        {
+            easeZoom.BackToTime();
         }
     }
 }

@@ -27,7 +27,7 @@ public class SmoothNormals : UniqueSmoothNormals
         return (smoothedNormalCamera);
     }
 
-    protected override Vector3 GetRotationOrientationDown()
+    public override Vector3 GetRotationOrientationDown()
     {
         if (!entityController && !groundCheck)
         {

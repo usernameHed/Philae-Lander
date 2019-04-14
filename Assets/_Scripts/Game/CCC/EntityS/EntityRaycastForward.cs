@@ -60,6 +60,17 @@ public class EntityRaycastForward : MonoBehaviour
     private Vector3 focusRightDir;
     private bool breakLoop = false;
 
+    private Vector3 lastPos;
+    private Vector3 lastNormal;
+    public Vector3 GetLastPos() => lastPos;
+    public Vector3 GetLastNormal() => lastNormal;
+
+    private void SaveLastPos(Vector3 pos, Vector3 normal)
+    {
+        lastPos = pos;
+        lastNormal = normal;
+    }
+
     private InfoHit DoRayCastForward(Vector3 posA, Vector3 posB, Vector3 focusDir, float dist, bool isForward)
     {
         if (isForward)
@@ -309,6 +320,7 @@ public class EntityRaycastForward : MonoBehaviour
         do
         {
             infoHit = DoRayCastForward(infoHit.posA, infoHit.posB, focusDir, GetDistForward(), true);   //do a raycast
+            SaveLastPos(infoHit.posB, infoHit.normal);
 
             //here calculate nextForward
             if (infoHit.hasHit)
@@ -364,11 +376,10 @@ public class EntityRaycastForward : MonoBehaviour
         Vector3 firstPosB = firstPosA + focusDir * GetDistForward();
 
         InfoHit infoHit = new InfoHit(firstPosA, firstPosB, false, ExtUtilityFunction.GetNullVector(), ExtUtilityFunction.GetNullVector());
+        SaveLastPos(infoHit.posB, infoHit.normal);
 
         int i = 0;
         DoLoop(stepsForward, ref infoHit, ref focusDir, ref i);
-
-
         //Debug.Log("<color=blue>maxDist: " + distMax + ", dist effecctued: " + currentDistChecked + "(steps: " + i + ")</color>");
     }
 

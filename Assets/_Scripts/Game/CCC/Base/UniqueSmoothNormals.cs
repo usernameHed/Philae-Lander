@@ -7,7 +7,8 @@ public class UniqueSmoothNormals : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     protected float smoothSpeedPlayer = 2f;
-
+    [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    protected bool calculateEveryFixedFrame = true;
 
     [FoldoutGroup("Object"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     protected UniqueGravity uniqueGravity = null;
@@ -24,7 +25,7 @@ public class UniqueSmoothNormals : MonoBehaviour
         return (smoothedNormalPlayer);
     }
 
-    protected virtual Vector3 GetRotationOrientationDown()
+    public virtual Vector3 GetRotationOrientationDown()
     {
         return (uniqueGravity.GetMainAndOnlyGravity());
     }
@@ -37,6 +38,9 @@ public class UniqueSmoothNormals : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CalculateSmoothNormal();
+        if (calculateEveryFixedFrame)
+        {
+            CalculateSmoothNormal();
+        }
     }
 }

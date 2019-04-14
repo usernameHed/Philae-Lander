@@ -166,7 +166,7 @@ public class ExtReflexion
 
     public static System.Reflection.BindingFlags GetFullBinding()
     {
-        return (BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.NonPublic);
+        return (BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.NonPublic | BindingFlags.Static);
     }
 
     /// <summary>
@@ -207,50 +207,44 @@ public class ExtReflexion
         //Get field m_AnimEditor
         FieldInfo animEditorFI = animationWindowType.GetField("m_AnimEditor", ExtReflexion.GetFullBinding());
 
+        /*
+        object animEditorObject = animEditorFI.GetValue(animationWindowEditor);
+        MethodInfo playMI = animEditorFI.FieldType.GetMethod("TogglePlayAnimation", ExtReflexion.GetFullBinding());
+        Debug.Log(playMI.Name);
+
+
+        Type[] types = new Type[1];
+        object paramFunction = playMI.GetType().GetConstructor(GetFullBinding(), null, new type)
+        ConstructorInfo constructorInfoObj = playMI.GetType().GetConstructor(GetFullBinding(), null,
+                CallingConventions.HasThis, types, null);
+
+        playMI.Invoke(animEditorObject, new object[0]);
+        */
+        //PlayButtonOnGUI
+
+        
+
         //Get the propertue of animEditorFI
         PropertyInfo controlInterfacePI = animEditorFI.FieldType.GetProperty("controlInterface", ExtReflexion.GetFullBinding());
 
-        /*
-        GetAllFieldOfType(controlInterfacePI.DeclaringType, GetFullBinding(), true);
+        //Get property i splaying or not
+        PropertyInfo isPlaying = controlInterfacePI.PropertyType.GetProperty("playing", ExtReflexion.GetFullBinding());
+        
+        //get object controlInterface
+        object controlInterface = controlInterfacePI.GetValue(animEditorFI.GetValue(animationWindowEditor));
+        bool playing = (bool)isPlaying.GetValue(controlInterface);
 
-        FieldInfo isPlaying = controlInterfacePI.DeclaringType.GetField("playing", ExtReflexion.GetFullBinding());
-        bool playing = (bool)isPlaying.GetValue(null);
-
-        Debug.Log("play: " + playing);
-        if (playing)
+        if (!playing)
         {
             MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StartPlayback", ExtReflexion.GetFullBinding());
-            object controlInterface = controlInterfacePI.GetValue(animEditorFI.GetValue(animationWindowEditor));
             playMI.Invoke(controlInterface, new object[0]);
         }
         else
         {
             MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StopPlayback", ExtReflexion.GetFullBinding());
-            object controlInterface = controlInterfacePI.GetValue(animEditorFI.GetValue(animationWindowEditor));
             playMI.Invoke(controlInterface, new object[0]);
         }
-        */
-        MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StartPlayback", ExtReflexion.GetFullBinding());
-        object controlInterface = controlInterfacePI.GetValue(animEditorFI.GetValue(animationWindowEditor));
-        playMI.Invoke(controlInterface, new object[0]);
-
-
-        /*
-        System.Type animEditor = typeof(UnityEditor.AnimEditor).Assembly.GetType("UnityEditor.AnimEditor");
-
-        GetAllMethodeOfType(animEditor.GetType(), ExtReflexion.GetFullBinding(), true);
-        MethodInfo togglePlayAnimation = animEditor.GetType().GetMethod("TogglePlayAnimation", ExtReflexion.GetFullBinding());
-
-        //PropertyInfo TogglePlayAnimationPI = animEditorFI.FieldType.GetProperty("TogglePlayAnimation", ExtReflexion.GetFullBinding());
-
-
-        if (togglePlayAnimation == null)
-        {
-            Debug.Log("null");
-            return;
-        }
-        Debug.Log("OK !!!" + togglePlayAnimation.Name);
-        */
+        
     }
 
     /// <summary>
