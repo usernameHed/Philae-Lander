@@ -103,6 +103,12 @@ public class EntityController : MonoBehaviour, IKillable
         return (projected);
     }
 
+    public int GetLayerMastAllWalkable()
+    {
+        layerMask = LayerMask.GetMask(allWalkablePlatform);
+        return (layerMask);
+    }
+
     /// <summary>
     /// init player
     /// </summary>

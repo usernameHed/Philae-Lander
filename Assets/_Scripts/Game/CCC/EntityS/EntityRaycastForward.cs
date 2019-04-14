@@ -70,7 +70,7 @@ public class EntityRaycastForward : MonoBehaviour
 
         RaycastHit hitInfo;
         if (Physics.SphereCast(posA, sizeRadiusSphereCast, focusDir, out hitInfo,
-                               dist, entityController.layerMask, QueryTriggerInteraction.Ignore))
+                               dist, entityController.GetLayerMastAllWalkable(), QueryTriggerInteraction.Ignore))
         {
             Vector3 centerOnCollision = ExtUtilityFunction.SphereOrCapsuleCastCenterOnCollision(posA, focusDir, hitInfo.distance);
 
