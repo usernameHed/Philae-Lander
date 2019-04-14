@@ -8,6 +8,8 @@ public class OccludeCamera : MonoBehaviour
 {
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] allRaycastLayer = new string[] { "Walkable/Ground", "Walkable/Stick", "Walkable/Dont", "Walkable/FastForward" };
+    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    public TagAccess.TagAccessEnum[] allTagToZoom = new TagAccess.TagAccessEnum[] { TagAccess.TagAccessEnum.ZoomCamera };
 
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     private Transform camPoint;
@@ -38,7 +40,11 @@ public class OccludeCamera : MonoBehaviour
             Debug.DrawLine(centerOnCollision, hitInfo.point, Color.green);
             ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.green, 0.1f);
 
-            return (true);
+            if (ExtLayer.ContainTag(hitInfo.collider.gameObject, allTagToZoom) != -1)
+            {
+                return (true);
+            }
+            return (false);
         }
         else
         {
@@ -52,6 +58,9 @@ public class OccludeCamera : MonoBehaviour
         Vector3 dir = lookAt.position - camPoint.position;
         float dist = dir.magnitude;
 
-        DoRayCastForward(camPoint.position, lookAt.position, dir.normalized, dist);
+        if (DoRayCastForward(camPoint.position, lookAt.position, dir.normalized, dist))
+        {
+            Debug.Log("zoom or conturn ?");
+        }
     }
 }

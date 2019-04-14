@@ -1,20 +1,34 @@
 using UnityEngine;
 using System.Collections.Generic;
- 
+using AiUnity.MultipleTags.Core;
+
 ///
 /// LayerMask mask = LayerMaskExtensions.Create("Ignore Raycast", "TransparentFX", "Water");
 /// Debug.Log(mask.MaskToString()); //prints out Ignore Raycast, TransparentFX, Water
- 
+
 /// mask = mask.RemoveFromMask("TransparentFX");
 /// Debug.Log(mask.MaskToString()); //prints out Ignore Raycast, Water
- 
+
 /// mask = mask.AddToMask("TransparentFX");
 /// Debug.Log(mask.MaskToString()); //prints out Ignore Raycast, TransparentFX, Water
- 
+
 /// Debug.Log(mask.Inverse().MaskToString()); //prints out everything except Ignore Raycast, TransparentFX, Water
 ///
 public static class ExtLayer
 {
+    public static int ContainTag(GameObject obj, TagAccess.TagAccessEnum[] allTagToZoom)
+    {
+        for (int i = 0; i < allTagToZoom.Length; i++)
+        {
+            bool hasTag = GameObjectExtensions.HasTag(obj, allTagToZoom[i]);
+            if (hasTag)
+            {
+                return (i);
+            }
+        }
+        return (-1);
+    }
+
 	public static LayerMask Create(params string[] layerNames)
 	{
 		return NamesToMask(layerNames);
