@@ -378,9 +378,11 @@ public class EntityRaycastForward : MonoBehaviour
 
         //Vector3 focusDir = entityController.GetFocusedForwardDirPlayer();
 
-
-        focusForwardDir = _entityAction.GetRelativeDirection();
-        focusRightDir = -_entityAction.GetRelativeDirectionRight();
+        if (_entityAction.IsMoving())
+        {
+            focusForwardDir = _entityAction.GetRelativeDirection();
+            focusRightDir = -_entityAction.GetRelativeDirectionRight();
+        }
 
 
         if (!Application.isPlaying)

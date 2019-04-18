@@ -89,11 +89,11 @@ public class EntityAction : MonoBehaviour
     /// retourne si le joueur se déplace ou pas
     /// </summary>
     /// <returns></returns>
-    public bool NotMoving(float margin = 0)
+    public bool IsMoving(float margin = 0)
     {
         if (GetMoveInput().magnitude <= margin)
-            return (true);
-        return (false);
+            return (false);
+        return (true);
     }
 
     /// <summary>

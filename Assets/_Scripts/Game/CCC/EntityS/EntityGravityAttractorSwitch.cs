@@ -45,7 +45,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         if (fastForward && !fastForward.CanApplyGravity())
             return (false);
 
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir && !entityJump.HasJumped())
+        if (entityController.GetMoveState() == EntityController.MoveState.InAir && (entityJump && !entityJump.HasJumped()))
             return (true);
 
         if (baseGravity.IsGoingDownToGround())

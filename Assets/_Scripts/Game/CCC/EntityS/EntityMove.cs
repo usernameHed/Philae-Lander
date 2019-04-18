@@ -88,7 +88,7 @@ public class EntityMove : MonoBehaviour
 
     private void ChangeLerp()
     {
-        if (entityAction.NotMoving())
+        if (!entityAction.IsMoving())
         {
             currentSpeedMove = Mathf.Lerp(currentSpeedMove, minAcceleration, easeAcceleration.Evaluate(Time.deltaTime));
         }
@@ -96,8 +96,6 @@ public class EntityMove : MonoBehaviour
         {
             currentSpeedMove = Mathf.Lerp(currentSpeedMove, speedMove, easeAcceleration.Evaluate(Time.deltaTime));
         }
-
-        
     }
 
     /// <summary>
@@ -119,12 +117,12 @@ public class EntityMove : MonoBehaviour
 
         if (groundForwardCheck && groundForwardCheck.IsForwardForbiddenWall())
         {
-            //Debug.Log("move Straff");
+            Debug.Log("move Straff");
             dirMove = entitySlide.GetStraffDirection();
         }
         else
         {
-            //Debug.Log("move forward");
+            Debug.Log("move forward");
             dirMove = entityController.GetFocusedForwardDirPlayer();
         }
         //Debug.DrawRay(rb.position, dirMove * 5, Color.blue);
@@ -141,7 +139,7 @@ public class EntityMove : MonoBehaviour
         //GetCurrentSpeedClamped01();
 
         if (entityController.GetMoveState() == EntityController.MoveState.Move
-            && entityJump.IsJumpCoolDebugDownReady())
+            && ( (entityJump && entityJump.IsJumpCoolDebugDownReady()) || !entityJump))
         {
             MovePlayer();
         }

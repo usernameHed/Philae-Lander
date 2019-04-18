@@ -147,7 +147,7 @@ public class GroundForwardCheck : MonoBehaviour
         isAdvancedForward = isForwardAdvanceNormalOk = false;
 
         //do nothing if not moving
-        if (entityAction.NotMoving())
+        if (!entityAction.IsMoving())
             return;
         //do nothing if input and forward player are not equal
         if (!entityController.IsLookingTowardTheInput(dotMarginImpact))

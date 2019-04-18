@@ -8,9 +8,6 @@ public class SmoothNormals : UniqueSmoothNormals
     [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private float smoothSpeedCamera = 2f;
 
-    [FoldoutGroup("Debug"), Tooltip("Smoothed normals"), SerializeField, ReadOnly]
-    private Vector3 smoothedNormalCamera;
-
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityController entityController = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -18,13 +15,7 @@ public class SmoothNormals : UniqueSmoothNormals
 
     private void Start()
     {
-        smoothedNormalCamera = GetRotationOrientationDown();
         smoothedNormalPlayer = GetRotationOrientationDown();
-    }
-
-    public Vector3 GetSmoothedNormalCamera()
-    {
-        return (smoothedNormalCamera);
     }
 
     public override Vector3 GetRotationOrientationDown()
@@ -45,7 +36,6 @@ public class SmoothNormals : UniqueSmoothNormals
     {
         Vector3 actualNormal = GetRotationOrientationDown();
         smoothedNormalPlayer = Vector3.Lerp(smoothedNormalPlayer, actualNormal, Time.deltaTime * smoothSpeedPlayer);
-        smoothedNormalCamera = Vector3.Lerp(smoothedNormalCamera, actualNormal, Time.deltaTime * smoothSpeedCamera);
     }
 
     private void FixedUpdate()

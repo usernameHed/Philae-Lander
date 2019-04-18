@@ -35,7 +35,7 @@ public class EntityGravity : BaseGravity
 
     private bool CanDoGroundGravity()
     {
-        if (!entityJump.IsJumpCoolDebugDownReady())
+        if (entityJump && !entityJump.IsJumpCoolDebugDownReady())
             return (false);
         return (true);
     }

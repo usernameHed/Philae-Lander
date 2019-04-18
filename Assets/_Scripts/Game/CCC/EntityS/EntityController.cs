@@ -252,7 +252,7 @@ public class EntityController : MonoBehaviour, IKillable
             SetDragRb(oldDrag);
 
 
-        if (!entityAction.NotMoving())
+        if (entityAction.IsMoving())
         {
             moveState = MoveState.Move;
         }

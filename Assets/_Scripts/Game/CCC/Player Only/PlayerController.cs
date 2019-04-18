@@ -97,7 +97,7 @@ public class PlayerController : EntityController, IKillable
             SetDragRb(oldDrag);
 
 
-        if (!playerInput.NotMoving())
+        if (playerInput.IsMoving())
         {
             
             moveState = MoveState.Move;

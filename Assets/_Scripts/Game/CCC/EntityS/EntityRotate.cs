@@ -11,6 +11,8 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float turnRateInAir = 300f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    private bool instantRotate = false;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private bool doSimpleAirRotate = false;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation CameraFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
@@ -27,7 +29,7 @@ public class EntityRotate : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityAction entityAction = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
-    private BaseGravity baseGravity = null;
+    private UniqueGravity baseGravity = null;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private EntityMove entityMove = default;
     [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
@@ -48,7 +50,10 @@ public class EntityRotate : MonoBehaviour
     private void Start()
     {
         Vector3 normalizedNormalGravity = baseGravity.GetMainAndOnlyGravity();
-        lastQuaternionRelativeDirection = GetLastDesiredRotation(entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity), objectToRotate.up);
+        if (entityController)
+        {
+            lastQuaternionRelativeDirection = GetLastDesiredRotation(entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity), objectToRotate.up);
+        }
         lastPosDir = objectToRotate.position;
     }
 
@@ -78,6 +83,11 @@ public class EntityRotate : MonoBehaviour
                                 speed * Time.deltaTime);
     }
 
+    private void DoInstantRotate(Quaternion calculatedDir)
+    {
+        objectToRotate.rotation = calculatedDir;
+    }
+
     private void SetOrientationRotation()
     {
         Vector3 relativeDirectionPlayer = objectToRotate.forward;
@@ -96,7 +106,7 @@ public class EntityRotate : MonoBehaviour
     /// </summary>
     public void DoAirRotate(float speedRatio = 1)
     {
-        if (entityAction.NotMoving(0.05f))
+        if (!entityAction.IsMoving(0.05f))
             return;
 
         //Debug.Log("ratio speedRotate air: " + speedRatio);
@@ -110,6 +120,13 @@ public class EntityRotate : MonoBehaviour
         if (calculateOrientation)
             SetOrientationRotation();
 
+        if (instantRotate)
+        {
+            DoRotate(GetLastDesiredRotation(entityAction.GetRelativeDirection(), objectToRotate.up), turnRate);
+            return;
+        }
+
+
         if (entityController.GetMoveState() == PlayerController.MoveState.InAir)
         {
             isFullSpeedBefore = true;
@@ -118,7 +135,7 @@ public class EntityRotate : MonoBehaviour
             return;
         }
 
-        if (!entityAction.NotMoving())
+        if (entityAction.IsMoving())
         {
             lastPosDir = objectToRotate.position;
             lastVectorRelativeDirection = entityAction.GetRelativeDirection();
