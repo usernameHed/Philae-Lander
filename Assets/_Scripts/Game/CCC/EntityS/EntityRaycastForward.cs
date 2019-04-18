@@ -24,6 +24,9 @@ public class EntityRaycastForward : MonoBehaviour
         }
     }
 
+    [FoldoutGroup("Forward"), Tooltip("number of steps"), SerializeField]
+    private bool showPoint = true;
+
     [FoldoutGroup("Forward"), Tooltip("number of steps"), Range(0, 200), SerializeField]
     private int stepsForward = 5;
     [FoldoutGroup("Forward"), Tooltip(""), SerializeField]
@@ -47,6 +50,8 @@ public class EntityRaycastForward : MonoBehaviour
     private Rigidbody rb = default;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityController entityController = default;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private EntityAction _entityAction;
 
     [FoldoutGroup("Debug"), Tooltip("dist to check forward player"), SerializeField, ReadOnly]
     private float distMax = 0;
@@ -57,6 +62,7 @@ public class EntityRaycastForward : MonoBehaviour
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private int maxStepsWhenAdditionnalCalculs = 30;
 
+    private Vector3 focusForwardDir;
     private Vector3 focusRightDir;
     private bool breakLoop = false;
 
@@ -75,9 +81,9 @@ public class EntityRaycastForward : MonoBehaviour
     {
         if (isForward)
         {
-            ExtDrawGuizmos.DebugWireSphere(posA, Color.blue, sizeRadiusSphereCast);
+            if (showPoint)
+                ExtDrawGuizmos.DebugWireSphere(posA, Color.blue, sizeRadiusSphereCast);
         }
-            
 
         RaycastHit hitInfo;
         if (Physics.SphereCast(posA, sizeRadiusSphereCast, focusDir, out hitInfo,
@@ -85,38 +91,40 @@ public class EntityRaycastForward : MonoBehaviour
         {
             Vector3 centerOnCollision = ExtUtilityFunction.SphereOrCapsuleCastCenterOnCollision(posA, focusDir, hitInfo.distance);
 
-            Debug.DrawLine(posA, centerOnCollision, Color.red);
 
-            if (isForward)
+            if (showPoint)
             {
-                ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.cyan, sizeRadiusSphereCast);
-                Debug.DrawLine(centerOnCollision, hitInfo.point, Color.red);
-                ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f);
+                Debug.DrawLine(posA, centerOnCollision, Color.red);
+                if (isForward)
+                {
+                    ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.cyan, sizeRadiusSphereCast);
+                    Debug.DrawLine(centerOnCollision, hitInfo.point, Color.red);
+                    ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f);
+                }
+                else
+                {
+                    ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.grey, sizeRadiusSphereCast);
+                    Debug.DrawLine(centerOnCollision, hitInfo.point, Color.grey);
+                    ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.grey, 0.1f);
+                }
             }
-            else
-            {
-                ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.grey, sizeRadiusSphereCast);
-                Debug.DrawLine(centerOnCollision, hitInfo.point, Color.grey);
-                ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.grey, 0.1f);
-            }
-
-            
-
             return (new InfoHit(posA, centerOnCollision, true, hitInfo.point, hitInfo.normal));
         }
         else
         {
-            if (isForward)
+            if (showPoint)
             {
-                Debug.DrawLine(posA, posB, Color.green);
-                ExtDrawGuizmos.DebugWireSphere(posB, Color.cyan, sizeRadiusSphereCast);
-            }                
-            else
-            {
-                Debug.DrawLine(posA, posB, Color.grey);
-                ExtDrawGuizmos.DebugWireSphere(posB, Color.grey, sizeRadiusSphereCast);
+                if (isForward)
+                {
+                    Debug.DrawLine(posA, posB, Color.green);
+                    ExtDrawGuizmos.DebugWireSphere(posB, Color.cyan, sizeRadiusSphereCast);
+                }
+                else
+                {
+                    Debug.DrawLine(posA, posB, Color.grey);
+                    ExtDrawGuizmos.DebugWireSphere(posB, Color.grey, sizeRadiusSphereCast);
+                }
             }
-
             return (new InfoHit(posA, posB, false, ExtUtilityFunction.GetNullVector(), ExtUtilityFunction.GetNullVector()));
         }
     }
@@ -138,8 +146,11 @@ public class EntityRaycastForward : MonoBehaviour
         Vector3 downDir = ExtQuaternion.CrossProduct(infoHit.normal, focusRightDir);
         Vector3 upDir = -downDir;
 
-        Debug.DrawRay(infoHit.posB, upDir * 0.3f, Color.magenta);
-        Debug.DrawRay(infoHit.posB, downDir * 0.3f, Color.green);
+        if (showPoint)
+        {
+            Debug.DrawRay(infoHit.posB, upDir * 0.3f, Color.magenta);
+            Debug.DrawRay(infoHit.posB, downDir * 0.3f, Color.green);
+        }
 
 
         infoHit.posA = infoHit.posB - (prevFocusDir * backWardRatioWhenHit);    //backward a little bit for the next move
@@ -168,8 +179,11 @@ public class EntityRaycastForward : MonoBehaviour
             Vector3 downDir = ExtQuaternion.CrossProduct(infoHitDown.normal, focusRightDir);
             Vector3 upDir = -downDir;
 
-            Debug.DrawRay(infoHitDown.posB, upDir * 0.3f, Color.magenta);
-            Debug.DrawRay(infoHitDown.posB, downDir * 0.3f, Color.green);
+            if (showPoint)
+            {
+                Debug.DrawRay(infoHitDown.posB, upDir * 0.3f, Color.magenta);
+                Debug.DrawRay(infoHitDown.posB, downDir * 0.3f, Color.green);
+            }
 
             if (doBackWardFromNormal)
                 infoHitDown.posA = infoHitDown.posB - (-infoHitDown.normal * backWardRatioWhenHit);    //backward a little bit for the next move
@@ -219,8 +233,11 @@ public class EntityRaycastForward : MonoBehaviour
             Vector3 downDir = ExtQuaternion.CrossProduct(infoHitBack.normal, focusRightDir);
             Vector3 upDir = -downDir;
 
-            Debug.DrawRay(posB, upDir * 0.3f, Color.magenta);
-            Debug.DrawRay(posB, downDir * 0.3f, Color.green);
+            if (showPoint)
+            {
+                Debug.DrawRay(posB, upDir * 0.3f, Color.magenta);
+                Debug.DrawRay(posB, downDir * 0.3f, Color.green);
+            }
 
             prevFocusDir = upDir;
 
@@ -359,11 +376,16 @@ public class EntityRaycastForward : MonoBehaviour
 
         breakLoop = false;
 
-        Vector3 focusDir = entityController.GetFocusedForwardDirPlayer();
-        focusRightDir = -entityController.GetFocusedRightDirPlayer();
+        //Vector3 focusDir = entityController.GetFocusedForwardDirPlayer();
+
+
+        focusForwardDir = _entityAction.GetRelativeDirection();
+        focusRightDir = -_entityAction.GetRelativeDirectionRight();
+
+
         if (!Application.isPlaying)
         {
-            focusDir = rb.transform.forward;
+            focusForwardDir = rb.transform.forward;
             focusRightDir = rb.transform.right;
         }
 
@@ -373,13 +395,15 @@ public class EntityRaycastForward : MonoBehaviour
 
 
         Vector3 firstPosA = rb.transform.position;
-        Vector3 firstPosB = firstPosA + focusDir * GetDistForward();
+        Vector3 firstPosB = firstPosA + focusForwardDir * GetDistForward();
 
         InfoHit infoHit = new InfoHit(firstPosA, firstPosB, false, ExtUtilityFunction.GetNullVector(), ExtUtilityFunction.GetNullVector());
         SaveLastPos(infoHit.posB, infoHit.normal);
 
         int i = 0;
-        DoLoop(stepsForward, ref infoHit, ref focusDir, ref i);
+        DoLoop(stepsForward, ref infoHit, ref focusForwardDir, ref i);
+
+        ExtDrawGuizmos.DebugWireSphere(GetLastPos(), Color.green, 0.5f);
         //Debug.Log("<color=blue>maxDist: " + distMax + ", dist effecctued: " + currentDistChecked + "(steps: " + i + ")</color>");
     }
 

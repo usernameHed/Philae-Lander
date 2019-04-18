@@ -50,6 +50,18 @@ public class EntityAction : MonoBehaviour
         Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x * xBoost + mainReferenceObjectDirection.forward * dirInput.y * yBoost;
         return (relativeDirection);
     }
+    /// <summary>
+    /// get the relative direction 
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetRelativeDirectionRight(float xBoost = 1, float yBoost = 1)
+    {
+        Vector3 dirDirection = GetRelativeDirection(xBoost, yBoost);
+        Vector3 up = mainReferenceObjectDirection.up;
+
+        Vector3 relativeRightDirection = ExtQuaternion.CrossProduct(dirDirection, up);
+        return (relativeRightDirection);
+    }
 
     public Vector3 GetMainReferenceForwardDirection()
     {

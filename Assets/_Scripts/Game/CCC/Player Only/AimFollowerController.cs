@@ -11,7 +11,9 @@ public class AimFollowerController : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
     private EntityController entityController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
-    private Rigidbody rbEntity;
+    private Transform objToMove;
+    [FoldoutGroup("Object"), SerializeField, Tooltip("")]
+    private PlayerController _playerController;
     [FoldoutGroup("Object"), SerializeField, Tooltip("")]
     private EntityRaycastForward playerRaycastForward;
 
@@ -62,21 +64,21 @@ public class AimFollowerController : MonoBehaviour
         }
     }
 
-    public void MovePhysics(Vector3 direction, float speed)
-    {
-        UnityMovement.MoveByForcePushing_WithPhysics(rbEntity, direction, speed);
-    }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Vector3 posA = rbEntity.position;
+        
+
+
+        Vector3 posA = objToMove.position;
         Vector3 posB = playerRaycastForward.GetLastPos();
 
         Vector3 dir = posB - posA;
         float dist = dir.magnitude;
         dir = dir.normalized;
 
-        DoRayCastForward(rbEntity.position, playerRaycastForward.GetLastPos(), dir, dist);
-        MovePhysics(allInfoHit.toGo - rbEntity.position, speedAim);
+        //DoRayCastForward(objToMove.position, playerRaycastForward.GetLastPos(), dir, dist);
+
+        objToMove.position = Vector3.Lerp(objToMove.position, posB, speedAim * Time.deltaTime);
     }
 }
