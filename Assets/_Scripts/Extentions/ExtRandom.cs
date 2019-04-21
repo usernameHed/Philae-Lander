@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using System.IO;
 using System;
-using System.Text.RegularExpressions;
 using System.Text;
 using System.Security.Cryptography;
-using System.Linq;
 
 /// <summary>
-/// Fonctions utile
+/// Random functions
 /// <summary>
 public static class ExtRandom
 {
@@ -28,11 +25,12 @@ public static class ExtRandom
         return (random);
     }
 
-    
-
     /// <summary>
     /// here we have a min & max, we remap the random 0,1 value finded to this min&max
     /// warning: we cast it into an int at the end
+    /// use: 
+    /// System.Random seed = ExtRandom.Seedrandom("hash");
+    /// int randomInt = ExtRandom.RemapFromSeed(0, 50, seed);
     /// </summary>
     public static int RemapFromSeed(double min, double max, System.Random randomSeed)
     {
@@ -40,14 +38,12 @@ public static class ExtRandom
         int minToMaxValue = (int)ExtUtilityFunction.Remap(zeroToOneValue, 0, 1, min, max);
         return (minToMaxValue);
     }
-
     public static double RemapFromSeedDecimal(double min, double max, System.Random randomSeed)
     {
         double zeroToOneValue = randomSeed.NextDouble();
         double minToMaxValue = ExtUtilityFunction.Remap(zeroToOneValue, 0, 1, min, max);
         return (minToMaxValue);
     }
-
     public static float RemapFromSeedDecimal(float min, float max, System.Random randomSeed)
     {
         float zeroToOneValue = (float)randomSeed.NextDouble();
@@ -56,7 +52,8 @@ public static class ExtRandom
     }
 
     /// <summary>
-    /// 
+    /// Get random int between min and max
+    /// use: int randomInt = ExtRandom.GetRandomNumber(0, 2);
     /// </summary>
     /// <param name="minimum"></param>
     /// <param name="maximum">EXCLUSIVE</param>
@@ -66,17 +63,29 @@ public static class ExtRandom
         int number = UnityEngine.Random.Range(minimum, maximum);
         return (number);
     }
+    /// <summary>
+    /// Get random float between min an dmax included
+    /// </summary>
     public static float GetRandomNumber(float minimum, float maximum)
     {
         float number = UnityEngine.Random.Range(minimum, maximum);
         return (number);
     }
+    /// <summary>
+    /// Get a random from chance / max: 2 / 3
+    /// use: ExtRandom.GetRandomNumberProbability(2, 3);
+    /// </summary>
+    /// <param name="chance"></param>
+    /// <param name="max"></param>
+    /// <returns></returns>
     public static bool GetRandomNumberProbability(int chance, int max)
     {
         float number = GetRandomNumber(0f, 1f);
         return (number > chance / max);
     }
-
+    /// <summary>
+    /// do a coin flip, return true or false
+    /// </summary>
     public static bool GetRandomBool()
     {
         float number = UnityEngine.Random.Range(0f, 1f);
@@ -84,7 +93,16 @@ public static class ExtRandom
     }
 
     /// <summary>
-    /// get a pure random color
+    /// get a random color
+    /// </summary>
+    /// <returns></returns>
+    public static Color GetRandomColor()
+    {
+        Color randomColor = new Color(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1);
+        return (randomColor);
+    }
+    /// <summary>
+    /// get a random color, with alpha 1
     /// </summary>
     /// <returns></returns>
     public static Color GetRandomColorSeed(System.Random randomSeed)
@@ -93,6 +111,13 @@ public static class ExtRandom
         return (randomColor);
     }
 
+    /// <summary>
+    /// get a normal random
+    /// use: GenerateNormalRandom(0, 0.1);
+    /// </summary>
+    /// <param name="mu">centre of the distribution</param>
+    /// <param name="sigma">Standard deviation (spread or "width") of the distribution</param>
+    /// <returns></returns>
     public static float GenerateNormalRandom(float mu, float sigma)
     {
         float rand1 = UnityEngine.Random.Range(0.0f, 1.0f);
@@ -104,17 +129,17 @@ public static class ExtRandom
     }
 
     /// <summary>
-    /// 
+    /// Get a random unitsphere (or donut)
     /// </summary>
     /// <param name="radius">radius of circle</param>
-    /// <param name="donusCenter">Excluse center from random</param>
+    /// <param name="toreCenter">Excluse center from random</param>
     /// <returns></returns>
-    public static Vector3 GetRandomInsideUnitSphere(float radius, float donusCenter = 0)
+    public static Vector3 GetRandomInsideUnitSphere(float radius, float toreCenter = 0)
     {
-        if (donusCenter == 0)
+        if (toreCenter == 0)
             return (UnityEngine.Random.insideUnitSphere * radius);
 
-        if (donusCenter > radius)
+        if (toreCenter > radius)
         {
             Debug.LogError("radiusCenter can't be superior then radius");
         }
@@ -125,9 +150,9 @@ public static class ExtRandom
             int absRandom = GetRandomNumber(0, 2);
             absRandom = (absRandom == 0) ? -1 : 1;
 
-            donut.x = GetRandomNumber(donusCenter, radius) * absRandom;
-            donut.y = GetRandomNumber(donusCenter, radius) * absRandom;
-            donut.z = GetRandomNumber(donusCenter, radius) * absRandom;
+            donut.x = GetRandomNumber(toreCenter, radius) * absRandom;
+            donut.y = GetRandomNumber(toreCenter, radius) * absRandom;
+            donut.z = GetRandomNumber(toreCenter, radius) * absRandom;
         }
         return (donut);
     }

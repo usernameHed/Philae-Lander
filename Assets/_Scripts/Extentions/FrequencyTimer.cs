@@ -11,15 +11,12 @@ public class FrequencyTimer
 	[SerializeField]
 	private float updateFrequency;
     [SerializeField]
-    private bool addRandomAtStart = false;
-    [SerializeField]
     private bool notTheFirstTime = false;   //ne s'exécute pas la première fois ?
     [SerializeField]
     private bool waitOnlyOnce = false;      //s'exécute tout le temps à partir du moment ou il a été exécuté une fois
 
     private float nextUpdate;
     private bool hasBeenReady = false;
-    private bool isExecutedOnce = false;
 
 	public FrequencyTimer(float updateFrequency)
 	{
@@ -28,7 +25,7 @@ public class FrequencyTimer
 
     public void Reset()
     {
-        hasBeenReady = isExecutedOnce = false;
+        hasBeenReady = false;
     }
 
     /// <summary>
@@ -36,12 +33,6 @@ public class FrequencyTimer
     /// </summary>
 	public bool Ready(bool setReadyWhenTest = true)
 	{
-        if (!isExecutedOnce && addRandomAtStart)
-        {
-            isExecutedOnce = true;
-            nextUpdate = Time.fixedTime - ExtRandom.GetRandomNumber(0, updateFrequency);
-        }
-
 
         if (waitOnlyOnce && hasBeenReady)
             return (true);

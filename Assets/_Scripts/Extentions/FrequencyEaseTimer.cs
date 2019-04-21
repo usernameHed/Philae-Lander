@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public struct FrequencyEase
@@ -13,16 +12,16 @@ public struct FrequencyEase
     [SerializeField, Tooltip("curve, default: time: 0 to X; value: 0 to 1")]
     private AnimationCurve animationCurve;
 
-    [SerializeField, ReadOnly, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private bool timerStarted;
-    [SerializeField, ReadOnly, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private bool timerIsEnding;
 
-    [SerializeField, ReadOnly, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private float timeStart;
-    [SerializeField, ReadOnly, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private float timeEnd;
-    [SerializeField, ReadOnly, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private float currentTime;
 
     private float timeWhenStart;

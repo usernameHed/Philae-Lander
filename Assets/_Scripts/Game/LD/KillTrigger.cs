@@ -25,7 +25,7 @@ public class KillTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-		if (killOnEnter && ExtEnum.ListContain(other.tag, tagList))
+		if (killOnEnter && ExtList.ListContain(other.tag, tagList))
 		{
 			TryKill (other.gameObject);
 		}
@@ -33,7 +33,7 @@ public class KillTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (killOnExit && ExtEnum.ListContain(other.tag, tagList))
+		if (killOnExit && ExtList.ListContain(other.tag, tagList))
 		{
 			TryKill (other.gameObject);
 		}

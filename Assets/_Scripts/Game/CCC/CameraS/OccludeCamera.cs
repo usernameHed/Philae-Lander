@@ -39,7 +39,7 @@ public class OccludeCamera : MonoBehaviour
         if (Physics.SphereCast(posA, sizeRadiusSphereCast, focusDir, out hitInfo,
                                dist, GetLayerMaskRaycast(), QueryTriggerInteraction.Ignore))
         {
-            Vector3 centerOnCollision = ExtUtilityFunction.SphereOrCapsuleCastCenterOnCollision(posA, focusDir, hitInfo.distance);
+            Vector3 centerOnCollision = ExtUtilityFunction.GetCollisionCenterSphereCast(posA, focusDir, hitInfo.distance);
 
             Debug.DrawLine(posA, centerOnCollision, Color.green);
             ExtDrawGuizmos.DebugWireSphere(centerOnCollision, Color.green, sizeRadiusSphereCast);

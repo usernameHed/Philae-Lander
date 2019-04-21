@@ -3,31 +3,21 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* *****************************************************************************
- * File:    UnityMovement.cs
- * Author:  Philip Pierce - Friday, October 24, 2014
- * Description:
- *  Extensions for movement of a gameobject
- *  
- * History:
- *  Friday, October 24, 2014 - Created
- * ****************************************************************************/
-
 /// <summary>
-/// Extensions for movement of a gameobject
+/// All exemple of movement we can do with unity
 /// </summary>
 public static class UnityMovement
 {
-    // Code adapted from http://msdn.microsoft.com/en-us/magazine/dn802605.aspx
+    /// Code adapted from http://msdn.microsoft.com/en-us/magazine/dn802605.aspx
 
-    /*
-      Each approach has advantages and disadvantages. There can be a performance hit moving just the transform (methods 1-2), 
-        though it’s a very easy way to do movement. Unity assumes if an object doesn’t have a rigidbody component on it, it 
-        probably isn’t a moving object. It builds a static collision matrix internally to know where objects are, which enhances 
-        performance. When you move objects by moving the transform, this matrix has to be recalculated, which causes a performance hit. 
-        For simple games, you may never notice the hit and it may be the easiest thing for you to do, although as your games get more 
-        complicated, it’s important to move the rigidbody itself, as I did in methods 4-6.
-    */
+    ///
+    /// Each approach has advantages and disadvantages. There can be a performance hit moving just the transform (methods 1-2), 
+    /// though it’s a very easy way to do movement. Unity assumes if an object doesn’t have a rigidbody component on it, it 
+    /// probably isn’t a moving object. It builds a static collision matrix internally to know where objects are, which enhances 
+    /// performance. When you move objects by moving the transform, this matrix has to be recalculated, which causes a performance hit. 
+    /// For simple games, you may never notice the hit and it may be the easiest thing for you to do, although as your games get more 
+    /// complicated, it’s important to move the rigidbody itself, as I did in methods 4-6.
+    ///
 
     #region MoveTowards_NoPhysics
 

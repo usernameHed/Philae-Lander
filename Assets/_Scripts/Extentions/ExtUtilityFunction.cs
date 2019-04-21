@@ -3,16 +3,21 @@ using System.IO;
 using System;
 using System.Text.RegularExpressions;
 
-
 /// <summary>
 /// Fonctions utile
 /// <summary>
 public static class ExtUtilityFunction
 {
+    /// <summary>
+    /// define a null vector
+    /// </summary>
     private static Vector3 wrongVector = new Vector3(0.042f, 0, 0);
 
     #region core script
-
+    /// <summary>
+    /// return a null vector
+    /// </summary>
+    /// <returns></returns>
     public static Vector3 GetNullVector()
     {
         return (wrongVector);
@@ -22,13 +27,15 @@ public static class ExtUtilityFunction
         return (vecToTest == wrongVector);
     }
 
+    /// <summary>
+    /// create/fill an array of size lenght with null vector
+    /// </summary>
     public static Vector3 [] CreateNullVectorArray(int lenght)
     {
         Vector3[] arrayPoints = new Vector3[lenght];
         FillArrayWithWrongVector(ref arrayPoints);
         return (arrayPoints);
     }
-
     public static void FillArrayWithWrongVector(ref Vector3[] arrayToFill)
     {
         for (int i = 0; i < arrayToFill.Length; i++)
@@ -36,8 +43,14 @@ public static class ExtUtilityFunction
             arrayToFill[i] = GetNullVector();
         }
     }
-
-    public static Vector3 SphereOrCapsuleCastCenterOnCollision(Vector3 origin, Vector3 directionCast, float hitInfoDistance)
+    /// <summary>
+    /// Get the center of a sphereCast calculation.
+    /// </summary>
+    /// <param name="origin">origin of the spherreCast</param>
+    /// <param name="directionCast">direction of the sphere cast</param>
+    /// <param name="hitInfoDistance">hitInfo.distance of the hitInfo</param>
+    /// <returns>center position of the hit info</returns>
+    public static Vector3 GetCollisionCenterSphereCast(Vector3 origin, Vector3 directionCast, float hitInfoDistance)
     {
         return origin + (directionCast.normalized * hitInfoDistance);
     }
@@ -53,34 +66,6 @@ public static class ExtUtilityFunction
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
-
-    /*
-    /// <summary>
-    /// return the closest point in the line
-    /// </summary>
-    public static Vector3 GetClosestPointOnLineSegment(Vector3 A, Vector3 B, Vector3 P)
-    {
-        Vector3 AP = P - A;       //Vector from A to P   
-        Vector3 AB = B - A;       //Vector from A to B  
-
-        float magnitudeAB = AB.sqrMagnitude;     //Magnitude of AB vector (it's length squared)     
-        float ABAPproduct = Vector3.Dot(AP, AB);    //The DOT product of a_to_p and a_to_b     
-        float distance = ABAPproduct / magnitudeAB; //The normalized "distance" from a to your closest point  
-
-        if (distance < 0)     //Check if P projection is over vectorAB     
-        {
-            return A;
-        }
-        else if (distance > 1)
-        {
-            return B;
-        }
-        else
-        {
-            return A + AB * distance;
-        }
-    }
-    */
 
     /// <summary>
     /// get closest point from an array of points
@@ -119,14 +104,7 @@ public static class ExtUtilityFunction
         return (arrayPos[indexFound]);
     }
 
-    //[MenuItem("Tools/Clear Console %#c")] // CMD + SHIFT + C
-    public static void ClearConsole()
-    {
-        // This simply does "LogEntries.Clear()" the long way:
-        var logEntries = System.Type.GetType("UnityEditor.LogEntries,UnityEditor.dll");
-        var clearMethod = logEntries.GetMethod("Clear", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
-        clearMethod.Invoke(null, null);
-    }
+    
 
     public static Vector3 GetTheRightNormalSphereCast(RaycastHit hitInfo, Vector3 castOrigin, Vector3 normalizedDirection, float sphereRadius)
     {
@@ -135,26 +113,18 @@ public static class ExtUtilityFunction
         return (normals);
     }
 
-    public static Vector3 GetCollisionCenterSphereCast(Vector3 castOrigin, Vector3 direction, float magnitude)
-    {
-        Vector3 collisionCenter = castOrigin + (direction * magnitude);
-        return (collisionCenter);
-    }
-
-    public static Vector3 CalculateRealNormal(Vector3 origin, Vector3 direction, float magnitude, float rayCastMargin, int layermask)
-    {
-        //Ray ray = new Ray(origin, direction);
-        RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, magnitude + rayCastMargin, layermask))
-        {
-            //Debug.Log("Did Hit");
-            return (hit.normal);
-        }
-        //Debug.DrawRay(origin, direction.normalized * (magnitude + rayCastMargin));
-        //Debug.LogWarning("we are not suppose to miss that one...");
-        return (Vector3.zero);
-    }
-
+    
+    /// <summary>
+    /// from a given sphereCastHit, if we want to have the normal of the mesh hit, we have to do another raycast
+    /// </summary>
+    /// <param name="castOrigin"></param>
+    /// <param name="direction"></param>
+    /// <param name="magnitude"></param>
+    /// <param name="radius"></param>
+    /// <param name="hitPoint"></param>
+    /// <param name="rayCastMargin"></param>
+    /// <param name="layerMask"></param>
+    /// <returns></returns>
     public static Vector3 GetSurfaceNormal(Vector3 castOrigin, Vector3 direction,
         float magnitude, float radius, Vector3 hitPoint,
         float rayCastMargin, int layerMask)
@@ -163,9 +133,16 @@ public static class ExtUtilityFunction
         Vector3 dirCenterToHit = hitPoint - castOrigin;
         float sizeRay = dirCenterToHit.magnitude;
         Vector3 surfaceNormal = CalculateRealNormal(centerCollision, dirCenterToHit, sizeRay, rayCastMargin, layerMask);
-
-        //Debug.DrawRay(centerCollision, surfaceNormal, Color.black, 5f);
         return (surfaceNormal);
+    }
+    private static Vector3 CalculateRealNormal(Vector3 origin, Vector3 direction, float magnitude, float rayCastMargin, int layermask)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, magnitude + rayCastMargin, layermask))
+        {
+            return (hit.normal);
+        }
+        return (Vector3.zero);
     }
 
     /// <summary>
@@ -183,6 +160,13 @@ public static class ExtUtilityFunction
         return (topCorner.x >= -xMargin && bottomCorner.x <= 1 + xMargin && topCorner.y >= -yMargin && bottomCorner.y <= 1 + yMargin);
     }
 
+    /// <summary>
+    /// has a target reach a position in space ?
+    /// </summary>
+    /// <param name="objectMoving"></param>
+    /// <param name="target"></param>
+    /// <param name="margin"></param>
+    /// <returns></returns>
     public static bool HasReachedTargetPosition(Vector3 objectMoving, Vector3 target, float margin = 0)
     {
         float x = objectMoving.x;

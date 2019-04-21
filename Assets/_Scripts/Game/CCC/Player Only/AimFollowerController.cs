@@ -16,7 +16,7 @@ public class AimFollowerController : MonoBehaviour
     public EntityRaycastForward _entityRaycastForward;
 
     [FoldoutGroup("Object"), SerializeField]
-    public Transform rbPlanetOriented;
+    public Rigidbody rbPlanetOriented;
     [FoldoutGroup("Object"), SerializeField]
     public Transform toRotateTowardAim;
 
@@ -29,13 +29,13 @@ public class AimFollowerController : MonoBehaviour
     private void FixedUpdate()
     {
         //rotate to gravity player
-        GravityAttractorLD.PointInfo point = ExtGetGravityAtPoints.GetAirSphereGravityStatic(rbPlanetOriented.position, _playerUniqueGravityAttractor.allGravityAttractor);
-        RotateToGround.InstantRotateObject(rbPlanetOriented.position - point.posRange, rbPlanetOriented.transform);
+        GravityAttractorLD.PointInfo point = ExtGetGravityAtPoints.GetAirSphereGravityStatic(rbPlanetOriented.transform.position, _playerUniqueGravityAttractor.allGravityAttractor);
+        RotateToGround.InstantRotateObject(rbPlanetOriented.transform.position - point.posRange, rbPlanetOriented.transform);
 
-        Vector3 toAim = _entityRaycastForward.GetLastPos() - rbPlanetOriented.position;
+        Vector3 toAim = _entityRaycastForward.GetLastPos() - rbPlanetOriented.transform.position;
         toRotateTowardAim.rotation = ExtQuaternion.TurretLookRotation(toAim, rbPlanetOriented.transform.up);
 
         //DoRotate(GetLastDesiredRotation(entityAction.GetRelativeDirection(), objectToRotate.up), turnRate);
-        //UnityMovement.MoveTowards_WithPhysics(rb, _entityAction.GetMainReferenceForwardDirection(), speedMove * Time.deltaTime);
+        UnityMovement.MoveTowards_WithPhysics(rbPlanetOriented, toRotateTowardAim.forward, speedMove);
     }
 }

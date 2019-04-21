@@ -7,7 +7,37 @@ using UnityEngine;
 public static class ExtTransform
 {
     /// <summary>
-    /// get real pos world of rect transform ??
+    /// opposite of up
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public static Vector3 Down(this Transform t)
+    {
+        return -t.up;
+    }
+
+    /// <summary>
+    /// opposite of right
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public static Vector3 Left(this Transform t)
+    {
+        return -t.right;
+    }
+
+    /// <summary>
+    /// opposite of forward
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public static Vector3 Backward(this Transform t)
+    {
+        return -t.forward;
+    }
+
+    /// <summary>
+    /// get real pos world of rect transform
     /// </summary>
     public static Rect GetWorldRect(RectTransform rt, Vector2 scale)
     {
@@ -22,12 +52,20 @@ public static class ExtTransform
         return new Rect(topLeft, scaledSize);
     }
 
+    /// <summary>
+    /// reset pos of a rect transform
+    /// use: someRect.ResetPos();
+    /// </summary>
     public static RectTransform ResetPos(this RectTransform transform)
     {
         transform.localPosition = Vector3.zero;
         return (transform);
     }
 
+    /// <summary>
+    /// reset scale of a rectTransform
+    /// use: someRect.ResetScale();
+    /// </summary>
     public static RectTransform ResetScale(this RectTransform transform)
     {
         transform.localScale = Vector3.one;
@@ -38,8 +76,10 @@ public static class ExtTransform
 
     /// <summary>
     /// Remove every childs in a transform
+    /// use: someTransform.ClearChild();
+    /// someTransform.ClearChild(true); //can destroy immediatly in editor
     /// </summary>
-    public static Transform ClearChild(this Transform transform)
+    public static Transform ClearChild(this Transform transform, bool canDoImmediateInEditor = false)
 	{
         if (Application.isPlaying)
         {
@@ -48,7 +88,7 @@ public static class ExtTransform
                 GameObject.Destroy(child.gameObject);
             }
         }
-        else
+        else if (canDoImmediateInEditor)
         {
             var tempList = transform.Cast<Transform>().ToList();
             foreach (var child in tempList)
@@ -58,16 +98,13 @@ public static class ExtTransform
         }
         return (transform);
 	}
-    public static Transform ClearChildImediat(this Transform transform)
-    {
-        int children = transform.childCount;
 
-        for (int i = children - 1; i >= 0; i--)
-        {
-            GameObject.DestroyImmediate(transform.GetChild(i).gameObject);
-        }
-        return (transform);
-    }
+    /// <summary>
+    /// return a list of all child in a transform (not recursive)
+    /// use: List<Transform>() newList = someTransform.GetAllChild();
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <returns></returns>
     public static List<Transform> GetAllChild(this Transform transform)
     {
         List<Transform> allChild = new List<Transform>();
@@ -77,54 +114,104 @@ public static class ExtTransform
         }
         return (allChild);
     }
+
+    /// <summary>
+    /// active all child of this transform
+    /// use: someTransform.ActiveAllChild(true);
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="active"></param>
+    /// <param name="exeption">if we want a transform to be inefacted</param>
+    /// <returns></returns>
     public static Transform ActiveAllChild(this Transform transform, bool active, Transform exeption = null)
     {
         foreach (Transform child in transform)
         {
             if (exeption && child == exeption)
+            {
                 child.gameObject.SetActive(!active);
-            child.gameObject.SetActive(active);
+            }
+            else
+            {
+                child.gameObject.SetActive(active);
+            }
         }
         return (transform);
     }
-    //Even though they are used like normal methods, extension
-    //methods must be declared static. Notice that the first
-    //parameter has the 'this' keyword followed by a Transform
-    //variable. This variable denotes which class the extension
-    //method becomes a part of.
-    //use: transform.ResetTransformation();
-    public static void ResetTransform(this Transform trans)
+
+    /// <summary>
+    /// reset a transform
+    /// use: someTransform.ResetTransform(true);
+    /// </summary>
+    /// <param name="trans"></param>
+    /// <param name="local">local or global reset ?</param>
+    public static void ResetTransform(this Transform trans, bool local)
     {
-        trans.position = Vector3.zero;
-        trans.localRotation = Quaternion.identity;
+        if (local)
+        {
+            trans.localPosition = Vector3.zero;
+            trans.localRotation = Quaternion.identity;
+        }
+        else
+        {
+            trans.position = Vector3.zero;
+            trans.rotation = Quaternion.identity;
+        }
         trans.localScale = Vector3.one;
     }
-    public static void ResetLocalTransform(this Transform trans)
-    {
-        trans.localPosition = Vector3.zero;
-        trans.localRotation = Quaternion.identity;
-        trans.localScale = Vector3.one;
-    }
+    /// <summary>
+    /// change only X of a transform
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="x"></param>
     public static void SetX(this Transform transform, float x)
     {
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
+    /// <summary>
+    /// change only X and Y of transform
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public static void SetXY(this Transform transform, float x, float y)
     {
         transform.position = new Vector3(x, y, transform.position.z);
     }
+    /// <summary>
+    /// change only XZ of transform
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="x"></param>
+    /// <param name="z"></param>
     public static void SetXZ(this Transform transform, float x, float z)
     {
         transform.position = new Vector3(x, transform.position.y, z);
     }
+    /// <summary>
+    /// change only Y of transform
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="y"></param>
     public static void SetY(this Transform transform, float y)
     {
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
     }
+    /// <summary>
+    /// change only YZ of transform
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="y"></param>
+    /// <param name="z"></param>
     public static void SetYZ(this Transform transform, float y, float z)
     {
         transform.position = new Vector3(transform.position.x, y, z);
     }
+    /// <summary>
+    /// change only Z of transform
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="z"></param>
     public static void SetZ(this Transform transform, float z)
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, z);
@@ -134,7 +221,7 @@ public static class ExtTransform
     /// Sets the position of a transform's children to zero.
     /// </summary>
     /// <param name="transform">Parent transform.</param>
-    /// <param name="recursive">Also reset ancestor positions?</param>
+    /// <param name="recursive">Also reset ancestor positions</param>
     public static void ResetChildPositions(this Transform transform, bool recursive = false)
     {
         foreach (Transform child in transform)
@@ -150,6 +237,7 @@ public static class ExtTransform
 
     /// <summary>
     /// Makes the given game objects children of the transform.
+    /// use: someTransform.AddChildren(arrayOfChild);
     /// </summary>
     /// <param name="transform">Parent transform.</param>
     /// <param name="children">Game objects to make children.</param>

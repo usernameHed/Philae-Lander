@@ -13,28 +13,28 @@ public static class ExtDrawGuizmos
 {
     #region DebugDrawFunctions
 
-    public static void DrawCross(Vector3 position, float size)
+    public static void DrawCross(Vector3 position)
     {
-        Gizmos.DrawRay(new Ray(position, new Vector3(size, size, size)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(-size, -size, -size)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, 10, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, -10, -10)));
 
-        Gizmos.DrawRay(new Ray(position, new Vector3(-size, size, size)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(size, -size, -size)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, 10, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, -10, -10)));
 
-        Gizmos.DrawRay(new Ray(position, new Vector3(-size, 0, size)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(size, 0, -size)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, 0, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, 0, -10)));
 
-        Gizmos.DrawRay(new Ray(position, new Vector3(size, size, 0)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(-size, -size, 0)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(10, 10, 0)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(-10, -10, 0)));
 
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, size, size)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, -size, -size)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 10, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, -10)));
 
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, size)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, -size)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, 10)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 0, -10)));
 
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, size, 0)));
-        Gizmos.DrawRay(new Ray(position, new Vector3(0, -size, 0)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, 10, 0)));
+        Gizmos.DrawRay(new Ray(position, new Vector3(0, -10, 0)));
     }
 
     /*public static void DrawArrow(Vector3 start, Vector3 end)

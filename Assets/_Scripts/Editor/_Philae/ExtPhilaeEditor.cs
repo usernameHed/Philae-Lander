@@ -12,7 +12,7 @@ public class ExtPhilaeEditor : ScriptableObject
     [MenuItem("PERSO/Philae/Select Gravity Attractor _g")]
     public static bool SelectParentOfAttractor()
     {
-        GravityAttractorLD gravityAttractorLD = Selection.activeGameObject.GetComponentInAllParents<GravityAttractorLD>(99, true);
+        GravityAttractorLD gravityAttractorLD = Selection.activeGameObject.GetExtComponentInParents<GravityAttractorLD>(99, true);
         if (gravityAttractorLD)
         {
             Selection.activeGameObject = gravityAttractorLD.transform.gameObject;

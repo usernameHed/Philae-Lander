@@ -61,6 +61,8 @@ public class EntityRaycastForward : MonoBehaviour
     private float marginDistOk = 0.1f;
     [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
     private int maxStepsWhenAdditionnalCalculs = 30;
+    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
+    private float marginNotMoving = 0.3f;
 
     private Vector3 focusForwardDir;
     private Vector3 focusRightDir;
@@ -94,7 +96,7 @@ public class EntityRaycastForward : MonoBehaviour
         if (Physics.SphereCast(posA, sizeRadiusSphereCast, focusDir, out hitInfo,
                                dist, entityController.GetLayerMastAllWalkable(), QueryTriggerInteraction.Ignore))
         {
-            Vector3 centerOnCollision = ExtUtilityFunction.SphereOrCapsuleCastCenterOnCollision(posA, focusDir, hitInfo.distance);
+            Vector3 centerOnCollision = ExtUtilityFunction.GetCollisionCenterSphereCast(posA, focusDir, hitInfo.distance);
 
 
             if (showPoint)
@@ -222,9 +224,8 @@ public class EntityRaycastForward : MonoBehaviour
         {
             if (step == 0)
             {
-                Debug.Log("here first step fails, do nothing");
                 SaveLastPos(rb.transform.position);
-
+                SaveLastNormal(-rb.transform.up);
                 breakLoop = true;
                 return;
             }
@@ -405,12 +406,17 @@ public class EntityRaycastForward : MonoBehaviour
         hitCount = 0;
         breakLoop = false;
 
-        //Vector3 focusDir = entityController.GetFocusedForwardDirPlayer();
-
         if (_entityAction.IsMoving())
         {
-            focusForwardDir = _entityAction.GetRelativeDirection();
-            focusRightDir = -_entityAction.GetRelativeDirectionRight();
+            focusForwardDir = _entityAction.GetRelativeDirection().normalized;
+            focusRightDir = -_entityAction.GetRelativeDirectionRight().normalized;
+        }
+        else
+        {
+            if (entityController.GetActualAcceleration() < marginNotMoving)
+            {
+                return;
+            }
         }
 
 
@@ -437,8 +443,7 @@ public class EntityRaycastForward : MonoBehaviour
         int i = 0;
         DoLoop(stepsForward, ref infoHit, ref focusForwardDir, ref i);
 
-        ExtDrawGuizmos.DebugWireSphere(GetLastPos(), Color.green, 0.5f);
-        Debug.DrawRay(GetLastPos(), GetLastNormal() * 20f, Color.red);
+        
         //Debug.Log("<color=blue>maxDist: " + distMax + ", dist effecctued: " + currentDistChecked + "(steps: " + i + ")</color>");
     }
 
@@ -452,6 +457,12 @@ public class EntityRaycastForward : MonoBehaviour
     private void FixedUpdate()
     {
         if (Application.isPlaying)
+        {
             DoStepForward();
+
+            ExtDrawGuizmos.DebugWireSphere(GetLastPos(), Color.green, 0.5f);
+            Debug.DrawRay(GetLastPos(), GetLastNormal() * 20f, Color.red);
+        }
+
     }
 }

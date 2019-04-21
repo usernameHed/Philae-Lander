@@ -141,7 +141,7 @@ public class FastForward : MonoBehaviour
 
     public bool DoChangeOrientationManually(RaycastHit hitInfo, ref Vector3 newOrientation)
     {
-        FastForwardOrientationLD fastForwardOrientationLD = hitInfo.transform.gameObject.GetComponentInAllParents<FastForwardOrientationLD>(99, true);
+        FastForwardOrientationLD fastForwardOrientationLD = hitInfo.transform.gameObject.GetExtComponentInParents<FastForwardOrientationLD>(99, true);
         if (fastForwardOrientationLD == null)
             return (false);
 
@@ -286,7 +286,7 @@ public class FastForward : MonoBehaviour
         if (!IsInFastForward())
             return (true);
 
-        FastForwardOrientationLD fastForwardOrientationLD = lastHitPlatform.gameObject.GetComponentInAllParents<FastForwardOrientationLD>(99, true);
+        FastForwardOrientationLD fastForwardOrientationLD = lastHitPlatform.gameObject.GetExtComponentInParents<FastForwardOrientationLD>(99, true);
         if (fastForwardOrientationLD)
         {
             return (false);

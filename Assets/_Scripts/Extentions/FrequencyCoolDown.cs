@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class FrequencyCoolDown
@@ -77,9 +76,7 @@ public class FrequencyCoolDown
         }
         return (false);
     }
-
-
-
+    
     /// <summary>
     /// cooldown is started ?
     /// </summary>

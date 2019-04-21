@@ -18,7 +18,7 @@ public class NoGravityTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-		if (ExtEnum.ListContain(other.tag, tagList))
+		if (ExtList.ListContain(other.tag, tagList))
 		{
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
@@ -30,7 +30,7 @@ public class NoGravityTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (ExtEnum.ListContain(other.tag, tagList))
+		if (ExtList.ListContain(other.tag, tagList))
 		{
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)

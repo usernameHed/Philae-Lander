@@ -21,6 +21,39 @@ public static class ExtQuaternion
         BEHIND_AND_LEFT = 3,
     }
 
+    public static OrientationRotation IsForwardBackWardRightLeft(Vector3 forwardDir,
+       Vector3 toGoDir, Vector3 relativeUp, Vector3 debugPosition)
+    {
+        float dotDir = ExtQuaternion.DotProduct(forwardDir, toGoDir);
+        float right = 0f;
+        float left = 0f;
+        int irol = ExtQuaternion.IsRightOrLeft(forwardDir, relativeUp, toGoDir, debugPosition, ref left, ref right);
+
+        if (dotDir > 0)
+        {
+            if (irol == 1)
+            {
+                return (OrientationRotation.FORWARD_AND_RIGHT);
+            }
+            else if (irol == -1)
+            {
+                return (OrientationRotation.FORWARD_AND_LEFT);
+            }
+        }
+        else if (dotDir < 0)
+        {
+            if (irol == 1)
+            {
+                return (OrientationRotation.BEHIND_AND_RIGHT);
+            }
+            else if (irol == -1)
+            {
+                return (OrientationRotation.BEHIND_AND_LEFT);
+            }
+        }
+        return (OrientationRotation.NONE);
+    }
+
     /// <summary>
     /// formula behind smoothDamp
     /// </summary>
@@ -47,17 +80,67 @@ public static class ExtQuaternion
     }
 
     /// <summary>
-    /// Is a Quaternion.Slerp is over ?
+    /// Lerp a rotation
     /// </summary>
-    public static bool IsQuaternionSlerpOver(Quaternion objectInRotation, Quaternion targetRotation, float marginInDegree = 1)
+    /// <param name="currentRotation"></param>
+    /// <param name="desiredRotation"></param>
+    /// <param name="speed"></param>
+    /// <returns></returns>
+    public static Quaternion LerpRotation(Quaternion currentRotation, Quaternion desiredRotation, float speed)
     {
-        if (!IsAngleCloseToOtherByAmount(objectInRotation.x, targetRotation.x, marginInDegree))
-            return (false);
-        if (!IsAngleCloseToOtherByAmount(objectInRotation.y, targetRotation.y, marginInDegree))
-            return (false);
-        if (!IsAngleCloseToOtherByAmount(objectInRotation.z, targetRotation.z, marginInDegree))
-            return (false);
-        return (true);
+        return (Quaternion.Lerp(currentRotation, desiredRotation, Time.time * speed));
+    }
+
+    /// <summary>
+    /// Direct speedup of <seealso cref="Vector3.Lerp"/>
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static Vector3 Lerp(Vector3 v1, Vector3 v2, float value)
+    {
+        if (value > 1.0f)
+            return v2;
+        if (value < 0.0f)
+            return v1;
+        return new Vector3(v1.x + (v2.x - v1.x) * value,
+                           v1.y + (v2.y - v1.y) * value,
+                           v1.z + (v2.z - v1.z) * value);
+    }
+
+    public static Vector3 Sinerp(Vector3 from, Vector3 to, float value)
+    {
+        value = Mathf.Sin(value * Mathf.PI * 0.5f);
+        return Vector3.Lerp(from, to, value);
+    }
+
+    /// <summary>
+    /// from a given plane (define by a normal), return the projection of a vector
+    /// </summary>
+    /// <param name="relativeDirection"></param>
+    /// <param name="normalPlane"></param>
+    /// <returns></returns>
+    public static Vector3 ProjectVectorIntoPlane(Vector3 relativeDirection, Vector3 normalPlane)
+    {
+        //Projection of a vector on a plane and matrix of the projection.
+        //http://users.telenet.be/jci/math/rmk.htm
+
+        Vector3 Pprime = Vector3.Project(relativeDirection, normalPlane);
+        Vector3 relativeProjeted = relativeDirection - Pprime;
+        return (relativeProjeted);
+    }
+
+    /// <summary>
+    /// https://docs.unity3d.com/ScriptReference/Vector3.Reflect.html
+    /// VectorA: input
+    /// VectorB: normal
+    /// Vector3: result
+    /// </summary>
+    /// <returns></returns>
+    public static Vector3 GetReflectAngle(Vector3 inputVector, Vector3 normalVector)
+    {
+        return (Vector3.Reflect(inputVector.normalized, normalVector.normalized));
     }
 
     /// <summary>
@@ -92,41 +175,8 @@ public static class ExtQuaternion
         return (0);
     }
 
-    public static OrientationRotation IsForwardBackWardRightLeft(Vector3 forwardDir,
-        Vector3 toGoDir, Vector3 relativeUp, Vector3 debugPosition)
-    {
-        float dotDir = ExtQuaternion.DotProduct(forwardDir, toGoDir);
-        float right = 0f;
-        float left = 0f;
-        int irol = ExtQuaternion.IsRightOrLeft(forwardDir, relativeUp, toGoDir, debugPosition, ref left, ref right);
-
-        if (dotDir > 0)
-        {
-            if (irol == 1)
-            {
-                return (OrientationRotation.FORWARD_AND_RIGHT);
-            }
-            else if (irol == -1)
-            {
-                return (OrientationRotation.FORWARD_AND_LEFT);
-            }
-        }
-        else if (dotDir < 0)
-        {
-            if (irol == 1)
-            {
-                return (OrientationRotation.BEHIND_AND_RIGHT);
-            }
-            else if (irol == -1)
-            {
-                return (OrientationRotation.BEHIND_AND_LEFT);
-            }
-        }
-        return (OrientationRotation.NONE);
-    }
-
     /// <summary>
-    /// clamp a quaternion around one axis
+    /// clamp a quaternion around one local axis
     /// </summary>
     /// <param name="q"></param>
     /// <param name="minX"></param>
@@ -189,56 +239,6 @@ public static class ExtQuaternion
         return q;
     }
 
-    /// <summary>
-    /// https://gamedev.stackexchange.com/questions/167389/unity-smooth-local-rotation-around-one-axis-oriented-toward-a-target/167395#167395
-    /// 
-    /// Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
-    /// Vector3 up = objectToRotate.up;
-    /// Quaternion desiredOrientation = TurretLookRotation(relativeDirection, up);
-    ///objectToRotate.rotation = Quaternion.RotateTowards(
-    ///                         objectToRotate.rotation,
-    ///                         desiredOrientation,
-    ///                         turnRate* Time.deltaTime
-    ///                        );
-    /// </summary>
-    public static Quaternion TurretLookRotation(Vector3 approximateForward, Vector3 exactUp)
-    {
-        Quaternion rotateZToUp = Quaternion.LookRotation(exactUp, -approximateForward);
-        Quaternion rotateYToZ = Quaternion.Euler(90f, 0f, 0f);
-
-        return rotateZToUp * rotateYToZ;
-    }
-    public static Quaternion SmoothTurretLookRotation(Vector3 approximateForward, Vector3 exactUp,
-        Quaternion objCurrentRotation, float maxDegreesPerSecond)
-    {
-        Quaternion desiredOrientation = TurretLookRotation(approximateForward, exactUp);
-        Quaternion smoothOrientation = Quaternion.RotateTowards(
-                                    objCurrentRotation,
-                                    desiredOrientation,
-                                    maxDegreesPerSecond * Time.deltaTime
-                                 );
-        return (smoothOrientation);
-    }
-
-    /*
-    public static Quaternion ClampAroundXAxis(Quaternion q, float minY, float maxY)
-    {
-        Vector3 eulerAngles = q.eulerAngles;
-
-        eulerAngles.x = Mathf.Clamp(eulerAngles.x, minY, maxY);
-
-        return Quaternion.Euler(eulerAngles);
-    }
-    public static Quaternion ClampAroundYAxis(Quaternion q, float minX, float maxX)
-    {
-        Vector3 eulerAngles = q.eulerAngles;
-
-        eulerAngles.y = Mathf.Clamp(eulerAngles.y, minX, maxX);
-
-        return Quaternion.Euler(eulerAngles);
-    }
-    */
-
     public static bool IsCloseYToClampAmount(Quaternion q, float minY, float maxY, float margin = 2)
     {
         if (q.w == 0)
@@ -297,7 +297,47 @@ public static class ExtQuaternion
         return (false);
     }
 
-    public static Quaternion DirObject(this Quaternion rotation, Vector3 dir, float turnRate, TurnType typeRotation = TurnType.Z)
+    /// <summary>
+    /// Turret lock rotation
+    /// https://gamedev.stackexchange.com/questions/167389/unity-smooth-local-rotation-around-one-axis-oriented-toward-a-target/167395#167395
+    /// 
+    /// Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x + mainReferenceObjectDirection.forward * dirInput.y;
+    /// Vector3 up = objectToRotate.up;
+    /// Quaternion desiredOrientation = TurretLookRotation(relativeDirection, up);
+    ///objectToRotate.rotation = Quaternion.RotateTowards(
+    ///                         objectToRotate.rotation,
+    ///                         desiredOrientation,
+    ///                         turnRate* Time.deltaTime
+    ///                        );
+    /// </summary>
+    public static Quaternion TurretLookRotation(Vector3 approximateForward, Vector3 exactUp)
+    {
+        Quaternion rotateZToUp = Quaternion.LookRotation(exactUp, -approximateForward);
+        Quaternion rotateYToZ = Quaternion.Euler(90f, 0f, 0f);
+
+        return rotateZToUp * rotateYToZ;
+    }
+    public static Quaternion SmoothTurretLookRotation(Vector3 approximateForward, Vector3 exactUp,
+        Quaternion objCurrentRotation, float maxDegreesPerSecond)
+    {
+        Quaternion desiredOrientation = TurretLookRotation(approximateForward, exactUp);
+        Quaternion smoothOrientation = Quaternion.RotateTowards(
+                                    objCurrentRotation,
+                                    desiredOrientation,
+                                    maxDegreesPerSecond * Time.deltaTime
+                                 );
+        return (smoothOrientation);
+    }
+
+    /// <summary>
+    /// rotate an object in 2D coordonate
+    /// </summary>
+    /// <param name="rotation"></param>
+    /// <param name="dir"></param>
+    /// <param name="turnRate"></param>
+    /// <param name="typeRotation"></param>
+    /// <returns></returns>
+    public static Quaternion DirObject2d(this Quaternion rotation, Vector2 dir, float turnRate, TurnType typeRotation = TurnType.Z)
     {
         float heading = Mathf.Atan2(-dir.x * turnRate * Time.deltaTime, dir.y * turnRate * Time.deltaTime);
 
@@ -590,29 +630,6 @@ public static class ExtQuaternion
 
         //return (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
     }
-
-    public static Vector3 ProjectVectorIntoPlane(Vector3 relativeDirection, Vector3 normalPlane)
-    {
-        //Projection of a vector on a plane and matrix of the projection.
-        //http://users.telenet.be/jci/math/rmk.htm
-
-        Vector3 Pprime = Vector3.Project(relativeDirection, normalPlane);
-        Vector3 relativeProjeted = relativeDirection - Pprime;
-        return (relativeProjeted);
-    }
-
-    /// <summary>
-    /// https://docs.unity3d.com/ScriptReference/Vector3.Reflect.html
-    /// VectorA: input
-    /// VectorB: normal
-    /// Vector3: result
-    /// </summary>
-    /// <returns></returns>
-    public static Vector3 GetReflectAngle(Vector3 inputVector, Vector3 normalVector)
-    {
-        return (Vector3.Reflect(inputVector.normalized, normalVector.normalized));
-    }
-
     /// <summary>
     /// return an angle from a vector
     /// </summary>
@@ -725,6 +742,102 @@ public static class ExtQuaternion
         return (realDir);   //vector A with magnitude based on B
     }
 
+    /// <summary>
+    /// Absolute value of components
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static Vector3 Abs(this Vector3 v)
+    {
+        return new Vector3(Mathf.Abs(v.x), Mathf.Abs(v.y), Mathf.Abs(v.z));
+    }
+
+    /*
+    public unsafe static float FastInvSqrt(float x)
+    {
+        float xhalf = 0.5f * x;
+        int i = *(int*)&x;
+        i = 0x5f375a86 - (i >> 1); //this constant is slightly more accurate than the common one
+        x = *(float*)&i;
+        x = x * (1.5f - xhalf * x * x);
+        return x;
+    }
+
+    /// <summary>
+    /// Using the magic of 0x5f3759df
+    /// </summary>
+    /// <param name="vec1"></param>
+    /// <returns></returns>
+    public static Vector3 FastNormalized(this Vector3 vec1)
+    {
+        var componentMult = FastInvSqrt(vec1.sqrMagnitude);
+        return new Vector3(vec1.x * componentMult, vec1.y * componentMult, vec1.z * componentMult);
+    }
+    */
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="vec"></param>
+    /// <returns></returns>
+    public static bool IsNaN(this Vector3 vec)
+    {
+        return float.IsNaN(vec.x * vec.y * vec.z);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dir1"></param>
+    /// <param name="dir2"></param>
+    /// <param name="axis"></param>
+    /// <returns></returns>
+    public static float AngleAroundAxis(Vector3 dir1, Vector3 dir2, Vector3 axis)
+    {
+        dir1 = dir1 - Vector3.Project(dir1, axis);
+        dir2 = dir2 - Vector3.Project(dir2, axis);
+
+        float angle = Vector3.Angle(dir1, dir2);
+        return angle * (Vector3.Dot(axis, Vector3.Cross(dir1, dir2)) < 0 ? -1 : 1);
+    }
+
+    /// <summary>
+    /// Returns a random direction in a cone. a spread of 0 is straight, 0.5 is 180*
+    /// </summary>
+    /// <param name="spread"></param>
+    /// <param name="forward">must be unit</param>
+    /// <returns></returns>
+    public static Vector3 RandomDirection(float spread, Vector3 forward)
+    {
+        return Vector3.Slerp(forward, Random.onUnitSphere, spread);
+    }
+
+    /// <summary>
+    /// test if a Vector3 is close to another Vector3 (due to floating point inprecision)
+    /// compares the square of the distance to the square of the range as this
+    /// avoids calculating a square root which is much slower than squaring the range
+    /// </summary>
+    /// <param name="val"></param>
+    /// <param name="about"></param>
+    /// <param name="range"></param>
+    /// <returns></returns>
+    public static bool Approx(Vector3 val, Vector3 about, float range)
+    {
+        return ((val - about).sqrMagnitude < range * range);
+    }
+
+    /// <summary>
+    /// Gets the normal of the triangle formed by the 3 vectors
+    /// </summary>
+    /// <param name="vec1"></param>
+    /// <param name="vec2"></param>
+    /// <param name="vec3"></param>
+    /// <returns></returns>
+    public static Vector3 Vector3Normal(Vector3 vec1, Vector3 vec2, Vector3 vec3)
+    {
+        return Vector3.Cross((vec3 - vec1), (vec2 - vec1));
+    }
+
     ///returns quaternion raised to the power pow. This is useful for smoothly multiplying a Quaternion by a given floating-point value.
     ///transform.rotation = rotateOffset.localRotation.Pow(Time.time);
     public static Quaternion Pow(this Quaternion input, float power)
@@ -758,4 +871,60 @@ public static class ExtQuaternion
 	{
 		return new Quaternion(input.x * scalar, input.y * scalar, input.z * scalar, input.w * scalar);
 	}
+
+    /// <summary>
+    /// Calculates the intersection line segment between 2 lines (not segments).
+    /// Returns false if no solution can be found.
+    /// </summary>
+    /// <returns></returns>
+    public static bool CalculateLineLineIntersection(Vector3 line1Point1, Vector3 line1Point2,
+        Vector3 line2Point1, Vector3 line2Point2, out Vector3 resultSegmentPoint1, out Vector3 resultSegmentPoint2)
+    {
+        // Algorithm is ported from the C algorithm of 
+        // Paul Bourke at http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline3d/
+        resultSegmentPoint1 = new Vector3(0, 0, 0);
+        resultSegmentPoint2 = new Vector3(0, 0, 0);
+
+        var p1 = line1Point1;
+        var p2 = line1Point2;
+        var p3 = line2Point1;
+        var p4 = line2Point2;
+        var p13 = p1 - p3;
+        var p43 = p4 - p3;
+
+        if (p4.sqrMagnitude < float.Epsilon)
+        {
+            return false;
+        }
+        var p21 = p2 - p1;
+        if (p21.sqrMagnitude < float.Epsilon)
+        {
+            return false;
+        }
+
+        var d1343 = p13.x * p43.x + p13.y * p43.y + p13.z * p43.z;
+        var d4321 = p43.x * p21.x + p43.y * p21.y + p43.z * p21.z;
+        var d1321 = p13.x * p21.x + p13.y * p21.y + p13.z * p21.z;
+        var d4343 = p43.x * p43.x + p43.y * p43.y + p43.z * p43.z;
+        var d2121 = p21.x * p21.x + p21.y * p21.y + p21.z * p21.z;
+
+        var denom = d2121 * d4343 - d4321 * d4321;
+        if (Mathf.Abs(denom) < float.Epsilon)
+        {
+            return false;
+        }
+        var numer = d1343 * d4321 - d1321 * d4343;
+
+        var mua = numer / denom;
+        var mub = (d1343 + d4321 * (mua)) / d4343;
+
+        resultSegmentPoint1.x = p1.x + mua * p21.x;
+        resultSegmentPoint1.y = p1.y + mua * p21.y;
+        resultSegmentPoint1.z = p1.z + mua * p21.z;
+        resultSegmentPoint2.x = p3.x + mub * p43.x;
+        resultSegmentPoint2.y = p3.y + mub * p43.y;
+        resultSegmentPoint2.z = p3.z + mub * p43.z;
+
+        return true;
+    }
 }

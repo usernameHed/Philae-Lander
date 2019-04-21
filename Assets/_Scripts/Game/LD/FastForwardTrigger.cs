@@ -15,7 +15,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
 
     private void OnTriggerEnter(Collider other)
     {
-		if (ExtEnum.ListContain(other.tag, tagList))
+		if (ExtList.ListContain(other.tag, tagList))
 		{
             TriggerController triggerController = other.gameObject.GetComponent<TriggerController>();
             if (triggerController)
@@ -27,7 +27,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (ExtEnum.ListContain(other.tag, tagList))
+		if (ExtList.ListContain(other.tag, tagList))
 		{
             TriggerController triggerController = other.gameObject.GetComponent<TriggerController>();
             if (triggerController)
@@ -48,7 +48,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
         if (!gravityTowardDirection)
         {
             Gizmos.color = Color.green;
-            ExtDrawGuizmos.DrawCross(GetPosition(), 2f);
+            ExtDrawGuizmos.DrawCross(GetPosition());
         }
         else
         {

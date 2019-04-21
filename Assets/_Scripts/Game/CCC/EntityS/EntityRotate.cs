@@ -6,6 +6,7 @@ using UnityEngine;
 [TypeInfoBox("Rotate localy the player")]
 public class EntityRotate : MonoBehaviour
 {
+
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
     private float turnRate = 700f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]

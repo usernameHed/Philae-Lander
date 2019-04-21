@@ -6,6 +6,20 @@ using UnityEngine;
 public static class ExtFile
 {
     /// <summary>
+    /// get a screenshot name based on height and width, with the current date
+    /// use: ExtRandom
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <returns></returns>
+    public static string ScreenShotName(int width, int height)
+    {
+        return string.Format("screen_{0}x{1}_{2}.png",
+                             width, height,
+                             ExtDateTime.GetDateNow());
+    }
+
+    /// <summary>
     /// read every line in the file
     /// </summary>
     public static void ReadTextFile(string filePath)
@@ -14,27 +28,11 @@ public static class ExtFile
 
         while (!file.EndOfStream)
         {
-            //string line = file.ReadLine();
+            string line = file.ReadLine();
+            Debug.Log(line);            
         }
-
         file.Close();
     }
-
-    /*
-    //get full string of spine.atlas.txt
-    string atlasContent = File.ReadAllText(atlasPath);
-    ReadTextFile(atlasPath);
-    //finaly, update the atrlas with renamed name
-    File.WriteAllText(atlasPath, atlasContent);
-     */
-
-    /*
-    var bodyPartAcceptedRootPath = $"{bodyPartAccepted}/";
-    var bodyPartSpritesPath = $"{resourcesRootPath}{genreRootPath}{bodyPartAcceptedRootPath}";
-
-    var sprites = Resources.LoadAll<Sprite>(bodyPartSpritesPath);
-
-     * */
 
     #region SaveTo
 
@@ -267,4 +265,74 @@ public static class ExtFile
 
     // LoadFromDataPath
     #endregion
+
+    #region directory
+
+    /// <summary>
+    /// Determine whether a given path is a directory.
+    /// </summary>
+    public static bool PathIsDirectory(string absolutePath)
+    {
+        FileAttributes attr = File.GetAttributes(absolutePath);
+        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+            return true;
+        else
+            return false;
+    }
+
+    /// <summary>
+    /// Given an absolute path, return a path rooted at the Assets folder.
+    /// </summary>
+    /// <remarks>
+    /// Asset relative paths can only be used in the editor. They will break in builds.
+    /// </remarks>
+    /// <example>
+    /// /Folder/UnityProject/Assets/resources/music returns Assets/resources/music
+    /// </example>
+    public static string AssetsRelativePath(string absolutePath)
+    {
+        if (absolutePath.StartsWith(Application.dataPath))
+        {
+            return "Assets" + absolutePath.Substring(Application.dataPath.Length);
+        }
+        else
+        {
+            throw new System.ArgumentException("Full path does not contain the current project's Assets folder", "absolutePath");
+        }
+    }
+
+    public static string[] GetResourcesDirectories()
+    {
+        List<string> result = new List<string>();
+        Stack<string> stack = new Stack<string>();
+        // Add the root directory to the stack
+        stack.Push(Application.dataPath);
+        // While we have directories to process...
+        while (stack.Count > 0)
+        {
+            // Grab a directory off the stack
+            string currentDir = stack.Pop();
+            try
+            {
+                foreach (string dir in Directory.GetDirectories(currentDir))
+                {
+                    if (Path.GetFileName(dir).Equals("Resources"))
+                    {
+                        // If one of the found directories is a Resources dir, add it to the result
+                        result.Add(dir);
+                    }
+                    // Add directories at the current level into the stack
+                    stack.Push(dir);
+                }
+            }
+            catch
+            {
+                Debug.LogError("Directory " + currentDir + " couldn't be read from.");
+            }
+        }
+        return result.ToArray();
+    }
+
+    #endregion
+
 }

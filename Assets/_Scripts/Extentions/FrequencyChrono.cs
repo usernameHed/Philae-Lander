@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class FrequencyChrono
@@ -7,7 +6,7 @@ public class FrequencyChrono
     float timeStart = 0;
 
     /// <summary>
-    /// Initialise l'optimisation
+    /// 
     /// </summary>
     public void StartCoolDown()
     {

@@ -49,7 +49,7 @@ public class FastForwardOrientationLD : MonoBehaviour
         if (!gravityTowardDirection)
         {
             Gizmos.color = Color.green;
-            ExtDrawGuizmos.DrawCross(GetPosition(), 2f);
+            ExtDrawGuizmos.DrawCross(GetPosition());
         }
         else
         {
