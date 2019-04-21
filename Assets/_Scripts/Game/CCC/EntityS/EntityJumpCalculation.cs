@@ -143,6 +143,7 @@ public class EntityJumpCalculation : MonoBehaviour
         return (false);
     }
 
+    /*
     /// <summary>
     /// return result based on impact normal
     /// </summary>
@@ -171,6 +172,7 @@ public class EntityJumpCalculation : MonoBehaviour
         }
         return (false);
     }
+    */
 
 
     public bool DoLoopRaycastUltime(Vector3[] infoPlot, int depth = 2)

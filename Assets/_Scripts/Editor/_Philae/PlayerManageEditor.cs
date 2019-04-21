@@ -40,7 +40,7 @@ public class PlayerManageEditor : Editor
     {
         if (!Application.isPlaying)
         {
-            PhilaeManager phiTmp = UtilityEditor.GetScript<PhilaeManager>();
+            PhilaeManager phiTmp = ExtUtilityEditor.GetScript<PhilaeManager>();
             point = ExtGetGravityAtPoints.GetAirSphereGravityStatic(playerEditor.rb.transform.position, phiTmp.ldManager.allGravityAttractorLd);
 
             Debug.DrawLine(playerEditor.rb.transform.position, point.posRange, Color.cyan);

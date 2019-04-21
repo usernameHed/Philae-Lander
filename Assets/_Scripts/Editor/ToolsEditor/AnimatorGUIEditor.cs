@@ -1,15 +1,17 @@
-﻿using Sirenix.OdinInspector.Editor;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Reflection;
 
 [CustomEditor(typeof(AnimatorGUI))]
-public class AnimatorGUIEditor : OdinEditor
+public class AnimatorGUIEditor : Editor
 {
     AnimatorGUI animatorGUI;
 
+    /// <summary>
+    /// just display a clickable green sphere
+    /// </summary>
     private void OnSceneGUI()
     {
         animatorGUI = (AnimatorGUI)target;

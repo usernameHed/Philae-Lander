@@ -3,24 +3,166 @@ using UnityEditor;
 using TMPro;
 using UnityEditor.IMGUI.Controls;
 using System.Reflection;
-using Borodar.RainbowHierarchy;
 using System;
 using System.Collections.Generic;
 
-/*
-meth_PickObjectMeth = type_HandleUtility.GetMethod("myFunction",
-                                                 BindingFlags.Static | BindingFlags.Public, //if static AND public
-                                                 null,
-                                                 new [] {typeof(Vector2), typeof(bool)},//specify arguments to tell reflection which variant to look for
-                                                 null)
-*/
+/// <summary>
+/// useful reflexion methods
+/// </summary>
 public class ExtReflexion
 {
+    public static void ClearConsole()
+    {
+        // This simply does "LogEntries.Clear()" the long way:
+        var logEntries = System.Type.GetType("UnityEditor.LogEntries,UnityEditor.dll");
+        var clearMethod = logEntries.GetMethod("Clear", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+        clearMethod.Invoke(null, null);
+    }
+    /// <summary>
+    /// play button on animator
+    /// </summary>
+    public static void SetPlayButton()
+    {
+        //GetAllEditorWindowTypes(true);
+
+        //open animator
+        System.Type animatorWindowType = null;
+        EditorWindow animatorWindow = ExtReflexion.ShowAndReturnEditorWindow(ExtReflexion.AllNameAssemblyKnown.AnimatorControllerTool, ref animatorWindowType);
+
+        //open animation
+        System.Type animationWindowType = null;
+        EditorWindow animationWindowEditor = ExtReflexion.ShowAndReturnEditorWindow(ExtReflexion.AllNameAssemblyKnown.AnimationWindow, ref animationWindowType);
+
+        //Get animationWindow Type
+        //animationWindowType = typeof(EditorWindow).Assembly.GetType("UnityEditor.AnimationWindow");
+
+        //Get field m_AnimEditor
+        FieldInfo animEditorFI = animationWindowType.GetField("m_AnimEditor", ExtReflexion.GetFullBinding());
+
+        /*
+        object animEditorObject = animEditorFI.GetValue(animationWindowEditor);
+        MethodInfo playMI = animEditorFI.FieldType.GetMethod("TogglePlayAnimation", ExtReflexion.GetFullBinding());
+        Debug.Log(playMI.Name);
+
+
+        Type[] types = new Type[1];
+        object paramFunction = playMI.GetType().GetConstructor(GetFullBinding(), null, new type)
+        ConstructorInfo constructorInfoObj = playMI.GetType().GetConstructor(GetFullBinding(), null,
+                CallingConventions.HasThis, types, null);
+
+        playMI.Invoke(animEditorObject, new object[0]);
+        */
+        //PlayButtonOnGUI
+
+
+
+        //Get the propertue of animEditorFI
+        PropertyInfo controlInterfacePI = animEditorFI.FieldType.GetProperty("controlInterface", ExtReflexion.GetFullBinding());
+
+        //Get property i splaying or not
+        PropertyInfo isPlaying = controlInterfacePI.PropertyType.GetProperty("playing", ExtReflexion.GetFullBinding());
+
+        //get object controlInterface
+        object controlInterface = controlInterfacePI.GetValue(animEditorFI.GetValue(animationWindowEditor));
+        bool playing = (bool)isPlaying.GetValue(controlInterface);
+
+        if (!playing)
+        {
+            MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StartPlayback", ExtReflexion.GetFullBinding());
+            playMI.Invoke(controlInterface, new object[0]);
+        }
+        else
+        {
+            MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StopPlayback", ExtReflexion.GetFullBinding());
+            playMI.Invoke(controlInterface, new object[0]);
+        }
+
+    }
+
+    /// <summary>
+    /// search for an object in all editro search bar
+    /// </summary>
+    /// <param name="search"></param>
+    public static void SetSearch(string search)
+    {
+        System.Type type = typeof(EditorWindow).Assembly.GetType("UnityEditor.SceneHierarchyWindow");
+        //MethodInfo[] allMethods = GetAllMethodeOfType(type, GetFullBinding(), true);
+        MethodInfo methodInfo = type.GetMethod("SetSearchFilter", GetFullBinding());
+
+        EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
+        if (methodInfo == null)
+        {
+            Debug.Log("null");
+            return;
+        }
+
+        var window = EditorWindow.focusedWindow;
+        methodInfo.Invoke(window, new object[] { search, SearchableEditorWindow.SearchMode.All, true, false });
+    }
+
+    /// <summary>
+    /// collapse an object
+    /// </summary>
+    public static void Collapse(GameObject go, bool collapse)
+    {
+        // bail out immediately if the go doesn't have children
+        if (go.transform.childCount == 0)
+            return;
+
+        if (collapse)
+        {
+            EditorGUIUtility.PingObject(go.transform.GetChild(0).gameObject);
+            Selection.activeObject = go;
+        }
+        else
+        {
+            SetExpandedRecursive(go, false);
+        }
+    }
+
+    /// <summary>
+    /// expand recursivly a hierarchy foldout
+    /// </summary>
+    /// <param name="go"></param>
+    /// <param name="expand"></param>
+    public static void SetExpandedRecursive(GameObject go, bool expand)
+    {
+        var type = typeof(EditorWindow).Assembly.GetType("UnityEditor.SceneHierarchyWindow");
+        var methodInfo = type.GetMethod("SetExpandedRecursive");
+
+        EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
+        var window = EditorWindow.focusedWindow;
+
+        methodInfo.Invoke(window, new object[] { go.GetInstanceID(), expand });
+    }
+
+    /// <summary>
+    /// repaint an Editor
+    /// use: RepaintInspector(typeof(SomeTypeInspector));
+    /// </summary>
+    /// <param name="t"></param>
+    public static void RepaintInspector(System.Type t)
+    {
+        Editor[] ed = (Editor[])Resources.FindObjectsOfTypeAll<Editor>();
+        for (int i = 0; i < ed.Length; i++)
+        {
+            if (ed[i].GetType() == t)
+            {
+                ed[i].Repaint();
+                return;
+            }
+        }
+    }
+
+
+    /////////////////////////utility reflexion
+
     /// <summary>
     /// for adding, do a GetAllEditorWindowTypes(true);
     /// </summary>
     public enum AllNameAssemblyKnown
     {
+        AnimatorControllerTool,
         AnimationWindow,
         SearchWindow,
         SceneHierarchySortingWindow,
@@ -49,7 +191,7 @@ public class ExtReflexion
     /// System.Type[] allUnityWindow = UtilityEditor.GetAllEditorWindowTypes(true);
     /// </summary>
     /// <returns></returns>
-    public static System.Type[] GetAllEditorWindowTypes(bool showInConsol = false)
+    private static System.Type[] GetAllEditorWindowTypes(bool showInConsol = false)
     {
         var result = new System.Collections.Generic.List<System.Type>();
         System.Reflection.Assembly[] AS = System.AppDomain.CurrentDomain.GetAssemblies();
@@ -74,28 +216,34 @@ public class ExtReflexion
         return result.ToArray();
     }
 
-    /// <summary>
-    /// repaint an Editor
-    /// use: RepaintInspector(typeof(SomeTypeInspector));
-    /// </summary>
-    /// <param name="t"></param>
-    public static void RepaintInspector(System.Type t)
+    private static System.Type GetEditorWindowTypeByName(string editorToFind)
     {
-        Editor[] ed = (Editor[])Resources.FindObjectsOfTypeAll<Editor>();
-        for (int i = 0; i < ed.Length; i++)
+        var result = new System.Collections.Generic.List<System.Type>();
+        System.Reflection.Assembly[] AS = System.AppDomain.CurrentDomain.GetAssemblies();
+        System.Type editorWindow = typeof(EditorWindow);
+        foreach (var A in AS)
         {
-            if (ed[i].GetType() == t)
+            System.Type[] types = A.GetTypes();
+            foreach (var T in types)
             {
-                ed[i].Repaint();
-                return;
+                if (T.IsSubclassOf(editorWindow))
+                {
+                    if (T.Name.Equals(editorToFind))
+                    {
+                        return (T);
+                    }
+                }
+
             }
         }
+        return (null);
     }
+
 
     /// <summary>
     /// System.Type animationWindowType = ExtReflexion.GetTypeFromAssembly("AnimationWindow", editorAssembly);
     /// </summary>
-    public static MethodInfo[] GetAllMethodeOfType(System.Type type, System.Reflection.BindingFlags bindings, bool showInConsol = false)
+    private static MethodInfo[] GetAllMethodeOfType(System.Type type, System.Reflection.BindingFlags bindings, bool showInConsol = false)
     {
         MethodInfo[] allMathod = type.GetMethods(bindings);
         if (showInConsol)
@@ -108,7 +256,7 @@ public class ExtReflexion
         return (allMathod);
     }
 
-    public static FieldInfo[] GetAllFieldOfType(System.Type type, System.Reflection.BindingFlags bindings, bool showInConsol = false)
+    private static FieldInfo[] GetAllFieldOfType(System.Type type, System.Reflection.BindingFlags bindings, bool showInConsol = false)
     {
         FieldInfo[] allField = type.GetFields(bindings);
         if (showInConsol)
@@ -121,7 +269,7 @@ public class ExtReflexion
         return (allField);
     }
 
-    public static PropertyInfo[] GetAllpropertiesOfType(System.Type type, System.Reflection.BindingFlags bindings, bool showInConsol = false)
+    private static PropertyInfo[] GetAllpropertiesOfType(System.Type type, System.Reflection.BindingFlags bindings, bool showInConsol = false)
     {
         PropertyInfo[] allProperties = type.GetProperties(bindings);
         if (showInConsol)
@@ -137,7 +285,7 @@ public class ExtReflexion
     /// <summary>
     /// show all opened window
     /// </summary>
-    public static EditorWindow[] GetAllOpennedWindow(bool showInConsol = false)
+    private static EditorWindow[] GetAllOpennedWindow(bool showInConsol = false)
     {
         EditorWindow[] allWindows = Resources.FindObjectsOfTypeAll<EditorWindow>();
 
@@ -151,7 +299,7 @@ public class ExtReflexion
         return (allWindows);
     }
 
-    public static EditorWindow GetOpennedWindowByName(string editorToFind)
+    private static EditorWindow GetOpennedWindowByName(string editorToFind)
     {
         EditorWindow[] allWIndow = GetAllOpennedWindow();
         for (int i = 0; i < allWIndow.Length; i++)
@@ -164,7 +312,7 @@ public class ExtReflexion
         return (null);
     }
 
-    public static System.Reflection.BindingFlags GetFullBinding()
+    private static System.Reflection.BindingFlags GetFullBinding()
     {
         return (BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.NonPublic | BindingFlags.Static);
     }
@@ -174,7 +322,7 @@ public class ExtReflexion
     /// GetTypeFromAssembly("AnimationWindow", editorAssembly);
     /// </summary>
     /// <returns></returns>
-    public static System.Type GetTypeFromAssembly(string typeName, System.Reflection.Assembly assembly, System.StringComparison ignoreCase = StringComparison.CurrentCultureIgnoreCase, bool showNames = false)
+    private static System.Type GetTypeFromAssembly(string typeName, System.Reflection.Assembly assembly, System.StringComparison ignoreCase = StringComparison.CurrentCultureIgnoreCase, bool showNames = false)
     {
         if (assembly == null)
             return (null);
@@ -192,61 +340,7 @@ public class ExtReflexion
         return (null);
     }
 
-    /// <summary>
-    /// play button on animator
-    /// </summary>
-    public static void SetPlayButton()
-    {
-        //open Animation Editor Window
-        System.Type animationWindowType = null;        
-        EditorWindow animationWindowEditor = ExtReflexion.ShowAndReturnEditorWindow(ExtReflexion.AllNameAssemblyKnown.AnimationWindow, ref animationWindowType);
-
-        //Get animationWindow Type
-        animationWindowType = typeof(EditorWindow).Assembly.GetType("UnityEditor.AnimationWindow");
-
-        //Get field m_AnimEditor
-        FieldInfo animEditorFI = animationWindowType.GetField("m_AnimEditor", ExtReflexion.GetFullBinding());
-
-        /*
-        object animEditorObject = animEditorFI.GetValue(animationWindowEditor);
-        MethodInfo playMI = animEditorFI.FieldType.GetMethod("TogglePlayAnimation", ExtReflexion.GetFullBinding());
-        Debug.Log(playMI.Name);
-
-
-        Type[] types = new Type[1];
-        object paramFunction = playMI.GetType().GetConstructor(GetFullBinding(), null, new type)
-        ConstructorInfo constructorInfoObj = playMI.GetType().GetConstructor(GetFullBinding(), null,
-                CallingConventions.HasThis, types, null);
-
-        playMI.Invoke(animEditorObject, new object[0]);
-        */
-        //PlayButtonOnGUI
-
-        
-
-        //Get the propertue of animEditorFI
-        PropertyInfo controlInterfacePI = animEditorFI.FieldType.GetProperty("controlInterface", ExtReflexion.GetFullBinding());
-
-        //Get property i splaying or not
-        PropertyInfo isPlaying = controlInterfacePI.PropertyType.GetProperty("playing", ExtReflexion.GetFullBinding());
-        
-        //get object controlInterface
-        object controlInterface = controlInterfacePI.GetValue(animEditorFI.GetValue(animationWindowEditor));
-        bool playing = (bool)isPlaying.GetValue(controlInterface);
-
-        if (!playing)
-        {
-            MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StartPlayback", ExtReflexion.GetFullBinding());
-            playMI.Invoke(controlInterface, new object[0]);
-        }
-        else
-        {
-            MethodInfo playMI = controlInterfacePI.PropertyType.GetMethod("StopPlayback", ExtReflexion.GetFullBinding());
-            playMI.Invoke(controlInterface, new object[0]);
-        }
-        
-    }
-
+    /*
     /// <summary>
     /// from a given name, return and open/show the editorWindow
     /// usage:
@@ -261,74 +355,20 @@ public class ExtReflexion
 
         return (animationWindowEditor);
     }
+    */
 
-    public static void SetSearch(string search)
+    /*
+meth_PickObjectMeth = type_HandleUtility.GetMethod("myFunction",
+                                             BindingFlags.Static | BindingFlags.Public, //if static AND public
+                                             null,
+                                             new [] {typeof(Vector2), typeof(bool)},//specify arguments to tell reflection which variant to look for
+                                             null)
+*/
+
+    private static EditorWindow ShowAndReturnEditorWindow(AllNameAssemblyKnown editorWindow, ref System.Type animationWindowType)
     {
-        System.Type type = typeof(EditorWindow).Assembly.GetType("UnityEditor.SceneHierarchyWindow");
-        //MethodInfo[] allMethods = GetAllMethodeOfType(type, GetFullBinding(), true);
-        MethodInfo methodInfo = type.GetMethod("SetSearchFilter", GetFullBinding());
-
-        EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
-        if (methodInfo == null)
-        {
-            Debug.Log("null");
-            return;
-        }
-
-        var window = EditorWindow.focusedWindow;
-        methodInfo.Invoke(window, new object[] { search, SearchableEditorWindow.SearchMode.All, true, false });
-    }
-
-    public static void Collapse(GameObject go, bool collapse)
-    {
-        // bail out immediately if the go doesn't have children
-        if (go.transform.childCount == 0)
-            return;
-
-        if (collapse)
-        {
-            EditorGUIUtility.PingObject(go.transform.GetChild(0).gameObject);
-            Selection.activeObject = go;
-        }
-        else
-        {
-            SetExpandedRecursive(go, false);
-        }
-    }
-
-    public static EditorWindow GetFocusedWindow(string window)
-    {
-        FocusOnWindow(window);
-        return EditorWindow.focusedWindow;
-    }
-
-    public static void FocusOnWindow(string window)
-    {
-        EditorApplication.ExecuteMenuItem("Window/" + window);
-    }
-
-    /// <summary>
-    /// expand recursivly a hierarchy foldout
-    /// </summary>
-    /// <param name="go"></param>
-    /// <param name="expand"></param>
-    public static void SetExpandedRecursive(GameObject go, bool expand)
-    {
-        var type = typeof(EditorWindow).Assembly.GetType("UnityEditor.SceneHierarchyWindow");
-        var methodInfo = type.GetMethod("SetExpandedRecursive");
-
-        EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
-        var window = EditorWindow.focusedWindow;
-
-        methodInfo.Invoke(window, new object[] { go.GetInstanceID(), expand });
-    }
-
-    public static void AssignLabel(GameObject g, int colorIconById)
-    {
-        Texture2D tex = EditorGUIUtility.IconContent("sv_label_" + colorIconById).image as Texture2D;
-        Type editorGUIUtilityType = typeof(EditorGUIUtility);
-        BindingFlags bindingFlags = BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.NonPublic;
-        object[] args = new object[] { g, tex };
-        editorGUIUtilityType.InvokeMember("SetIconForObject", bindingFlags, null, null, args);
+        animationWindowType = GetEditorWindowTypeByName(editorWindow.ToString());
+        EditorWindow animatorWindow = EditorWindow.GetWindow(animationWindowType);
+        return (animatorWindow);
     }
 }

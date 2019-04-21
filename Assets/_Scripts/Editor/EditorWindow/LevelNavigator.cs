@@ -5,6 +5,9 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
+/// <summary>
+/// search for every scene in the project, and then just swap with buttons
+/// </summary>
 public class LevelNavigator : EditorWindow
 {
     [MenuItem("PERSO/Level Navigator")]

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Put this component on an object,
+/// when selected, a green button will apear, clic on it for playing the animation
+/// </summary>
 [ExecuteInEditMode]
 public class AnimatorGUI : MonoBehaviour
 {
@@ -10,10 +14,5 @@ public class AnimatorGUI : MonoBehaviour
     private void OnEnable()
     {
         animator = gameObject.GetComponent<Animator>();
-    }
-
-    public void PlayAnimation()
-    {
-        animator.Play(0);
     }
 }

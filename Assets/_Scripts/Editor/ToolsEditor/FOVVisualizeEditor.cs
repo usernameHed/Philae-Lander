@@ -1,17 +1,16 @@
-﻿using Sirenix.OdinInspector.Editor;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 
 [CustomEditor(typeof(FOVVisualize))]
-public class FOVVisualizeEditor : OdinEditor
+public class FOVVisualizeEditor : Editor
 {
     FOVVisualize fOVVisualize;
     ArcHandle arcHandle;
 
-    private new void OnEnable()
+    private void OnEnable()
     {
         fOVVisualize = (FOVVisualize)target;
         arcHandle = new ArcHandle();

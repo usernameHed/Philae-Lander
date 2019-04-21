@@ -44,9 +44,9 @@ public class SceneGUI : EditorWindow
 
     private static void SetupAllScripts()
     {
-        gameManager = UtilityEditor.GetScript<GameManager>();
-        playerController = UtilityEditor.GetScript<PlayerController>();
-        philaeManager = UtilityEditor.GetScript<PhilaeManager>();
+        gameManager = ExtUtilityEditor.GetScript<GameManager>();
+        playerController = ExtUtilityEditor.GetScript<PlayerController>();
+        philaeManager = ExtUtilityEditor.GetScript<PhilaeManager>();
     }
 
     private static void ResetupIfNull()
@@ -99,13 +99,13 @@ public class SceneGUI : EditorWindow
         {
             if (philaeManager.ldManager.allGravityAttractorLd[i] == null)
                 continue;
-            UtilityEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, false);
+            ExtPhilaeEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, false);
         }
 
         philaeManager.ldManager.FillList(true);
         for (int i = 0; i < philaeManager.ldManager.allGravityAttractorLd.Count; i++)
         {
-            UtilityEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
+            ExtPhilaeEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
         }
     }
 

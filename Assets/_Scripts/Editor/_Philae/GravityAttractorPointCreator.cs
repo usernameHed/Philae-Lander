@@ -37,12 +37,11 @@ public class GravityAttractorPointCreator : OdinEditor
             gravityAttractorEditor.GenerateParenting();
             if (gravityAttractorEditor.GetGravityAttractor())
             {
-                gravityAttractorEditor.GetGravityAttractor().philaeManager = UtilityEditor.GetScript<PhilaeManager>();
+                gravityAttractorEditor.GetGravityAttractor().philaeManager = ExtUtilityEditor.GetScript<PhilaeManager>();
                 gravityAttractorEditor.GetGravityAttractor().philaeManager.ldManager.FillList(false);
             }
         }
-
-        ExtReflexion.AssignLabel(gravityAttractorEditor.previewPoint.gameObject, 0);
+        ExtPhilaeEditor.AssignLabel(gravityAttractorEditor.previewPoint.gameObject, 0);
     }
 
     private Vector3 GetPointOfTriangle(RaycastHit hit)
@@ -121,7 +120,7 @@ public class GravityAttractorPointCreator : OdinEditor
     {
         for (int i = 0; i < gravityAttractorEditor.tmpPointCreated.Count; i++)
         {
-            ExtReflexion.AssignLabel(gravityAttractorEditor.tmpPointCreated[i], 1);
+            ExtPhilaeEditor.AssignLabel(gravityAttractorEditor.tmpPointCreated[i], 1);
         }
 
         if (gravityAttractorEditor.createMode != 2)
@@ -132,7 +131,7 @@ public class GravityAttractorPointCreator : OdinEditor
         for (int i = 0; i < gravityAttractorEditor.tmpForm.Count; i++)
         {
             gravityAttractorEditor.tmpForm[i].name = i.ToString();
-            ExtReflexion.AssignLabel(gravityAttractorEditor.tmpForm[i], 2);
+            ExtPhilaeEditor.AssignLabel(gravityAttractorEditor.tmpForm[i], 2);
         }
     }
 
@@ -157,7 +156,7 @@ public class GravityAttractorPointCreator : OdinEditor
         SphereCollider sphere = newObjParent.AddComponent<SphereCollider>();
         sphere.radius = 0.25f;
         sphere.isTrigger = false;
-        ExtReflexion.AssignLabel(newObjParent, 1);
+        ExtPhilaeEditor.AssignLabel(newObjParent, 1);
 
         // Register root object for undo.
         //Undo.RegisterCreatedObjectUndo(newObjParent, "Create object");
@@ -221,7 +220,7 @@ public class GravityAttractorPointCreator : OdinEditor
         {
             gravityAttractorEditor.tmpForm.Remove(gravityAttractorEditor.objectPreview);
 
-            ExtReflexion.AssignLabel(gravityAttractorEditor.objectPreview, 0);
+            ExtPhilaeEditor.AssignLabel(gravityAttractorEditor.objectPreview, 0);
 
             gravityAttractorEditor.CleanUpTmpPointForm();
             //e.Use();
@@ -240,7 +239,7 @@ public class GravityAttractorPointCreator : OdinEditor
 
             for (int i = 0; i < gravityAttractorEditor.tmpForm.Count; i++)
             {
-                ExtReflexion.AssignLabel(gravityAttractorEditor.tmpForm[i], 4);
+                ExtPhilaeEditor.AssignLabel(gravityAttractorEditor.tmpForm[i], 4);
             }
             gravityAttractorEditor.tmpForm.Clear();
 
@@ -427,7 +426,7 @@ public class GravityAttractorPointCreator : OdinEditor
     {
         if (Application.isEditor)
         {
-            PhilaeManager phiTmp = UtilityEditor.GetScript<PhilaeManager>();
+            PhilaeManager phiTmp = ExtUtilityEditor.GetScript<PhilaeManager>();
             
             if (phiTmp)
                 phiTmp.ldManager.FillList(false);

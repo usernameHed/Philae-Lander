@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// show the circle and do rotate
+/// </summary>
 public class DiscRotatorHandle
 {
     private static Vector2 startMousePosition, currentMousePosition;

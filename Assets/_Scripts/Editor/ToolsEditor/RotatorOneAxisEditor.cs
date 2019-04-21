@@ -1,16 +1,15 @@
-﻿using Sirenix.OdinInspector.Editor;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(RotatorOneAxis))]
-public class RotatorOneAxisEditor : OdinEditor
+public class RotatorOneAxisEditor : Editor
 {
     RotatorOneAxis rotatorOneAxis;
     int discRotateControlId;
 
-    private new void OnEnable()
+    private void OnEnable()
     {
         rotatorOneAxis = (RotatorOneAxis)target;
     }
@@ -21,6 +20,7 @@ public class RotatorOneAxisEditor : OdinEditor
         {
             discRotateControlId = GUIUtility.GetControlID(this.GetHashCode(), FocusType.Passive);
         }
+        Undo.RecordObject(rotatorOneAxis.objToRotate, "rotation rotatorOneAxis");
         rotatorOneAxis.objToRotate.rotation = DiscRotatorHandle.Do(discRotateControlId, rotatorOneAxis.objToRotate.position, rotatorOneAxis.objToRotate.rotation, 4f, 0f, rotatorOneAxis.objToRotate);
     }
 }

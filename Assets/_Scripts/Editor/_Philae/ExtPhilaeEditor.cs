@@ -7,59 +7,8 @@ using Borodar.RainbowHierarchy;
 using System;
 using System.Collections.Generic;
 
-public class UtilityEditor : ScriptableObject
+public class ExtPhilaeEditor : ScriptableObject
 {
-    public const int FILTERMODE_ALL = 0;
-    public const int FILTERMODE_NAME = 1;
-    public const int FILTERMODE_TYPE = 2;
-
-    private static string SaveAsset(string nameMesh, string extention = "asset")
-    {
-        return string.Format("{0}_{1}.{2}",
-                            nameMesh,
-                             System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"),
-                             extention);
-    }
-
-    [MenuItem("PERSO/Procedural/Save Selected Mesh")]
-    public static void SaveSelectedMesh()
-	{
-        GameObject activeOne = Selection.activeGameObject;
-        if (!activeOne)
-            return;
-
-        MeshFilter meshRoad = activeOne.GetComponent<MeshFilter>();
-
-        Mesh tempMesh = (Mesh)UnityEngine.Object.Instantiate(meshRoad.sharedMesh);
-
-        string path = "Assets/Resources/Procedural/" + SaveAsset("savedMesh");
-        Debug.Log(path);
-        AssetDatabase.CreateAsset(tempMesh, path);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-    }
-
-    public static T GetScript<T>()
-    {
-        object obj = UnityEngine.Object.FindObjectOfType(typeof(T));
-
-        if (obj != null)
-        {
-            return ((T)obj);
-            //gameManager = (GameManager)obj;
-            //gameManager.indexSaveEditorTmp = gameManager.saveManager.GetMainData().GetLastMapSelectedIndex();
-        }
-
-        return (default(T));
-    }
-
-    public static void FocusOnSelection(GameObject objToFocus, float zoom = 5f)
-    {
-        SceneView.lastActiveSceneView.LookAt(objToFocus.transform.position);
-        if (zoom != -1)
-            SceneViewCameraFunction.ViewportPanZoomIn(zoom);
-    }
-    
     [MenuItem("PERSO/Philae/Select Gravity Attractor _g")]
     public static bool SelectParentOfAttractor()
     {
@@ -76,54 +25,6 @@ public class UtilityEditor : ScriptableObject
         }
         return (false);
     }
-
-    [MenuItem("PERSO/Philae/CreateEmptyParent #e")]
-    public static void CreateEmptyParent()
-    {
-        if (!Selection.activeGameObject)
-            return;
-        GameObject newParent = new GameObject("Parent of " + Selection.activeGameObject.name);
-        int indexFocused = Selection.activeGameObject.transform.GetSiblingIndex();
-        newParent.transform.SetParent(Selection.activeGameObject.transform.parent);
-        newParent.transform.position = Selection.activeGameObject.transform.position;
-
-        Selection.activeGameObject.transform.SetParent(newParent.transform);
-        newParent.transform.SetSiblingIndex(indexFocused);
-
-
-        //EditorGUIUtility.PingObject(Selection.activeGameObject);
-        Selection.activeGameObject = newParent;
-
-        ExtReflexion.SetExpandedRecursive(newParent, true);
-
-        //EditorGUILayout.Foldout(true, newParent);
-    }
-
-    
-
-
-
-    [MenuItem("PERSO/Philae/DeleteEmptyParent %&e")]
-    public static void DeleteEmptyParent()
-    {
-        if (!Selection.activeGameObject)
-            return;
-
-        int sibling = Selection.activeGameObject.transform.GetSiblingIndex();
-        Transform parentOfParent = Selection.activeGameObject.transform.parent;
-        Transform firstChild = Selection.activeGameObject.transform.GetChild(0);
-        while (Selection.activeGameObject.transform.childCount > 0)
-        {
-            Transform child = Selection.activeGameObject.transform.GetChild(0);
-            child.SetParent(parentOfParent);
-            child.SetSiblingIndex(sibling);
-            sibling++;
-        }
-        DestroyImmediate(Selection.activeGameObject);
-
-        Selection.activeGameObject = firstChild.gameObject;
-    }
-    
 
     [MenuItem("PERSO/Philae/Create Gravity Attractor %g")]
     public static void CreateGravityAttractor()
@@ -155,7 +56,7 @@ public class UtilityEditor : ScriptableObject
 
         if (gravityAttractorEditor.GetGravityAttractor())
         {
-            gravityAttractorEditor.GetGravityAttractor().philaeManager = UtilityEditor.GetScript<PhilaeManager>();
+            gravityAttractorEditor.GetGravityAttractor().philaeManager = ExtUtilityEditor.GetScript<PhilaeManager>();
             gravityAttractorEditor.GetGravityAttractor().philaeManager.ldManager.FillList(true);
         }
     }
@@ -229,6 +130,15 @@ public class UtilityEditor : ScriptableObject
                 }
             }
         }    
+    }
+
+    public static void AssignLabel(GameObject g, int colorIconById)
+    {
+        Texture2D tex = EditorGUIUtility.IconContent("sv_label_" + colorIconById).image as Texture2D;
+        Type editorGUIUtilityType = typeof(EditorGUIUtility);
+        BindingFlags bindingFlags = BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.NonPublic;
+        object[] args = new object[] { g, tex };
+        editorGUIUtilityType.InvokeMember("SetIconForObject", bindingFlags, null, null, args);
     }
 
     /// <summary>
