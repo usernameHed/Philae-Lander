@@ -117,12 +117,12 @@ public class EntityMove : MonoBehaviour
 
         if (groundForwardCheck && groundForwardCheck.IsForwardForbiddenWall())
         {
-            Debug.Log("move Straff");
+            //Debug.Log("move Straff");
             dirMove = entitySlide.GetStraffDirection();
         }
         else
         {
-            Debug.Log("move forward");
+            //Debug.Log("move forward");
             dirMove = entityController.GetFocusedForwardDirPlayer();
         }
         //Debug.DrawRay(rb.position, dirMove * 5, Color.blue);

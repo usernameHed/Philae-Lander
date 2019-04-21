@@ -11,9 +11,14 @@ public class AimFollowerController : MonoBehaviour
     [FoldoutGroup("Object"), SerializeField]
     public PlayerController playerController;
     [FoldoutGroup("Object"), SerializeField]
-    public EntityRaycastForward _entityRaycastForward;
+    public UniqueGravityAttractorSwitch _playerUniqueGravityAttractor;
     [FoldoutGroup("Object"), SerializeField]
-    public Rigidbody rb;
+    public EntityRaycastForward _entityRaycastForward;
+
+    [FoldoutGroup("Object"), SerializeField]
+    public Transform rbPlanetOriented;
+    [FoldoutGroup("Object"), SerializeField]
+    public Transform toRotateTowardAim;
 
     private void Start()
     {
@@ -21,21 +26,15 @@ public class AimFollowerController : MonoBehaviour
             playerController = PhilaeManager.Instance.playerControllerRef;
     }
 
-    private Quaternion GetLastDesiredRotation(Vector3 dirRelativeInput, Vector3 up)
-    {
-        //Vector3 relativeDirection = entityAction.GetRelativeDirection().normalized;
-        // Preserve our current up direction
-        // (or you could calculate this as the direction away from the planet's center)
-        //Vector3 up = objectToRotate.up;
-        //Vector3 up = baseGravity.GetMainAndOnlyGravity();
-
-        // Form a rotation facing the desired direction while keeping our
-        // local up vector exactly matching the current up direction.
-        return (ExtQuaternion.TurretLookRotation(dirRelativeInput, up));
-    }
-
     private void FixedUpdate()
     {
+        //rotate to gravity player
+        GravityAttractorLD.PointInfo point = ExtGetGravityAtPoints.GetAirSphereGravityStatic(rbPlanetOriented.position, _playerUniqueGravityAttractor.allGravityAttractor);
+        RotateToGround.InstantRotateObject(rbPlanetOriented.position - point.posRange, rbPlanetOriented.transform);
+
+        Vector3 toAim = _entityRaycastForward.GetLastPos() - rbPlanetOriented.position;
+        toRotateTowardAim.rotation = ExtQuaternion.TurretLookRotation(toAim, rbPlanetOriented.transform.up);
+
         //DoRotate(GetLastDesiredRotation(entityAction.GetRelativeDirection(), objectToRotate.up), turnRate);
         //UnityMovement.MoveTowards_WithPhysics(rb, _entityAction.GetMainReferenceForwardDirection(), speedMove * Time.deltaTime);
     }
