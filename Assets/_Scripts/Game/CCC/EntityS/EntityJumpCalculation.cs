@@ -237,9 +237,13 @@ public class EntityJumpCalculation : MonoBehaviour
         if (hit)
         {
             string layerNameHit = LayerMask.LayerToName(infoJump.objHit.gameObject.layer);
+
+
             //if this is stick layer, keep sticking !
             if (entityController.IsStickPlatform(layerNameHit))
                 return (true);
+
+
             //else, if this is a Dont platform, and normal is NOT ok, return false
             if (entityController.IsForbidenLayerSwitch(layerNameHit)
                 && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(infoJump.normalHit, entityGravityAttractorSwitch.GetGAGravityAtThisPoint(infoJump.pointHit)))
