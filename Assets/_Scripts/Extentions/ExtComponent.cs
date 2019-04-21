@@ -71,32 +71,91 @@ public static class ExtComponent
     {
         return component.GetComponent<T>() != null;
     }
+
+    public static bool HasComponentInParent<T>(this Component component) where T : Component
+    {
+        return component.GetComponentInParent<T>() != null;
+    }
+    public static bool HasComponentInParent<T>(this GameObject gameObject) where T : Component
+    {
+        return gameObject.GetComponentInParent<T>() != null;
+    }
+
+
+
     /// <summary>
     /// Checks whether a game object has a component of type T attached.
     /// </summary>
     /// <param name="gameObject">Game object.</param>
     /// <returns>True when component is attached.</returns>
+    public static bool HasComponentOrInChild<T>(this GameObject gameObject) where T : Component
+    {
+        if (HasComponent<T>(gameObject))
+            return (true);
+        return HasComponentInChild<T>(gameObject);
+    }
+
     public static bool HasComponent<T>(this GameObject gameObject) where T : Component
     {
         return gameObject.GetComponent<T>() != null;
     }
 
+    public static bool HasComponentInChild<T>(this GameObject gameObject) where T : Component
+    {
+        return gameObject.GetComponentInChildren<T>() != null;
+    }
+
     /// <summary>
-    /// Détruit le component s'il est présent
+    /// Destroy component if present
     /// </summary>
-    /// <typeparam name="T">component à détruire</typeparam>
-    /// <param name="child">component à détruire</param>
-    /// <returns>retourne vrai si il a été trouvé et détruit</returns>
-    static public bool DestroyComponent<T>(this Component child) where T : Component
+    /// <returns>return true if object found and destroyed</returns>
+    public static bool DestroyComponent<T>(this Component child, bool immediate = false) where T : Component
     {
         T result = child.GetComponent<T>();
         if (result != null)
         {
-            GameObject.Destroy(child.gameObject.GetComponent<T>());
+            if (immediate)
+            {
+                GameObject.DestroyImmediate(child.gameObject.GetComponent<T>());
+            }
+            else
+            {
+                GameObject.Destroy(child.gameObject.GetComponent<T>());
+            }
             return (true);
         }
         return false;
     }
+
+    /// <summary>
+    /// destroy all component inside that object
+    /// use: gameObject.DestroyAllComponentInside<Renderer>();
+    /// use: transform.DestroyAllComponentInside<Renderer>();
+    /// use: transform.DestroyAllComponentInside<Renderer>(true, false);
+    /// </summary>
+    /// <param name="imediate">type of destruction: imediate, or normal</param>
+    /// /// <param name="includeInactive">destroy also in inactive object</param>
+    public static void DestroyAllComponentInside<T>(this GameObject child, bool immediate = false, bool includeInactive = false) where T : Component
+    {
+        DestroyAllComponentInside<T>(child);
+    }
+    public static void DestroyAllComponentInside<T>(this Component child, bool immediate = false, bool includeInactive = false) where T :  Component
+    {
+        T[] allComponent = child.GetComponentsInChildren<T>(includeInactive);
+
+        for (int i = 0; i < allComponent.Length; i++)
+        {
+            if (immediate)
+            {
+                GameObject.DestroyImmediate(allComponent[i]);
+            }
+            else
+            {
+                GameObject.Destroy(allComponent[i]);
+            }
+        }
+    }
+
 
     /// <summary>
     /// GameObject.GetComponentsInChildren(), only with a certain tag

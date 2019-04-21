@@ -2,11 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public static class ExtGameObject
 {
-    //setup un layerMask en enlevant certain layer...
-    //int layerMask = ~((1 << LayerMask.NameToLayer("Walls")) | (1 << LayerMask.NameToLayer("Lock")) | (1 << LayerMask.NameToLayer("Ignore Raycast")) );
+    /// <summary>
+    /// create a gameObject, with a set of components
+    /// ExtGameObject.CreateGameObject("game object name", Vector3.zero, Quaternion.identity, Vector3 Vector.One, Component [] components, Transform parent)
+    /// </summary>
+    public static GameObject CreateGameObject(string name, 
+        Vector3 position,
+        Quaternion rotation,
+        Vector3 localScale,
+        Component [] components, Transform parent)
+    {
+        GameObject newObject = new GameObject(name + " " + parent.childCount);
+        newObject.SetActive(false);
+        newObject.transform.SetParent(parent);
+        newObject.transform.SetAsLastSibling();
+        newObject.transform.localScale = localScale;
+
+        for (int i = 0; i < components.Length; i++)
+        {
+            newObject.AddComponent(components[i]);
+        }
+        return (newObject);
+    }
+
+    /// <summary>
+    /// hide all renderer
+    /// </summary>
+    /// <param name="toHide">apply this to a transform, or a gameObject</param>
+    /// <param name="hide">hide (or not)</param>
+    public static void HideAllRenderer(this Transform toHide, bool hide = true)
+    {
+        HideAllRenderer(toHide.gameObject, hide);
+    }
+    public static void HideAllRenderer(this GameObject toHide, bool hide = true)
+    {
+        Renderer[] allrenderer = toHide.GetComponentsInChildren<Renderer>();
+
+        for (int i = 0; i < allrenderer.Length; i++)
+        {
+            allrenderer[i].enabled = !hide;
+        }
+    }
 
     /// <summary>
     /// Returns true if the GO is null or inactive
@@ -32,12 +72,6 @@ public static class ExtGameObject
     /// <summary>
     /// Returns the interface on this game object
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="go"></param>
-    /// <remarks>
-    /// Suggested by: A.Killingbeck
-    /// Link: http://forum.unity3d.com/members/a-killingbeck.560711/
-    /// </remarks>
     public static T GetInterface<T>(this GameObject go) where T : class
     {
 
@@ -52,12 +86,6 @@ public static class ExtGameObject
     /// <summary>
     /// Returns the first matching interface on this game object's children
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="go"></param>
-    /// <remarks>
-    /// Suggested by: A.Killingbeck
-    /// Link: http://forum.unity3d.com/members/a-killingbeck.560711/
-    /// </remarks>
     public static T GetInterfaceInChildren<T>(this GameObject go) where T : class
     {
 
@@ -72,12 +100,6 @@ public static class ExtGameObject
     /// <summary>
     /// Returns all interfaces on this game object matching this type
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="go"></param>
-    /// <remarks>
-    /// Suggested by: A.Killingbeck
-    /// Link: http://forum.unity3d.com/members/a-killingbeck.560711/
-    /// </remarks>
     public static IEnumerable<T> GetInterfaces<T>(this GameObject go) where T : class
     {
 
@@ -92,12 +114,6 @@ public static class ExtGameObject
     /// <summary>
     /// Returns all matching interfaces on this game object's children
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="go"></param>
-    /// <remarks>
-    /// Suggested by: A.Killingbeck
-    /// Link: http://forum.unity3d.com/members/a-killingbeck.560711/
-    /// </remarks>
     public static IEnumerable<T> GetInterfacesInChildren<T>(this GameObject go) where T : class
     {
         if (!typeof(T).IsInterface)
@@ -119,7 +135,9 @@ public static class ExtGameObject
     {
         gameObject.layer = layer;
         foreach (Transform t in gameObject.transform)
+        {
             t.gameObject.SetLayerRecursively(layer);
+        }            
     }
 
     /// <summary>
@@ -130,7 +148,9 @@ public static class ExtGameObject
     {
         Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
         foreach (Collider collider in colliders)
+        {
             collider.enabled = tf;
+        }            
     }
     /// <summary>
     /// activate recursivly the Visual (render);
@@ -140,7 +160,9 @@ public static class ExtGameObject
     {
         Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
         foreach (Renderer renderer in renderers)
+        {
             renderer.enabled = tf;
+        }
     }
 
     /// <summary>
