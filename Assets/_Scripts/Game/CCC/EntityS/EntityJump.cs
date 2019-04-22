@@ -11,6 +11,8 @@ public class EntityJump : MonoBehaviour
     protected float ratioIncreaseHeightMove = 0.5f;
     [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
     protected bool inputJump = true;
+    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    protected float ratioBoostWhenJumpingAgainstWall = 1.3f;
 
     [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
     public string[] noJumpLayer = new string[] { "Walkable/FastForward", "Walkable/Dont" };
@@ -208,6 +210,10 @@ public class EntityJump : MonoBehaviour
                 normalizedForwardPlayer = entityRotate.GetLastDesiredDirection().normalized * lastVelocityJump;
             else
                 normalizedForwardPlayer = entityController.GetFocusedForwardDirPlayer(normalizedNormalGravity) * lastVelocityJump;
+        }
+        else
+        {
+            normalizedNormalGravity *= ratioBoostWhenJumpingAgainstWall;
         }
 
         lastDirForwardJump = normalizedForwardPlayer;
