@@ -74,6 +74,20 @@ public class EntityRaycastForward : MonoBehaviour
     public Vector3 GetLastNormal() => lastNormal;
     private int hitCount = 0;
 
+    private Vector3 saveLastPos;
+    private Vector3 saveLastNormal;
+
+    private void Start()
+    {
+        focusForwardDir = rb.transform.forward;
+        focusRightDir = rb.transform.right;
+        SaveLastPos(rb.transform.position);
+        SaveLastNormal(-rb.transform.up);
+
+        saveLastPos = GetLastPos();
+        saveLastNormal = GetLastNormal();
+    }
+
     private void SaveLastPos(Vector3 pos)
     {
         lastPos = pos;
@@ -224,8 +238,8 @@ public class EntityRaycastForward : MonoBehaviour
         {
             if (step == 0)
             {
-                SaveLastPos(rb.transform.position);
-                SaveLastNormal(-rb.transform.up);
+                SaveLastPos(saveLastPos);
+                SaveLastNormal(saveLastNormal);
                 breakLoop = true;
                 return;
             }
@@ -443,7 +457,8 @@ public class EntityRaycastForward : MonoBehaviour
         int i = 0;
         DoLoop(stepsForward, ref infoHit, ref focusForwardDir, ref i);
 
-        
+        saveLastPos = GetLastPos();
+        saveLastNormal = GetLastNormal();
         //Debug.Log("<color=blue>maxDist: " + distMax + ", dist effecctued: " + currentDistChecked + "(steps: " + i + ")</color>");
     }
 
@@ -462,6 +477,8 @@ public class EntityRaycastForward : MonoBehaviour
 
             ExtDrawGuizmos.DebugWireSphere(GetLastPos(), Color.green, 0.5f);
             Debug.DrawRay(GetLastPos(), GetLastNormal() * 20f, Color.red);
+
+            
         }
 
     }

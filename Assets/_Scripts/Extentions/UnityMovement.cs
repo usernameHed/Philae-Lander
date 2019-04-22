@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// All exemple of movement we can do with unity
@@ -231,4 +232,14 @@ public static class UnityMovement
     // MoveTowards_WithPhysics
     #endregion
 
+    public static IEnumerator WaitAndMove(Rigidbody rb, Vector3 posA, Vector3 posB, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime); // start at time X
+        float startTime = Time.time; // Time.time contains current frame time, so remember starting point
+        while (Time.time - startTime <= 1)
+        { // until one second passed
+            rb.MovePosition(Vector3.Lerp(posA, posB, Time.time - startTime)); // lerp from A to B in one second
+            yield return null; // wait for next frame
+        }
+    }
 }

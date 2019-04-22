@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Sirenix.OdinInspector;
 
 [System.Serializable]
 public struct FrequencyEase
@@ -6,23 +7,26 @@ public struct FrequencyEase
     [SerializeField, Tooltip("speed")]
     private float speedIn;
 
-    
-    [SerializeField, Tooltip("timer back to 0 speed (default 1)")]
+    [SerializeField, Tooltip("speed")]
+    private bool doInverse;
+    [SerializeField, Tooltip("timer back to 0 speed (default 1)"), EnableIf("doInverse")]
     private float ratioDecelerate;
     [SerializeField, Tooltip("curve, default: time: 0 to X; value: 0 to 1")]
     private AnimationCurve animationCurve;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip(""), ReadOnly]
     private bool timerStarted;
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip(""), ReadOnly]
     private bool timerIsEnding;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip(""), ReadOnly]
     private float timeStart;
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip(""), ReadOnly]
     private float timeEnd;
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip(""), ReadOnly]
     private float currentTime;
+    [SerializeField, Tooltip(""), ReadOnly]
+    private float currentValue;
 
     private float timeWhenStart;
     private float previousTimeFrame;
@@ -45,6 +49,20 @@ public struct FrequencyEase
         currentTime = 0f;
     }
 
+    public void Reset()
+    {
+        timerStarted = false;
+        timerIsEnding = false;
+        timeStart = 0f;
+        timeEnd = 0f;
+        currentTime = 0f;
+    }
+
+    public bool IsStarted()
+    {
+        return (timerStarted);
+    }
+
     /// <summary>
     /// max: maxSecond
     /// </summary>
@@ -59,9 +77,16 @@ public struct FrequencyEase
         previousTimeFrame = Time.fixedTime;
     }
 
-    public float Evaluate()
+    public float EvaluateWithDeltaTime()
     {
-        return (animationCurve.Evaluate(currentTime) * Time.deltaTime * speedIn);
+        currentValue = animationCurve.Evaluate(currentTime);
+        return (currentValue * Time.deltaTime * speedIn);
+    }
+
+    public float EvaluateWithoutDeltaTime()
+    {
+        currentValue = animationCurve.Evaluate(currentTime);
+        return (currentValue * speedIn);
     }
 
     /// <summary>

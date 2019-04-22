@@ -752,7 +752,7 @@ public static class ExtQuaternion
         return new Vector3(Mathf.Abs(v.x), Mathf.Abs(v.y), Mathf.Abs(v.z));
     }
 
-    /*
+
     public unsafe static float FastInvSqrt(float x)
     {
         float xhalf = 0.5f * x;
@@ -773,7 +773,7 @@ public static class ExtQuaternion
         var componentMult = FastInvSqrt(vec1.sqrMagnitude);
         return new Vector3(vec1.x * componentMult, vec1.y * componentMult, vec1.z * componentMult);
     }
-    */
+    
 
     /// <summary>
     /// 

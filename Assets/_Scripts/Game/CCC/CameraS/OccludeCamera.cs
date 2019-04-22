@@ -71,7 +71,7 @@ public class OccludeCamera : MonoBehaviour
             Debug.Log("zoom or conturn ?");
 
             //dollyCamMove.GetCineCollider().OnTargetObjectWarped
-            dollyCamMove.InputZoom(-1, easeZoom.Evaluate());
+            dollyCamMove.InputZoom(-1, easeZoom.EvaluateWithDeltaTime());
         }
         else
         {

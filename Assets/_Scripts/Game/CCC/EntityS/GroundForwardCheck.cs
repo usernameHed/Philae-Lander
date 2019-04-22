@@ -185,7 +185,7 @@ public class GroundForwardCheck : MonoBehaviour
             float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
             if (dotWrongSide < -dotMarginImpact)
             {
-                Debug.Log("forward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
+                //Debug.Log("forward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
                 isForbiddenForward = true;
                 return;
             }

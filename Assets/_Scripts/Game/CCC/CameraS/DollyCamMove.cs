@@ -77,7 +77,7 @@ public class DollyCamMove : MonoBehaviour
 
             float remapedInput = ExtUtilityFunction.Remap(Mathf.Abs(dirInput.x), deadZoneHoriz, 1f, 0f, 1f) * Mathf.Sign(dirInput.x);
 
-            toRotate.Rotate(0, easeRotate.Evaluate() * remapedInput, 0);
+            toRotate.Rotate(0, easeRotate.EvaluateWithDeltaTime() * remapedInput, 0);
         }
         else
         {
