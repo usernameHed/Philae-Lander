@@ -50,6 +50,26 @@ public class EntityAction : MonoBehaviour
         Vector3 relativeDirection = mainReferenceObjectDirection.right * dirInput.x * xBoost + mainReferenceObjectDirection.forward * dirInput.y * yBoost;
         return (relativeDirection);
     }
+
+    /// <summary>
+    /// get the relative direction 
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetRelativeDirectionWithNoDamping(Vector3 mainGravity, Vector3 debugPos, float xBoost = 1, float yBoost = 1)
+    {
+        
+        //Vector3 noDampingForward = -ExtQuaternion.CrossProduct(mainGravity, mainReferenceObjectDirection.right);
+        Vector3 relativeDirection = GetRelativeDirection();
+        Vector3 noDampingInputDir = ExtQuaternion.TurretLookRotationVector(relativeDirection, mainGravity);
+
+
+        Debug.DrawRay(debugPos, relativeDirection * 10, Color.black);
+        Debug.DrawRay(debugPos, mainGravity * 10, Color.red);
+        Debug.DrawRay(debugPos, noDampingInputDir * 10, Color.green);
+
+        return (noDampingInputDir);
+    }
+
     /// <summary>
     /// get the relative direction 
     /// </summary>

@@ -51,6 +51,8 @@ public class EntityRaycastForward : MonoBehaviour
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityController entityController = default;
     [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    private UniqueGravity _uniqueGravity;
+    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
     private EntityAction _entityAction;
 
     [FoldoutGroup("Debug"), Tooltip("dist to check forward player"), SerializeField, ReadOnly]
@@ -422,8 +424,9 @@ public class EntityRaycastForward : MonoBehaviour
 
         if (_entityAction.IsMoving())
         {
-            focusForwardDir = _entityAction.GetRelativeDirection().normalized;
-            focusRightDir = -_entityAction.GetRelativeDirectionRight().normalized;
+            focusForwardDir = _entityAction.GetRelativeDirectionWithNoDamping(_uniqueGravity.GetMainAndOnlyGravity(), rb.transform.position).FastNormalized();
+            focusRightDir = -_entityAction.GetRelativeDirectionRight().FastNormalized();
+            
         }
         else
         {
