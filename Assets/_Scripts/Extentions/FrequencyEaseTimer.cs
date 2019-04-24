@@ -83,6 +83,12 @@ public struct FrequencyEase
         return (currentValue * Time.deltaTime * speedIn);
     }
 
+    public float GetFinalSpeed()
+    {
+        currentValue = animationCurve.Evaluate(animationCurve.keys[animationCurve.length - 1].value);
+        return (currentValue * Time.deltaTime * speedIn);
+    }
+
     public float EvaluateWithoutDeltaTime()
     {
         currentValue = animationCurve.Evaluate(currentTime);
