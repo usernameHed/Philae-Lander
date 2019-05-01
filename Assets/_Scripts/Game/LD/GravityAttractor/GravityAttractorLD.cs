@@ -250,6 +250,11 @@ public class GravityAttractorLD : MonoBehaviour
     public List<GravityTriangle> gravityTrianglesOrQuad = new List<GravityTriangle>();
     [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
     public List<GravityQuad> gravityTetra = new List<GravityQuad>();
+    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    public List<MeshFilter> _allConcaveMesh = new List<MeshFilter>();
+    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    public List<Collider> _allConvexeMesh = new List<Collider>();
+
 
     [FoldoutGroup("Object"), SerializeField]
     public Transform gravityAttractorEditor;
@@ -279,12 +284,31 @@ public class GravityAttractorLD : MonoBehaviour
     private ExtTriangleOrQuad[] arrayExtTrianglesOrQuad;
     private ExtLine[] arrayExtLines;
 
+    private ExtNearestPoint.InfoKdTree[] arrayKdTree;
+
     
     private void Start()
     {
         SetupArrayPoints();
     }
     
+    [Button]
+    public void SetEveryMeshInsideThatObject(GameObject obj)
+    {
+        if (obj == null)
+        {
+            obj = gameObject;
+        }
+
+        MeshFilter[] allFilter = obj.GetExtComponentsInChildrens<MeshFilter>(99, true);
+        for (int i = 0; i < allFilter.Length; i++)
+        {
+            if (!_allConcaveMesh.Contains(allFilter[i]))
+            {
+                _allConcaveMesh.Add(allFilter[i]);
+            }
+        }
+    }
 
     [Button]
     public void CreateEditor()
@@ -318,6 +342,9 @@ public class GravityAttractorLD : MonoBehaviour
         indexAllResult += (gravityLines.Count > 0) ? 1 : 0;
         indexAllResult += (gravityTrianglesOrQuad.Count > 0) ? 1 : 0;
         indexAllResult += (gravityTetra.Count > 0) ? 1 : 0;
+
+        indexAllResult += _allConcaveMesh.Count;
+        indexAllResult += _allConvexeMesh.Count;
 
         allResult = new PointInfo[indexAllResult];
         allResultPos = ExtUtilityFunction.CreateNullVectorArray(indexAllResult);
@@ -367,6 +394,12 @@ public class GravityAttractorLD : MonoBehaviour
                 gravityTetra[i].preciseCalculation);
         }
 
+        arrayKdTree = new ExtNearestPoint.InfoKdTree[_allConcaveMesh.Count];
+
+        for (int i = 0; i < _allConcaveMesh.Count; i++)
+        {
+            arrayKdTree[i] = ExtNearestPoint.InitKdTree(_allConcaveMesh[i]);
+        }
     }
 
     
@@ -615,6 +648,24 @@ public class GravityAttractorLD : MonoBehaviour
             indexResult++;
         }
 
+        //here test all meshs !
+        for (int i = 0; i < _allConcaveMesh.Count; i++)
+        {
+            allResult[indexResult].pos = allResult[indexResult].posRange = allResultPos[indexResult] = allResultPosRange[indexResult] = ExtNearestPoint.NearestPointToMeshWithInitKdTree(fromPoint, _allConcaveMesh[i], arrayKdTree[i]);
+            allResult[indexResult].gravityBaseRatio = 0.5f;
+            allResult[indexResult].gravityDownRatio = 0.3f;
+            allResult[indexResult].range = 0f;
+            indexResult++;
+        }
+
+        for (int i = 0; i < _allConvexeMesh.Count; i++)
+        {
+            allResult[indexResult].pos = allResult[indexResult].posRange = allResultPos[indexResult] = allResultPosRange[indexResult] = _allConvexeMesh[i].ClosestPoint(fromPoint);
+            allResult[indexResult].gravityBaseRatio = 0.5f;
+            allResult[indexResult].gravityDownRatio = 0.3f;
+            allResult[indexResult].range = 0f;
+            indexResult++;
+        }
 
         if (indexResult > 0)
         {
@@ -626,9 +677,9 @@ public class GravityAttractorLD : MonoBehaviour
                 pointInfo.gravityBaseRatio = allResult[indexFound].gravityBaseRatio;
                 pointInfo.gravityDownRatio = allResult[indexFound].gravityDownRatio;
                 pointInfo.range = allResult[indexFound].range;
-                //Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
-                //ExtDrawGuizmos.DebugWireSphere(pointInfo.posRange, Color.red, 1f);
-                //ExtDrawGuizmos.DebugWireSphere(pointInfo.pos, Color.red, 1f);
+                Debug.DrawLine(fromPoint, pointInfo.pos, Color.green, 5f);
+                ExtDrawGuizmos.DebugWireSphere(pointInfo.posRange, Color.red, 1f);
+                ExtDrawGuizmos.DebugWireSphere(pointInfo.pos, Color.red, 1f);
             }
         }
         pointInfo.refGA = this;
