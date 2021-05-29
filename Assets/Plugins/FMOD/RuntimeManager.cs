@@ -901,7 +901,7 @@ retry:
             }
             catch (EventNotFoundException)
             {
-                throw new EventNotFoundException(path);
+                return (new FMOD.Studio.EventDescription());
             }
         }
 
