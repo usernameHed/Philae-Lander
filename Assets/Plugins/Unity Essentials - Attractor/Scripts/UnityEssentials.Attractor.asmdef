@@ -1,0 +1,23 @@
+{
+    "name": "UnityEssentials.Attractor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ed1f7503a63da864d84cd5730a93c92b",
+        "GUID:c0c8ae475cd59a343b0be072d257de6a",
+        "GUID:da14ffa4232ae1b499fbfac72963e5f1",
+        "GUID:08f5863385835f8478a1a99241e3a297",
+        "GUID:aabca6ed24a684840bd8889f02b785bb",
+        "GUID:f985c1a8664041e44a543eab750088d0",
+        "GUID:0f8284a30f7550844babfed54b51df58",
+        "GUID:bb0fc6a3765dff14c9fdeea1ca9039f0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

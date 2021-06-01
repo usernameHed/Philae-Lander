@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.Geometry.Editor",
+    "references": [
+        "GUID:f985c1a8664041e44a543eab750088d0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

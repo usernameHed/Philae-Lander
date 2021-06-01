@@ -1,0 +1,20 @@
+{
+    "name": "UnityEssentials.SceneWorkflow.ToolbarExtender.Editor",
+    "references": [
+        "GUID:2e4a8a315c362e748a16be73225b7985",
+        "GUID:aabca6ed24a684840bd8889f02b785bb",
+        "GUID:db6ca3b7ddb14704880d9c798b6a5a02",
+        "GUID:2b8b6b2414db3944fbd5d44e750e9c41"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

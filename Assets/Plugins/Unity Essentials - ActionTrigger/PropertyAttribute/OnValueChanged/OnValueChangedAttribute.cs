@@ -1,0 +1,14 @@
+﻿using System;
+using UnityEngine;
+
+namespace UnityEssentials.ActionTrigger.PropertyAttribute.OnvalueChanged
+{
+    public class OnValueChangedAttribute : UnityEngine.PropertyAttribute
+    {
+        public string MethodName;
+        public OnValueChangedAttribute(string methodName)
+        {
+            MethodName = methodName;
+        }
+    }
+}

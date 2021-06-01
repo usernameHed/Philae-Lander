@@ -1,0 +1,18 @@
+{
+    "name": "UnityEssentials.MovableShape.PropertyAttribute.ReadOnly.Editor",
+    "references": [
+        "GUID:5478414a77d59434695fa1b56c32d512",
+        "GUID:0c80e3c64b7699d4698cb5bc4a2d00a2"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

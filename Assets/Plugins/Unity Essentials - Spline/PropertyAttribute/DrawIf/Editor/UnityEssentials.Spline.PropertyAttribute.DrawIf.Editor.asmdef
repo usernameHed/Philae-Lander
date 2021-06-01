@@ -1,0 +1,20 @@
+{
+    "name": "UnityEssentials.Spline.PropertyAttribute.DrawIf.Editor",
+    "references": [
+        "GUID:5f85aad09451e3f499ca1f6678fe4686",
+        "GUID:dde7dd116a05cf84da83a69cf0d0db40",
+        "GUID:081d0bf58c48fd5428717a073a0ba6c6",
+        "GUID:a7e0d858513477c4da9c0244b53e460e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b796d07a1c7d34d88b343dffc77328, type: 3}
+  m_Name: Context Cross Scene Reference
+  m_EditorClassIdentifier: 
+  NameContext: Example Script Usage
+  SceneToLoad:
+  - scenePath: Assets/Unity Essentials - Scene Workflow - WIP/Example/Scenes/Camera
+      & Light.unity
+    sceneAsset: {fileID: 102900000, guid: 508d31bc8ad987e448bf5f5cf5cc0347, type: 3}
+  - scenePath: Assets/Unity Essentials - Scene Workflow - WIP/Example/Scenes/Cross
+      Scene Reference A.unity
+    sceneAsset: {fileID: 102900000, guid: e5b6bcb7e1e6e714f95effe39bd5d37c, type: 3}

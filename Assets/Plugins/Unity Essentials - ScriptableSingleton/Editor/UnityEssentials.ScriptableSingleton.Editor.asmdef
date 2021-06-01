@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.ScriptableSingleton.Editor",
+    "references": [
+        "GUID:bb0fc6a3765dff14c9fdeea1ca9039f0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

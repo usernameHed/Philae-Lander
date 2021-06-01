@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.SceneWorkflow.CrossSceneReference.Editor",
+    "references": [
+        "GUID:aabca6ed24a684840bd8889f02b785bb"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

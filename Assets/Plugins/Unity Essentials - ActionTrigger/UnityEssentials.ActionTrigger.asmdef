@@ -1,0 +1,21 @@
+{
+    "name": "UnityEssentials.ActionTrigger",
+    "references": [
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:7388a306d0ae06a49b4d92a8295e1ae0",
+        "GUID:ae9c2d13b690fc44aa49197b33395656",
+        "GUID:2de6e98242eeadb45955363bdd234ae1",
+        "GUID:aabca6ed24a684840bd8889f02b785bb",
+        "GUID:f985c1a8664041e44a543eab750088d0",
+        "GUID:0f8284a30f7550844babfed54b51df58"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

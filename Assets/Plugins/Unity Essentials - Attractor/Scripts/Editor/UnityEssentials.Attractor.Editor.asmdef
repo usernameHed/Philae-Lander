@@ -1,0 +1,23 @@
+{
+    "name": "UnityEssentials.Attractor.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1760ed4809eb53d4bb7f4c0d174ef3a6",
+        "GUID:da14ffa4232ae1b499fbfac72963e5f1",
+        "GUID:1c3a2ea1b0df48746a461d5f53fd87fa",
+        "GUID:ed1f7503a63da864d84cd5730a93c92b",
+        "GUID:aabca6ed24a684840bd8889f02b785bb",
+        "GUID:3aabe9d8a45c2244187a3a3b6f9ef7f5"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

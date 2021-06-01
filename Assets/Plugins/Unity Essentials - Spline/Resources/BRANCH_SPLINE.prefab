@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2344078983181248212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2344078983181248214}
+  - component: {fileID: 2344078983181248215}
+  - component: {fileID: 1730072964214792453}
+  - component: {fileID: 2344078983181248173}
+  - component: {fileID: 2344078983181248170}
+  - component: {fileID: 2344078983181248171}
+  - component: {fileID: 2344078983181248168}
+  m_Layer: 0
+  m_Name: BRANCH_SPLINE
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2344078983181248214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2344078983181248215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c4ad040976f9948a8087d85cf3e286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splineA: {fileID: 0}
+  _splineB: {fileID: 0}
+  _generatedSpline: {fileID: 1730072964214792453}
+  _pathPositionA: 1
+  _pathPositionB: 0
+  _tangentPercent: 0.5
+  _positionUnits: 2
+--- !u!114 &1730072964214792453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71dc66582d6e54744bdb89e7495aaf35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resolution: 20
+  _readOnly: 0
+  _addToSplineLister: 1
+  Appearances:
+    PathColor: {r: 0, g: 1, b: 0, a: 1}
+    InactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    Width: 0.1
+  GridSize: 1
+  m_Looped: 0
+  Waypoints:
+  - Position: {x: 0, y: 0, z: 20}
+    Tangent: {x: 0, y: 0, z: 7.071068}
+    Roll: 0
+  - Position: {x: 10, y: 0, z: 10}
+    Tangent: {x: 0, y: 0, z: 7.071068}
+    Roll: 0
+--- !u!114 &2344078983181248173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bf9fd9b0d1d18409f5e1dc89caf600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spline: {fileID: 1730072964214792453}
+  _positionUnits: 2
+  _description: Points on splines
+  _colorWayPoints: {r: 1, g: 0, b: 1, a: 1}
+  _showWayPoints: 0
+  _showWayPointsWhenUnselected: 0
+  _showFullNameOnSceneView: 0
+  _addPointClosestToCamera: 0
+  _targetToTrack: {fileID: 0}
+  _foldout: 0
+  _lastIndexSelected: 0
+  _anchorWhenChangingSpline: 0
+  Waypoints: []
+  _duplicateCurrentSelectedOnCreation: 0
+  _holdShiftToMoveReference: 0
+  _removeReferenceWhenRemovingPoint: 0
+  _showTarget: 0
+  _showDistance: 0
+  _showHandleTarget: 0
+  WaypointsAction:
+  - Description: 
+    PathPosition: 1
+    PreviousPosition: {x: 0, y: 0, z: 0}
+    _index: 0
+    _pointsListerReference: {fileID: 2344078983181248173}
+    Reference: {fileID: 0}
+    ReferenceAction: {fileID: 2344078983181248170}
+--- !u!114 &2344078983181248170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e00e89ff7151364991cbd912224abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2344078983181248171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d44397f777a3f04a927bd54c2e5f419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReactionLimit: 1
+  Events:
+  - id: 0
+  - id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: SwitchSpline, ns: PlayMagic.Interactions.Events, asm: PlayMagic.Interactions}
+      data:
+        EventTrigger: 256
+        _splineTarget: {fileID: 0}
+        _generateIntermediateSpline: 0
+        _automaticlyFindClosestPositionToTargetSpline: 0
+        _closestPositionFromCurrent: {fileID: 0}
+        _positionInSpline: 0
+    00000001:
+      type: {class: DestroyStuffs, ns: PlayMagic.Interactions.Events, asm: PlayMagic.Interactions}
+      data:
+        EventTrigger: 256
+        _toDestroy: {fileID: 2344078983181248212}
+        _delayBeforeDestroy: 0
+--- !u!114 &2344078983181248168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344078983181248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 723f374a9cece2b43b96a51eef5a0f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SearchInChildren: 1
+  SearchInParent: 1
+  AutomaticInteractionList:
+  - {fileID: 2344078983181248171}
+  ManualInteractions: []
+  _actionPoint: {fileID: 2344078983181248170}

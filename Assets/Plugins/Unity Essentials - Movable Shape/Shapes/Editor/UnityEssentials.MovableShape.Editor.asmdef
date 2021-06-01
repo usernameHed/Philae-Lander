@@ -1,0 +1,24 @@
+{
+    "name": "UnityEssentials.MovableShape.Editor",
+    "references": [
+        "GUID:0f8284a30f7550844babfed54b51df58",
+        "GUID:21a37686fc12bb042907837e0dcf8435",
+        "GUID:48b093067553af44db32c352f0b2a04c",
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:24edb16f5778c284f9f966576a724ac0",
+        "GUID:69b595b45c30665499355ebb7b88a3c1",
+        "GUID:0f4a9b3f7c7d0644c856e29659ba4da4",
+        "GUID:977074b94f3cbee4a8a15e3ab84ba145"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

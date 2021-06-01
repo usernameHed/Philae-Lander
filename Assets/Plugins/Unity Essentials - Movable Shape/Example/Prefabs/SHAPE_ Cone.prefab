@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8899342763699034080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8899342763699034110}
+  - component: {fileID: 8899342763699034081}
+  m_Layer: 0
+  m_Name: SHAPE_ Cone
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8899342763699034110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899342763699034080}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8899342763699034081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899342763699034080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68596b582dfaed542b32c66523950b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color: {r: 1, g: 0.92, b: 1, a: 0.7}
+  _showZone: 1
+  _isConstruct: 1
+  ConeSphereBase:
+    _position: {x: 0, y: 0, z: 8}
+    _rotation: {x: -0, y: -0, z: -0, w: 1}
+    _localScale: {x: 1, y: 1, z: 1}
+    _circleBase:
+      _plane:
+        Point: {x: 0, y: -0.5, z: 8}
+        Normal: {x: -0, y: -0.5, z: -0}
+        _allowBottom: 0
+      _radius: 0.5
+      _radiusSquared: 0.25
+    _radius: 0.5
+    _lenght: 2
+    _lenghtSquared: 4
+    _realRadius: 0.5
+    _realSquaredRadius: 0.25
+    _coneMatrix:
+      e00: 0.5
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0.5
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0.5
+      e23: 8
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    _p1: {x: 0, y: 0.5, z: 8}
+    _p2: {x: 0, y: -0.5, z: 8}
+    _delta: {x: 0, y: -1, z: 0}
+    _deltaUnit: {x: 0, y: -0.9983081, z: 0}
+    _deltaDistSquared: 1
+    _deltaDist: 1
+    _constantIsInsideShape: 0.25
+    _heightAtApex: -0.49915406

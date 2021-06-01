@@ -1,0 +1,19 @@
+{
+    "name": "UnityEssentials.ActionTrigger.Editor",
+    "references": [
+        "GUID:ed1f7503a63da864d84cd5730a93c92b",
+        "GUID:aabca6ed24a684840bd8889f02b785bb",
+        "GUID:0f8284a30f7550844babfed54b51df58"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

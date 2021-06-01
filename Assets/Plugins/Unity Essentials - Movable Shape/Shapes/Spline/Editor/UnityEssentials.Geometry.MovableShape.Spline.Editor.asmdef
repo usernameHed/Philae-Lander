@@ -1,0 +1,19 @@
+{
+    "name": "UnityEssentials.Geometry.MovableShape.Spline.Editor",
+    "references": [
+        "GUID:0f8284a30f7550844babfed54b51df58",
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:0f4a9b3f7c7d0644c856e29659ba4da4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

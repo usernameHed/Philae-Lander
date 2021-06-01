@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.MovableShape",
+    "references": [
+        "GUID:f985c1a8664041e44a543eab750088d0",
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:5478414a77d59434695fa1b56c32d512"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

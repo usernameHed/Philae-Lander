@@ -1,0 +1,19 @@
+{
+    "name": "UnityEssentials.Spline.Controller.Editor",
+    "references": [
+        "GUID:977074b94f3cbee4a8a15e3ab84ba145",
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:7ea2d3edaa6047e4cb1bade04b82d99c"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

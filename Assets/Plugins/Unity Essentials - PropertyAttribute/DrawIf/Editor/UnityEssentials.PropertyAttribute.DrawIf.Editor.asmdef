@@ -1,0 +1,20 @@
+{
+    "name": "UnityEssentials.PropertyAttribute.DrawIf.Editor",
+    "references": [
+        "GUID:4bfa5a7abdacdaa479162aed43697745",
+        "GUID:94d8389867661e242b9d5e365ff23de6",
+        "GUID:c0c8ae475cd59a343b0be072d257de6a",
+        "GUID:3aabe9d8a45c2244187a3a3b6f9ef7f5"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

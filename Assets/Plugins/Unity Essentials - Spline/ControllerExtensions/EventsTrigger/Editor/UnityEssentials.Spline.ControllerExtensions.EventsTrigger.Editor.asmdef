@@ -1,0 +1,18 @@
+{
+    "name": "UnityEssentials.Spline.ControllerExtensions.EventsTrigger.Editor",
+    "references": [
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:977074b94f3cbee4a8a15e3ab84ba145"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

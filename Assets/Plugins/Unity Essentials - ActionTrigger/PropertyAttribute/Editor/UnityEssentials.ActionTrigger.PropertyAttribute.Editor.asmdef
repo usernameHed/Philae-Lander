@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.ActionTrigger.PropertyAttribute.Editor",
+    "references": [
+        "GUID:ed1f7503a63da864d84cd5730a93c92b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

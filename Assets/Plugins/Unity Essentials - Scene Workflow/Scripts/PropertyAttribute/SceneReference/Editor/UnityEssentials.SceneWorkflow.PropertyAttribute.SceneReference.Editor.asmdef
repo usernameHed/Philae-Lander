@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.SceneWorkflow.PropertyAttribute.SceneReference.Editor",
+    "references": [
+        "GUID:db6ca3b7ddb14704880d9c798b6a5a02"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

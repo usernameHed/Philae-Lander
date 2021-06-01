@@ -1,0 +1,5531 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973ff05e1470fd34fb207e8972608121, type: 3}
+  m_Name: PeekSaveDatas
+  m_EditorClassIdentifier: 
+  _selectedObjects:
+  - Asset: {fileID: 11500000, guid: 9a7c376e1d1e8764590cec8de9692365, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: c49f1e33545d96246bdd5bb44ea998d3, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 4713db30faae6884fb1a06c73edb7afe, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 0488d0d391defbf469c20dcbe5d3a36c, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 9de4e0a13a4fcd449b183fcadedf793f, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 9a7c376e1d1e8764590cec8de9692365, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: c49f1e33545d96246bdd5bb44ea998d3, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 4713db30faae6884fb1a06c73edb7afe, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 9a7c376e1d1e8764590cec8de9692365, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: c49f1e33545d96246bdd5bb44ea998d3, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 4713db30faae6884fb1a06c73edb7afe, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 0488d0d391defbf469c20dcbe5d3a36c, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 4713db30faae6884fb1a06c73edb7afe, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 3c30d68853e45d142985afa8de358f4b, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 0
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21624
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7820
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 2 Capsule'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7790
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7798
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7790
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21706
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21624
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21820
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7708
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7704
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7708
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7820
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 2 Capsule'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21864
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7704
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7708
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7820
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 2 Capsule'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7790
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7790
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 27214
+    ScenePath: '[GF] - Big Rounded Cube Size 2'
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 27234
+    ScenePath: '[GF] - Big Rounded Cube Size 2'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7788
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7922
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -32452
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7766
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (5)'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7900
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -32076
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7900
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -32076
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21624
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 21864
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7704
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7708
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7856
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (6)'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7856
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (6)'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 18172
+    ScenePath: 
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 28856
+    ScenePath: '[GF] - Cube'
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: 28862
+    ScenePath: '[GF] - Cube'
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7868
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
+    IsGameObject: 1
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -7860
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43294
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43298
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43320
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 6a4bfe8a7d9abbe4ab9412f9c01f1ef5, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: a5f8e0107d53f9640850b43aef9a9738, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: b804b37a89eecdf4ba8b7f5126fad3ac, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: a2abd8138a0e78e438ef1ae9146595e9, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 8d244b1f69af14d4eac1c2ffb9f85902, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32104
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 8d244b1f69af14d4eac1c2ffb9f85902, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 92a0d10725c4d2c4988e7004d4f321ef, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43102
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (5)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43104
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -43104
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
+    IsGameObject: 0
+    InstanceId: -43104
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 850a12b34751b9144a1e56e4b61f747d, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: eb8dbb37883fa6848833f5b9bc80a231, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: b7224c420adb5dd4b85278bf1d0e89b3, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 0d8a79e0d5beaee4f808d3b329dab3ff, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 8450e99eb67f6b94fa88d7765f39be0c, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 0d8a79e0d5beaee4f808d3b329dab3ff, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 1bdc25c74641577498707242548683c7, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 81bae208b354ee84a8a5c276bab66dc0, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 8450e99eb67f6b94fa88d7765f39be0c, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 81bae208b354ee84a8a5c276bab66dc0, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 1bdc25c74641577498707242548683c7, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 0d8a79e0d5beaee4f808d3b329dab3ff, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 8450e99eb67f6b94fa88d7765f39be0c, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 8450e99eb67f6b94fa88d7765f39be0c, type: 3}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43122
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43294
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43222
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43328
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43294
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43210
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43316
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43122
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43252
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43020
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43274
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 57480
+    ScenePath: 
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: Philae LD 1
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32250
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32042
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (1)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32140
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (2)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32130
+    ScenePath: 2 - CCC
+    GameObjectName: BAG
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32140
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (2)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32042
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (1)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32140
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (2)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32250
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32042
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (1)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63846
+    ScenePath: 2 - CCC
+    GameObjectName: IDLE
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63944
+    ScenePath: 2 - CCC
+    GameObjectName: robot
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 57480
+    ScenePath: 
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63846
+    ScenePath: 2 - CCC
+    GameObjectName: IDLE
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63852
+    ScenePath: 2 - CCC
+    GameObjectName: all
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63856
+    ScenePath: 2 - CCC
+    GameObjectName: Echarp
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63880
+    ScenePath: 2 - CCC
+    GameObjectName: L
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63904
+    ScenePath: 2 - CCC
+    GameObjectName: R
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63932
+    ScenePath: 2 - CCC
+    GameObjectName: pCylinder1
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -42990
+    ScenePath: 2 - CCC
+    GameObjectName: Trails
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32140
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (2)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32260
+    ScenePath: 2 - CCC
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32140
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (2)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32042
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (1)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43122
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -72130
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -72130
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43102
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (5)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 32326
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43294
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: 18172
+    ScenePath: 
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73290
+    ScenePath: 1 - Systems
+    GameObjectName: '[GF] - Sphere (1)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43252
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43020
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73290
+    ScenePath: 1 - Systems
+    GameObjectName: '[GF] - Sphere (1)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73454
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (2)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43252
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73454
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (2)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73550
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (3)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43294
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43210
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (2)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43316
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (1)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73550
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (3)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73812
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (4)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -72130
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -72120
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73982
+    ScenePath: 1 - Systems
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73982
+    ScenePath: 1 - Systems
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -75034
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (1)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71114
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (4)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71114
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (4)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -77570
+    ScenePath: Philae LD 1
+    GameObjectName: GameObject
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71084
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (3)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71124
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -70008
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -77570
+    ScenePath: Philae LD 1
+    GameObjectName: GameObject
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43252
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -75034
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (1)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -73982
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71084
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (3)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71124
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71128
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71124
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71084
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (3)
+  - Asset: {fileID: 102900000, guid: 2c49d539da57a894e8e1715fde4e9f2a, type: 3}
+    IsGameObject: 1
+    InstanceId: -71128
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (5)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -71128
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (5)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -71128
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (5)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -71084
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (3)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -71128
+    ScenePath: Philae LD 1
+    GameObjectName: Cube (5)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -80954
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -81478
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -80954
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -81478
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -80954
+    ScenePath: Philae LD 1
+    GameObjectName: Old Micro LD
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -81478
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43294
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -81478
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -81478
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Parent of Cube (5)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -72130
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -72120
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32336
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Just Cubes
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -85442
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -71080
+    ScenePath: Philae LD 1
+    GameObjectName: Just Cubes
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63840
+    ScenePath: 2 - CCC
+    GameObjectName: Render
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63846
+    ScenePath: 2 - CCC
+    GameObjectName: IDLE
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63852
+    ScenePath: 2 - CCC
+    GameObjectName: all
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63856
+    ScenePath: 2 - CCC
+    GameObjectName: Echarp
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63868
+    ScenePath: 2 - CCC
+    GameObjectName: Head
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63880
+    ScenePath: 2 - CCC
+    GameObjectName: L
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63904
+    ScenePath: 2 - CCC
+    GameObjectName: R
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63932
+    ScenePath: 2 - CCC
+    GameObjectName: pCylinder1
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -63940
+    ScenePath: 2 - CCC
+    GameObjectName: pCube5
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -42980
+    ScenePath: 2 - CCC
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -42980
+    ScenePath: 2 - CCC
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32220
+    ScenePath: 2 - CCC
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43040
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43044
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43052
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43052
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43044
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43052
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32064
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43052
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -43044
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -42980
+    ScenePath: 2 - CCC
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -42980
+    ScenePath: 2 - CCC
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32228
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -42980
+    ScenePath: 2 - CCC
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -42980
+    ScenePath: 2 - CCC
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32336
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -1536
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -1360
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -1448
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Sphere (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 18284
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 18284
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17768
+    ScenePath: 1 - Systems
+    GameObjectName: DependencyInjectorSingleton
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17756
+    ScenePath: 1 - Systems
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 18284
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17756
+    ScenePath: 1 - Systems
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 0
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 1
+    InstanceId: 17894
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 1
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 1
+    InstanceId: -10154
+    ScenePath: 2 - CCC
+    GameObjectName: Capsule (1)
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 1
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 102900000, guid: 37db940341eff7441a11f7229cf4ac0d, type: 3}
+    IsGameObject: 0
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 102900000, guid: 2d3e6845e5da5be4e889245cef466e23, type: 3}
+    IsGameObject: 0
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 0
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: 26544
+    ScenePath: 00 - All In One
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase)
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: 26556
+    ScenePath: 00 - All In One
+    GameObjectName: DependencyInjectorSingleton
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: 17762
+    ScenePath: 1 - Systems
+    GameObjectName: SceneManager
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: 17756
+    ScenePath: 1 - Systems
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase)
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: -11542
+    ScenePath: 1 - Systems
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase) (1)
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: -10114
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: -11640
+    ScenePath: 1 - Systems
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: 18284
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: -1298
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: -11640
+    ScenePath: 00 - All In One
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 1
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -11916
+    ScenePath: 00 - All In One
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 27266
+    ScenePath: MINI
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase) (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12628
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 27258
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12566
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12628
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12678
+    ScenePath: MINI
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12668
+    ScenePath: MINI
+    GameObjectName: Capsule (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12658
+    ScenePath: MINI
+    GameObjectName: Capsule (2)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12648
+    ScenePath: MINI
+    GameObjectName: Capsule
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -12628
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -12628
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -12628
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 27442
+    ScenePath: 1 - Systems
+    GameObjectName: DependencyInjectorSingleton
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -13978
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14092
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -14092
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28170
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28170
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14118
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28170
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28202
+    ScenePath: MINI
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase) (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14118
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14122
+    ScenePath: MINI
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28170
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28202
+    ScenePath: MINI
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase) (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14118
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14122
+    ScenePath: MINI
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28170
+    ScenePath: MINI
+    GameObjectName: DependencyInjectorSingleton (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28202
+    ScenePath: MINI
+    GameObjectName: Entity Lister                            (keep track of every
+      EntityBase) (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14118
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14122
+    ScenePath: MINI
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28194
+    ScenePath: MINI
+    GameObjectName: 'Zone: Sphere Physic (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14118
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -14122
+    ScenePath: MINI
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 5916dcaa94c9a5842880689a686f47bb, type: 3}
+    IsGameObject: 0
+    InstanceId: -14122
+    ScenePath: MINI
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 5916dcaa94c9a5842880689a686f47bb, type: 3}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 11500000, guid: a2abd8138a0e78e438ef1ae9146595e9, type: 3}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 11500000, guid: a2abd8138a0e78e438ef1ae9146595e9, type: 3}
+    IsGameObject: 1
+    InstanceId: -14118
+    ScenePath: MINI
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
+  - Asset: {fileID: 11500000, guid: a2abd8138a0e78e438ef1ae9146595e9, type: 3}
+    IsGameObject: 1
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 11500000, guid: 49f193434f142014bb19f1aaedc1c846, type: 3}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 11500000, guid: 6feb69aaba2423346ada35d8c0f2a98b, type: 3}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 11500000, guid: 49f193434f142014bb19f1aaedc1c846, type: 3}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 5897886265953266890, guid: e6870ae8ead03764896fb51a9f21f9c2, type: 3}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 28252
+    ScenePath: MINI
+    GameObjectName: Entity - Just a Ball (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 28930
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -16464
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 5916dcaa94c9a5842880689a686f47bb, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 0365333c393979446bb85ff081bc9e2d, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: e78fb29fecac672499f0b343a6542ae6, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 3c8ec598108b81547b91d277789cd10a, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 5916dcaa94c9a5842880689a686f47bb, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 5897886265953266890, guid: e6870ae8ead03764896fb51a9f21f9c2, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 49f193434f142014bb19f1aaedc1c846, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 3ea405366b5332e4c89f12ea3dd07d98, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 0
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: -16570
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 29242
+    ScenePath: Philae LD 1
+    GameObjectName: GravityFieldsGroup (1)
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 29252
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: -16464
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 30408
+    ScenePath: '[GF] - Big Rounded Cube Size 1'
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 30430
+    ScenePath: '[GF] - Big Rounded Cube Size 1'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 30422
+    ScenePath: '[GF] - Big Rounded Cube Size 1'
+    GameObjectName: Cube
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 30448
+    ScenePath: '[GF] - Big Rounded Cube Size 1'
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 30456
+    ScenePath: '[GF] - Big Rounded Cube Size 1'
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 30430
+    ScenePath: '[GF] - Big Rounded Cube Size 1'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: -16464
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: -16376
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Just a Ball
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: 28930
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11500000, guid: 313231fcd4c2eb44a90ede55ebbfd46c, type: 3}
+    IsGameObject: 1
+    InstanceId: -16464
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -16464
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19846
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19850
+    ScenePath: Philae LD All Shape
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19736
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19740
+    ScenePath: Philae LD All Shape
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19736
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 31696
+    ScenePath: '[GF] - Big Rounded Cube Size 2'
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 31716
+    ScenePath: '[GF] - Big Rounded Cube Size 2'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19736
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19740
+    ScenePath: Philae LD All Shape
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19736
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 31906
+    ScenePath: '[GF] - Big Rounded Cube Size 2'
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 31926
+    ScenePath: '[GF] - Big Rounded Cube Size 2'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19736
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19640
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 3'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32082
+    ScenePath: '[GF] - Big Rounded Cube Size 3'
+    GameObjectName: '[GF] - Big Rounded Cube Size 3'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32026
+    ScenePath: '[GF] - Big Rounded Cube Size 3'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19640
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 3'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19938
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 4'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32230
+    ScenePath: '[GF] - Big Rounded Cube Size 4'
+    GameObjectName: '[GF] - Big Rounded Cube Size 4'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32180
+    ScenePath: '[GF] - Big Rounded Cube Size 4'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19938
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 4'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19402
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 6'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32540
+    ScenePath: '[GF] - Big Rounded Cube Size 6'
+    GameObjectName: '[GF] - Big Rounded Cube Size 6'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32556
+    ScenePath: '[GF] - Big Rounded Cube Size 6'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19402
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 6'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19472
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 8'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32970
+    ScenePath: '[GF] - Big Rounded Cube Size 8'
+    GameObjectName: '[GF] - Big Rounded Cube Size 8'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32966
+    ScenePath: '[GF] - Big Rounded Cube Size 8'
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 32992
+    ScenePath: '[GF] - Big Rounded Cube Size 8'
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19472
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Big Rounded Cube Size 8'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -20008
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33306
+    ScenePath: '[GF] - Cube'
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33310
+    ScenePath: '[GF] - Cube'
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -20008
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19916
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Sphere'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33408
+    ScenePath: '[GF] - Sphere'
+    GameObjectName: '[GF] - Sphere'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33400
+    ScenePath: '[GF] - Sphere'
+    GameObjectName: 'SHAPE: Sphere'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19916
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Sphere'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -20030
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Plane'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33528
+    ScenePath: '[GF] - Plane'
+    GameObjectName: '[GF] - Plane'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33526
+    ScenePath: '[GF] - Plane'
+    GameObjectName: 'SHAPE: Plane'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -20030
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Plane'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19616
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33624
+    ScenePath: '[GF] - Donut'
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33642
+    ScenePath: '[GF] - Donut'
+    GameObjectName: 'SHAPE: Donut'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19616
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19710
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33744
+    ScenePath: '[GF] - Line Size 2'
+    GameObjectName: '[GF] - Line Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33758
+    ScenePath: '[GF] - Line Size 2'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19710
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 2'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19590
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 3'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33892
+    ScenePath: '[GF] - Line Size 3'
+    GameObjectName: '[GF] - Line Size 3'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 33886
+    ScenePath: '[GF] - Line Size 3'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19590
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 3'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19806
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 5'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34024
+    ScenePath: '[GF] - Line Size 5'
+    GameObjectName: '[GF] - Line Size 5'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34008
+    ScenePath: '[GF] - Line Size 5'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19806
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 5'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19564
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 10'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34134
+    ScenePath: '[GF] - Line Size 10'
+    GameObjectName: '[GF] - Line Size 10'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34142
+    ScenePath: '[GF] - Line Size 10'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19564
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 10'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -20052
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 15'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34264
+    ScenePath: '[GF] - Line Size 15'
+    GameObjectName: '[GF] - Line Size 15'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34284
+    ScenePath: '[GF] - Line Size 15'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -20052
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 15'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19542
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 20'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34438
+    ScenePath: '[GF] - Line Size 20'
+    GameObjectName: '[GF] - Line Size 20'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34430
+    ScenePath: '[GF] - Line Size 20'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34438
+    ScenePath: '[GF] - Line Size 20'
+    GameObjectName: '[GF] - Line Size 20'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34430
+    ScenePath: '[GF] - Line Size 20'
+    GameObjectName: 'SHAPE: Line'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19542
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Line Size 20'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19832
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Spline'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34470
+    ScenePath: '[GF] - Spline'
+    GameObjectName: '[GF] - Spline'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34478
+    ScenePath: '[GF] - Spline'
+    GameObjectName: 'SHAPE: Spline'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -19832
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Spline'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -19832
+    ScenePath: Philae LD All Shape
+    GameObjectName: '[GF] - Spline'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -25912
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -25916
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 35080
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -26150
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -26154
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 35080
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 35080
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 11500000, guid: a2abd8138a0e78e438ef1ae9146595e9, type: 3}
+    IsGameObject: 0
+    InstanceId: 35080
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 35080
+    ScenePath: Philae LD 1
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -26030
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -26022
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -26018
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34990
+    ScenePath: 2 - CCC
+    GameObjectName: pCylinder1
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 8d244b1f69af14d4eac1c2ffb9f85902, type: 3}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 767eb2b1e48c3404d942c4f5937b1b49, type: 3}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 35062
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -25916
+    ScenePath: Philae LD 1
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -25924
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 35058
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 35120
+    ScenePath: Philae LD 1
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -25924
+    ScenePath: Philae LD 1
+    GameObjectName: Cube
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: -25912
+    ScenePath: Philae LD 1
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34994
+    ScenePath: 2 - CCC
+    GameObjectName: polySurface2
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34810
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34672
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34704
+    ScenePath: 2 - CCC
+    GameObjectName: Path Follow
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34802
+    ScenePath: 2 - CCC
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34672
+    ScenePath: 2 - CCC
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34802
+    ScenePath: 2 - CCC
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34810
+    ScenePath: 2 - CCC
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34802
+    ScenePath: 2 - CCC
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34832
+    ScenePath: 2 - CCC
+    GameObjectName: Zoom / Dezoom
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34704
+    ScenePath: 2 - CCC
+    GameObjectName: Path Follow
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2ccff40b0150d504b92beec4e974b764, type: 3}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2ccff40b0150d504b92beec4e974b764, type: 3}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 2ccff40b0150d504b92beec4e974b764, type: 3}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 34710
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 34762
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -39362
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: -39362
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 45810
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -39956
+    ScenePath: Camera
+    GameObjectName: LIFE canvas
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 45638
+    ScenePath: Camera
+    GameObjectName: Dynamic Shadow Projector
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -39930
+    ScenePath: Camera
+    GameObjectName: Trails
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 45810
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 45666
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: c0df212fa8b4eeb4a8b9132311830480, type: 3}
+    IsGameObject: 0
+    InstanceId: 45666
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 500f2da23f4afe64cabb81e2c9894445, type: 3}
+    IsGameObject: 0
+    InstanceId: 45666
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 0
+    InstanceId: 45666
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 29556
+    ScenePath: 
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45954
+    ScenePath: Graviton
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45916
+    ScenePath: Graviton
+    GameObjectName: Green Up
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45944
+    ScenePath: Graviton
+    GameObjectName: Red Right
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45566
+    ScenePath: Camera
+    GameObjectName: IDLE
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: -41520
+    ScenePath: Camera
+    GameObjectName: Blue Forward
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45752
+    ScenePath: Camera
+    GameObjectName: robot
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45566
+    ScenePath: Camera
+    GameObjectName: IDLE
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45666
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45810
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45600
+    ScenePath: Camera
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45562
+    ScenePath: Camera
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45696
+    ScenePath: Camera
+    GameObjectName: Zoom / Dezoom
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45860
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 83399155e2e4f4c49bb0cdac85f49fdd, type: 3}
+    IsGameObject: 1
+    InstanceId: 45810
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 45810
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 11500000, guid: f9c485ab0a5a4f349a3d279ece2acebe, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 2ccff40b0150d504b92beec4e974b764, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
+    IsGameObject: 1
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 11500000, guid: f9c485ab0a5a4f349a3d279ece2acebe, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 46486
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 47010
+    ScenePath: Camera
+    GameObjectName: Directional Light
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 47054
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 47054
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 47418
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 47368
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 47368
+    ScenePath: 2 - CCC
+    GameObjectName: MainCamera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -43920
+    ScenePath: Camera
+    GameObjectName: Plane
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 2ccff40b0150d504b92beec4e974b764, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 2b9d7cf8c8a15f5438232854d77b009a, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 2b9d7cf8c8a15f5438232854d77b009a, type: 3}
+    IsGameObject: 1
+    InstanceId: -43920
+    ScenePath: Camera
+    GameObjectName: Plane
+  - Asset: {fileID: 102900000, guid: 2b9d7cf8c8a15f5438232854d77b009a, type: 3}
+    IsGameObject: 1
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
+    IsGameObject: 0
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: d6576143797fc6b4b9e11b5233ecf541, type: 3}
+    IsGameObject: 0
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: d6576143797fc6b4b9e11b5233ecf541, type: 3}
+    IsGameObject: 0
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: f9c485ab0a5a4f349a3d279ece2acebe, type: 3}
+    IsGameObject: 0
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: f9c485ab0a5a4f349a3d279ece2acebe, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: d6576143797fc6b4b9e11b5233ecf541, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: d6576143797fc6b4b9e11b5233ecf541, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 5897886265953266890, guid: bcc5a13a224a50d4dbb03c001d4a83b8, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 5897886265953266890, guid: bcc5a13a224a50d4dbb03c001d4a83b8, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 923c78980268d0945ab3e8c8f140360f, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 49646
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 0
+    InstanceId: 49646
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49662
+    ScenePath: 
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49626
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49686
+    ScenePath: 
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49626
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49556
+    ScenePath: Camera
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49552
+    ScenePath: Camera
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49594
+    ScenePath: Camera
+    GameObjectName: Zoom / Dezoom
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49614
+    ScenePath: Camera
+    GameObjectName: Path Follow
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49586
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49556
+    ScenePath: Camera
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49626
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 49626
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 50124
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 50124
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -49582
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -49592
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -49592
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -49592
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 3d0bc12429b57a64da79f61d3e10de18, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: c0df212fa8b4eeb4a8b9132311830480, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 500f2da23f4afe64cabb81e2c9894445, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 8cef30ade79d07446bc6ac4a7b12cd5e, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 1
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: ac451321a62ef5740a70850b22892b16, type: 3}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -15798
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 8ee6301908418a348840b703f4cd6d1a, type: 3}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 412131f5514209142bf7a29d6eb87613, type: 3}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 412131f5514209142bf7a29d6eb87613, type: 3}
+    IsGameObject: 1
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 8d05ecec683908c4b825cb4d54953e82, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 102900000, guid: ac451321a62ef5740a70850b22892b16, type: 3}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 102900000, guid: ac451321a62ef5740a70850b22892b16, type: 3}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -44238
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  _selectedObjectsWithoutDuplicate:
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 5897886265953266890, guid: bcc5a13a224a50d4dbb03c001d4a83b8, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 923c78980268d0945ab3e8c8f140360f, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 0
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47932
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 32eff99b4ba8695458620acc419ee5b4, type: 3}
+    IsGameObject: 1
+    InstanceId: 47916
+    ScenePath: Camera
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: 49646
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 0
+    InstanceId: 49646
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49662
+    ScenePath: 
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49686
+    ScenePath: 
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49552
+    ScenePath: Camera
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49594
+    ScenePath: Camera
+    GameObjectName: Zoom / Dezoom
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49614
+    ScenePath: Camera
+    GameObjectName: Path Follow
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49586
+    ScenePath: Camera
+    GameObjectName: Render
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49556
+    ScenePath: Camera
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 1
+    InstanceId: 49626
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 50124
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 50124
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -49582
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -49592
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -49592
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 3d0bc12429b57a64da79f61d3e10de18, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: c0df212fa8b4eeb4a8b9132311830480, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 500f2da23f4afe64cabb81e2c9894445, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 8cef30ade79d07446bc6ac4a7b12cd5e, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 0
+    InstanceId: 50902
+    ScenePath: 2 - CCC
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -15798
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 8ee6301908418a348840b703f4cd6d1a, type: 3}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 412131f5514209142bf7a29d6eb87613, type: 3}
+    IsGameObject: 0
+    InstanceId: -15736
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 412131f5514209142bf7a29d6eb87613, type: 3}
+    IsGameObject: 1
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 8d05ecec683908c4b825cb4d54953e82, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 102900000, guid: ac451321a62ef5740a70850b22892b16, type: 3}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 0
+    InstanceId: 69180
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -44238
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  _pinnedObjects:
+  - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
+    IsGameObject: 0
+    InstanceId: 0
+    ScenePath: 
+    GameObjectName: 
+  _pinnedObjectsInScenes: []
+  _pinnedObjectsNameInScenes: []
+  _pinnedObjectsScenesLink: []
+  _currentIndex: 998
+  _lastSelectedObject:
+    Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor

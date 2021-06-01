@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.Extensions.Editor",
+    "references": [
+        "GUID:da14ffa4232ae1b499fbfac72963e5f1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

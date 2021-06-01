@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.Spline.PropertyAttribute.Editor",
+    "references": [
+        "GUID:a7e0d858513477c4da9c0244b53e460e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

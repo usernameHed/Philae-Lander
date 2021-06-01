@@ -1,0 +1,18 @@
+{
+    "name": "UnityEssentials.Geometry.GravityOverride.Editor",
+    "references": [
+        "GUID:f985c1a8664041e44a543eab750088d0",
+        "GUID:14306c1565f117b4a8ce70b776f1c0dd"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

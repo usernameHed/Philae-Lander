@@ -1,0 +1,20 @@
+{
+    "name": "UnityEssentials.Geometry.MovableShape.Donut.Editor",
+    "references": [
+        "GUID:0f8284a30f7550844babfed54b51df58",
+        "GUID:0f4a9b3f7c7d0644c856e29659ba4da4",
+        "GUID:14306c1565f117b4a8ce70b776f1c0dd",
+        "GUID:f985c1a8664041e44a543eab750088d0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

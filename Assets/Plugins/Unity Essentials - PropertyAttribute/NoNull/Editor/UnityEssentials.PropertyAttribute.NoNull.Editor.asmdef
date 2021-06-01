@@ -1,0 +1,17 @@
+{
+    "name": "UnityEssentials.PropertyAttribute.NoNull.Editor",
+    "references": [
+        "GUID:c0c8ae475cd59a343b0be072d257de6a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

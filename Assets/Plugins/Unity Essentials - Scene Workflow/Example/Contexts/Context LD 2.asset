@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b796d07a1c7d34d88b343dffc77328, type: 3}
+  m_Name: Context LD 2
+  m_EditorClassIdentifier: 
+  NameContext: LD 2
+  SceneToLoad:
+  - sceneAsset: {fileID: 102900000, guid: 508d31bc8ad987e448bf5f5cf5cc0347, type: 3}
+    scenePath: Assets/Unity Essentials - Scene Workflow - WIP/Example/Scenes/Camera
+      & Light.unity
+  - sceneAsset: {fileID: 102900000, guid: 5f195859d741bb041812dbf1a22df49e, type: 3}
+    scenePath: Assets/Unity Essentials - Scene Workflow - WIP/Example/Scenes/LD 2.unity

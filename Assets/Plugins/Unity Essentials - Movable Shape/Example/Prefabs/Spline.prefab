@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6772392084137871863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6772392084137871861}
+  - component: {fileID: 6772392084137871860}
+  m_Layer: 0
+  m_Name: Spline
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6772392084137871861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772392084137871863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6772392084137871860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772392084137871863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71dc66582d6e54744bdb89e7495aaf35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resolution: 20
+  _readOnly: 0
+  _addToSplineLister: 1
+  Appearances:
+    PathColor: {r: 0, g: 1, b: 0, a: 1}
+    InactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    Width: 0.1
+  GridSize: 1
+  m_Looped: 0
+  Waypoints:
+  - Position: {x: 1.0634553, y: 0, z: 0.026517868}
+    Tangent: {x: 1, y: 0, z: 0}
+    Roll: 0
+  - Position: {x: 1.9140934, y: 0, z: 1.3617325}
+    Tangent: {x: 1.4659973, y: 0, z: -0.13993263}
+    Roll: 0
+  - Position: {x: 3.3669891, y: 0, z: 0.3295269}
+    Tangent: {x: 1, y: 0, z: 0}
+    Roll: 0

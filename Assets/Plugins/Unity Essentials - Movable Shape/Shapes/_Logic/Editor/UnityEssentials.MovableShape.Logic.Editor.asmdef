@@ -1,0 +1,20 @@
+{
+    "name": "UnityEssentials.MovableShape.Logic.Editor",
+    "references": [
+        "GUID:0f8284a30f7550844babfed54b51df58",
+        "GUID:14306c1565f117b4a8ce70b776f1c0dd",
+        "GUID:a7e0d858513477c4da9c0244b53e460e",
+        "GUID:69b595b45c30665499355ebb7b88a3c1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
