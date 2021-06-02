@@ -785,3 +785,103 @@ System memory in use after: 137.7 MB.
 Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4077.
 Total: 45.964200 ms (FindLiveObjects: 0.668500 ms CreateObjectMapping: 0.286000 ms MarkObjects: 44.829600 ms  DeleteObjects: 0.178300 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011255 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.662 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 5.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3288 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4081.
+Total: 68.671800 ms (FindLiveObjects: 0.816900 ms CreateObjectMapping: 0.543900 ms MarkObjects: 67.111200 ms  DeleteObjects: 0.197600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 148.240712 seconds.
+  path: Assets/Plugins/NavMeshComponents/Scripts
+  artifactKey: Guid(ce138f3bd105d8049b1020fee879265f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/NavMeshComponents/Scripts using Guid(ce138f3bd105d8049b1020fee879265f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bce6c60146bcc579146845404139fdd2') in 0.014088 seconds
+  Import took 0.020518 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.436479 seconds.
+  path: Assets/Plugins/NavMeshComponents/Scripts/NavMeshSurface.cs
+  artifactKey: Guid(3df27b9289d1e8c4fb82e0df4f4673ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/NavMeshComponents/Scripts/NavMeshSurface.cs using Guid(3df27b9289d1e8c4fb82e0df4f4673ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33fa74f7ff9d4e19e666e5e4233e5b87') in 0.009750 seconds
+  Import took 0.016033 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010292 seconds.
+  path: Assets/Plugins/NavMeshComponents/Scripts/NavMeshSurface.cs
+  artifactKey: Guid(3df27b9289d1e8c4fb82e0df4f4673ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/NavMeshComponents/Scripts/NavMeshSurface.cs using Guid(3df27b9289d1e8c4fb82e0df4f4673ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33fa74f7ff9d4e19e666e5e4233e5b87') in 0.004618 seconds
+  Import took 0.011334 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.683669 seconds.
+  path: Assets/Plugins/NavMeshComponents/Scripts/NavMeshModifierVolume.cs
+  artifactKey: Guid(2777bba7e4e7c6f4681e3ea77eef5438) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/NavMeshComponents/Scripts/NavMeshModifierVolume.cs using Guid(2777bba7e4e7c6f4681e3ea77eef5438) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83c14cfab41ec2472e5895218533652f') in 0.009032 seconds
+  Import took 0.016594 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013659 seconds.
+  path: Assets/Plugins/NavMeshComponents/Scripts/NavMeshModifierVolume.cs
+  artifactKey: Guid(2777bba7e4e7c6f4681e3ea77eef5438) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/NavMeshComponents/Scripts/NavMeshModifierVolume.cs using Guid(2777bba7e4e7c6f4681e3ea77eef5438) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83c14cfab41ec2472e5895218533652f') in 0.003326 seconds
+  Import took 0.009536 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014485 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  3.230 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.96 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3279 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.8 MB.
+System memory in use after: 138.0 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4085.
+Total: 55.766400 ms (FindLiveObjects: 0.859500 ms CreateObjectMapping: 0.575300 ms MarkObjects: 53.942000 ms  DeleteObjects: 0.387100 ms)
+
