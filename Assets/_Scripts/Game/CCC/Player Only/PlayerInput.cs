@@ -58,19 +58,14 @@ public class PlayerInput : EntityAction
         if (enableScript)
         {
             //all axis
-            moveInput = new Vector2(PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal"),
-                PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical"));
+            moveInput = new Vector2(Input.GetAxis("Horizontal"),
+                Input.GetAxis("Vertical"));
 
             //all button
-            Jump = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Jump");
-            JumpUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Jump");
-            focus = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Focus");
-            focusUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Focus");
+            Jump = Input.GetButton("Jump");
+            JumpUp = Input.GetButtonUp("Jump");
 
-            dash = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("Dash");
-            dashUp = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("Dash");
-
-            trigger = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Both Trigger");
+            trigger = Input.GetAxis("Trigger Zoom");
 
             mouseInput = new Vector2(
             Input.GetAxisRaw("Mouse X"),
@@ -78,8 +73,8 @@ public class PlayerInput : EntityAction
         }
 
         cameraInput = new Vector2(
-            PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal Right"),
-            PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical Right"));
+            Input.GetAxis("Horizontal 2"),
+            Input.GetAxis("Vertical 2"));
     }
 
     /// <summary>

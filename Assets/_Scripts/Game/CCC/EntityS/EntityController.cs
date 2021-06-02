@@ -102,6 +102,7 @@ public class EntityController : MonoBehaviour, IKillable
         return (layerMask);
     }
 
+
     /// <summary>
     /// init player
     /// </summary>

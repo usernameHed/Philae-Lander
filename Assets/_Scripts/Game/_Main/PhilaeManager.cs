@@ -68,12 +68,12 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
     {
         if (!releaseScene)
         {
-            if (PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Escape"))
+            if (Input.GetButtonDown("Escape"))
             {
                 Debug.Log("quit ?");
                 SceneTransition.Instance.Quit();
             }
-            if (PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Restart"))
+            if (Input.GetButtonDown("Restart"))
             {
                 Debug.Log("Restart ?");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -81,13 +81,13 @@ public class PhilaeManager : SingletonMono<PhilaeManager>
         }
         else
         {
-            if (PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Escape")
-                || PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Start"))
+            if (Input.GetButtonDown("Escape")
+                || Input.GetButtonDown("Start"))
             {
                 Debug.Log("quit ?");
                 SceneTransition.Instance.Previous();
             }
-            if (PlayerConnected.Instance.GetPlayer(0).GetButtonDoublePressDown("Restart"))
+            if (Input.GetButtonDown("Restart"))
             {
                 Debug.Log("Restart ?");
                 //ScoreManager.Instance.Save();

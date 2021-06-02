@@ -26,9 +26,6 @@ public class EntityYoshiBoost : MonoBehaviour
     private float yoshiBoostGravity = 4f;
     public float GetYoshiBoost() => yoshiBoostGravity;
 
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
-    private Vibration onBoost = new Vibration();
-
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private Rigidbody rbEntity = default;
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
@@ -114,16 +111,7 @@ public class EntityYoshiBoost : MonoBehaviour
 
         clampRbSpeed.DoClamp(speedMax);
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rbEntity.position, rbEntity.rotation, ObjectsPooler.Instance.transform);
-        Vibrate();
         //SoundManager.Instance.PlaySound(playerController.SFX_Boost);
-    }
-
-    /// <summary>
-    /// do a jump
-    /// </summary>
-    private void Vibrate()
-    {
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onBoost);
     }
 
     private void FixedUpdate()

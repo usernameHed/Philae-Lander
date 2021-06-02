@@ -45,7 +45,7 @@ public class MenuManager : SingletonMono<MenuManager>
 
     private void InputGame()
     {
-        if (PlayerConnected.Instance.GetPlayer(0).GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit"))
         {
             if (buttonSelected == 0)
             {
@@ -56,7 +56,7 @@ public class MenuManager : SingletonMono<MenuManager>
                 SceneTransition.Instance.Previous();
             }
         }
-        if (PlayerConnected.Instance.GetPlayer(0).GetButtonDown("Escape"))
+        if (Input.GetButtonDown("Escape"))
         {
             Debug.Log("quit ?");
             //ScoreManager.Instance.Save();
@@ -64,30 +64,9 @@ public class MenuManager : SingletonMono<MenuManager>
         }
     }
 
-    private void ResetFocus()
-    {
-        if (PlayerConnected.Instance.GetPlayer(0).GetAnyButton()
-            || PlayerConnected.Instance.GetPlayer(0).GetAnyNegativeButton()
-            || PlayerConnected.Instance.GetPlayer(0).GetAxis("UIHorizontal") > 0
-            || PlayerConnected.Instance.GetPlayer(0).GetAxis("UIVertical") > 0)
-        {
-            if (m_EventSystem.currentSelectedGameObject == null)
-            {
-                m_EventSystem.SetSelectedGameObject(lastSelected);
-                //Debug.Log("set last selected: " + m_EventSystem.currentSelectedGameObject);
-            }
-            else
-            {
-                lastSelected = m_EventSystem.currentSelectedGameObject;
-                //Debug.Log("save last selected: " + m_EventSystem.currentSelectedGameObject);
-            }
-        }
-    }
-
     private void Update()
     {
         InputGame();
-        ResetFocus();
     }
 
     private void OnDisable()

@@ -182,3 +182,606 @@ System memory in use after: 139.2 MB.
 Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 4013.
 Total: 32.548000 ms (FindLiveObjects: 0.298200 ms CreateObjectMapping: 0.136400 ms MarkObjects: 31.996700 ms  DeleteObjects: 0.115200 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011569 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.321 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3355 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.0 MB.
+System memory in use after: 139.2 MB.
+
+Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 4017.
+Total: 30.793200 ms (FindLiveObjects: 0.296700 ms CreateObjectMapping: 0.138900 ms MarkObjects: 30.248700 ms  DeleteObjects: 0.107500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 456.275251 seconds.
+  path: Assets/Plugins/Unity Essentials - ScriptableSingleton/Editor
+  artifactKey: Guid(fd4c6a5569504bb448a3d26e82a881e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - ScriptableSingleton/Editor using Guid(fd4c6a5569504bb448a3d26e82a881e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '862ed5b2f3e62bfd8e57bb5705572231') in 0.010089 seconds
+  Import took 0.021192 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.296417 seconds.
+  path: Assets/Plugins/Unity Essentials - ScriptableSingleton/Editor/AutoCreateScriptableObject.cs
+  artifactKey: Guid(bd90d2049371a5843ba9da4c6aa5c322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - ScriptableSingleton/Editor/AutoCreateScriptableObject.cs using Guid(bd90d2049371a5843ba9da4c6aa5c322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb3d69543f8cd8f439aa68b9a865804c') in 0.006108 seconds
+  Import took 0.011458 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001500 seconds.
+  path: Assets/Plugins/Unity Essentials - ScriptableSingleton/Editor/AutoCreateScriptableObject.cs
+  artifactKey: Guid(bd90d2049371a5843ba9da4c6aa5c322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - ScriptableSingleton/Editor/AutoCreateScriptableObject.cs using Guid(bd90d2049371a5843ba9da4c6aa5c322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb3d69543f8cd8f439aa68b9a865804c') in 0.002744 seconds
+  Import took 0.007754 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.334898 seconds.
+  path: Assets/Plugins/Unity Essentials - ScriptableSingleton/ExampleScriptable.cs
+  artifactKey: Guid(f37928f71f99ecc4bad163634c8ac7f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - ScriptableSingleton/ExampleScriptable.cs using Guid(f37928f71f99ecc4bad163634c8ac7f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84285f0afe94def2d50da738374463f6') in 0.007398 seconds
+  Import took 0.012904 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003776 seconds.
+  path: Assets/Plugins/Unity Essentials - ScriptableSingleton/ExampleScriptable.cs
+  artifactKey: Guid(f37928f71f99ecc4bad163634c8ac7f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - ScriptableSingleton/ExampleScriptable.cs using Guid(f37928f71f99ecc4bad163634c8ac7f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84285f0afe94def2d50da738374463f6') in 0.002600 seconds
+  Import took 0.008111 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.128639 seconds.
+  path: Assets/Plugins/Unity Essentials - ScriptableSingleton/Resources/ExampleScriptable.asset
+  artifactKey: Guid(666980ce487a5974998141859e7fe97b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - ScriptableSingleton/Resources/ExampleScriptable.asset using Guid(666980ce487a5974998141859e7fe97b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1ec8a8516b4b6e48b13a6c4c166a2b5') in 0.037147 seconds
+  Import took 0.044002 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 127.162238 seconds.
+  path: Assets/_Scripts/Game/_Main/PlayerConnected.cs
+  artifactKey: Guid(54b5fe989c8e90645859c3dbaf70ca46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/_Main/PlayerConnected.cs using Guid(54b5fe989c8e90645859c3dbaf70ca46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec899a3254f98c2ca94fcb48b0048756') in 0.006514 seconds
+  Import took 0.017713 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 143.735135 seconds.
+  path: Assets/_Scripts/Game/CCC/EntityS/EntityRaycastForward.cs
+  artifactKey: Guid(a6ea35019c706ae43b733fceb4febb8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/CCC/EntityS/EntityRaycastForward.cs using Guid(a6ea35019c706ae43b733fceb4febb8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbebd028821fa9ba902ed41fae4f52b8') in 0.007558 seconds
+  Import took 0.014205 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1241.052888 seconds.
+  path: Assets/_Scripts/Game/CCC/Player Only/AimFollowerControllerold.cs
+  artifactKey: Guid(46b72c9b653af8349b5545a4eaa7c7b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/CCC/Player Only/AimFollowerControllerold.cs using Guid(46b72c9b653af8349b5545a4eaa7c7b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64542170fe33f96925c655d6f1d42ab5') in 0.010038 seconds
+  Import took 0.017066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.038679 seconds.
+  path: Assets/_Scripts/Game/CCC/Player Only/AimFollowerController.cs
+  artifactKey: Guid(4890872d7c36d2e4091810d96ce53df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/CCC/Player Only/AimFollowerController.cs using Guid(4890872d7c36d2e4091810d96ce53df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cb0b97414c17c996abae576c0ee980e') in 0.014353 seconds
+  Import took 0.020116 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.662967 seconds.
+  path: Assets/_Scripts/Game/CCC/Player Only/PlayerController.cs
+  artifactKey: Guid(c7d129c8f320f3b4a96b015cb9601086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/CCC/Player Only/PlayerController.cs using Guid(c7d129c8f320f3b4a96b015cb9601086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20f11fc8b2ed25865467c9a7cb75ea07') in 0.010764 seconds
+  Import took 0.017858 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.490912 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 5.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  3.466 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4021.
+Total: 42.439600 ms (FindLiveObjects: 1.037100 ms CreateObjectMapping: 0.243700 ms MarkObjects: 40.785900 ms  DeleteObjects: 0.370900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010280 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.670 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.85 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4025.
+Total: 39.908600 ms (FindLiveObjects: 0.396300 ms CreateObjectMapping: 0.265200 ms MarkObjects: 39.098500 ms  DeleteObjects: 0.147000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010312 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.751 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4029.
+Total: 38.488800 ms (FindLiveObjects: 0.338400 ms CreateObjectMapping: 0.200500 ms MarkObjects: 37.816300 ms  DeleteObjects: 0.131800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010807 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.754 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.4 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4033.
+Total: 36.525500 ms (FindLiveObjects: 0.324700 ms CreateObjectMapping: 0.256000 ms MarkObjects: 35.828500 ms  DeleteObjects: 0.114900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009843 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.570 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.4 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4037.
+Total: 36.539100 ms (FindLiveObjects: 0.406800 ms CreateObjectMapping: 0.181500 ms MarkObjects: 35.821600 ms  DeleteObjects: 0.127200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.013220 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.734 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.4 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4041.
+Total: 40.255000 ms (FindLiveObjects: 0.333400 ms CreateObjectMapping: 0.179900 ms MarkObjects: 39.575000 ms  DeleteObjects: 0.163600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012812 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.927 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4045.
+Total: 36.979000 ms (FindLiveObjects: 0.340700 ms CreateObjectMapping: 0.170400 ms MarkObjects: 36.291500 ms  DeleteObjects: 0.173000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010879 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.727 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.99 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4049.
+Total: 42.639100 ms (FindLiveObjects: 0.308700 ms CreateObjectMapping: 0.181000 ms MarkObjects: 41.981300 ms  DeleteObjects: 0.166500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010121 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.481 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.32 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4053.
+Total: 36.735600 ms (FindLiveObjects: 0.340000 ms CreateObjectMapping: 0.186600 ms MarkObjects: 36.075100 ms  DeleteObjects: 0.132600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009873 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.475 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.73 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4057.
+Total: 40.848900 ms (FindLiveObjects: 0.335600 ms CreateObjectMapping: 0.198700 ms MarkObjects: 40.189800 ms  DeleteObjects: 0.123200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014024 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.875 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4061.
+Total: 53.340000 ms (FindLiveObjects: 0.386400 ms CreateObjectMapping: 0.208900 ms MarkObjects: 52.356400 ms  DeleteObjects: 0.384900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011458 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.739 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4065.
+Total: 37.836000 ms (FindLiveObjects: 0.348100 ms CreateObjectMapping: 0.192600 ms MarkObjects: 37.140800 ms  DeleteObjects: 0.153000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012116 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.08 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.683 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3289 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4069.
+Total: 34.820300 ms (FindLiveObjects: 0.332600 ms CreateObjectMapping: 0.202900 ms MarkObjects: 34.142600 ms  DeleteObjects: 0.140200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2223.483744 seconds.
+  path: Assets/_Scripts/Game/_Main/TestKbTree.cs
+  artifactKey: Guid(9e03bd491550c5e45b7185fa31fad751) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/_Main/TestKbTree.cs using Guid(9e03bd491550c5e45b7185fa31fad751) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be376658e4a8cd314ef40986f7c12790') in 0.016365 seconds
+  Import took 0.024177 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001245 seconds.
+  path: Assets/_Scripts/Game/_Main/TestKbTree.cs
+  artifactKey: Guid(9e03bd491550c5e45b7185fa31fad751) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/_Main/TestKbTree.cs using Guid(9e03bd491550c5e45b7185fa31fad751) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be376658e4a8cd314ef40986f7c12790') in 0.003149 seconds
+  Import took 0.009040 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016887 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path C:\Users\ugo\WORK\GIT\Unity\Philae-Lander\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options, System.String msgPath, System.Boolean bFromProxy, System.Boolean useLongPath, System.Boolean checkHost) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions,string,bool,bool,bool)
+  at System.IO.StreamWriter.CreateFile (System.String path, System.Boolean append, System.Boolean checkHost) [0x0001c] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize, System.Boolean checkHost) [0x00055] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <c77ced6644e541b7ad3d7315a5e92a0a>:0 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+UnityEditor.Tools:set_lockedLayers (int)
+UnityEditor.Tools:OnEnable ()
+
+Mono: successfully reloaded assembly
+- Completed reload, in  4.881 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3288 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4073.
+Total: 49.144600 ms (FindLiveObjects: 0.455300 ms CreateObjectMapping: 0.270700 ms MarkObjects: 48.275300 ms  DeleteObjects: 0.141000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014221 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.899 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3288 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.5 MB.
+System memory in use after: 137.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4077.
+Total: 45.964200 ms (FindLiveObjects: 0.668500 ms CreateObjectMapping: 0.286000 ms MarkObjects: 44.829600 ms  DeleteObjects: 0.178300 ms)
+

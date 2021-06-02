@@ -5,9 +5,6 @@ using UnityEngine;
 [TypeInfoBox("Main player controller")]
 public class PlayerController : EntityController, IKillable
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("death vibration")]
-    private Vibration deathVibration = new Vibration();
-
     [FoldoutGroup("Object"), Tooltip("ref script")]
     public PlayerInput playerInput = null;
     [FoldoutGroup("Object"), Tooltip("ref script")]
@@ -49,7 +46,7 @@ public class PlayerController : EntityController, IKillable
     /// </summary>
     public void GameOver()
     {
-        PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
+
     }
 
     protected override void OnGrounded()
@@ -140,8 +137,6 @@ public class PlayerController : EntityController, IKillable
         //SoundManager.Instance.PlaySound(SFX_playerMove, false);
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Hit, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
-        //throw new System.NotImplementedException();
-        PlayerConnected.Instance.SetVibrationPlayer(idPlayer, deathVibration);
         EventManager.TriggerEvent(GameData.Event.GameOver);
         renderPlayer.gameObject.SetActive(false);
         //SoundManager.Instance.PlaySound(SFX_playerDeath);

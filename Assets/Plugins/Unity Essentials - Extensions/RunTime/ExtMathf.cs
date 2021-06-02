@@ -23,6 +23,18 @@ namespace UnityEssentials.Extensions
         }
 
         /// <summary>
+        /// Get the center of a sphereCast calculation.
+        /// </summary>
+        /// <param name="origin">origin of the spherreCast</param>
+        /// <param name="directionCast">direction of the sphere cast</param>
+        /// <param name="hitInfoDistance">hitInfo.distance of the hitInfo</param>
+        /// <returns>center position of the hit info</returns>
+        public static Vector3 GetCollisionCenterSphereCast(Vector3 origin, Vector3 directionCast, float hitInfoDistance)
+        {
+            return origin + (directionCast.normalized * hitInfoDistance);
+        }
+
+        /// <summary>
         /// From a given value (2), in an interval, from 0.5 to 3,
         /// give the mirror of this value in that interval, here: 1.5
         /// </summary>

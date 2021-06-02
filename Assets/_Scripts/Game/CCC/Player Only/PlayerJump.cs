@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class PlayerJump : EntityJump
 {
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
-    private Vibration onJump = new Vibration();
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on se pose"), SerializeField]
-    private Vibration onGrounded = new Vibration();
-
     [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
     private PlayerController playerController = null;
 
@@ -47,7 +42,6 @@ public class PlayerJump : EntityJump
         playerController.animator.SetBool("isJUMP", true);
 
         base.DoJump(boostHeight);
-        Vibrate();
 
         if (!stayHold && !fromCode)
             jumpStop = true;
@@ -61,17 +55,7 @@ public class PlayerJump : EntityJump
     {
         base.OnGrounded();
 
-        //if (isPlayer)
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onGrounded);
         playerController.animator.SetBool("isJUMP", false);
-    }
-
-    /// <summary>
-    /// do a jump
-    /// </summary>
-    private void Vibrate()
-    {
-        PlayerConnected.Instance.SetVibrationPlayer(playerController.idPlayer, onJump);
     }
 
     private void Update()
