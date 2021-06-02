@@ -1,5 +1,4 @@
-﻿using Borodar.RainbowHierarchy;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 public class SceneGUI : EditorWindow
@@ -99,13 +98,13 @@ public class SceneGUI : EditorWindow
         {
             if (philaeManager.ldManager.allGravityAttractorLd[i] == null)
                 continue;
-            ExtPhilaeEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, false);
+            //ExtPhilaeEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, false);
         }
 
         philaeManager.ldManager.FillList(true);
         for (int i = 0; i < philaeManager.ldManager.allGravityAttractorLd.Count; i++)
         {
-            ExtPhilaeEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
+            //ExtPhilaeEditor.AddCustomEditorToObject(philaeManager.ldManager.allGravityAttractorLd[i].gameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
         }
     }
 

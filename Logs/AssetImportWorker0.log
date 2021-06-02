@@ -885,3 +885,103 @@ System memory in use after: 138.0 MB.
 Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4085.
 Total: 55.766400 ms (FindLiveObjects: 0.859500 ms CreateObjectMapping: 0.575300 ms MarkObjects: 53.942000 ms  DeleteObjects: 0.387100 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 95.552544 seconds.
+  path: Assets/Plugins/PathCreator/Examples/Scripts
+  artifactKey: Guid(4708a8b1933bb914e98024a2cd57b3a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/PathCreator/Examples/Scripts using Guid(4708a8b1933bb914e98024a2cd57b3a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4967cdd3fb87ed11b331de56aef3fe48') in 0.007545 seconds
+  Import took 0.014793 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003612 seconds.
+  path: Assets/Plugins/PathCreator/Examples/Scripts
+  artifactKey: Guid(4708a8b1933bb914e98024a2cd57b3a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/PathCreator/Examples/Scripts using Guid(4708a8b1933bb914e98024a2cd57b3a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4967cdd3fb87ed11b331de56aef3fe48') in 0.002818 seconds
+  Import took 0.008451 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.291543 seconds.
+  path: Assets/Plugins/PathCreator/Examples
+  artifactKey: Guid(856133338e5935c4ea7215ea837b00da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/PathCreator/Examples using Guid(856133338e5935c4ea7215ea837b00da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8b655c2fb92888285481cf28bad5a64') in 0.010020 seconds
+  Import took 0.020748 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.208076 seconds.
+  path: Assets/Plugins/PathCreator/Examples/Scenes
+  artifactKey: Guid(7fa8a76a6a31dba43b3f224aa4c8ef31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/PathCreator/Examples/Scenes using Guid(7fa8a76a6a31dba43b3f224aa4c8ef31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96f5ee2ef01002b394eaa1f5d1bf5e43') in 0.009401 seconds
+  Import took 0.021545 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.552099 seconds.
+  path: Assets/Plugins/PathCreator/Examples/Scenes/Road.unity
+  artifactKey: Guid(8f020cfa1fb7ded47926b050b82adbe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/PathCreator/Examples/Scenes/Road.unity using Guid(8f020cfa1fb7ded47926b050b82adbe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6307cc117da3cfed09189dffee62f1ce') in 0.025652 seconds
+  Import took 0.032045 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010512 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.82 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.987 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.03 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3259 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.4 MB.
+System memory in use after: 137.6 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4089.
+Total: 38.869700 ms (FindLiveObjects: 0.445000 ms CreateObjectMapping: 0.207200 ms MarkObjects: 38.078300 ms  DeleteObjects: 0.137400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009898 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.405 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3257 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.3 MB.
+System memory in use after: 137.5 MB.
+
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 4093.
+Total: 34.103800 ms (FindLiveObjects: 0.356000 ms CreateObjectMapping: 0.342900 ms MarkObjects: 33.212000 ms  DeleteObjects: 0.191000 ms)
+

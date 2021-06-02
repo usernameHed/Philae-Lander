@@ -15,61 +15,6 @@ MonoBehaviour:
   _selectedObjects:
   - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
     IsGameObject: 1
-    InstanceId: -7708
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Quad'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7704
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 1'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7708
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Quad'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7820
-    ScenePath: Philae LD 1
-    GameObjectName: 'PROCEDURAL: Size 2 Capsule'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7788
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 2'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: 21864
-    ScenePath: Philae LD 1
-    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7704
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 1'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7708
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Quad'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7820
-    ScenePath: Philae LD 1
-    GameObjectName: 'PROCEDURAL: Size 2 Capsule'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7788
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 2'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
-    InstanceId: -7790
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Quad'
-  - Asset: {fileID: 11500000, guid: 167bf0c0e5eaf434f8597e0e72b3105d, type: 3}
-    IsGameObject: 1
     InstanceId: -7788
     ScenePath: Philae LD 1
     GameObjectName: '[GF] - Big Rounded Cube Size 2'
@@ -5017,52 +4962,62 @@ MonoBehaviour:
     InstanceId: 40652
     ScenePath: Level
     GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: ce138f3bd105d8049b1020fee879265f, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 11500000, guid: 2777bba7e4e7c6f4681e3ea77eef5438, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 4708a8b1933bb914e98024a2cd57b3a8, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 856133338e5935c4ea7215ea837b00da, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 7fa8a76a6a31dba43b3f224aa4c8ef31, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 1
+    InstanceId: 525110
+    ScenePath: Road
+    GameObjectName: Road Creator
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 1
+    InstanceId: 525126
+    ScenePath: Road
+    GameObjectName: Mesh Holder
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 1
+    InstanceId: 525110
+    ScenePath: Road
+    GameObjectName: Road Creator
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 525110
+    ScenePath: Road
+    GameObjectName: Road Creator
   _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 50124
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
-    IsGameObject: 0
-    InstanceId: 50124
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
-    IsGameObject: 1
-    InstanceId: -49582
-    ScenePath: Camera
-    GameObjectName: Main Camera
-  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
-    IsGameObject: 1
-    InstanceId: -49592
-    ScenePath: Camera
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -49592
-    ScenePath: Camera
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 50902
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 50902
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: 3d0bc12429b57a64da79f61d3e10de18, type: 3}
-    IsGameObject: 0
-    InstanceId: 50902
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: c0df212fa8b4eeb4a8b9132311830480, type: 3}
-    IsGameObject: 0
-    InstanceId: 50902
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
   - Asset: {fileID: 102900000, guid: 500f2da23f4afe64cabb81e2c9894445, type: 3}
     IsGameObject: 0
     InstanceId: 50902
@@ -5438,11 +5393,6 @@ MonoBehaviour:
     InstanceId: -44252
     ScenePath: Attractor
     GameObjectName: Zone With All Attractor
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 0
-    InstanceId: -44252
-    ScenePath: Attractor
-    GameObjectName: Zone With All Attractor
   - Asset: {fileID: 102900000, guid: fd4c6a5569504bb448a3d26e82a881e9, type: 3}
     IsGameObject: 0
     InstanceId: -44252
@@ -5513,6 +5463,56 @@ MonoBehaviour:
     InstanceId: 40652
     ScenePath: Level
     GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: ce138f3bd105d8049b1020fee879265f, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 11500000, guid: 2777bba7e4e7c6f4681e3ea77eef5438, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 4708a8b1933bb914e98024a2cd57b3a8, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 856133338e5935c4ea7215ea837b00da, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 7fa8a76a6a31dba43b3f224aa4c8ef31, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 0
+    InstanceId: 40652
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 1
+    InstanceId: 525126
+    ScenePath: Road
+    GameObjectName: Mesh Holder
+  - Asset: {fileID: 102900000, guid: 8f020cfa1fb7ded47926b050b82adbe6, type: 3}
+    IsGameObject: 1
+    InstanceId: 525110
+    ScenePath: Road
+    GameObjectName: Road Creator
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 525110
+    ScenePath: Road
+    GameObjectName: Road Creator
   _pinnedObjects:
   - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
     IsGameObject: 0
@@ -5524,8 +5524,8 @@ MonoBehaviour:
   _pinnedObjectsScenesLink: []
   _currentIndex: 998
   _lastSelectedObject:
-    Asset: {fileID: 11500000, guid: 9e03bd491550c5e45b7185fa31fad751, type: 3}
-    IsGameObject: 1
-    InstanceId: 40652
-    ScenePath: Level
-    GameObjectName: Sphere
+    Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 525110
+    ScenePath: Road
+    GameObjectName: Road Creator

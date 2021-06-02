@@ -3,7 +3,6 @@ using UnityEditor;
 using TMPro;
 using UnityEditor.IMGUI.Controls;
 using System.Reflection;
-using Borodar.RainbowHierarchy;
 using System;
 using System.Collections.Generic;
 
@@ -141,6 +140,7 @@ public class ExtPhilaeEditor : ScriptableObject
         editorGUIUtilityType.InvokeMember("SetIconForObject", bindingFlags, null, null, args);
     }
 
+    /*
     /// <summary>
     /// change the visual of the editor config for this object
     /// </summary>
@@ -195,4 +195,5 @@ public class ExtPhilaeEditor : ScriptableObject
             }
         }
     }
+    */
 }
