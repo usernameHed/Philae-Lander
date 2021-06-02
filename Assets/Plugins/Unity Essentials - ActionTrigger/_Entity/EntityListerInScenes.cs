@@ -13,6 +13,7 @@ namespace UnityEssentials.ActionTrigger.entity
     /// </summary>
     public class EntityListerInScenes : MonoBehaviour
     {
+        [SerializeField, ReadOnly]
         protected List<Entity> _entityList = new List<Entity>(TriggerZone.DEFAULT_MAX_ELEMENT_IN_ZONE);
         public int EntityListCount { get { return (_entityList.Count); } }
         public Entity GetEntity(int index) { return (_entityList[index]); }

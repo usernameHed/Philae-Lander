@@ -24,7 +24,7 @@ namespace UnityEssentials.ActionTrigger.Trigger
         public bool ShowLinksToActions = false;
         public bool AutomaticlySetListFromSceneActions = false;
 #endif
-
+        [SerializeField, ReadOnly]
         private List<Entity> _entityInside = new List<Entity>(TriggerZone.DEFAULT_MAX_ELEMENT_IN_ZONE);
 
         /// <summary>

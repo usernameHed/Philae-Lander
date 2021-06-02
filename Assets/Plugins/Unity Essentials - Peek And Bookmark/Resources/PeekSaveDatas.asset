@@ -14,276 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedObjects:
   - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 11500000, guid: 6a4bfe8a7d9abbe4ab9412f9c01f1ef5, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: a5f8e0107d53f9640850b43aef9a9738, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: b804b37a89eecdf4ba8b7f5126fad3ac, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 11500000, guid: a2abd8138a0e78e438ef1ae9146595e9, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: 8d244b1f69af14d4eac1c2ffb9f85902, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32104
-    ScenePath: 2 - CCC
-    GameObjectName: MainCamera
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: 8d244b1f69af14d4eac1c2ffb9f85902, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 102900000, guid: 92a0d10725c4d2c4988e7004d4f321ef, type: 3}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43102
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Cube (5)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43104
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
     IsGameObject: 0
     InstanceId: -43104
     ScenePath: Philae LD 1
@@ -5017,172 +4747,277 @@ MonoBehaviour:
     InstanceId: -137164
     ScenePath: Level
     GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 11400000, guid: d522590f3c0417d4c9a7fbe7e923a81d, type: 2}
+    IsGameObject: 0
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 11400000, guid: 8d05ecec683908c4b825cb4d54953e82, type: 2}
+    IsGameObject: 0
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 0
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 1
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 1
+    InstanceId: -182890
+    ScenePath: Attractor
+    GameObjectName: Blue Forward
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 1
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 2100000, guid: 1088c94efd9d06c488a2ab081509124d, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 2100000, guid: 73945bdd9ee7c4f42964d3a3a39fc421, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 2100000, guid: 664a3ba0c3810ef4c9a82e0f6fd2aa84, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183344
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183272
+    ScenePath: Attractor
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183280
+    ScenePath: Attractor
+    GameObjectName: Directional Light
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183284
+    ScenePath: Attractor
+    GameObjectName: DependencyInjectorSingleton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183290
+    ScenePath: Attractor
+    GameObjectName: EntityListerInScenes
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183268
+    ScenePath: Attractor
+    GameObjectName: ------ SETUP -----
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183290
+    ScenePath: Attractor
+    GameObjectName: EntityListerInScenes
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183344
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075068
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube 1
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075082
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube 2
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075096
+    ScenePath: Attractor
+    GameObjectName: AttractorGroup
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075038
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube (1)
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075068
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube 1
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -185532
+    ScenePath: DontDestroyOnLoad
+    GameObjectName: '[Debug Updater]'
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183314
+    ScenePath: Attractor
+    GameObjectName: Green Up
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183324
+    ScenePath: Attractor
+    GameObjectName: Blue Forward
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183334
+    ScenePath: Attractor
+    GameObjectName: Red Right
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075096
+    ScenePath: Attractor
+    GameObjectName: AttractorGroup
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183268
+    ScenePath: Attractor
+    GameObjectName: ------ SETUP -----
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183290
+    ScenePath: Attractor
+    GameObjectName: EntityListerInScenes
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 102900000, guid: 3c7e4dd2ff2cb6c4b82aefb1775da373, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 102900000, guid: 9ec8c16a6ae758741aa1211bf34930a5, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: ba0773a5ef2c19f4a8eb8853837db494, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 82c6becf054de4276851b2076073e7eb, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 82c6becf054de4276851b2076073e7eb, type: 3}
+    IsGameObject: 1
+    InstanceId: -186936
+    ScenePath: Attractor
+    GameObjectName: Graviton
   _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 11500000, guid: d3f633a539d1736428a80226def9e356, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 573f6201f5b8c8a48ab663901edf9f4e, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 978737c2ae53cbe49ab1833f0e582a5a, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 5a9bbfb426709a2439e16af9988030e4, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 8a79e6f75c57fc3429b6f1e4e5335494, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: aa90b92773bfc144eb189aacf6b1aae2, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 012bca3b16165bb4eb4c0e6c760c4e0f, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 1e072523c19d8c742936444cc282bc5e, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 102900000, guid: 3d6dc349604e7a640b4fa072fd04c740, type: 3}
-    IsGameObject: 0
-    InstanceId: 528876
-    ScenePath: Level
-    GameObjectName: CameraCinemachine
-  - Asset: {fileID: 102900000, guid: 0dd5ab04400d908438cf57e96207ed58, type: 3}
-    IsGameObject: 0
-    InstanceId: 528876
-    ScenePath: Level
-    GameObjectName: CameraCinemachine
-  - Asset: {fileID: 11500000, guid: 02507aa4c9fda784b9ee08ef23dd77c2, type: 3}
-    IsGameObject: 0
-    InstanceId: 528876
-    ScenePath: Level
-    GameObjectName: CameraCinemachine
-  - Asset: {fileID: 11500000, guid: 02507aa4c9fda784b9ee08ef23dd77c2, type: 3}
-    IsGameObject: 1
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 102900000, guid: 42f8677bcf6e39541be6a658dc8d7c6f, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 5897886265953266890, guid: 07db1b79bc950064c98793b063e5ef75, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11500000, guid: dcfbe39b49d4da34ba95fb2a4871b0b4, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11500000, guid: 95d7ef67c1bd7c049a50553b05e8c5b4, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11500000, guid: 945b8dc9da14d1446b5228f45643de75, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11500000, guid: 63878a3f43b50134ab7e1834a13649b2, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11500000, guid: abf7f2c4d5fe5644da8bb22dc3d15065, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11500000, guid: 3d5b7ff6e95bf254888ad99596d63476, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 4800000, guid: 544b003a0cbc04842a6f411cc879e323, type: 3}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11400000, guid: e5c6b012b63b26246b38ba7efe386514, type: 2}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 11400000, guid: d3c061145b8463148ab6f1c893e6b19a, type: 2}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 2100000, guid: bc1d26f2ca26f2c4abbf212977603478, type: 2}
-    IsGameObject: 0
-    InstanceId: 27000
-    ScenePath: 
-    GameObjectName: KillTrigger
-  - Asset: {fileID: 2100000, guid: bc1d26f2ca26f2c4abbf212977603478, type: 2}
-    IsGameObject: 1
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 11500000, guid: 30917d10ecfdd4b4faca5d7c86f03290, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 5897886265953266890, guid: 3d00b7ae1cebf9641b369231379596a8, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 11500000, guid: 7b3393d773db443d18bfb7356381fe67, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 11500000, guid: e2b1a5ba7cbf94b5598f453b4c39f01a, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 11500000, guid: ef0c92f3e870b4e95a1830c653347b2c, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 11500000, guid: 1a050537d2f844ad98abece77142c8b3, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 11500000, guid: f4d6f7ca167c1428cb802908dbe6993b, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
-  - Asset: {fileID: 5897886265953266890, guid: d640eb2a6a2003e47b8a6f39c14fbedb, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
   - Asset: {fileID: 11500000, guid: dfb660374d3b1455d95285978a3edbcc, type: 3}
     IsGameObject: 0
     InstanceId: -112452
@@ -5349,11 +5184,6 @@ MonoBehaviour:
     ScenePath: Camera
     GameObjectName: Entity - Player
   - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 0
-    InstanceId: -125782
-    ScenePath: Camera
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
     IsGameObject: 1
     InstanceId: 53446
     ScenePath: 
@@ -5513,6 +5343,176 @@ MonoBehaviour:
     InstanceId: -137164
     ScenePath: Level
     GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 11400000, guid: d522590f3c0417d4c9a7fbe7e923a81d, type: 2}
+    IsGameObject: 0
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 11400000, guid: 8d05ecec683908c4b825cb4d54953e82, type: 2}
+    IsGameObject: 0
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 0
+    InstanceId: -136172
+    ScenePath: Level
+    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 1
+    InstanceId: -182890
+    ScenePath: Attractor
+    GameObjectName: Blue Forward
+  - Asset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    IsGameObject: 1
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 2100000, guid: 1088c94efd9d06c488a2ab081509124d, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 2100000, guid: 73945bdd9ee7c4f42964d3a3a39fc421, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 2100000, guid: 664a3ba0c3810ef4c9a82e0f6fd2aa84, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 0
+    InstanceId: -182862
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183272
+    ScenePath: Attractor
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183280
+    ScenePath: Attractor
+    GameObjectName: Directional Light
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183284
+    ScenePath: Attractor
+    GameObjectName: DependencyInjectorSingleton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183344
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075082
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube 2
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075038
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube (1)
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075068
+    ScenePath: Attractor
+    GameObjectName: Attractor Cube 1
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -185532
+    ScenePath: DontDestroyOnLoad
+    GameObjectName: '[Debug Updater]'
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183296
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183314
+    ScenePath: Attractor
+    GameObjectName: Green Up
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183324
+    ScenePath: Attractor
+    GameObjectName: Blue Forward
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183334
+    ScenePath: Attractor
+    GameObjectName: Red Right
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: 1075096
+    ScenePath: Attractor
+    GameObjectName: AttractorGroup
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183268
+    ScenePath: Attractor
+    GameObjectName: ------ SETUP -----
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183290
+    ScenePath: Attractor
+    GameObjectName: EntityListerInScenes
+  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
+    IsGameObject: 1
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 102900000, guid: 3c7e4dd2ff2cb6c4b82aefb1775da373, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 102900000, guid: 9ec8c16a6ae758741aa1211bf34930a5, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: ba0773a5ef2c19f4a8eb8853837db494, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 82c6becf054de4276851b2076073e7eb, type: 3}
+    IsGameObject: 0
+    InstanceId: -183358
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 82c6becf054de4276851b2076073e7eb, type: 3}
+    IsGameObject: 1
+    InstanceId: -186936
+    ScenePath: Attractor
+    GameObjectName: Graviton
   _pinnedObjects:
   - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
     IsGameObject: 0
@@ -5522,10 +5522,10 @@ MonoBehaviour:
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 998
+  _currentIndex: 999
   _lastSelectedObject:
-    Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    Asset: {fileID: 11500000, guid: 82c6becf054de4276851b2076073e7eb, type: 3}
     IsGameObject: 1
-    InstanceId: -137164
-    ScenePath: Level
-    GameObjectName: Main Camera
+    InstanceId: -186936
+    ScenePath: Attractor
+    GameObjectName: Graviton
