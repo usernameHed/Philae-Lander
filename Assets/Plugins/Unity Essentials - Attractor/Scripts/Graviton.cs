@@ -15,7 +15,7 @@ namespace UnityEssentials.Attractor
     {
         [SerializeField] private float _mass = 1f;
         [SerializeField] private float _frequencySearchClosestPoint = 0.1f;
-        [SerializeField] private float _maxSpeed = 70f;
+        
 
         private Vector3 _defaultNormal = Vector3.down;
         private Vector3 _currentCalculatedNormal = Vector3.down;
@@ -56,13 +56,13 @@ namespace UnityEssentials.Attractor
             _attractorApplyingForce.Remove(gravityField);
         }
 
-        protected virtual void FixedUpdate()
-        {
-            CalculatePhysicNormal();
-            MoveAction(_currentCalculatedNormal);
-        }
+        //protected virtual void FixedUpdate()
+        //{
+        //    CalculatePhysicNormal();
+        //    MoveAction(_currentCalculatedNormal);
+        //}
 
-        protected void CalculatePhysicNormal()
+        public void CalculatePhysicNormal()
         {
             //if there is no gravity fields, keep old gravity
             if (_attractorApplyingForce.Count == 0)
@@ -184,18 +184,6 @@ namespace UnityEssentials.Attractor
             return sumForce;
         }
 
-
-        protected void MoveAction(Vector3 direction)
-        {
-            if (!AttractorSettings.Instance.SimulatePhysic)
-            {
-                return;
-            }
-
-            direction = ExtRigidBody.ClampVelocity(direction, _maxSpeed);
-            _rigidBody.AddForce(direction, ForceMode.Force);
-        }
-
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
@@ -214,8 +202,7 @@ namespace UnityEssentials.Attractor
                 ExtDrawGuizmos.DebugWireSphere(_attractorInfo[i].ContactPoint, Color.green, 0.1f);
                 ExtDrawGuizmos.DrawArrow(_rigidBody.position, _attractorInfo[i].NormalizedDirection * _forceAmount[i] * AttractorSettings.Instance.RatioSizeArrow, Color.white);
             }
-            ExtDrawGuizmos.DrawArrow(_rigidBody.position, _currentCalculatedNormal * AttractorSettings.Instance.RatioSizeArrow, Color.blue);
-            ExtDrawGuizmos.DrawArrow(_rigidBody.position, ExtRigidBody.ClampVelocity(_currentCalculatedNormal, _maxSpeed) * AttractorSettings.Instance.RatioSizeArrow, Color.cyan);
+            ExtDrawGuizmos.DrawArrow(_rigidBody.position, _currentCalculatedNormal * AttractorSettings.Instance.RatioSizeArrow, Color.cyan);
         }
 #endif
     }

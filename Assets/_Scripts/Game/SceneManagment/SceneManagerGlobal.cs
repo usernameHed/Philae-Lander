@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEssentials.Extensions;
 
 public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
 {

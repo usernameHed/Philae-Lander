@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.Extensions;
 
 public class PhilaeManager : SingletonMono<PhilaeManager>
 {

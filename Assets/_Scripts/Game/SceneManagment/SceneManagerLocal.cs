@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using UnityEssentials.Extensions;
 
 /// <summary>
 /// MenuManager Description

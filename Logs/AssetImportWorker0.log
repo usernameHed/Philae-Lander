@@ -2465,3 +2465,701 @@ Received Import Request.
 Start importing Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs using Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a9cc5f6870bdac6c5d56173241310f7') in 0.004011 seconds
   Import took 0.011868 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 814.852212 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9773690d4143a78702acf1502edd6f89') in 0.006672 seconds
+  Import took 0.012963 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004267 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9773690d4143a78702acf1502edd6f89') in 0.002596 seconds
+  Import took 0.007904 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2381.740074 seconds.
+  path: Assets/_Scripts/Extentions/DateTimeExtensions.cs
+  artifactKey: Guid(f4a8c5cc29ef2db4596de2f1016fed81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Extentions/DateTimeExtensions.cs using Guid(f4a8c5cc29ef2db4596de2f1016fed81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a0daf8ed06b511fa02502269c7a2fcb') in 0.008873 seconds
+  Import took 0.020287 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.554170 seconds.
+  path: Assets/_Scripts/Extentions/EasingFunctions.cs
+  artifactKey: Guid(01081803706b3694dbd277c0abc47fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Extentions/EasingFunctions.cs using Guid(01081803706b3694dbd277c0abc47fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbccdfea1d3dd812b058240719c200ff') in 0.009271 seconds
+  Import took 0.017181 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.096874 seconds.
+  path: Assets/_Scripts/Extentions/ExtColor.cs
+  artifactKey: Guid(26e1f20c49a146146b1db6cb00428ca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Extentions/ExtColor.cs using Guid(26e1f20c49a146146b1db6cb00428ca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e1b7d9dfd0873ae99bba038cc8f3f0e') in 0.009117 seconds
+  Import took 0.015251 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1186.726705 seconds.
+  path: Assets/_Scripts/Core/SingletonMono.cs
+  artifactKey: Guid(2c60cd1a23987be43bc4bd7eaacc1b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Core/SingletonMono.cs using Guid(2c60cd1a23987be43bc4bd7eaacc1b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '784db23bb7cc054843fd2c2237d1b678') in 0.009441 seconds
+  Import took 0.021169 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 144.230439 seconds.
+  path: Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorTrigger.cs
+  artifactKey: Guid(9a8af34f11d8234468ee98e7eb9f6408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorTrigger.cs using Guid(9a8af34f11d8234468ee98e7eb9f6408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c343d1dce7104f351ac9297ad9139b7b') in 0.008998 seconds
+  Import took 0.016013 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.208526 seconds.
+  path: Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorLD.cs
+  artifactKey: Guid(6989d0bf03644e7488abd11d78587687) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorLD.cs using Guid(6989d0bf03644e7488abd11d78587687) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce702bf7d13314d36fec346f9761986c') in 0.008199 seconds
+  Import took 0.014303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001812 seconds.
+  path: Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorLD.cs
+  artifactKey: Guid(6989d0bf03644e7488abd11d78587687) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorLD.cs using Guid(6989d0bf03644e7488abd11d78587687) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce702bf7d13314d36fec346f9761986c') in 0.003029 seconds
+  Import took 0.009017 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.992493 seconds.
+  path: Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorEditor.cs
+  artifactKey: Guid(5762de72d54c68f47ab3ddb19aac8472) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Game/LD/GravityAttractor/GravityAttractorEditor.cs using Guid(5762de72d54c68f47ab3ddb19aac8472) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7508f01d5770d66a7474150f8c7a8f35') in 0.008229 seconds
+  Import took 0.014687 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.364159 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/SceneAssets/Attractor Philae.unity
+  artifactKey: Guid(587c37593d7e8df46b1bc90212366275) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/SceneAssets/Attractor Philae.unity using Guid(587c37593d7e8df46b1bc90212366275) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c568961991ac97f9ce8ca5fd2c63bb16') in 0.320268 seconds
+  Import took 0.326954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.849587 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/SceneAssets/Attractor Philae 1.unity
+  artifactKey: Guid(3b71dfc5f7e7b174599fbf1eae68fdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/SceneAssets/Attractor Philae 1.unity using Guid(3b71dfc5f7e7b174599fbf1eae68fdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bfeb3aa45b0123cfb3e92a956c32e71') in 0.014871 seconds
+  Import took 0.021987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.006822 seconds.
+  path: Assets/_Scenes/_PHILAE/Menu.unity
+  artifactKey: Guid(5e9fcb5b325402a4ba7fab9676124754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/_PHILAE/Menu.unity using Guid(5e9fcb5b325402a4ba7fab9676124754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46e95dd1163ce95c9781b179d23d2da9') in 0.010389 seconds
+  Import took 0.017243 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.697832 seconds.
+  path: Assets/_Scenes/LevelSettings.lighting
+  artifactKey: Guid(a272ff919ab028d4ea99ce1f2a576288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/LevelSettings.lighting using Guid(a272ff919ab028d4ea99ce1f2a576288) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 0.
+ -> (artifact id: '62715e459cb29c663942eb0606d51ba1') in 0.018061 seconds
+  Import took 0.023927 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000615 seconds.
+  path: Assets/_Scenes/LevelSettings.lighting
+  artifactKey: Guid(a272ff919ab028d4ea99ce1f2a576288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/LevelSettings.lighting using Guid(a272ff919ab028d4ea99ce1f2a576288) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 0.
+ -> (artifact id: '62715e459cb29c663942eb0606d51ba1') in 0.004097 seconds
+  Import took 0.010443 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1582.000416 seconds.
+  path: Assets/Plugins/Unity Essentials - Peek And Bookmark/Example/Materials/Yellow.mat
+  artifactKey: Guid(22ff22833a1097b46b0858db4c21408c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Peek And Bookmark/Example/Materials/Yellow.mat using Guid(22ff22833a1097b46b0858db4c21408c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0b1f83f93f0edb7d23a2310a7baa89b') in 0.526167 seconds
+  Import took 0.534569 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000272 seconds.
+  path: Assets/_Render/3D/SmaalPlanet/Small Planet.obj
+  artifactKey: Guid(0efc550775294cc4986036d7a86ba6e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/SmaalPlanet/Small Planet.obj using Guid(0efc550775294cc4986036d7a86ba6e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c32db4867c6fc809567d87751cb26b8c') in 0.210955 seconds
+  Import took 0.218245 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Plugins/Unity Essentials - Peek And Bookmark/Example/Materials/White Transparent Half.mat
+  artifactKey: Guid(e57fc5dabe6f5a8468cbacf72284ac98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Peek And Bookmark/Example/Materials/White Transparent Half.mat using Guid(e57fc5dabe6f5a8468cbacf72284ac98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45d5d22771d5706aec7d7dc156e4e7fd') in 0.017708 seconds
+  Import took 0.024792 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000358 seconds.
+  path: Assets/_Render/3D/Bump Getaway/Inside Planet.obj
+  artifactKey: Guid(7766948b87ce70c47899664950e28f72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Bump Getaway/Inside Planet.obj using Guid(7766948b87ce70c47899664950e28f72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69a63bafd54d35691585284f497bd2aa') in 0.069784 seconds
+  Import took 0.076128 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000356 seconds.
+  path: Assets/_Render/3D/SmaalPlanet/Small Planet.3ds
+  artifactKey: Guid(98fc2cb3d1990d44a89cc1c8b16103f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/SmaalPlanet/Small Planet.3ds using Guid(98fc2cb3d1990d44a89cc1c8b16103f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '428d8a45cf008845111ee445d4a4f1fa') in 0.217481 seconds
+  Import took 0.224344 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/_Render/3D/Bump Getaway/Inside Planet.3ds
+  artifactKey: Guid(c7206310536d3024eb4250f149bd9bef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Bump Getaway/Inside Planet.3ds using Guid(c7206310536d3024eb4250f149bd9bef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15fa235b14ac1f50f07ad96743fc9bbd') in 0.083240 seconds
+  Import took 0.090394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/_Render/Materials/Tim_Mat_Test.mat
+  artifactKey: Guid(34c2a8f84197f3743934addd4f621db4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Tim_Mat_Test.mat using Guid(34c2a8f84197f3743934addd4f621db4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55d455bec8d319d84784cfb776219ab2') in 0.388920 seconds
+  Import took 0.400286 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39.877842 seconds.
+  path: Assets/_Render/Shaders/Misc/ToonGray.mat
+  artifactKey: Guid(7f9adc2bbf2a3b346add4d28d2f7fc9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Misc/ToonGray.mat using Guid(7f9adc2bbf2a3b346add4d28d2f7fc9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc6cd5b94d8ff1e7c81fa87d34073d27') in 0.077303 seconds
+  Import took 0.084715 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Plugins/Unity Essentials - Spline/Example/_Misc/_Prefabs/XWing.fbx
+  artifactKey: Guid(01c1c28fa2bf64545a4a8fbcf0ae7983) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Spline/Example/_Misc/_Prefabs/XWing.fbx using Guid(01c1c28fa2bf64545a4a8fbcf0ae7983) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad76e835a66bd9c89f76a878fc73a19c') in 0.182924 seconds
+  Import took 0.189843 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000259 seconds.
+  path: Assets/_Render/Materials/Game/Tory Blue.mat
+  artifactKey: Guid(c29ce4b6305cc1844ae92906ff485cfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Game/Tory Blue.mat using Guid(c29ce4b6305cc1844ae92906ff485cfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b1b011a56127a578fb04c50a9de9787') in 0.020241 seconds
+  Import took 0.027047 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.849528 seconds.
+  path: Assets/_Render/3D/Pear Planet/stareggroadeggplanetb.dae
+  artifactKey: Guid(8367feb5c9685704d98cbcdc1906f6a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Pear Planet/stareggroadeggplanetb.dae using Guid(8367feb5c9685704d98cbcdc1906f6a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '143531f5baad6dc20731838a6211282f') in 0.042312 seconds
+  Import took 0.049621 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/_Render/3D/Trial Galaxies Planet/tridentplanet.dae
+  artifactKey: Guid(152bb1aba167d8c44a972f453027683b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Trial Galaxies Planet/tridentplanet.dae using Guid(152bb1aba167d8c44a972f453027683b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4866e334f7817dec6a6abfc8291f8c12') in 0.110415 seconds
+  Import took 0.116939 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000318 seconds.
+  path: Assets/_Render/3D/Ugo_planete_boulons/Planete_boulon.fbx
+  artifactKey: Guid(1a768e1d6fd89f8458206cc4105915d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Ugo_planete_boulons/Planete_boulon.fbx using Guid(1a768e1d6fd89f8458206cc4105915d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39f61e3bad932c9c078354a7f4abba2d') in 0.503467 seconds
+  Import took 0.516218 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/_Render/3D/Tower Planet/stareggroadeggplanetd.dae
+  artifactKey: Guid(b6ae9739952447d46a1e2f42f373f9f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Tower Planet/stareggroadeggplanetd.dae using Guid(b6ae9739952447d46a1e2f42f373f9f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9163946747215b3c83129e8a21d6f3e') in 0.075449 seconds
+  Import took 0.083845 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/_Render/3D/Garden Planet/diskgardenplanetlow.dae
+  artifactKey: Guid(a023b885786255c45b9ec85bdd5884e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Garden Planet/diskgardenplanetlow.dae using Guid(a023b885786255c45b9ec85bdd5884e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '483756f056897bfb57d4c056e7ce21ca') in 0.196612 seconds
+  Import took 0.204935 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000328 seconds.
+  path: Assets/_Render/3D/Relay Planet A/relayplanetb.dae
+  artifactKey: Guid(f996147616d54af40b052d44b4fecfcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Relay Planet A/relayplanetb.dae using Guid(f996147616d54af40b052d44b4fecfcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef9776c7ffa531825262f3f9416c2c15') in 0.039792 seconds
+  Import took 0.047614 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/_Render/3D/Garden Planet/diskgardenplanet.dae
+  artifactKey: Guid(f7a7ba76709d69f429041f835ffc72a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Garden Planet/diskgardenplanet.dae using Guid(f7a7ba76709d69f429041f835ffc72a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c31b9cbb5b55d434833808fac35e16e9') in 0.300851 seconds
+  Import took 0.308107 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/_Render/3D/Coconut Twin Planets/cocotwinblow.dae
+  artifactKey: Guid(d9b38e4a83697a04cb5d8cde3ef7da77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Coconut Twin Planets/cocotwinblow.dae using Guid(d9b38e4a83697a04cb5d8cde3ef7da77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52d086cb294cca8c5775c8e3bdff16d2') in 0.098305 seconds
+  Import took 0.105500 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/_Render/3D/Capsule Planet/rgtowerpressgrounda.dae
+  artifactKey: Guid(b595859005f5c8141892e9e541c7d48c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Capsule Planet/rgtowerpressgrounda.dae using Guid(b595859005f5c8141892e9e541c7d48c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1077257587fa695cae2a5d1209387bc') in 0.036395 seconds
+  Import took 0.043013 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/_Render/3D/Capsule Planet/reversegravitytowerplanetlow.dae
+  artifactKey: Guid(339f7af2b48044442997d4bab3c4b848) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Capsule Planet/reversegravitytowerplanetlow.dae using Guid(339f7af2b48044442997d4bab3c4b848) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c3d725495bc13020b49aca5eba66a47') in 0.147919 seconds
+  Import took 0.154346 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/_Render/3D/Mini Hurry-Scurry Galaxy/minibreakdownplanetgalaxy.dae
+  artifactKey: Guid(db31c40ee78f89c42ab55187b885145a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Mini Hurry-Scurry Galaxy/minibreakdownplanetgalaxy.dae using Guid(db31c40ee78f89c42ab55187b885145a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56a79a8a8d1f3697c58e2ae5283c5043') in 0.049867 seconds
+  Import took 0.056850 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePlanetWanwanRoute.dae
+  artifactKey: Guid(ea9f00b6f736a4c45a34b32f6d1c1dd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePlanetWanwanRoute.dae using Guid(ea9f00b6f736a4c45a34b32f6d1c1dd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64b8b911b5632f6f125fae1bf161743e') in 0.037774 seconds
+  Import took 0.045416 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/_Render/3D/Capsule Planet/reversegravitytowerinside.dae
+  artifactKey: Guid(8100c9bad117a154683441d8ee54aad0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Capsule Planet/reversegravitytowerinside.dae using Guid(8100c9bad117a154683441d8ee54aad0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c4402f84a57b97ca76cb37a571ec02b') in 0.208695 seconds
+  Import took 0.215819 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/_Render/3D/Hole Planet/holeplanet.dae
+  artifactKey: Guid(8ed8241bf6b830940b4a8145bae40909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Hole Planet/holeplanet.dae using Guid(8ed8241bf6b830940b4a8145bae40909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '885a06ab4eed81c8f304fc81f2b77d51') in 0.092889 seconds
+  Import took 0.100534 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000420 seconds.
+  path: Assets/_Render/3D/Coconut Twin Planets/cocotwinalow.dae
+  artifactKey: Guid(d2d89f26175e59c4c84e525029436a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Coconut Twin Planets/cocotwinalow.dae using Guid(d2d89f26175e59c4c84e525029436a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16c7df88f4940a44b272c932e8e9a3f3') in 0.145161 seconds
+  Import took 0.152426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/_Render/3D/Pear Planet/stareggroadeggplanetblow.dae
+  artifactKey: Guid(48e4f2bdd6ce01f48b29fc5b98d311c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Pear Planet/stareggroadeggplanetblow.dae using Guid(48e4f2bdd6ce01f48b29fc5b98d311c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdd7e929d4c50cf220849c80c4ce4ec4') in 0.040349 seconds
+  Import took 0.047609 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/_Render/3D/Mini Gusty Garden Galaxy/minicosmosgardengalaxy.dae
+  artifactKey: Guid(babbaafaf8e764a4794ea205bb3a8398) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Mini Gusty Garden Galaxy/minicosmosgardengalaxy.dae using Guid(babbaafaf8e764a4794ea205bb3a8398) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9580c2075826397777f3e1b00b3ff6b') in 0.208203 seconds
+  Import took 0.216078 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePassThroughPlanetParts.obj
+  artifactKey: Guid(b927d4b05bb9cf549b5930d2a745bad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePassThroughPlanetParts.obj using Guid(b927d4b05bb9cf549b5930d2a745bad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e0e13b36c775acda6f3c415f1c832f0') in 0.054324 seconds
+  Import took 0.060926 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/_Render/3D/Mini Flipswitch Galaxy/miniflippanelexgalaxy.dae
+  artifactKey: Guid(699942993a3e19b4c991bc758e883da6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Mini Flipswitch Galaxy/miniflippanelexgalaxy.dae using Guid(699942993a3e19b4c991bc758e883da6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '242a318f437eb1ebf1db2120da9578f7') in 0.127186 seconds
+  Import took 0.134000 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/_Render/3D/Water Drop Planets/dropofwaterplanet.dae
+  artifactKey: Guid(baeaefd221e89294eacda6810d181d5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Water Drop Planets/dropofwaterplanet.dae using Guid(baeaefd221e89294eacda6810d181d5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '555d33fd1105829e4d7daf2a360e4628') in 0.074252 seconds
+  Import took 0.080613 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/_Render/3D/Star Planet/stareggroadplanetlow.dae
+  artifactKey: Guid(f4c22efd81f5e2f43a71d5d7488eedc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Star Planet/stareggroadplanetlow.dae using Guid(f4c22efd81f5e2f43a71d5d7488eedc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1941cb36e357822810e868313d5bfe8') in 0.035946 seconds
+  Import took 0.042570 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/_Render/3D/Star Planet/stareggroadplanet.dae
+  artifactKey: Guid(0a5fc549d7c276948be6dbb23d4f4218) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Star Planet/stareggroadplanet.dae using Guid(0a5fc549d7c276948be6dbb23d4f4218) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b200e29bc701d30ed779529e3e7d71b3') in 0.037501 seconds
+  Import took 0.044927 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/_Render/3D/Relay Planet A/relayplaneta.dae
+  artifactKey: Guid(958a18c84bf8eac43823374db488872e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Relay Planet A/relayplaneta.dae using Guid(958a18c84bf8eac43823374db488872e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9dcbc62dd2a5f402739523d8002050d') in 0.040555 seconds
+  Import took 0.047485 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/_Render/3D/Color Planet/stareggroadeggplanetclow.dae
+  artifactKey: Guid(0dda7cfb1882c8448b3f22260199f8ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Color Planet/stareggroadeggplanetclow.dae using Guid(0dda7cfb1882c8448b3f22260199f8ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd38f1627ea9c010bfe3788becf1af2c') in 0.036795 seconds
+  Import took 0.042897 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePassThroughPlanetParts.dae
+  artifactKey: Guid(b43b9f546755e1d4e86ab4fbeb960151) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePassThroughPlanetParts.dae using Guid(b43b9f546755e1d4e86ab4fbeb960151) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cffca72e7ee5e898ec3dc4a76c2b212c') in 0.042343 seconds
+  Import took 0.048805 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/_Render/3D/Coconut Twin Planets/cocotwinb.dae
+  artifactKey: Guid(27ba19f506a70b54ab0d763fcb29db86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Coconut Twin Planets/cocotwinb.dae using Guid(27ba19f506a70b54ab0d763fcb29db86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64e846652339a2f476bde2e4b2e5eb1c') in 0.174234 seconds
+  Import took 0.181751 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000319 seconds.
+  path: Assets/_Render/3D/Color Planet/stareggroadeggplanetc.dae
+  artifactKey: Guid(42c9aec844ea89247b7ac385ec89bd58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Color Planet/stareggroadeggplanetc.dae using Guid(42c9aec844ea89247b7ac385ec89bd58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4055048ca0af73c1102383f0b510b555') in 0.049884 seconds
+  Import took 0.056116 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000311 seconds.
+  path: Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePassThroughPlanet.obj
+  artifactKey: Guid(5f860614580539e479b62a62306a52d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/GALAXY 2/Wii - Super Mario Galaxy 2 - Sky Station Starting Planet/UFOShapePassThroughPlanet.obj using Guid(5f860614580539e479b62a62306a52d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '526c0bf5fa64c6eb49b018338605f2a6') in 0.199856 seconds
+  Import took 0.206693 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/_Render/3D/Coconut Twin Planets/cocotwina.dae
+  artifactKey: Guid(dc8185bf14089bd4089e6f48ff44f356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Coconut Twin Planets/cocotwina.dae using Guid(dc8185bf14089bd4089e6f48ff44f356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8697c9f8e1643de5f181b3d690341be') in 0.209712 seconds
+  Import took 0.217196 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.942542 seconds.
+  path: Assets/_Render/Materials/AimFollowSpline.mat
+  artifactKey: Guid(eaaac9fbae837ae48bba3f178326d6d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/AimFollowSpline.mat using Guid(eaaac9fbae837ae48bba3f178326d6d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d2b79b678f00f2ddf6b863a93f02b26') in 0.032643 seconds
+  Import took 0.038921 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/_Render/3D/Bump Getaway/Inside Planet Core.obj
+  artifactKey: Guid(1f8bfb8b470ec7a48af5a7be9b86fd9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Bump Getaway/Inside Planet Core.obj using Guid(1f8bfb8b470ec7a48af5a7be9b86fd9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d8405a814bceecdffb48ec6981aebe8') in 0.145650 seconds
+  Import took 0.153584 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000274 seconds.
+  path: Assets/_Render/3D/Bump Getaway/Inside Planet Core.3ds
+  artifactKey: Guid(ae09c425e01d750488ff6606c0de2b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Bump Getaway/Inside Planet Core.3ds using Guid(ae09c425e01d750488ff6606c0de2b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65f884b3ac7acd2351fe82afd109a6be') in 0.120262 seconds
+  Import took 0.127591 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/_Render/Materials/Coin.mat
+  artifactKey: Guid(1c3c9f9529c8e9e4aaa29bbfdd1044ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Coin.mat using Guid(1c3c9f9529c8e9e4aaa29bbfdd1044ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85e817262dacf4c8868e4b2ab54ddbf4') in 0.018217 seconds
+  Import took 0.025820 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/_Render/3D/Bump Getaway/Inside Planet Core.3ds
+  artifactKey: Guid(ae09c425e01d750488ff6606c0de2b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Bump Getaway/Inside Planet Core.3ds using Guid(ae09c425e01d750488ff6606c0de2b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65f884b3ac7acd2351fe82afd109a6be') in 0.102158 seconds
+  Import took 0.108679 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/BlobShadowProjector.mat
+  artifactKey: Guid(28e556afc64954978b8d3a82a2ca9ae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/BlobShadowProjector.mat using Guid(28e556afc64954978b8d3a82a2ca9ae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65c07b231ee80a2fc75aabb481d0f119') in 0.015796 seconds
+  Import took 0.022079 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/_Render/3D/HolePlanet/Hole Planet.3ds
+  artifactKey: Guid(5084bff149868c349a478589860828b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/HolePlanet/Hole Planet.3ds using Guid(5084bff149868c349a478589860828b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8ee6bbbe53b184e7739134fd4ed9ffd') in 0.090213 seconds
+  Import took 0.097238 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000262 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Shaders/Blit/Blit.mat
+  artifactKey: Guid(5b2a371cc75ab40938e2d118b317ef85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Shaders/Blit/Blit.mat using Guid(5b2a371cc75ab40938e2d118b317ef85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64548b3dd0495cedd04902e6b4c9ce56') in 0.017215 seconds
+  Import took 0.024115 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000308 seconds.
+  path: Assets/_Render/Shaders/Camera/AlwaysVisible.mat
+  artifactKey: Guid(44ebfa00d721f02489c289c0d30bdfa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/AlwaysVisible.mat using Guid(44ebfa00d721f02489c289c0d30bdfa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d6a1ceb05e96b16aa79b2efaf08e431') in 0.039946 seconds
+  Import took 0.046470 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Assets/_Render/Materials/Coin No Move.mat
+  artifactKey: Guid(de9f2dbb7f0d6f648b733fb110d09999) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Coin No Move.mat using Guid(de9f2dbb7f0d6f648b733fb110d09999) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1195cec0239fff7f3109f34021bd49b7') in 0.016235 seconds
+  Import took 0.022558 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/_Render/Materials/AimFollowSpline.mat
+  artifactKey: Guid(eaaac9fbae837ae48bba3f178326d6d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/AimFollowSpline.mat using Guid(eaaac9fbae837ae48bba3f178326d6d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d2b79b678f00f2ddf6b863a93f02b26') in 0.014462 seconds
+  Import took 0.021204 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/Materials/Blue.mat
+  artifactKey: Guid(35a92cdfdf14cf24cb657afdf83e01d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/Materials/Blue.mat using Guid(35a92cdfdf14cf24cb657afdf83e01d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc944e00e1cede43f43ef11534de519c') in 0.015125 seconds
+  Import took 0.023928 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/_Render/Materials/DefaultMat TilingX10.mat
+  artifactKey: Guid(2954062a4082f094eace4955f63a6fd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/DefaultMat TilingX10.mat using Guid(2954062a4082f094eace4955f63a6fd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af085fd71268c49a6f427c36f0ea68a8') in 0.023805 seconds
+  Import took 0.030278 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000260 seconds.
+  path: Assets/_Render/Materials/COLLUMN.mat
+  artifactKey: Guid(07e657521dbc78445bb96bc9a7ba3c3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/COLLUMN.mat using Guid(07e657521dbc78445bb96bc9a7ba3c3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e045fdeeb0e512e0d2ccdbbc6e7b6113') in 0.021210 seconds
+  Import took 0.028429 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Shaders/Blit/CopyMipmap.mat
+  artifactKey: Guid(a0fb9bc77107e4463b7b8a887ed47fd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Shaders/Blit/CopyMipmap.mat using Guid(a0fb9bc77107e4463b7b8a887ed47fd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69cea2818ae776586e55c088e73addda') in 0.018488 seconds
+  Import took 0.026667 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/Black.mat
+  artifactKey: Guid(6467790499d4b934dae012341ec69c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/Black.mat using Guid(6467790499d4b934dae012341ec69c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e510182356e892ef279199622c868ed0') in 0.014122 seconds
+  Import took 0.020561 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/BlackOcclude.mat
+  artifactKey: Guid(4726b274914419f4c97ed7b855aa4457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/BlackOcclude.mat using Guid(4726b274914419f4c97ed7b855aa4457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3eaf0729a03159a170776f3f7abeef4b') in 0.015832 seconds
+  Import took 0.023720 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/_Render/Materials/DALLES.mat
+  artifactKey: Guid(9ea90b14f1054a94da8e330f2c8ebf82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/DALLES.mat using Guid(9ea90b14f1054a94da8e330f2c8ebf82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45c5becb91d6d8a749b12cf0c17afcd1') in 0.021074 seconds
+  Import took 0.027536 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/_Render/3D/HolePlanet/Hole Planet.obj
+  artifactKey: Guid(d21846ae5cae2824e96bcf19ee66e191) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/HolePlanet/Hole Planet.obj using Guid(d21846ae5cae2824e96bcf19ee66e191) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f4fc1a0452cb7ff892f57962eee56f5') in 0.070399 seconds
+  Import took 0.076936 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/BlobHardShadowProjector.mat
+  artifactKey: Guid(247c6d6e0e26f6747ace17722d68c2e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/BlobHardShadowProjector.mat using Guid(247c6d6e0e26f6747ace17722d68c2e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6fef0c3e1574b9a4074c95063dc4ef2') in 0.019057 seconds
+  Import took 0.025343 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000285 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Shaders/Blit/Blur.mat
+  artifactKey: Guid(a73b280aec97f4734ae3ad03c7b6a785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Shaders/Blit/Blur.mat using Guid(a73b280aec97f4734ae3ad03c7b6a785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '669a4876304828dbe81db0a7121f3520') in 0.022520 seconds
+  Import took 0.029137 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/_Render/Materials/Game/Asteroid.mat
+  artifactKey: Guid(652155c1d9c295645bf8568758c0f62a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Game/Asteroid.mat using Guid(652155c1d9c295645bf8568758c0f62a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b820d2cad3fb7081d08584e35b6af34') in 0.015835 seconds
+  Import took 0.021751 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.585266 seconds.
+  path: Assets/_Render/Materials/Game/FastForward.mat
+  artifactKey: Guid(a1739223d3d70fb42905258e0d557dd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Game/FastForward.mat using Guid(a1739223d3d70fb42905258e0d557dd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '067a5deb30c05b867eff0de7a7164e6f') in 0.026234 seconds
+  Import took 0.033200 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000287 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/HardShadowProjectorStars.mat
+  artifactKey: Guid(29fd34f7c1d507a4a864d7f54e7f1b55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/HardShadowProjectorStars.mat using Guid(29fd34f7c1d507a4a864d7f54e7f1b55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80c31e8c7668e12918c6224a8b33d998') in 0.015336 seconds
+  Import took 0.022073 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000331 seconds.
+  path: Assets/Resources/Stick.mat
+  artifactKey: Guid(1088c94efd9d06c488a2ab081509124d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Stick.mat using Guid(1088c94efd9d06c488a2ab081509124d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9c6b596a3fc8d6a871bb65b1004c8b3') in 0.014412 seconds
+  Import took 0.021360 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000244 seconds.
+  path: Assets/_Render/Shaders/Misc/ShaderTEst.mat
+  artifactKey: Guid(6ff977fb67250b64d97e6eb1f19ee488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Misc/ShaderTEst.mat using Guid(6ff977fb67250b64d97e6eb1f19ee488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6164847c9efa694236bca7dcc71044d7') in 0.023490 seconds
+  Import took 0.029923 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Resources/FastForward.mat
+  artifactKey: Guid(664a3ba0c3810ef4c9a82e0f6fd2aa84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/FastForward.mat using Guid(664a3ba0c3810ef4c9a82e0f6fd2aa84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79aa5f1b43b570bc8a84aef8f7f69a6a') in 0.012733 seconds
+  Import took 0.020182 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 228.572628 seconds.
+  path: Assets/_Prefabs/fbx/Herbe_mouvante.fbx
+  artifactKey: Guid(6193aa8fe7183a247a9c9ce87972e229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/fbx/Herbe_mouvante.fbx using Guid(6193aa8fe7183a247a9c9ce87972e229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a340af1ecae315a3eb6c6b41d9a5aae') in 0.026716 seconds
+  Import took 0.033945 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/_Prefabs/fbx/herbe/herbe_idle.fbx
+  artifactKey: Guid(6cc4dddbe8f6c0646bee6fca4cc9c14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/fbx/herbe/herbe_idle.fbx using Guid(6cc4dddbe8f6c0646bee6fca4cc9c14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '474fbb9369aff23253bc0b8b056f2920') in 0.035343 seconds
+  Import took 0.041386 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/_Prefabs/fbx/Herbe_mouvante.fbx
+  artifactKey: Guid(6193aa8fe7183a247a9c9ce87972e229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/fbx/Herbe_mouvante.fbx using Guid(6193aa8fe7183a247a9c9ce87972e229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a340af1ecae315a3eb6c6b41d9a5aae') in 0.021106 seconds
+  Import took 0.027230 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/_Prefabs/fbx/herbe/herbe_idle.fbx
+  artifactKey: Guid(6cc4dddbe8f6c0646bee6fca4cc9c14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/fbx/herbe/herbe_idle.fbx using Guid(6cc4dddbe8f6c0646bee6fca4cc9c14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '474fbb9369aff23253bc0b8b056f2920') in 0.020700 seconds
+  Import took 0.027653 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/_Render/3D/Star Planet/Etoile.fbx
+  artifactKey: Guid(2c957282b448e6440b34dc0f4650e55c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Star Planet/Etoile.fbx using Guid(2c957282b448e6440b34dc0f4650e55c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0488516bb77ee9bda46ae5bdf6c0ad9') in 0.066295 seconds
+  Import took 0.072906 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/_Prefabs/fbx/herbe/herbe_contact.fbx
+  artifactKey: Guid(32dce0474492ad844b49c939578abfba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/fbx/herbe/herbe_contact.fbx using Guid(32dce0474492ad844b49c939578abfba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72c763e5e8542390df0e76f0bba4dc50') in 0.031033 seconds
+  Import took 0.036885 seconds .
+
