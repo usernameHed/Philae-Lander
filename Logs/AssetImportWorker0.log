@@ -2337,3 +2337,131 @@ Received Import Request.
 Start importing Assets/Plugins/B3_Behavior/Scripts/Behavior/Components/Actions/AAction.cs using Guid(82c6becf054de4276851b2076073e7eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '014b2cf6bdf5fb1dbe0e9905dff53cfc') in 0.003257 seconds
   Import took 0.009293 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 478.436862 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd004a72d2002f656c4a129737056324') in 0.002765 seconds
+  Import took 0.013837 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 61.061967 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c61bc3a78d65b269df79db5cc19f98bb') in 0.003192 seconds
+  Import took 0.013351 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001361 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c61bc3a78d65b269df79db5cc19f98bb') in 0.003227 seconds
+  Import took 0.008934 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.292188 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81cb3975f57a867e75b629cd48227859') in 0.002515 seconds
+  Import took 0.013158 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001854 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81cb3975f57a867e75b629cd48227859') in 0.002616 seconds
+  Import took 0.008238 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 234.542067 seconds.
+  path: Assets/Plugins/Unity Essentials - Time/Runtime
+  artifactKey: Guid(94f96e3b7ec8a6642891df0716e4476a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Time/Runtime using Guid(94f96e3b7ec8a6642891df0716e4476a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c102cec847b88c4fdc04bec0a8bc640') in 0.007436 seconds
+  Import took 0.018800 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.312988 seconds.
+  path: Assets/Plugins/Unity Essentials - Time/Runtime
+  artifactKey: Guid(94f96e3b7ec8a6642891df0716e4476a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Time/Runtime using Guid(94f96e3b7ec8a6642891df0716e4476a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c102cec847b88c4fdc04bec0a8bc640') in 0.004671 seconds
+  Import took 0.011450 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.112337 seconds.
+  path: Assets/_Scripts/Philae.asmdef
+  artifactKey: Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Philae.asmdef using Guid(fed1bfc9893ab9c469b63b531fb2fb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88bb5edd6a607e62cdf97f57972ef5e2') in 0.002699 seconds
+  Import took 0.007797 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.846736 seconds.
+  path: Assets/Plugins/Unity Essentials - Time/Runtime/FrequencyEaseTimer.cs
+  artifactKey: Guid(9858a847043760d4481b32c78a951efd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Time/Runtime/FrequencyEaseTimer.cs using Guid(9858a847043760d4481b32c78a951efd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bacc042732ab3f41a6185b3b2b55052') in 0.008002 seconds
+  Import took 0.014959 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.740132 seconds.
+  path: Assets/Plugins/Unity Essentials - Time/Runtime/FrequencyTimer.cs
+  artifactKey: Guid(54ed0f60edc9e3f45a48951bb24f00a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Time/Runtime/FrequencyTimer.cs using Guid(54ed0f60edc9e3f45a48951bb24f00a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '707faf3a9697f4d357a90ee0af275ed2') in 0.007871 seconds
+  Import took 0.013813 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.869444 seconds.
+  path: Assets/Plugins/Unity Essentials - Time/Runtime/FrequencyTimer.cs
+  artifactKey: Guid(54ed0f60edc9e3f45a48951bb24f00a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Time/Runtime/FrequencyTimer.cs using Guid(54ed0f60edc9e3f45a48951bb24f00a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ee41f07788c9b188e615d10693daa65') in 0.004394 seconds
+  Import took 0.027660 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 301.682023 seconds.
+  path: Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtArray.cs
+  artifactKey: Guid(fc7e520c18b631149a8a6421364fd89b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtArray.cs using Guid(fc7e520c18b631149a8a6421364fd89b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45ada490f2c9652ce866b334da77f040') in 0.007368 seconds
+  Import took 0.013745 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.496612 seconds.
+  path: Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs
+  artifactKey: Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs using Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30be4633eb96799247623d000f7f0a73') in 0.006896 seconds
+  Import took 0.012380 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000384 seconds.
+  path: Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs
+  artifactKey: Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs using Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30be4633eb96799247623d000f7f0a73') in 0.003302 seconds
+  Import took 0.009279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 246.511371 seconds.
+  path: Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs
+  artifactKey: Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs using Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64019ea5fb3b6f4739987ab34ea0d370') in 0.003318 seconds
+  Import took 0.008888 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 474.700095 seconds.
+  path: Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs
+  artifactKey: Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Extensions/RunTime/ExtVector3.cs using Guid(eb8dbb37883fa6848833f5b9bc80a231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a9cc5f6870bdac6c5d56173241310f7') in 0.004011 seconds
+  Import took 0.011868 seconds .
+

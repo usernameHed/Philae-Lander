@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 public class EntityYoshiBoost : MonoBehaviour
 {
@@ -100,7 +101,7 @@ public class EntityYoshiBoost : MonoBehaviour
         if (!isBoosting)
         {
             Debug.Log("first time boost !");
-            chronoBoost.StartCoolDown();
+            chronoBoost.StartChrono();
             isBoosting = true;
             clampRbSpeed.ReduceDecendingSpeedToAMin(speedMinDownWhenStart);
         }

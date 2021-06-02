@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
+using UnityEssentials.time;
 
 public class EntityJump : MonoBehaviour
 {
@@ -104,7 +106,7 @@ public class EntityJump : MonoBehaviour
             return (false);
 
         //don't jump if we just grounded
-        if (!coolDownOnGround.IsReady())
+        if (coolDownOnGround.IsRunning())
             return (false);
 
         //if (!entityContactSwitch.IsCoolDownSwitchReady())
@@ -122,7 +124,7 @@ public class EntityJump : MonoBehaviour
 
     public bool IsJumpCoolDebugDownReady()
     {
-        return (coolDownWhenJumped.IsReady());
+        return (coolDownWhenJumped.IsNotRunning());
     }
 
     public bool IsJumpedAndNotReady()

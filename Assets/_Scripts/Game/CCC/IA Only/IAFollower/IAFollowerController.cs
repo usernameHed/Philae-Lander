@@ -1,7 +1,9 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 public class IAFollowerController : EntityController, IPooledObject, IKillable
 {
@@ -181,7 +183,7 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
 
     private void Update()
     {
-        if (timerScream.IsStartedAndOver())
+        if (timerScream.IsFinished())
         {
             StartTimerScream();
             //SoundManager.Instance.PlaySound(SFX_Scream);

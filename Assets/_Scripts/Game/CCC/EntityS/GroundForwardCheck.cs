@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 public class GroundForwardCheck : MonoBehaviour
 {
@@ -88,7 +90,7 @@ public class GroundForwardCheck : MonoBehaviour
 
     public bool IsCoolDownSwitchReady()
     {
-        return (coolDownForward.IsReady());
+        return (coolDownForward.IsNotRunning());
     }
 
     private void AdvanceForwardCheck()
@@ -171,7 +173,7 @@ public class GroundForwardCheck : MonoBehaviour
 
             Vector3 normalHit = hitInfo.normal;
             Vector3 upPlayer = entityGravity.GetMainAndOnlyGravity();
-            Vector3 tmpDirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+            Vector3 tmpDirSurfaceNormal = ExtVector3.GetSurfaceNormal(rb.transform.position,
                                entityController.GetFocusedForwardDirPlayer(),
                                distForward,
                                sizeRadiusForward,
@@ -183,7 +185,7 @@ public class GroundForwardCheck : MonoBehaviour
 
             entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
 
-            float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
+            float dotWrongSide = Vector3.Dot(upPlayer, normalHit);
             if (dotWrongSide < -dotMarginImpact)
             {
                 //Debug.Log("forward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");

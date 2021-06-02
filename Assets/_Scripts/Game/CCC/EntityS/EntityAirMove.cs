@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.time;
 
 public class EntityAirMove : MonoBehaviour
 {
@@ -68,8 +69,7 @@ public class EntityAirMove : MonoBehaviour
         }
 
         Debug.DrawRay(rb.position, direction, Color.green, 5f);
-        //UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityAction.GetMagnitudeInput());
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, entityMove.GetMagnitudeAcceleration());
+        rb.AddForce(direction * entityMove.GetMagnitudeAcceleration());
     }
 
     public void ResetAirMove()
@@ -101,9 +101,9 @@ public class EntityAirMove : MonoBehaviour
         Vector3 dirMove = entityAction.GetRelativeDirection(speedAirMoveSide, speedAirMoveForward);
 
         float lastVelocity = entityJump.GetLastJumpForwardVelocity();
-        //float dotDirForward = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
-        float dotDirForwardJump = ExtQuaternion.DotProduct(dirMove.normalized, entityJump.GetLastJumpForwardDirection());
-        float dotDirAcceleration = ExtQuaternion.DotProduct(dirMove.normalized, entityController.GetActualDirForward().normalized);
+        //float dotDirForward = Vector3.Dot(dirMove.normalized, entityController.GetFocusedForwardDirPlayer());
+        float dotDirForwardJump = Vector3.Dot(dirMove.normalized, entityJump.GetLastJumpForwardDirection());
+        float dotDirAcceleration = Vector3.Dot(dirMove.normalized, entityController.GetActualDirForward().normalized);
 
         //if forward, limit speed (if lastVelocity == 1, we shouln't move forward
         if (dotDirForwardJump > dotForward)
@@ -158,7 +158,7 @@ public class EntityAirMove : MonoBehaviour
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (false);
         //start airMove after a little bit of time
-        if (!coolDownJump.IsReady())
+        if (coolDownJump.IsRunning())
             return (false);
 
         return (true);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 public class FastForward : MonoBehaviour
 {
@@ -97,7 +98,7 @@ public class FastForward : MonoBehaviour
         //Debug.DrawRay(rb.position, previousNormal * 0.5f, Color.yellow, 5f);
 
 
-        float dotNormal = ExtQuaternion.DotProduct(previousNormal, newNormal);
+        float dotNormal = Vector3.Dot(previousNormal, newNormal);
 
         //Debug.Log("dot Diff: " + dotNormal + " (max: " + dotMarginDiffNormal + ")");
         //here we are too much diff
@@ -142,7 +143,7 @@ public class FastForward : MonoBehaviour
 
     public bool DoChangeOrientationManually(RaycastHit hitInfo, ref Vector3 newOrientation)
     {
-        FastForwardOrientationLD fastForwardOrientationLD = hitInfo.transform.gameObject.GetExtComponentInParents<FastForwardOrientationLD>(99, true);
+        FastForwardOrientationLD fastForwardOrientationLD = hitInfo.transform.gameObject.GetComponentInParent<FastForwardOrientationLD>();
         if (fastForwardOrientationLD == null)
             return (false);
 
@@ -287,7 +288,7 @@ public class FastForward : MonoBehaviour
         if (!IsInFastForward())
             return (true);
 
-        FastForwardOrientationLD fastForwardOrientationLD = lastHitPlatform.gameObject.GetExtComponentInParents<FastForwardOrientationLD>(99, true);
+        FastForwardOrientationLD fastForwardOrientationLD = lastHitPlatform.gameObject.GetComponentInParent<FastForwardOrientationLD>();
         if (fastForwardOrientationLD)
         {
             return (false);

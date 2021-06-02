@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using System.Collections.Generic;
+using UnityEssentials.time;
 
 /// <summary>
 /// AttractObject Description

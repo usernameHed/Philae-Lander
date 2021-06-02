@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 /// <summary>
 /// Check object is on camera

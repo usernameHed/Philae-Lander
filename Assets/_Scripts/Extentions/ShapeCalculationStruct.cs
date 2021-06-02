@@ -108,7 +108,7 @@ public struct ExtTriangle
         //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
         Vector3 dirPlayer = p - foundPosition;
 
-        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNormNormalize);
+        float dotPlanePlayer = Vector3.Dot(dirPlayer.normalized, TriNormNormalize);
         if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
         {
             return (foundPosition);
@@ -293,7 +293,7 @@ public struct ExtQuad
         //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
         Vector3 dirPlayer = p - foundPosition;
 
-        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNormNormalize);
+        float dotPlanePlayer = Vector3.Dot(dirPlayer.normalized, TriNormNormalize);
         if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
         {
             return (foundPosition);
@@ -502,7 +502,7 @@ public struct ExtTetra
         //Vector3 projectedOnPlane = TriPlane.Project(EdgeAb.A, TriNorm.normalized, p);
         Vector3 dirPlayer = p - foundPosition;
 
-        float dotPlanePlayer = ExtQuaternion.DotProduct(dirPlayer.normalized, TriNormNormalize);
+        float dotPlanePlayer = Vector3.Dot(dirPlayer.normalized, TriNormNormalize);
         if ((dotPlanePlayer < 0 && !inverseDirection) || dotPlanePlayer > 0 && inverseDirection)
         {
             return (foundPosition);
@@ -668,7 +668,7 @@ public struct ExtLine
         return (LengthLine);
     }
 
-    public double Project(Vector3 p) => ExtQuaternion.DotProduct(Delta, p - A) / LengthSquared;
+    public double Project(Vector3 p) => Vector3.Dot(Delta, p - A) / LengthSquared;
     */
 }
 
@@ -686,7 +686,7 @@ public struct ExtPlane
         Direction = direction;
     }
 
-    public bool IsAbove(Vector3 q) => ExtQuaternion.DotProduct(q - Point, Direction) > 0;
+    public bool IsAbove(Vector3 q) => Vector3.Dot(q - Point, Direction) > 0;
 
     
     public Vector3 Project(Vector3 randomPointInPlane, Vector3 normalPlane, Vector3 pointToProject)

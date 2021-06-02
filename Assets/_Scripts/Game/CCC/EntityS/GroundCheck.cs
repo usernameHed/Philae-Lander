@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 public class GroundCheck : MonoBehaviour
 {
@@ -217,7 +219,7 @@ public class GroundCheck : MonoBehaviour
 
             if (calculateSurfaceNormal)
             {
-                dirSurfaceNormal = ExtUtilityFunction.GetSurfaceNormal(rb.transform.position,
+                dirSurfaceNormal = ExtVector3.GetSurfaceNormal(rb.transform.position,
                     baseGravity.GetMainAndOnlyGravity() * -0.01f,
                     groundCheckDistance,
                     sizeRadiusRayCast,
@@ -272,7 +274,7 @@ public class GroundCheck : MonoBehaviour
         else
         {
             //le coolDown inAir n'a pas commencé, OU a commencé, et n'est pas fini
-            if (!coolDownForStick.IsStarted() || coolDownForStick.IsRunning())
+            if (!coolDownForStick.IsStarted || coolDownForStick.IsRunning())
             {
                 //Debug.Log("TRY TO STICK");
                 GroundChecking(stickToFloorDist, ref isAlmostGrounded, baseGravity.GetMainAndOnlyGravity() * -0.01f);

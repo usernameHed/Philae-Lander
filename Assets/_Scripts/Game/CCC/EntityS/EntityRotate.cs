@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 
 public class EntityRotate : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class EntityRotate : MonoBehaviour
     [SerializeField, Tooltip("ref rigidbody")]
     private bool doSimpleAirRotate = false;
     [SerializeField, Tooltip("ref rigidbody")]
-    public ExtQuaternion.OrientationRotation CameraFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
+    public ExtRotation.OrientationRotation CameraFromPlayerOrientation = ExtRotation.OrientationRotation.NONE;
     [SerializeField, Tooltip("ref rigidbody")]
-    public ExtQuaternion.OrientationRotation InputFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
+    public ExtRotation.OrientationRotation InputFromPlayerOrientation = ExtRotation.OrientationRotation.NONE;
     [SerializeField, Tooltip("ref rigidbody")]
-    public ExtQuaternion.OrientationRotation InputFromCameraOrientation = ExtQuaternion.OrientationRotation.NONE;
+    public ExtRotation.OrientationRotation InputFromCameraOrientation = ExtRotation.OrientationRotation.NONE;
     [SerializeField, Tooltip("ref rigidbody")]
     private bool calculateOrientation = true;
 
@@ -67,7 +68,7 @@ public class EntityRotate : MonoBehaviour
 
         // Form a rotation facing the desired direction while keeping our
         // local up vector exactly matching the current up direction.
-        return (ExtQuaternion.TurretLookRotation(dirRelativeInput, up));
+        return (ExtRotation.TurretLookRotation(dirRelativeInput, up));
     }
 
     private void DoRotate(Quaternion calculatedDir, float speed)
@@ -96,9 +97,9 @@ public class EntityRotate : MonoBehaviour
         Vector3 relativeUp = entityAction.GetMainReferenceUpDirection();
 
 
-        CameraFromPlayerOrientation = ExtQuaternion.IsForwardBackWardRightLeft(objectToRotate.forward, entityAction.GetMainReferenceForwardDirection(), entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
-        InputFromPlayerOrientation = ExtQuaternion.IsForwardBackWardRightLeft(objectToRotate.forward, relativeInputPlayer, entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
-        InputFromCameraOrientation = ExtQuaternion.IsForwardBackWardRightLeft(relativeDirectionCamera, relativeInputPlayer, entityAction.GetMainReferenceUpDirection(), objectToRotate.position);
+        CameraFromPlayerOrientation = ExtRotation.IsForwardBackWardRightLeft(objectToRotate.forward, entityAction.GetMainReferenceForwardDirection(), entityAction.GetMainReferenceUpDirection());
+        InputFromPlayerOrientation = ExtRotation.IsForwardBackWardRightLeft(objectToRotate.forward, relativeInputPlayer, entityAction.GetMainReferenceUpDirection());
+        InputFromCameraOrientation = ExtRotation.IsForwardBackWardRightLeft(relativeDirectionCamera, relativeInputPlayer, entityAction.GetMainReferenceUpDirection());
     }
 
     /// <summary>

@@ -3,6 +3,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
+using UnityEssentials.time;
 
 public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 {
@@ -162,8 +164,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
         //prepare array
         GravityAttractorLD.PointInfo[] allPointInfo = new GravityAttractorLD.PointInfo[allGravityAttractor.Count];
-        Vector3[] closestPost = ExtUtilityFunction.CreateNullVectorArray(allGravityAttractor.Count + 1);
-        Vector3[] sphereDir = ExtUtilityFunction.CreateNullVectorArray(allGravityAttractor.Count + 1);
+        Vector3[] closestPost = new Vector3[allGravityAttractor.Count + 1];
+        Vector3[] sphereDir = new Vector3[allGravityAttractor.Count + 1];
 
         //fill array with data from 
         for (int i = 0; i < allGravityAttractor.Count; i++)
@@ -186,11 +188,11 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //ici anuller les gravités avec un dot positif au jump            
             for (int i = 0; i < allGravityAttractor.Count; i++)
             {
-                float dotGravity = ExtQuaternion.DotProduct(sphereDir[i], lastNormalJumpChoosen);
+                float dotGravity = Vector3.Dot(sphereDir[i], lastNormalJumpChoosen);
                 //Debug.Log("dot: " + dotGravity);
                 if (dotGravity > marginNegativeJumpHit)
                 {
-                    sphereDir[i] = closestPost[i] = ExtUtilityFunction.GetNullVector();
+                    sphereDir[i] = closestPost[i] = Vector3.zero;
                 }
             }
             //here create a fake gravity close enought (from the hit point);
@@ -204,9 +206,9 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
         //setup the closest point, and his vector director
         int indexFound = -1;
-        Vector3 close = ExtUtilityFunction.GetClosestPoint(posEntity, closestPost, ref indexFound);
+        Vector3 close = ExtVector3.GetClosestPoint(posEntity, closestPost, ref indexFound);
 
-        if (ExtUtilityFunction.IsNullVector(close))
+        if (close == Vector3.zero)
         {
             Debug.LogWarning("null gravity !!");
             pointInfo.sphereGravity = lastNormalJumpChoosen;
@@ -232,7 +234,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             if (i == indexFound)
                 continue;
 
-            if (ExtUtilityFunction.IsNullVector(sphereDir[i]) || ExtUtilityFunction.IsNullVector(closestPost[i]))
+            if (sphereDir[i] == Vector3.zero || closestPost[i] == Vector3.zero)
                 continue;
 
 
@@ -243,7 +245,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             if (magnitudeCurrentForce > defaultForce * maxDistBasedOnHowManyTimeDefault)
             {
                 //Debug.DrawRay(posEntity, currentVectorDir.normalized, Color.black);
-                sphereDir[i] = ExtUtilityFunction.GetNullVector();
+                sphereDir[i] = Vector3.zero;
                 continue;
             }
 
@@ -257,7 +259,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //Debug.DrawRay(posEntity, currentVectorDir.normalized * currentForce, Color.magenta);
         }
 
-        Vector3 middleOfAllVec = ExtQuaternion.GetMiddleOfXVector(sphereDir);
+        Vector3 middleOfAllVec = ExtVector3.GetMiddleOfXVector(sphereDir);
 
         //here we found nothing exept the last jump !
         if (indexFound >= allPointInfo.Length)

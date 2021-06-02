@@ -157,7 +157,7 @@ public class EntityJumpCalculation : MonoBehaviour
         Vector3 normalHit = infoJump.normalHit;
         Vector3 rightPlayer = entityController.GetFocusedRightDirPlayer();
 
-        float dotImpact = ExtQuaternion.DotProduct(normalJump, normalHit);
+        float dotImpact = Vector3.Dot(normalJump, normalHit);
 
         if (dotImpact > marginJumpEndDot)
         {

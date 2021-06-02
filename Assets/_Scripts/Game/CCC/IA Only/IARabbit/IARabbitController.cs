@@ -1,6 +1,8 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
+using UnityEssentials.time;
 
 public class IARabbitController : EntityController, IPooledObject, IKillable
 {
@@ -160,7 +162,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
 
     private void Update()
     {
-        if (timerScream.IsStartedAndOver())
+        if (timerScream.IsFinished())
         {
             StartTimerScream();
             //SoundManager.Instance.PlaySound(SFX_Scream);

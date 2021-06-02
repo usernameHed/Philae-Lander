@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.PropertyAttribute.readOnly;
+using UnityEssentials.time;
 
 public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
@@ -264,7 +265,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         //if angle hitInfo.normal eet notre gravity est pas bonne,
         //dire de ne pas ground ! return false !
         //else, angle ok, return true !
-        float dotDiff = ExtQuaternion.DotProduct(normalHit.normalized, currentGravity.normalized);
+        float dotDiff = Vector3.Dot(normalHit.normalized, currentGravity.normalized);
         if (dotDiff > marginDotGA)
         {
             //Debug.Log("ok normal correct for moving...");

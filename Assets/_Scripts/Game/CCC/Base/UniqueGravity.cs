@@ -88,7 +88,7 @@ public class UniqueGravity : MonoBehaviour
 
     protected void SetGoingDown()
     {
-        float dotGravityRigidbody = ExtQuaternion.DotProduct(GetMainAndOnlyGravity(), rb.velocity);
+        float dotGravityRigidbody = Vector3.Dot(GetMainAndOnlyGravity(), rb.velocity);
         if (dotGravityRigidbody < 0 || (isGoingDown && !doWeSwitchBetweenBoth))
         {
             //first time falling

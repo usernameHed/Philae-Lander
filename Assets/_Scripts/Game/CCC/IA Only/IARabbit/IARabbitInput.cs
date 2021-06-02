@@ -46,8 +46,8 @@ public class IARabbitInput : EntityAction
         Debug.DrawRay(iaRabbitController.rb.transform.position, left, Color.green, 5f);
         Debug.DrawRay(iaRabbitController.rb.transform.position, right, Color.green, 5f);
 
-        float dotRight = ExtQuaternion.DotProduct(right, iaDir);
-        float dotLeft = ExtQuaternion.DotProduct(left, iaDir);
+        float dotRight = Vector3.Dot(right, iaDir);
+        float dotLeft = Vector3.Dot(left, iaDir);
         //Debug.Log("left: " + dotLeft + ", right: " + dotRight);
         //Quaternion turret = ExtQuaternion.TurretLookRotation(-iaDir, iaController.objRotateRef.up);
         //Vector3 dirUp = turret.eulerAngles;

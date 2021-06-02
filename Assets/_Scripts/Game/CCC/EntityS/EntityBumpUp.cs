@@ -55,7 +55,7 @@ public class EntityBumpUp : MonoBehaviour
     private void TryToAirBump(Vector3 normal, Transform objHit)
     {
         Vector3 currentDirInverted = -rb.velocity.normalized;
-        float dotVelocity = ExtQuaternion.DotProduct(currentDirInverted, normal);
+        float dotVelocity = Vector3.Dot(currentDirInverted, normal);
 
         Debug.DrawRay(rb.position, normal, Color.blue, 5f);
         Debug.DrawRay(rb.position, currentDirInverted, Color.cyan, 5f);

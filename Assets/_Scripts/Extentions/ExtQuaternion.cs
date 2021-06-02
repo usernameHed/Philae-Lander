@@ -24,7 +24,7 @@ public static class ExtQuaternion
     public static OrientationRotation IsForwardBackWardRightLeft(Vector3 forwardDir,
        Vector3 toGoDir, Vector3 relativeUp, Vector3 debugPosition)
     {
-        float dotDir = ExtQuaternion.DotProduct(forwardDir, toGoDir);
+        float dotDir = Vector3.Dot(forwardDir, toGoDir);
         float right = 0f;
         float left = 0f;
         int irol = ExtQuaternion.IsRightOrLeft(forwardDir, relativeUp, toGoDir, debugPosition, ref left, ref right);

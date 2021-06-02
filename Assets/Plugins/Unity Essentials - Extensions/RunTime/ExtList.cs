@@ -28,6 +28,16 @@ namespace UnityEssentials.Extensions
             return (false);
         }
 
+        public static int ContainSubStringInArray(string[] toTransform, string fileName)
+        {
+            for (int i = 0; i < toTransform.Length; i++)
+            {
+                if (fileName.Contains(toTransform[i]))
+                    return (i);
+            }
+            return (-1);
+        }
+
         /// <summary>
         /// transform an array into a list
         /// </summary>

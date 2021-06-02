@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
+using UnityEssentials.Geometry.shape2d;
 using UnityEssentials.PropertyAttribute.onvalueChanged;
 using UnityEssentials.PropertyAttribute.readOnly;
 
@@ -292,7 +294,7 @@ public class GravityAttractorLD : MonoBehaviour
             obj = gameObject;
         }
 
-        MeshFilter[] allFilter = obj.GetExtComponentsInChildrens<MeshFilter>(99, true);
+        MeshFilter[] allFilter = obj.GetComponentsInChildren<MeshFilter>();
         for (int i = 0; i < allFilter.Length; i++)
         {
             if (!_allConcaveMesh.Contains(allFilter[i]))
@@ -321,14 +323,14 @@ public class GravityAttractorLD : MonoBehaviour
     {
         int indexAllResult = 0;
         
-        arrayPoints = ExtUtilityFunction.CreateNullVectorArray(gravityPoints.Count);
-        arrayPointsLines = ExtUtilityFunction.CreateNullVectorArray(gravityLines.Count);
-        arrayPointsTriangles = ExtUtilityFunction.CreateNullVectorArray(gravityTrianglesOrQuad.Count);
-        arrayPointsQuads = ExtUtilityFunction.CreateNullVectorArray(gravityTetra.Count);
+        arrayPoints =                   new Vector3[gravityPoints.Count];
+        arrayPointsLines =              new Vector3[gravityLines.Count];
+        arrayPointsTriangles =          new Vector3[gravityTrianglesOrQuad.Count];
+        arrayPointsQuads =              new Vector3[gravityTetra.Count];
 
-        arrayPointsLinesCenterTmp = ExtUtilityFunction.CreateNullVectorArray(gravityLines.Count);
-        arrayPointsTrianglesCenterTmp = ExtUtilityFunction.CreateNullVectorArray(gravityTrianglesOrQuad.Count);
-        arrayPointsQuadsCenterTmp = ExtUtilityFunction.CreateNullVectorArray(gravityTetra.Count);
+        arrayPointsLinesCenterTmp =     new Vector3[gravityLines.Count];
+        arrayPointsTrianglesCenterTmp = new Vector3[gravityTrianglesOrQuad.Count];
+        arrayPointsQuadsCenterTmp =     new Vector3[gravityTetra.Count];
 
         indexAllResult += (gravityPoints.Count > 0) ? 1 : 0;
         indexAllResult += (gravityLines.Count > 0) ? 1 : 0;
@@ -339,8 +341,8 @@ public class GravityAttractorLD : MonoBehaviour
         indexAllResult += _allConvexeMesh.Count;
 
         allResult = new PointInfo[indexAllResult];
-        allResultPos = ExtUtilityFunction.CreateNullVectorArray(indexAllResult);
-        allResultPosRange = ExtUtilityFunction.CreateNullVectorArray(indexAllResult);
+        allResultPos = new Vector3[indexAllResult];
+        allResultPosRange = new Vector3[indexAllResult];
 
         valueArrayChanged = true;
 

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
+using UnityEssentials.time;
 
 public class InitialVelocity : MonoBehaviour
 {
@@ -48,7 +50,7 @@ public class InitialVelocity : MonoBehaviour
 
     private void Update()
     {
-        if (timeBeforeActive.IsStartedAndOver())
+        if (timeBeforeActive.IsFinished())
         {
             ApplyInitialVelocity();
         }

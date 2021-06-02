@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
+using UnityEssentials.time;
 
 public class MobSpawner : MonoBehaviour
 {
@@ -44,7 +46,9 @@ public class MobSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (timeSpawn.IsReady() && !isOnCamera.isOnScreen && !IsCloseToPlayer())
+        if (timeSpawn.IsNotRunning() && !isOnCamera.isOnScreen && !IsCloseToPlayer())
+        {
             Spawn();
+        }
     }
 }

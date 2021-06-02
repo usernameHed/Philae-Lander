@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.time;
 
 public class IsInSafeZone : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class IsInSafeZone : MonoBehaviour
 
     private void TryToResetSafe()
     {
-        if (timerStaySafe.IsStartedAndOver())
+        if (timerStaySafe.IsFinished())
         {
             isInQuieteZone = false;
         }

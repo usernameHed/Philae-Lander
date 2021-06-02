@@ -45,7 +45,7 @@ public class EntitySlide : MonoBehaviour
         //Debug.DrawRay(rb.transform.position, playerDir, Color.red, 5f);
 
         Vector3 upPlayer = playerGravity.GetMainAndOnlyGravity();
-        float dotWrongSide = ExtQuaternion.DotProduct(upPlayer, normalHit);
+        float dotWrongSide = Vector3.Dot(upPlayer, normalHit);
 
         //here the slope is nice for normal forward ?
         if (1 - dotWrongSide < dotMarginNiceSlope)

@@ -183,7 +183,7 @@ public class EntityController : MonoBehaviour, IKillable
         //Debug.DrawRay(rb.position, relativeInput, Color.yellow);
         //Debug.DrawRay(rb.position, forwardFocusPlayer, Color.blue);
 
-        float dotDiffPlayerInput = ExtQuaternion.DotProduct(relativeInput, forwardFocusPlayer);
+        float dotDiffPlayerInput = Vector3.Dot(relativeInput, forwardFocusPlayer);
         if (1 - dotDiffPlayerInput < marginDot)
             return (true);
         return (false);

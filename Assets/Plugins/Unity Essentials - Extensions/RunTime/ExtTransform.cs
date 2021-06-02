@@ -379,6 +379,15 @@ namespace UnityEssentials.Extensions
             return (childs);
         }
 
+        public static bool HasComponent<T>(this Component component) where T : Component
+        {
+            return component.GetComponent<T>() != null;
+        }
+        public static bool HasComponent<T>(this GameObject gameObject) where T : Component
+        {
+            return gameObject.GetComponent<T>() != null;
+        }
+
         /// <summary>
         /// bubble sort optimize algorythme
         /// </summary>

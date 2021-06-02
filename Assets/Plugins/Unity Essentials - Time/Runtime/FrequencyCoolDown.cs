@@ -148,12 +148,6 @@ namespace UnityEssentials.time
             _currentTime = GetTimeScaledOrNot();
             _isInPause = false;
         }
-
-        internal void isReady()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region private function
