@@ -193,7 +193,7 @@ public class GroundCheck : MonoBehaviour
                 //&& !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetDirGAGravity()))
             {
                 //si on était en l'air, test la gravité par rapport à la vrai gravité !
-                if (isFlying && !baseGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, baseGravityAttractorSwitch.GetDirGAGravity()))
+                if (isFlying && !baseGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, baseGravityAttractorSwitch.GravityDirection))
                 {
                     Debug.Log("here sphereAirMove tell us we are in a bad normal, (we were inAir before) continiue to fall");
                     groundValue = false;

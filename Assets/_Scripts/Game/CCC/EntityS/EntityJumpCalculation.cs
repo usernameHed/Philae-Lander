@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 
 [Serializable]
 public struct InfoJump
@@ -216,7 +217,7 @@ public class EntityJumpCalculation : MonoBehaviour
     {
         if (infoJump.didWeHit)
             return (infoJump.pointHit);
-        return (ExtUtilityFunction.GetNullVector());
+        return (Vector3.zero);
     }
 
     /// <summary>

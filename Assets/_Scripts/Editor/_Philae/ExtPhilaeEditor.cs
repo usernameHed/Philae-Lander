@@ -4,77 +4,10 @@ using UnityEditor.IMGUI.Controls;
 using System.Reflection;
 using System;
 using System.Collections.Generic;
+using TMPro;
 
 public class ExtPhilaeEditor : ScriptableObject
 {
-    [MenuItem("PERSO/Philae/Select Gravity Attractor _g")]
-    public static bool SelectParentOfAttractor()
-    {
-        GravityAttractorLD gravityAttractorLD = Selection.activeGameObject.GetExtComponentInParents<GravityAttractorLD>(99, true);
-        if (gravityAttractorLD)
-        {
-            Selection.activeGameObject = gravityAttractorLD.transform.gameObject;
-            Debug.Log("we found a gravityAttractor here !!");
-            //FocusOnSelection(Selection.activeGameObject, -1);
-            //SetSearchFilter(Selection.activeGameObject.name, FILTERMODE_ALL);
-            ExtReflexion.SetSearch(gravityAttractorLD.transform.gameObject.name);
-            return (true);
-            
-        }
-        return (false);
-    }
-
-    [MenuItem("PERSO/Philae/Create Gravity Attractor %g")]
-    public static void CreateGravityAttractor()
-    {
-        if (SelectParentOfAttractor())
-            return;
-
-        if (Selection.activeGameObject.HasComponent<MeshFilter>() || Selection.activeGameObject.HasComponent<MeshRenderer>()
-            || Selection.activeGameObject.HasComponent<MeshCollider>())
-        {
-            Selection.activeGameObject = Selection.activeGameObject.transform.parent.gameObject;
-        }
-
-        Debug.Log("try to create new gravity attractor ??");
-        GravityAttractorLD gravityAttractorLD = Selection.activeGameObject.AddComponent<GravityAttractorLD>();
-        gravityAttractorLD.CreateEditor();
-
-        GravityAttractorEditor gravityAttractorEditor = Selection.activeGameObject.GetComponent<GravityAttractorEditor>();
-        gravityAttractorEditor.GenerateParenting();
-
-        gravityAttractorEditor.createMode = 1;
-        gravityAttractorEditor.CreateTrigger();
-
-        //AddCustomEditorToObject(Selection.activeGameObject, true, HierarchyIcon.None, false, Borodar.RainbowCore.CoreBackground.ClrIndigo, false);
-
-        SceneView.FocusWindowIfItsOpen(typeof(SceneView));
-
-        Selection.activeGameObject = gravityAttractorEditor.triggerRef;
-
-        if (gravityAttractorEditor.GetGravityAttractor())
-        {
-            gravityAttractorEditor.GetGravityAttractor().philaeManager = ExtUtilityEditor.GetScript<PhilaeManager>();
-            gravityAttractorEditor.GetGravityAttractor().philaeManager.ldManager.FillList(true);
-        }
-    }
-
-    [MenuItem("PERSO/Philae/Delete Gravity Attractor %&g")]
-    public static void DeleteGravityAttractor()
-    {
-        if (!SelectParentOfAttractor())
-            return;
-        
-        GravityAttractorLD gravityAttractorLD = Selection.activeGameObject.GetComponent<GravityAttractorLD>();
-        GravityAttractorEditor gravityAttractorEditor = Selection.activeGameObject.GetComponent<GravityAttractorEditor>();
-        
-
-        gravityAttractorEditor.RemoveTrigger();
-        gravityAttractorEditor.RemoveParenting();
-        gravityAttractorLD.RemoveEditor();
-        DestroyImmediate(gravityAttractorLD);
-    }
-
     [MenuItem("PERSO/Philae/SetGround Layer & Material Ground")]
     public static void SetGroundLayerAndMat()
     {
@@ -112,11 +45,11 @@ public class ExtPhilaeEditor : ScriptableObject
                 MeshFilter mesh = allChild[i].GetComponent<MeshFilter>();
                 MeshRenderer meshRenderer = allChild[i].GetComponent<MeshRenderer>();
 
-                /*
+                
                 TextMeshPro text = allChild[i].GetComponent<TextMeshPro>();
                 if (text)
                     continue;
-                */
+                
                 if (mesh && meshRenderer)
                 {
                     Undo.RecordObject(allChild[i].gameObject, "layer change");

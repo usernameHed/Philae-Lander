@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
 
 public class EntitySaveLastPoint : MonoBehaviour
@@ -94,11 +95,11 @@ public class EntitySaveLastPoint : MonoBehaviour
         else if (worldPreviousNormal != worldLastNormal)
         {
             //ici changement de position SEULEMENT si l'angle de la normal diffère de X
-            float anglePreviousNormal = ExtQuaternion.GetAngleFromVector3(worldPreviousNormal, entityController.rbRotateObject.up);
-            float angleNormalPlayer = ExtQuaternion.GetAngleFromVector3(worldLastNormal, entityController.rbRotateObject.up);
+            float anglePreviousNormal = ExtVector3.GetAngleFromVector3(worldPreviousNormal, entityController.rbRotateObject.up);
+            float angleNormalPlayer = ExtVector3.GetAngleFromVector3(worldLastNormal, entityController.rbRotateObject.up);
             //ici gérer les normal à zero ??
             float diff;
-            if (ExtQuaternion.IsAngleCloseToOtherByAmount(anglePreviousNormal, angleNormalPlayer, differenceAngleNormalForUpdatePosition, out diff))
+            if (ExtVector3.IsAngleCloseToOtherByAmount(anglePreviousNormal, angleNormalPlayer, differenceAngleNormalForUpdatePosition, out diff))
             {
                 //Debug.Log("ici l'angle est trop proche, ducoup ne pas changer de position");
 

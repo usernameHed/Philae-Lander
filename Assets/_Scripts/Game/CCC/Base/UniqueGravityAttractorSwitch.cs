@@ -65,22 +65,17 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         return (gravityDownRatio);
     }
 
-    /*
+    
     public virtual void SetDefaultGAgravity(Vector3 posHit, Vector3 gravity)
     {
         gravityBaseRatio = 0.3f;
         gravityDownRatio = 0.5f;
 
-        pointInfo.pos = posHit;
-        pointInfo.posRange = posHit;
-        //pointGroundHit = posHit;
-
-        pointInfo.sphereGravity = gravity;
-        pointInfo.range = 0f;
-        pointInfo.maxRange = 0f;
+        OverrideContactPointOfClosestAttractor(posHit);
+        GravityDirection = gravity;
         lastNormalJumpChoosen = gravity;
     }
-    */
+    
 
     //public Vector3 GetDirGAGravity()
     //{
@@ -269,6 +264,11 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         //Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
         //Debug.DrawRay(rbEntity.position, currentGravity * 5, Color.black);
         return (false);
+    }
+
+    private Vector3 CalculateGravityAtThisPoint(Vector3 point)
+    {
+
     }
 
     private void FixedUpdate()

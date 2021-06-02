@@ -3211,3 +3211,67 @@ Received Import Request.
 Start importing Assets/_Scripts/Editor/_Philae/ExtPhilaeEditor.cs using Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a95f842c5cc28d2cf23bd7a4eac4af2') in 0.008944 seconds
   Import took 0.015643 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 317.075476 seconds.
+  path: Assets/_Scripts/Editor/_Philae/SceneGUI.cs
+  artifactKey: Guid(1dce6265849bf574cbaee7251dd02df4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/_Philae/SceneGUI.cs using Guid(1dce6265849bf574cbaee7251dd02df4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cf2b5066d6ac690cd20993e4e3b3842') in 0.007805 seconds
+  Import took 0.014979 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 91.797800 seconds.
+  path: Assets/_Scripts/Editor
+  artifactKey: Guid(468ed8179a1609042abd9818a4e9ccce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor using Guid(468ed8179a1609042abd9818a4e9ccce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c44f835fadd5778419b32a74106889e') in 0.008101 seconds
+  Import took 0.014989 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.348198 seconds.
+  path: Assets/_Scripts/Editor/Philae.Editor.asmdef
+  artifactKey: Guid(f6784093b760fe34880b83f0c763bca5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/Philae.Editor.asmdef using Guid(f6784093b760fe34880b83f0c763bca5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '290b894ce713756c33edb48a2ac16820') in 0.013870 seconds
+  Import took 0.023397 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.950384 seconds.
+  path: Assets/_Scripts/Editor/ExtUtilityEditor.cs
+  artifactKey: Guid(0628e2ef2e307904d9af174de9798379) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/ExtUtilityEditor.cs using Guid(0628e2ef2e307904d9af174de9798379) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e4840c20ec1f136fae1530098da4332') in 0.009489 seconds
+  Import took 0.017324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.464711 seconds.
+  path: Assets/_Scripts/Editor/CompileTime.cs
+  artifactKey: Guid(f457e4be1ccf5be4fa0ebaad967a5f1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/CompileTime.cs using Guid(f457e4be1ccf5be4fa0ebaad967a5f1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66786e80c8f8f1465bba7fda61067483') in 0.009022 seconds
+  Import took 0.015077 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.068634 seconds.
+  path: Assets/_Scripts/Editor/_Philae/ExtPhilaeEditor.cs
+  artifactKey: Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/_Philae/ExtPhilaeEditor.cs using Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '825aadc3651a73cf77b2c7a1e9c5ff58') in 0.008285 seconds
+  Import took 0.014786 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.491264 seconds.
+  path: Assets/_Scripts/Editor/Philae.Editor.asmdef
+  artifactKey: Guid(f6784093b760fe34880b83f0c763bca5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/Philae.Editor.asmdef using Guid(f6784093b760fe34880b83f0c763bca5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2a026c1b5fb208886cbdd618560982a') in 0.002680 seconds
+  Import took 0.009679 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 89.088797 seconds.
+  path: Assets/_Scripts/Editor/_Philae/ExtPhilaeEditor.cs
+  artifactKey: Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/Editor/_Philae/ExtPhilaeEditor.cs using Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '781798c3497030f997a82ad8f5457513') in 0.003181 seconds
+  Import took 0.010939 seconds .
+

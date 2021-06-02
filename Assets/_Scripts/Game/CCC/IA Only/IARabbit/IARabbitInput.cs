@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEssentials.Extensions;
 
 /// <summary>
 /// InputPlayer Description
@@ -40,7 +40,7 @@ public class IARabbitInput : EntityAction
         Debug.DrawRay(iaRabbitController.rb.transform.position, iaDir, Color.white, 5f);
         Debug.DrawRay(iaRabbitController.rb.transform.position, forwardLocalIA, Color.blue, 5f);
 
-        Vector3 left = ExtQuaternion.CrossProduct(forwardLocalIA, upLocalIA);
+        Vector3 left = Vector3.Cross(forwardLocalIA, upLocalIA);
         Vector3 right = -left;
 
         Debug.DrawRay(iaRabbitController.rb.transform.position, left, Color.green, 5f);

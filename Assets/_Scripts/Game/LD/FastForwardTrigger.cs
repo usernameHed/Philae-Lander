@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 
 /// <summary>
 /// Kill any IKillable instance on contact

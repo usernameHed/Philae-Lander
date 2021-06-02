@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
 
 /// <summary>
@@ -57,9 +58,9 @@ public class EntityAction : MonoBehaviour
     public Vector3 GetRelativeDirectionWithNoDamping(Vector3 mainGravity, Vector3 debugPos, float xBoost = 1, float yBoost = 1)
     {
         
-        //Vector3 noDampingForward = -ExtQuaternion.CrossProduct(mainGravity, mainReferenceObjectDirection.right);
+        //Vector3 noDampingForward = -Vector3.Cross(mainGravity, mainReferenceObjectDirection.right);
         Vector3 relativeDirection = GetRelativeDirection();
-        Vector3 noDampingInputDir = ExtQuaternion.TurretLookRotationVector(relativeDirection, mainGravity);
+        Vector3 noDampingInputDir = ExtRotation.TurretLookRotationVector(relativeDirection, mainGravity);
 
 
         Debug.DrawRay(debugPos, relativeDirection * 10, Color.black);
@@ -78,7 +79,7 @@ public class EntityAction : MonoBehaviour
         Vector3 dirDirection = GetRelativeDirection(xBoost, yBoost);
         Vector3 up = mainReferenceObjectDirection.up;
 
-        Vector3 relativeRightDirection = ExtQuaternion.CrossProduct(dirDirection, up);
+        Vector3 relativeRightDirection = Vector3.Cross(dirDirection, up);
         return (relativeRightDirection);
     }
 

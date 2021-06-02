@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.CameraMarioGalaxy;
+using UnityEssentials.Extensions;
 
 public class PlayerController : EntityController, IKillable
 {
@@ -116,7 +117,7 @@ public class PlayerController : EntityController, IKillable
     private void FixedUpdate()
     {
         ChangeState();
-        ExtMaths.LinearAcceleration(out actualAccelerationVector, rb.position, 4);
+        ExtMathf.LinearAcceleration(out actualAccelerationVector, rb.position, 4);
         actualAcceleration = actualAccelerationVector.magnitude;
     }
 

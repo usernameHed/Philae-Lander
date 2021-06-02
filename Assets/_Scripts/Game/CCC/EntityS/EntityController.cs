@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
 
 public class EntityController : MonoBehaviour, IKillable
@@ -80,7 +81,7 @@ public class EntityController : MonoBehaviour, IKillable
     //here get the acceleration forward depending on the gravity
     public Vector3 GetActualDirForward()
     {
-        Quaternion forwardDir = ExtQuaternion.TurretLookRotation(GetActualVelocityVector(), baseGravity.GetMainAndOnlyGravity());
+        Quaternion forwardDir = ExtRotation.TurretLookRotation(GetActualVelocityVector(), baseGravity.GetMainAndOnlyGravity());
         return (forwardDir * Vector3.forward);
     }
     public Vector3 GetActualAccelerationForward()
@@ -88,7 +89,7 @@ public class EntityController : MonoBehaviour, IKillable
         Vector3 dirForward = GetActualDirForward();
         Vector3 dirVelocity = rb.velocity;
 
-        Vector3 projected = ExtQuaternion.GetProjectionOfAOnB(dirVelocity, dirForward, baseGravity.GetMainAndOnlyGravity());
+        Vector3 projected = ExtVector3.GetProjectionOfAOnB(dirVelocity, dirForward, baseGravity.GetMainAndOnlyGravity());
 
         //Debug.DrawRay(rb.transform.position, dirForward, Color.blue);
         //Debug.DrawRay(rb.transform.position, dirVelocity, Color.red);
@@ -161,7 +162,7 @@ public class EntityController : MonoBehaviour, IKillable
     public Vector3 GetFocusedForwardDirPlayer()
     {
         Vector3 realNormal = baseGravity.GetMainAndOnlyGravity();
-        Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
+        Vector3 forwardNormal = -Vector3.Cross(realNormal, rbRotateObject.transform.right);
         return (forwardNormal);
     }
 
@@ -172,7 +173,7 @@ public class EntityController : MonoBehaviour, IKillable
     public Vector3 GetFocusedForwardDirPlayer(Vector3 realNormalGravity)
     {
         Vector3 realNormal = realNormalGravity;
-        Vector3 forwardNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.right);
+        Vector3 forwardNormal = -Vector3.Cross(realNormal, rbRotateObject.transform.right);
         return (forwardNormal);
     }
 
@@ -196,7 +197,7 @@ public class EntityController : MonoBehaviour, IKillable
     public Vector3 GetFocusedRightDirPlayer()
     {
         Vector3 realNormal = baseGravity.GetMainAndOnlyGravity();
-        Vector3 rightNormal = -ExtQuaternion.CrossProduct(realNormal, rbRotateObject.transform.forward);
+        Vector3 rightNormal = -Vector3.Cross(realNormal, rbRotateObject.transform.forward);
         return (rightNormal);
         //return (rbRotateObject.transform.forward);
     }

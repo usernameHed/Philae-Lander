@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 
 public class EntitySlide : MonoBehaviour
 {
@@ -59,13 +60,13 @@ public class EntitySlide : MonoBehaviour
             Vector3 relativeDirPlayer = entityAction.GetRelativeDirection();
             float dotRight = 0f;
             float dotLeft = 0f;
-            int rightOrLeft = ExtQuaternion.IsRightOrLeft(normalHit, upPlayer, relativeDirPlayer, rb.position, ref dotRight, ref dotLeft);
+            int rightOrLeft = ExtVector3.IsRightOrLeft(normalHit, upPlayer, relativeDirPlayer, ref dotRight, ref dotLeft);
 
-            Vector3 right = ExtQuaternion.CrossProduct(normalHit, upPlayer);
+            Vector3 right = Vector3.Cross(normalHit, upPlayer);
 
             if (rightOrLeft == 1)
             {
-                playerStraff = ExtQuaternion.GetProjectionOfAOnB(relativeDirPlayer, right, upPlayer, minMaxMagnitude.x, minMaxMagnitude.y);// right * (dotRight);
+                playerStraff = ExtVector3.GetProjectionOfAOnB(relativeDirPlayer, right, upPlayer, minMaxMagnitude.x, minMaxMagnitude.y);// right * (dotRight);
                 if (groundForwardCheck.IsAdvancedForwardCastRightOrLeft())
                 {
                     //Debug.LogWarning("zero ! warning, slide if not both " + playerStraff);
@@ -81,7 +82,7 @@ public class EntitySlide : MonoBehaviour
             }
             else if (rightOrLeft == -1)
             {
-                playerStraff = ExtQuaternion.GetProjectionOfAOnB(relativeDirPlayer, - right, upPlayer, minMaxMagnitude.x, minMaxMagnitude.y);//-right * dotLeft;
+                playerStraff = ExtVector3.GetProjectionOfAOnB(relativeDirPlayer, - right, upPlayer, minMaxMagnitude.x, minMaxMagnitude.y);//-right * dotLeft;
                 if (groundForwardCheck.IsAdvancedForwardCastRightOrLeft())
                 {
                     //Debug.LogWarning("zero ! warning, slide if not both" + playerStraff);
@@ -98,29 +99,29 @@ public class EntitySlide : MonoBehaviour
             else
             {
                 
-                if (entityAction.GetDirInput().x < 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_LEFT
-                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_RIGHT))
+                if (entityAction.GetDirInput().x < 0 && (entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.FORWARD_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.FORWARD_AND_RIGHT))
                 {
                     //Debug.Log("left ?");
                     playerStraff = -right;
                     return;
                 }
-                else if (entityAction.GetDirInput().x < 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_LEFT
-                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_RIGHT))
+                else if (entityAction.GetDirInput().x < 0 && (entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.BEHIND_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.BEHIND_AND_RIGHT))
                 {
                     //Debug.Log("right ?");
                     playerStraff = right;
                     return;
                 }
-                else if (entityAction.GetDirInput().x > 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_LEFT
-                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.FORWARD_AND_RIGHT))
+                else if (entityAction.GetDirInput().x > 0 && (entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.FORWARD_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.FORWARD_AND_RIGHT))
                 {
                     //Debug.Log("right ?");
                     playerStraff = right;
                     return;
                 }
-                else if (entityAction.GetDirInput().x > 0 && (entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_LEFT
-                    || entityRotate.InputFromCameraOrientation == ExtQuaternion.OrientationRotation.BEHIND_AND_RIGHT))
+                else if (entityAction.GetDirInput().x > 0 && (entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.BEHIND_AND_LEFT
+                    || entityRotate.InputFromCameraOrientation == ExtRotation.OrientationRotation.BEHIND_AND_RIGHT))
                 {
                     //Debug.Log("left ?");
                     playerStraff = -right;

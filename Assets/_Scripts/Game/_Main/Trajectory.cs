@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEssentials.Extensions;
 
 /// <summary>
 ///     A collection of extension methods for <seealso cref="Rigidbody" /> and <seealso cref="Rigidbody2D" /> that
