@@ -3275,3 +3275,4 @@ Received Import Request.
 Start importing Assets/_Scripts/Editor/_Philae/ExtPhilaeEditor.cs using Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '781798c3497030f997a82ad8f5457513') in 0.003181 seconds
   Import took 0.010939 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
