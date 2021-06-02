@@ -140,3 +140,45 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogError (object)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
+Mono: successfully reloaded assembly
+- Completed reload, in  2.544 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3357 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.0 MB.
+System memory in use after: 139.2 MB.
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 4009.
+Total: 38.878900 ms (FindLiveObjects: 0.313200 ms CreateObjectMapping: 0.148200 ms MarkObjects: 38.301200 ms  DeleteObjects: 0.115100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011247 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: fieldInfo
+  at Sirenix.Utilities.EmitUtilities.CreateStaticFieldSetter[FieldType] (System.Reflection.FieldInfo fieldInfo) [0x0009e] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities\Misc\EmitUtilities.cs:210 
+  at Sirenix.Utilities.Editor.GUIHelper..cctor () [0x001ad] in D:\Sirenix\Sirenix Solution\Sirenix.Utilities.Editor\GUI\GUIHelper.cs:87 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.370 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3355 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.0 MB.
+System memory in use after: 139.2 MB.
+
+Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 4013.
+Total: 32.548000 ms (FindLiveObjects: 0.298200 ms CreateObjectMapping: 0.136400 ms MarkObjects: 31.996700 ms  DeleteObjects: 0.115200 ms)
+
