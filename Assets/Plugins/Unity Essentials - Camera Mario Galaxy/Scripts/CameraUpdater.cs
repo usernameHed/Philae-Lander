@@ -15,6 +15,10 @@ namespace UnityEssentials.CameraMarioGalaxy
         private void Update()
         {
             _cameraInputs.CustomUpdate();
+        }
+
+        private void LateUpdate()
+        {
             _dollyCamMove.CustomUpdate(_cameraInputs.CameraInput, _cameraInputs.TriggerZoom);
         }
     }

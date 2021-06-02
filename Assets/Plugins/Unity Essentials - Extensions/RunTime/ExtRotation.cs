@@ -563,6 +563,11 @@ namespace UnityEssentials.Extensions
 
         public static Quaternion OwnSmoothDamp(Quaternion rot, Quaternion target, ref Quaternion deriv, float time, float deltaTime)
         {
+            if (time == 0)
+            {
+                return (target);
+            }
+
             // account for double-cover
             var Dot = Quaternion.Dot(rot, target);
             var Multi = Dot > 0f ? 1f : -1f;

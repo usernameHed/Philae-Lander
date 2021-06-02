@@ -499,9 +499,9 @@ namespace UnityEssentials.Extensions
             Vector3 upLocal = up * localDelta.y;
             Vector3 rightLocal = right * localDelta.z;
 
-            Debug.DrawLine(globalPosition, globalPosition + forwardLocal, Color.blue);
-            Debug.DrawLine(globalPosition, globalPosition + upLocal, Color.green);
-            Debug.DrawLine(globalPosition, globalPosition + rightLocal, Color.red);
+            //Debug.DrawLine(globalPosition, globalPosition + forwardLocal, Color.blue);
+            //Debug.DrawLine(globalPosition, globalPosition + upLocal, Color.green);
+            //Debug.DrawLine(globalPosition, globalPosition + rightLocal, Color.red);
 
 
 
@@ -742,15 +742,20 @@ namespace UnityEssentials.Extensions
         /// <param name="maxSpeed"></param>
         /// <param name="deltaTime"></param>
         /// <returns></returns>
-        public static Vector3 OwnSmoothDamp(Vector3 current, Vector3 target, ref Vector3 currentVelocity, Vector3 smoothTime, Vector3 maxSpeed, float deltaTime)
+        public static Vector3 OwnSmoothDamp(Vector3 current, Vector3 target, ref Vector3 currentVelocity, float smoothTime, float maxSpeed, float deltaTime)
         {
+            if (smoothTime == 0)
+            {
+                return (target);
+            }
+
             float z = currentVelocity.z;
             float y = currentVelocity.y;
             float x = currentVelocity.x;
             Vector3 smoothedVector = new Vector3(
-                OwnSmoothDamp(current.x, target.x, ref x, smoothTime.x, maxSpeed.x, deltaTime),
-                OwnSmoothDamp(current.y, target.y, ref y, smoothTime.y, maxSpeed.y, deltaTime),
-                OwnSmoothDamp(current.z, target.z, ref z, smoothTime.z, maxSpeed.z, deltaTime));
+                OwnSmoothDamp(current.x, target.x, ref x, smoothTime, maxSpeed, deltaTime),
+                OwnSmoothDamp(current.y, target.y, ref y, smoothTime, maxSpeed, deltaTime),
+                OwnSmoothDamp(current.z, target.z, ref z, smoothTime, maxSpeed, deltaTime));
 
             currentVelocity = new Vector3(x, y, z);
             return (smoothedVector);

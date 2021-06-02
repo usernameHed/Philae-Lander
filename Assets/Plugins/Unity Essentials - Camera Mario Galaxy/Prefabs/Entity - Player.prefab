@@ -337,7 +337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4520289776631258272}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.519545, z: 0}
+  m_LocalPosition: {x: 0, y: 1.4817446, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1744986022}
@@ -368,10 +368,10 @@ MonoBehaviour:
   _upReference: {x: 0, y: 1, z: 0}
   _upReferenceObject: {fileID: 0}
   _keepUpGalaxyOriented: 0
-  _pathPosition: 0.5
+  _pathPosition: 0.5205091
   _positionUnits: 2
   _anchorOnSplineChange: 0
-  _lastPosition: {x: 0, y: 2.8693173, z: 0}
+  _lastPosition: {x: 0, y: 2.8126168, z: 0}
 --- !u!1 &4520289776731292952
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 4520289777617905492}
   - component: {fileID: 4520289777617905498}
   m_Layer: 8
-  m_Name: Entity - Player (1)
+  m_Name: Entity - Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

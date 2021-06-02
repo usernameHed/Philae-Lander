@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.CameraMarioGalaxy;
 
 public class PlayerController : EntityController, IKillable
 {

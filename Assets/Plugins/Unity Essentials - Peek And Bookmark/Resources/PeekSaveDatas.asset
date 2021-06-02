@@ -14,521 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedObjects:
   - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -7860
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43040
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 1'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43294
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43298
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43320
-    ScenePath: Philae LD 1
-    GameObjectName: 'SHAPE: Cube'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32228
-    ScenePath: 2 - CCC
-    GameObjectName: Dynamic Shadow Projector
-  - Asset: {fileID: 0}
     IsGameObject: 1
     InstanceId: 32180
     ScenePath: 2 - CCC
@@ -5017,277 +4502,522 @@ MonoBehaviour:
     InstanceId: 531184
     ScenePath: Level
     GameObjectName: GRAVITY ATTRACTOR TRIGGER
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 527318
+    ScenePath: Level
+    GameObjectName: WORLD
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 528876
+    ScenePath: Level
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659944
+    ScenePath: CameraCinemachine
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659964
+    ScenePath: CameraCinemachine
+    GameObjectName: Cinemachine BRAIN
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659968
+    ScenePath: CameraCinemachine
+    GameObjectName: TPS / TOPDOWN Cam
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659952
+    ScenePath: CameraCinemachine
+    GameObjectName: MAIN CM Camera
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659976
+    ScenePath: CameraCinemachine
+    GameObjectName: CM CamPoint Tracked Dolly
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 528876
+    ScenePath: Level
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 2800000, guid: ec951790acfb5304dbedb3469f76b34f, type: 3}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 2088a9ee01cc38d4d9705d1193b62b03, type: 3}
+    IsGameObject: 0
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 0
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -125782
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -125772
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -125782
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -125782
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: 53446
+    ScenePath: 
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137282
+    ScenePath: Level
+    GameObjectName: LookAt Controller
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137282
+    ScenePath: Level
+    GameObjectName: LookAt Controller
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137256
+    ScenePath: Level
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137276
+    ScenePath: Level
+    GameObjectName: Path LookAt
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 0
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137214
+    ScenePath: Level
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137256
+    ScenePath: Level
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137270
+    ScenePath: Level
+    GameObjectName: Follow Controller
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137282
+    ScenePath: Level
+    GameObjectName: LookAt Controller
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 0
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697274
+    ScenePath: Level
+    GameObjectName: ForwardPoints
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 692312
+    ScenePath: Level
+    GameObjectName: SplineLookAt
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697234
+    ScenePath: Level
+    GameObjectName: LookAt Follow Spline
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 684638
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697274
+    ScenePath: Level
+    GameObjectName: ForwardPoints
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697234
+    ScenePath: Level
+    GameObjectName: LookAt Follow Spline
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 684638
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 692312
+    ScenePath: Level
+    GameObjectName: SplineLookAt
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697274
+    ScenePath: Level
+    GameObjectName: ForwardPoints
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697234
+    ScenePath: Level
+    GameObjectName: LookAt Follow Spline
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697274
+    ScenePath: Level
+    GameObjectName: ForwardPoints
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697234
+    ScenePath: Level
+    GameObjectName: LookAt Follow Spline
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 692312
+    ScenePath: Level
+    GameObjectName: SplineLookAt
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697274
+    ScenePath: Level
+    GameObjectName: ForwardPoints
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696338
+    ScenePath: Level
+    GameObjectName: Camera Target Rotative
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 695934
+    ScenePath: Level
+    GameObjectName: Zoom / Dezoom
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 694530
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696354
+    ScenePath: Level
+    GameObjectName: TPS space point
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696338
+    ScenePath: Level
+    GameObjectName: Camera Target Rotative
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696412
+    ScenePath: Level
+    GameObjectName: Trails
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696410
+    ScenePath: Level
+    GameObjectName: Trail
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696408
+    ScenePath: Level
+    GameObjectName: Trail (1)
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696410
+    ScenePath: Level
+    GameObjectName: Trail
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696412
+    ScenePath: Level
+    GameObjectName: Trails
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: df8a3ed787dae344f8ef0300f9fa2071, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: a1a191b126c09604197a14c9cde0f19b, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: d959321e26c03c041876795a5e5725f7, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 687296
+    ScenePath: Level
+    GameObjectName: Capsule (4)
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: -135684
+    ScenePath: Level
+    GameObjectName: IA Follower
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 0
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
   _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 102900000, guid: b927cf719c6aa6b459a8283462844e88, type: 3}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 11500000, guid: 1b98620c0cffe594eb98c46293b89113, type: 3}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 11500000, guid: f652f76f7a936464c9f31bf006c7aa2a, type: 3}
-    IsGameObject: 0
-    InstanceId: 525110
-    ScenePath: Road
-    GameObjectName: Road Creator
-  - Asset: {fileID: 102900000, guid: 393e547192d504646bd2c4ba85bb7233, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 9535c7e707d1cc34b91af7cb45ebf24e, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 5897886265953266890, guid: 0e87289ff9e18c848a44fbe4e5340563, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: ed4e702f2a4097f42be2bf21407e8316, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 74ab3f4f774272d4394cb675421a72a9, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: bdcfd57e640b8cb47bfaedfb10f3cc43, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: 456995eb0693fac48a8f915efda07609, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11500000, guid: d5d41dcd96213a2498a0688a4fa7b1cc, type: 3}
-    IsGameObject: 0
-    InstanceId: 542426
-    ScenePath: Level
-    GameObjectName: Philae
   - Asset: {fileID: 11500000, guid: d3f633a539d1736428a80226def9e356, type: 3}
     IsGameObject: 0
     InstanceId: 542426
@@ -5328,11 +5058,6 @@ MonoBehaviour:
     InstanceId: 542426
     ScenePath: Level
     GameObjectName: Philae
-  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
-    IsGameObject: 1
-    InstanceId: 528876
-    ScenePath: Level
-    GameObjectName: CameraCinemachine
   - Asset: {fileID: 102900000, guid: 3d6dc349604e7a640b4fa072fd04c740, type: 3}
     IsGameObject: 0
     InstanceId: 528876
@@ -5423,11 +5148,6 @@ MonoBehaviour:
     InstanceId: -112452
     ScenePath: Level
     GameObjectName: GameObject
-  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
-    IsGameObject: 0
-    InstanceId: -112452
-    ScenePath: Level
-    GameObjectName: GameObject
   - Asset: {fileID: 5897886265953266890, guid: 3d00b7ae1cebf9641b369231379596a8, type: 3}
     IsGameObject: 0
     InstanceId: -112452
@@ -5513,6 +5233,286 @@ MonoBehaviour:
     InstanceId: 531184
     ScenePath: Level
     GameObjectName: GRAVITY ATTRACTOR TRIGGER
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 527318
+    ScenePath: Level
+    GameObjectName: WORLD
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659944
+    ScenePath: CameraCinemachine
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659964
+    ScenePath: CameraCinemachine
+    GameObjectName: Cinemachine BRAIN
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659968
+    ScenePath: CameraCinemachine
+    GameObjectName: TPS / TOPDOWN Cam
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659952
+    ScenePath: CameraCinemachine
+    GameObjectName: MAIN CM Camera
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 659976
+    ScenePath: CameraCinemachine
+    GameObjectName: CM CamPoint Tracked Dolly
+  - Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    IsGameObject: 1
+    InstanceId: 528876
+    ScenePath: Level
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 2800000, guid: ec951790acfb5304dbedb3469f76b34f, type: 3}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 540550
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 0}
+    IsGameObject: 1
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 2088a9ee01cc38d4d9705d1193b62b03, type: 3}
+    IsGameObject: 0
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 790038124e844c54eb6917fa35988187, type: 3}
+    IsGameObject: 0
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 0
+    InstanceId: 26516
+    ScenePath: 
+    GameObjectName: CameraCinemachine
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -125772
+    ScenePath: Camera
+    GameObjectName: Main Camera
+  - Asset: {fileID: 102900000, guid: 69ec35e4219071b4482db36a7d9a1fe0, type: 3}
+    IsGameObject: 1
+    InstanceId: -125782
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -125782
+    ScenePath: Camera
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: 53446
+    ScenePath: 
+    GameObjectName: Entity - Player (1)
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 1
+    InstanceId: -137276
+    ScenePath: Level
+    GameObjectName: Path LookAt
+  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
+    IsGameObject: 0
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 0
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137214
+    ScenePath: Level
+    GameObjectName: ROTATE (Up Oriented)
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137256
+    ScenePath: Level
+    GameObjectName: CAMERA Pivot
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137204
+    ScenePath: Level
+    GameObjectName: Entity - Player
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137270
+    ScenePath: Level
+    GameObjectName: Follow Controller
+  - Asset: {fileID: 5897886265953266890, guid: fed1bfc9893ab9c469b63b531fb2fb85, type: 3}
+    IsGameObject: 1
+    InstanceId: -137282
+    ScenePath: Level
+    GameObjectName: LookAt Controller
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 0
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 684638
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697234
+    ScenePath: Level
+    GameObjectName: LookAt Follow Spline
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 692312
+    ScenePath: Level
+    GameObjectName: SplineLookAt
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 697274
+    ScenePath: Level
+    GameObjectName: ForwardPoints
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 695934
+    ScenePath: Level
+    GameObjectName: Zoom / Dezoom
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 694530
+    ScenePath: Level
+    GameObjectName: DollyTrackMove
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696354
+    ScenePath: Level
+    GameObjectName: TPS space point
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696338
+    ScenePath: Level
+    GameObjectName: Camera Target Rotative
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696408
+    ScenePath: Level
+    GameObjectName: Trail (1)
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696410
+    ScenePath: Level
+    GameObjectName: Trail
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696412
+    ScenePath: Level
+    GameObjectName: Trails
+  - Asset: {fileID: 2100000, guid: 50bd6cc6b58f7ac4a825cd66d8490200, type: 2}
+    IsGameObject: 1
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: df8a3ed787dae344f8ef0300f9fa2071, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: a1a191b126c09604197a14c9cde0f19b, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: d959321e26c03c041876795a5e5725f7, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 0
+    InstanceId: 696486
+    ScenePath: Level
+    GameObjectName: ROTATE Object
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 687296
+    ScenePath: Level
+    GameObjectName: Capsule (4)
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: -135684
+    ScenePath: Level
+    GameObjectName: IA Follower
+  - Asset: {fileID: 11500000, guid: 90efd38b5a487f14d8db4b1c2f8b71be, type: 3}
+    IsGameObject: 1
+    InstanceId: 696350
+    ScenePath: Level
+    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 0
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: 696404
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
+    IsGameObject: 1
+    InstanceId: -137164
+    ScenePath: Level
+    GameObjectName: Main Camera
   _pinnedObjects:
   - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
     IsGameObject: 0
@@ -5522,10 +5522,10 @@ MonoBehaviour:
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 999
+  _currentIndex: 998
   _lastSelectedObject:
-    Asset: {fileID: 11500000, guid: 860957ec7c71842cd84a9d473a816ecb, type: 3}
+    Asset: {fileID: 11500000, guid: 9f3b383c9ea47f3408d31ef24a2c6b4b, type: 3}
     IsGameObject: 1
-    InstanceId: 531184
+    InstanceId: -137164
     ScenePath: Level
-    GameObjectName: GRAVITY ATTRACTOR TRIGGER
+    GameObjectName: Main Camera

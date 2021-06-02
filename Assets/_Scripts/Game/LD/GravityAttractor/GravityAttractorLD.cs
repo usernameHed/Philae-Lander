@@ -552,7 +552,7 @@ public class GravityAttractorLD : MonoBehaviour
     /// </summary>
     public PointInfo FindNearestPoint(Vector3 fromPoint)
     {
-        if (allResult.Length == 0)
+        if (allResult == null || allResult.Length == 0)
             return (pointInfo);
 
         int indexResult = 0;
