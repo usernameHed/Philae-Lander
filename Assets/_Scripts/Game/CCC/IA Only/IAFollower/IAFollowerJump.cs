@@ -47,7 +47,7 @@ public class IAFollowerJump : EntityJump
         entityController.ChangeState(EntityController.MoveState.InAir);
 
         ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
-        SoundManager.Instance.PlaySound(entityController.SFX_jump);
+        //SoundManager.Instance.PlaySound(entityController.SFX_jump);
 
 
         rb.ClearVelocity();

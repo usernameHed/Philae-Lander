@@ -53,7 +53,7 @@ public class IARabbitJump : EntityJump
         iaRabbitController.ChangeState(EntityController.MoveState.InAir);
 
         ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
-        SoundManager.Instance.PlaySound(iaRabbitController.SFX_jump);
+        //SoundManager.Instance.PlaySound(iaRabbitController.SFX_jump);
 
 
         rb.ClearVelocity();

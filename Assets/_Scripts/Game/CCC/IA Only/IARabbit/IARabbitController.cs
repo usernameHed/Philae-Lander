@@ -151,7 +151,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
         baseGravity.OnGrounded();
         baseGravityAttractorSwitch.OnGrounded();
 
-        SoundManager.Instance.PlaySound(SFX_grounded);
+        //.Instance.PlaySound(SFX_grounded);
     }
 
     private void StartTimerScream()
@@ -164,7 +164,7 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
         if (timerScream.IsStartedAndOver())
         {
             StartTimerScream();
-            SoundManager.Instance.PlaySound(SFX_Scream);
+            //SoundManager.Instance.PlaySound(SFX_Scream);
         }
     }
 

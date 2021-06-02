@@ -28,31 +28,6 @@ MonoBehaviour:
     InstanceId: -32452
     ScenePath: Philae LD 1
     GameObjectName: GravityFieldsGroup (1)
-  - Asset: {fileID: 11500000, guid: 0488d0d391defbf469c20dcbe5d3a36c, type: 3}
-    IsGameObject: 0
-    InstanceId: -32452
-    ScenePath: Philae LD 1
-    GameObjectName: GravityFieldsGroup (1)
-  - Asset: {fileID: 11500000, guid: 9de4e0a13a4fcd449b183fcadedf793f, type: 3}
-    IsGameObject: 0
-    InstanceId: -32452
-    ScenePath: Philae LD 1
-    GameObjectName: GravityFieldsGroup (1)
-  - Asset: {fileID: 11500000, guid: 9a7c376e1d1e8764590cec8de9692365, type: 3}
-    IsGameObject: 0
-    InstanceId: -32452
-    ScenePath: Philae LD 1
-    GameObjectName: GravityFieldsGroup (1)
-  - Asset: {fileID: 11500000, guid: c49f1e33545d96246bdd5bb44ea998d3, type: 3}
-    IsGameObject: 0
-    InstanceId: -32452
-    ScenePath: Philae LD 1
-    GameObjectName: GravityFieldsGroup (1)
-  - Asset: {fileID: 11500000, guid: 4713db30faae6884fb1a06c73edb7afe, type: 3}
-    IsGameObject: 0
-    InstanceId: -32452
-    ScenePath: Philae LD 1
-    GameObjectName: GravityFieldsGroup (1)
   - Asset: {fileID: 11500000, guid: 9a7c376e1d1e8764590cec8de9692365, type: 3}
     IsGameObject: 0
     InstanceId: -32452
@@ -5017,27 +4992,32 @@ MonoBehaviour:
     InstanceId: -44252
     ScenePath: Attractor
     GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 4800000, guid: 11b92c06e22823649a74fd3e27f8cef5, type: 3}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 85b177f399a068447b815903afcad950, type: 3}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: ced7a772b092c194ea8cc7cb220f4886, type: 3}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
   _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 11500000, guid: d661fbbb1f76c2649a210e95c1dad17d, type: 3}
-    IsGameObject: 0
-    InstanceId: 47916
-    ScenePath: Camera
-    GameObjectName: Entity - Player (1)
-  - Asset: {fileID: 5897886265953266890, guid: bcc5a13a224a50d4dbb03c001d4a83b8, type: 3}
-    IsGameObject: 0
-    InstanceId: 47916
-    ScenePath: Camera
-    GameObjectName: Entity - Player (1)
-  - Asset: {fileID: 5897886265953266890, guid: d74fe6ef9fdcca24ab8a263e05049939, type: 3}
-    IsGameObject: 0
-    InstanceId: 47916
-    ScenePath: Camera
-    GameObjectName: Entity - Player (1)
-  - Asset: {fileID: 102900000, guid: 8f6cb39e20209cd429d3ce442ffcdc6a, type: 3}
-    IsGameObject: 0
-    InstanceId: 47916
-    ScenePath: Camera
-    GameObjectName: Entity - Player (1)
   - Asset: {fileID: 11500000, guid: 923c78980268d0945ab3e8c8f140360f, type: 3}
     IsGameObject: 0
     InstanceId: 47916
@@ -5483,11 +5463,6 @@ MonoBehaviour:
     InstanceId: 69180
     ScenePath: Level
     GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 0
-    InstanceId: 69180
-    ScenePath: Level
-    GameObjectName: Philae
   - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
     IsGameObject: 0
     InstanceId: 69180
@@ -5513,6 +5488,31 @@ MonoBehaviour:
     InstanceId: -44252
     ScenePath: Attractor
     GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 4800000, guid: 11b92c06e22823649a74fd3e27f8cef5, type: 3}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 0}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 85b177f399a068447b815903afcad950, type: 3}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: ced7a772b092c194ea8cc7cb220f4886, type: 3}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: -44252
+    ScenePath: Attractor
+    GameObjectName: Zone With All Attractor
   _pinnedObjects:
   - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
     IsGameObject: 0
@@ -5522,9 +5522,9 @@ MonoBehaviour:
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 998
+  _currentIndex: 999
   _lastSelectedObject:
-    Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
     IsGameObject: 0
     InstanceId: -44252
     ScenePath: Attractor

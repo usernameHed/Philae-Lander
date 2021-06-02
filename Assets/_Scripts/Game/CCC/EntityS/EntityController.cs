@@ -55,13 +55,6 @@ public class EntityController : MonoBehaviour, IKillable
     [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
     protected ClampRbSpeed clampRbSpeed;
 
-    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    public FmodEventEmitter SFX_jump;
-    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    public FmodEventEmitter SFX_grounded;
-    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    public FmodEventEmitter SFX_Scream;
-
     [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
     public MoveState GetMoveState()

@@ -8,8 +8,7 @@ public class Anim_herbe : MonoBehaviour
     [SerializeField]
     private Animator anim = null;
 
-    [FoldoutGroup("Sound"), SerializeField, Tooltip("ref script")]
-    public FmodEventEmitter SFX_bush;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +16,6 @@ public class Anim_herbe : MonoBehaviour
             || other.gameObject.CompareTag(GameData.Tags.Enemy.ToString()))
         {
             anim.SetBool ("isBouge", true);
-            SoundManager.Instance.PlaySound(SFX_bush);
 
             Invoke("UnableIsBouge", 0.2f);
         }

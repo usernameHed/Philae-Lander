@@ -42,8 +42,8 @@ public class PlayerJump : EntityJump
 
         rb.ClearVelocity();
 
-        SoundManager.Instance.PlaySound(playerController.SFX_jump, true);
-        SoundManager.Instance.PlaySound(playerController.SFX_playerMove, false);
+        //SoundManager.Instance.PlaySound(playerController.SFX_jump, true);
+        //SoundManager.Instance.PlaySound(playerController.SFX_playerMove, false);
         playerController.animator.SetBool("isJUMP", true);
 
         base.DoJump(boostHeight);
