@@ -1,48 +1,48 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEssentials.PropertyAttribute.onvalueChanged;
 
-[TypeInfoBox("Rotate Cam point"), ExecuteInEditMode]
 public class DollyCamMove : MonoBehaviour
 {
-    [FoldoutGroup("Right-Left"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private FrequencyEase easeRotate = new FrequencyEase();
-    [FoldoutGroup("Right-Left"), Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving X")]
+    [Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving X")]
     private float deadZoneHoriz = 0.25f;
-    [FoldoutGroup("Right-Left"), Tooltip("dobject to rotate"), SerializeField]
+    [Tooltip("dobject to rotate"), SerializeField]
     private Transform toRotate = null;
 
-    [FoldoutGroup("Up-Down"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private float speedDolly = 1f;
-    [FoldoutGroup("Up-Down"), Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    [Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float deadZoneVerti = 0.3f;
-    [FoldoutGroup("Up-Down"), Tooltip("dobject to rotate"), SerializeField]
+    [Tooltip("dobject to rotate"), SerializeField]
     private CinemachineVirtualCamera cineWithDolly = null;
-    [FoldoutGroup("Up-Down"), Tooltip("dobject to rotate"), SerializeField]
+    [Tooltip("dobject to rotate"), SerializeField]
     private CinemachinePath cinemachinePath = null;
 
-    [FoldoutGroup("Zoom-Dezoom"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private float speedZoom = 1f;
-    [FoldoutGroup("Zoom-Dezoom"), MinMaxSlider(0.1f, 5f), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Vector2 minMaxZoom = new Vector2(0.1f, 5f);
-    [FoldoutGroup("Zoom-Dezoom"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Transform toScale = null;
-    [FoldoutGroup("Zoom-Dezoom"), Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    [Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float deadZoneZoom = 0.1f;
-    [FoldoutGroup("Zoom-Dezoom"), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    [SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private SplineController splineController;
 
 
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private PlayerInput playerInput = null;
 
 
-    [FoldoutGroup("Debug"), Range(0, 1f), Tooltip(""), OnValueChanged("InputDolly"), SerializeField]
+    [Range(0, 1f), Tooltip(""), OnValueChanged(nameof(InputDolly)), SerializeField]
     private float currentIndexDolly;
-    [FoldoutGroup("Debug"), Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
+    [Range(0f, 1f), SerializeField, Tooltip("deadzone gamepad stick when we consiere moving Y")]
     private float maxIndexDolly = 1;
 
 

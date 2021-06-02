@@ -1,21 +1,21 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseGravity : UniqueGravity
 {
-    [FoldoutGroup("Air Gravity"), Tooltip("default air gravity"), SerializeField]
+    [Tooltip("default air gravity"), SerializeField]
     protected float defaultGravityOnGround = 5.5f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected EntityController entityController = null;
-    [FoldoutGroup("Object"), Tooltip("ref"), SerializeField]
+    [Tooltip("ref"), SerializeField]
     protected GroundCheck groundCheck = null;
     
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected BaseGravityAttractorSwitch baseGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected EntityNoGravity entityNoGravity = null;
 
     public override Vector3 CalculateGravity(Vector3 positionEntity)

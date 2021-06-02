@@ -1,17 +1,17 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.onvalueChanged;
 
-[TypeInfoBox("Main player controller")]
 public class CoinController : MonoBehaviour, IPooledObject, IKillable
 {
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
+    [OnValueChanged(nameof(SetKinematic)), SerializeField, Tooltip("ref script")]
     private readonly bool isKinematic = false;
 
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
+    [OnValueChanged(nameof(SetKinematic)), SerializeField, Tooltip("ref script")]
     private readonly bool autoRotateAtStart = true;
 
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetKinematic"), SerializeField, Tooltip("ref script")]
+    [OnValueChanged(nameof(SetKinematic)), SerializeField, Tooltip("ref script")]
     private Rigidbody rb = default;
 
 

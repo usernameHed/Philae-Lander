@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using TMPro;
 
 public class ExtUtilityEditor : ScriptableObject
 {

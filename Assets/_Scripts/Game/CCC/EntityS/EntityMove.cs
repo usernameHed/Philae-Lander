@@ -1,35 +1,34 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Player Move forward locally")]
 public class EntityMove : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private float speedMove = 5f;
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private AnimationCurve easeAcceleration = default;
-    [FoldoutGroup("GamePlay"), Tooltip("base speed"), SerializeField]
+    [Tooltip("base speed"), SerializeField]
     private float minAcceleration = 10f;
 
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip("when we have a little input, set it to this value"), SerializeField]
+    [Range(0f, 1f), Tooltip("when we have a little input, set it to this value"), SerializeField]
     private float minInput = 0.15f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityJump entityJump = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private GroundForwardCheck groundForwardCheck = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntitySlide entitySlide = null;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private float currentSpeedMove = 0f;
 
     private void OnEnable()

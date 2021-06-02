@@ -1,37 +1,38 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class FastForward : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("time before die")]
+    [SerializeField, Tooltip("time before die")]
     private float timeWithNoGravity = 3f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("time before die")]
+    [SerializeField, Tooltip("time before die")]
     private float dotMarginDiffNormal = 0.71f;
     
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityController entityController = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityJump entityJump = default;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private GroundCheck groundCheck = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private Rigidbody rb = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityAction entityAction = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private BaseGravityAttractorSwitch baseGravityAttractorSwitch = default;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private bool fastForward = false;
     public bool IsInFastForward() => fastForward;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private Transform lastHitPlatform;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private float timeBeforeSwitch = 0.1f;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private List<FastForwardTrigger> fastForwardTriggers = new List<FastForwardTrigger>();
     
     private Vector3 previousNormal = Vector3.zero;

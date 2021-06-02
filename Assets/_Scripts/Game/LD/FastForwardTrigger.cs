@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +7,13 @@ using UnityEngine;
 /// <summary>
 public class FastForwardTrigger : FastForwardOrientationLD
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("enum to interact")]
-    private List<TagAccess.TagAccessEnum> tagList = new List<TagAccess.TagAccessEnum>() { TagAccess.TagAccessEnum.Player, TagAccess.TagAccessEnum.Enemy};
+    //[SerializeField, Tooltip("enum to interact")]
+    //private List<TagAccess.TagAccessEnum> tagList = new List<TagAccess.TagAccessEnum>() { TagAccess.TagAccessEnum.Player, TagAccess.TagAccessEnum.Enemy};
 
     [SerializeField]
     private SphereCollider sphereCollider = null;
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
 		if (ExtList.ListContain(other.tag, tagList))
@@ -36,6 +37,7 @@ public class FastForwardTrigger : FastForwardOrientationLD
             }
         }
 	}
+    */
 
     private void OnDrawGizmos()
     {

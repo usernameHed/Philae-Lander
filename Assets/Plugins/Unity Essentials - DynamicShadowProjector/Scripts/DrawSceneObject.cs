@@ -9,7 +9,8 @@
 using UnityEngine;
 using System.Collections;
 
-namespace DynamicShadowProjector {
+namespace UnityEssentials.DynamicShadowProjector
+{
 	[ExecuteInEditMode]
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(ShadowTextureRenderer))]

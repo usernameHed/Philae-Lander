@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEssentials.Extensions;
 
 [ExecuteInEditMode]
 public class SplineController : MonoBehaviour
@@ -310,11 +311,11 @@ public class SplineController : MonoBehaviour
         else
         {
             //Debug.Log("or");
-            float rotationSpeedDegS = (Mathf.Clamp01(1f - dampingTime) * 99f) * speedRotation * (5 - ExtUtilityFunction.Remap(Speed, 0, 30, 0, 4));
+            float rotationSpeedDegS = (Mathf.Clamp01(1f - dampingTime) * 99f) * speedRotation * (5 - ExtMathf.Remap(Speed, 0, 30, 0, 4));
             this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, desiredRotation, deltaTime * rotationSpeedDegS);
             if (MeshToRotate)
             {
-                MeshToRotate.rotation = ExtQuaternion.SmoothTurretLookRotation(desiredMeshRotation * Vector3.forward, Vector3.up, MeshToRotate.rotation, rotationSpeedDegS);
+                MeshToRotate.rotation = ExtRotation.SmoothTurretLookRotation(desiredMeshRotation * Vector3.forward, Vector3.up, MeshToRotate.rotation, rotationSpeedDegS);
                 //MeshToRotate.rotation = Quaternion.RotateTowards(MeshToRotate.rotation, desiredMeshRotation, deltaTime * rotationSpeedDegS);
             }
                 

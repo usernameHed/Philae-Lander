@@ -1,58 +1,58 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
-[TypeInfoBox("check if player in the ground")]
 public class GroundCheck : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Range(0f, 2f), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    [Range(0f, 2f), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private float groundCheckDistance = 0.2f;
-    [FoldoutGroup("GamePlay"), Range(0f, 2f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
+    [Range(0f, 2f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
     private float stickToFloorDist = 0.6f;
-    [FoldoutGroup("GamePlay"), Range(0f, 2f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
+    [Range(0f, 2f), Tooltip("when not grounded, check again if the distance is realy close to floor anyway"), SerializeField]
     private float stickToCeillingDist = 0.6f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float sizeRadiusRayCast = 0.5f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float timeInAirBeforeNotStick = 0.3f;
-    [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    [Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private bool calculateSurfaceNormal = true;
 
-    [FoldoutGroup("Object"), SerializeField]
+    [SerializeField]
     private SphereCollider sphereCollider = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private BaseGravity baseGravity = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityJump entityJump = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private BaseGravityAttractorSwitch baseGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityNoGravity entityNoGravity = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private FastForward fastForward = null;
 
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isGrounded = false;
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isAlmostGrounded = false;
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isFlying = true;
     
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private string currentFloorLayer;
-    [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
+    [Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float collRayCastMargin = 0.1f;
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     private Transform lastPlatform = null;
     public Transform GetLastPlatform() { return (lastPlatform); }
 
     private float radius;
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     private Vector3 dirNormal = Vector3.zero;
     private Vector3 dirSurfaceNormal = Vector3.zero;
 

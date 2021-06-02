@@ -1,7 +1,8 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class GroundForwardCheck : MonoBehaviour
 {
@@ -13,31 +14,31 @@ public class GroundForwardCheck : MonoBehaviour
         NONE = 2,
     }
 
-    [FoldoutGroup("GamePlay"), SerializeField]
+    [SerializeField]
     private bool inAirForwardWall = true;
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), Tooltip(""), SerializeField]
+    [Range(0f, 1f), Tooltip(""), SerializeField]
     public float timeBetween2TestForward = 0.8f;
 
-    [FoldoutGroup("Forward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
+    [Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
     private float distForward = 0.6f;
-    [FoldoutGroup("Forward"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float sizeRadiusForward = 0.3f;
-    [FoldoutGroup("Forward"), Range(0f, 1f), Tooltip(""), SerializeField]
+    [Range(0f, 1f), Tooltip(""), SerializeField]
     public float dotMarginImpact = 0.3f;
     
 
-    [FoldoutGroup("Advance Forward"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     private float upDistRaycast = 0.1f;
-    [FoldoutGroup("Advance Forward"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     private float lateralDistRaycast = 0.3f;
-    [FoldoutGroup("Advance Forward"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     private float distForwardRaycast = 1f;
 
-    [FoldoutGroup("Advance Forward"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isAdvancedForward = false;
-    [FoldoutGroup("Advance Forward"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isForwardAdvanceNormalOk = false;
-    [FoldoutGroup("Advance Forward"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private AdvancedForwardType isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
     public bool IsAdvancedForwardCastRightOrLeft()
     {
@@ -48,32 +49,32 @@ public class GroundForwardCheck : MonoBehaviour
     //[FoldoutGroup("Backward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
     //private float distBackward = 1f;
 
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private GroundCheck groundCheck = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityGravity entityGravity = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntitySlide entitySlide = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityBumpUp entityBumpUp = null;
 
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isForwardWall = false;
-    [FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    [ReadOnly, SerializeField]
     private bool isForbiddenForward = false;
 
     
-    //[FoldoutGroup("Debug"), ReadOnly, SerializeField]
+    //[ReadOnly, SerializeField]
     //private bool isBackwardWall = false;
-    [FoldoutGroup("Debug"), Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
+    [Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
     public float collRayCastMargin = 0.1f;
 
 

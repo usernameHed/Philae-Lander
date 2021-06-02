@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
-using TMPro;
+
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEditor;
@@ -12,7 +11,6 @@ using System.Collections;
 [ExecuteInEditMode]
 public class UnPlayManager : MonoBehaviour
 {
-    [FoldoutGroup("Object")]
     public PhilaeManager philaeManager;
 
     void Awake()

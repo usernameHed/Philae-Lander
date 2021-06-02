@@ -1,25 +1,25 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityBumpUp : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     private float dotMargin = 0.86f;
 
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityGravity entityGravity = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityAirMove entityAirMove = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityJump entityJump = null;
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private bool hasBumpedUp = false;
 
     private bool CanDoBumpUp()

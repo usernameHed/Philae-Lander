@@ -1,34 +1,33 @@
-﻿using AiUnity.MultipleTags.Core;
-using Sirenix.OdinInspector;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
+    [Tooltip("gravité du saut"), SerializeField]
     protected bool calculateEveryFixedFrame = true;
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float marginDotGA = 0.71f;
     
-    [FoldoutGroup("GamePlay"), Tooltip("More you have, less they attract !"), SerializeField]
+    [Tooltip("More you have, less they attract !"), SerializeField]
     public float ratioOtherDistance = 1.3f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float maxDistBasedOnHowManyTimeDefault = 3f;
 
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     protected Rigidbody rbEntity = null;
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
+    [Tooltip(""), SerializeField, ReadOnly]
     protected GravityAttractorLD.PointInfo pointInfo = new GravityAttractorLD.PointInfo();
     public Vector3 GetPosRange() => pointInfo.posRange;
     //protected Vector3 pointGroundHit;
     
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     public List<GravityAttractorLD> allGravityAttractor = new List<GravityAttractorLD>();
 
-    [FoldoutGroup("Debug"), Tooltip("time between 2 update"), SerializeField]
+    [Tooltip("time between 2 update"), SerializeField]
     protected FrequencyTimer frequencyTimer;
 
     protected Vector3 lastNormalJumpChoosen = Vector3.up;

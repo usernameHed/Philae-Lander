@@ -1,16 +1,16 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SmoothNormals : UniqueSmoothNormals
 {
-    [FoldoutGroup("GamePlay"), Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+    [Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
     private float smoothSpeedCamera = 2f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private GroundCheck groundCheck = null;
 
     private void Start()

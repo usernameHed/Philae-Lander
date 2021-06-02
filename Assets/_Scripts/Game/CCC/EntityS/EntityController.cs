@@ -1,8 +1,8 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
-[TypeInfoBox("Main player controller")]
 public class EntityController : MonoBehaviour, IKillable
 {
     public enum MoveState
@@ -12,50 +12,50 @@ public class EntityController : MonoBehaviour, IKillable
         Move,
     }
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     public bool isPlayer = false;
     
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public string[] allWalkablePlatform = new string[] { "Walkable/Ground", "Walkable/Stick", "Walkable/Dont", "Walkable/FastForward" };
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public string[] marioGalaxyPlatform = new string[] { "Walkable/Ground" };
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public string[] stickPlatform = new string[] { "Walkable/Stick" };
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public string[] walkForbiddenForwardUp = new string[] { "Walkable/Dont" };
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public string[] fastForwardPlatform = new string[] { "Walkable/FastForward" };
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     public Rigidbody rb;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     public Transform rbRotateObject;
 
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    [Tooltip("ref script"), SerializeField]
     public BaseGravity baseGravity;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     protected GroundCheck groundCheck;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    [Tooltip("ref script"), SerializeField]
     protected EntityAction entityAction;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    [Tooltip("ref script"), SerializeField]
     protected BaseGravityAttractorSwitch baseGravityAttractorSwitch;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    [Tooltip("ref script"), SerializeField]
     protected EntityNoGravity entityNoGravity;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    [Tooltip("ref script"), SerializeField]
     protected EntityBumpUp entityBumpUp;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     protected EntityAirMove entityAirMove;
 
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     protected FastForward fastForward;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     protected ClampRbSpeed clampRbSpeed;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("state move"), ReadOnly]
+    [SerializeField, Tooltip("state move"), ReadOnly]
     protected MoveState moveState = MoveState.Idle;
     public MoveState GetMoveState()
     {

@@ -1,22 +1,23 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class EntityNoGravity : MonoBehaviour
 {
-    [FoldoutGroup("Object"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private EntityController entityController = null;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private bool wereWeInNoGravity = false;
     public bool WereWeInNoGravity() => wereWeInNoGravity;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private float currentRatioGravity = 1f;
     public float GetNoGravityRatio() => currentRatioGravity;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip(""), ReadOnly]
+    [SerializeField, Tooltip(""), ReadOnly]
     private List<NoGravityTrigger> zonesNoGravity = new List<NoGravityTrigger>();
 
     public void EnterInZone(NoGravityTrigger noGravityTrigger)

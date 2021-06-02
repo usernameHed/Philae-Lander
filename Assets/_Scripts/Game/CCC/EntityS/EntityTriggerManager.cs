@@ -1,15 +1,15 @@
-﻿using AiUnity.MultipleTags.Core;
-using Sirenix.OdinInspector;
+﻿
+
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EntityTriggerManager : MonoBehaviour
 {
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public GameObject objectToKill;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityNoGravity entityNoGravity;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
 
 

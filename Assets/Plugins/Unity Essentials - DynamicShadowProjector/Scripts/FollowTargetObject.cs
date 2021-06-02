@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DynamicShadowProjector {
+namespace UnityEssentials.DynamicShadowProjector
+{
 	public class FollowTargetObject : MonoBehaviour {
 		public enum TextureAlignment {
 			None = 0,

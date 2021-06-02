@@ -1,15 +1,10 @@
-﻿using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.EditorCoroutines.Editor;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 [ExecuteInEditMode]
 [CustomEditor(typeof(GravityAttractorEditor))]
-public class GravityAttractorPointCreator : OdinEditor
+public class GravityAttractorPointCreator : Editor
 {
     private GravityAttractorEditor gravityAttractorEditor;
     public enum MouseClicType
@@ -24,7 +19,7 @@ public class GravityAttractorPointCreator : OdinEditor
     private RaycastHit saveRaycastHit;
     
 
-    private new void OnEnable()
+    private void OnEnable()
     {
         EditorApplication.update += OwnUpdate;
         gravityAttractorEditor = (GravityAttractorEditor)target;

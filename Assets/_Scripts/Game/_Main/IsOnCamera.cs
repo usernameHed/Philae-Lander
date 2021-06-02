@@ -1,25 +1,26 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 /// <summary>
 /// Check object is on camera
 /// <summary>
 public class IsOnCamera : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField]
+    [SerializeField]
     private float xMargin = 0;
-    [FoldoutGroup("GamePlay"), SerializeField]
+    [SerializeField]
     private float yMargin = 0;
 
-    [FoldoutGroup("GamePlay"), SerializeField]
+    [SerializeField]
 	private FrequencyTimer updateTimer = new FrequencyTimer(1.0f);
 
-    [FoldoutGroup("Object"), SerializeField]
+    [SerializeField]
     private Transform objetRef = null;
-    [FoldoutGroup("Debug"), ReadOnly]
+    [ReadOnly]
     public bool isOnScreen = false;
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     private Camera cam;
 
     private Vector3 bounds = Vector3.zero;

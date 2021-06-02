@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+
 using System;
 using UnityEngine;
 
@@ -60,9 +60,9 @@ using UnityEngine;
  */
 
 /*
-[FoldoutGroup("GamePlay"), Tooltip("ease ending crouch"), SerializeField]
+[Tooltip("ease ending crouch"), SerializeField]
 EasingFunction.Ease ease = EasingFunction.Ease.EaseInOutQuad;
-[FoldoutGroup("GamePlay"), Tooltip("ease ending crouch"), SerializeField]
+[Tooltip("ease ending crouch"), SerializeField]
 private float easeValue = 0.67f;
 EasingFunction.Function funcEasing = EasingFunction.GetEasingFunction(ease);
 
@@ -115,20 +115,20 @@ public class EasingFunction
     {
         [Tooltip("Type of ease")]
         public bool activeEase;
-        [Tooltip("Type of ease"), EnableIf("activeEase")]
+        [Tooltip("Type of ease")]
         public Ease ease;
-        [Tooltip("start ease (0 to 1, or 1 to 2..)"), EnableIf("activeEase")]
+        [Tooltip("start ease (0 to 1, or 1 to 2..)")]
         public float startEaseValue;
-        [Tooltip("ead ease"), EnableIf("activeEase")]
+        [Tooltip("ead ease")]
         public float endEaseValue;
-        [Tooltip("Speed when adding to ease"), EnableIf("activeEase")]
+        [Tooltip("Speed when adding to ease")]
         public float speedEaseOn;
-        [Tooltip("Speed when subtracting to ease"), EnableIf("activeEase")]
+        [Tooltip("Speed when subtracting to ease")]
         public float speedEaseOff;
-        [Tooltip("Clamp between 0 to 1 or not ?"), EnableIf("activeEase")]
+        [Tooltip("Clamp between 0 to 1 or not ?")]
         public bool clamp;
 
-        [Tooltip("current ease value"), ReadOnly]
+        [Tooltip("current ease value")]
         public float easeValue;
 
         EasingFunction.Function funcEasing;

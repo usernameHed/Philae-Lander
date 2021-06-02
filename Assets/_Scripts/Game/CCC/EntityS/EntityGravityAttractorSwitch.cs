@@ -1,25 +1,25 @@
-﻿using AiUnity.MultipleTags.Core;
-using Sirenix.OdinInspector;
+﻿
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 {
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private float timeBeforeApplyForceDown = 0.4f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private float timeBeforeActiveAllAttractorAfterJumpCalculation = 2f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private float marginNegativeJumpHit = -0.1f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private bool calculateGroundPos = true;
 
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityJumpCalculation entityJumpCalculation = default;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private FastForward fastForward = default;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private EntityJump entityJump = default;
 
 

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
+
 using System;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 /// <summary>
 /// Manage camera
@@ -11,26 +12,26 @@ using System;
 
 public class CameraControllerOld : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), InlineEditor]
+    [Tooltip("marge de précision de la caméra sur sa cible")]
     public CameraTypes cameraTypes;// = new CameraTypes();
     public CameraTypes GetCameraType() { return (cameraTypes); }
-    [FoldoutGroup("GamePlay"), Tooltip("Base cam value"), SerializeField]
+    [Tooltip("Base cam value"), SerializeField]
     private CameraTypes.CAM_CURRENT camCurrent;// = new CameraTypes.CAM_CURRENT();
 
-    [FoldoutGroup("GamePlay"), Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
+    [Tooltip("marge de précision de la caméra sur sa cible"), SerializeField]
     private float closeMargin = 0.1f;
     
-    [FoldoutGroup("Object"), Tooltip("ref de l'objet déplacable de la caméra"), SerializeField]
+    [Tooltip("ref de l'objet déplacable de la caméra"), SerializeField]
     private Transform movingCamera = null;
-    [FoldoutGroup("Object"), Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
+    [Tooltip("ref de la rotation sur l'axe Y de la caméra"), SerializeField]
     private Transform rotateCameraY = null;
 
     //Target list
-    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField, ReadOnly]
+    [Tooltip("list de target"), SerializeField, ReadOnly]
     private List<CameraTarget> targetList = new List<CameraTarget>();
-    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
+    [Tooltip("list de target"), SerializeField]
     private Transform targetPosition = null;
-    [FoldoutGroup("Debug"), Tooltip("list de target"), SerializeField]
+    [Tooltip("list de target"), SerializeField]
     private Transform targetToLook = null;
     
 

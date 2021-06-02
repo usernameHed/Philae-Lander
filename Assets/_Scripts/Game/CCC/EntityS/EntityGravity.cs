@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,20 +7,20 @@ public class EntityGravity : BaseGravity
 {
     //[FoldoutGroup("Ground Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
     //private float groundAddGravity = 5.5f;
-    [FoldoutGroup("Ground Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
+    [Tooltip("Down gravity when we are falling into the planet"), SerializeField]
     private float stickToFloorGravity = 6f;
 
 
-    [FoldoutGroup("Air Gravity"), Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
+    [Tooltip("Add gravity when releasing jump button, and rigidbody is going UPward the planet"), SerializeField]
     private float rbUpAddGravity = 2f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityYoshiBoost entityYoshiBoost = null;
 
     public override void OnGrounded()

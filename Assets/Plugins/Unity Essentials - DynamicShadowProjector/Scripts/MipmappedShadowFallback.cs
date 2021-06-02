@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-namespace DynamicShadowProjector {
+namespace UnityEssentials.DynamicShadowProjector
+{
 	[RequireComponent(typeof(ShadowTextureRenderer))]
 	public class MipmappedShadowFallback : MonoBehaviour {
 		public Object   m_fallbackShaderOrMaterial;

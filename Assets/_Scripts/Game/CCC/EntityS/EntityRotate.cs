@@ -1,44 +1,43 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Rotate localy the player")]
 public class EntityRotate : MonoBehaviour
 {
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private float turnRate = 700f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private float turnRateInAir = 300f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private bool instantRotate = false;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private bool doSimpleAirRotate = false;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation CameraFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation InputFromPlayerOrientation = ExtQuaternion.OrientationRotation.NONE;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     public ExtQuaternion.OrientationRotation InputFromCameraOrientation = ExtQuaternion.OrientationRotation.NONE;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private bool calculateOrientation = true;
 
-    [FoldoutGroup("GamePlay"), Range(0, 1), Tooltip("base speed"), SerializeField]
+    [Range(0, 1), Tooltip("base speed"), SerializeField]
     private float ratioConsideredFullSpeed = 0.5f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private UniqueGravity baseGravity = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityMove entityMove = default;
-    [FoldoutGroup("Object"), Tooltip("dobject to rotate"), SerializeField]
+    [Tooltip("dobject to rotate"), SerializeField]
     private Transform objectToRotate = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityController entityController = null;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private Vector3 lastDesiredDirection;
     
     private Vector3 lastVectorRelativeDirection;  //last desired rotation

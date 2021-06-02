@@ -1,18 +1,18 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
-[TypeInfoBox("Main player controller")]
 public class IAFollowerController : EntityController, IPooledObject, IKillable
 {
-    [FoldoutGroup("IA", Order = 0), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private readonly bool canLosePlayer = false;
-    [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private readonly float distForChase = 5f;
-    [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private readonly float distForLosePlayer = 10f;
 
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public IAFollowerInput followerInput;
 
     public enum State
@@ -45,16 +45,16 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
     
 
 
-    //[FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
+    //[Tooltip("movement speed when we are wandering"), SerializeField]
     //public Rigidbody rigidBodyRef = null;
-    //[FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
+    //[Tooltip("movement speed when we are wandering"), SerializeField]
     //public Transform rigidbodyRef = null;
-    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private IAFollowerJump iAJump = null;
-    [FoldoutGroup("GamePlay"), MinMaxSlider(0, 50), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private Vector2 iaScream = new Vector2(0, 50);
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
+    [Tooltip(""), SerializeField, ReadOnly]
     private State interactionState = State.WANDER;
 
     private FrequencyCoolDown timerScream = new FrequencyCoolDown();

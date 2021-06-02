@@ -9,7 +9,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace DynamicShadowProjector.Editor {
+namespace UnityEssentials.DynamicShadowProjector.Editor {
 	[CustomEditor(typeof(ShadowTextureRenderer))]
 	public class ShadowTextureRendererEditor : EditorBase {
 		static bool s_showAdvancedOptions = false;

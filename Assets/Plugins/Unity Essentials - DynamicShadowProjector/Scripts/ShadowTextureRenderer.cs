@@ -10,11 +10,13 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
 
-namespace DynamicShadowProjector {
+namespace UnityEssentials.DynamicShadowProjector
+{
 	[ExecuteInEditMode]
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(Projector))]
-	public class ShadowTextureRenderer : MonoBehaviour {
+	public class ShadowTextureRenderer : MonoBehaviour
+	{
 		public enum TextureMultiSample {
 			x1 = 1,
 			x2 = 2,

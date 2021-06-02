@@ -1,21 +1,22 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 [ExecuteInEditMode]
 public class LDManager : MonoBehaviour
 {
-    [FoldoutGroup("Object"), Tooltip("text debug to display"), SerializeField]
+    [Tooltip("text debug to display"), SerializeField]
     private PhilaeManager philaeManager = default;
     
-    [FoldoutGroup("Debug"), Tooltip("text debug to display"), ReadOnly]
+    [Tooltip("text debug to display"), ReadOnly]
     public List<GravityAttractorLD> allGravityAttractorLd = new List<GravityAttractorLD>();
-    [FoldoutGroup("Debug"), Tooltip("text debug to display"), ReadOnly]
+    [Tooltip("text debug to display"), ReadOnly]
     public List<SetGravityRotation> allSetGravityOrientation = new List<SetGravityRotation>();
 
 
-    [Button]
+    
     public void FillList(bool calculateAfter)
     {
         philaeManager.needRecalculate = false;

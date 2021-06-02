@@ -17,11 +17,10 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using System.Linq;
-using Sirenix.OdinInspector.Editor;
 
 [CustomEditor(typeof(Spline))]
 [CanEditMultipleObjects]
-public class SplineCustomEditor : OdinEditor
+public class SplineCustomEditor : Editor
 {
     private bool foldoutControlPoints;
     //private SerializedProperty ColorProperty;

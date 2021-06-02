@@ -1,20 +1,21 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 [ExecuteInEditMode]
 public class SetGravityRotation : MonoBehaviour
 {
-    [FoldoutGroup("Object"), Tooltip("gravité du saut"), SerializeField]
+    [Tooltip("gravité du saut"), SerializeField]
     private bool autoRotate = true;
 
-    [FoldoutGroup("Object"), Tooltip("gravité du saut"), SerializeField]
+    [Tooltip("gravité du saut"), SerializeField]
     private Transform objToRotate = default;
-    [FoldoutGroup("Object"), Tooltip("gravité du saut"), SerializeField, ReadOnly]
+    [Tooltip("gravité du saut"), SerializeField, ReadOnly]
     public PhilaeManager philaeManager;
 
-    [Button]
+    
     public void SetGravityRotate()
     {
         if (!autoRotate)

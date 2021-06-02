@@ -1,32 +1,31 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 /// <summary>
 /// InputPlayer Description
 /// </summary>
-[TypeInfoBox("Player input")]
 public class PlayerInput : EntityAction
 {
-    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    [Tooltip("input for moving Camera horizontally"), ReadOnly]
     public Vector2 cameraInput;
 
-    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    [Tooltip("input for moving Camera horizontally"), ReadOnly]
     public Vector2 mouseInput;
 
-    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    [Tooltip("input for moving Camera horizontally"), ReadOnly]
     public bool focus;
-    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    [Tooltip("input for moving Camera horizontally"), ReadOnly]
     public bool focusUp;
 
-    [FoldoutGroup("Debug"), Tooltip("input for dash"), ReadOnly]
+    [Tooltip("input for dash"), ReadOnly]
     public bool dash;
-    [FoldoutGroup("Debug"), Tooltip("input for dash"), ReadOnly]
+    [Tooltip("input for dash"), ReadOnly]
     public bool dashUp;
 
-    [FoldoutGroup("Debug"), Tooltip("input for moving Camera horizontally"), ReadOnly]
+    [Tooltip("input for moving Camera horizontally"), ReadOnly]
     public float trigger;
 
-    [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
+    [Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
     protected PlayerController playerController;
     public PlayerController PlayerController { get { return (playerController); } }
     

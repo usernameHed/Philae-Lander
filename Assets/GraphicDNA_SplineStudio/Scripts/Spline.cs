@@ -12,7 +12,7 @@
  * IN THE SOFTWARE.
  */
 
-using Sirenix.OdinInspector;
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -254,7 +254,6 @@ public class Spline : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    [Button]
     public void Refresh()
     {
         //Debug.Log("REfresh");
@@ -275,8 +274,8 @@ public class Spline : MonoBehaviour
     public void GenereMesh()
     {
         Debug.Log("genere mesh");
-        if (meshCollider == null)
-            meshCollider = transform.GetOrAddComponent<MeshCollider>();
+        //if (meshCollider == null)
+        //    meshCollider = transform.GetOrAddComponent<MeshCollider>();
 
         //meshCollider.sharedMesh = ExtUtilityFunction.SaveSelectedMesh(gameObject);
     }

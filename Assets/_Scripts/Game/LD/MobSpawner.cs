@@ -1,20 +1,20 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MobSpawner : MonoBehaviour
 {
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public IsOnCamera isOnCamera;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public float timeToSpawn = 4f;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public float timeToAddRandom = 15f;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public float minDist = 100f;
 
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public Transform posSpawn;
 
     private FrequencyCoolDown timeSpawn = new FrequencyCoolDown();

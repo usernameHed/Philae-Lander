@@ -1,25 +1,24 @@
-﻿using DynamicShadowProjector;
-using Sirenix.OdinInspector;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.DynamicShadowProjector;
 
 public class GroundAdvancedCheck : MonoBehaviour
 {
-    [FoldoutGroup("GamePLay"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private float minDistShadow = 3.5f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private DrawTargetObject drawTargetObject = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private Projector projector = default;
     public GameObject GetObjProjector() => projector.gameObject;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private BaseGravity baseGravity = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private Rigidbody rb = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private GroundCheck groundCheck;
 
     private void Awake()

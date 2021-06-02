@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using TMPro;
 using UnityEditor.IMGUI.Controls;
 using System.Reflection;
 using System;
@@ -113,10 +112,11 @@ public class ExtPhilaeEditor : ScriptableObject
                 MeshFilter mesh = allChild[i].GetComponent<MeshFilter>();
                 MeshRenderer meshRenderer = allChild[i].GetComponent<MeshRenderer>();
 
+                /*
                 TextMeshPro text = allChild[i].GetComponent<TextMeshPro>();
                 if (text)
                     continue;
-
+                */
                 if (mesh && meshRenderer)
                 {
                     Undo.RecordObject(allChild[i].gameObject, "layer change");

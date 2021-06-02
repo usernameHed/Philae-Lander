@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Collections;
-using Sirenix.Serialization;
 using System;
 
 /// <summary>
 /// MenuManager Description
 /// </summary>
-[TypeInfoBox("Have this localized in a scene, permit to define the scene transition next/previous, with option")]
-[TypeInfoBox("First is always Next/reload, Second always previous (Quit if not here), Third+ by index)")]
 public class SceneManagerLocal : SingletonMono<SceneManagerLocal>
 {
     //[SerializeField]
@@ -25,19 +22,19 @@ public class SceneManagerLocal : SingletonMono<SceneManagerLocal>
         public string scene;
         [Tooltip("Charge la scène en mémoire dès le début ?")]
         public bool loadAtStart;
-        [EnableIf("loadAtStart"), Tooltip("Si on charge au start, est-ce qu'on attend X seconde ou pas ? (default = 0)")]
+        [Tooltip("Si on charge au start, est-ce qu'on attend X seconde ou pas ? (default = 0)")]
         public float loadAfterXSecond;
         
         [Header("Effet de la transition")]
         [Tooltip("Fade lors de la transition ?")]
         public bool fade;
-        [EnableIf("fade"), Tooltip("Temps de fade")]
+        [Tooltip("Temps de fade")]
         public float fadeTime;
-        [EnableIf("loadAtStart"), DisableIf("fade"), Tooltip("Load la scène en additif ?")]
+        [Tooltip("Load la scène en additif ?")]
         public bool additive;
-        [EnableIf("loadAtStart"), Tooltip("Swap lorsque la scène est chargé ? Le changement marche en combinaison d'un fade, et d'une additive (fade puis swap complletement ok, additif puis ajoute l'additif au jeu ok)")]
+        [Tooltip("Swap lorsque la scène est chargé ? Le changement marche en combinaison d'un fade, et d'une additive (fade puis swap complletement ok, additif puis ajoute l'additif au jeu ok)")]
         public bool swapWhenLoaded;
-        [EnableIf("additive"), Tooltip("Lorsque la scene aditive est chargé, charge la scene")]
+        [Tooltip("Lorsque la scene aditive est chargé, charge la scene")]
         public string sceneToChargeAfterAdditive;
     }
 
@@ -115,7 +112,6 @@ public class SceneManagerLocal : SingletonMono<SceneManagerLocal>
     /// <summary>
     /// ici lance le jeu, il est chargé !
     /// </summary>
-    [Button("Play")]
     public void PlayNext()
     {
         if (!enabledScript)
@@ -164,7 +160,6 @@ public class SceneManagerLocal : SingletonMono<SceneManagerLocal>
         //ici gère les unloads ?
     }
 
-    [Button("Quit")]
     public void Quit()
     {
         if (!enabledScript)

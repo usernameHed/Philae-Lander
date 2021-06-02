@@ -1,26 +1,25 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Main player controller")]
 public class PlayerController : EntityController, IKillable
 {
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public PlayerInput playerInput = null;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public PlayerJump playerJump = null;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public Transform renderPlayer = null;
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public Animator animator = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityYoshiBoost entityYoshiBoost;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public GroundAdvancedCheck groundAdvancedCheck;
 
 
 
-    [FoldoutGroup("Debug", Order = 1), SerializeField, Tooltip("id player for input")]
+    [SerializeField, Tooltip("id player for input")]
     public int idPlayer = 0;
 
     

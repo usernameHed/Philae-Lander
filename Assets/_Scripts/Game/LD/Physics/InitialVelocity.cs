@@ -1,24 +1,24 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InitialVelocity : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
+    [Tooltip("initial push"), SerializeField]
     private float initialSpeed = 3000f;
-    [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
+    [Tooltip("initial push"), SerializeField]
     private float initialAngularVelocity = 0f;
-    [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
+    [Tooltip("initial push"), SerializeField]
     private Transform dirObject = null;
-    [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
+    [Tooltip("initial push"), SerializeField]
     private bool randomDir = true;
-    [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
+    [Tooltip("initial push"), SerializeField]
     private float timeMinBeforeBump = 5f;
-    [FoldoutGroup("GamePlay"), Tooltip("initial push"), SerializeField]
+    [Tooltip("initial push"), SerializeField]
     private float timeMaxRandomToAdd = 5f;
 
-    [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
+    [Tooltip("opti fps"), SerializeField]
     private Rigidbody rb = null;
 
     private FrequencyCoolDown timeBeforeActive = new FrequencyCoolDown();
@@ -28,7 +28,7 @@ public class InitialVelocity : MonoBehaviour
         ApplyInitialVelocity();
     }
 
-    [Button]
+    
     private void ApplyInitialVelocity()
     {
         if (randomDir)

@@ -10,7 +10,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 
-namespace DynamicShadowProjector {
+namespace UnityEssentials.DynamicShadowProjector
+{
 	[ExecuteInEditMode]
 	[RequireComponent(typeof(ShadowTextureRenderer))]
 	public class DrawTargetObject : MonoBehaviour {

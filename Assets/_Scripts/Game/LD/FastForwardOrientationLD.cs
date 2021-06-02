@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +6,9 @@ using UnityEngine;
 public class FastForwardOrientationLD : MonoBehaviour
 {
     [Header("Chose orientation: object or direction")]
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     protected bool gravityTowardDirection = true;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     private bool automatic = true;
     public bool IsAutomatic() => automatic;
 
@@ -16,11 +16,11 @@ public class FastForwardOrientationLD : MonoBehaviour
 
     [Space(10)]
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     public bool createMode = true;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     public Transform referenceObjecct;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     public Transform objectToTarget;
 
     //public Vector3 directionGravity;

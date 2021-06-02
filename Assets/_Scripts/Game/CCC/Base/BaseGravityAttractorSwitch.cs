@@ -1,16 +1,14 @@
-﻿using AiUnity.MultipleTags.Core;
-using Sirenix.OdinInspector;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
 {
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     protected EntityController entityController;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     protected BaseGravity baseGravity;
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     protected GroundCheck groundCheck;
     
     protected Vector3 wantedDirGravityOnGround = Vector3.zero;

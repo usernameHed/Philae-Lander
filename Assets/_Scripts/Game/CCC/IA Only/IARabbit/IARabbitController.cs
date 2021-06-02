@@ -1,18 +1,17 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Main player controller")]
 public class IARabbitController : EntityController, IPooledObject, IKillable
 {
-    [FoldoutGroup("IA", Order = 0), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private bool canForgetPlayer = false;
-    [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private float distForFlee = 5f;
-    [FoldoutGroup("IA"), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private float distForGoBackToNormal = 10f;
 
-    [FoldoutGroup("Object"), Tooltip("ref script")]
+    [Tooltip("ref script")]
     public IARabbitInput IARabbitInput;
 
     public enum State
@@ -36,12 +35,12 @@ public class IARabbitController : EntityController, IPooledObject, IKillable
         }
     }
 
-    [FoldoutGroup("GamePlay"), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private EntityJump entityJump = null;
-    [FoldoutGroup("GamePlay"), MinMaxSlider(0, 50), Tooltip("movement speed when we are wandering"), SerializeField]
+    [Tooltip("movement speed when we are wandering"), SerializeField]
     private Vector2 iaScream = new Vector2(0, 50);
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField, ReadOnly]
+    [Tooltip(""), SerializeField/*, ReadOnly*/]
     private State interactionState = State.WANDER;
 
     private FrequencyCoolDown timerScream = new FrequencyCoolDown();

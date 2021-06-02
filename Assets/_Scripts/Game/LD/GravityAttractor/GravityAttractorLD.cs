@@ -1,8 +1,10 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.onvalueChanged;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class GravityAttractorLD : MonoBehaviour
 {
@@ -13,9 +15,9 @@ public class GravityAttractorLD : MonoBehaviour
         public Vector3 pos;
         public float gravityBaseRatio;
         public float gravityDownRatio;
-        [OnValueChanged("OnMaxRangeChange")]
+        [OnValueChanged(nameof(OnMaxRangeChange))]
         public float range;
-        [OnValueChanged("OnMaxRangeChange")]
+        [OnValueChanged(nameof(OnMaxRangeChange))]
         public float maxRange;
 
         [HideInInspector]
@@ -31,7 +33,7 @@ public class GravityAttractorLD : MonoBehaviour
                 maxRange = range;
         }
 
-        [Button]
+        
         public void Init()
         {
             gravityBaseRatio = 0.5f;
@@ -115,21 +117,12 @@ public class GravityAttractorLD : MonoBehaviour
         public Transform pointC;
 
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
-        [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
         public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
 
-        [EnableIf("noGravityBorders")]
-        [DisableIf("isQuad")]
         public bool calculateAB;
-        [EnableIf("noGravityBorders")]
-        [DisableIf("isQuad")]
         public bool calculateBC;
-        [EnableIf("noGravityBorders")]
-        [DisableIf("isQuad")]
         public bool calculateCA;
-        [EnableIf("noGravityBorders")]
-        [DisableIf("isQuad")]
         public bool calculateCorner;
 
         public bool isQuad;
@@ -185,7 +178,6 @@ public class GravityAttractorLD : MonoBehaviour
         public Transform pointD;
 
         public bool unidirectionnal;    //n'est valide seulement dans un seul sens
-        [EnableIf("unidirectionnal")]
         public bool inverseDirection;   //inverser la direction si on est en unidirectionnal
         public bool noGravityBorders;   //si on est pas dans le plan, mais sur les bords, retourner null
         //[DisableIf("noGravityBorders")]
@@ -240,30 +232,30 @@ public class GravityAttractorLD : MonoBehaviour
         QUAD = 3,
     }
 
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public bool isMovingLD = false;
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public List<GravityPoint> gravityPoints = new List<GravityPoint>();
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public List<GravityLine> gravityLines = new List<GravityLine>();
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public List<GravityTriangle> gravityTrianglesOrQuad = new List<GravityTriangle>();
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public List<GravityQuad> gravityTetra = new List<GravityQuad>();
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public List<MeshFilter> _allConcaveMesh = new List<MeshFilter>();
-    [FoldoutGroup("GamePlay"), OnValueChanged("SetupArrayPoints"), Tooltip(""), SerializeField]
+    [OnValueChanged(nameof(SetupArrayPoints)), Tooltip(""), SerializeField]
     public List<Collider> _allConvexeMesh = new List<Collider>();
 
 
-    [FoldoutGroup("Object"), SerializeField]
+    [SerializeField]
     public Transform gravityAttractorEditor;
-    [FoldoutGroup("Object"), SerializeField]
+    [SerializeField]
     public PhilaeManager philaeManager;
 
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     private PointInfo pointInfo = new PointInfo();
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     public bool valueArrayChanged = false;
 
 
@@ -292,7 +284,7 @@ public class GravityAttractorLD : MonoBehaviour
         SetupArrayPoints();
     }
     
-    [Button]
+    
     public void SetEveryMeshInsideThatObject(GameObject obj)
     {
         if (obj == null)
@@ -310,7 +302,7 @@ public class GravityAttractorLD : MonoBehaviour
         }
     }
 
-    [Button]
+    
     public void CreateEditor()
     {
         if (!gameObject.HasComponent<GravityAttractorEditor>())
@@ -324,7 +316,7 @@ public class GravityAttractorLD : MonoBehaviour
         Debug.Log("called here when we move, don't create, but just change position arrayPoints");
     }
 
-    [Button]
+    
     public void SetupArrayPoints()
     {
         int indexAllResult = 0;
@@ -355,7 +347,7 @@ public class GravityAttractorLD : MonoBehaviour
         PrecalculAll();
     }
 
-    [Button]
+    
     public void PrecalculAll()
     {
         arrayExtLines = new ExtLine[gravityLines.Count];
@@ -404,7 +396,7 @@ public class GravityAttractorLD : MonoBehaviour
 
     
 
-    [Button]
+    
     public void RemoveEditor()
     {
         if (gameObject.HasComponent<GravityAttractorEditor>())

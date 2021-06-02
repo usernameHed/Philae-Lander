@@ -1,62 +1,62 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityJump : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected float jumpHeight = 3f;
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("increase the height jump when we move faster")]
+    [Range(0f, 1f), SerializeField, Tooltip("increase the height jump when we move faster")]
     protected float ratioIncreaseHeightMove = 0.5f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     protected bool inputJump = true;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected float ratioBoostWhenJumpingAgainstWall = 1.3f;
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public string[] noJumpLayer = new string[] { "Walkable/FastForward", "Walkable/Dont" };
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected bool stayHold = false;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected bool canJumpInAir = true;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected bool doGravityAttractorJump = true;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected EntityController entityController;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     protected Rigidbody rb;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected EntityAction entityAction;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected EntityRotate entityRotate;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected BaseGravity baseGravity;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected GroundForwardCheck groundForwardCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public GroundCheck groundCheck;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityAirMove playerAirMove;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityGravityAttractorSwitch entityGravityAttractorSwitch;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityBumpUp entityBumpUp;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityYoshiBoost entityYoshiBoost;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public FastForward fastForward;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityMove entityMove;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected bool hasJumped = false;
     public bool HasJumped() => hasJumped;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected float justJumpedTimer = 0.1f;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected float justGroundTimer = 0.1f;
 
     protected FrequencyCoolDown coolDownWhenJumped = new FrequencyCoolDown();

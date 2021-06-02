@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+
 using System.Collections.Generic;
 
-[TypeInfoBox("Apply real life gravity")]
 public class GravityObjects : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("planette qui attire"), SerializeField]
+    [Tooltip("planette qui attire"), SerializeField]
     private List<Rigidbody> planetsList = new List<Rigidbody>();
 
-    [FoldoutGroup("Object"), Tooltip("ref rb"), SerializeField]
+    [Tooltip("ref rb"), SerializeField]
     private Rigidbody rb = null;
 
-    [FoldoutGroup("Debug"), Tooltip("ratio gravity"), SerializeField]
+    [Tooltip("ratio gravity"), SerializeField]
     private float ratioGravity = 1;
-    [FoldoutGroup("Debug"), Tooltip("ratio gravity"), SerializeField]
+    [Tooltip("ratio gravity"), SerializeField]
     private bool useGravity = true;
 
 

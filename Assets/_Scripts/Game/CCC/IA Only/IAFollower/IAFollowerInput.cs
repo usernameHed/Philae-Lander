@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+
 
 /// <summary>
 /// InputPlayer Description
 /// </summary>
-[TypeInfoBox("Player input")]
 public class IAFollowerInput : EntityAction
 {
-    [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
+    [Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
     protected IAFollowerController iaFollowerController;
     public IAFollowerController IaFollowerController() => iaFollowerController;
 

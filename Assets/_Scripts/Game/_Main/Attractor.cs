@@ -1,21 +1,22 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class Attractor : MonoBehaviour, IKillable
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
+    [SerializeField, Tooltip("raycast to ground layer")]
     private float gravityAdd = 5f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
+    [SerializeField, Tooltip("raycast to ground layer")]
     private string[] layersRaycast = new string[] { "Player" };
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("raycast to ground layer")]
+    [SerializeField, Tooltip("raycast to ground layer")]
     private EntityGravity playerGravity = null;
 
     
     private Collider[] overlapResults = new Collider[10];
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("raycast to ground layer"), ReadOnly]
+    [SerializeField, Tooltip("raycast to ground layer"), ReadOnly]
     private Rigidbody[] rigidBody = new Rigidbody[10];
 
     public FrequencyTimer timer;

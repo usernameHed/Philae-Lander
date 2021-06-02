@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace DynamicShadowProjector.Editor {
+namespace UnityEssentials.DynamicShadowProjector.Editor {
 	[CustomEditor(typeof(MipmappedShadowFallback))]
 	public class MipmappedShadowFallbackEditor : EditorBase {
 		private bool m_testFallback = false;

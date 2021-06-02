@@ -1,22 +1,23 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 /// <summary>
 /// Add target to camera
 /// <summary>
 public class CameraTarget : MonoBehaviour
 {
-	[FoldoutGroup("GamePlay"), SerializeField]
+	[SerializeField]
 	private bool onEnableAdd = true;
 
-	[FoldoutGroup("GamePlay"), SerializeField]
+	[SerializeField]
 	private bool onDisableRemove = true;
 
-    [FoldoutGroup("GamePlay"), SerializeField]
+    [SerializeField]
     private bool alwaysOnCamera = false;
 
 
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     private CameraControllerOld cameraController;
 
     private void Awake()

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Sirenix.OdinInspector;
+
 using UnityEngine;
 
 /// <summary>
@@ -19,7 +19,7 @@ public class ObjectsPooler : SingletonMono<ObjectsPooler>
         public bool shouldExpand = false;
     }
 
-    [FoldoutGroup("GamePlay"), Tooltip("new pool"), SerializeField]
+    [Tooltip("new pool"), SerializeField]
     private List<Pool> pools = new List<Pool>();
 
     private Dictionary<GameData.PoolTag, List<GameObject>> poolDictionary;

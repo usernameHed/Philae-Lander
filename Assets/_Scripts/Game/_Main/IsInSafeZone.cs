@@ -1,11 +1,11 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IsInSafeZone : MonoBehaviour
 {
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("")]
     public bool isInQuieteZone = false;
 
     private FrequencyCoolDown timerStaySafe = new FrequencyCoolDown();

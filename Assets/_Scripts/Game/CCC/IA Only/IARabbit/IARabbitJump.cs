@@ -1,16 +1,16 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IARabbitJump : EntityJump
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private float addRandomJump = 4f;
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private float ratioMoveForward = 1.5f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private IARabbitController iaRabbitController = null;
 
     /// <summary>
@@ -20,7 +20,6 @@ public class IARabbitJump : EntityJump
     {
         base.OnGrounded();
 
-        ExtLog.DebugLogIa("Grounded !", ExtLog.Log.IA);
 
         coolDownOnGround.StartCoolDown(justGroundTimer + ExtRandom.GetRandomNumber(0f, addRandomJump));
     }
@@ -52,7 +51,6 @@ public class IARabbitJump : EntityJump
         coolDownWhenJumped.StartCoolDown(justJumpedTimer);
         iaRabbitController.ChangeState(EntityController.MoveState.InAir);
 
-        ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
         //SoundManager.Instance.PlaySound(iaRabbitController.SFX_jump);
 
 

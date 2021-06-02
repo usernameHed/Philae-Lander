@@ -1,11 +1,11 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IAFollowerJump : EntityJump
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private float addRandomJump = 4f;
     /// <summary>
     /// called when grounded (after a jump, or a fall !)
@@ -46,7 +46,6 @@ public class IAFollowerJump : EntityJump
         coolDownWhenJumped.StartCoolDown(justJumpedTimer);
         entityController.ChangeState(EntityController.MoveState.InAir);
 
-        ExtLog.DebugLogIa("jump !", ExtLog.Log.IA);
         //SoundManager.Instance.PlaySound(entityController.SFX_jump);
 
 

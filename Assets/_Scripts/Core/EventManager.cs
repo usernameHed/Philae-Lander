@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Sirenix.OdinInspector;
+
 
 public class DataEventManager
 {
@@ -23,7 +23,6 @@ public class DataEventManager
 /// OnDisable: EventManager.Instance.StopListening(GameData.Event.GameOver, <myFunction>);
 /// Trigger the event: EventManager.Instance.TriggerEvent(GameData.Event.GameOver);
 /// </summary>
-[TypeInfoBox("Global Event manager: StartListening, StopListening, TriggerEvent")]
 public class EventManager : SingletonMono<EventManager>
 {
     protected EventManager() { } // guarantee this will be always a singleton only - can't use the constructor!

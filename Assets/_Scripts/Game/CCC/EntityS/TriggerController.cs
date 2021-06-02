@@ -1,11 +1,11 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerController : MonoBehaviour, IKillable
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     public EntityTriggerManager entityTriggerManager;
 
     public void GetHit(int amount, Vector3 posAttacker)

@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+
 
 /// <summary>
 /// InputPlayer Description
 /// </summary>
-[TypeInfoBox("Player input")]
 public class IARabbitInput : EntityAction
 {
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     protected IARabbitController iaRabbitController;
     public IARabbitController IaRabbitController() => iaRabbitController;
     /// <summary>

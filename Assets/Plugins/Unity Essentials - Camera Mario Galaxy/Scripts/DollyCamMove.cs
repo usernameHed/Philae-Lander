@@ -43,8 +43,6 @@ namespace UnityEssentials.CameraMarioGalaxy
 
         [Range(0, 1f), Tooltip(""), OnValueChanged("InputDolly"), SerializeField]
         private float _followPercent;
-        [Range(0, 1f), Tooltip(""), OnValueChanged("InputDolly"), SerializeField]
-        private float _currentZoomRatio = 0;
 
         private Vector2 _cameraInput;
         private float _trigerZoom;

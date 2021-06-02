@@ -9,7 +9,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace DynamicShadowProjector.Editor {
+namespace UnityEssentials.DynamicShadowProjector.Editor {
 	[CustomEditor(typeof(DrawTargetObject))]
 	public class DrawTargetObjectEditor : EditorBase {
 		void OnEnable()

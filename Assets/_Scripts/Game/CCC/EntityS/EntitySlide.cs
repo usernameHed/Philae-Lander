@@ -1,33 +1,31 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Say player can slide, or climb !")]
 public class EntitySlide : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private float dotMarginNiceSlope = 0.3f;
-    [FoldoutGroup("GamePlay"), MinMaxSlider(0f, 1f), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private Vector2 minMaxMagnitude = new Vector2(0f, 0.7f);
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private float minMagnitudeSlideWhenCastRightOrLeft = 0.4f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private EntityGravity playerGravity = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private EntityRotate entityRotate = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private GroundForwardCheck groundForwardCheck = default;
 
-    [FoldoutGroup("Debug"), ReadOnly, Tooltip("main Straff direction")]
     private Vector3 playerStraff = Vector3.zero;
 
     public Vector3 GetStraffDirection()

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 [System.Serializable]
 public struct FrequencyEase
@@ -9,7 +9,7 @@ public struct FrequencyEase
 
     [SerializeField, Tooltip("speed")]
     private bool doInverse;
-    [SerializeField, Tooltip("timer back to 0 speed (default 1)"), EnableIf("doInverse")]
+    [SerializeField, Tooltip("timer back to 0 speed (default 1)")]
     private float ratioDecelerate;
     [SerializeField, Tooltip("curve, default: time: 0 to X; value: 0 to 1")]
     private AnimationCurve animationCurve;

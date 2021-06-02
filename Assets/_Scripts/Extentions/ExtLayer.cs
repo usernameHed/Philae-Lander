@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using AiUnity.MultipleTags.Core;
 
 ///
 /// LayerMask mask = LayerMaskExtensions.Create("Ignore Raycast", "TransparentFX", "Water");
@@ -16,7 +15,7 @@ using AiUnity.MultipleTags.Core;
 ///
 public static class ExtLayer
 {
-    public static int ContainTag(GameObject obj, TagAccess.TagAccessEnum[] allTagToZoom)
+    /*public static int ContainTag(GameObject obj, TagAccess.TagAccessEnum[] allTagToZoom)
     {
         for (int i = 0; i < allTagToZoom.Length; i++)
         {
@@ -27,7 +26,7 @@ public static class ExtLayer
             }
         }
         return (-1);
-    }
+    }*/
 
 	public static LayerMask Create(params string[] layerNames)
 	{

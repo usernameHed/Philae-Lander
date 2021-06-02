@@ -1,28 +1,28 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UniqueGravity : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
+    [Tooltip("gravité du saut"), SerializeField]
     protected bool isUniqueGravity = true;
 
-    [FoldoutGroup("GamePlay"), Tooltip("gravité du saut"), SerializeField]
+    [Tooltip("gravité du saut"), SerializeField]
     protected float gravity = 9.81f;
     public float Gravity { get { return (gravity); } }
     
-    [FoldoutGroup("GamePlay"), Tooltip("default air gravity"), SerializeField]
+    [Tooltip("default air gravity"), SerializeField]
     protected float defaultGravityInAir = 2f;
-    [FoldoutGroup("Air Gravity"), Tooltip("Down gravity when we are falling into the planet"), SerializeField]
+    [Tooltip("Down gravity when we are falling into the planet"), SerializeField]
     protected float rbDownAddGravity = 3.5f;
 
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois")]
+    [SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois")]
     protected bool doWeSwitchBetweenBoth = true;
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("up or down selon la normal dot"), ReadOnly]
+    [SerializeField, Tooltip("up or down selon la normal dot")/*, ReadOnly*/]
     protected bool isGoingDown = false;
     public bool IsGoingDown() => isGoingDown;
-    [FoldoutGroup("Switch"), SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois"), ReadOnly]
+    [SerializeField, Tooltip("down a partir du moment ou on est donw la premiere fois")/*, ReadOnly*/]
     protected bool isGoingDownToGround = false;
 
     public bool IsGoingDownToGround()
@@ -40,7 +40,7 @@ public class UniqueGravity : MonoBehaviour
         isGoingDown = isGoingDownToGround = false;
     }
 
-    [FoldoutGroup("GamePlay"), Tooltip("default air gravity"), SerializeField]
+    [Tooltip("default air gravity"), SerializeField]
     protected UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
 
     protected Vector3 mainAndOnlyGravity = Vector3.zero;
@@ -55,7 +55,7 @@ public class UniqueGravity : MonoBehaviour
         return (uniqueGravityAttractorSwitch.GetPosRange());
     }
     
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     protected Rigidbody rb = null;
 
     public virtual Vector3 CalculateGravity(Vector3 positionEntity)

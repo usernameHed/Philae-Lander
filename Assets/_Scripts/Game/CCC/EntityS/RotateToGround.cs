@@ -1,13 +1,13 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateToGround : MonoBehaviour
 {
-    [FoldoutGroup("Object"), Tooltip("ref object to rotate"), SerializeField]
+    [Tooltip("ref object to rotate"), SerializeField]
     private GameObject rbObject = null;
-    [FoldoutGroup("Object"), Tooltip("ref object to rotate"), SerializeField]
+    [Tooltip("ref object to rotate"), SerializeField]
     protected bool instantRotation = false;
 
     protected void InstantRotate(Vector3 dirSmoothedNormal)

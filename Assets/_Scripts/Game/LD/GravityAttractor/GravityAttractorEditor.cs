@@ -1,46 +1,47 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 [ExecuteInEditMode, RequireComponent(typeof(GravityAttractorLD))]
 public class GravityAttractorEditor : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public int createMode = 0;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public bool mergeMode = false;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public bool alwaysShow = true;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Transform parentAlones = null;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Transform parentLines = null;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Transform parentTriangles = null;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private Transform parentQuad = null;
 
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public Transform previewPoint;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public Transform parentTmpPoints;
 
-    [FoldoutGroup("Object"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     private GravityAttractorLD gravityAttractor = null;
     public GravityAttractorLD GetGravityAttractor() => gravityAttractor;
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public List<GameObject> tmpPointCreated = new List<GameObject>();
 
-    [FoldoutGroup("Debug"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public List<GameObject> tmpForm = new List<GameObject>();
 
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     public GameObject objectPreview;
-    [FoldoutGroup("Debug"), SerializeField, ReadOnly]
+    [SerializeField, ReadOnly]
     public GameObject triggerRef;
 
     [HideInInspector]
@@ -271,7 +272,7 @@ public class GravityAttractorEditor : MonoBehaviour
     /// <summary>
     /// create trigger object
     /// </summary>
-    [Button]
+    
     public void CreateTrigger()
     {
         if (!gravityAttractor)
@@ -312,7 +313,7 @@ public class GravityAttractorEditor : MonoBehaviour
             Debug.Log("ici trigger ref: " + triggerRef);
         }
     }
-    [Button]
+    
     public void RemoveTrigger()
     {
         Transform trigger = transform.Find(triggerAttractorName);
@@ -339,7 +340,6 @@ public class GravityAttractorEditor : MonoBehaviour
     /// <summary>
     /// generate parenting of object
     /// </summary>
-    [Button("GenerateParenting")]
     public void GenerateParenting()
     {
         if (!gravityAttractor)

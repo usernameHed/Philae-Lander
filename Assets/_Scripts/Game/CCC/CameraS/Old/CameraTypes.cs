@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 [CreateAssetMenu()]
-public class CameraTypes : SerializedScriptableObject
+public class CameraTypes : ScriptableObject
 {
     public enum CameraType
     {

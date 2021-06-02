@@ -1,21 +1,22 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class EntitySaveLastPoint : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
+    [Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float sizeDistanceForSavePlayerPos = 0.5f;   //a-t-on un attract point de placé ?
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private EntityGravity playerGravity = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref rigidbody")]
+    [SerializeField, Tooltip("ref rigidbody")]
     private EntityController entityController = null;
     
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
+    [SerializeField, Tooltip("ref script"), ReadOnly]
     private Vector3[] worldLastPosition = new Vector3[3];      //save la derniere position grounded...
-    [FoldoutGroup("Debug"), Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
+    [Tooltip("espace entre 2 sauvegarde de position ?"), SerializeField]
     private float differenceAngleNormalForUpdatePosition = 5f;   //a-t-on un attract point de placé ?
 
     private Vector3 worldPreviousNormal;    //et sa dernière normal accepté par le changement d'angle

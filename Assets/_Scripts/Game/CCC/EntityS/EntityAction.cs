@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 /// <summary>
 /// InputPlayer Description
 /// </summary>
-[TypeInfoBox("Player input")]
 public class EntityAction : MonoBehaviour
 {
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     protected Transform mainReferenceObjectDirection = null;
 
-    [FoldoutGroup("Debug"), Tooltip("input for moving player horizontally"), ReadOnly]
+    [Tooltip("input for moving player horizontally"), ReadOnly]
     public Vector2 moveInput = Vector2.zero;
 
 
-    [FoldoutGroup("Debug"), Tooltip(""), ReadOnly]
+    [Tooltip(""), ReadOnly]
     public bool Jump;
-    [FoldoutGroup("Debug"), Tooltip(""), ReadOnly]
+    [Tooltip(""), ReadOnly]
     public bool JumpUp;
 
     /// <summary>

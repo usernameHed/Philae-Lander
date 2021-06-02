@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Sirenix.OdinInspector;
+
 using System.Collections.Generic;
 
 /// <summary>
@@ -7,20 +7,20 @@ using System.Collections.Generic;
 /// </summary>
 public class AttractorOverlap : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("radius d'attraction"), SerializeField]
+    [Tooltip("radius d'attraction"), SerializeField]
     private float radius = 10f;
-    [FoldoutGroup("GamePlay"), Tooltip("radius d'attraction"), SerializeField]
+    [Tooltip("radius d'attraction"), SerializeField]
     private float attractionPlayer = 0.1f;
 
-    [FoldoutGroup("GamePlay"), Tooltip("force d'attraction"), SerializeField]
+    [Tooltip("force d'attraction"), SerializeField]
     private float strenght = 1000f;
-    [FoldoutGroup("GamePlay"), Tooltip("layer d'attration"), SerializeField]
+    [Tooltip("layer d'attration"), SerializeField]
     private string [] layerToAttract = new string[] { "Player" }; //select layer 8 (metallica and colider)
 
-    [FoldoutGroup("Debug"), Tooltip("opti fps")]
+    [Tooltip("opti fps")]
     public FrequencyTimer updateTimer;
 
-    [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
+    [Tooltip("opti fps"), SerializeField]
     private List<Rigidbody> listObjectOverlaping = new List<Rigidbody>();
 
     private Collider[] overlapResults = new Collider[30];

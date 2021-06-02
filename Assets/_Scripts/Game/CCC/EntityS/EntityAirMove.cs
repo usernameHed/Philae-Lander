@@ -1,57 +1,55 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TypeInfoBox("Player Move forward locally")]
 public class EntityAirMove : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private bool canDoAirMove = true;
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private float speedAirMoveForward = 5f;
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private float speedAirMoveSide = 5f;
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private float timeBeforeCanAirMove = 0.6f;
-    [FoldoutGroup("GamePlay"), Tooltip("speed move forward"), SerializeField]
+    [Tooltip("speed move forward"), SerializeField]
     private float dotForward = 0.70f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float ratioWhenGravityAirMove = 0.7f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float limitAirCalculationSide = 30f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float limitAirCalculationForward = 60f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float velocityMaxAirMove = 7f;
-    [FoldoutGroup("GamePlay"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float speedDecreaseAddition = 3f;
 
-    [FoldoutGroup("AirRotate"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float dotInverse = -0.9f;
-    [FoldoutGroup("AirRotate"), Tooltip(""), SerializeField]
+    [Tooltip(""), SerializeField]
     public float inverseRatioAcceleration = 1f;
-    [FoldoutGroup("AirRotate"), Range(0, 1), Tooltip(""), SerializeField]
+    [Range(0, 1), Tooltip(""), SerializeField]
     public float minRatioTurn = 0.3f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private Rigidbody rb = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityController entityController = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityAction entityAction = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityJump entityJump = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private GroundForwardCheck groundForwardCheck = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityMove entityMove = null;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref")]
+    [SerializeField, Tooltip("ref")]
     private EntityRotate entityRotate = null;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref"), ReadOnly]
     protected float amountAdded = 0f;
 
     protected FrequencyCoolDown coolDownJump = new FrequencyCoolDown();

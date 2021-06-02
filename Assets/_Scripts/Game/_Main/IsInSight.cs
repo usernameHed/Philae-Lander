@@ -1,21 +1,21 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IsInSight : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay", Order = 0, Expanded = true), Tooltip("head sight")]
+    [Tooltip("head sight")]
     public float radius = 3f;
-    [FoldoutGroup("GamePlay"), Tooltip("head sight")]
+    [Tooltip("head sight")]
     public float offsetPlayerDist = 0.1f;
-    [FoldoutGroup("GamePlay"), Tooltip("head sight")]
+    [Tooltip("head sight")]
     public Transform headSight;
-    [FoldoutGroup("GamePlay"), Tooltip("where to do  raycast")]
+    [Tooltip("where to do  raycast")]
     public Transform target;
 
     
-    [Button]
+    
     public bool IsTargetInSight()
     {
         RaycastHit hitInfo;

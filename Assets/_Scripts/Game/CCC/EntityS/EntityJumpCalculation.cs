@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,30 +49,30 @@ public struct InfoJump
 
 public class EntityJumpCalculation : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("raycast to ground layer")]
+    [SerializeField, Tooltip("raycast to ground layer")]
     private float distRaycastDOWN = 3f;
 
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
+    [Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
     private float marginJumpEndDot = 0.5f;
 
-    [FoldoutGroup("GamePlay"), Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
+    [Range(0f, 1f), SerializeField, Tooltip("margin from where we considere we dont move for jump calculation")]
     private float minJumpSpeedForNormalGravity = 0.7f;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityController entityController = default;
-    [FoldoutGroup("Object"), Tooltip("rigidbody"), SerializeField]
+    [Tooltip("rigidbody"), SerializeField]
     private Rigidbody rb = default;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityGravity entityGravity = default;
 
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityGravityAttractorSwitch entityGravityAttractorSwitch = default;
 
-    [FoldoutGroup("Debug"), Tooltip("gravité du saut"), SerializeField]
+    [Tooltip("gravité du saut"), SerializeField]
     private float magicTrajectoryCorrection = 1.4f;
 
     [SerializeField]

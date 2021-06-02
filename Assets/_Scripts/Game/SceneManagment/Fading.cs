@@ -1,11 +1,10 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
 /// utilisé pour fade la scène
 /// </summary>
-[TypeInfoBox("fade in/out at the start/end of the game")]
 public class Fading : MonoBehaviour
 {
     #region Attributes

@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Sirenix.OdinInspector;
 
-[TypeInfoBox("Used to change scene with fading and loading async")]
-[TypeInfoBox("Always have a Scene Global Manager, and the a LocalSceneManager to define witch scene we want to swap when play/exit the game")]
 public class SceneManagerGlobal : SingletonMono<SceneManagerGlobal>
 {
     protected SceneManagerGlobal() { } // guarantee this will be always a singleton only - can't use the constructor!

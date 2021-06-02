@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,18 +21,18 @@ public class GravityAttractorTrigger : MonoBehaviour
         }
     }
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("enum to interact")]
-    private List<TagAccess.TagAccessEnum> tagList = new List<TagAccess.TagAccessEnum>()
+    [SerializeField, Tooltip("enum to interact")]
+    private List<string> tagList = new List<string>()
     {
-        TagAccess.TagAccessEnum.Player,
-        TagAccess.TagAccessEnum.Enemy,
-        TagAccess.TagAccessEnum.Object
+        "Player",
+        "Enemy",
+        "Object"
     };
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("enum to interact")]
+    [SerializeField, Tooltip("enum to interact")]
     private List<TriggerCountExit> countCancelExit = new List<TriggerCountExit>();
 
-    [FoldoutGroup("GamePlay"), SerializeField, Tooltip("ref of the main GravityAttractor")]
+    [SerializeField, Tooltip("ref of the main GravityAttractor")]
     public GravityAttractorLD refGravityAttractor = null;
 
     private int ContainObject(GameObject obj)
@@ -82,9 +82,10 @@ public class GravityAttractorTrigger : MonoBehaviour
         }
     }
 
+    
     private void OnTriggerEnter(Collider other)
     {
-		if (ExtList.ListContain(other.tag, tagList))
+		if (tagList.Contains(other.tag))
 		{
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
@@ -100,8 +101,8 @@ public class GravityAttractorTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (ExtList.ListContain(other.tag, tagList))
-		{
+        if (tagList.Contains(other.tag))
+        {
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
             {
@@ -115,4 +116,5 @@ public class GravityAttractorTrigger : MonoBehaviour
             }
         }
 	}
+    
 }

@@ -1,30 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using Sirenix.OdinInspector;
+
 using System;
 using UnityEngine.SceneManagement;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class PhilaeManager : SingletonMono<PhilaeManager>
 {
-    [FoldoutGroup("Object"), Tooltip("text debug to display")]
+    [Tooltip("text debug to display")]
     public LDManager ldManager;
 
 
-    [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
+    [Tooltip("defined if this scene have trnasition")]
     public CameraControllerOld cameraController;
-    [FoldoutGroup("Debug"), Tooltip("defined if this scene have trnasition")]
+    [Tooltip("defined if this scene have trnasition")]
     public bool releaseScene = false;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
+    [SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
     private int switchPlanet = 0;
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
+    [SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]
     private float waitUntilRestart = 1f;
 
 
-    [FoldoutGroup("Debug"), Tooltip("text debug to display")]
+    [Tooltip("text debug to display")]
     public GameObject pausePanel;
-    [FoldoutGroup("Debug"), Tooltip("text debug to display")]
+    [Tooltip("text debug to display")]
     public bool needRecalculate = false;
 
     [HideInInspector]

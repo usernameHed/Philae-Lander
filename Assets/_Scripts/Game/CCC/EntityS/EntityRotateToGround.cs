@@ -1,15 +1,16 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.onvalueChanged;
 
 public class EntityRotateToGround : RotateToGround
 {
-    [FoldoutGroup("GamePlay"), Tooltip("speed of rotation to ground"), SerializeField, OnValueChanged("UpdateSpeed")]
+    [Tooltip("speed of rotation to ground"), SerializeField, OnValueChanged(nameof(UpdateSpeed))]
     public float speedRotate = 5f;
-    [FoldoutGroup("GamePlay"), Tooltip("speed of rotation to ground"), SerializeField, OnValueChanged("UpdateSpeed")]
+    [Tooltip("speed of rotation to ground"), SerializeField, OnValueChanged(nameof(UpdateSpeed))]
     public float speedLerpRaulBack = 5f;
-    [FoldoutGroup("Object"), Tooltip("ref script"), SerializeField]
+    [Tooltip("ref script"), SerializeField]
     private UniqueSmoothNormals uniqueSmoothNormals = null;
 
     private float tmpSpeed;

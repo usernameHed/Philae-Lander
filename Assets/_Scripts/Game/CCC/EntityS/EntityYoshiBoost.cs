@@ -1,45 +1,46 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.PropertyAttribute.readOnly;
 
 public class EntityYoshiBoost : MonoBehaviour
 {
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private bool enableBoost = true;
 
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private float timeBeforeJump = 0.4f;
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private float boostTime = 1.5f;
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private float timeBefore2Jump = 2f;
     [Space(10)]
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private float speedMax = 4f;
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private float speedMinDownWhenStart = 2f;
 
 
 
-    [FoldoutGroup("GamePlay"), Tooltip("vibration quand on jump"), SerializeField]
+    [Tooltip("vibration quand on jump"), SerializeField]
     private float yoshiBoostGravity = 4f;
     public float GetYoshiBoost() => yoshiBoostGravity;
 
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private Rigidbody rbEntity = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityJump entityJump = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityAction entityAction = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private PlayerController playerController = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private EntityGravity entityGravity = default;
-    [FoldoutGroup("Object"), SerializeField, Tooltip("ref script")]
+    [SerializeField, Tooltip("ref script")]
     private ClampRbSpeed clampRbSpeed = default;
 
-    [FoldoutGroup("Debug"), SerializeField, Tooltip("ref script"), ReadOnly]
+    [SerializeField, Tooltip("ref script"), ReadOnly]
     private bool isBoosting = false;
     public bool AreWeBoosting() => isBoosting;
 

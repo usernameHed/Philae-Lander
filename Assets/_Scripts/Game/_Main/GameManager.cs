@@ -1,18 +1,16 @@
-﻿using Sirenix.OdinInspector;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[TypeInfoBox("Global GameManager of the game")]
 public class GameManager : SingletonMono<GameManager>
 {
-    public ExtLog.Log logType = ExtLog.Log.BASE;
-    [FoldoutGroup("GamePlay"), Tooltip("vibration of joystick active ?")]
+    [Tooltip("vibration of joystick active ?")]
     public bool enableVibration = true;
     
 
-    [FoldoutGroup("Debug"), Tooltip("Enable lateral movement ?")]
+    [Tooltip("Enable lateral movement ?")]
     public Camera cameraMain;
 
     private void Awake()
