@@ -72,7 +72,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (1f);
 
-        float normalRatio = (!CanApplyGravityForce()) ? 1f : pointInfo.gravityBaseRatio;
+        float normalRatio = (!CanApplyGravityForce()) ? 1f : gravityBaseRatio;
         return (normalRatio);
     }
 
@@ -98,10 +98,10 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     }
 
 
-    public override Vector3 GetGAGravityAtThisPoint(Vector3 posEntity)
-    {
-        return (GetAirSphereGravity(posEntity).sphereGravity);
-    }
+    //public override Vector3 GetGAGravityAtThisPoint(Vector3 posEntity)
+    //{
+    //    return (GetAirSphereGravity(posEntity).sphereGravity);
+    //}
 
     /// <summary>
     /// calculate and set the gravity
@@ -110,7 +110,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     /// <param name="entityPosition"></param>
     /// <param name="justCalculate"></param>
     /// <returns></returns>
-    protected override void CalculateGAGravity(Vector3 rbPos)
+    protected override void CalculateGAGravity()
     {
         //Setup jump calculation when going down
         if (!applyGalaxyForce && baseGravity.IsGoingDownToGround())
@@ -134,27 +134,32 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         {
             //Debug.Log("ici gravité terrestre ?");
             coolDownBeforeAttract.Reset();
-            pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
-            pointInfo.pos = pointInfo.posRange = groundCheck.GetPointLastHit();
-            wantedDirGravityOnGround = GetAirSphereGravity(rbPos).sphereGravity;
+
+            base.CalculateGAGravity();
+            wantedDirGravityOnGround = GravityDirection;
+
+            GravityDirection = groundCheck.GetDirLastNormal();
+            OverrideContactPointOfClosestAttractor(groundCheck.GetPointLastHit());
         }
         //here we can't apply, because we just jump (OR because we are falling and in the timer
         else if (!CanApplyGravityForce())
         {
             //Debug.Log("ici gravité last jump !");
-            pointInfo.sphereGravity = wantedDirGravityOnGround = lastNormalJumpChoosen;
+            GravityDirection = wantedDirGravityOnGround = lastNormalJumpChoosen;
             //pointGroundHit = groundCheck.ResearchInitialGround(false);
             if (calculateGroundPos)
-                pointInfo.pos = pointInfo.posRange = groundCheck.ResearchInitialGround(false);
+            {
+                OverrideContactPointOfClosestAttractor(groundCheck.ResearchInitialGround(false));
+            }
         }
         else
         {
-            //Debug.Log("ici in air gravity");
-            pointInfo = GetAirSphereGravity(rbPos);
+            CalculateGAGravity();
             wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
     }
 
+    /*
     /// <summary>
     /// get median of all attraction (3 max ?)
     /// </summary>
@@ -278,17 +283,20 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
         return (closestPoint);
     }
+    */
 
     private void FixedUpdate()
     {
         if (!calculateEveryFixedFrame)
         {
             if (frequencyTimer.Ready())
-                CalculateGAGravity(rbEntity.transform.position);
+            {
+                CalculateGAGravity();
+            }
         }
         else
         {
-            CalculateGAGravity(rbEntity.transform.position);
+            CalculateGAGravity();
         }
     }
 }

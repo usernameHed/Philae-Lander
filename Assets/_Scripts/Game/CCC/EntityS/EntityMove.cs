@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 
 public class EntityMove : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class EntityMove : MonoBehaviour
         //min: minAcceleration
         //max: speedMove
         //current: currentSpeedMove
-        float remapCurrentSpeed = ExtUtilityFunction.Remap(currentSpeedMove, minAcceleration, speedMove, 0, 1);
+        float remapCurrentSpeed = ExtMathf.Remap(currentSpeedMove, minAcceleration, speedMove, 0, 1);
 
 
         return (remapCurrentSpeed * playerInput);

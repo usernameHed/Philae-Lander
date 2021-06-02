@@ -60,7 +60,7 @@ public class UniqueGravity : MonoBehaviour
 
     public virtual Vector3 CalculateGravity(Vector3 positionEntity)
     {
-        mainAndOnlyGravity = uniqueGravityAttractorSwitch.GetDirGAGravity();
+        mainAndOnlyGravity = uniqueGravityAttractorSwitch.GravityDirection;
 
         return (mainAndOnlyGravity);
     }

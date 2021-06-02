@@ -13,25 +13,13 @@ namespace UnityEssentials.Attractor
 {
     public class GravitonUpdater : MonoBehaviour
     {
-        [SerializeField] private float _maxSpeed = 70f;
         [SerializeField, NoNull]        private Graviton _graviton = default;
-        [SerializeField, NoNull] private Rigidbody _rigidBody = default;
+        [SerializeField, NoNull]        private Rigidbody _rigidBody = default;
 
         protected virtual void FixedUpdate()
         {
             _graviton.CalculatePhysicNormal();
-            MoveAction(_graviton.CurrentNormal);
-        }
-
-        public void MoveAction(Vector3 direction)
-        {
-            if (!AttractorSettings.Instance.SimulatePhysic)
-            {
-                return;
-            }
-
-            direction = ExtRigidBody.ClampVelocity(direction, _maxSpeed);
-            _rigidBody.AddForce(direction, ForceMode.Force);
+            _rigidBody.AddForce(_graviton.GravityDirection, ForceMode.Force);
         }
     }
 }

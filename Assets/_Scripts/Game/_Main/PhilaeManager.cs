@@ -9,9 +9,6 @@ using UnityEssentials.Extensions;
 
 public class PhilaeManager : SingletonMono<PhilaeManager>
 {
-    [Tooltip("text debug to display")]
-    public LDManager ldManager;
-
     [Tooltip("defined if this scene have trnasition")]
     public bool releaseScene = false;
     [SerializeField, Tooltip("vibration of joystick active ?"), ReadOnly]

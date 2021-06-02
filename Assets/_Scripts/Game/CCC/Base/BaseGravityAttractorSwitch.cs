@@ -24,7 +24,7 @@ public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
             return (1f);
 
-        float normalRatio = pointInfo.gravityBaseRatio;
+        float normalRatio = gravityBaseRatio;
         return (normalRatio);
     }
 
@@ -36,7 +36,6 @@ public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
     public override void SetLastDirJump(Vector3 dirNormalChoosen)
     {
         base.SetLastDirJump(dirNormalChoosen);
-        //lastNormalJumpChoosen = dirNormalChoosen;
         wantedDirGravityOnGround = dirNormalChoosen;
     }
 
@@ -45,23 +44,24 @@ public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
 
     }
 
-    /// <summary>
-    /// calculate and set the gravity
-    /// if justCalculate = true, do NOT set the gravity, but return it
-    /// </summary>
-    /// <param name="entityPosition"></param>
-    /// <param name="justCalculate"></param>
-    /// <returns></returns>
-    protected override void CalculateGAGravity(Vector3 rbPos)
+    ///// <summary>
+    ///// calculate and set the gravity
+    ///// if justCalculate = true, do NOT set the gravity, but return it
+    ///// </summary>
+    ///// <param name="entityPosition"></param>
+    ///// <param name="justCalculate"></param>
+    ///// <returns></returns>
+    protected override void CalculateGAGravity()
     {
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
-            pointInfo.sphereGravity = groundCheck.GetDirLastNormal();
-            wantedDirGravityOnGround = GetAirSphereGravity(rbPos).sphereGravity;
+            base.CalculateGAGravity();
+            wantedDirGravityOnGround = GravityDirection;
+            GravityDirection = groundCheck.GetDirLastNormal();
         }
         else
         {
-            pointInfo = GetAirSphereGravity(rbPos);
+            base.CalculateGAGravity();
             wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
     }

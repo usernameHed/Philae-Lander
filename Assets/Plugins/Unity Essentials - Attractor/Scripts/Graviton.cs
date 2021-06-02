@@ -18,8 +18,11 @@ namespace UnityEssentials.Attractor
         
 
         private Vector3 _defaultNormal = Vector3.down;
-        private Vector3 _currentCalculatedNormal = Vector3.down;
-        public Vector3 CurrentNormal { get { return (_currentCalculatedNormal); } }
+        private Vector3 _gravityDirection = Vector3.down;
+        public Vector3 GravityDirection { get { return (_gravityDirection); } }
+
+        private AttractorInfo _closestAttractor = default;
+        public AttractorInfo ClosestAttractor { get { return (_closestAttractor); } }
 
         //refs
         [SerializeField, NoNull] protected Rigidbody _rigidBody = default;
@@ -43,7 +46,7 @@ namespace UnityEssentials.Attractor
 
         private void Awake()
         {
-            _currentCalculatedNormal = _defaultNormal;
+            _gravityDirection = _defaultNormal;
         }
 
         public void AddGravityAction(Attractor gravityField)
@@ -56,6 +59,10 @@ namespace UnityEssentials.Attractor
             _attractorApplyingForce.Remove(gravityField);
         }
 
+        public void OverrideContactPointOfClosestAttractor(Vector3 newContactPoint)
+        {
+            _closestAttractor.ContactPoint = newContactPoint;
+        }
         //protected virtual void FixedUpdate()
         //{
         //    CalculatePhysicNormal();
@@ -72,7 +79,7 @@ namespace UnityEssentials.Attractor
             else
             {
                 //apply sum of the normals
-                _currentCalculatedNormal = CalculatePhysicBasedOnGravityFields();
+                _gravityDirection = CalculatePhysicBasedOnGravityFields();
             }
         }
 
@@ -150,6 +157,7 @@ namespace UnityEssentials.Attractor
                     shortestDistance = _attractorInfo[i].SqrDistance;
                 }
             }
+            _closestAttractor = _attractorInfo[_closestIndex];
         }
 
         private Vector3 CalculateForces()
@@ -202,7 +210,7 @@ namespace UnityEssentials.Attractor
                 ExtDrawGuizmos.DebugWireSphere(_attractorInfo[i].ContactPoint, Color.green, 0.1f);
                 ExtDrawGuizmos.DrawArrow(_rigidBody.position, _attractorInfo[i].NormalizedDirection * _forceAmount[i] * AttractorSettings.Instance.RatioSizeArrow, Color.white);
             }
-            ExtDrawGuizmos.DrawArrow(_rigidBody.position, _currentCalculatedNormal * AttractorSettings.Instance.RatioSizeArrow, Color.cyan);
+            ExtDrawGuizmos.DrawArrow(_rigidBody.position, _gravityDirection * AttractorSettings.Instance.RatioSizeArrow, Color.cyan);
         }
 #endif
     }

@@ -15,7 +15,7 @@ namespace UnityEssentials.Attractor
 
         public void Init()
         {
-            InstantRotate(_gravityEntity.CurrentNormal);
+            InstantRotate(_gravityEntity.GravityDirection);
         }
 
         protected void InstantRotate(Vector3 dirSmoothedNormal)
@@ -31,7 +31,7 @@ namespace UnityEssentials.Attractor
 
         protected virtual void FixedUpdate()
         {
-            RotateObject(_rotationSpeed, _gravityEntity.CurrentNormal);
+            RotateObject(_rotationSpeed, _gravityEntity.GravityDirection);
         }
 
         protected void RotateObject(float speedRotate, Vector3 dirSmoothedNormal)
