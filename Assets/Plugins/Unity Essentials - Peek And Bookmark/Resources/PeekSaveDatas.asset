@@ -5522,7 +5522,7 @@ MonoBehaviour:
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 999
+  _currentIndex: 998
   _lastSelectedObject:
     Asset: {fileID: 11500000, guid: 9e03bd491550c5e45b7185fa31fad751, type: 3}
     IsGameObject: 1
