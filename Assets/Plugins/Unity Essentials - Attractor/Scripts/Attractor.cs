@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEssentials.ActionTrigger.Actions;
 using UnityEssentials.ActionTrigger.entity;
 using UnityEssentials.Extensions;
@@ -8,10 +9,11 @@ using UnityEssentials.PropertyAttribute.readOnly;
 
 namespace UnityEssentials.Attractor
 {
-    public class Attractor : Action
+    public class Attractor : ActionTrigger.Actions.Action
     {
         public const int DEFAULT_MAX_ATTRACTOR = 100;
 
+        [Serializable]//to Remove
         public struct AttractorInfo
         {
             public bool CanApplyGravity;

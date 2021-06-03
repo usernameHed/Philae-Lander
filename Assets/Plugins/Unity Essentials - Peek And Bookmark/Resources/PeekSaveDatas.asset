@@ -15,26 +15,6 @@ MonoBehaviour:
   _selectedObjects:
   - Asset: {fileID: 0}
     IsGameObject: 1
-    InstanceId: 32228
-    ScenePath: 2 - CCC
-    GameObjectName: Dynamic Shadow Projector
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32220
-    ScenePath: 2 - CCC
-    GameObjectName: CAMERA Pivot
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -43040
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 1'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
     InstanceId: -43044
     ScenePath: Philae LD 1
     GameObjectName: 'SHAPE: Quad'
@@ -5017,22 +4997,27 @@ MonoBehaviour:
     InstanceId: -69546
     ScenePath: Attractor
     GameObjectName: Zone With All Attractor
-  _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 102900000, guid: 524a7c1d7af4ad6408c7fb4d66ab670c, type: 3}
-    IsGameObject: 0
-    InstanceId: -186936
-    ScenePath: Attractor
-    GameObjectName: Graviton
-  - Asset: {fileID: 4890085278179872738, guid: a272ff919ab028d4ea99ce1f2a576288, type: 2}
-    IsGameObject: 0
-    InstanceId: -186936
-    ScenePath: Attractor
-    GameObjectName: Graviton
-  - Asset: {fileID: 4890085278179872738, guid: a272ff919ab028d4ea99ce1f2a576288, type: 2}
+  - Asset: {fileID: 102900000, guid: f60384c486fa09f43b7fbba775ddd744, type: 3}
     IsGameObject: 1
-    InstanceId: 1109862
-    ScenePath: Level
-    GameObjectName: Cube
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11500000, guid: 1ec5e5f960cd53248afd4c98fa74c2c4, type: 3}
+    IsGameObject: 0
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11500000, guid: fcc069654f08f4e4a847f532a0099c27, type: 3}
+    IsGameObject: 0
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11500000, guid: fcc069654f08f4e4a847f532a0099c27, type: 3}
+    IsGameObject: 1
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  _selectedObjectsWithoutDuplicate:
   - Asset: {fileID: 4890085278179872738, guid: a272ff919ab028d4ea99ce1f2a576288, type: 2}
     IsGameObject: 1
     InstanceId: 1115978
@@ -5513,6 +5498,21 @@ MonoBehaviour:
     InstanceId: -69546
     ScenePath: Attractor
     GameObjectName: Zone With All Attractor
+  - Asset: {fileID: 11500000, guid: 1ec5e5f960cd53248afd4c98fa74c2c4, type: 3}
+    IsGameObject: 0
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11500000, guid: fcc069654f08f4e4a847f532a0099c27, type: 3}
+    IsGameObject: 0
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
+  - Asset: {fileID: 11500000, guid: fcc069654f08f4e4a847f532a0099c27, type: 3}
+    IsGameObject: 1
+    InstanceId: -1306
+    ScenePath: Attractor
+    GameObjectName: Graviton
   _pinnedObjects:
   - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
     IsGameObject: 0
@@ -5524,8 +5524,8 @@ MonoBehaviour:
   _pinnedObjectsScenesLink: []
   _currentIndex: 998
   _lastSelectedObject:
-    Asset: {fileID: 102900000, guid: f60384c486fa09f43b7fbba775ddd744, type: 3}
+    Asset: {fileID: 11500000, guid: fcc069654f08f4e4a847f532a0099c27, type: 3}
     IsGameObject: 1
-    InstanceId: -69546
+    InstanceId: -1306
     ScenePath: Attractor
-    GameObjectName: Zone With All Attractor
+    GameObjectName: Graviton
