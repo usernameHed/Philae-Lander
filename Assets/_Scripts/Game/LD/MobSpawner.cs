@@ -7,6 +7,9 @@ using UnityEssentials.time;
 
 public class MobSpawner : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerController playerController;
+
     [Tooltip("ref script")]
     public IsOnCamera isOnCamera;
     [Tooltip("ref script")]
@@ -20,11 +23,9 @@ public class MobSpawner : MonoBehaviour
     public Transform posSpawn;
 
     private FrequencyCoolDown timeSpawn = new FrequencyCoolDown();
-    private PlayerController playerController;
 
     private void Start()
     {
-        playerController = PhilaeManager.Instance.playerControllerRef;
         timeSpawn.StartCoolDown(timeToSpawn + ExtRandom.GetRandomNumber(0.0f, timeToAddRandom));
     }
 

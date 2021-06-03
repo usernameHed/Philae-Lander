@@ -14,6 +14,7 @@ namespace UnityEssentials.Attractor
     public class Graviton : MonoBehaviour, IActionComponents
     {
         [SerializeField] private float _mass = 1f;
+        public float Mass { get { return (_mass); } }
         [SerializeField] private float _frequencySearchClosestPoint = 0.1f;
         
 
@@ -32,6 +33,7 @@ namespace UnityEssentials.Attractor
         [Header("Debug")]
         [SerializeField]
         private List<Attractor> _attractorApplyingForce = new List<Attractor>(Attractor.DEFAULT_MAX_ATTRACTOR);
+        public List<Attractor> AttractorApplyingForce { get { return (_attractorApplyingForce); } }
 
         [SerializeField]
         private ExtGravitonCalculation _extGravitonCalculation = new ExtGravitonCalculation();

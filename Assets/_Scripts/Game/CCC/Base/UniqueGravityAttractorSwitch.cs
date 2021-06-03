@@ -8,7 +8,8 @@ using UnityEssentials.time;
 
 public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
-    [SerializeField, NoNull] private Graviton _graviton = default;
+    [SerializeField, NoNull] protected Graviton _graviton = default;
+
 
     [Tooltip("gravité du saut"), SerializeField]
     protected bool calculateEveryFixedFrame = true;
@@ -264,11 +265,6 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         //Debug.DrawRay(rbEntity.position, normalHit * 5, Color.red);
         //Debug.DrawRay(rbEntity.position, currentGravity * 5, Color.black);
         return (false);
-    }
-
-    private Vector3 CalculateGravityAtThisPoint(Vector3 point)
-    {
-
     }
 
     private void FixedUpdate()

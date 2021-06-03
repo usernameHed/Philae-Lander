@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Attractor;
 using UnityEssentials.Extensions;
 using UnityEssentials.time;
 
@@ -24,6 +25,9 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     [Tooltip(""), SerializeField]
     private EntityJump entityJump = default;
 
+    [SerializeField]
+    private ExtGravitonCalculation _additionnalGravityCalculation = new ExtGravitonCalculation();
+
 
     private FrequencyCoolDown coolDownBeforeApplyForceDown = new FrequencyCoolDown();
     private FrequencyCoolDown coolDownBeforeAttract = new FrequencyCoolDown();
@@ -31,7 +35,16 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
     private bool applyGalaxyForce = false;
 
-
+    /// <summary>
+    /// using the current attractor that attract the graviton, calculate
+    /// gravity for another point
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetGravityAtAnyGivenPointUsingCurrentAttractorInList(Vector3 point)
+    {
+        _additionnalGravityCalculation.CalculateGravityFields(_graviton.AttractorApplyingForce, point);
+        return (_additionnalGravityCalculation.CalculateForces(_graviton.Mass));
+    }
     
     /// <summary>
     /// can we apply gravity force ?

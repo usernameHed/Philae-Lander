@@ -104,7 +104,8 @@ public class EntityMove : MonoBehaviour
     /// <param name="direction"></param>
     public void MovePhysics(Vector3 direction)
     {
-        UnityMovement.MoveByForcePushing_WithPhysics(rb, direction, currentSpeedMove * entityAction.GetMagnitudeInput(minInput, 1f));
+        float force = currentSpeedMove * entityAction.GetMagnitudeInput(minInput, 1f);
+        rb.AddForce(direction * force);
     }
 
     /// <summary>

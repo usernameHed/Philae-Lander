@@ -73,8 +73,6 @@ public class IAFollowerController : EntityController, IPooledObject, IKillable
     private void Start()
     {
         StartTimerScream();
-        if (!playerController)
-            playerController = PhilaeManager.Instance.playerControllerRef;
     }
 
     public void DoWandering()

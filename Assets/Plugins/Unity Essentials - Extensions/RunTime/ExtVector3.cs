@@ -195,7 +195,7 @@ namespace UnityEssentials.Extensions
             }
         }
 
-        /*
+        
         /// <summary>
         /// check la différence d'angle entre les 2 vecteurs
         /// </summary>
@@ -248,7 +248,7 @@ namespace UnityEssentials.Extensions
                 return (true);
             return (false);
         }
-        */
+        
 
         /// <summary>
         /// from a vector in 3d space, and a reference, clamp that 3d vector to that reference

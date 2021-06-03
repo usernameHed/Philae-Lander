@@ -132,9 +132,11 @@ public class GroundForwardCheck : MonoBehaviour
 
     public bool IsNormalOk(RaycastHit hitInfo)
     {
+        Vector3 currentGravityAtHitInfo = entityGravityAttractorSwitch.GetGravityAtAnyGivenPointUsingCurrentAttractorInList(hitInfo.point);
+
         if (entityController.IsForbidenLayerSwitch(LayerMask.LayerToName(hitInfo.transform.gameObject.layer))
                 || (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer)))
-                    && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, entityGravityAttractorSwitch.GetGAGravityAtThisPoint(hitInfo.point)))
+                    && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, currentGravityAtHitInfo))
         {
             //here we are in front of a forbidden wall !!
             return (false);

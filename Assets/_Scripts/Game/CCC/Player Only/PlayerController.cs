@@ -36,7 +36,6 @@ public class PlayerController : EntityController, IKillable
     private void Awake()
     {
         base.Init();
-        PhilaeManager.Instance.InitPlayer(this);
         groundAdvancedCheck.GetObjProjector().SetActive(true);
     }
 

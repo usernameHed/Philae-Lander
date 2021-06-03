@@ -246,10 +246,13 @@ public class EntityJumpCalculation : MonoBehaviour
 
 
             //else, if this is a Dont platform, and normal is NOT ok, return false
-            if (entityController.IsForbidenLayerSwitch(layerNameHit)
-                && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(infoJump.normalHit, entityGravityAttractorSwitch.GetGAGravityAtThisPoint(infoJump.pointHit)))
+            if (entityController.IsForbidenLayerSwitch(layerNameHit))
             {
-                return (false);
+                Vector3 currentGravityJumpInfo = entityGravityAttractorSwitch.GetGravityAtAnyGivenPointUsingCurrentAttractorInList(infoJump.pointHit);
+                if (!entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(infoJump.normalHit, currentGravityJumpInfo))
+                {
+                    return (false);
+                }
             }
             //else, if this is a mario galaxy platform, whatever normal, if forwardSpeed is FAST; return false
             if (entityController.IsMarioGalaxyPlatform(layerNameHit) && entityJump.GetLastJumpForwardVelocity() > minJumpSpeedForNormalGravity)
