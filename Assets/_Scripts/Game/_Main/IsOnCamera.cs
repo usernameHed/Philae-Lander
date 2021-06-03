@@ -37,7 +37,7 @@ public class IsOnCamera : MonoBehaviour
 
     private bool TryToGetCam()
     {
-        cam = GameManager.Instance.cameraMain;
+        cam = Camera.main;
         return (cam != null);
     }
 

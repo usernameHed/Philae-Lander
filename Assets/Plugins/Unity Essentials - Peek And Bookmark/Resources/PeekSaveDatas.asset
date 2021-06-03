@@ -15,307 +15,6 @@ MonoBehaviour:
   _selectedObjects:
   - Asset: {fileID: 0}
     IsGameObject: 1
-    InstanceId: 32228
-    ScenePath: 2 - CCC
-    GameObjectName: Dynamic Shadow Projector
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -42980
-    ScenePath: 2 - CCC
-    GameObjectName: LIFE canvas
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -42980
-    ScenePath: 2 - CCC
-    GameObjectName: LIFE canvas
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32180
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 32336
-    ScenePath: Philae LD 1
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -1536
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (1)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -1360
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Sphere (1)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -1448
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Sphere (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 18284
-    ScenePath: Philae LD 1
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 18284
-    ScenePath: Philae LD 1
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17768
-    ScenePath: 1 - Systems
-    GameObjectName: DependencyInjectorSingleton
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17756
-    ScenePath: 1 - Systems
-    GameObjectName: Entity Lister                            (keep track of every
-      EntityBase)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 18284
-    ScenePath: Philae LD 1
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17756
-    ScenePath: 1 - Systems
-    GameObjectName: Entity Lister                            (keep track of every
-      EntityBase)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
-    IsGameObject: 0
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
-    IsGameObject: 1
-    InstanceId: 17894
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Player
-  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
-    IsGameObject: 1
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
-    IsGameObject: 1
-    InstanceId: -10154
-    ScenePath: 2 - CCC
-    GameObjectName: Capsule (1)
-  - Asset: {fileID: 11500000, guid: 77c6be06e3d91d242b746a0ce6daf334, type: 3}
-    IsGameObject: 1
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 102900000, guid: 37db940341eff7441a11f7229cf4ac0d, type: 3}
-    IsGameObject: 0
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 102900000, guid: 2d3e6845e5da5be4e889245cef466e23, type: 3}
-    IsGameObject: 0
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 0
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: 26544
-    ScenePath: 00 - All In One
-    GameObjectName: Entity Lister                            (keep track of every
-      EntityBase)
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: 26556
-    ScenePath: 00 - All In One
-    GameObjectName: DependencyInjectorSingleton
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: 17762
-    ScenePath: 1 - Systems
-    GameObjectName: SceneManager
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: 17756
-    ScenePath: 1 - Systems
-    GameObjectName: Entity Lister                            (keep track of every
-      EntityBase)
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: -11542
-    ScenePath: 1 - Systems
-    GameObjectName: Entity Lister                            (keep track of every
-      EntityBase) (1)
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: -10114
-    ScenePath: 2 - CCC
-    GameObjectName: Entity - Just a Ball
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: -11640
-    ScenePath: 1 - Systems
-    GameObjectName: Entity - Just a Ball (1)
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: 18284
-    ScenePath: Philae LD 1
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: -1298
-    ScenePath: Philae LD 1
-    GameObjectName: '[GF] - Big Rounded Cube Size 1'
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: -11640
-    ScenePath: 00 - All In One
-    GameObjectName: Entity - Just a Ball (1)
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 1
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 102900000, guid: d08d0de80f66e7445a56e9b5b232bedb, type: 3}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 0
-    InstanceId: -11916
-    ScenePath: 00 - All In One
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 27266
-    ScenePath: MINI
-    GameObjectName: Entity Lister                            (keep track of every
-      EntityBase) (1)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12628
-    ScenePath: MINI
-    GameObjectName: Entity - Just a Ball (1)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: 27258
-    ScenePath: MINI
-    GameObjectName: 'Zone: Sphere Physic (1)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12566
-    ScenePath: MINI
-    GameObjectName: '[GF] - Big Rounded Cube Size 1 (2)'
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12628
-    ScenePath: MINI
-    GameObjectName: Entity - Just a Ball (1)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12678
-    ScenePath: MINI
-    GameObjectName: LIFE canvas
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12668
-    ScenePath: MINI
-    GameObjectName: Capsule (1)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12658
-    ScenePath: MINI
-    GameObjectName: Capsule (2)
-  - Asset: {fileID: 0}
-    IsGameObject: 1
-    InstanceId: -12648
-    ScenePath: MINI
-    GameObjectName: Capsule
-  - Asset: {fileID: 0}
-    IsGameObject: 1
     InstanceId: -12628
     ScenePath: MINI
     GameObjectName: Entity - Just a Ball (1)
@@ -5017,212 +4716,302 @@ MonoBehaviour:
     InstanceId: -15228
     ScenePath: Level
     GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
-  _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
     IsGameObject: 1
-    InstanceId: -201894
-    ScenePath: Level
-    GameObjectName: Coins No Move
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -207738
-    ScenePath: Level
-    GameObjectName: CanvasGame
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210582
-    ScenePath: Level
-    GameObjectName: DontDestroyOnLoad
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210588
-    ScenePath: Level
-    GameObjectName: GameManager
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210596
-    ScenePath: Level
-    GameObjectName: Rewired Input Manager
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210612
-    ScenePath: Level
-    GameObjectName: EventManager
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210618
-    ScenePath: Level
-    GameObjectName: ScoreManager
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210624
-    ScenePath: Level
-    GameObjectName: SceneManagerGlobal
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210632
-    ScenePath: Level
-    GameObjectName: SoundManager
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -210646
-    ScenePath: Level
-    GameObjectName: ObjectPoller
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: 1143390
-    ScenePath: Level
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: 1136632
-    ScenePath: Level
-    GameObjectName: '  '
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -212612
-    ScenePath: Level
-    GameObjectName: '   (1)'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -212624
-    ScenePath: Level
-    GameObjectName: '  (1)'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -212600
+    InstanceId: 33156
     ScenePath: Level
     GameObjectName: NEW SETUP FOR GRAVITY
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
     IsGameObject: 1
-    InstanceId: 1128704
+    InstanceId: 28206
     ScenePath: Level
-    GameObjectName: Q4 - 1
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: Dependency Injector Singleton
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
     IsGameObject: 1
-    InstanceId: 1141014
+    InstanceId: 37872
     ScenePath: Level
-    GameObjectName: Sphere (2)
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: Entity Lister In Scene
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
     IsGameObject: 1
-    InstanceId: 1131358
-    ScenePath: Level
-    GameObjectName: Capsule (1)
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: 1137476
-    ScenePath: Level
-    GameObjectName: Capsule (1)
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -211838
-    ScenePath: Level
-    GameObjectName: '[GF] - Big Rounded Cube Size 1'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 1
-    InstanceId: -212340
+    InstanceId: 31438
     ScenePath: Level
     GameObjectName: NEW LD WITH NEW GRAVITY
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
     IsGameObject: 1
-    InstanceId: 1135538
+    InstanceId: 35506
+    ScenePath: Level
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44720
+    ScenePath: Level
+    GameObjectName: SceneManagerGlobal
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44720
+    ScenePath: Level
+    GameObjectName: SceneManagerGlobal
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44728
+    ScenePath: Level
+    GameObjectName: ObjectPoller
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 0
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 1
+    InstanceId: 44728
+    ScenePath: Level
+    GameObjectName: ObjectPoller
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 1
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 1
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 11500000, guid: 75db943b89180fc46af688ac8e91435b, type: 3}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 11500000, guid: 75db943b89180fc46af688ac8e91435b, type: 3}
+    IsGameObject: 1
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 102900000, guid: 412131f5514209142bf7a29d6eb87613, type: 3}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 38172
     ScenePath: Level
     GameObjectName: ---------------- LD ----------------------
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: 1143406
+    InstanceId: 39322
+    ScenePath: Level
+    GameObjectName: ' '
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 33376
+    ScenePath: Level
+    GameObjectName: ' '
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45074
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 44824
     ScenePath: Level
     GameObjectName: 'PROCEDURAL: Size 1 Capsule'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: 1143420
+    InstanceId: 46396
     ScenePath: Level
     GameObjectName: 'PROCEDURAL: Size 1 Capsule'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: 1143422
+    InstanceId: 44824
     ScenePath: Level
     GameObjectName: 'PROCEDURAL: Size 1 Capsule'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: 1143474
+    InstanceId: 46030
     ScenePath: Level
-    GameObjectName: Cube (5)
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -211842
+    InstanceId: 44900
+    ScenePath: Level
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45510
     ScenePath: Level
     GameObjectName: 'SHAPE: Quad'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -211850
+    InstanceId: 45252
     ScenePath: Level
     GameObjectName: Cube
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: 1143372
+    InstanceId: 46030
     ScenePath: Level
     GameObjectName: 'PROCEDURAL: Size 1 Capsule'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -212054
+    InstanceId: 45400
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 44824
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46396
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46030
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46162
     ScenePath: Level
     GameObjectName: '[GF] - Cube'
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -212066
+    InstanceId: 46210
     ScenePath: Level
     GameObjectName: Cube
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -212150
+    InstanceId: 45200
+    ScenePath: Level
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45182
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Donut'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45192
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Donut'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46146
     ScenePath: Level
     GameObjectName: Cube
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -211934
+    InstanceId: 46032
     ScenePath: Level
-    GameObjectName: Cube
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -211828
+    InstanceId: 45398
     ScenePath: Level
-    GameObjectName: Cube
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
     IsGameObject: 1
-    InstanceId: -211912
+    InstanceId: 45172
     ScenePath: Level
     GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 35506
+    ScenePath: Level
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45980
+    ScenePath: Level
+    GameObjectName: KillCoin
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46314
+    ScenePath: Level
+    GameObjectName: SOunds
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46276
+    ScenePath: Level
+    GameObjectName: Player_Jump
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46314
+    ScenePath: Level
+    GameObjectName: SOunds
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 46314
+    ScenePath: Level
+    GameObjectName: SOunds
   - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
     IsGameObject: 1
-    InstanceId: -212000
+    InstanceId: 20760
     ScenePath: Level
-    GameObjectName: Sphere
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: 20760
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: -211978
+    InstanceId: 20468
     ScenePath: Level
-    GameObjectName: Sphere
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: Entity Lister In Scene
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: -212022
+    InstanceId: 20460
     ScenePath: Level
-    GameObjectName: Sphere
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: -211956
+    InstanceId: 20760
     ScenePath: Level
-    GameObjectName: Cube
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: 1143444
+    InstanceId: 20428
     ScenePath: Level
-    GameObjectName: Just Cubes
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    GameObjectName: NEW LD WITH NEW GRAVITY
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: 1143488
+    InstanceId: 20468
     ScenePath: Level
-    GameObjectName: Cube (3)
+    GameObjectName: Entity Lister In Scene
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20760
+    ScenePath: Level
+    GameObjectName: Philae
+  _selectedObjectsWithoutDuplicate:
   - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
     IsGameObject: 1
     InstanceId: 1143448
@@ -5438,11 +5227,6 @@ MonoBehaviour:
     InstanceId: -1306
     ScenePath: Attractor
     GameObjectName: Graviton
-  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
-    IsGameObject: 0
-    InstanceId: -1306
-    ScenePath: Attractor
-    GameObjectName: Graviton
   - Asset: {fileID: 11500000, guid: 55514a51b7953824880d65f884fd3b11, type: 3}
     IsGameObject: 0
     InstanceId: -1306
@@ -5453,11 +5237,6 @@ MonoBehaviour:
     InstanceId: 44722
     ScenePath: Level
     GameObjectName: DontDestroyOnLoad
-  - Asset: {fileID: 11500000, guid: 55514a51b7953824880d65f884fd3b11, type: 3}
-    IsGameObject: 1
-    InstanceId: 44724
-    ScenePath: Level
-    GameObjectName: GameManager
   - Asset: {fileID: 11500000, guid: 55514a51b7953824880d65f884fd3b11, type: 3}
     IsGameObject: 1
     InstanceId: 33128
@@ -5513,6 +5292,221 @@ MonoBehaviour:
     InstanceId: -15228
     ScenePath: Level
     GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 33156
+    ScenePath: Level
+    GameObjectName: NEW SETUP FOR GRAVITY
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 28206
+    ScenePath: Level
+    GameObjectName: Dependency Injector Singleton
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 37872
+    ScenePath: Level
+    GameObjectName: Entity Lister In Scene
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 31438
+    ScenePath: Level
+    GameObjectName: NEW LD WITH NEW GRAVITY
+  - Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
+    IsGameObject: 1
+    InstanceId: 44720
+    ScenePath: Level
+    GameObjectName: SceneManagerGlobal
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 0
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 1
+    InstanceId: 44728
+    ScenePath: Level
+    GameObjectName: ObjectPoller
+  - Asset: {fileID: 11500000, guid: 42a7f6028d42cc94dba4fd1e5d017905, type: 3}
+    IsGameObject: 1
+    InstanceId: 44718
+    ScenePath: Level
+    GameObjectName: EventManager
+  - Asset: {fileID: 11500000, guid: 75db943b89180fc46af688ac8e91435b, type: 3}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 11500000, guid: 75db943b89180fc46af688ac8e91435b, type: 3}
+    IsGameObject: 1
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 11400000, guid: f27ecb8c7a31e2a4f8e7ee5510dee758, type: 2}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 102900000, guid: 412131f5514209142bf7a29d6eb87613, type: 3}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 0
+    InstanceId: 44724
+    ScenePath: Level
+    GameObjectName: GameManager
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 38172
+    ScenePath: Level
+    GameObjectName: ---------------- LD ----------------------
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 39322
+    ScenePath: Level
+    GameObjectName: ' '
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 33376
+    ScenePath: Level
+    GameObjectName: ' '
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45074
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 44900
+    ScenePath: Level
+    GameObjectName: '[GF] - Big Rounded Cube Size 1'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45510
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Quad'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45252
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45400
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 44824
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46396
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46030
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46162
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46210
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45200
+    ScenePath: Level
+    GameObjectName: '[GF] - Donut'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45182
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Donut'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45192
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Donut'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46146
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46032
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45398
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45172
+    ScenePath: Level
+    GameObjectName: Sphere
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 35506
+    ScenePath: Level
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 45980
+    ScenePath: Level
+    GameObjectName: KillCoin
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46276
+    ScenePath: Level
+    GameObjectName: Player_Jump
+  - Asset: {fileID: 102900000, guid: c26fc95ec2382344dacb3d1d07d04772, type: 3}
+    IsGameObject: 1
+    InstanceId: 46314
+    ScenePath: Level
+    GameObjectName: SOunds
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 46314
+    ScenePath: Level
+    GameObjectName: SOunds
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: 20760
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20460
+    ScenePath: Level
+    GameObjectName: 'Zone: Sphere Physic'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20428
+    ScenePath: Level
+    GameObjectName: NEW LD WITH NEW GRAVITY
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20468
+    ScenePath: Level
+    GameObjectName: Entity Lister In Scene
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20760
+    ScenePath: Level
+    GameObjectName: Philae
   _pinnedObjects:
   - Asset: {fileID: 102900000, guid: 60635d26372824247baaaed3712c775a, type: 3}
     IsGameObject: 0
@@ -5524,8 +5518,8 @@ MonoBehaviour:
   _pinnedObjectsScenesLink: []
   _currentIndex: 998
   _lastSelectedObject:
-    Asset: {fileID: 11500000, guid: d2575b572c9316d498f06e3b7d8ed6ce, type: 3}
-    IsGameObject: 0
-    InstanceId: -15228
+    Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20760
     ScenePath: Level
-    GameObjectName: ---------------- IMPORTANT IN SCENE ----------------
+    GameObjectName: Philae

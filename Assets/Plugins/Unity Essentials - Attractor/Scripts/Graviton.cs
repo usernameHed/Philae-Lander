@@ -20,7 +20,7 @@ namespace UnityEssentials.Attractor
 
         private Vector3 _defaultNormal = Vector3.down;
         private Vector3 _gravityDirection = Vector3.down;
-        public Vector3 GravityDirection { get { return (_gravityDirection); } }
+        public Vector3 GravityDirection { get { return (_gravityDirection); } set { _gravityDirection = value; } }
 
         
         //refs
@@ -68,31 +68,43 @@ namespace UnityEssentials.Attractor
 
         public void CalculatePhysicNormal()
         {
-            //if there is no gravity fields, keep old gravity
             if (_attractorApplyingForce.Count == 0)
             {
-                //_currentCalculatedNormal = _defaultNormal;
+                Debug.Log("no attraction...");
+                _gravityDirection = Vector3.down;
+                return;
             }
-            else
-            {
-                //apply sum of the normals
-                _gravityDirection = CalculatePhysicBasedOnGravityFields();
-            }
-        }
 
-        private Vector3 CalculatePhysicBasedOnGravityFields()
-        {
             if (_frequencySearchClosestPoint == 0)
             {
-                _extGravitonCalculation.CalculateGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.CalculateGravityFields();
             }
             else if (_coolDownCalculation.IsNotRunning())
             {
-                _extGravitonCalculation.CalculateGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.CalculateGravityFields();
                 _coolDownCalculation.StartCoolDown(_frequencySearchClosestPoint);
             }
-            Vector3 sumForce = _extGravitonCalculation.CalculateForces(_mass);
-            return (sumForce);
+            _gravityDirection = _extGravitonCalculation.CalculateForces(_mass);
+        }
+
+        public void CalculatePhysicNormalIgnoringADirection(Vector3 directionToIgnore, float dotMargin)
+        {
+            if (_frequencySearchClosestPoint == 0)
+            {
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
+                _extGravitonCalculation.CalculateGravityFields();
+            }
+            else if (_coolDownCalculation.IsNotRunning())
+            {
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
+                _extGravitonCalculation.CalculateGravityFields();
+                _coolDownCalculation.StartCoolDown(_frequencySearchClosestPoint);
+            }
+            _gravityDirection = _extGravitonCalculation.CalculateForces(_mass);
         }
 
 #if UNITY_EDITOR

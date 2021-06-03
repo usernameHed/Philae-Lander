@@ -42,7 +42,13 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     /// <returns></returns>
     public Vector3 GetGravityAtAnyGivenPointUsingCurrentAttractorInList(Vector3 point)
     {
-        _additionnalGravityCalculation.CalculateGravityFields(_graviton.AttractorApplyingForce, point);
+        _additionnalGravityCalculation.SetupGravityFields(_graviton.AttractorApplyingForce, point);
+        bool applyAllForce = WeCanApplyGravityForceButCanWeApplyAll();
+        if (!applyAllForce)
+        {
+            _additionnalGravityCalculation.RemoveAttractorFromOneDirection(lastNormalJumpChoosen, marginNegativeJumpHit);
+        }
+        _additionnalGravityCalculation.CalculateGravityFields();
         return (_additionnalGravityCalculation.CalculateForces(_graviton.Mass));
     }
     
@@ -148,7 +154,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //Debug.Log("ici gravité terrestre ?");
             coolDownBeforeAttract.Reset();
 
-            base.CalculateGAGravity();
+            CustomCalculationWithJumpIntoConsideration();
             wantedDirGravityOnGround = GravityDirection;
 
             GravityDirection = groundCheck.GetDirLastNormal();
@@ -167,8 +173,37 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         }
         else
         {
-            CalculateGAGravity();
+            CustomCalculationWithJumpIntoConsideration();
             wantedDirGravityOnGround = lastNormalJumpChoosen;
+        }
+    }
+
+    private void CustomCalculationWithJumpIntoConsideration()
+    {
+        bool applyAllForce = WeCanApplyGravityForceButCanWeApplyAll();
+        if (!applyAllForce)
+        {
+            ////ici anuller les gravités avec un dot positif au jump            
+            //for (int i = 0; i < allGravityAttractor.Count; i++)
+            //{
+            //    float dotGravity = Vector3.Dot(sphereDir[i], lastNormalJumpChoosen);
+            //    //Debug.Log("dot: " + dotGravity);
+            //    if (dotGravity > marginNegativeJumpHit)
+            //    {
+            //        sphereDir[i] = closestPost[i] = Vector3.zero;
+            //    }
+            //}
+            ////here create a fake gravity close enought (from the hit point);
+            //Vector3 pointHit = entityJumpCalculation.GetHitPoint();
+            //sphereDir[allGravityAttractor.Count] = lastNormalJumpChoosen;
+            //closestPost[allGravityAttractor.Count] = posEntity + lastNormalJumpChoosen.normalized * (posEntity - pointHit).magnitude;
+            //Debug.DrawRay(posEntity, sphereDir[allGravityAttractor.Count], Color.black, 2f);
+            //ExtDrawGuizmos.DebugWireSphere(closestPost[allGravityAttractor.Count], Color.black, 2f, 2f);
+            _graviton.CalculatePhysicNormalIgnoringADirection(lastNormalJumpChoosen, marginNegativeJumpHit);
+        }
+        else
+        {
+            _graviton.CalculatePhysicNormal();
         }
     }
 

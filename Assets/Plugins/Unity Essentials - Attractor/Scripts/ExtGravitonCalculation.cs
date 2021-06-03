@@ -35,7 +35,7 @@ namespace UnityEssentials.Attractor
             _closestAttractor.ContactPoint = newContactPoint;
         }
 
-        public void CalculateGravityFields(List<Attractor> attractorApplyingForce, Vector3 position)
+        public void SetupGravityFields(List<Attractor> attractorApplyingForce, Vector3 position)
         {
             //calculate all force from all shape (even the ones in the same groups)
             _attractorInfo.Clear();
@@ -51,7 +51,27 @@ namespace UnityEssentials.Attractor
                 _attractorInfo.Add(_tmpAttractorInfo);
                 _forceAmount.Add(0);
             }
+        }
 
+        public void RemoveAttractorFromOneDirection(Vector3 directionToIgnore, float dotMargin)
+        {
+            //settup closest valid attractor element on each group
+            for (int i = _attractorInfo.Count - 1; i >= 0; i--)
+            {
+                if (_attractorInfo[i].CanApplyGravity)
+                {
+                    float dotGravity = Vector3.Dot(_attractorInfo[i].NormalizedDirection, directionToIgnore);
+                    //Debug.Log("dot: " + dotGravity);
+                    if (dotGravity > dotMargin)
+                    {
+                        _attractorInfo.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
+        public void CalculateGravityFields()
+        {
             //settup closest valid attractor element on each group
             for (int i = 0; i < _attractorInfo.Count; i++)
             {

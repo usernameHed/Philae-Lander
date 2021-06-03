@@ -28,7 +28,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
 
     public float gravityBaseRatio = 0.3f;
     public float gravityDownRatio = 0.5f;
-    public Vector3 GravityDirection { get { return (_graviton.GravityDirection); } set { GravityDirection = value; } }
+    public Vector3 GravityDirection { get { return (_graviton.GravityDirection); } set { _graviton.GravityDirection = value; } }
 
     public Vector3 GetPosRange() => _graviton.ClosestAttractor.ContactPoint;// pointInfo.posRange;
     //protected Vector3 pointGroundHit;
