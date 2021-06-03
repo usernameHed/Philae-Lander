@@ -16,4 +16,4 @@ MonoBehaviour:
   RatioEaseOutAttractors: 0
   Gravity: 9.81
   ShowArrow: 1
-  RatioSizeArrow: 2
+  RatioSizeArrow: 0.1
