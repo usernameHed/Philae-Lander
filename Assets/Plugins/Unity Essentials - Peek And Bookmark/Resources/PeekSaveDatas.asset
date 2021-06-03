@@ -173,12 +173,57 @@ MonoBehaviour:
     InstanceId: 39184
     ScenePath: Level
     GameObjectName: 'PROCEDURAL: Donut'
-  _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 0}
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39524
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
     InstanceId: 39598
     ScenePath: Level
     GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39524
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39524
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39524
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39598
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39524
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  _selectedObjectsWithoutDuplicate:
   - Asset: {fileID: 0}
     IsGameObject: 1
     InstanceId: -58442
@@ -251,6 +296,16 @@ MonoBehaviour:
     GameObjectName: 'PROCEDURAL: Size 1 Capsule'
   - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
+    InstanceId: 39184
+    ScenePath: Level
+    GameObjectName: 'PROCEDURAL: Donut'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 39598
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
     InstanceId: 39524
     ScenePath: Level
     GameObjectName: Cube
@@ -259,19 +314,14 @@ MonoBehaviour:
     InstanceId: 39590
     ScenePath: Level
     GameObjectName: '[GF] - Cube (3)'
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 39184
-    ScenePath: Level
-    GameObjectName: 'PROCEDURAL: Donut'
   _pinnedObjects: []
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 31
+  _currentIndex: 41
   _lastSelectedObject:
     Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: 39184
+    InstanceId: 39590
     ScenePath: Level
-    GameObjectName: 'PROCEDURAL: Donut'
+    GameObjectName: '[GF] - Cube (3)'

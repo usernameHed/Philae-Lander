@@ -726,3 +726,143 @@ System memory in use after: 125.4 MB.
 Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3587.
 Total: 2.944800 ms (FindLiveObjects: 0.293500 ms CreateObjectMapping: 0.124700 ms MarkObjects: 2.429400 ms  DeleteObjects: 0.096300 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004362 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.211 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2920 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 125.3 MB.
+System memory in use after: 125.4 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3591.
+Total: 2.903300 ms (FindLiveObjects: 0.304400 ms CreateObjectMapping: 0.147200 ms MarkObjects: 2.340000 ms  DeleteObjects: 0.110600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1152.985125 seconds.
+  path: Assets/_Render/3D/Bump Getaway/Inside Planet Ring A.obj
+  artifactKey: Guid(524c7fae6b6495e4f87306e608c9b249) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/3D/Bump Getaway/Inside Planet Ring A.obj using Guid(524c7fae6b6495e4f87306e608c9b249) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0baf54ed2f138823892f93c07e16481') in 0.255468 seconds
+  Import took 0.261255 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000258 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/ToonBlack.mat
+  artifactKey: Guid(84b9e1d19d11078d11005b9844295342) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/ToonBlack.mat using Guid(84b9e1d19d11078d11005b9844295342) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd90b58dd262c6ad3de132ac33f75bd1f') in 0.015677 seconds
+  Import took 0.021004 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000354 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/White.mat
+  artifactKey: Guid(3f1dc5d0c5add3c48bede475f73ca2e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/White.mat using Guid(3f1dc5d0c5add3c48bede475f73ca2e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a92ae9f193250abf7278926c0da5ea5') in 0.012522 seconds
+  Import took 0.018002 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/Spotlight.mat
+  artifactKey: Guid(a8e2ca754f9584cb497b6cb5f2299221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/Spotlight.mat using Guid(a8e2ca754f9584cb497b6cb5f2299221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a607fbf5e17bdb76de24cd690ed532f4') in 0.020115 seconds
+  Import took 0.024880 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000298 seconds.
+  path: Assets/_Render/Shaders/Misc/TextureOverlay.mat
+  artifactKey: Guid(f33d0546041ef5546b78f14ffc894631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Misc/TextureOverlay.mat using Guid(f33d0546041ef5546b78f14ffc894631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8191650fa69da79e1d3731cb34177c6a') in 0.017472 seconds
+  Import took 0.022261 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000307 seconds.
+  path: Assets/_Render/Materials/Game/Up.mat
+  artifactKey: Guid(96d0e4c20ec969446a9aff7328a9bc80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Materials/Game/Up.mat using Guid(96d0e4c20ec969446a9aff7328a9bc80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e0e4c28c34c35f95dbd4935a4f29ce') in 0.019508 seconds
+  Import took 0.023792 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000337 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/ToonGray.mat
+  artifactKey: Guid(e55538300d7a92345b91e698e7826e3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/ToonGray.mat using Guid(e55538300d7a92345b91e698e7826e3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4f765a410b76190f2c3b278e75f74fe') in 0.010718 seconds
+  Import took 0.015331 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000426 seconds.
+  path: Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/SpotlightWithShadow.mat
+  artifactKey: Guid(58c96af870e534b2abeaca7ed0ca1fd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - DynamicShadowProjector/Example/Materials/SpotlightWithShadow.mat using Guid(58c96af870e534b2abeaca7ed0ca1fd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44158bad5e63ef1ae176efcb4010ae69') in 0.013342 seconds
+  Import took 0.018067 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000313 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/ToonWhite.mat
+  artifactKey: Guid(bbb9c78f368a7194ba086fc4d4745ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/ToonWhite.mat using Guid(bbb9c78f368a7194ba086fc4d4745ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eaa0862bca66830894bca323a946ffd') in 0.010876 seconds
+  Import took 0.015780 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033076 seconds.
+  path: Assets/_Render/Shaders/Camera/Toon/ToonWhite.mat
+  artifactKey: Guid(bbb9c78f368a7194ba086fc4d4745ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Render/Shaders/Camera/Toon/ToonWhite.mat using Guid(bbb9c78f368a7194ba086fc4d4745ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eaa0862bca66830894bca323a946ffd') in 0.006554 seconds
+  Import took 0.012012 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005397 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.175 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2920 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 127.0 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3639.
+Total: 2.856700 ms (FindLiveObjects: 0.282300 ms CreateObjectMapping: 0.112300 ms MarkObjects: 2.383200 ms  DeleteObjects: 0.078200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004259 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.206 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2919 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.7 MB.
+System memory in use after: 126.9 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3643.
+Total: 2.796800 ms (FindLiveObjects: 0.293400 ms CreateObjectMapping: 0.137400 ms MarkObjects: 2.287400 ms  DeleteObjects: 0.077900 ms)
+
