@@ -223,17 +223,147 @@ MonoBehaviour:
     InstanceId: 39590
     ScenePath: Level
     GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 102900000, guid: 45c76ba08e9b3fc4bad77268109e5c29, type: 3}
+    IsGameObject: 0
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20730
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20482
+    ScenePath: Level
+    GameObjectName: HardShadowProjector
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1856
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
   _selectedObjectsWithoutDuplicate:
   - Asset: {fileID: 0}
     IsGameObject: 1
     InstanceId: -58442
     ScenePath: Level
     GameObjectName: Main Camera
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 0
-    InstanceId: 39274
-    ScenePath: Level
-    GameObjectName: 'PROCEDURAL: Size 1 Capsule'
   - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
     InstanceId: 39014
@@ -314,14 +444,59 @@ MonoBehaviour:
     InstanceId: 39590
     ScenePath: Level
     GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: 33b9e87515f7f4f4c9f2997a94d55c14, type: 2}
+    IsGameObject: 0
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 102900000, guid: 45c76ba08e9b3fc4bad77268109e5c29, type: 3}
+    IsGameObject: 0
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 0
+    InstanceId: 39590
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (3)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20730
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20482
+    ScenePath: Level
+    GameObjectName: HardShadowProjector
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1856
+    ScenePath: Level
+    GameObjectName: 'SHAPE: Cube'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1858
+    ScenePath: Level
+    GameObjectName: Cube
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: -1854
+    ScenePath: Level
+    GameObjectName: '[GF] - Cube (4)'
+  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
+    IsGameObject: 1
+    InstanceId: 20330
+    ScenePath: Level
+    GameObjectName: Philae
   _pinnedObjects: []
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 41
+  _currentIndex: 68
   _lastSelectedObject:
     Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
     IsGameObject: 1
-    InstanceId: 39590
+    InstanceId: 20330
     ScenePath: Level
-    GameObjectName: '[GF] - Cube (3)'
+    GameObjectName: Philae
