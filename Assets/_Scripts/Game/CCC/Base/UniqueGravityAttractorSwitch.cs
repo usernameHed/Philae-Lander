@@ -9,7 +9,7 @@ using UnityEssentials.time;
 public class UniqueGravityAttractorSwitch : MonoBehaviour
 {
     [SerializeField, NoNull] protected Graviton _graviton = default;
-
+    [SerializeField, NoNull] protected Rigidbody _rigidBody = default;
 
     [Tooltip("gravité du saut"), SerializeField]
     protected bool calculateEveryFixedFrame = true;

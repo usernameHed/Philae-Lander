@@ -77,12 +77,12 @@ namespace UnityEssentials.Attractor
 
             if (_frequencySearchClosestPoint == 0)
             {
-                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, _rigidBody.position);
                 _extGravitonCalculation.CalculateGravityFields();
             }
             else if (_coolDownCalculation.IsNotRunning())
             {
-                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, _rigidBody.position);
                 _extGravitonCalculation.CalculateGravityFields();
                 _coolDownCalculation.StartCoolDown(_frequencySearchClosestPoint);
             }
@@ -93,13 +93,13 @@ namespace UnityEssentials.Attractor
         {
             if (_frequencySearchClosestPoint == 0)
             {
-                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, _rigidBody.position);
                 _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
                 _extGravitonCalculation.CalculateGravityFields();
             }
             else if (_coolDownCalculation.IsNotRunning())
             {
-                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, transform.position);
+                _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, _rigidBody.position);
                 _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
                 _extGravitonCalculation.CalculateGravityFields();
                 _coolDownCalculation.StartCoolDown(_frequencySearchClosestPoint);
