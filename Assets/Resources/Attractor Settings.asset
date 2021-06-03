@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimulatePhysic: 1
   RatioEaseOutAttractors: 0
-  Gravity: 9.81
+  Gravity: 2
   ShowArrow: 1
   RatioSizeArrow: 0.1

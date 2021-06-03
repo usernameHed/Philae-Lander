@@ -155,7 +155,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             coolDownBeforeAttract.Reset();
 
             CustomCalculationWithJumpIntoConsideration();
-            wantedDirGravityOnGround = GravityDirection;
+            wantedDirGravityOnGround = -GravityDirection;
 
             GravityDirection = groundCheck.GetDirLastNormal();
             OverrideContactPointOfClosestAttractor(groundCheck.GetPointLastHit());
@@ -164,7 +164,8 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         else if (!CanApplyGravityForce())
         {
             //Debug.Log("ici gravité last jump !");
-            GravityDirection = wantedDirGravityOnGround = lastNormalJumpChoosen;
+            wantedDirGravityOnGround = lastNormalJumpChoosen;
+            GravityDirection = -lastNormalJumpChoosen;
             //pointGroundHit = groundCheck.ResearchInitialGround(false);
             if (calculateGroundPos)
             {
@@ -199,7 +200,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //closestPost[allGravityAttractor.Count] = posEntity + lastNormalJumpChoosen.normalized * (posEntity - pointHit).magnitude;
             //Debug.DrawRay(posEntity, sphereDir[allGravityAttractor.Count], Color.black, 2f);
             //ExtDrawGuizmos.DebugWireSphere(closestPost[allGravityAttractor.Count], Color.black, 2f, 2f);
-            _graviton.CalculatePhysicNormalIgnoringADirection(lastNormalJumpChoosen, marginNegativeJumpHit);
+            _graviton.CalculatePhysicNormalIgnoringADirection(-lastNormalJumpChoosen, marginNegativeJumpHit);
         }
         else
         {

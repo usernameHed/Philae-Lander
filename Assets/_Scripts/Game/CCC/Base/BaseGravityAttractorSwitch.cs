@@ -56,7 +56,7 @@ public class BaseGravityAttractorSwitch : UniqueGravityAttractorSwitch
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
             base.CalculateGAGravity();
-            wantedDirGravityOnGround = GravityDirection;
+            wantedDirGravityOnGround = -GravityDirection;
             GravityDirection = groundCheck.GetDirLastNormal();
         }
         else

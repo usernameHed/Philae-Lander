@@ -73,7 +73,7 @@ public class UniqueGravityAttractorSwitch : MonoBehaviour
         gravityDownRatio = 0.5f;
 
         OverrideContactPointOfClosestAttractor(posHit);
-        GravityDirection = gravity;
+        GravityDirection = -gravity;
         lastNormalJumpChoosen = gravity;
     }
     

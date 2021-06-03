@@ -22,7 +22,7 @@ public class BaseGravity : UniqueGravity
     {
         if (entityController.GetMoveState() == EntityController.MoveState.InAir)
         {
-            mainAndOnlyGravity = baseGravityAttractorSwitch.GravityDirection;
+            mainAndOnlyGravity = -baseGravityAttractorSwitch.GravityDirection;
         }
         else
         {
