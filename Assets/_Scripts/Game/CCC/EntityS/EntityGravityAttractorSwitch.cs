@@ -43,12 +43,13 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     public Vector3 GetGravityAtAnyGivenPointUsingCurrentAttractorInList(Vector3 point)
     {
         _additionnalGravityCalculation.SetupGravityFields(_graviton.AttractorApplyingForce, point);
+        _additionnalGravityCalculation.CalculateGravityFields();
+
         bool applyAllForce = WeCanApplyGravityForceButCanWeApplyAll();
         if (!applyAllForce)
         {
             _additionnalGravityCalculation.RemoveAttractorFromOneDirection(lastNormalJumpChoosen, marginNegativeJumpHit);
         }
-        _additionnalGravityCalculation.CalculateGravityFields();
         return (_additionnalGravityCalculation.CalculateForces(_graviton.Mass));
     }
     
@@ -104,6 +105,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
 
     public override void JustJumped()
     {
+        Debug.Log("JUST JUMPED!");
         coolDownBeforeAttract.Reset();
         coolDownBeforeApplyForceDown.StartCoolDown(timeBeforeApplyForceDown);
         applyGalaxyForce = false;
@@ -134,24 +136,24 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         //Setup jump calculation when going down
         if (!applyGalaxyForce && baseGravity.IsGoingDownToGround())
         {
-            //Debug.Log("ici going down ?");
+            Debug.Log("ici going down ?");
             //here do a jumpCalculation
             applyGalaxyForce = true;
 
             if (entityJump.HasJumped() && entityJumpCalculation && entityJumpCalculation.UltimeTestBeforeAttractor())
             {
-                //Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
+                Debug.Log("here we have hit (and good angle), fall down with normal gravity jump");
                 coolDownBeforeAttract.StartCoolDown(timeBeforeActiveAllAttractorAfterJumpCalculation);
             }
             else
             {
-                //Debug.Log("here no hit, or not good angle");
+                Debug.Log("here no hit, or not good angle");
             }
         }
 
         if (entityController.GetMoveState() != EntityController.MoveState.InAir)
         {
-            //Debug.Log("ici gravité terrestre ?");
+            Debug.Log("ici gravité terrestre ?");
             coolDownBeforeAttract.Reset();
 
             CustomCalculationWithJumpIntoConsideration();
@@ -163,7 +165,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         //here we can't apply, because we just jump (OR because we are falling and in the timer
         else if (!CanApplyGravityForce())
         {
-            //Debug.Log("ici gravité last jump !");
+            Debug.Log("ici gravité last jump !");
             wantedDirGravityOnGround = lastNormalJumpChoosen;
             GravityDirection = -lastNormalJumpChoosen;
             //pointGroundHit = groundCheck.ResearchInitialGround(false);
@@ -174,6 +176,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
         }
         else
         {
+            Debug.Log("last normal jump!");
             CustomCalculationWithJumpIntoConsideration();
             wantedDirGravityOnGround = lastNormalJumpChoosen;
         }
@@ -182,7 +185,7 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
     private void CustomCalculationWithJumpIntoConsideration()
     {
         bool applyAllForce = WeCanApplyGravityForceButCanWeApplyAll();
-        if (!applyAllForce)
+        if (applyAllForce)
         {
             ////ici anuller les gravités avec un dot positif au jump            
             //for (int i = 0; i < allGravityAttractor.Count; i++)
@@ -200,10 +203,13 @@ public class EntityGravityAttractorSwitch : BaseGravityAttractorSwitch
             //closestPost[allGravityAttractor.Count] = posEntity + lastNormalJumpChoosen.normalized * (posEntity - pointHit).magnitude;
             //Debug.DrawRay(posEntity, sphereDir[allGravityAttractor.Count], Color.black, 2f);
             //ExtDrawGuizmos.DebugWireSphere(closestPost[allGravityAttractor.Count], Color.black, 2f, 2f);
+            Debug.Log("here ??");
+
             _graviton.CalculatePhysicNormalIgnoringADirection(-lastNormalJumpChoosen, marginNegativeJumpHit);
         }
         else
         {
+            Debug.Log("or not!");
             _graviton.CalculatePhysicNormal();
         }
     }

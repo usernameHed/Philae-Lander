@@ -58,13 +58,18 @@ namespace UnityEssentials.Attractor
             //settup closest valid attractor element on each group
             for (int i = _attractorInfo.Count - 1; i >= 0; i--)
             {
-                if (_attractorInfo[i].CanApplyGravity)
+                if (_attractorInfo[i].CanApplyGravity && i != _closestIndex)
                 {
                     float dotGravity = Vector3.Dot(_attractorInfo[i].NormalizedDirection, directionToIgnore);
-                    //Debug.Log("dot: " + dotGravity);
+                    Debug.Log("dot: " + dotGravity);
                     if (dotGravity > dotMargin)
                     {
-                        _attractorInfo.RemoveAt(i);
+                        Debug.Log("remove " + _attractorInfo[i].AttractorRef, _attractorInfo[i].AttractorRef.gameObject);
+                        //_attractorInfo.RemoveAt(i);
+                        _tmpAttractorInfo = _attractorInfo[i];
+                        _tmpAttractorInfo.CanApplyGravity = false;
+                        _attractorInfo[i] = _tmpAttractorInfo;
+                        //_forceAmount.RemoveAt(i);
                     }
                 }
             }
@@ -72,6 +77,11 @@ namespace UnityEssentials.Attractor
 
         public void CalculateGravityFields()
         {
+            if (_attractorInfo.Count == 0)
+            {
+                return;
+            }
+
             //settup closest valid attractor element on each group
             for (int i = 0; i < _attractorInfo.Count; i++)
             {
@@ -112,12 +122,23 @@ namespace UnityEssentials.Attractor
                     shortestDistance = _attractorInfo[i].SqrDistance;
                 }
             }
+            if (_closestIndex == -1)
+            {
+                return;
+            }
+
             _closestAttractor = _attractorInfo[_closestIndex];
         }
 
 
         public Vector3 CalculateForces(float mass)
         {
+            if (_closestIndex == -1 || _attractorInfo.Count == 0)
+            {
+                Debug.Log("No Force :)");
+                return (Vector3.zero);
+            }
+
             //apply default force setting for the closest gravityFields
             float referenceSqrDistance = _attractorInfo[_closestIndex].SqrDistance;
             float force = mass * _attractorInfo[_closestIndex].Gravity * AttractorSettings.Instance.Gravity;

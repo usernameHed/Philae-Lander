@@ -94,14 +94,14 @@ namespace UnityEssentials.Attractor
             if (_frequencySearchClosestPoint == 0)
             {
                 _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, _rigidBody.position);
-                _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
                 _extGravitonCalculation.CalculateGravityFields();
+                _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
             }
             else if (_coolDownCalculation.IsNotRunning())
             {
                 _extGravitonCalculation.SetupGravityFields(_attractorApplyingForce, _rigidBody.position);
-                _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
                 _extGravitonCalculation.CalculateGravityFields();
+                _extGravitonCalculation.RemoveAttractorFromOneDirection(directionToIgnore, dotMargin);
                 _coolDownCalculation.StartCoolDown(_frequencySearchClosestPoint);
             }
             _gravityDirection = _extGravitonCalculation.CalculateForces(_mass);
