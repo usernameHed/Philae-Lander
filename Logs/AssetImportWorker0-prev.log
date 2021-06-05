@@ -1,0 +1,301 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.10f1 (297d780c91bc) revision 2719096'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19041.985; Version 2004; 64bit' Language: 'fr' Physical Memory: 16231 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Users\ugo\WORK\UNITY EDITORS\2020.3.10f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/ugo/WORK/GIT/Unity/Philae-Lander
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50734
+Successfully changed project path to: C:/Users/ugo/WORK/GIT/Unity/Philae-Lander
+C:/Users/ugo/WORK/GIT/Unity/Philae-Lander
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 81.39 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.10f1 (297d780c91bc)
+[Subsystems] Discovering subsystems at path C:/Users/ugo/WORK/UNITY EDITORS/2020.3.10f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/ugo/WORK/GIT/Unity/Philae-Lander/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 with Max-Q Design (ID=0x1f10)
+    Vendor:   
+    VRAM:     8031 MB
+    Driver:   27.21.14.5655
+Initialize mono
+Mono path[0] = 'C:/Users/ugo/WORK/UNITY EDITORS/2020.3.10f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Users/ugo/WORK/UNITY EDITORS/2020.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Users/ugo/WORK/UNITY EDITORS/2020.3.10f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56572
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Users/ugo/WORK/UNITY EDITORS/2020.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005860 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 66.09 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.962 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.019705 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 63.03 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.326 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3078 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 216.9 MB.
+System memory in use after: 217.0 MB.
+
+Unloading 77 unused Assets to reduce memory usage. Loaded Objects now: 3473.
+Total: 2.829800 ms (FindLiveObjects: 0.270000 ms CreateObjectMapping: 0.144900 ms MarkObjects: 2.167200 ms  DeleteObjects: 0.246800 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/Scenes
+  artifactKey: Guid(63600ab37dc33354aa25b769beec9970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/Scenes using Guid(63600ab37dc33354aa25b769beec9970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '250a6f4a0ee53604ee7a9909fa627570') in 0.014264 seconds
+  Import took 0.024277 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 125.209055 seconds.
+  path: Assets/Plugins/Unity Essentials - Movable Shape/Example
+  artifactKey: Guid(b9b34a224b8b61d42963b64c4e0c7fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Movable Shape/Example using Guid(b9b34a224b8b61d42963b64c4e0c7fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa5329597ff2d6aa77710ada44488d4') in 0.008133 seconds
+  Import took 0.018621 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.080604 seconds.
+  path: Assets/Plugins/Unity Essentials - Movable Shape/Example/Scenes
+  artifactKey: Guid(a9d8d1f17f2e0dc4e9e838a1d01bc74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Movable Shape/Example/Scenes using Guid(a9d8d1f17f2e0dc4e9e838a1d01bc74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ba8b862eaa5f06f8bb7b63303e1037a') in 0.006966 seconds
+  Import took 0.011853 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.743812 seconds.
+  path: Assets/Plugins/Unity Essentials - Movable Shape/Example/Scenes/Geometry.unity
+  artifactKey: Guid(6086dd1b11a083d49a61091fd422bf32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Movable Shape/Example/Scenes/Geometry.unity using Guid(6086dd1b11a083d49a61091fd422bf32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ed483b3cb47fff9885de2e0ef588eab') in 0.019439 seconds
+  Import took 0.025216 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 145.812610 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/Scenes/Attractor.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/Scenes/Attractor.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4640ca8d94e17df2360bf3eb3cd3d701') in 0.008560 seconds
+  Import took 0.018457 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 30.213128 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule.asset
+  artifactKey: Guid(bdae0ff67304b8c44913c0212effb00d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule.asset using Guid(bdae0ff67304b8c44913c0212effb00d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4c64193bbb22e5e671516a7d9520d41') in 0.122105 seconds
+  Import took 0.127823 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 8 Capsule.asset
+  artifactKey: Guid(612b06fbfe25bbf478908eeac7d1a41c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 8 Capsule.asset using Guid(612b06fbfe25bbf478908eeac7d1a41c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9389e8aaf99c33909ccfb8107b9f25b8') in 0.012926 seconds
+  Import took 0.017779 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000282 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 20 Capsule.asset
+  artifactKey: Guid(e6930ab9db59a774eae66ca1904373cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 20 Capsule.asset using Guid(e6930ab9db59a774eae66ca1904373cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e7fd9432ca67e3fa40303be7786268f') in 0.012665 seconds
+  Import took 0.017873 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000301 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule (1).asset
+  artifactKey: Guid(d32b38e16c1578e41b1ba86e037e3368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule (1).asset using Guid(d32b38e16c1578e41b1ba86e037e3368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9a521aacef8faf45c5df0a81e00ab7c') in 0.010984 seconds
+  Import took 0.016380 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000294 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 15 Capsule.asset
+  artifactKey: Guid(bea03e3402ab47548a3720804ef88c40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 15 Capsule.asset using Guid(bea03e3402ab47548a3720804ef88c40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e74eac21420a897faa606f1ba1bcb5c') in 0.015248 seconds
+  Import took 0.021298 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 2 Capsule.asset
+  artifactKey: Guid(4b69c99a7100c9d4293889e92c04ef95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 2 Capsule.asset using Guid(4b69c99a7100c9d4293889e92c04ef95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5830d18b502c512c732d2518f705c10d') in 0.012003 seconds
+  Import took 0.017383 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 5 Capsule.asset
+  artifactKey: Guid(2e5ec6c753e34f643ac4ff748a8ee067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 5 Capsule.asset using Guid(2e5ec6c753e34f643ac4ff748a8ee067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1b6b1bf990fe5ffb5a37df3689bb711') in 0.013446 seconds
+  Import took 0.018488 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 3 Capsule.asset
+  artifactKey: Guid(f74fceae57b2fa94ab4e91a0ae7dae8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 3 Capsule.asset using Guid(f74fceae57b2fa94ab4e91a0ae7dae8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '810a5a84c437815faa3b24d94e2de081') in 0.017984 seconds
+  Import took 0.023024 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 1 Capsule.asset
+  artifactKey: Guid(ad511ae954a43b04cbdf51012e72861f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 1 Capsule.asset using Guid(ad511ae954a43b04cbdf51012e72861f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f070a403b11e7b5ba196de52331486a3') in 0.010654 seconds
+  Import took 0.015137 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000236 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 6 Capsule.asset
+  artifactKey: Guid(b67a0bdba0191b2439e18e8fb669a8eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 6 Capsule.asset using Guid(b67a0bdba0191b2439e18e8fb669a8eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb20c90888d4b2ed317ac223f89ae96e') in 0.010152 seconds
+  Import took 0.015215 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 4 Capsule.asset
+  artifactKey: Guid(6e926e6bb334cc44fa428219573dfe11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 4 Capsule.asset using Guid(6e926e6bb334cc44fa428219573dfe11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb332d6cafaa5af1f3e9c052e409c0f1') in 0.010474 seconds
+  Import took 0.014786 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000289 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 10 Capsule.asset
+  artifactKey: Guid(7b2f3825923b7664ab24e1f913004594) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Size 10 Capsule.asset using Guid(7b2f3825923b7664ab24e1f913004594) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2af246b986450c28b4e86b5fa53b570c') in 0.010350 seconds
+  Import took 0.015306 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule (2).asset
+  artifactKey: Guid(12cd2f4e86018fc4a9b86ae30cbc032b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule (2).asset using Guid(12cd2f4e86018fc4a9b86ae30cbc032b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba9e002bd8ad7867a4496c0f1ad47eab') in 0.011194 seconds
+  Import took 0.015921 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule (3).asset
+  artifactKey: Guid(3473acadb6f553f45a0b8974f24dc8d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Unity Essentials - Attractor/Resources/3D/PROCEDURAL  Capsule (3).asset using Guid(3473acadb6f553f45a0b8974f24dc8d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d0807f8b7a8a1ad171dc035badd5f8c') in 0.010671 seconds
+  Import took 0.015532 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004139 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.175 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2921 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.1 MB.
+System memory in use after: 126.3 MB.
+
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 3480.
+Total: 2.945000 ms (FindLiveObjects: 0.307200 ms CreateObjectMapping: 0.158300 ms MarkObjects: 2.391300 ms  DeleteObjects: 0.087400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005149 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.150 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2921 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.2 MB.
+System memory in use after: 126.4 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3484.
+Total: 3.130900 ms (FindLiveObjects: 0.327700 ms CreateObjectMapping: 0.262000 ms MarkObjects: 2.444600 ms  DeleteObjects: 0.095600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004714 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.149 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2921 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.2 MB.
+System memory in use after: 126.4 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3488.
+Total: 3.176200 ms (FindLiveObjects: 0.262600 ms CreateObjectMapping: 0.135800 ms MarkObjects: 2.684500 ms  DeleteObjects: 0.092300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004529 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.208 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2921 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.3 MB.
+System memory in use after: 126.4 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3492.
+Total: 2.854400 ms (FindLiveObjects: 0.293700 ms CreateObjectMapping: 0.143400 ms MarkObjects: 2.326100 ms  DeleteObjects: 0.090200 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
