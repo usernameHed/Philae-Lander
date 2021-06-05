@@ -62812,3 +62812,1774 @@ System memory in use after: 129.6 MB.
 Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3692.
 Total: 2.528800 ms (FindLiveObjects: 0.232700 ms CreateObjectMapping: 0.105700 ms MarkObjects: 2.105700 ms  DeleteObjects: 0.083600 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 822.053648 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.015337 seconds
+  Import took 0.025954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.016889 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006271 seconds
+  Import took 0.010930 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.061058 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.008133 seconds
+  Import took 0.012835 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039704 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006715 seconds
+  Import took 0.011516 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038222 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.007175 seconds
+  Import took 0.012548 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040287 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006828 seconds
+  Import took 0.012161 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037996 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006070 seconds
+  Import took 0.010957 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037664 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006356 seconds
+  Import took 0.011019 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039845 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006590 seconds
+  Import took 0.011996 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037844 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.007218 seconds
+  Import took 0.012574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036041 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006768 seconds
+  Import took 0.011492 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040840 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006707 seconds
+  Import took 0.012374 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043651 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006318 seconds
+  Import took 0.011026 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036594 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006151 seconds
+  Import took 0.010818 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040092 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006318 seconds
+  Import took 0.011617 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037229 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.005928 seconds
+  Import took 0.011263 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037512 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006407 seconds
+  Import took 0.011391 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040657 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006308 seconds
+  Import took 0.011101 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037219 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006201 seconds
+  Import took 0.010780 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038590 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.011340 seconds
+  Import took 0.016061 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037846 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006273 seconds
+  Import took 0.011037 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037858 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006670 seconds
+  Import took 0.011508 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.053401 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006784 seconds
+  Import took 0.011698 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038747 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.007130 seconds
+  Import took 0.013076 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039540 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab
+  artifactKey: Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab using Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55eeb90 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+Diagnostics callstack to track who triggered the sub-import:
+0x00007ff6a5603b62 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff6a55cf422 (Unity) ResolveArtifactV2
+0x00007ff6a55c61c1 (Unity) ProduceArtifactV2
+0x00007ff6a5519e6e (Unity) AssetDatabase::ProduceArtifact
+0x00007ff6a54ff428 (Unity) PreviewImporter::GenerateAssetData
+0x00007ff6a55eef59 (Unity) ImportToObjects
+0x00007ff6a55ee069 (Unity) ImportAsset
+0x00007ff6a55501d8 (Unity) AssetImportWorker::Import
+0x00007ff6a55a40bf (Unity) <lambda_e7e5f5e49556456463706cfa5dd72d0a>::operator()
+0x00007ff6a5647022 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff6a5649180 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff6a564c90e (Unity) asio::io_service::run
+0x00007ff6a55cffbb (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a55d0010 (Unity) RunAssetImporterV2
+0x00007ff6a4ac1126 (Unity) Application::InitializeProject
+0x00007ff6a5444a92 (Unity) WinMain
+0x00007ff6a72962b6 (Unity) __scrt_common_main_seh
+0x00007ff814f37034 (KERNEL32) BaseThreadInitThunk
+0x00007ff816c02651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000), Assets/Philae/GameResources/_Prefabs/LD/ParentCoins.prefab from editor
+Resuming Guid(2b25d7b130fc358468f060bb682eb8dd) Importer(-1,00000000000000000000000000000000) -> 0668cd036591fa01abac2db4806b3fb5 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '842a426e8a59de9ed717749f6529ec22') in 0.006270 seconds
+  Import took 0.011739 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.241771 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.042004 seconds
+  Import took 0.046999 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000687 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.003765 seconds
+  Import took 0.008229 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.052395 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004498 seconds
+  Import took 0.009765 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037123 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004299 seconds
+  Import took 0.008799 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033496 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.003962 seconds
+  Import took 0.008569 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038471 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004027 seconds
+  Import took 0.009276 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035070 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.003750 seconds
+  Import took 0.008647 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035002 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.003668 seconds
+  Import took 0.008330 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037277 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004313 seconds
+  Import took 0.009192 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033861 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004007 seconds
+  Import took 0.008726 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033845 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004237 seconds
+  Import took 0.009067 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036609 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004079 seconds
+  Import took 0.008850 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042585 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.004077 seconds
+  Import took 0.009664 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037100 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab
+  artifactKey: Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/NoGravityTrigger.prefab using Guid(c60485de74be3e54f8e1ec3852d41015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01fab96ddd805154d600910530bf7631') in 0.003898 seconds
+  Import took 0.008664 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.232536 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/CustomCube.prefab
+  artifactKey: Guid(962e9b74110a07545ad838522de67cab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/CustomCube.prefab using Guid(962e9b74110a07545ad838522de67cab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86fc866f66dd449b5b20dff49a967b76') in 0.049866 seconds
+  Import took 0.055647 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.904177 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/PLANETS
+  artifactKey: Guid(11918868d3c3b0a429fa7ca688847cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/PLANETS using Guid(11918868d3c3b0a429fa7ca688847cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e62e8f85d3aa70d77d9b3fd29552a8b') in 0.008873 seconds
+  Import took 0.020490 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000723 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/PLANETS
+  artifactKey: Guid(11918868d3c3b0a429fa7ca688847cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/PLANETS using Guid(11918868d3c3b0a429fa7ca688847cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e62e8f85d3aa70d77d9b3fd29552a8b') in 0.003509 seconds
+  Import took 0.009352 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.712254 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/Spiks.prefab
+  artifactKey: Guid(5cadede13fba3b841bb499fbf84e7013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/Spiks.prefab using Guid(5cadede13fba3b841bb499fbf84e7013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '513f0555b86bf228f1482be248e7898c') in 0.012890 seconds
+  Import took 0.024479 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.457124 seconds.
+  path: Assets/Philae/GameResources/_Scenes/Cinematic.unity
+  artifactKey: Guid(d0827c3c001930948869ddecbeb851ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Scenes/Cinematic.unity using Guid(d0827c3c001930948869ddecbeb851ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36b18b95a3871035c195ad11643cc41e') in 0.013764 seconds
+  Import took 0.019377 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.645600 seconds.
+  path: Assets/Philae/GameResources/_Scenes/Attractor Philae 1.unity
+  artifactKey: Guid(3b71dfc5f7e7b174599fbf1eae68fdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Scenes/Attractor Philae 1.unity using Guid(3b71dfc5f7e7b174599fbf1eae68fdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1acfd18333ad44ae06957183e4f56094') in 0.008031 seconds
+  Import took 0.018812 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.930230 seconds.
+  path: Assets/Philae/GameResources/_Scenes/Level.unity
+  artifactKey: Guid(412131f5514209142bf7a29d6eb87613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Scenes/Level.unity using Guid(412131f5514209142bf7a29d6eb87613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46da783b4842468280a0becc1b36f49a') in 0.008166 seconds
+  Import took 0.013264 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 253.228798 seconds.
+  path: Assets/Philae/GameResources/Animation/06Jump_END.fbx
+  artifactKey: Guid(91ce287c49346f64ab63144b968ba3ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/06Jump_END.fbx using Guid(91ce287c49346f64ab63144b968ba3ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f3971cc4290ba1a71e49bbb2c97ba4e') in 0.085476 seconds
+  Import took 0.091386 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.396016 seconds.
+  path: Assets/Philae/GameResources/Animation/Ball.anim
+  artifactKey: Guid(ace982e766e375e4488f8e4f1c0ffc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Ball.anim using Guid(ace982e766e375e4488f8e4f1c0ffc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dd707006885401fc9843575317ce6ce') in 0.008813 seconds
+  Import took 0.013706 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002346 seconds.
+  path: Assets/Philae/GameResources/Animation/Ball.anim
+  artifactKey: Guid(ace982e766e375e4488f8e4f1c0ffc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Ball.anim using Guid(ace982e766e375e4488f8e4f1c0ffc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dd707006885401fc9843575317ce6ce') in 0.003473 seconds
+  Import took 0.007954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.328809 seconds.
+  path: Assets/Philae/GameResources/Animation/Ball.controller
+  artifactKey: Guid(4489131b22510024a9c2fb51f19713c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Ball.controller using Guid(4489131b22510024a9c2fb51f19713c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39d6aa2acfb545d34d62e35a344f590e') in 0.008372 seconds
+  Import took 0.013716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004888 seconds.
+  path: Assets/Philae/GameResources/Animation/Ball.controller
+  artifactKey: Guid(4489131b22510024a9c2fb51f19713c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Ball.controller using Guid(4489131b22510024a9c2fb51f19713c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39d6aa2acfb545d34d62e35a344f590e') in 0.005424 seconds
+  Import took 0.010483 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.490853 seconds.
+  path: Assets/Philae/GameResources/Animation/Contact_herbe.controller
+  artifactKey: Guid(9e649ef63987c224f8792dd827d8574f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Contact_herbe.controller using Guid(9e649ef63987c224f8792dd827d8574f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6337ebb0a13807288360b941c743a3ec') in 0.010113 seconds
+  Import took 0.014567 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004119 seconds.
+  path: Assets/Philae/GameResources/Animation/Contact_herbe.controller
+  artifactKey: Guid(9e649ef63987c224f8792dd827d8574f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Contact_herbe.controller using Guid(9e649ef63987c224f8792dd827d8574f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6337ebb0a13807288360b941c743a3ec') in 0.004180 seconds
+  Import took 0.009395 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.047646 seconds.
+  path: Assets/Philae/GameResources/Animation/Spring.anim
+  artifactKey: Guid(5ff7378d3cb1772488117d3908eae432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Spring.anim using Guid(5ff7378d3cb1772488117d3908eae432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d5a4d6ea8e5f8141881e86c525314b2') in 0.008977 seconds
+  Import took 0.015180 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009564 seconds.
+  path: Assets/Philae/GameResources/Animation/Spring.anim
+  artifactKey: Guid(5ff7378d3cb1772488117d3908eae432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Spring.anim using Guid(5ff7378d3cb1772488117d3908eae432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d5a4d6ea8e5f8141881e86c525314b2') in 0.003945 seconds
+  Import took 0.009947 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.896759 seconds.
+  path: Assets/Philae/GameResources/Animation/Spring.controller
+  artifactKey: Guid(9cfd68fe6845791479c970ab255adfef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Animation/Spring.controller using Guid(9cfd68fe6845791479c970ab255adfef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5271f4fbf9b5e40f2a0fd6b1c421892c') in 0.004333 seconds
+  Import took 0.014460 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 110.792204 seconds.
+  path: Assets/Philae/GameResources/Settings/TextureImporter.preset
+  artifactKey: Guid(23123b5fd2f58ee4380892c26e16318c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Settings/TextureImporter.preset using Guid(23123b5fd2f58ee4380892c26e16318c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62ad887e655ef229dc5e9f94bb097b3a') in 0.009013 seconds
+  Import took 0.014104 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028208 seconds.
+  path: Assets/Philae/GameResources/Settings/TextureImporter.preset
+  artifactKey: Guid(23123b5fd2f58ee4380892c26e16318c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Settings/TextureImporter.preset using Guid(23123b5fd2f58ee4380892c26e16318c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62ad887e655ef229dc5e9f94bb097b3a') in 0.004753 seconds
+  Import took 0.010106 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 35.110978 seconds.
+  path: Assets/Philae/GameResources/Sprites/Fog.png
+  artifactKey: Guid(6b1c0720ef642f749b3a87290474e5c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Sprites/Fog.png using Guid(6b1c0720ef642f749b3a87290474e5c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45275ecfd0ced4091f6f7c524eb78ef5') in 0.031532 seconds
+  Import took 0.036681 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.235982 seconds.
+  path: Assets/Philae/GameResources/Texture/Mat_cuisse_de_poulet
+  artifactKey: Guid(da33bca8e86aea643a5eb825c31d2e82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Texture/Mat_cuisse_de_poulet using Guid(da33bca8e86aea643a5eb825c31d2e82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc3fedabd0d8de57ae6c113db663fae1') in 0.009428 seconds
+  Import took 0.019788 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.534582 seconds.
+  path: Assets/Philae/GameResources/Texture/TexturesCom_ConcretePlatesOld_2.4x2.4_512_height.tif
+  artifactKey: Guid(81a71098a79369e42bbf526c932e9bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Texture/TexturesCom_ConcretePlatesOld_2.4x2.4_512_height.tif using Guid(81a71098a79369e42bbf526c932e9bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08fa7a9316956b4e09c4ea2c7d3252dd') in 0.037939 seconds
+  Import took 0.043582 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.595067 seconds.
+  path: Assets/Philae/GameResources/Texture/TexturesCom_ConcretePlatesOld_2.4x2.4_512_roughness.tif
+  artifactKey: Guid(309717ebae52b2d4f9a77f26a5c4af03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Texture/TexturesCom_ConcretePlatesOld_2.4x2.4_512_roughness.tif using Guid(309717ebae52b2d4f9a77f26a5c4af03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6f3c13d8e254a0902fc852077ca9271') in 0.024602 seconds
+  Import took 0.029317 seconds .
+
