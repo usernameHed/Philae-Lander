@@ -8,8 +8,6 @@ public class EntityTriggerManager : MonoBehaviour
     [SerializeField, Tooltip("ref script")]
     public GameObject objectToKill;
     [SerializeField, Tooltip("ref script")]
-    public EntityNoGravity entityNoGravity;
-    [SerializeField, Tooltip("ref script")]
     public UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
 
 
