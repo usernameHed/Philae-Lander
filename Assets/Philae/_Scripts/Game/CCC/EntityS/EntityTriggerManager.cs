@@ -9,7 +9,8 @@ public class EntityTriggerManager : MonoBehaviour
     public GameObject objectToKill;
     [SerializeField, Tooltip("ref script")]
     public UniqueGravityAttractorSwitch uniqueGravityAttractorSwitch;
-
+    [SerializeField, Tooltip("ref script")]
+    public EntityNoGravity entityNoGravity;
 
     /*
     public void OwnTriggerEnter(Collider other)

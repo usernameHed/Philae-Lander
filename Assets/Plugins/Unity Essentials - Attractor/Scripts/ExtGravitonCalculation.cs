@@ -61,10 +61,10 @@ namespace UnityEssentials.Attractor
                 if (_attractorInfo[i].CanApplyGravity && i != _closestIndex)
                 {
                     float dotGravity = Vector3.Dot(_attractorInfo[i].NormalizedDirection, directionToIgnore);
-                    Debug.Log("dot: " + dotGravity);
+                    //Debug.Log("dot: " + dotGravity);
                     if (dotGravity > dotMargin)
                     {
-                        Debug.Log("remove " + _attractorInfo[i].AttractorRef, _attractorInfo[i].AttractorRef.gameObject);
+                        //Debug.Log("remove " + _attractorInfo[i].AttractorRef, _attractorInfo[i].AttractorRef.gameObject);
                         //_attractorInfo.RemoveAt(i);
                         _tmpAttractorInfo = _attractorInfo[i];
                         _tmpAttractorInfo.CanApplyGravity = false;

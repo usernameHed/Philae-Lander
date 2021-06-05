@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEssentials.Extensions;
 
 /// <summary>
 /// Kill any IKillable instance on contact
@@ -10,15 +11,15 @@ public class NoGravityTrigger : MonoBehaviour
     [SerializeField, Tooltip("enum to interact")]
     public float ratioGravity = 0f;
 
-    //[SerializeField, Tooltip("enum to interact")]
-    //private List<TagAccess.TagAccessEnum> tagList = new List<TagAccess.TagAccessEnum>() { TagAccess.TagAccessEnum.Player, TagAccess.TagAccessEnum.Enemy};
+    [SerializeField, Tooltip("enum to interact")]
+    private List<GameData.Tags> tagList = new List<GameData.Tags>() { GameData.Tags.Player, GameData.Tags.Enemy};
 
     [SerializeField]
     private SphereCollider sphereCollider = null;
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
-		if (ExtList.ListContain(other.tag, tagList))
+		if (ExtList.ListContain<GameData.Tags>(tagList, other.tag))
 		{
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
@@ -30,8 +31,8 @@ public class NoGravityTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (ExtList.ListContain(other.tag, tagList))
-		{
+        if (ExtList.ListContain<GameData.Tags>(tagList, other.tag))
+        {
             TriggerController entityNoGravity = other.gameObject.GetComponent<TriggerController>();
             if (entityNoGravity)
             {
@@ -39,7 +40,6 @@ public class NoGravityTrigger : MonoBehaviour
             }
         }
 	}
-    */
 
     private void OnDrawGizmos()
     {

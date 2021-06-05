@@ -9,8 +9,6 @@ TagManager:
   - GravityAttractor
   - Object
   - Coin
-  - IgnoreCamera
-  - IgnoreCamera/ZoomCamera
   layers:
   - Default
   - TransparentFX
@@ -33,7 +31,7 @@ TagManager:
   - Coins
   - Walkable/GroundAndCameraOcclude
   - Walkable/StickAndCameraOcclude
-  - AimFollower
+  - 
   - Outline
   - 
   - 
