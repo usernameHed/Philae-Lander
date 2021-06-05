@@ -64727,3 +64727,267 @@ Received Import Request.
 Start importing Assets/Philae/GameResources/Materials/Fog Red.mat using Guid(4f26c4cd3256ba04197a94c8e72687af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec60a0f5b4ab606d3acd762c13a0259b') in 0.016063 seconds
   Import took 0.021085 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 144.658772 seconds.
+  path: Assets/Philae/_Scripts/Shader/grass.shader
+  artifactKey: Guid(a7b2e41486b0dac48888f07e9fb03be4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Shader/grass.shader using Guid(a7b2e41486b0dac48888f07e9fb03be4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '534780e6eb291abd7b8233b6096097ab') in 0.009993 seconds
+  Import took 0.017222 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005937 seconds.
+  path: Assets/Philae/_Scripts/Shader/grass.shader
+  artifactKey: Guid(a7b2e41486b0dac48888f07e9fb03be4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Shader/grass.shader using Guid(a7b2e41486b0dac48888f07e9fb03be4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '534780e6eb291abd7b8233b6096097ab') in 0.003037 seconds
+  Import took 0.009551 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.763047 seconds.
+  path: Assets/Philae/_Scripts/Editor/SceneViewCameraFunction.cs
+  artifactKey: Guid(6108c9bb18592644d8d1844cf8bb68c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Editor/SceneViewCameraFunction.cs using Guid(6108c9bb18592644d8d1844cf8bb68c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96ddec3565d985ceab9e962481babf1b') in 0.007244 seconds
+  Import took 0.016810 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004378 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.242 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2908 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.0 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3697.
+Total: 3.057000 ms (FindLiveObjects: 0.347400 ms CreateObjectMapping: 0.140800 ms MarkObjects: 2.459000 ms  DeleteObjects: 0.108700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.947842 seconds.
+  path: Assets/Philae/GameResources/Materials/Fog White.mat
+  artifactKey: Guid(d584ea592010f4649b98708e103f7d9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Materials/Fog White.mat using Guid(d584ea592010f4649b98708e103f7d9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '554eed42f8914bdf1cf4bd0f14c6ef91') in 0.065717 seconds
+  Import took 0.071415 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006159 seconds.
+  path: Assets/Philae/GameResources/Materials/Fog White.mat
+  artifactKey: Guid(d584ea592010f4649b98708e103f7d9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Materials/Fog White.mat using Guid(d584ea592010f4649b98708e103f7d9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '554eed42f8914bdf1cf4bd0f14c6ef91') in 0.012911 seconds
+  Import took 0.017729 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.124752 seconds.
+  path: Assets/Philae/_Scripts/Editor/OnBuild.cs
+  artifactKey: Guid(d70884a3fb6e0a44988a1bb759d59779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Editor/OnBuild.cs using Guid(d70884a3fb6e0a44988a1bb759d59779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd2784624c122b1864c7fa85046db7aa') in 0.007890 seconds
+  Import took 0.013905 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008991 seconds.
+  path: Assets/Philae/_Scripts/Editor/OnBuild.cs
+  artifactKey: Guid(d70884a3fb6e0a44988a1bb759d59779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Editor/OnBuild.cs using Guid(d70884a3fb6e0a44988a1bb759d59779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd2784624c122b1864c7fa85046db7aa') in 0.003801 seconds
+  Import took 0.009699 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005293 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.324 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2907 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.0 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3702.
+Total: 3.419600 ms (FindLiveObjects: 0.327700 ms CreateObjectMapping: 0.171400 ms MarkObjects: 2.789500 ms  DeleteObjects: 0.130100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 60.388998 seconds.
+  path: Assets/Philae/_Scripts/Editor/ExtReflexion.cs
+  artifactKey: Guid(47811a8a67d50604ba5e0839404fe9f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Editor/ExtReflexion.cs using Guid(47811a8a67d50604ba5e0839404fe9f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd024c907d35a81d7afef76967d23b0a7') in 0.011044 seconds
+  Import took 0.021350 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004303 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.247 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2905 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.9 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3706.
+Total: 3.015200 ms (FindLiveObjects: 0.450600 ms CreateObjectMapping: 0.147400 ms MarkObjects: 2.312200 ms  DeleteObjects: 0.103500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003940 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.300 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2905 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.9 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3710.
+Total: 3.908600 ms (FindLiveObjects: 0.325300 ms CreateObjectMapping: 0.137200 ms MarkObjects: 3.323800 ms  DeleteObjects: 0.121300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 50.650323 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/Physics/AttractorOverlap.cs
+  artifactKey: Guid(c30bced1fdc737e43ac656b86c1fd605) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/Physics/AttractorOverlap.cs using Guid(c30bced1fdc737e43ac656b86c1fd605) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9263394f92c31c75fc4688c8d90ed06f') in 0.012970 seconds
+  Import took 0.017613 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004892 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/Physics/AttractorOverlap.cs
+  artifactKey: Guid(c30bced1fdc737e43ac656b86c1fd605) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/Physics/AttractorOverlap.cs using Guid(c30bced1fdc737e43ac656b86c1fd605) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9263394f92c31c75fc4688c8d90ed06f') in 0.003272 seconds
+  Import took 0.009418 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.220053 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/Physics/RotateAround.cs
+  artifactKey: Guid(aac3f6493eba7564ebeb383195119103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/Physics/RotateAround.cs using Guid(aac3f6493eba7564ebeb383195119103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3ac62356068cae1c447add9ed5e6eb6') in 0.008252 seconds
+  Import took 0.014160 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006909 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/Physics/RotateAround.cs
+  artifactKey: Guid(aac3f6493eba7564ebeb383195119103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/Physics/RotateAround.cs using Guid(aac3f6493eba7564ebeb383195119103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3ac62356068cae1c447add9ed5e6eb6') in 0.003231 seconds
+  Import took 0.008914 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004296 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.291 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2904 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.9 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3714.
+Total: 3.643100 ms (FindLiveObjects: 0.301000 ms CreateObjectMapping: 0.156200 ms MarkObjects: 3.087100 ms  DeleteObjects: 0.097700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.731048 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/Physics/InitialVelocity.cs
+  artifactKey: Guid(1c5f98ab72ef7e84d8b4df5a394c1086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/Physics/InitialVelocity.cs using Guid(1c5f98ab72ef7e84d8b4df5a394c1086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e2090e4b944f1b0e10951187d2a5910') in 0.009143 seconds
+  Import took 0.014077 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.022333 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/Physics/InitialVelocity.cs
+  artifactKey: Guid(1c5f98ab72ef7e84d8b4df5a394c1086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/Physics/InitialVelocity.cs using Guid(1c5f98ab72ef7e84d8b4df5a394c1086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e2090e4b944f1b0e10951187d2a5910') in 0.002641 seconds
+  Import took 0.007556 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003895 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.298 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2904 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.9 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3718.
+Total: 3.022700 ms (FindLiveObjects: 0.264600 ms CreateObjectMapping: 0.102900 ms MarkObjects: 2.566600 ms  DeleteObjects: 0.087700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.538185 seconds.
+  path: Assets/Philae/_Scripts/Game/_Main/IsInSafeZone.cs
+  artifactKey: Guid(6a3a0ba9423115b489edd79d33a1b0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/_Main/IsInSafeZone.cs using Guid(6a3a0ba9423115b489edd79d33a1b0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4de5c9173b409b789382d51606c185a4') in 0.009725 seconds
+  Import took 0.020731 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006259 seconds.
+  path: Assets/Philae/_Scripts/Game/_Main/IsInSafeZone.cs
+  artifactKey: Guid(6a3a0ba9423115b489edd79d33a1b0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/_Main/IsInSafeZone.cs using Guid(6a3a0ba9423115b489edd79d33a1b0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4de5c9173b409b789382d51606c185a4') in 0.003408 seconds
+  Import took 0.009321 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.500457 seconds.
+  path: Assets/Philae/_Scripts/Game/_Main/IsInSight.cs
+  artifactKey: Guid(4391f2193826cc84d94ffd7ad564f685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/_Main/IsInSight.cs using Guid(4391f2193826cc84d94ffd7ad564f685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a747027a7eab503fadc60fad7b5a6ac') in 0.007513 seconds
+  Import took 0.013400 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.019248 seconds.
+  path: Assets/Philae/_Scripts/Game/_Main/IsInSight.cs
+  artifactKey: Guid(4391f2193826cc84d94ffd7ad564f685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/_Main/IsInSight.cs using Guid(4391f2193826cc84d94ffd7ad564f685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a747027a7eab503fadc60fad7b5a6ac') in 0.002857 seconds
+  Import took 0.007817 seconds .
+

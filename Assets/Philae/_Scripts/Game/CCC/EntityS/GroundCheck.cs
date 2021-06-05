@@ -241,7 +241,7 @@ public class GroundCheck : MonoBehaviour
 
                 if (fastForward && previous && fastForward.IsInFastForward())
                 {
-                    Debug.LogWarning("mmm ici ???");
+                    //Debug.LogWarning("mmm ici ???");
                     dirNormal = dirSurfaceNormal;
                 }
 

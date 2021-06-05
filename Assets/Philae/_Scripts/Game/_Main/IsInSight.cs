@@ -23,7 +23,7 @@ public class IsInSight : MonoBehaviour
         Vector3 dir = target.position - headSight.position;
 
         int layerMask = Physics.AllLayers;
-        layerMask = ~LayerMask.GetMask("Enemy");
+        layerMask = ~LayerMask.GetMask(GameData.Tags.Enemy.ToString());
 
         if (Physics.SphereCast(headSight.position, radius, dir, out hitInfo,
                                dir.magnitude + offsetPlayerDist, layerMask, QueryTriggerInteraction.Ignore))
