@@ -64583,3 +64583,147 @@ Received Import Request.
 Start importing Assets/Philae/GameResources/Texture/TexturesCom_ConcretePlatesOld_2.4x2.4_512_roughness.tif using Guid(309717ebae52b2d4f9a77f26a5c4af03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6f3c13d8e254a0902fc852077ca9271') in 0.024602 seconds
   Import took 0.029317 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 117.695078 seconds.
+  path: Assets/Philae/GameResources/Shaders/Camera/SeeThought.shader
+  artifactKey: Guid(6c28aed931c39864fa8b023e9ce4619e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Camera/SeeThought.shader using Guid(6c28aed931c39864fa8b023e9ce4619e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea34728252eebf18f93e29e8ad29f5d3') in 0.007568 seconds
+  Import took 0.012793 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001340 seconds.
+  path: Assets/Philae/GameResources/Shaders/Camera/SeeThought.shader
+  artifactKey: Guid(6c28aed931c39864fa8b023e9ce4619e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Camera/SeeThought.shader using Guid(6c28aed931c39864fa8b023e9ce4619e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea34728252eebf18f93e29e8ad29f5d3') in 0.003375 seconds
+  Import took 0.008943 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.322780 seconds.
+  path: Assets/Philae/GameResources/Shaders/Camera/AlwaysVisible.shader
+  artifactKey: Guid(8eb029434403e8e4ba2a286eb654d1ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Camera/AlwaysVisible.shader using Guid(8eb029434403e8e4ba2a286eb654d1ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f89181063c513b784065ae90957a7a61') in 0.007539 seconds
+  Import took 0.014487 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007063 seconds.
+  path: Assets/Philae/GameResources/Shaders/Camera/AlwaysVisible.shader
+  artifactKey: Guid(8eb029434403e8e4ba2a286eb654d1ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Camera/AlwaysVisible.shader using Guid(8eb029434403e8e4ba2a286eb654d1ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f89181063c513b784065ae90957a7a61') in 0.003302 seconds
+  Import took 0.008752 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.986917 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/Custom.cginc
+  artifactKey: Guid(3b375b9222cb12f41a801a680aa180e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/Custom.cginc using Guid(3b375b9222cb12f41a801a680aa180e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccf5cdcb7f0ba9690119c18d17be1245') in 0.010810 seconds
+  Import took 0.021249 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.820052 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods
+  artifactKey: Guid(486c7a0ce26909149b7ad3a4145e4e03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods using Guid(486c7a0ce26909149b7ad3a4145e4e03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19818fa59d3ca506d3cc64c0eadd8e1') in 0.008144 seconds
+  Import took 0.013376 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.093292 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/ColorBurn.shader
+  artifactKey: Guid(8c4319f1c6d3fdc4195bb4c854dd411e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/ColorBurn.shader using Guid(8c4319f1c6d3fdc4195bb4c854dd411e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bf2925f6a09294cd721bae28a263ac4') in 0.007691 seconds
+  Import took 0.013076 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012954 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/ColorBurn.shader
+  artifactKey: Guid(8c4319f1c6d3fdc4195bb4c854dd411e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/ColorBurn.shader using Guid(8c4319f1c6d3fdc4195bb4c854dd411e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bf2925f6a09294cd721bae28a263ac4') in 0.003692 seconds
+  Import took 0.008418 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.861630 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/ColorDodge.shader
+  artifactKey: Guid(60d8787ce56e7e847b93a399d45c7bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/ColorDodge.shader using Guid(60d8787ce56e7e847b93a399d45c7bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5ba89dc17ca01c57864dd9b8e7f9dff') in 0.008304 seconds
+  Import took 0.014115 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.615421 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/Darken.shader
+  artifactKey: Guid(006d91fc521e03841acab511bafe1a8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/Darken.shader using Guid(006d91fc521e03841acab511bafe1a8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94449eafb781eabfaef242bca13c2662') in 0.008186 seconds
+  Import took 0.014113 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.450238 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/Exclusion.shader
+  artifactKey: Guid(94984d0ff8f5e9448bbe3d850d66d344) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/Exclusion.shader using Guid(94984d0ff8f5e9448bbe3d850d66d344) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e892a19d7573b7025001973b571eec7') in 0.008086 seconds
+  Import took 0.013926 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.354371 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/Lighten.shader
+  artifactKey: Guid(0287bf13ff2e4bf49a36f6d62a8e2953) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/Lighten.shader using Guid(0287bf13ff2e4bf49a36f6d62a8e2953) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90ed49296aeba1ecc06609f335f72825') in 0.007302 seconds
+  Import took 0.013205 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.363592 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/LinearBurn.shader
+  artifactKey: Guid(6fba02e744a9eae498c3019bf3ba1754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/LinearBurn.shader using Guid(6fba02e744a9eae498c3019bf3ba1754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c465b4503b8347614fd27e936f9be6f7') in 0.009430 seconds
+  Import took 0.014481 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.406815 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/Multiply.shader
+  artifactKey: Guid(da3d09bb68f0d9840b6eebc2a1629faf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/Multiply.shader using Guid(da3d09bb68f0d9840b6eebc2a1629faf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'badedd108ea672d237749340fd4e9ada') in 0.008496 seconds
+  Import took 0.013333 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.397730 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/Overlay.shader
+  artifactKey: Guid(eca70b4f1db03f5449ad033db5175c7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/Overlay.shader using Guid(eca70b4f1db03f5449ad033db5175c7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7725d33170c4fbe296a77974512a1412') in 0.009377 seconds
+  Import took 0.014900 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.354623 seconds.
+  path: Assets/Philae/GameResources/Shaders/Misc/BlendMods/Screen.shader
+  artifactKey: Guid(50258445e9ac2d747bc8b355e621e582) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Shaders/Misc/BlendMods/Screen.shader using Guid(50258445e9ac2d747bc8b355e621e582) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc3885d3d471df805811d7e96208ea25') in 0.008048 seconds
+  Import took 0.013529 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.534804 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/VFX
+  artifactKey: Guid(68f560c424524144fb90706bc39493df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/VFX using Guid(68f560c424524144fb90706bc39493df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d71d518b312d6a58ac5447e1a0bd17b') in 0.008619 seconds
+  Import took 0.013410 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 135.348269 seconds.
+  path: Assets/Philae/GameResources/Materials/Fog Red.mat
+  artifactKey: Guid(4f26c4cd3256ba04197a94c8e72687af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/Materials/Fog Red.mat using Guid(4f26c4cd3256ba04197a94c8e72687af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec60a0f5b4ab606d3acd762c13a0259b') in 0.016063 seconds
+  Import took 0.021085 seconds .
+
