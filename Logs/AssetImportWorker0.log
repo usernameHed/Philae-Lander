@@ -62532,3 +62532,283 @@ Assertion failed on expression: 'state.artifactID == result'
  -> (artifact id: '5179081bd297185ac2e5da6f18352b23') in 0.005729 seconds
   Import took 0.010169 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 79.833387 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/CHARA/Enemy/dragon_lambert4_Normal.png
+  artifactKey: Guid(0ddd338710b34cb43928ba8678734e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/CHARA/Enemy/dragon_lambert4_Normal.png using Guid(0ddd338710b34cb43928ba8678734e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8edeca2c5fed438668db0f07effc1f14') in 0.040738 seconds
+  Import took 0.045781 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000616 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/CHARA/Enemy/dragon_lambert4_Normal.png
+  artifactKey: Guid(0ddd338710b34cb43928ba8678734e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/CHARA/Enemy/dragon_lambert4_Normal.png using Guid(0ddd338710b34cb43928ba8678734e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8edeca2c5fed438668db0f07effc1f14') in 0.023656 seconds
+  Import took 0.028888 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.491566 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/CHARA/Robot/robot.json
+  artifactKey: Guid(5c862d1b74b69bb42b1b2408109595ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/CHARA/Robot/robot.json using Guid(5c862d1b74b69bb42b1b2408109595ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '567534050cb962de3dabafacea3a1f9d') in 0.022370 seconds
+  Import took 0.029061 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 112.794012 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/3D
+  artifactKey: Guid(483735a285a6b4241a8d47f1b5d9401f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/3D using Guid(483735a285a6b4241a8d47f1b5d9401f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11b86337e8f199c430dbc7fd6e9d7a98') in 0.007568 seconds
+  Import took 0.017355 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.403625 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.021216 seconds
+  Import took 0.027003 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010096 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.005746 seconds
+  Import took 0.012275 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046489 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004063 seconds
+  Import took 0.009620 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038359 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003737 seconds
+  Import took 0.008672 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037401 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003857 seconds
+  Import took 0.009731 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042765 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004341 seconds
+  Import took 0.008961 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036629 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004110 seconds
+  Import took 0.009285 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036720 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004444 seconds
+  Import took 0.008941 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037976 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004233 seconds
+  Import took 0.009483 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040717 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004225 seconds
+  Import took 0.008718 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037170 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004016 seconds
+  Import took 0.008704 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037862 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003771 seconds
+  Import took 0.008838 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039573 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004109 seconds
+  Import took 0.009400 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038587 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003882 seconds
+  Import took 0.008737 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037386 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004290 seconds
+  Import took 0.009240 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.041311 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003850 seconds
+  Import took 0.008750 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038632 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004233 seconds
+  Import took 0.008784 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037235 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004170 seconds
+  Import took 0.008698 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038614 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003858 seconds
+  Import took 0.008677 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043221 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004326 seconds
+  Import took 0.009648 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055059 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.003791 seconds
+  Import took 0.009260 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043140 seconds.
+  path: Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab
+  artifactKey: Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/GameResources/_Prefabs/LD/SpecialGravity.prefab using Guid(154c81a063de87c4cbc0f893cc81eebd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd7a8240f7a54ed251b0318429ec74d') in 0.004614 seconds
+  Import took 0.009187 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 47.321821 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/NoGravityTrigger.cs
+  artifactKey: Guid(f353f2da9413a284f9376bf40cf4f58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/NoGravityTrigger.cs using Guid(f353f2da9413a284f9376bf40cf4f58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee409899d26601630abacccb2e8a3386') in 0.008269 seconds
+  Import took 0.013442 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007982 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/NoGravityTrigger.cs
+  artifactKey: Guid(f353f2da9413a284f9376bf40cf4f58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/NoGravityTrigger.cs using Guid(f353f2da9413a284f9376bf40cf4f58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee409899d26601630abacccb2e8a3386') in 0.003371 seconds
+  Import took 0.009319 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.007476 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/FastForwardOrientationLD.cs
+  artifactKey: Guid(a88040aaf2282fb4ea5ece8fab31d645) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/FastForwardOrientationLD.cs using Guid(a88040aaf2282fb4ea5ece8fab31d645) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b60ac69ac35b94836aa31272ab3cac9') in 0.007116 seconds
+  Import took 0.017294 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005030 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/FastForwardOrientationLD.cs
+  artifactKey: Guid(a88040aaf2282fb4ea5ece8fab31d645) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/FastForwardOrientationLD.cs using Guid(a88040aaf2282fb4ea5ece8fab31d645) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b60ac69ac35b94836aa31272ab3cac9') in 0.003990 seconds
+  Import took 0.010355 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004185 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.235 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2909 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.5 MB.
+System memory in use after: 129.6 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3688.
+Total: 3.079500 ms (FindLiveObjects: 0.291700 ms CreateObjectMapping: 0.135700 ms MarkObjects: 2.547100 ms  DeleteObjects: 0.103700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004819 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.259 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2909 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.5 MB.
+System memory in use after: 129.6 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3692.
+Total: 2.528800 ms (FindLiveObjects: 0.232700 ms CreateObjectMapping: 0.105700 ms MarkObjects: 2.105700 ms  DeleteObjects: 0.083600 ms)
+

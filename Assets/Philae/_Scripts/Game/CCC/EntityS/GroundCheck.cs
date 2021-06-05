@@ -245,13 +245,14 @@ public class GroundCheck : MonoBehaviour
                     dirNormal = dirSurfaceNormal;
                 }
 
-
+                /*
                 Vector3 tmpOrientedGravity = dirNormal;
                 if (fastForward && fastForward.DoChangeOrientationManually(hitInfo, ref tmpOrientedGravity))
                 {
                     Debug.LogWarning("ici fast forwaard");
                     dirNormal = tmpOrientedGravity.normalized;
                 }
+                */
             }
         }
         else

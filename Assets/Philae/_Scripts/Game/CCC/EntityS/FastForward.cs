@@ -33,8 +33,8 @@ public class FastForward : MonoBehaviour
     private Transform lastHitPlatform;
     [SerializeField, Tooltip(""), ReadOnly]
     private float timeBeforeSwitch = 0.1f;
-    [SerializeField, Tooltip(""), ReadOnly]
-    private List<FastForwardTrigger> fastForwardTriggers = new List<FastForwardTrigger>();
+    //[SerializeField, Tooltip(""), ReadOnly]
+    //private List<FastForwardTrigger> fastForwardTriggers = new List<FastForwardTrigger>();
     
     private Vector3 previousNormal = Vector3.zero;
     private FrequencyCoolDown timeGoingForward = new FrequencyCoolDown();
@@ -109,7 +109,7 @@ public class FastForward : MonoBehaviour
         return (true);
     }
 
-    
+    /*
     public void EnterInZone(FastForwardTrigger fastForwardTrigger)
     {
         if (!fastForwardTriggers.Contains(fastForwardTrigger))
@@ -120,8 +120,9 @@ public class FastForward : MonoBehaviour
     {
         fastForwardTriggers.Remove(fastForwardTrigger);
     }
+    */
 
-
+    /*
     /// <summary>
     /// say we want a certain direction gravity, and that it !
     /// </summary>
@@ -140,7 +141,9 @@ public class FastForward : MonoBehaviour
             }
         }
     }
+    */
 
+    /*
     public bool DoChangeOrientationManually(RaycastHit hitInfo, ref Vector3 newOrientation)
     {
         FastForwardOrientationLD fastForwardOrientationLD = hitInfo.transform.gameObject.GetComponentInParent<FastForwardOrientationLD>();
@@ -156,6 +159,7 @@ public class FastForward : MonoBehaviour
         Debug.DrawRay(rb.position, newOrientation, Color.black, 5f);
         return (true);
     }
+    */
 
     public bool CanChangeNormal(RaycastHit hitInfo, Vector3 surfaceNormal)
     {
@@ -164,7 +168,7 @@ public class FastForward : MonoBehaviour
         //Debug.DrawRay(hitInfo.point, surfaceNormal, Color.black, 3f);
 
         Vector3 tmpNewGravity = Vector3.zero;
-        bool changeManuallyGravity = DoChangeOrientationManually(hitInfo, ref tmpNewGravity);
+        bool changeManuallyGravity = false;// DoChangeOrientationManually(hitInfo, ref tmpNewGravity);
 
 
         //here we are in forward layer
@@ -287,12 +291,13 @@ public class FastForward : MonoBehaviour
     {
         if (!IsInFastForward())
             return (true);
-
+        /*
         FastForwardOrientationLD fastForwardOrientationLD = lastHitPlatform.gameObject.GetComponentInParent<FastForwardOrientationLD>();
         if (fastForwardOrientationLD)
         {
             return (false);
         }
+        */
         return (true);
     }
 
@@ -306,7 +311,7 @@ public class FastForward : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetNewDirectionFromOutside();
+        //SetNewDirectionFromOutside();
         NoMoreForward();
     }
 }
