@@ -1,55 +1,60 @@
 ﻿
+using Philae.CCC;
+using Philae.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.Extensions;
 using UnityEssentials.time;
 
-public class MobSpawner : MonoBehaviour
+namespace Philae.LD
 {
-    [SerializeField]
-    private PlayerController playerController;
-
-    [Tooltip("ref script")]
-    public IsOnCamera isOnCamera;
-    [Tooltip("ref script")]
-    public float timeToSpawn = 4f;
-    [Tooltip("ref script")]
-    public float timeToAddRandom = 15f;
-    [Tooltip("ref script")]
-    public float minDist = 100f;
-
-    [Tooltip("ref script")]
-    public Transform posSpawn;
-
-    private FrequencyCoolDown timeSpawn = new FrequencyCoolDown();
-
-    private void Start()
+    public class MobSpawner : MonoBehaviour
     {
-        timeSpawn.StartCoolDown(timeToSpawn + ExtRandom.GetRandomNumber(0.0f, timeToAddRandom));
-    }
+        [SerializeField]
+        private PlayerController playerController;
 
-    private void Spawn()
-    {
-        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.IA, posSpawn.position, posSpawn.rotation, transform);
-        timeSpawn.StartCoolDown(timeToSpawn + ExtRandom.GetRandomNumber(0.0f, timeToAddRandom));
-    }
+        [Tooltip("ref script")]
+        public IsOnCamera isOnCamera;
+        [Tooltip("ref script")]
+        public float timeToSpawn = 4f;
+        [Tooltip("ref script")]
+        public float timeToAddRandom = 15f;
+        [Tooltip("ref script")]
+        public float minDist = 100f;
 
-    public bool IsCloseToPlayer()
-    {
-        float dist = Vector3.SqrMagnitude(transform.position - playerController.rb.transform.position);
-        if (dist < minDist)
+        [Tooltip("ref script")]
+        public Transform posSpawn;
+
+        private FrequencyCoolDown timeSpawn = new FrequencyCoolDown();
+
+        private void Start()
         {
-            return (true);
+            timeSpawn.StartCoolDown(timeToSpawn + ExtRandom.GetRandomNumber(0.0f, timeToAddRandom));
         }
-        return (false);
-    }
 
-    private void Update()
-    {
-        if (timeSpawn.IsNotRunning() && !isOnCamera.isOnScreen && !IsCloseToPlayer())
+        private void Spawn()
         {
-            Spawn();
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.IA, posSpawn.position, posSpawn.rotation, transform);
+            timeSpawn.StartCoolDown(timeToSpawn + ExtRandom.GetRandomNumber(0.0f, timeToAddRandom));
+        }
+
+        public bool IsCloseToPlayer()
+        {
+            float dist = Vector3.SqrMagnitude(transform.position - playerController.rb.transform.position);
+            if (dist < minDist)
+            {
+                return (true);
+            }
+            return (false);
+        }
+
+        private void Update()
+        {
+            if (timeSpawn.IsNotRunning() && !isOnCamera.isOnScreen && !IsCloseToPlayer())
+            {
+                Spawn();
+            }
         }
     }
 }

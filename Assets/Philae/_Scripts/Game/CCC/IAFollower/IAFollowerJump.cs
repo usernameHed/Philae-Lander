@@ -6,15 +6,26 @@ using UnityEssentials.Extensions;
 
 namespace Philae.CCC
 {
-    public class PlayerJump : EntityJump
+    public class IAFollowerJump : EntityJump
     {
         [SerializeField, Tooltip("ref script")]
-        private PlayerController playerController = null;
+        private float addRandomJump = 4f;
+        /// <summary>
+        /// called when grounded (after a jump, or a fall !)
+        /// </summary>
+        public override void OnGrounded()
+        {
+            base.OnGrounded();
+
+            //Debug.Log("grounded !");
+
+            coolDownOnGround.StartCoolDown(justGroundTimer + ExtRandom.GetRandomNumber(0f, addRandomJump));
+        }
 
         private void JumpManager()
         {
             if (IsJumpCoolDebugDownReady() && hasJumped &&
-                playerController.GetMoveState() != EntityController.MoveState.InAir)
+                entityController.GetMoveState() != EntityController.MoveState.InAir)
             {
                 hasJumped = false;
                 Debug.LogError("Unjump... error ??");
@@ -29,36 +40,24 @@ namespace Philae.CCC
 
             if (entityAction.Jump && CanJump())
             {
-                DoTheJump(1, false);
+                DoTheJump(1);
             }
         }
 
-        public void DoTheJump(float boostHeight, bool fromCode)
+        public void DoTheJump(float boostHeight)
         {
             coolDownWhenJumped.StartCoolDown(justJumpedTimer);
-            playerController.ChangeState(EntityController.MoveState.InAir);
+            entityController.ChangeState(EntityController.MoveState.InAir);
+
+            //SoundManager.Instance.PlaySound(entityController.SFX_jump);
+
 
             rb.ClearVelocity();
 
-            //SoundManager.Instance.PlaySound(playerController.SFX_jump, true);
-            //SoundManager.Instance.PlaySound(playerController.SFX_playerMove, false);
-            playerController.animator.SetBool("isJUMP", true);
 
             base.DoJump(boostHeight);
 
-            if (!stayHold && !fromCode)
-                jumpStop = true;
-
             hasJumped = true;
-            //Debug.Break();
-        }
-
-
-        public override void OnGrounded()
-        {
-            base.OnGrounded();
-
-            playerController.animator.SetBool("isJUMP", false);
         }
 
         private void Update()

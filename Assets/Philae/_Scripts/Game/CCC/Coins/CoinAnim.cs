@@ -3,21 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinAnim : MonoBehaviour
+namespace Philae.CCC.Coins
 {
-    [SerializeField, Tooltip("ref rigidbody")]
-    private float turnRate = 200f;
-
-    [SerializeField, Tooltip("ref rigidbody")]
-    private Transform objToRotate = null;
-
-    private void RotateCoin()
+    public class CoinAnim : MonoBehaviour
     {
-        objToRotate.Rotate(objToRotate.up, turnRate * Time.deltaTime);
-    }
+        [SerializeField, Tooltip("ref rigidbody")]
+        private float turnRate = 200f;
 
-    private void FixedUpdate()
-    {
-        RotateCoin();
+        [SerializeField, Tooltip("ref rigidbody")]
+        private Transform objToRotate = null;
+
+        private void RotateCoin()
+        {
+            objToRotate.Rotate(objToRotate.up, turnRate * Time.deltaTime);
+        }
+
+        private void FixedUpdate()
+        {
+            RotateCoin();
+        }
     }
 }

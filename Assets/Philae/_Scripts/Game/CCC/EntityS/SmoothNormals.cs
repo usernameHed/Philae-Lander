@@ -3,43 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmoothNormals : UniqueSmoothNormals
+namespace Philae.CCC
 {
-    [Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
-    private float smoothSpeedCamera = 2f;
-
-    [SerializeField, Tooltip("ref script")]
-    private EntityController entityController = null;
-    [SerializeField, Tooltip("ref script")]
-    private GroundCheck groundCheck = null;
-
-    private void Start()
+    public class SmoothNormals : UniqueSmoothNormals
     {
-        smoothedNormalPlayer = GetRotationOrientationDown();
-    }
+        [Tooltip("distance for checking if the controller is grounded (0.1f is good)"), SerializeField]
+        private float smoothSpeedCamera = 2f;
 
-    public override Vector3 GetRotationOrientationDown()
-    {
-        if (!entityController && !groundCheck)
+        [SerializeField, Tooltip("ref script")]
+        private EntityController entityController = null;
+        [SerializeField, Tooltip("ref script")]
+        private GroundCheck groundCheck = null;
+
+        private void Start()
         {
-            return (uniqueGravity.GetMainAndOnlyGravity());
+            smoothedNormalPlayer = GetRotationOrientationDown();
         }
 
-        if (entityController.GetMoveState() == EntityController.MoveState.InAir)
+        public override Vector3 GetRotationOrientationDown()
         {
-            return (uniqueGravity.GetMainAndOnlyGravity());
+            if (!entityController && !groundCheck)
+            {
+                return (uniqueGravity.GetMainAndOnlyGravity());
+            }
+
+            if (entityController.GetMoveState() == EntityController.MoveState.InAir)
+            {
+                return (uniqueGravity.GetMainAndOnlyGravity());
+            }
+            return (groundCheck.GetDirLastNormal());
         }
-        return (groundCheck.GetDirLastNormal());
-    }
 
-    protected override void CalculateSmoothNormal()
-    {
-        Vector3 actualNormal = GetRotationOrientationDown();
-        smoothedNormalPlayer = Vector3.Lerp(smoothedNormalPlayer, actualNormal, Time.deltaTime * smoothSpeedPlayer);
-    }
+        protected override void CalculateSmoothNormal()
+        {
+            Vector3 actualNormal = GetRotationOrientationDown();
+            smoothedNormalPlayer = Vector3.Lerp(smoothedNormalPlayer, actualNormal, Time.deltaTime * smoothSpeedPlayer);
+        }
 
-    private void FixedUpdate()
-    {
-        CalculateSmoothNormal();
+        private void FixedUpdate()
+        {
+            CalculateSmoothNormal();
+        }
     }
 }

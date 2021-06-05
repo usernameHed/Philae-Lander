@@ -65147,3 +65147,463 @@ System memory in use after: 130.1 MB.
 Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3730.
 Total: 3.736100 ms (FindLiveObjects: 0.294200 ms CreateObjectMapping: 0.131500 ms MarkObjects: 3.124200 ms  DeleteObjects: 0.184600 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 162.965404 seconds.
+  path: Assets/Philae/_Scripts/Core/EventManager.cs
+  artifactKey: Guid(42a7f6028d42cc94dba4fd1e5d017905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Core/EventManager.cs using Guid(42a7f6028d42cc94dba4fd1e5d017905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff14053cc0fd205b9efab28d896394b6') in 0.010275 seconds
+  Import took 0.020519 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.014409 seconds.
+  path: Assets/Philae/_Scripts/Core/EventManager.cs
+  artifactKey: Guid(42a7f6028d42cc94dba4fd1e5d017905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Core/EventManager.cs using Guid(42a7f6028d42cc94dba4fd1e5d017905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff14053cc0fd205b9efab28d896394b6') in 0.004336 seconds
+  Import took 0.010605 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.164593 seconds.
+  path: Assets/Philae/_Scripts/Core/GameData.cs
+  artifactKey: Guid(96721109564bcd549bc91ffdb19f7a6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Core/GameData.cs using Guid(96721109564bcd549bc91ffdb19f7a6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6050f797825f45e56aaba1598f15384') in 0.006098 seconds
+  Import took 0.015560 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.281621 seconds.
+  path: Assets/Philae/_Scripts/Core/IKillable.cs
+  artifactKey: Guid(3ba416ad5a5934042ba4d02540e81426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Core/IKillable.cs using Guid(3ba416ad5a5934042ba4d02540e81426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e14e89a02e229a84c1e560ea104c9e3') in 0.008076 seconds
+  Import took 0.013107 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.711285 seconds.
+  path: Assets/Philae/_Scripts/Editor/ExtPhilaeEditor.cs
+  artifactKey: Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Editor/ExtPhilaeEditor.cs using Guid(50f0949bcc2a3b244ab986acf8448efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15be6ca8640973e9417d84505052f726') in 0.006529 seconds
+  Import took 0.017223 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.141386 seconds.
+  path: Assets/Philae/_Scripts/Game/_Main/IPooledObject.cs
+  artifactKey: Guid(11bb53819893fd040a24c7b7edcd4e40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/_Main/IPooledObject.cs using Guid(11bb53819893fd040a24c7b7edcd4e40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f44e67573859e497ae331669c68db583') in 0.008493 seconds
+  Import took 0.018271 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.934262 seconds.
+  path: Assets/Philae/_Scripts/Game/_Main/IPooledObject.cs
+  artifactKey: Guid(11bb53819893fd040a24c7b7edcd4e40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/_Main/IPooledObject.cs using Guid(11bb53819893fd040a24c7b7edcd4e40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4cb31167ba786c7c4ba79027dfb41c9') in 0.007615 seconds
+  Import took 0.012217 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.482563 seconds.
+  path: Assets/Philae/_Scripts/Core/DontDestroyOnLoad.cs
+  artifactKey: Guid(2587c4296ec0dd94db14109a840eb00f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Core/DontDestroyOnLoad.cs using Guid(2587c4296ec0dd94db14109a840eb00f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b05a38299e1af12a5d2544ae63f7b79') in 0.006990 seconds
+  Import took 0.012015 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.745954 seconds.
+  path: Assets/Philae/_Scripts/Game/Core/EventManager.cs
+  artifactKey: Guid(42a7f6028d42cc94dba4fd1e5d017905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/Core/EventManager.cs using Guid(42a7f6028d42cc94dba4fd1e5d017905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ede82890fe776928e5fe303b4a9d663a') in 0.007940 seconds
+  Import took 0.014023 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.278997 seconds.
+  path: Assets/Philae/_Scripts/Game/Core/IsOnCamera.cs
+  artifactKey: Guid(e43d33b0ba186c34d8a51e4daa9f347e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/Core/IsOnCamera.cs using Guid(e43d33b0ba186c34d8a51e4daa9f347e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2033c31a0863cb24f7701b9a6c96bd5b') in 0.008064 seconds
+  Import took 0.013456 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.218502 seconds.
+  path: Assets/Philae/_Scripts/Game/Core/IsOnCamera.cs
+  artifactKey: Guid(e43d33b0ba186c34d8a51e4daa9f347e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/Core/IsOnCamera.cs using Guid(e43d33b0ba186c34d8a51e4daa9f347e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e101773659702ec61e133b7fcff6447b') in 0.002456 seconds
+  Import took 0.012281 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.928826 seconds.
+  path: Assets/Philae/_Scripts/Game/Core/ObjectsPooler.cs
+  artifactKey: Guid(9f03c50541950284fb586ab16bb2431a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/Core/ObjectsPooler.cs using Guid(9f03c50541950284fb586ab16bb2431a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d29cf3b4103e5d3219c54edbfc684f8') in 0.012564 seconds
+  Import took 0.016878 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.990615 seconds.
+  path: Assets/Philae/_Scripts/Game/Core/Trajectory.cs
+  artifactKey: Guid(8353cd0009bf72340b67c5e0cc2cc609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/Core/Trajectory.cs using Guid(8353cd0009bf72340b67c5e0cc2cc609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38e756df598e14a80a746e045cbf5c3e') in 0.006271 seconds
+  Import took 0.011629 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.414982 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/MobSpawner.cs
+  artifactKey: Guid(41df85bf7a501c5469deaa9d9c6b8242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/MobSpawner.cs using Guid(41df85bf7a501c5469deaa9d9c6b8242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c46a37377226d268ae2da288a20123b1') in 0.008469 seconds
+  Import took 0.013595 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.339807 seconds.
+  path: Assets/Philae/_Scripts/Game/LD/RotateAround.cs
+  artifactKey: Guid(aac3f6493eba7564ebeb383195119103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/LD/RotateAround.cs using Guid(aac3f6493eba7564ebeb383195119103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '756c75508f8f5c72302af4c1bac03899') in 0.003002 seconds
+  Import took 0.008292 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 65.871994 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Base/UniqueGravityAttractorSwitch.cs
+  artifactKey: Guid(54aaa0316b593314994ba5a0dd0ac388) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Base/UniqueGravityAttractorSwitch.cs using Guid(54aaa0316b593314994ba5a0dd0ac388) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1cdeaa57654c9c37fb2b6659217917d') in 0.008112 seconds
+  Import took 0.018370 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.312406 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Base/UniqueSmoothNormals.cs
+  artifactKey: Guid(e223fdca49d14a140ba9bdc22b0b8a44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Base/UniqueSmoothNormals.cs using Guid(e223fdca49d14a140ba9bdc22b0b8a44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95e321e4c7067293107d24eaf25596a1') in 0.011198 seconds
+  Import took 0.016855 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.391190 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Coins/CoinAnim.cs
+  artifactKey: Guid(f535906421e1e8b4ca688f270d98d6be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Coins/CoinAnim.cs using Guid(f535906421e1e8b4ca688f270d98d6be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd88138607abf6d9cbcdce95ebed501da') in 0.003196 seconds
+  Import took 0.009578 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.021712 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Coins/CoinController.cs
+  artifactKey: Guid(d93ae5b65dd32af49a22aeb037a13a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Coins/CoinController.cs using Guid(d93ae5b65dd32af49a22aeb037a13a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '589ec17c05287504154f8d24ee5b17fc') in 0.002331 seconds
+  Import took 0.012289 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.095175 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Base/BaseGravity.cs
+  artifactKey: Guid(f5ed271b680aaa24b84588d6e447a535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Base/BaseGravity.cs using Guid(f5ed271b680aaa24b84588d6e447a535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea75179c086ae46eac6adb9c51efe2d1') in 0.003180 seconds
+  Import took 0.008074 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.607272 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerController.cs
+  artifactKey: Guid(c7d129c8f320f3b4a96b015cb9601086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerController.cs using Guid(c7d129c8f320f3b4a96b015cb9601086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a08c0ba1c03edc732589fa75975b3d0') in 0.007489 seconds
+  Import took 0.016940 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.970625 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerEditor.cs
+  artifactKey: Guid(ac597d41680611b46917d06e049c5366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerEditor.cs using Guid(ac597d41680611b46917d06e049c5366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58fe00c6ffce185c2787a5e779d0e164') in 0.010407 seconds
+  Import took 0.021088 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.611113 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerInput.cs
+  artifactKey: Guid(169865a36a57c3a45a5dbce182605124) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerInput.cs using Guid(169865a36a57c3a45a5dbce182605124) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55de6d05c5773b16d764947e29b74a64') in 0.007039 seconds
+  Import took 0.044534 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.003084 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerJump.cs
+  artifactKey: Guid(f3d5b7b5a8f61eb4fa89221a922a4204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerJump.cs using Guid(f3d5b7b5a8f61eb4fa89221a922a4204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b30edd639718f59ff2a8bdf884bf7235') in 0.007040 seconds
+  Import took 0.012583 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.777836 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerJump.cs
+  artifactKey: Guid(f3d5b7b5a8f61eb4fa89221a922a4204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/Player Only/PlayerJump.cs using Guid(f3d5b7b5a8f61eb4fa89221a922a4204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c94fb437d5eb77209977f22addc9ff9') in 0.002546 seconds
+  Import took 0.007822 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.717465 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerController.cs
+  artifactKey: Guid(15e5e7ad16862104ca09ffa295e8bfd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerController.cs using Guid(15e5e7ad16862104ca09ffa295e8bfd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95d08917c1be4dd5faa141fe1f20b5a3') in 0.007174 seconds
+  Import took 0.011879 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001222 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerController.cs
+  artifactKey: Guid(15e5e7ad16862104ca09ffa295e8bfd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerController.cs using Guid(15e5e7ad16862104ca09ffa295e8bfd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95d08917c1be4dd5faa141fe1f20b5a3') in 0.003572 seconds
+  Import took 0.008513 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.777950 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerInput.cs
+  artifactKey: Guid(be42deb38e17d864ea70e47a948cb877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerInput.cs using Guid(be42deb38e17d864ea70e47a948cb877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7046c387d81ccc9581965ecf9cf9c097') in 0.007727 seconds
+  Import took 0.012752 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.013289 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerJump.cs
+  artifactKey: Guid(7460b89d6940ce44b83b950c2bec3c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerJump.cs using Guid(7460b89d6940ce44b83b950c2bec3c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84597e425876c16a4db7588257542a7c') in 0.009439 seconds
+  Import took 0.014252 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.114702 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerJump.cs
+  artifactKey: Guid(7460b89d6940ce44b83b950c2bec3c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/IAFollower/IAFollowerJump.cs using Guid(7460b89d6940ce44b83b950c2bec3c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5982914b133177c794a3aa1ce269e627') in 0.002593 seconds
+  Import took 0.007641 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.816633 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/ClampRbSpeed.cs
+  artifactKey: Guid(ec5553a11e102a54c92b3606313819cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/ClampRbSpeed.cs using Guid(ec5553a11e102a54c92b3606313819cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8561e729d0438714b7cab565e308e79b') in 0.009084 seconds
+  Import took 0.013922 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.064074 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityAction.cs
+  artifactKey: Guid(6d573e9e307446e46ba03a112fb9376e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityAction.cs using Guid(6d573e9e307446e46ba03a112fb9376e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e087b9bf5e9572341c11ce48ab10f21c') in 0.007546 seconds
+  Import took 0.012564 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.977440 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityAirMove.cs
+  artifactKey: Guid(22252d2b3e4d7244f8198a7757ba23e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityAirMove.cs using Guid(22252d2b3e4d7244f8198a7757ba23e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50965538c4e379e1c1b5e3d1a01d5997') in 0.007150 seconds
+  Import took 0.017281 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.411114 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityBumpUp.cs
+  artifactKey: Guid(ea765e49735f8494f82106140d84d239) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityBumpUp.cs using Guid(ea765e49735f8494f82106140d84d239) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8358627fbfcb7e700dc7faad818a5654') in 0.006963 seconds
+  Import took 0.011751 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.638489 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityController.cs
+  artifactKey: Guid(3192f83353efb6a4fa73372eefd8fa78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityController.cs using Guid(3192f83353efb6a4fa73372eefd8fa78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '346267864731c5c5dd25549d098f0ae9') in 0.014132 seconds
+  Import took 0.021339 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.209629 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityGravity.cs
+  artifactKey: Guid(ec49121122b28684a80ad157074dcdb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityGravity.cs using Guid(ec49121122b28684a80ad157074dcdb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c60483ccf5fa1105d7372fcc101f4ae8') in 0.006866 seconds
+  Import took 0.017176 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.302134 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityGravityAttractorSwitch.cs
+  artifactKey: Guid(43e38431716a9bd40b0fb07f6a3e0c7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityGravityAttractorSwitch.cs using Guid(43e38431716a9bd40b0fb07f6a3e0c7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f7e1e8a9ac93fb28cf0038dde83ac03') in 0.007232 seconds
+  Import took 0.012368 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.858118 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityJump.cs
+  artifactKey: Guid(451161a9c059e33479e11b70853f198a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityJump.cs using Guid(451161a9c059e33479e11b70853f198a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e4dd6cfef03e379eaa89b1e8238293e') in 0.007647 seconds
+  Import took 0.013526 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.388694 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityJumpCalculation.cs
+  artifactKey: Guid(59df0b8bcf807b84ea1bd8b232ae48d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityJumpCalculation.cs using Guid(59df0b8bcf807b84ea1bd8b232ae48d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ceac93a216a5e70f9c73c38fa1e42e35') in 0.015432 seconds
+  Import took 0.021637 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.691736 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityMove.cs
+  artifactKey: Guid(bca00765efa83f6469eeb208463557f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityMove.cs using Guid(bca00765efa83f6469eeb208463557f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0065a8259c1a5ac1434f94415b32ec99') in 0.009067 seconds
+  Import took 0.018975 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.983402 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityNoGravity.cs
+  artifactKey: Guid(656a48b97ab18a84a8413a5e18ab460a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityNoGravity.cs using Guid(656a48b97ab18a84a8413a5e18ab460a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61eac58e45a8ac720e716fd7b4106544') in 0.010496 seconds
+  Import took 0.020342 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.204423 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityRotate.cs
+  artifactKey: Guid(0b670f0b7eba32740a272e0a969094f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityRotate.cs using Guid(0b670f0b7eba32740a272e0a969094f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a50aa06f18361624c9cf7025a460cb47') in 0.007426 seconds
+  Import took 0.017829 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.530595 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityRotateToGround.cs
+  artifactKey: Guid(be9e47cc97ef0be4b9f72cd7ef4a03de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityRotateToGround.cs using Guid(be9e47cc97ef0be4b9f72cd7ef4a03de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6ee7a0899fecfed95610129fc19628e') in 0.007701 seconds
+  Import took 0.017956 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.577589 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntitySaveLastPoint.cs
+  artifactKey: Guid(e5233516daa014942b7ff4f3c2632b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntitySaveLastPoint.cs using Guid(e5233516daa014942b7ff4f3c2632b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5c0fc53ddfbc691558eff4744e8c503') in 0.013488 seconds
+  Import took 0.023900 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.619989 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityTriggerManager.cs
+  artifactKey: Guid(ba97ead0c7817c34d8b2e15f49105194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityTriggerManager.cs using Guid(ba97ead0c7817c34d8b2e15f49105194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0da66f4192f74169923a71ca135eebdd') in 0.008201 seconds
+  Import took 0.012904 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.754357 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/EntityYoshiBoost.cs
+  artifactKey: Guid(0505c863a59acce4dbc51bb1404dbd8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/EntityYoshiBoost.cs using Guid(0505c863a59acce4dbc51bb1404dbd8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79878fa0503f952dd8919e685c7eebc3') in 0.010635 seconds
+  Import took 0.017987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.880331 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/FastForward.cs
+  artifactKey: Guid(761759092991e2c40a84e56fcb2a0575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/FastForward.cs using Guid(761759092991e2c40a84e56fcb2a0575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e562cf5ddc69345120a421b3c562ad83') in 0.009835 seconds
+  Import took 0.015571 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.971788 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/GroundAdvancedCheck.cs
+  artifactKey: Guid(65ddff76dc73db0468c91afb65e8be07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/GroundAdvancedCheck.cs using Guid(65ddff76dc73db0468c91afb65e8be07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7808057796e9d145b847e1450fa29e9') in 0.008261 seconds
+  Import took 0.015268 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.268442 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/GroundCheck.cs
+  artifactKey: Guid(7e9f247da89b34c46820ed198738d634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/GroundCheck.cs using Guid(7e9f247da89b34c46820ed198738d634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b4696624a84bec51d245175b5861396') in 0.006674 seconds
+  Import took 0.017070 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.776454 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/GroundForwardCheck.cs
+  artifactKey: Guid(bd3982bef8fd26640865935e153bc170) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/GroundForwardCheck.cs using Guid(bd3982bef8fd26640865935e153bc170) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '236c2f0a8891bafff55f8e5a28b1a11e') in 0.011372 seconds
+  Import took 0.018693 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.906640 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/RotateToGround.cs
+  artifactKey: Guid(898450995ee5ab74aadb53dede327f9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/RotateToGround.cs using Guid(898450995ee5ab74aadb53dede327f9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd13bb32858d3f785b1e3dee0490e793') in 0.008272 seconds
+  Import took 0.018468 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.009937 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs
+  artifactKey: Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs using Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c0ea9286da9348f114d30522e2cee3d') in 0.008594 seconds
+  Import took 0.015749 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.845524 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs
+  artifactKey: Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs using Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fb36e17a3cf2cc92d38f5729f2c36ce') in 0.007535 seconds
+  Import took 0.012443 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 118.431955 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs
+  artifactKey: Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs using Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8168b67535fcfa5ee54d6880ae747f0a') in 0.002565 seconds
+  Import took 0.012775 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013777 seconds.
+  path: Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs
+  artifactKey: Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Philae/_Scripts/Game/CCC/EntityS/TriggerController.cs using Guid(1a03352f37e7cd64b8493c80a23576c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8168b67535fcfa5ee54d6880ae747f0a') in 0.002721 seconds
+  Import took 0.008673 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004008 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.237 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2900 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.9 MB.
+System memory in use after: 130.1 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 3734.
+Total: 2.565300 ms (FindLiveObjects: 0.248700 ms CreateObjectMapping: 0.115200 ms MarkObjects: 2.110300 ms  DeleteObjects: 0.090200 ms)
+

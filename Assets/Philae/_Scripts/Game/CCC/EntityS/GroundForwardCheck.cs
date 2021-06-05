@@ -6,243 +6,246 @@ using UnityEssentials.Extensions;
 using UnityEssentials.PropertyAttribute.readOnly;
 using UnityEssentials.time;
 
-public class GroundForwardCheck : MonoBehaviour
+namespace Philae.CCC
 {
-    public enum AdvancedForwardType
+    public class GroundForwardCheck : MonoBehaviour
     {
-        LEFT = -1,
-        RIGHT_AND_LEFT = 0,
-        RIGHT = 1,
-        NONE = 2,
-    }
-
-    [SerializeField]
-    private bool inAirForwardWall = true;
-    [Range(0f, 1f), Tooltip(""), SerializeField]
-    public float timeBetween2TestForward = 0.8f;
-
-    [Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
-    private float distForward = 0.6f;
-    [Tooltip(""), SerializeField]
-    public float sizeRadiusForward = 0.3f;
-    [Range(0f, 1f), Tooltip(""), SerializeField]
-    public float dotMarginImpact = 0.3f;
-    
-
-    [Tooltip("rigidbody"), SerializeField]
-    private float upDistRaycast = 0.1f;
-    [Tooltip("rigidbody"), SerializeField]
-    private float lateralDistRaycast = 0.3f;
-    [Tooltip("rigidbody"), SerializeField]
-    private float distForwardRaycast = 1f;
-
-    [ReadOnly, SerializeField]
-    private bool isAdvancedForward = false;
-    [ReadOnly, SerializeField]
-    private bool isForwardAdvanceNormalOk = false;
-    [ReadOnly, SerializeField]
-    private AdvancedForwardType isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
-    public bool IsAdvancedForwardCastRightOrLeft()
-    {
-        return (isForwardAdvanceRightOrLeft == AdvancedForwardType.RIGHT
-            || isForwardAdvanceRightOrLeft == AdvancedForwardType.LEFT);
-    }
-
-    //[FoldoutGroup("Backward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
-    //private float distBackward = 1f;
-
-    [Tooltip(""), SerializeField]
-    private GroundCheck groundCheck = null;
-    [Tooltip(""), SerializeField]
-    private Rigidbody rb = null;
-    [Tooltip(""), SerializeField]
-    private EntityController entityController = null;
-    [Tooltip(""), SerializeField]
-    private EntityGravity entityGravity = null;
-    [Tooltip(""), SerializeField]
-    private EntityAction entityAction = null;
-    [Tooltip(""), SerializeField]
-    private EntitySlide entitySlide = null;
-    [Tooltip(""), SerializeField]
-    private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
-    [Tooltip(""), SerializeField]
-    private EntityBumpUp entityBumpUp = null;
-
-    [ReadOnly, SerializeField]
-    private bool isForwardWall = false;
-    [ReadOnly, SerializeField]
-    private bool isForbiddenForward = false;
-
-    
-    //[ReadOnly, SerializeField]
-    //private bool isBackwardWall = false;
-    [Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
-    public float collRayCastMargin = 0.1f;
-
-
-    private FrequencyCoolDown coolDownForward = new FrequencyCoolDown();
-    private Vector3 dirSurfaceNormal;
-
-    public bool IsForwardForbiddenWall()
-    {
-        return ((isForwardWall && isForbiddenForward) || (isAdvancedForward && !isForwardAdvanceNormalOk));
-    }
-
-    public bool IsCoolDownSwitchReady()
-    {
-        return (coolDownForward.IsNotRunning());
-    }
-
-    private void AdvanceForwardCheck()
-    {
-        isAdvancedForward = isForwardAdvanceNormalOk = false;
-        isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
-
-        RaycastHit hitLeft;
-        RaycastHit hitRight;
-        Vector3 origin = rb.position + entityGravity.GetMainAndOnlyGravity() * upDistRaycast;
-        Vector3 originRight = origin + entityController.GetFocusedRightDirPlayer() * lateralDistRaycast;
-        Vector3 originLeft = origin - entityController.GetFocusedRightDirPlayer() * lateralDistRaycast;
-        Vector3 dirRaycast = entityController.GetFocusedForwardDirPlayer();
-
-        //Debug.DrawRay(origin, dirRaycast, Color.magenta);
-        //Debug.DrawRay(originRight, dirRaycast, Color.magenta);
-        //Debug.DrawRay(originLeft, dirRaycast, Color.magenta);
-
-        if (Physics.Raycast(originRight, dirRaycast, out hitRight, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
+        public enum AdvancedForwardType
         {
-            //Debug.Log("Did Hit: " + hitRight.collider.gameObject, hitRight.collider.gameObject);
-            isAdvancedForward = true;
-            isForwardAdvanceNormalOk = IsNormalOk(hitRight);
-            isForwardAdvanceRightOrLeft = AdvancedForwardType.RIGHT;
-            entitySlide.CalculateStraffDirection(hitRight.normal);    //calculate SLIDE
-            
-            //return (true);
+            LEFT = -1,
+            RIGHT_AND_LEFT = 0,
+            RIGHT = 1,
+            NONE = 2,
         }
-        if (Physics.Raycast(originLeft, dirRaycast, out hitLeft, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
-        {
-            //Debug.Log("Did Hit: " + hitLeft.collider.gameObject, hitLeft.collider.gameObject);
-            isAdvancedForward = true;
-            isForwardAdvanceNormalOk = IsNormalOk(hitLeft);
 
-            isForwardAdvanceRightOrLeft = (isForwardAdvanceRightOrLeft == AdvancedForwardType.NONE) ? AdvancedForwardType.LEFT : AdvancedForwardType.RIGHT_AND_LEFT;
-            entitySlide.CalculateStraffDirection(hitLeft.normal);    //calculate SLIDE            
+        [SerializeField]
+        private bool inAirForwardWall = true;
+        [Range(0f, 1f), Tooltip(""), SerializeField]
+        public float timeBetween2TestForward = 0.8f;
+
+        [Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
+        private float distForward = 0.6f;
+        [Tooltip(""), SerializeField]
+        public float sizeRadiusForward = 0.3f;
+        [Range(0f, 1f), Tooltip(""), SerializeField]
+        public float dotMarginImpact = 0.3f;
+
+
+        [Tooltip("rigidbody"), SerializeField]
+        private float upDistRaycast = 0.1f;
+        [Tooltip("rigidbody"), SerializeField]
+        private float lateralDistRaycast = 0.3f;
+        [Tooltip("rigidbody"), SerializeField]
+        private float distForwardRaycast = 1f;
+
+        [ReadOnly, SerializeField]
+        private bool isAdvancedForward = false;
+        [ReadOnly, SerializeField]
+        private bool isForwardAdvanceNormalOk = false;
+        [ReadOnly, SerializeField]
+        private AdvancedForwardType isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
+        public bool IsAdvancedForwardCastRightOrLeft()
+        {
+            return (isForwardAdvanceRightOrLeft == AdvancedForwardType.RIGHT
+                || isForwardAdvanceRightOrLeft == AdvancedForwardType.LEFT);
         }
-    }
 
-    public bool IsNormalOk(RaycastHit hitInfo)
-    {
-        Vector3 currentGravityAtHitInfo = entityGravityAttractorSwitch.GetGravityAtAnyGivenPointUsingCurrentAttractorInList(hitInfo.point);
+        //[FoldoutGroup("Backward"), Range(0f, 2f), Tooltip("dist to check forward player"), SerializeField]
+        //private float distBackward = 1f;
 
-        if (entityController.IsForbidenLayerSwitch(LayerMask.LayerToName(hitInfo.transform.gameObject.layer))
-                || (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer)))
-                    && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, currentGravityAtHitInfo))
+        [Tooltip(""), SerializeField]
+        private GroundCheck groundCheck = null;
+        [Tooltip(""), SerializeField]
+        private Rigidbody rb = null;
+        [Tooltip(""), SerializeField]
+        private EntityController entityController = null;
+        [Tooltip(""), SerializeField]
+        private EntityGravity entityGravity = null;
+        [Tooltip(""), SerializeField]
+        private EntityAction entityAction = null;
+        [Tooltip(""), SerializeField]
+        private EntitySlide entitySlide = null;
+        [Tooltip(""), SerializeField]
+        private EntityGravityAttractorSwitch entityGravityAttractorSwitch = null;
+        [Tooltip(""), SerializeField]
+        private EntityBumpUp entityBumpUp = null;
+
+        [ReadOnly, SerializeField]
+        private bool isForwardWall = false;
+        [ReadOnly, SerializeField]
+        private bool isForbiddenForward = false;
+
+
+        //[ReadOnly, SerializeField]
+        //private bool isBackwardWall = false;
+        [Tooltip("reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)"), SerializeField]
+        public float collRayCastMargin = 0.1f;
+
+
+        private FrequencyCoolDown coolDownForward = new FrequencyCoolDown();
+        private Vector3 dirSurfaceNormal;
+
+        public bool IsForwardForbiddenWall()
         {
-            //here we are in front of a forbidden wall !!
-            return (false);
+            return ((isForwardWall && isForbiddenForward) || (isAdvancedForward && !isForwardAdvanceNormalOk));
         }
-        return (true);
-    }
 
-    private void ForwardWallCheck()
-    {
-        RaycastHit hitInfo;
-
-        ResetContact();
-        isAdvancedForward = isForwardAdvanceNormalOk = false;
-
-        //do nothing if not moving
-        if (!entityAction.IsMoving())
-            return;
-        //do nothing if input and forward player are not equal
-        if (!entityController.IsLookingTowardTheInput(dotMarginImpact))
-            return;
-
-        AdvanceForwardCheck();
-
-        if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
-                               distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
+        public bool IsCoolDownSwitchReady()
         {
-            //if (!IsSphereGravityAndNormalNotOk(hitInfo))
-            //    return;
+            return (coolDownForward.IsNotRunning());
+        }
 
-            
-            //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
-            //Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
-            //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);
+        private void AdvanceForwardCheck()
+        {
+            isAdvancedForward = isForwardAdvanceNormalOk = false;
+            isForwardAdvanceRightOrLeft = AdvancedForwardType.NONE;
 
-            isForwardWall = true;
+            RaycastHit hitLeft;
+            RaycastHit hitRight;
+            Vector3 origin = rb.position + entityGravity.GetMainAndOnlyGravity() * upDistRaycast;
+            Vector3 originRight = origin + entityController.GetFocusedRightDirPlayer() * lateralDistRaycast;
+            Vector3 originLeft = origin - entityController.GetFocusedRightDirPlayer() * lateralDistRaycast;
+            Vector3 dirRaycast = entityController.GetFocusedForwardDirPlayer();
 
-            Vector3 normalHit = hitInfo.normal;
-            Vector3 upPlayer = entityGravity.GetMainAndOnlyGravity();
-            Vector3 tmpDirSurfaceNormal = ExtVector3.GetSurfaceNormal(rb.transform.position,
-                               entityController.GetFocusedForwardDirPlayer(),
-                               distForward,
-                               sizeRadiusForward,
-                               hitInfo.point,
-                               collRayCastMargin,
-                               entityController.layerMask);
-            if (tmpDirSurfaceNormal != Vector3.zero)
-                dirSurfaceNormal = tmpDirSurfaceNormal;
+            //Debug.DrawRay(origin, dirRaycast, Color.magenta);
+            //Debug.DrawRay(originRight, dirRaycast, Color.magenta);
+            //Debug.DrawRay(originLeft, dirRaycast, Color.magenta);
 
-            entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
-
-            float dotWrongSide = Vector3.Dot(upPlayer, normalHit);
-            if (dotWrongSide < -dotMarginImpact)
+            if (Physics.Raycast(originRight, dirRaycast, out hitRight, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
             {
-                //Debug.Log("forward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
-                isForbiddenForward = true;
-                return;
-            }
+                //Debug.Log("Did Hit: " + hitRight.collider.gameObject, hitRight.collider.gameObject);
+                isAdvancedForward = true;
+                isForwardAdvanceNormalOk = IsNormalOk(hitRight);
+                isForwardAdvanceRightOrLeft = AdvancedForwardType.RIGHT;
+                entitySlide.CalculateStraffDirection(hitRight.normal);    //calculate SLIDE
 
-            //int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
-            if (!IsNormalOk(hitInfo))
+                //return (true);
+            }
+            if (Physics.Raycast(originLeft, dirRaycast, out hitLeft, distForwardRaycast, entityController.layerMask, QueryTriggerInteraction.Ignore))
+            {
+                //Debug.Log("Did Hit: " + hitLeft.collider.gameObject, hitLeft.collider.gameObject);
+                isAdvancedForward = true;
+                isForwardAdvanceNormalOk = IsNormalOk(hitLeft);
+
+                isForwardAdvanceRightOrLeft = (isForwardAdvanceRightOrLeft == AdvancedForwardType.NONE) ? AdvancedForwardType.LEFT : AdvancedForwardType.RIGHT_AND_LEFT;
+                entitySlide.CalculateStraffDirection(hitLeft.normal);    //calculate SLIDE            
+            }
+        }
+
+        public bool IsNormalOk(RaycastHit hitInfo)
+        {
+            Vector3 currentGravityAtHitInfo = entityGravityAttractorSwitch.GetGravityAtAnyGivenPointUsingCurrentAttractorInList(hitInfo.point);
+
+            if (entityController.IsForbidenLayerSwitch(LayerMask.LayerToName(hitInfo.transform.gameObject.layer))
+                    || (entityController.IsMarioGalaxyPlatform(LayerMask.LayerToName(hitInfo.collider.gameObject.layer)))
+                        && !entityGravityAttractorSwitch.IsNormalIsOkWithCurrentGravity(hitInfo.normal, currentGravityAtHitInfo))
             {
                 //here we are in front of a forbidden wall !!
-                isForbiddenForward = true;
-                
-                entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
+                return (false);
             }
-            else
+            return (true);
+        }
+
+        private void ForwardWallCheck()
+        {
+            RaycastHit hitInfo;
+
+            ResetContact();
+            isAdvancedForward = isForwardAdvanceNormalOk = false;
+
+            //do nothing if not moving
+            if (!entityAction.IsMoving())
+                return;
+            //do nothing if input and forward player are not equal
+            if (!entityController.IsLookingTowardTheInput(dotMarginImpact))
+                return;
+
+            AdvanceForwardCheck();
+
+            if (Physics.SphereCast(rb.transform.position, sizeRadiusForward, entityController.GetFocusedForwardDirPlayer(), out hitInfo,
+                                   distForward, entityController.layerMask, QueryTriggerInteraction.Ignore))
             {
-                if (groundCheck.IsFlying() && !inAirForwardWall)
+                //if (!IsSphereGravityAndNormalNotOk(hitInfo))
+                //    return;
+
+
+                //ExtDrawGuizmos.DebugWireSphere(rb.transform.position + (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, sizeRadiusForward, 0.1f);
+                //Debug.DrawRay(rb.transform.position, (entityController.GetFocusedForwardDirPlayer()) * (distForward), Color.yellow, 5f);
+                //ExtDrawGuizmos.DebugWireSphere(hitInfo.point, Color.red, 0.1f, 0.1f);
+
+                isForwardWall = true;
+
+                Vector3 normalHit = hitInfo.normal;
+                Vector3 upPlayer = entityGravity.GetMainAndOnlyGravity();
+                Vector3 tmpDirSurfaceNormal = ExtVector3.GetSurfaceNormal(rb.transform.position,
+                                   entityController.GetFocusedForwardDirPlayer(),
+                                   distForward,
+                                   sizeRadiusForward,
+                                   hitInfo.point,
+                                   collRayCastMargin,
+                                   entityController.layerMask);
+                if (tmpDirSurfaceNormal != Vector3.zero)
+                    dirSurfaceNormal = tmpDirSurfaceNormal;
+
+                entitySlide.CalculateStraffDirection(dirSurfaceNormal);    //calculate SLIDE
+
+                float dotWrongSide = Vector3.Dot(upPlayer, normalHit);
+                if (dotWrongSide < -dotMarginImpact)
                 {
+                    //Debug.Log("forward too inclined, dotImpact: " + dotWrongSide + "( max: " + dotMarginImpact + ")");
                     isForbiddenForward = true;
+                    return;
+                }
+
+                //int isForbidden = ExtList.ContainSubStringInArray(walkForbiddenForwardUp, LayerMask.LayerToName(hitInfo.transform.gameObject.layer));
+                if (!IsNormalOk(hitInfo))
+                {
+                    //here we are in front of a forbidden wall !!
+                    isForbiddenForward = true;
+
+                    entityBumpUp.HereBumpUp(hitInfo, dirSurfaceNormal);
                 }
                 else
                 {
-                    //HERE FORWARD, DO SWITCH !!
-                    coolDownForward.StartCoolDown(timeBetween2TestForward);
-                    //Debug.Log("forward");
-                    groundCheck.SetForwardWall(hitInfo);
-                    
-                    isForbiddenForward = false;
+                    if (groundCheck.IsFlying() && !inAirForwardWall)
+                    {
+                        isForbiddenForward = true;
+                    }
+                    else
+                    {
+                        //HERE FORWARD, DO SWITCH !!
+                        coolDownForward.StartCoolDown(timeBetween2TestForward);
+                        //Debug.Log("forward");
+                        groundCheck.SetForwardWall(hitInfo);
+
+                        isForbiddenForward = false;
+                    }
                 }
             }
+            else
+            {
+
+                ResetContact();
+            }
         }
-        else
+
+        private void ResetContact()
         {
-            
-            ResetContact();
+            isForwardWall = false;
+            isForbiddenForward = false;
         }
-    }
-    
-    private void ResetContact()
-    {
-        isForwardWall = false;
-        isForbiddenForward = false;
-    }
 
-    private void ResetBackwardContact()
-    {
-//isBackwardWall = false;
-//isForbiddenBackward = false;
-    }
+        private void ResetBackwardContact()
+        {
+            //isBackwardWall = false;
+            //isForbiddenBackward = false;
+        }
 
-    private void FixedUpdate()
-    {
-        //set if the is a wall in front of us (we need flying info)
-        ForwardWallCheck();
-        //BackwardWallCheck();
+        private void FixedUpdate()
+        {
+            //set if the is a wall in front of us (we need flying info)
+            ForwardWallCheck();
+            //BackwardWallCheck();
+        }
     }
 }

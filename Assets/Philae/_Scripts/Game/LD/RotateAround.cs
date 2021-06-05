@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 
-
-/// <summary>
-/// RotateAround Description
-/// </summary>
-public class RotateAround : MonoBehaviour
+namespace Philae.LD
 {
-    [Tooltip("directionSatelite"), SerializeField]
-    private Vector3 direction = Vector3.zero;
-    [Tooltip("planette de base"), SerializeField]
-    private float speed = 5f;
-    [Tooltip("planette de base"), SerializeField]
-    private Transform planet = null;
-
-
-    private void Update()
+    /// <summary>
+    /// RotateAround Description
+    /// </summary>
+    public class RotateAround : MonoBehaviour
     {
-        transform.RotateAround(planet.position, direction, speed * Time.deltaTime);
-    }
+        [Tooltip("directionSatelite"), SerializeField]
+        private Vector3 direction = Vector3.zero;
+        [Tooltip("planette de base"), SerializeField]
+        private float speed = 5f;
+        [Tooltip("planette de base"), SerializeField]
+        private Transform planet = null;
 
+
+        private void Update()
+        {
+            transform.RotateAround(planet.position, direction, speed * Time.deltaTime);
+        }
+
+    }
 }

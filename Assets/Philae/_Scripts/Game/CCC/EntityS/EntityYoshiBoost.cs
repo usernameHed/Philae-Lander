@@ -1,124 +1,128 @@
 ﻿
+using Philae.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.PropertyAttribute.readOnly;
 using UnityEssentials.time;
 
-public class EntityYoshiBoost : MonoBehaviour
+namespace Philae.CCC
 {
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private bool enableBoost = true;
-
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private float timeBeforeJump = 0.4f;
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private float boostTime = 1.5f;
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private float timeBefore2Jump = 2f;
-    [Space(10)]
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private float speedMax = 4f;
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private float speedMinDownWhenStart = 2f;
-
-
-
-    [Tooltip("vibration quand on jump"), SerializeField]
-    private float yoshiBoostGravity = 4f;
-    public float GetYoshiBoost() => yoshiBoostGravity;
-
-    [SerializeField, Tooltip("ref script")]
-    private Rigidbody rbEntity = default;
-    [SerializeField, Tooltip("ref script")]
-    private EntityJump entityJump = default;
-    [SerializeField, Tooltip("ref script")]
-    private EntityAction entityAction = default;
-    [SerializeField, Tooltip("ref script")]
-    private PlayerController playerController = default;
-    [SerializeField, Tooltip("ref script")]
-    private EntityGravity entityGravity = default;
-    [SerializeField, Tooltip("ref script")]
-    private ClampRbSpeed clampRbSpeed = default;
-
-    [SerializeField, Tooltip("ref script"), ReadOnly]
-    private bool isBoosting = false;
-    public bool AreWeBoosting() => isBoosting;
-
-    private FrequencyCoolDown coolDownAfterJump = new FrequencyCoolDown();
-    private FrequencyChrono chronoBoost = new FrequencyChrono();
-
-    public bool CanDoBoost()
+    public class EntityYoshiBoost : MonoBehaviour
     {
-        //we need to be inAIr !
-        if (playerController.GetMoveState() != EntityController.MoveState.InAir)
-            return (false);
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private bool enableBoost = true;
 
-        //if we just jump, dont
-        if (coolDownAfterJump.IsRunning())
-            return (false);
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private float timeBeforeJump = 0.4f;
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private float boostTime = 1.5f;
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private float timeBefore2Jump = 2f;
+        [Space(10)]
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private float speedMax = 4f;
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private float speedMinDownWhenStart = 2f;
 
-        //we need to release the jump button after jump before apply boost
-        if (entityJump.IsJumpStoped())
-            return (false);
 
-        //we can active yoshi move only when going down
-        if (!isBoosting && !entityGravity.IsGoingDown())
-            return (false);
 
-        return (true);
-    }
+        [Tooltip("vibration quand on jump"), SerializeField]
+        private float yoshiBoostGravity = 4f;
+        public float GetYoshiBoost() => yoshiBoostGravity;
 
-    public void JustJumped()
-    {
-        coolDownAfterJump.StartCoolDown(timeBeforeJump);
-    }
+        [SerializeField, Tooltip("ref script")]
+        private Rigidbody rbEntity = default;
+        [SerializeField, Tooltip("ref script")]
+        private EntityJump entityJump = default;
+        [SerializeField, Tooltip("ref script")]
+        private EntityAction entityAction = default;
+        [SerializeField, Tooltip("ref script")]
+        private PlayerController playerController = default;
+        [SerializeField, Tooltip("ref script")]
+        private EntityGravity entityGravity = default;
+        [SerializeField, Tooltip("ref script")]
+        private ClampRbSpeed clampRbSpeed = default;
 
-    public void OnGrounded()
-    {
-        coolDownAfterJump.Reset();
-    }
+        [SerializeField, Tooltip("ref script"), ReadOnly]
+        private bool isBoosting = false;
+        public bool AreWeBoosting() => isBoosting;
 
-    private void TryToBoost()
-    {
-        if (CanDoBoost() && entityAction.Jump)
-            DoBoost();
-        else if (isBoosting == true)
+        private FrequencyCoolDown coolDownAfterJump = new FrequencyCoolDown();
+        private FrequencyChrono chronoBoost = new FrequencyChrono();
+
+        public bool CanDoBoost()
         {
-            StopBoost();
-        }
-    }
+            //we need to be inAIr !
+            if (playerController.GetMoveState() != EntityController.MoveState.InAir)
+                return (false);
 
-    private void StopBoost()
-    {
-        isBoosting = false;
-        Debug.Log("boosting over");
-        coolDownAfterJump.StartCoolDown(timeBefore2Jump);
-    }
+            //if we just jump, dont
+            if (coolDownAfterJump.IsRunning())
+                return (false);
 
-    private void DoBoost()
-    {
-        if (!isBoosting)
-        {
-            Debug.Log("first time boost !");
-            chronoBoost.StartChrono();
-            isBoosting = true;
-            clampRbSpeed.ReduceDecendingSpeedToAMin(speedMinDownWhenStart);
-        }
-        if (chronoBoost.GetTimer() > boostTime)
-        {
-            StopBoost();
-            return;
+            //we need to release the jump button after jump before apply boost
+            if (entityJump.IsJumpStoped())
+                return (false);
+
+            //we can active yoshi move only when going down
+            if (!isBoosting && !entityGravity.IsGoingDown())
+                return (false);
+
+            return (true);
         }
 
-        clampRbSpeed.DoClamp(speedMax);
-        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rbEntity.position, rbEntity.rotation, ObjectsPooler.Instance.transform);
-        //SoundManager.Instance.PlaySound(playerController.SFX_Boost);
-    }
+        public void JustJumped()
+        {
+            coolDownAfterJump.StartCoolDown(timeBeforeJump);
+        }
 
-    private void FixedUpdate()
-    {
-        if (enableBoost)
-            TryToBoost();
+        public void OnGrounded()
+        {
+            coolDownAfterJump.Reset();
+        }
+
+        private void TryToBoost()
+        {
+            if (CanDoBoost() && entityAction.Jump)
+                DoBoost();
+            else if (isBoosting == true)
+            {
+                StopBoost();
+            }
+        }
+
+        private void StopBoost()
+        {
+            isBoosting = false;
+            Debug.Log("boosting over");
+            coolDownAfterJump.StartCoolDown(timeBefore2Jump);
+        }
+
+        private void DoBoost()
+        {
+            if (!isBoosting)
+            {
+                Debug.Log("first time boost !");
+                chronoBoost.StartChrono();
+                isBoosting = true;
+                clampRbSpeed.ReduceDecendingSpeedToAMin(speedMinDownWhenStart);
+            }
+            if (chronoBoost.GetTimer() > boostTime)
+            {
+                StopBoost();
+                return;
+            }
+
+            clampRbSpeed.DoClamp(speedMax);
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Jump, rbEntity.position, rbEntity.rotation, ObjectsPooler.Instance.transform);
+            //SoundManager.Instance.PlaySound(playerController.SFX_Boost);
+        }
+
+        private void FixedUpdate()
+        {
+            if (enableBoost)
+                TryToBoost();
+        }
     }
 }

@@ -1,151 +1,155 @@
 ﻿
+using Philae.Core;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEssentials.CameraMarioGalaxy;
 using UnityEssentials.Extensions;
 
-public class PlayerController : EntityController, IKillable
+namespace Philae.CCC
 {
-    [Tooltip("ref script")]
-    public PlayerInput playerInput = null;
-    [Tooltip("ref script")]
-    public PlayerJump playerJump = null;
-    [Tooltip("ref script")]
-    public Transform renderPlayer = null;
-    [Tooltip("ref script")]
-    public Animator animator = null;
-    [SerializeField, Tooltip("ref script")]
-    public EntityYoshiBoost entityYoshiBoost;
-    [SerializeField, Tooltip("ref script")]
-    public GroundAdvancedCheck groundAdvancedCheck;
-
-
-
-    [SerializeField, Tooltip("id player for input")]
-    public int idPlayer = 0;
-
-    
-    private bool isMoving = false;
-
-
-    private void OnEnable()
+    public class PlayerController : EntityController, IKillable
     {
-        EventManager.StartListening(GameData.Event.GameOver, GameOver);
-    }
+        [Tooltip("ref script")]
+        public PlayerInput playerInput = null;
+        [Tooltip("ref script")]
+        public PlayerJump playerJump = null;
+        [Tooltip("ref script")]
+        public Transform renderPlayer = null;
+        [Tooltip("ref script")]
+        public Animator animator = null;
+        [SerializeField, Tooltip("ref script")]
+        public EntityYoshiBoost entityYoshiBoost;
+        [SerializeField, Tooltip("ref script")]
+        public GroundAdvancedCheck groundAdvancedCheck;
 
-    private void Awake()
-    {
-        base.Init();
-        groundAdvancedCheck.GetObjProjector().SetActive(true);
-    }
 
-    
 
-    /// <summary>
-    /// called when the game is over: desactive player
-    /// </summary>
-    public void GameOver()
-    {
+        [SerializeField, Tooltip("id player for input")]
+        public int idPlayer = 0;
 
-    }
 
-    protected override void OnGrounded()
-    {
-        playerJump.OnGrounded();
-        baseGravity.OnGrounded();
-        baseGravityAttractorSwitch.OnGrounded();
-        entityNoGravity.OnGrounded();
-        entityBumpUp.OnGrounded();
-        entityAirMove.OnGrounded();
-        entityYoshiBoost.OnGrounded();
-        fastForward.OnGrounded();
+        private bool isMoving = false;
 
-        //SoundManager.Instance.PlaySound(SFX_grounded);
-    }
 
-    /// <summary>
-    /// set state of player
-    /// </summary>
-    private new void ChangeState()
-    {
-        //Check if is flying
-        if (groundCheck.IsFlying())
+        private void OnEnable()
         {
-            //IN AIR
-            moveState = MoveState.InAir;
-            SetDragRb(0);
-            isMoving = false;
-            return;
+            EventManager.StartListening(GameData.Event.GameOver, GameOver);
         }
 
-        if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
+        private void Awake()
         {
-            OnGrounded();
+            base.Init();
+            groundAdvancedCheck.GetObjProjector().SetActive(true);
         }
 
-        if (rb.drag != oldDrag)
-            SetDragRb(oldDrag);
 
 
-        if (playerInput.IsMoving())
+        /// <summary>
+        /// called when the game is over: desactive player
+        /// </summary>
+        public void GameOver()
         {
-            
-            moveState = MoveState.Move;
-            if (!isMoving)
+
+        }
+
+        protected override void OnGrounded()
+        {
+            playerJump.OnGrounded();
+            baseGravity.OnGrounded();
+            baseGravityAttractorSwitch.OnGrounded();
+            entityNoGravity.OnGrounded();
+            entityBumpUp.OnGrounded();
+            entityAirMove.OnGrounded();
+            entityYoshiBoost.OnGrounded();
+            fastForward.OnGrounded();
+
+            //SoundManager.Instance.PlaySound(SFX_grounded);
+        }
+
+        /// <summary>
+        /// set state of player
+        /// </summary>
+        private new void ChangeState()
+        {
+            //Check if is flying
+            if (groundCheck.IsFlying())
             {
-                //SoundManager.Instance.PlaySound(SFX_playerMove);
-                animator.SetBool("isMarche", true);
+                //IN AIR
+                moveState = MoveState.InAir;
+                SetDragRb(0);
+                isMoving = false;
+                return;
             }
 
-            isMoving = true;
-        }
-        else
-        {
-            moveState = MoveState.Idle;
-            if (isMoving)
+            if (moveState == MoveState.InAir && groundCheck.IsSafeGrounded())
             {
-                //SoundManager.Instance.PlaySound(SFX_playerMove, false);
-                //SoundManager.Instance.PlaySound(SFX_playerEndMove);
-                animator.SetBool("isMarche", false);
+                OnGrounded();
             }
 
-            isMoving = false;
+            if (rb.drag != oldDrag)
+                SetDragRb(oldDrag);
+
+
+            if (playerInput.IsMoving())
+            {
+
+                moveState = MoveState.Move;
+                if (!isMoving)
+                {
+                    //SoundManager.Instance.PlaySound(SFX_playerMove);
+                    animator.SetBool("isMarche", true);
+                }
+
+                isMoving = true;
+            }
+            else
+            {
+                moveState = MoveState.Idle;
+                if (isMoving)
+                {
+                    //SoundManager.Instance.PlaySound(SFX_playerMove, false);
+                    //SoundManager.Instance.PlaySound(SFX_playerEndMove);
+                    animator.SetBool("isMarche", false);
+                }
+
+                isMoving = false;
+            }
         }
-    }
 
-    private void FixedUpdate()
-    {
-        ChangeState();
-        ExtMathf.LinearAcceleration(out actualAccelerationVector, rb.position, 4);
-        actualAcceleration = actualAccelerationVector.magnitude;
-    }
+        private void FixedUpdate()
+        {
+            ChangeState();
+            ExtMathf.LinearAcceleration(out actualAccelerationVector, rb.position, 4);
+            actualAcceleration = actualAccelerationVector.magnitude;
+        }
 
-    private void OnDisable()
-    {
-        EventManager.StopListening(GameData.Event.GameOver, GameOver);
-    }
+        private void OnDisable()
+        {
+            EventManager.StopListening(GameData.Event.GameOver, GameOver);
+        }
 
-    public override void Kill()
-    {
-        if (isKilled)
-            return;
+        public override void Kill()
+        {
+            if (isKilled)
+                return;
 
-        rb.isKinematic = true;
+            rb.isKinematic = true;
 
-        groundAdvancedCheck.GetObjProjector().SetActive(false);
+            groundAdvancedCheck.GetObjProjector().SetActive(false);
 
-        //SoundManager.Instance.PlaySound(SFX_playerMove, false);
+            //SoundManager.Instance.PlaySound(SFX_playerMove, false);
 
-        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Hit, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
-        EventManager.TriggerEvent(GameData.Event.GameOver);
-        renderPlayer.gameObject.SetActive(false);
-        //SoundManager.Instance.PlaySound(SFX_playerDeath);
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Hit, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
+            EventManager.TriggerEvent(GameData.Event.GameOver);
+            renderPlayer.gameObject.SetActive(false);
+            //SoundManager.Instance.PlaySound(SFX_playerDeath);
 
-        isKilled = true;
-    }
+            isKilled = true;
+        }
 
-    public override void GetHit(int amount, Vector3 posAttacker)
-    {
-        //throw new System.NotImplementedException();
+        public override void GetHit(int amount, Vector3 posAttacker)
+        {
+            //throw new System.NotImplementedException();
+        }
     }
 }
