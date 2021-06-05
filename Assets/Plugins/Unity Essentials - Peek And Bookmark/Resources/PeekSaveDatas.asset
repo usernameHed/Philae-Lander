@@ -13,91 +13,6 @@ MonoBehaviour:
   m_Name: PeekSaveDatas
   m_EditorClassIdentifier: 
   _selectedObjects:
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: -7184
-    ScenePath: Level
-    GameObjectName: '[GF] - Cube (5)'
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20034
-    ScenePath: Level
-    GameObjectName: '[GF] - Cube (4)'
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: -7184
-    ScenePath: Level
-    GameObjectName: '[GF] - Cube (5)'
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 0
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 0
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20000
-    ScenePath: Level
-    GameObjectName: NEW LD WITH NEW GRAVITY
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20042
-    ScenePath: Level
-    GameObjectName: 'Zone: Sphere Physic'
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 0
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20012
-    ScenePath: Level
-    GameObjectName: '  '
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20352
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: e9d733463eee81f48a22e1cf43bc1b02, type: 2}
-    IsGameObject: 1
-    InstanceId: 20378
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 102900000, guid: 63600ab37dc33354aa25b769beec9970, type: 3}
-    IsGameObject: 0
-    InstanceId: 20378
-    ScenePath: Level
-    GameObjectName: Philae
-  - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
-    IsGameObject: 0
-    InstanceId: 20378
-    ScenePath: Level
-    GameObjectName: Philae
   - Asset: {fileID: 11400000, guid: 539330e3129901a4ca8d946fa8b85eee, type: 2}
     IsGameObject: 1
     InstanceId: 23330
@@ -5008,82 +4923,92 @@ MonoBehaviour:
     InstanceId: -263570
     ScenePath: Level
     GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 0628e2ef2e307904d9af174de9798379, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 47811a8a67d50604ba5e0839404fe9f5, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 0628e2ef2e307904d9af174de9798379, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 50f0949bcc2a3b244ab986acf8448efa, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: c30bced1fdc737e43ac656b86c1fd605, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: aac3f6493eba7564ebeb383195119103, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: c30bced1fdc737e43ac656b86c1fd605, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 1c5f98ab72ef7e84d8b4df5a394c1086, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 6a3a0ba9423115b489edd79d33a1b0ea, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 4391f2193826cc84d94ffd7ad564f685, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 8353cd0009bf72340b67c5e0cc2cc609, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: f5ed271b680aaa24b84588d6e447a535, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 542226cfe621435458cea1244123aad7, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: e66b4e9edc2f5554e8600290deb6ca77, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: f535906421e1e8b4ca688f270d98d6be, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: d93ae5b65dd32af49a22aeb037a13a64, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 56ed2858bf054c54685e2f7b52a8b115, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
   _selectedObjectsWithoutDuplicate:
-  - Asset: {fileID: 2655988077585873504, guid: 23123b5fd2f58ee4380892c26e16318c, type: 2}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: db87e56b530c9f647a783d842659c5b1, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 3eafd6c607095cc46882479adf8f5b14, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: b44bce68abbd76240ab2a46aefd3b209, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 1b679f8cd498ab14ebf5fcc9089c5c16, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 7ce255fd9d50958438b62fda69d485d1, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: ae094af00db4529478797fdced8a765a, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 9f5d022b9424b424c93ebdbafe318621, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 24e49c0163b7b164793e122c89d76699, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 6b1c0720ef642f749b3a87290474e5c0, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 102900000, guid: da33bca8e86aea643a5eb825c31d2e82, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 81a71098a79369e42bbf526c932e9bb8, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 309717ebae52b2d4f9a77f26a5c4af03, type: 3}
-    IsGameObject: 0
-    InstanceId: -257560
-    ScenePath: Level
-    GameObjectName: 4 - IA Follower
-  - Asset: {fileID: 2800000, guid: 309717ebae52b2d4f9a77f26a5c4af03, type: 3}
-    IsGameObject: 1
-    InstanceId: -257596
-    ScenePath: Level
-    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
-  - Asset: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
-    IsGameObject: 0
-    InstanceId: -257596
-    ScenePath: Level
-    GameObjectName: RIGIDBODY Moving Object (Planet oriented)
   - Asset: {fileID: 2100000, guid: e55538300d7a92345b91e698e7826e3b, type: 2}
     IsGameObject: 0
     InstanceId: -257596
@@ -5504,14 +5429,89 @@ MonoBehaviour:
     InstanceId: -263570
     ScenePath: Level
     GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 47811a8a67d50604ba5e0839404fe9f5, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 0628e2ef2e307904d9af174de9798379, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 50f0949bcc2a3b244ab986acf8448efa, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: aac3f6493eba7564ebeb383195119103, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: c30bced1fdc737e43ac656b86c1fd605, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 1c5f98ab72ef7e84d8b4df5a394c1086, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 6a3a0ba9423115b489edd79d33a1b0ea, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 4391f2193826cc84d94ffd7ad564f685, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 8353cd0009bf72340b67c5e0cc2cc609, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: f5ed271b680aaa24b84588d6e447a535, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 542226cfe621435458cea1244123aad7, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: e66b4e9edc2f5554e8600290deb6ca77, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: f535906421e1e8b4ca688f270d98d6be, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: d93ae5b65dd32af49a22aeb037a13a64, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
+  - Asset: {fileID: 11500000, guid: 56ed2858bf054c54685e2f7b52a8b115, type: 3}
+    IsGameObject: 0
+    InstanceId: -263570
+    ScenePath: Level
+    GameObjectName: ------- LD Objects ------
   _pinnedObjects: []
   _pinnedObjectsInScenes: []
   _pinnedObjectsNameInScenes: []
   _pinnedObjectsScenesLink: []
-  _currentIndex: 999
+  _currentIndex: 998
   _lastSelectedObject:
-    Asset: {fileID: 11500000, guid: d70884a3fb6e0a44988a1bb759d59779, type: 3}
-    IsGameObject: 1
+    Asset: {fileID: 11500000, guid: 56ed2858bf054c54685e2f7b52a8b115, type: 3}
+    IsGameObject: 0
     InstanceId: -263570
     ScenePath: Level
     GameObjectName: ------- LD Objects ------
